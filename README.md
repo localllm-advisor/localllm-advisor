@@ -26,9 +26,15 @@ npm install
 # Dev server con hot reload
 npm run dev
 # Apre su http://localhost:3000
+```
 
-# Build statica (come in produzione)
+> **Nota**: In sviluppo il sito è su `http://localhost:3000`. In produzione (GitHub Pages) è sotto `/localllm-advisor`.
+
+### Build statica (come in produzione)
+
+```bash
 npm run build && npx serve out
+# Il sito sarà su http://localhost:3000/localllm-advisor
 ```
 
 ## Struttura progetto

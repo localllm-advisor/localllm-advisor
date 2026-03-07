@@ -1,7 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/localllm-advisor',
+  // basePath usato solo in produzione (GitHub Pages)
+  ...(process.env.NODE_ENV === 'production' && {
+    basePath: '/localllm-advisor',
+  }),
   images: {
     unoptimized: true,
   },
