@@ -119,7 +119,12 @@
     "hf_id": "CohereForAI/c4ai-command-r-v01",
     "provider": "Cohere",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/c4ai-command-r-v01-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "deepseek-r1-684.5b",
@@ -128,8 +133,8 @@
     "params_b": 684.5,
     "architecture": "moe",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "reasoning",
+      "chat"
     ],
     "context_length": 163840,
     "release_date": "2025-01-20",
@@ -181,7 +186,16 @@
     "hf_id": "deepseek-ai/DeepSeek-R1",
     "provider": "DeepSeek",
     "hf_downloads": 1131353,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-R1-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/DeepSeek-R1-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "deepseek-v3-685b",
@@ -242,7 +256,12 @@
     "hf_id": "deepseek-ai/DeepSeek-V3",
     "provider": "DeepSeek",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-V3-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "deepseek-v3-685.4b",
@@ -303,7 +322,12 @@
     "hf_id": "deepseek-ai/DeepSeek-V3.2",
     "provider": "DeepSeek",
     "hf_downloads": 369865,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-V3.2-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "embedding-100m",
@@ -709,7 +733,12 @@
     "hf_id": "tiiuae/Falcon3-7B-Instruct",
     "provider": "TII",
     "hf_downloads": 20962,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Falcon3-7B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "falcon-179.5b",
@@ -831,7 +860,12 @@
     "hf_id": "google/gemma-2-9b-it",
     "provider": "Google",
     "hf_downloads": 206029,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/gemma-2-9b-it-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "gemma-12b",
@@ -893,7 +927,12 @@
     "hf_id": "google/gemma-3-12b-it",
     "provider": "Google",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/gemma-3-12b-it-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "gemma-27.2b",
@@ -954,7 +993,12 @@
     "hf_id": "google/gemma-2-27b-it",
     "provider": "Google",
     "hf_downloads": 406142,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/gemma-2-27b-it-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "gemma-27.4b",
@@ -1015,7 +1059,12 @@
     "hf_id": "google/gemma-3-27b-it",
     "provider": "Google",
     "hf_downloads": 1445069,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/gemma-3-27b-it-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "glm-9.4b",
@@ -1076,7 +1125,12 @@
     "hf_id": "THUDM/glm-4-9b-chat",
     "provider": "Zhipu AI",
     "hf_downloads": 197664,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/glm-4-9b-chat-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "glm-753.9b",
@@ -1137,7 +1191,12 @@
     "hf_id": "zai-org/GLM-5",
     "provider": "Zhipu AI",
     "hf_downloads": 222572,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/GLM-5-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "kimi-1026.5b",
@@ -1198,7 +1257,12 @@
     "hf_id": "moonshotai/Kimi-K2-Instruct",
     "provider": "Moonshot",
     "hf_downloads": 119547,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Kimi-K2-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "kimi-1058.6b",
@@ -1259,7 +1323,12 @@
     "hf_id": "moonshotai/Kimi-K2.5",
     "provider": "Moonshot",
     "hf_downloads": 2236242,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Kimi-K2.5-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "llama-1.1b",
@@ -1613,7 +1682,12 @@
     "hf_id": "meta-llama/Llama-3.1-8B-Instruct",
     "provider": "Meta",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Llama-3.1-8B-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "llama-vision-10.7b",
@@ -1748,8 +1822,8 @@
     "architecture": "dense",
     "capabilities": [
       "coding",
-      "chat",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
     "context_length": 4096,
     "release_date": "2024-03-14",
@@ -1925,7 +1999,16 @@
     "hf_id": "meta-llama/Llama-3.3-70B-Instruct",
     "provider": "Meta",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Llama-3.3-70B-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Llama-3.3-70B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "llama-109b",
@@ -1987,7 +2070,12 @@
     "hf_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
     "provider": "Meta",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Llama-4-Scout-17B-16E-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "llama-401.6b",
@@ -2048,7 +2136,12 @@
     "hf_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
     "provider": "Meta",
     "hf_downloads": 5972,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "llama-405.9b",
@@ -2119,8 +2212,8 @@
     "params_b": 7.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "reasoning",
+      "chat"
     ],
     "context_length": 32768,
     "release_date": null,
@@ -2233,7 +2326,12 @@
     "hf_id": "XiaomiMiMo/MiMo-V2-Flash",
     "provider": "Xiaomi",
     "hf_downloads": 535055,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/MiMo-V2-Flash-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "minimax-228.7b",
@@ -2294,7 +2392,12 @@
     "hf_id": "MiniMaxAI/MiniMax-M2.5",
     "provider": "MiniMax",
     "hf_downloads": 389688,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/MiniMax-M2.5-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "mistral-7.2b",
@@ -2356,7 +2459,12 @@
     "hf_id": "mistralai/Mistral-7B-Instruct-v0.3",
     "provider": "Mistral AI",
     "hf_downloads": 1598460,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Mistral-7B-Instruct-v0.3-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "mistral-8b",
@@ -2418,7 +2526,12 @@
     "hf_id": "mistralai/Ministral-8B-Instruct-2410",
     "provider": "Mistral AI",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Ministral-8B-Instruct-2410-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "mistral-nemo-12.2b",
@@ -2480,7 +2593,16 @@
     "hf_id": "mistralai/Mistral-Nemo-Instruct-2407",
     "provider": "Mistral AI",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Mistral-Nemo-Instruct-2407-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Mistral-Nemo-Instruct-2407-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "mistral-small-24b",
@@ -2542,7 +2664,16 @@
     "hf_id": "mistralai/Mistral-Small-24B-Instruct-2501",
     "provider": "Mistral AI",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Mistral-Small-24B-Instruct-2501-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Mistral-Small-24B-Instruct-2501-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "mistral-small-24b",
@@ -2605,7 +2736,12 @@
     "hf_id": "mistralai/Mistral-Small-3.1-24B-Instruct-2503",
     "provider": "Mistral AI",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Mistral-Small-3.1-24B-Instruct-2503-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "mistral-46.7b",
@@ -2618,7 +2754,7 @@
       "chat"
     ],
     "context_length": 32768,
-    "release_date": "2023-12-10",
+    "release_date": "2024-01-11",
     "ollama_base": "mixtral:8x7b",
     "quantizations": [
       {
@@ -2790,7 +2926,12 @@
     "hf_id": "mistralai/Mistral-Large-Instruct-2407",
     "provider": "Mistral AI",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Mistral-Large-Instruct-2407-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "mistral-140.6b",
@@ -3035,7 +3176,12 @@
     "hf_id": "allenai/OLMo-2-0325-32B-Instruct",
     "provider": "Allen Institute",
     "hf_downloads": 3634,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/OLMo-2-0325-32B-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "other-16.8b",
@@ -3157,7 +3303,12 @@
     "hf_id": "rednote-hilab/dots.llm1.inst",
     "provider": "Rednote",
     "hf_downloads": 5250,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/dots.llm1.inst-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "phi-3.8b",
@@ -3218,7 +3369,12 @@
     "hf_id": "microsoft/phi-3-mini-4k-instruct",
     "provider": "Microsoft",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/phi-3-mini-4k-instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "phi-14b",
@@ -3288,8 +3444,8 @@
     "params_b": 14.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "reasoning",
+      "chat"
     ],
     "context_length": 16384,
     "release_date": "2026-03-07",
@@ -3341,7 +3497,16 @@
     "hf_id": "microsoft/phi-4",
     "provider": "Microsoft",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/phi-4-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/phi-4-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "phi-14b",
@@ -3350,8 +3515,8 @@
     "params_b": 14.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "reasoning",
+      "chat"
     ],
     "context_length": 32768,
     "release_date": "2026-03-07",
@@ -3403,7 +3568,12 @@
     "hf_id": "microsoft/Phi-4-reasoning",
     "provider": "Microsoft",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Phi-4-reasoning-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "phi-14b",
@@ -3519,7 +3689,12 @@
     "hf_id": "Qwen/Qwen3-0.6B",
     "provider": "Alibaba",
     "hf_downloads": 11946742,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-0.6B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-900m",
@@ -3573,7 +3748,12 @@
     "hf_id": "Qwen/Qwen3.5-0.8B",
     "provider": "Alibaba",
     "hf_downloads": 346126,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-0.8B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-coder-1.5b",
@@ -3583,8 +3763,8 @@
     "architecture": "dense",
     "capabilities": [
       "coding",
-      "chat",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
     "context_length": 32768,
     "release_date": "2026-03-07",
@@ -3629,7 +3809,16 @@
     "hf_id": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 1822656,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen2.5-Coder-1.5B-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Qwen2.5-Coder-1.5B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-2.3b",
@@ -3683,7 +3872,12 @@
     "hf_id": "Qwen/Qwen3.5-2B",
     "provider": "Alibaba",
     "hf_downloads": 195095,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-2B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-vision-3.8b",
@@ -3746,7 +3940,12 @@
     "hf_id": "Qwen/Qwen2.5-VL-3B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 2887503,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen2.5-VL-3B-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-4.7b",
@@ -3807,7 +4006,12 @@
     "hf_id": "Qwen/Qwen3.5-4B",
     "provider": "Alibaba",
     "hf_downloads": 282635,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-4B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-7.6b",
@@ -3869,7 +4073,12 @@
     "hf_id": "Qwen/Qwen2.5-7B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 21497102,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Qwen2.5-7B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-coder-7.6b",
@@ -3879,8 +4088,8 @@
     "architecture": "dense",
     "capabilities": [
       "coding",
-      "chat",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
     "context_length": 32768,
     "release_date": "2024-09-17",
@@ -3932,7 +4141,16 @@
     "hf_id": "Qwen/Qwen2.5-Coder-7B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 1680689,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen2.5-Coder-7B-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Qwen2.5-Coder-7B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-r1-7.6b",
@@ -3941,8 +4159,8 @@
     "params_b": 7.6,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "reasoning",
+      "chat"
     ],
     "context_length": 131072,
     "release_date": "2025-01-20",
@@ -3994,7 +4212,16 @@
     "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
     "provider": "DeepSeek",
     "hf_downloads": 700332,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-R1-Distill-Qwen-7B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-vision-8.3b",
@@ -4057,7 +4284,12 @@
     "hf_id": "Qwen/Qwen2.5-VL-7B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 4274546,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen2.5-VL-7B-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-9.7b",
@@ -4118,7 +4350,12 @@
     "hf_id": "Qwen/Qwen3.5-9B",
     "provider": "Alibaba",
     "hf_downloads": 692588,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-9B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-coder-14.8b",
@@ -4128,8 +4365,8 @@
     "architecture": "dense",
     "capabilities": [
       "coding",
-      "chat",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
     "context_length": 32768,
     "release_date": "2024-11-06",
@@ -4181,7 +4418,16 @@
     "hf_id": "Qwen/Qwen2.5-Coder-14B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 525274,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen2.5-Coder-14B-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Qwen2.5-Coder-14B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-14.8b",
@@ -4243,7 +4489,12 @@
     "hf_id": "Qwen/Qwen2.5-14B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Qwen2.5-14B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-27.8b",
@@ -4304,7 +4555,12 @@
     "hf_id": "Qwen/Qwen3.5-27B",
     "provider": "Alibaba",
     "hf_downloads": 630137,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-27B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-32.5b",
@@ -4366,7 +4622,12 @@
     "hf_id": "Qwen/Qwen2.5-32B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 0,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Qwen2.5-32B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-coder-32.8b",
@@ -4376,8 +4637,8 @@
     "architecture": "dense",
     "capabilities": [
       "coding",
-      "chat",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
     "context_length": 32768,
     "release_date": "2024-11-06",
@@ -4429,7 +4690,16 @@
     "hf_id": "Qwen/Qwen2.5-Coder-32B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 825600,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen2.5-Coder-32B-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Qwen2.5-Coder-32B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-r1-32.8b",
@@ -4438,8 +4708,8 @@
     "params_b": 32.8,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "reasoning",
+      "chat"
     ],
     "context_length": 131072,
     "release_date": "2025-01-20",
@@ -4491,7 +4761,16 @@
     "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
     "provider": "DeepSeek",
     "hf_downloads": 924585,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/DeepSeek-R1-Distill-Qwen-32B-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-36b",
@@ -4552,7 +4831,12 @@
     "hf_id": "Qwen/Qwen3.5-35B-A3B",
     "provider": "Alibaba",
     "hf_downloads": 1086662,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-35B-A3B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-72.7b",
@@ -4614,7 +4898,12 @@
     "hf_id": "Qwen/Qwen2.5-72B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 582223,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "bartowski/Qwen2.5-72B-Instruct-GGUF",
+        "provider": "bartowski"
+      }
+    ]
   },
   {
     "id": "qwen-125.1b",
@@ -4675,7 +4964,12 @@
     "hf_id": "Qwen/Qwen3.5-122B-A10B",
     "provider": "Alibaba",
     "hf_downloads": 225008,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-122B-A10B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-235.1b",
@@ -4736,7 +5030,12 @@
     "hf_id": "Qwen/Qwen3-235B-A22B",
     "provider": "Alibaba",
     "hf_downloads": 685468,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-235B-A22B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-403.4b",
@@ -4797,7 +5096,12 @@
     "hf_id": "Qwen/Qwen3.5-397B-A17B",
     "provider": "Alibaba",
     "hf_downloads": 1409496,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-397B-A17B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "qwen-coder-480.2b",
@@ -4807,8 +5111,8 @@
     "architecture": "moe",
     "capabilities": [
       "coding",
-      "chat",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
     "context_length": 262144,
     "release_date": "2025-07-22",
@@ -4860,7 +5164,12 @@
     "hf_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
     "provider": "Alibaba",
     "hf_downloads": 74333,
-    "gguf_sources": []
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-Coder-480B-A35B-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "stablelm-1.6b",
