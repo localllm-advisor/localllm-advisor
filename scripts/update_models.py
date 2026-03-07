@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """
-Script per aggiornare models.json con dati da Ollama + HuggingFace Leaderboard
+Script per aggiornare models.json con dati da Ollama + benchmark leaderboards
 
 Usage: python scripts/update_models.py
 
 Fonti dati:
 1. Ollama Registry (https://ollama.com/library) → modelli + tag disponibili
-2. Open LLM Leaderboard (HuggingFace) → benchmark
-3. Calcolo interno → VRAM stimata
+2. Open LLM Leaderboard (HuggingFace) → benchmark generali (IFEval, BBH, MATH, GPQA, MUSR, MMLU-PRO)
+3. EvalPlus Leaderboard → coding benchmark (HumanEval, MBPP)
+4. BigCodeBench Leaderboard → coding benchmark avanzati
+5. Calcolo interno → VRAM stimata
 
 Requisiti:
-  pip install requests pandas pyarrow
+  pip install requests pandas pyarrow datasets
 """
 
 import json
@@ -287,7 +289,7 @@ def load_leaderboard() -> pd.DataFrame | None:
 
 
 def find_benchmark(model_name: str, params_b: float, hf_patterns: list[str]) -> dict:
-    """Cerca benchmark per un modello nel leaderboard."""
+    """Cerca benchmark per un modello da tutte le fonti disponibili."""
     benchmarks = {
         "humaneval": None,
         "mmlu_pro": None,
@@ -303,37 +305,37 @@ def find_benchmark(model_name: str, params_b: float, hf_patterns: list[str]) -> 
         "mmbench": None,
     }
 
+    # 1. Open LLM Leaderboard (IFEval, BBH, MATH, GPQA, MUSR, MMLU-PRO)
     df = load_leaderboard()
-    if df is None:
-        return benchmarks
+    if df is not None:
+        for pattern in hf_patterns:
+            mask = df["fullname"].str.contains(pattern, case=False, na=False)
 
-    # Cerca match nel leaderboard
-    for pattern in hf_patterns:
-        # Cerca modelli che matchano il pattern e hanno ~params_b parametri
-        mask = df["fullname"].str.contains(pattern, case=False, na=False)
+            if params_b > 0:
+                param_col = "#Params (B)"
+                if param_col in df.columns:
+                    param_mask = (df[param_col] >= params_b * 0.8) & (df[param_col] <= params_b * 1.2)
+                    mask = mask & param_mask
 
-        if params_b > 0:
-            # Filtra per parametri simili (±20%)
-            param_col = "#Params (B)"
-            if param_col in df.columns:
-                param_mask = (df[param_col] >= params_b * 0.8) & (df[param_col] <= params_b * 1.2)
-                mask = mask & param_mask
+            matches = df[mask]
 
-        matches = df[mask]
+            if len(matches) > 0:
+                best = matches.loc[matches["Average ⬆️"].idxmax()]
+                benchmarks["ifeval"] = _safe_float(best.get("IFEval"))
+                benchmarks["bbh"] = _safe_float(best.get("BBH"))
+                benchmarks["math"] = _safe_float(best.get("MATH Lvl 5"))
+                benchmarks["gpqa"] = _safe_float(best.get("GPQA"))
+                benchmarks["musr"] = _safe_float(best.get("MUSR"))
+                benchmarks["mmlu_pro"] = _safe_float(best.get("MMLU-PRO"))
+                break
 
-        if len(matches) > 0:
-            # Prendi il match con score più alto
-            best = matches.loc[matches["Average ⬆️"].idxmax()]
+    # 2. EvalPlus (HumanEval, MBPP)
+    evalplus = find_evalplus_benchmark(model_name, params_b, hf_patterns)
+    benchmarks["humaneval"] = evalplus.get("humaneval")
+    benchmarks["mbpp"] = evalplus.get("mbpp")
 
-            # Mappa colonne leaderboard -> nostro schema
-            benchmarks["ifeval"] = _safe_float(best.get("IFEval"))
-            benchmarks["bbh"] = _safe_float(best.get("BBH"))
-            benchmarks["math"] = _safe_float(best.get("MATH Lvl 5"))
-            benchmarks["gpqa"] = _safe_float(best.get("GPQA"))
-            benchmarks["musr"] = _safe_float(best.get("MUSR"))
-            benchmarks["mmlu_pro"] = _safe_float(best.get("MMLU-PRO"))
-
-            return benchmarks
+    # 3. BigCodeBench
+    benchmarks["bigcodebench"] = find_bigcodebench(model_name, params_b, hf_patterns)
 
     return benchmarks
 
@@ -346,6 +348,123 @@ def _safe_float(val) -> float | None:
         return round(float(val), 1)
     except (ValueError, TypeError):
         return None
+
+
+# ============================================================
+# EVALPLUS LEADERBOARD (HumanEval, MBPP)
+# ============================================================
+
+_evalplus_df = None
+
+def load_evalplus() -> pd.DataFrame | None:
+    """Carica il dataset EvalPlus per HumanEval e MBPP."""
+    global _evalplus_df
+
+    if _evalplus_df is not None:
+        return _evalplus_df
+
+    if not HAS_PANDAS:
+        return None
+
+    print("Loading EvalPlus leaderboard...")
+
+    try:
+        # EvalPlus pubblica i risultati su HuggingFace
+        from datasets import load_dataset
+        ds = load_dataset("evalplus/evalplus", split="latest")
+        _evalplus_df = ds.to_pandas()
+        print(f"  Loaded {len(_evalplus_df)} entries from EvalPlus")
+        return _evalplus_df
+    except Exception as e:
+        print(f"  [!] EvalPlus not available: {e}")
+        # Fallback: prova a scaricare direttamente
+        try:
+            url = "https://raw.githubusercontent.com/evalplus/evalplus/master/results/leaderboard.csv"
+            _evalplus_df = pd.read_csv(url)
+            print(f"  Loaded {len(_evalplus_df)} entries from EvalPlus CSV")
+            return _evalplus_df
+        except Exception as e2:
+            print(f"  [!] EvalPlus CSV fallback failed: {e2}")
+            return None
+
+
+def find_evalplus_benchmark(model_name: str, params_b: float, hf_patterns: list[str]) -> dict:
+    """Cerca benchmark HumanEval e MBPP da EvalPlus."""
+    result = {"humaneval": None, "mbpp": None}
+
+    df = load_evalplus()
+    if df is None:
+        return result
+
+    # Cerca match
+    for pattern in hf_patterns:
+        mask = df["model"].str.contains(pattern, case=False, na=False)
+        matches = df[mask]
+
+        if len(matches) > 0:
+            # Prendi il match migliore (maggior punteggio)
+            if "humaneval" in df.columns or "pass@1" in df.columns:
+                best = matches.iloc[0]
+                # EvalPlus usa varie convenzioni per le colonne
+                humaneval_col = next((c for c in df.columns if "humaneval" in c.lower() or "he" in c.lower()), None)
+                mbpp_col = next((c for c in df.columns if "mbpp" in c.lower()), None)
+
+                if humaneval_col:
+                    result["humaneval"] = _safe_float(best.get(humaneval_col))
+                if mbpp_col:
+                    result["mbpp"] = _safe_float(best.get(mbpp_col))
+
+                return result
+
+    return result
+
+
+# ============================================================
+# BIGCODEBENCH LEADERBOARD
+# ============================================================
+
+_bigcodebench_df = None
+
+def load_bigcodebench() -> pd.DataFrame | None:
+    """Carica il dataset BigCodeBench."""
+    global _bigcodebench_df
+
+    if _bigcodebench_df is not None:
+        return _bigcodebench_df
+
+    if not HAS_PANDAS:
+        return None
+
+    print("Loading BigCodeBench leaderboard...")
+
+    try:
+        from datasets import load_dataset
+        ds = load_dataset("bigcode/bigcodebench-results", split="train")
+        _bigcodebench_df = ds.to_pandas()
+        print(f"  Loaded {len(_bigcodebench_df)} entries from BigCodeBench")
+        return _bigcodebench_df
+    except Exception as e:
+        print(f"  [!] BigCodeBench not available: {e}")
+        return None
+
+
+def find_bigcodebench(model_name: str, params_b: float, hf_patterns: list[str]) -> float | None:
+    """Cerca benchmark BigCodeBench."""
+    df = load_bigcodebench()
+    if df is None:
+        return None
+
+    for pattern in hf_patterns:
+        mask = df["model"].str.contains(pattern, case=False, na=False) if "model" in df.columns else pd.Series([False] * len(df))
+        matches = df[mask]
+
+        if len(matches) > 0:
+            # Cerca colonna score
+            score_col = next((c for c in df.columns if "pass" in c.lower() or "score" in c.lower()), None)
+            if score_col:
+                return _safe_float(matches.iloc[0].get(score_col))
+
+    return None
 
 
 # ============================================================
@@ -441,7 +560,9 @@ def main():
     print()
     print("Fonti:")
     print("  1. Ollama Registry → modelli e quantizzazioni")
-    print("  2. Open LLM Leaderboard → benchmark")
+    print("  2. Open LLM Leaderboard → IFEval, BBH, MATH, GPQA, MUSR, MMLU-PRO")
+    print("  3. EvalPlus → HumanEval, MBPP")
+    print("  4. BigCodeBench → BigCodeBench")
     print()
 
     # Carica modelli esistenti per preservare date

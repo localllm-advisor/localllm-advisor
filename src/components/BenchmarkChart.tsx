@@ -101,10 +101,12 @@ export default function BenchmarkChart({ results, useCase }: BenchmarkChartProps
                 {topModels.map((result, i) => {
                   const value = result.model.benchmarks[benchKey];
                   const width = value !== null ? (value / maxValue) * 100 : 0;
+                  // Create short label: "Qwen 2.5 7B" -> "Qwen 2.5 7B", truncate if too long
+                  const shortName = `${result.model.name} ${result.quant.level}`;
                   return (
                     <div key={result.model.id} className="flex items-center gap-2">
-                      <div className="w-20 text-xs text-gray-400 truncate">
-                        {result.model.name.split(' ')[0]}
+                      <div className="w-28 text-xs text-gray-400 truncate" title={shortName}>
+                        {result.model.name.replace(/\s+\d+(\.\d+)?B$/i, '')} {result.model.params_b}B
                       </div>
                       <div className="flex-1 h-5 bg-gray-800 rounded overflow-hidden">
                         {value !== null ? (
