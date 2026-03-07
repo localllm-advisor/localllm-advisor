@@ -6,6 +6,7 @@ import { useRecommendation } from '@/hooks/useRecommendation';
 import GpuSelector from '@/components/GpuSelector';
 import UseCasePicker from '@/components/UseCasePicker';
 import ContextSlider from '@/components/ContextSlider';
+import RamSlider from '@/components/RamSlider';
 import ResultsList from '@/components/ResultsList';
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
   const [manualVram, setManualVram] = useState<number | null>(null);
   const [useCase, setUseCase] = useState<UseCase>('chat');
   const [contextLength, setContextLength] = useState(4096);
+  const [ramGb, setRamGb] = useState(16);
   const resultsRef = useRef<HTMLDivElement>(null);
 
   const vramMb = selectedGpu?.vram_mb ?? manualVram;
@@ -44,6 +46,7 @@ export default function Home() {
       bandwidth_gbps: bandwidthGbps,
       fp16_tflops: selectedGpu?.fp16_tflops,
       tensor_cores: selectedGpu?.tensor_cores,
+      ram_gb: ramGb,
     });
 
     setTimeout(() => {
@@ -93,6 +96,8 @@ export default function Home() {
           <UseCasePicker selected={useCase} onChange={setUseCase} />
 
           <ContextSlider value={contextLength} onChange={setContextLength} />
+
+          <RamSlider value={ramGb} onChange={setRamGb} />
 
           {/* CTA */}
           <button
