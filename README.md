@@ -241,11 +241,18 @@ Mostra per ogni risultato:
 
 ### UseCasePicker
 5 use case con pesi benchmark diversi:
-- **Chat**: IFEval, AlpacaEval
-- **Coding**: HumanEval, MBPP, BigCodeBench
-- **Reasoning**: MATH, GPQA, BBH
-- **Creative**: AlpacaEval, IFEval
-- **Vision**: MMMU, MMBench
+- **Chat**: IFEval, MMLU-PRO, BBH
+- **Coding**: HumanEval, MBPP, BigCodeBench, IFEval
+- **Reasoning**: MATH, GPQA, BBH, MUSR
+- **Creative**: IFEval, AlpacaEval, MMLU-PRO
+- **Vision**: MMMU, MMBench, IFEval
+
+### BenchmarkChart
+Grafico comparativo dei benchmark per i top 5 modelli:
+- Barre orizzontali per ogni benchmark rilevante
+- Legenda colori per identificare i modelli
+- Score breakdown con speed e quantizzazione
+- Adattivo al use case selezionato
 
 ## TypeScript Interfaces
 
@@ -309,7 +316,9 @@ Il sito sara' su `https://localllm-advisor.github.io/localllm-advisor/`
 
 - [ ] Aggiungere input CPU per stime CPU inference
 - [ ] Multi-GPU support UI
-- [ ] Benchmark comparativo tra modelli
+- [x] ~~Benchmark comparativo tra modelli~~ (fatto!)
 - [ ] Dark/light theme toggle
 - [ ] Export risultati (JSON/CSV)
 - [ ] PWA per uso offline
+- [ ] Radar chart per comparazione visiva
+- [ ] Filtri avanzati (famiglia modello, architettura)
