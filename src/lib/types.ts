@@ -216,3 +216,35 @@ export interface UseCaseWeights {
   wSpeed: number;
   wQuant: number;
 }
+
+export type SortBy = 'score' | 'speed' | 'quality' | 'vram' | 'params';
+
+export type QuantLevel = 'Q4_K_M' | 'Q6_K' | 'Q8_0' | 'FP16';
+
+export type ModelSizeRange = 'small' | 'medium' | 'large' | 'xlarge';
+
+export interface AdvancedFilters {
+  contextLength: number;
+
+  // Quantization filter
+  quantLevels: QuantLevel[];
+
+  // Speed filter
+  minSpeed: number | null; // tokens/sec, null = no minimum
+
+  // Model size filter (params)
+  sizeRanges: ModelSizeRange[]; // small: ≤7B, medium: 8-13B, large: 14-34B, xlarge: 35B+
+
+  // Sort
+  sortBy: SortBy;
+
+  // Benchmark minimums
+  minMmlu: number | null;
+  minMath: number | null;
+  minCoding: number | null; // humaneval/bigcodebench average
+
+  // Show/hide
+  showCpuOnly: boolean;
+  showOffload: boolean;
+  showOnlyFitsVram: boolean;
+}

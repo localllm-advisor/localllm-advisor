@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { GPU, CPU, Model, RecommendationInput, ScoredModel } from '@/lib/types';
+import { GPU, CPU, Model, RecommendationInput, ScoredModel, AdvancedFilters } from '@/lib/types';
 import { recommend } from '@/lib/engine';
 
 export function useRecommendation() {
@@ -45,8 +45,8 @@ export function useRecommendation() {
     loadData();
   }, []);
 
-  function runRecommendation(input: RecommendationInput) {
-    const scored = recommend(models, input);
+  function runRecommendation(input: RecommendationInput, filters?: AdvancedFilters) {
+    const scored = recommend(models, input, filters);
     setResults(scored);
     return scored;
   }

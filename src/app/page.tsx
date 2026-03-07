@@ -2,11 +2,11 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { UseCase } from '@/lib/types';
+import { UseCase, AdvancedFilters } from '@/lib/types';
 import { useRecommendation } from '@/hooks/useRecommendation';
 import HardwareConfig, { HardwareSpecs } from '@/components/HardwareConfig';
 import UseCasePicker from '@/components/UseCasePicker';
-import ContextSlider from '@/components/ContextSlider';
+import AdvancedOptions, { DEFAULT_FILTERS } from '@/components/AdvancedOptions';
 import ResultsList from '@/components/ResultsList';
 import { trackEvent } from '@/components/Analytics';
 
@@ -19,7 +19,7 @@ export default function Home() {
     ram_gb: 16,
   });
   const [useCase, setUseCase] = useState<UseCase>('chat');
-  const [contextLength, setContextLength] = useState(4096);
+  const [filters, setFilters] = useState<AdvancedFilters>(DEFAULT_FILTERS);
   const resultsRef = useRef<HTMLDivElement>(null);
 
   function handleSubmit() {
@@ -31,7 +31,7 @@ export default function Home() {
     runRecommendation({
       vram_mb: specs.vram_mb,
       useCase,
-      contextLength,
+      contextLength: filters.contextLength,
       // GPU specs
       bandwidth_gbps: specs.bandwidth_gbps,
       fp16_tflops: specs.fp16_tflops,
@@ -59,7 +59,7 @@ export default function Home() {
       storage_speed_gbps: specs.storage_speed_gbps,
       // Mode
       mode: specs.inference_mode,
-    });
+    }, filters);
 
     setTimeout(() => {
       resultsRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -129,7 +129,7 @@ export default function Home() {
 
           <UseCasePicker selected={useCase} onChange={setUseCase} />
 
-          <ContextSlider value={contextLength} onChange={setContextLength} />
+          <AdvancedOptions filters={filters} onChange={setFilters} />
 
           {/* CTA */}
           <button

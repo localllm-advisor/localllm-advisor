@@ -1,4 +1,4 @@
-import { Model, RecommendationInput, ScoredModel, InferenceMode } from './types';
+import { Model, RecommendationInput, ScoredModel, InferenceMode, AdvancedFilters, ModelSizeRange } from './types';
 import { computeScore } from './scoring';
 import {
   calculateMemoryBreakdown,
@@ -60,9 +60,50 @@ function generateWarnings(
   return warnings;
 }
 
+/**
+ * Get size range for a model's parameter count
+ */
+function getModelSizeRange(paramsB: number): ModelSizeRange {
+  if (paramsB <= 7) return 'small';
+  if (paramsB <= 13) return 'medium';
+  if (paramsB <= 34) return 'large';
+  return 'xlarge';
+}
+
+/**
+ * Check if a quantization level matches the filter
+ */
+function matchesQuantFilter(quantLevel: string, filters: AdvancedFilters): boolean {
+  // Map quant level to filter options
+  if (quantLevel.includes('Q4') || quantLevel.includes('q4')) {
+    return filters.quantLevels.includes('Q4_K_M');
+  }
+  if (quantLevel.includes('Q6') || quantLevel.includes('q6')) {
+    return filters.quantLevels.includes('Q6_K');
+  }
+  if (quantLevel.includes('Q8') || quantLevel.includes('q8')) {
+    return filters.quantLevels.includes('Q8_0');
+  }
+  if (quantLevel.includes('FP16') || quantLevel.includes('fp16') || quantLevel.includes('F16')) {
+    return filters.quantLevels.includes('FP16');
+  }
+  // Default: include if any filter is selected
+  return filters.quantLevels.length > 0;
+}
+
+/**
+ * Get coding benchmark score (average of humaneval and bigcodebench)
+ */
+function getCodingScore(benchmarks: Model['benchmarks']): number | null {
+  const scores = [benchmarks.humaneval, benchmarks.bigcodebench].filter(s => s !== null) as number[];
+  if (scores.length === 0) return null;
+  return scores.reduce((a, b) => a + b, 0) / scores.length;
+}
+
 export function recommend(
   models: Model[],
-  input: RecommendationInput
+  input: RecommendationInput,
+  filters?: AdvancedFilters
 ): ScoredModel[] {
   const {
     vram_mb,
@@ -154,7 +195,34 @@ export function recommend(
       continue;
     }
 
+    // Apply advanced filters if provided
+    if (filters) {
+      // Filter by model size
+      const sizeRange = getModelSizeRange(model.params_b);
+      if (!filters.sizeRanges.includes(sizeRange)) {
+        continue;
+      }
+
+      // Filter by benchmark minimums
+      if (filters.minMmlu !== null && (model.benchmarks.mmlu_pro === null || model.benchmarks.mmlu_pro < filters.minMmlu)) {
+        continue;
+      }
+      if (filters.minMath !== null && (model.benchmarks.math === null || model.benchmarks.math < filters.minMath)) {
+        continue;
+      }
+      if (filters.minCoding !== null) {
+        const codingScore = getCodingScore(model.benchmarks);
+        if (codingScore === null || codingScore < filters.minCoding) {
+          continue;
+        }
+      }
+    }
+
     for (const quant of model.quantizations) {
+      // Filter by quantization level
+      if (filters && !matchesQuantFilter(quant.level, filters)) {
+        continue;
+      }
       // Determine how we can run this model
       const inferenceMode = determineInferenceMode(
         quant.vram_mb,
@@ -176,6 +244,19 @@ export function recommend(
       }
       if (mode === 'cpu_only' && inferenceMode !== 'cpu_only') {
         continue;
+      }
+
+      // Apply show/hide filters
+      if (filters) {
+        if (!filters.showCpuOnly && inferenceMode === 'cpu_only') {
+          continue;
+        }
+        if (!filters.showOffload && inferenceMode === 'gpu_offload') {
+          continue;
+        }
+        if (filters.showOnlyFitsVram && inferenceMode !== 'gpu_full') {
+          continue;
+        }
       }
 
       const gpuLayers = calculateGpuLayers(
@@ -204,6 +285,13 @@ export function recommend(
         pcie_lanes,
         cpuSpecs
       );
+
+      // Apply minimum speed filter
+      if (filters && filters.minSpeed !== null) {
+        if (tokensPerSecond === null || tokensPerSecond < filters.minSpeed) {
+          continue;
+        }
+      }
 
       const prefillTokensPerSecond = estimatePrefillTokensPerSecond(
         model.params_b,
@@ -300,7 +388,8 @@ export function recommend(
     }
   );
 
-  // 4. RANK: sort by score descending
+  // 4. RANK: sort based on filter preference
+  const sortBy = filters?.sortBy || 'score';
   scored.sort((a, b) => {
     // Prioritize runnable models
     if (a.inferenceMode === 'not_possible' && b.inferenceMode !== 'not_possible') {
@@ -309,7 +398,34 @@ export function recommend(
     if (b.inferenceMode === 'not_possible' && a.inferenceMode !== 'not_possible') {
       return -1;
     }
-    return b.score - a.score;
+
+    // Sort by selected criteria
+    switch (sortBy) {
+      case 'speed':
+        // Higher speed first
+        const aSpeed = a.performance.tokensPerSecond ?? 0;
+        const bSpeed = b.performance.tokensPerSecond ?? 0;
+        return bSpeed - aSpeed;
+
+      case 'quality':
+        // Higher benchmark scores first (use MMLU-PRO as proxy)
+        const aQuality = a.model.benchmarks.mmlu_pro ?? 0;
+        const bQuality = b.model.benchmarks.mmlu_pro ?? 0;
+        return bQuality - aQuality;
+
+      case 'vram':
+        // Lower VRAM first
+        return a.memory.totalVram - b.memory.totalVram;
+
+      case 'params':
+        // Smaller models first
+        return a.model.params_b - b.model.params_b;
+
+      case 'score':
+      default:
+        // Higher score first
+        return b.score - a.score;
+    }
   });
 
   // 5. LIMIT: top 10
