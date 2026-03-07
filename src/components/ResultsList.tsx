@@ -96,6 +96,21 @@ export default function ResultsList({
         </p>
       </div>
 
+      {/* Legend */}
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-lg bg-gray-800/50 border border-gray-700 px-4 py-2">
+        {topModels.map((r, i) => (
+          <button
+            key={`leg-${r.model.id}`}
+            onClick={() => setSelectedModel(i)}
+            className={`flex items-center gap-1.5 text-xs transition-opacity ${selectedModel === i ? 'opacity-100' : 'opacity-60 hover:opacity-100'}`}
+          >
+            <span className={`w-3 h-3 rounded ${MODEL_COLORS[i]}`} />
+            <span className="text-gray-300">{r.model.name}</span>
+            <span className="text-gray-500">{r.quant.level}</span>
+          </button>
+        ))}
+      </div>
+
       {/* Main Dashboard Grid - Full Width */}
       <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 

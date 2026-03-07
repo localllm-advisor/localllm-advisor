@@ -15,24 +15,28 @@ export default function Home() {
 
   const [selectedGpu, setSelectedGpu] = useState<GPU | null>(null);
   const [manualVram, setManualVram] = useState<number | null>(null);
+  const [manualBandwidth, setManualBandwidth] = useState<number | null>(null);
   const [useCase, setUseCase] = useState<UseCase>('chat');
   const [contextLength, setContextLength] = useState(4096);
   const [ramGb, setRamGb] = useState(16);
   const resultsRef = useRef<HTMLDivElement>(null);
 
   const vramMb = selectedGpu?.vram_mb ?? manualVram;
-  const bandwidthGbps = selectedGpu?.bandwidth_gbps;
+  const bandwidthGbps = selectedGpu?.bandwidth_gbps ?? manualBandwidth ?? undefined;
 
-  function handleGpuSelect(gpu: GPU | null, manualVramGb?: number) {
+  function handleGpuSelect(gpu: GPU | null, manualVramGb?: number, manualBandwidthGbps?: number) {
     if (gpu) {
       setSelectedGpu(gpu);
       setManualVram(null);
+      setManualBandwidth(null);
     } else if (manualVramGb) {
       setSelectedGpu(null);
       setManualVram(manualVramGb * 1024);
+      setManualBandwidth(manualBandwidthGbps ?? null);
     } else {
       setSelectedGpu(null);
       setManualVram(null);
+      setManualBandwidth(null);
     }
   }
 
