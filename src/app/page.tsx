@@ -35,6 +35,9 @@ export default function Home() {
       cpu_threads: specs.cpu_threads,
       avx2: specs.avx2,
       avx512: specs.avx512,
+      gpu_count: specs.gpu_count,
+      nvlink: specs.nvlink,
+      mode: specs.inference_mode,
     });
 
     setTimeout(() => {
