@@ -17,13 +17,13 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
     wQuant: 0.25,
   },
   coding: {
-    // Primary: coding benchmarks from EvalPlus + BigCodeBench
-    // Fallback to math/reasoning if coding benchmarks unavailable
+    // BigCodeBench + reasoning benchmarks as proxy for coding ability
+    // TODO: Add HumanEval/MBPP when EvalPlus data becomes available
     benchmarks: [
-      { key: 'humaneval', weight: 0.30 },   // Code generation (EvalPlus)
-      { key: 'mbpp', weight: 0.25 },        // Basic Python (EvalPlus)
-      { key: 'bigcodebench', weight: 0.25 },// Complex coding (BigCodeBench)
-      { key: 'math', weight: 0.20 },        // Logical reasoning (fallback)
+      { key: 'bigcodebench', weight: 0.35 },// Complex coding tasks
+      { key: 'math', weight: 0.25 },        // Logical reasoning (correlates with coding)
+      { key: 'bbh', weight: 0.25 },         // Complex reasoning
+      { key: 'ifeval', weight: 0.15 },      // Instruction following
     ],
     wQuality: 0.55,
     wSpeed: 0.25,

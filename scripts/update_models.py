@@ -353,70 +353,25 @@ def _safe_float(val) -> float | None:
 # ============================================================
 # EVALPLUS LEADERBOARD (HumanEval, MBPP)
 # ============================================================
+# NOTE: EvalPlus non pubblica i risultati come dataset HuggingFace.
+# I benchmark HumanEval/MBPP devono essere aggiunti manualmente
+# o da altre fonti. Per ora restituisce sempre None.
 
-_evalplus_df = None
-
-def load_evalplus() -> pd.DataFrame | None:
-    """Carica il dataset EvalPlus per HumanEval e MBPP."""
-    global _evalplus_df
-
-    if _evalplus_df is not None:
-        return _evalplus_df
-
-    if not HAS_PANDAS:
-        return None
-
-    print("Loading EvalPlus leaderboard...")
-
-    try:
-        # EvalPlus pubblica i risultati su HuggingFace
-        from datasets import load_dataset
-        ds = load_dataset("evalplus/evalplus", split="latest")
-        _evalplus_df = ds.to_pandas()
-        print(f"  Loaded {len(_evalplus_df)} entries from EvalPlus")
-        return _evalplus_df
-    except Exception as e:
-        print(f"  [!] EvalPlus not available: {e}")
-        # Fallback: prova a scaricare direttamente
-        try:
-            url = "https://raw.githubusercontent.com/evalplus/evalplus/master/results/leaderboard.csv"
-            _evalplus_df = pd.read_csv(url)
-            print(f"  Loaded {len(_evalplus_df)} entries from EvalPlus CSV")
-            return _evalplus_df
-        except Exception as e2:
-            print(f"  [!] EvalPlus CSV fallback failed: {e2}")
-            return None
-
+_evalplus_attempted = False
 
 def find_evalplus_benchmark(model_name: str, params_b: float, hf_patterns: list[str]) -> dict:
-    """Cerca benchmark HumanEval e MBPP da EvalPlus."""
-    result = {"humaneval": None, "mbpp": None}
+    """
+    Cerca benchmark HumanEval e MBPP.
+    TODO: Trovare fonte dati per EvalPlus results.
+    """
+    global _evalplus_attempted
 
-    df = load_evalplus()
-    if df is None:
-        return result
+    # Log solo una volta
+    if not _evalplus_attempted:
+        _evalplus_attempted = True
+        print("  [i] EvalPlus: HumanEval/MBPP data not available (no public dataset)")
 
-    # Cerca match
-    for pattern in hf_patterns:
-        mask = df["model"].str.contains(pattern, case=False, na=False)
-        matches = df[mask]
-
-        if len(matches) > 0:
-            # Prendi il match migliore (maggior punteggio)
-            if "humaneval" in df.columns or "pass@1" in df.columns:
-                best = matches.iloc[0]
-                # EvalPlus usa varie convenzioni per le colonne
-                humaneval_col = next((c for c in df.columns if "humaneval" in c.lower() or "he" in c.lower()), None)
-                mbpp_col = next((c for c in df.columns if "mbpp" in c.lower()), None)
-
-                if humaneval_col:
-                    result["humaneval"] = _safe_float(best.get(humaneval_col))
-                if mbpp_col:
-                    result["mbpp"] = _safe_float(best.get(mbpp_col))
-
-                return result
-
-    return result
+    return {"humaneval": None, "mbpp": None}
 
 
 # ============================================================
@@ -442,6 +397,8 @@ def load_bigcodebench() -> pd.DataFrame | None:
         ds = load_dataset("bigcode/bigcodebench-results", split="train")
         _bigcodebench_df = ds.to_pandas()
         print(f"  Loaded {len(_bigcodebench_df)} entries from BigCodeBench")
+        # Debug: print sample
+        # print(f"  Columns: {_bigcodebench_df.columns.tolist()}")
         return _bigcodebench_df
     except Exception as e:
         print(f"  [!] BigCodeBench not available: {e}")
@@ -449,20 +406,37 @@ def load_bigcodebench() -> pd.DataFrame | None:
 
 
 def find_bigcodebench(model_name: str, params_b: float, hf_patterns: list[str]) -> float | None:
-    """Cerca benchmark BigCodeBench."""
+    """
+    Cerca benchmark BigCodeBench.
+
+    Il dataset ha colonne:
+    - model: nome modello (es. "Qwen2.5-Coder-32B-Instruct")
+    - size: parametri in B
+    - complete: pass rate "complete" mode
+    - instruct: pass rate "instruct" mode
+    """
     df = load_bigcodebench()
     if df is None:
         return None
 
     for pattern in hf_patterns:
-        mask = df["model"].str.contains(pattern, case=False, na=False) if "model" in df.columns else pd.Series([False] * len(df))
+        # Match sul nome modello
+        mask = df["model"].str.contains(pattern, case=False, na=False)
+
+        # Filtra per size simile se specificato
+        if params_b > 0 and "size" in df.columns:
+            size_mask = (df["size"] >= params_b * 0.8) & (df["size"] <= params_b * 1.2)
+            mask = mask & size_mask
+
         matches = df[mask]
 
         if len(matches) > 0:
-            # Cerca colonna score
-            score_col = next((c for c in df.columns if "pass" in c.lower() or "score" in c.lower()), None)
-            if score_col:
-                return _safe_float(matches.iloc[0].get(score_col))
+            # Usa "instruct" score (più rilevante per chat models)
+            # oppure "complete" come fallback
+            best = matches.iloc[0]
+            score = best.get("instruct") or best.get("complete")
+            if score is not None:
+                return _safe_float(score)
 
     return None
 

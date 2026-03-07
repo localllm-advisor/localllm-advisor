@@ -26,11 +26,11 @@ const BENCHMARK_INFO: Record<keyof Benchmarks, { name: string; description: stri
 // Benchmarks relevant to each use case (in order of importance)
 // Data sources:
 // - Open LLM Leaderboard: ifeval, mmlu_pro, bbh, math, gpqa, musr
-// - EvalPlus: humaneval, mbpp
 // - BigCodeBench: bigcodebench
+// TODO: Add HumanEval/MBPP when EvalPlus data becomes available
 const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   chat: ['ifeval', 'mmlu_pro', 'bbh'],
-  coding: ['humaneval', 'mbpp', 'bigcodebench', 'math'],
+  coding: ['bigcodebench', 'math', 'bbh', 'ifeval'],  // bigcodebench + reasoning proxies
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
   creative: ['ifeval', 'mmlu_pro', 'bbh'],
   vision: ['ifeval', 'mmlu_pro', 'bbh'],  // Placeholder until MMMU/MMBench available
