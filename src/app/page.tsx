@@ -22,14 +22,21 @@ export default function Home() {
   const [filters, setFilters] = useState<AdvancedFilters>(DEFAULT_FILTERS);
   const resultsRef = useRef<HTMLDivElement>(null);
 
+  // Check if we can run a search
+  const isCpuOnlyMode = specs.inference_mode === 'cpu_only';
+  const canSearch = specs.vram_mb || isCpuOnlyMode;
+
   function handleSubmit() {
-    if (!specs.vram_mb) return;
+    if (!canSearch) return;
 
     // Track recommendation event
-    trackEvent('find_models', 'recommendation', specs.gpu_name || `${Math.round(specs.vram_mb / 1024)}GB`, specs.vram_mb);
+    const label = isCpuOnlyMode
+      ? 'CPU Only'
+      : (specs.gpu_name || `${Math.round((specs.vram_mb || 0) / 1024)}GB`);
+    trackEvent('find_models', 'recommendation', label, specs.vram_mb || 0);
 
     runRecommendation({
-      vram_mb: specs.vram_mb,
+      vram_mb: specs.vram_mb || 0, // 0 for CPU-only
       useCase,
       contextLength: filters.contextLength,
       // GPU specs
@@ -134,21 +141,21 @@ export default function Home() {
           {/* CTA */}
           <button
             onClick={handleSubmit}
-            disabled={!specs.vram_mb}
+            disabled={!canSearch}
             className="w-full rounded-xl bg-blue-600 px-6 py-4 text-lg font-semibold text-white transition-all hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-blue-600"
           >
-            Find My Models
+            {isCpuOnlyMode ? 'Find CPU Models' : 'Find My Models'}
           </button>
         </section>
       </main>
 
       {/* Results - Full Width */}
-      {results && specs.vram_mb && (
+      {results && canSearch && (
         <section ref={resultsRef} className="mx-auto max-w-7xl px-4 py-6">
           <ResultsList
             results={results}
-            gpuName={specs.gpu_name ?? null}
-            vramMb={specs.vram_mb}
+            gpuName={isCpuOnlyMode ? 'CPU Only' : (specs.gpu_name ?? null)}
+            vramMb={specs.vram_mb || 0}
             useCase={useCase}
           />
         </section>

@@ -223,27 +223,39 @@ export function recommend(
       if (filters && !matchesQuantFilter(quant.level, filters)) {
         continue;
       }
-      // Determine how we can run this model
-      const inferenceMode = determineInferenceMode(
-        quant.vram_mb,
-        model.params_b,
-        contextLength,
-        effectiveVram,
-        ram_gb,
-        hasCpu
-      );
 
-      // Skip if not possible and not forcing a mode
-      if (inferenceMode === 'not_possible' && mode === 'auto') {
-        continue;
-      }
+      // Determine inference mode
+      let inferenceMode: InferenceMode;
 
-      // Apply mode filter
-      if (mode === 'gpu_only' && inferenceMode !== 'gpu_full') {
-        continue;
-      }
-      if (mode === 'cpu_only' && inferenceMode !== 'cpu_only') {
-        continue;
+      if (mode === 'cpu_only') {
+        // Force CPU-only mode - check if model fits in RAM
+        const modelSizeGb = quant.vram_mb / 1024; // Approximate RAM needed
+        const ramNeeded = modelSizeGb + 4; // 4GB overhead
+        if ((ram_gb || 16) >= ramNeeded) {
+          inferenceMode = 'cpu_only';
+        } else {
+          continue; // Skip if model doesn't fit in RAM
+        }
+      } else {
+        // Normal mode detection
+        inferenceMode = determineInferenceMode(
+          quant.vram_mb,
+          model.params_b,
+          contextLength,
+          effectiveVram,
+          ram_gb,
+          hasCpu
+        );
+
+        // Skip if not possible and not forcing a mode
+        if (inferenceMode === 'not_possible' && mode === 'auto') {
+          continue;
+        }
+
+        // Apply mode filter
+        if (mode === 'gpu_only' && inferenceMode !== 'gpu_full') {
+          continue;
+        }
       }
 
       // Apply show/hide filters
