@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Link from 'next/link';
 import { UseCase } from '@/lib/types';
 import { useRecommendation } from '@/hooks/useRecommendation';
 import HardwareConfig, { HardwareSpecs } from '@/components/HardwareConfig';
@@ -81,13 +82,31 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Header */}
       <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="mx-auto max-w-7xl px-4 py-4">
-          <h1 className="text-xl font-bold text-white">
-            LocalLLM Advisor
-          </h1>
-          <p className="text-sm text-gray-400">
-            Find the best local LLM for your hardware
-          </p>
+        <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-bold text-white">
+              LocalLLM Advisor
+            </h1>
+            <p className="text-sm text-gray-400">
+              Find the best local LLM for your hardware
+            </p>
+          </div>
+          <nav className="flex gap-6 text-sm">
+            <Link href="/methodology" className="text-gray-400 hover:text-white transition-colors">
+              Methodology
+            </Link>
+            <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+              About
+            </Link>
+            <a
+              href="https://github.com/localllm-advisor/localllm-advisor"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              GitHub
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -130,12 +149,23 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="mx-auto max-w-7xl px-4 border-t border-gray-800 pt-6 pb-8 text-center text-xs text-gray-500">
+        <div className="flex justify-center gap-6 mb-4">
+          <Link href="/methodology" className="hover:text-gray-300 transition-colors">Methodology</Link>
+          <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
+          <a
+            href="https://github.com/localllm-advisor/localllm-advisor"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-300 transition-colors"
+          >
+            GitHub
+          </a>
+        </div>
         <p>
           LocalLLM Advisor — Open source tool for the local AI community.
         </p>
         <p className="mt-1">
-          Data updated manually. Not affiliated with Ollama or any model
-          provider.
+          Data updated manually. Not affiliated with Ollama or any model provider.
         </p>
       </footer>
     </div>
