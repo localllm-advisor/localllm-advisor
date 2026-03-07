@@ -46,7 +46,7 @@ export default function AboutPage() {
             <p>
               Running LLMs locally is becoming increasingly popular, but choosing the right model is confusing.
               You need to consider VRAM, memory bandwidth, quantization levels, and how these affect both
-              quality and speed. Most people either pick a model that's too big (and runs painfully slow)
+              quality and speed. Most people either pick a model that is too big (and runs painfully slow)
               or too small (missing out on better quality).
             </p>
             <p>
@@ -105,7 +105,7 @@ export default function AboutPage() {
               (llama.cpp, Ollama, vLLM), background processes, and more.
             </p>
             <p>
-              We're constantly improving our models. If you find significant discrepancies between our
+              We are constantly improving our models. If you find significant discrepancies between our
               estimates and your real-world results, please let us know on GitHub.
             </p>
           </section>

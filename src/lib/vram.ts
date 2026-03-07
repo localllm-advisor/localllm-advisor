@@ -32,6 +32,7 @@ export function calculateMemoryBreakdown(
   paramsB: number,
   contextLength: number,
   availableVramMb: number,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   availableRamGb?: number
 ): MemoryBreakdown {
   const kvCache = estimateKvCacheMb(paramsB, contextLength);

@@ -144,7 +144,7 @@ export default function MethodologyPage() {
             </div>
             <p>
               Utilization is typically 30% without tensor cores, 60% with tensor cores.
-              This affects "time to first token"—how long you wait before generation starts.
+              This affects time to first token (TTFT)—how long you wait before generation starts.
             </p>
           </section>
 
@@ -189,7 +189,7 @@ export default function MethodologyPage() {
               <div>• L3 cache bonus</div>
             </div>
             <p>
-              Intel's AMX (Advanced Matrix Extensions) provides significant acceleration for matrix operations,
+              Intel AMX (Advanced Matrix Extensions) provides significant acceleration for matrix operations,
               making newer Intel CPUs notably faster for LLM inference.
             </p>
           </section>
@@ -198,7 +198,7 @@ export default function MethodologyPage() {
           <section>
             <h2 className="text-xl font-semibold text-white mb-3">Final Score Calculation</h2>
             <p className="mb-3">
-              Each model's final score combines three factors with weights that vary by use case:
+              Each model final score combines three factors with weights that vary by use case:
             </p>
             <div className="bg-gray-800 rounded-lg p-4 space-y-3 mb-4">
               <div className="flex justify-between items-center">
