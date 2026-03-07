@@ -10,6 +10,10 @@ export interface DetectedHardware {
   deviceMemoryGb: number | null;
   coreCount: number | null;
   isSoftwareRenderer: boolean;
+  // CPU detection (limited)
+  cpuHint: string | null; // e.g. "16 threads" or "Apple M3 Pro"
+  isAppleSilicon: boolean;
+  appleChip: string | null; // e.g. "M3 Pro", "M2 Max"
 }
 
 /**
@@ -100,13 +104,68 @@ export function detectCoreCount(): number | null {
  */
 export function detectHardware(): DetectedHardware {
   const { renderer, vendor, isSoftware } = detectGpuWebGL();
+  const coreCount = detectCoreCount();
+  const appleChip = detectAppleChip(renderer);
+  const platform = typeof navigator !== 'undefined' ? navigator.platform || '' : '';
+
   return {
     gpuRenderer: renderer,
     gpuVendor: vendor,
     deviceMemoryGb: detectSystemMemory(),
-    coreCount: detectCoreCount(),
+    coreCount,
     isSoftwareRenderer: isSoftware,
+    cpuHint: generateCpuHint(coreCount, appleChip, platform),
+    isAppleSilicon: !!appleChip,
+    appleChip,
   };
+}
+
+/**
+ * Detect Apple Silicon chip from GPU renderer
+ * Returns chip name like "M3 Pro" or null if not Apple Silicon
+ */
+export function detectAppleChip(renderer: string | null): string | null {
+  if (!renderer) return null;
+
+  const appleMatch = renderer.match(/Apple\s*(M\d+)(\s+Pro|\s+Max|\s+Ultra)?/i);
+  if (appleMatch) {
+    const [, chip, variant] = appleMatch;
+    return `${chip}${variant || ''}`.trim();
+  }
+
+  return null;
+}
+
+/**
+ * Generate CPU hint based on available info
+ */
+export function generateCpuHint(
+  coreCount: number | null,
+  appleChip: string | null,
+  platform: string
+): string | null {
+  if (appleChip) {
+    return `Apple ${appleChip}`;
+  }
+
+  if (coreCount) {
+    // Try to give helpful hints based on core count
+    const hints: string[] = [`${coreCount} threads`];
+
+    if (platform.includes('Win')) {
+      if (coreCount >= 32) {
+        hints.push('High-end desktop/workstation');
+      } else if (coreCount >= 16) {
+        hints.push('Mid-high desktop');
+      } else if (coreCount >= 8) {
+        hints.push('Mid-range desktop/laptop');
+      }
+    }
+
+    return hints.join(' · ');
+  }
+
+  return null;
 }
 
 /**

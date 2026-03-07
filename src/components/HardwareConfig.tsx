@@ -74,26 +74,48 @@ export default function HardwareConfig({
   const [detectedGpu, setDetectedGpu] = useState<GPU | null>(null);
   const [hasAutoDetected, setHasAutoDetected] = useState(false);
   const [isSoftwareRenderer, setIsSoftwareRenderer] = useState(false);
+  const [cpuHint, setCpuHint] = useState<string | null>(null);
+  const [detectedCpu, setDetectedCpu] = useState<CPU | null>(null);
 
   const gpuRef = useRef<HTMLDivElement>(null);
   const cpuRef = useRef<HTMLDivElement>(null);
 
-  // Auto-detect GPU on mount
+  // Auto-detect hardware on mount
   useEffect(() => {
-    if (hasAutoDetected || selectedGpu || specs.vram_mb) return;
+    if (hasAutoDetected) return;
 
     const hardware = detectHardware();
-    if (hardware.isSoftwareRenderer) {
-      setIsSoftwareRenderer(true);
-    } else if (hardware.gpuRenderer) {
-      setDetectedRenderer(hardware.gpuRenderer);
-      const matched = matchGpuFromRenderer(hardware.gpuRenderer, gpus);
-      if (matched) {
-        setDetectedGpu(matched);
+
+    // GPU detection
+    if (!selectedGpu && !specs.vram_mb) {
+      if (hardware.isSoftwareRenderer) {
+        setIsSoftwareRenderer(true);
+      } else if (hardware.gpuRenderer) {
+        setDetectedRenderer(hardware.gpuRenderer);
+        const matched = matchGpuFromRenderer(hardware.gpuRenderer, gpus);
+        if (matched) {
+          setDetectedGpu(matched);
+        }
       }
     }
+
+    // CPU detection
+    if (!selectedCpu && !specs.cpu_cores) {
+      setCpuHint(hardware.cpuHint);
+
+      // For Apple Silicon, try to match CPU from database
+      if (hardware.appleChip) {
+        const matchedCpu = cpus.find(cpu =>
+          cpu.name.toLowerCase().includes(hardware.appleChip!.toLowerCase())
+        );
+        if (matchedCpu) {
+          setDetectedCpu(matchedCpu);
+        }
+      }
+    }
+
     setHasAutoDetected(true);
-  }, [gpus, hasAutoDetected, selectedGpu, specs.vram_mb]);
+  }, [gpus, cpus, hasAutoDetected, selectedGpu, selectedCpu, specs.vram_mb, specs.cpu_cores]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -180,6 +202,19 @@ export default function HardwareConfig({
   function handleDismissDetectedGpu() {
     setDetectedGpu(null);
     setDetectedRenderer(null);
+  }
+
+  function handleUseDetectedCpu() {
+    if (detectedCpu) {
+      handleCpuSelect(detectedCpu);
+      setDetectedCpu(null);
+      setCpuHint(null);
+    }
+  }
+
+  function handleDismissDetectedCpu() {
+    setDetectedCpu(null);
+    setCpuHint(null);
   }
 
   const RAM_OPTIONS = [8, 16, 32, 64, 128];
@@ -316,6 +351,58 @@ export default function HardwareConfig({
           </div>
         )}
       </div>
+
+      {/* CPU Detection Banner */}
+      {detectedCpu && !selectedCpu && !specs.cpu_cores && (
+        <div className="rounded-lg border border-green-600/50 bg-green-900/20 p-3 space-y-2">
+          <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            CPU Detected
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span className="text-white font-medium">{detectedCpu.name}</span>
+              <span className="text-gray-400 ml-2">({detectedCpu.cores}C/{detectedCpu.threads}T)</span>
+            </div>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={handleUseDetectedCpu}
+                className="rounded-lg bg-green-600 px-3 py-1.5 text-sm text-white hover:bg-green-500"
+              >
+                Use this
+              </button>
+              <button
+                type="button"
+                onClick={handleDismissDetectedCpu}
+                className="rounded-lg bg-gray-700 px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-600"
+              >
+                Choose different
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CPU Hint (when no match but have info) */}
+      {cpuHint && !detectedCpu && !selectedCpu && !specs.cpu_cores && (
+        <div className="rounded-lg border border-blue-600/50 bg-blue-900/20 p-3 space-y-1">
+          <div className="flex items-center gap-2 text-blue-400 text-sm font-medium">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            System Info
+          </div>
+          <p className="text-sm text-gray-300">
+            {cpuHint}
+          </p>
+          <p className="text-xs text-gray-500">
+            Select your CPU below for accurate performance estimates.
+          </p>
+        </div>
+      )}
 
       {/* CPU Selection */}
       <div className="space-y-2">
