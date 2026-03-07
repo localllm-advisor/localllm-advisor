@@ -24,12 +24,14 @@ const BENCHMARK_INFO: Record<keyof Benchmarks, { name: string; description: stri
 };
 
 // Benchmarks relevant to each use case (in order of importance)
+// Note: Some benchmarks (humaneval, mbpp, bigcodebench, alpacaeval, mmmu, mmbench)
+// are not available in Open LLM Leaderboard data - using available alternatives
 const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   chat: ['ifeval', 'mmlu_pro', 'bbh'],
-  coding: ['humaneval', 'mbpp', 'bigcodebench', 'ifeval'],
+  coding: ['ifeval', 'mmlu_pro', 'math', 'bbh'],  // Proxy: instruction following + reasoning
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
-  creative: ['ifeval', 'alpacaeval', 'mmlu_pro'],
-  vision: ['mmmu', 'mmbench', 'ifeval'],
+  creative: ['ifeval', 'mmlu_pro', 'bbh'],  // Proxy: instruction following + knowledge
+  vision: ['ifeval', 'mmlu_pro', 'bbh'],  // Placeholder until vision benchmarks available
 };
 
 // Colors for each model (up to 10)

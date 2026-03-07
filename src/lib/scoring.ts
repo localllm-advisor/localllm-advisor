@@ -1,22 +1,28 @@
 import { Benchmarks, UseCase, UseCaseWeights, BenchmarkWeight } from './types';
 
+// Benchmark weights per use case
+// Note: Using only benchmarks available from Open LLM Leaderboard
+// TODO: Add HumanEval, MBPP, BigCodeBench from EvalPlus/BigCodeBench leaderboards
+// TODO: Add AlpacaEval from AlpacaEval leaderboard
+// TODO: Add MMMU, MMBench from vision leaderboards
 const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
   chat: {
     benchmarks: [
-      { key: 'ifeval', weight: 0.35 },
-      { key: 'mmlu_pro', weight: 0.35 },
-      { key: 'bbh', weight: 0.30 },
+      { key: 'ifeval', weight: 0.40 },      // Instruction following
+      { key: 'mmlu_pro', weight: 0.35 },    // Knowledge
+      { key: 'bbh', weight: 0.25 },         // Reasoning
     ],
     wQuality: 0.45,
     wSpeed: 0.30,
     wQuant: 0.25,
   },
   coding: {
+    // Proxy benchmarks until HumanEval/MBPP/BigCodeBench available
     benchmarks: [
-      { key: 'humaneval', weight: 0.30 },
-      { key: 'mbpp', weight: 0.25 },
-      { key: 'bigcodebench', weight: 0.25 },
-      { key: 'ifeval', weight: 0.20 },
+      { key: 'math', weight: 0.30 },        // Logical reasoning (correlates with coding)
+      { key: 'ifeval', weight: 0.30 },      // Instruction following
+      { key: 'bbh', weight: 0.25 },         // Complex reasoning
+      { key: 'mmlu_pro', weight: 0.15 },    // General knowledge
     ],
     wQuality: 0.55,
     wSpeed: 0.25,
@@ -24,30 +30,33 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
   },
   reasoning: {
     benchmarks: [
-      { key: 'math', weight: 0.30 },
-      { key: 'gpqa', weight: 0.30 },
-      { key: 'bbh', weight: 0.25 },
-      { key: 'musr', weight: 0.15 },
+      { key: 'math', weight: 0.30 },        // Mathematical reasoning
+      { key: 'gpqa', weight: 0.30 },        // Graduate-level Q&A
+      { key: 'bbh', weight: 0.25 },         // Big-Bench Hard
+      { key: 'musr', weight: 0.15 },        // Multi-step reasoning
     ],
     wQuality: 0.55,
     wSpeed: 0.20,
     wQuant: 0.25,
   },
   creative: {
+    // Proxy benchmarks until AlpacaEval available
     benchmarks: [
-      { key: 'ifeval', weight: 0.40 },
-      { key: 'alpacaeval', weight: 0.35 },
-      { key: 'mmlu_pro', weight: 0.25 },
+      { key: 'ifeval', weight: 0.45 },      // Instruction following (key for creative)
+      { key: 'mmlu_pro', weight: 0.30 },    // Knowledge breadth
+      { key: 'bbh', weight: 0.25 },         // Reasoning for coherent outputs
     ],
     wQuality: 0.40,
     wSpeed: 0.30,
     wQuant: 0.30,
   },
   vision: {
+    // Proxy benchmarks until MMMU/MMBench available
+    // Vision models should be filtered by capability, not benchmark
     benchmarks: [
-      { key: 'mmmu', weight: 0.40 },
-      { key: 'mmbench', weight: 0.35 },
-      { key: 'ifeval', weight: 0.25 },
+      { key: 'ifeval', weight: 0.40 },      // Instruction following
+      { key: 'mmlu_pro', weight: 0.35 },    // Knowledge
+      { key: 'bbh', weight: 0.25 },         // Reasoning
     ],
     wQuality: 0.50,
     wSpeed: 0.25,
