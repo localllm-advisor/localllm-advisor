@@ -18,6 +18,9 @@ export default function AboutPage() {
             <Link href="/methodology" className="text-gray-400 hover:text-white transition-colors">
               Methodology
             </Link>
+            <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+              FAQ
+            </Link>
             <Link href="/about" className="text-white">
               About
             </Link>
@@ -123,6 +126,7 @@ export default function AboutPage() {
         <div className="flex justify-center gap-6 mb-4">
           <Link href="/" className="hover:text-gray-300 transition-colors">Home</Link>
           <Link href="/methodology" className="hover:text-gray-300 transition-colors">Methodology</Link>
+          <Link href="/faq" className="hover:text-gray-300 transition-colors">FAQ</Link>
           <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
           <a
             href="https://github.com/localllm-advisor/localllm-advisor"

@@ -8,6 +8,7 @@ import HardwareConfig, { HardwareSpecs } from '@/components/HardwareConfig';
 import UseCasePicker from '@/components/UseCasePicker';
 import ContextSlider from '@/components/ContextSlider';
 import ResultsList from '@/components/ResultsList';
+import { trackEvent } from '@/components/Analytics';
 
 export default function Home() {
   const { gpus, cpus, results, isLoading, error, runRecommendation } =
@@ -23,6 +24,9 @@ export default function Home() {
 
   function handleSubmit() {
     if (!specs.vram_mb) return;
+
+    // Track recommendation event
+    trackEvent('find_models', 'recommendation', specs.gpu_name || `${Math.round(specs.vram_mb / 1024)}GB`, specs.vram_mb);
 
     runRecommendation({
       vram_mb: specs.vram_mb,
@@ -95,6 +99,9 @@ export default function Home() {
             <Link href="/methodology" className="text-gray-400 hover:text-white transition-colors">
               Methodology
             </Link>
+            <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+              FAQ
+            </Link>
             <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
               About
             </Link>
@@ -151,6 +158,7 @@ export default function Home() {
       <footer className="mx-auto max-w-7xl px-4 border-t border-gray-800 pt-6 pb-8 text-center text-xs text-gray-500">
         <div className="flex justify-center gap-6 mb-4">
           <Link href="/methodology" className="hover:text-gray-300 transition-colors">Methodology</Link>
+          <Link href="/faq" className="hover:text-gray-300 transition-colors">FAQ</Link>
           <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
           <a
             href="https://github.com/localllm-advisor/localllm-advisor"

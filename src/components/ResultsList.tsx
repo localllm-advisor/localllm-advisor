@@ -10,6 +10,8 @@ interface ExpandedChartData {
   benchKey?: keyof Benchmarks;
 }
 
+type ViewMode = 'dashboard' | 'compare';
+
 interface ResultsListProps {
   results: ScoredModel[];
   gpuName: string | null;
@@ -63,9 +65,23 @@ export default function ResultsList({
 }: ResultsListProps) {
   const [selectedModel, setSelectedModel] = useState<number>(0);
   const [expandedChart, setExpandedChart] = useState<ExpandedChartData>({ type: null });
+  const [viewMode, setViewMode] = useState<ViewMode>('dashboard');
+  const [compareSet, setCompareSet] = useState<Set<number>>(new Set());
   const vramGb = Math.round(vramMb / 1024);
   const gpuLabel = gpuName || `${vramGb}GB VRAM`;
   const topModels = results.slice(0, 10);
+
+  const toggleCompare = (index: number) => {
+    const newSet = new Set(compareSet);
+    if (newSet.has(index)) {
+      newSet.delete(index);
+    } else if (newSet.size < 4) {
+      newSet.add(index);
+    }
+    setCompareSet(newSet);
+  };
+
+  const compareModels = Array.from(compareSet).map(i => topModels[i]);
 
   if (results.length === 0) {
     return (
@@ -94,6 +110,29 @@ export default function ResultsList({
           {' '}&middot;{' '}
           <span className="font-semibold text-blue-400 capitalize">{useCase}</span>
         </p>
+        <div className="flex items-center gap-2">
+          {compareSet.size >= 2 && viewMode === 'dashboard' && (
+            <button
+              onClick={() => setViewMode('compare')}
+              className="px-3 py-1 text-xs font-medium bg-blue-600 hover:bg-blue-500 text-white rounded transition-colors"
+            >
+              Compare ({compareSet.size})
+            </button>
+          )}
+          {viewMode === 'compare' && (
+            <button
+              onClick={() => setViewMode('dashboard')}
+              className="px-3 py-1 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded transition-colors"
+            >
+              Back to Dashboard
+            </button>
+          )}
+          {viewMode === 'dashboard' && (
+            <span className="text-xs text-gray-500">
+              Select 2-4 models to compare
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Legend */}
@@ -112,6 +151,7 @@ export default function ResultsList({
       </div>
 
       {/* Main Dashboard Grid - Full Width */}
+      {viewMode === 'dashboard' && (
       <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 
         {/* Left: Ranking Table */}
@@ -119,16 +159,24 @@ export default function ResultsList({
           <h3 className="text-sm font-semibold text-gray-300 mb-3">Top 10 Models</h3>
           <div className="space-y-1.5 max-h-[400px] overflow-y-auto pr-1">
             {topModels.map((result, i) => (
-              <button
+              <div
                 key={result.model.id}
-                onClick={() => setSelectedModel(i)}
-                className={`w-full text-left rounded-md px-2 py-1.5 transition-all ${
+                className={`flex items-center gap-1.5 rounded-md px-2 py-1.5 transition-all ${
                   selectedModel === i
                     ? 'bg-gray-700 border border-gray-600'
                     : 'bg-gray-800/50 border border-transparent hover:bg-gray-700/50'
                 }`}
               >
-                <div className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={compareSet.has(i)}
+                  onChange={() => toggleCompare(i)}
+                  className="w-3.5 h-3.5 rounded border-gray-600 bg-gray-800 text-blue-500 focus:ring-blue-500 focus:ring-offset-0 cursor-pointer"
+                />
+                <button
+                  onClick={() => setSelectedModel(i)}
+                  className="flex-1 flex items-center gap-2 text-left"
+                >
                   <span className={`w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold ${MODEL_COLORS[i]} text-white`}>
                     {i + 1}
                   </span>
@@ -141,8 +189,8 @@ export default function ResultsList({
                     </div>
                   </div>
                   <div className="text-sm font-bold text-white">{result.score}</div>
-                </div>
-              </button>
+                </button>
+              </div>
             ))}
           </div>
         </div>
@@ -373,9 +421,183 @@ export default function ResultsList({
           </div>
         </div>
       </div>
+      )}
+
+      {/* Comparison View */}
+      {viewMode === 'compare' && compareModels.length >= 2 && (
+        <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-4 overflow-x-auto">
+          <h3 className="text-lg font-semibold text-white mb-4">Model Comparison</h3>
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-gray-700">
+                <th className="text-left py-2 px-3 text-gray-400 font-medium">Spec</th>
+                {compareModels.map((r, i) => (
+                  <th key={r.model.id} className="text-center py-2 px-3 min-w-[140px]">
+                    <div className="flex items-center justify-center gap-2">
+                      <span className={`w-4 h-4 rounded ${MODEL_COLORS[Array.from(compareSet)[i]]} flex-shrink-0`} />
+                      <span className="text-white font-medium truncate">{r.model.name}</span>
+                    </div>
+                    <div className="text-xs text-gray-500 mt-0.5">{r.quant.level}</div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-800">
+              {/* Basic Info */}
+              <tr>
+                <td className="py-2 px-3 text-gray-400">Parameters</td>
+                {compareModels.map(r => (
+                  <td key={`param-${r.model.id}`} className="py-2 px-3 text-center text-white">
+                    {r.model.params_b}B
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td className="py-2 px-3 text-gray-400">Architecture</td>
+                {compareModels.map(r => (
+                  <td key={`arch-${r.model.id}`} className="py-2 px-3 text-center text-white capitalize">
+                    {r.model.architecture}
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td className="py-2 px-3 text-gray-400">Context</td>
+                {compareModels.map(r => (
+                  <td key={`ctx-${r.model.id}`} className="py-2 px-3 text-center text-white">
+                    {(r.model.context_length / 1024).toFixed(0)}K
+                  </td>
+                ))}
+              </tr>
+
+              {/* Score */}
+              <tr className="bg-gray-900/30">
+                <td className="py-2 px-3 text-gray-400 font-medium">Score</td>
+                {compareModels.map(r => {
+                  const isMax = r.score === Math.max(...compareModels.map(m => m.score));
+                  return (
+                    <td key={`score-${r.model.id}`} className={`py-2 px-3 text-center font-bold ${isMax ? 'text-green-400' : 'text-white'}`}>
+                      {r.score}
+                    </td>
+                  );
+                })}
+              </tr>
+
+              {/* Performance */}
+              <tr>
+                <td className="py-2 px-3 text-gray-400">Speed</td>
+                {compareModels.map(r => {
+                  const speed = r.performance.tokensPerSecond;
+                  const isMax = speed === Math.max(...compareModels.map(m => m.performance.tokensPerSecond ?? 0));
+                  return (
+                    <td key={`speed-${r.model.id}`} className={`py-2 px-3 text-center ${isMax ? 'text-green-400' : 'text-white'}`}>
+                      {speed ? `${speed} tok/s` : '—'}
+                    </td>
+                  );
+                })}
+              </tr>
+              <tr>
+                <td className="py-2 px-3 text-gray-400">Prefill</td>
+                {compareModels.map(r => (
+                  <td key={`prefill-${r.model.id}`} className="py-2 px-3 text-center text-white">
+                    {r.performance.prefillTokensPerSecond ? `${r.performance.prefillTokensPerSecond} tok/s` : '—'}
+                  </td>
+                ))}
+              </tr>
+              <tr>
+                <td className="py-2 px-3 text-gray-400">TTFT</td>
+                {compareModels.map(r => (
+                  <td key={`ttft-${r.model.id}`} className="py-2 px-3 text-center text-white">
+                    {r.performance.timeToFirstToken ? `${r.performance.timeToFirstToken}ms` : '—'}
+                  </td>
+                ))}
+              </tr>
+
+              {/* Memory */}
+              <tr className="bg-gray-900/30">
+                <td className="py-2 px-3 text-gray-400 font-medium">VRAM</td>
+                {compareModels.map(r => {
+                  const isMin = r.memory.vramPercent === Math.min(...compareModels.map(m => m.memory.vramPercent));
+                  return (
+                    <td key={`vram-${r.model.id}`} className={`py-2 px-3 text-center ${isMin ? 'text-green-400' : 'text-white'}`}>
+                      {(r.quant.vram_mb / 1024).toFixed(1)}GB ({r.memory.vramPercent}%)
+                    </td>
+                  );
+                })}
+              </tr>
+              <tr>
+                <td className="py-2 px-3 text-gray-400">Inference Mode</td>
+                {compareModels.map(r => (
+                  <td key={`mode-${r.model.id}`} className="py-2 px-3 text-center">
+                    <span className={`text-xs px-2 py-0.5 rounded ${
+                      r.inferenceMode === 'gpu_full' ? 'bg-green-500/20 text-green-400' :
+                      r.inferenceMode === 'gpu_offload' ? 'bg-yellow-500/20 text-yellow-400' :
+                      r.inferenceMode === 'cpu_only' ? 'bg-orange-500/20 text-orange-400' :
+                      'bg-red-500/20 text-red-400'
+                    }`}>
+                      {r.inferenceMode === 'gpu_full' && 'Full GPU'}
+                      {r.inferenceMode === 'gpu_offload' && 'GPU+RAM'}
+                      {r.inferenceMode === 'cpu_only' && 'CPU only'}
+                      {r.inferenceMode === 'not_possible' && 'N/A'}
+                    </span>
+                  </td>
+                ))}
+              </tr>
+
+              {/* Quant */}
+              <tr>
+                <td className="py-2 px-3 text-gray-400">Quantization</td>
+                {compareModels.map(r => (
+                  <td key={`quant-${r.model.id}`} className="py-2 px-3 text-center text-white">
+                    {r.quant.level} ({(r.quant.quality * 100).toFixed(0)}%)
+                  </td>
+                ))}
+              </tr>
+
+              {/* Benchmarks header */}
+              <tr className="bg-gray-900/50">
+                <td colSpan={compareModels.length + 1} className="py-2 px-3 text-gray-300 font-medium">
+                  Benchmarks
+                </td>
+              </tr>
+
+              {/* Benchmarks */}
+              {USE_CASE_BENCHMARKS[useCase].map(benchKey => {
+                const values = compareModels.map(r => r.model.benchmarks[benchKey]);
+                const maxVal = Math.max(...values.filter((v): v is number => v !== null));
+                return (
+                  <tr key={`bench-${benchKey}`}>
+                    <td className="py-2 px-3 text-gray-400">{BENCHMARK_NAMES[benchKey]}</td>
+                    {compareModels.map((r, i) => {
+                      const val = values[i];
+                      const isMax = val === maxVal && val !== null;
+                      return (
+                        <td key={`${benchKey}-${r.model.id}`} className={`py-2 px-3 text-center ${isMax ? 'text-green-400 font-medium' : 'text-white'}`}>
+                          {val !== null ? val.toFixed(1) : '—'}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+
+              {/* Commands */}
+              <tr className="bg-gray-900/30">
+                <td className="py-2 px-3 text-gray-400 font-medium">Ollama Command</td>
+                {compareModels.map(r => (
+                  <td key={`cmd-${r.model.id}`} className="py-2 px-3 text-center">
+                    <code className="text-xs text-green-400 bg-gray-900 px-2 py-1 rounded">
+                      {r.quant.ollama_tag}
+                    </code>
+                  </td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      )}
 
       {/* More models link */}
-      {results.length > 10 && (
+      {viewMode === 'dashboard' && results.length > 10 && (
         <div className="text-center text-sm text-gray-500">
           +{results.length - 10} more models available
         </div>

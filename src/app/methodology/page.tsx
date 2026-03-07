@@ -18,6 +18,9 @@ export default function MethodologyPage() {
             <Link href="/methodology" className="text-white">
               Methodology
             </Link>
+            <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+              FAQ
+            </Link>
             <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
               About
             </Link>
@@ -329,6 +332,7 @@ export default function MethodologyPage() {
         <div className="flex justify-center gap-6 mb-4">
           <Link href="/" className="hover:text-gray-300 transition-colors">Home</Link>
           <Link href="/methodology" className="hover:text-gray-300 transition-colors">Methodology</Link>
+          <Link href="/faq" className="hover:text-gray-300 transition-colors">FAQ</Link>
           <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
           <a
             href="https://github.com/localllm-advisor/localllm-advisor"

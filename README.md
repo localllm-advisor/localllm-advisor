@@ -327,6 +327,19 @@ Per attivarlo: repo Settings -> Pages -> Source: **GitHub Actions**.
 
 Il sito sara' su `https://localllm-advisor.github.io/localllm-advisor/`
 
+## Analytics
+
+Per abilitare Google Analytics, crea un file `.env.local`:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+Sostituisci `G-XXXXXXXXXX` con il tuo Measurement ID da Google Analytics 4.
+
+Gli eventi tracciati:
+- `find_models` - quando l'utente cerca modelli (con GPU/VRAM come label)
+
 ## Stack
 
 - Next.js 14 (Static Export)
