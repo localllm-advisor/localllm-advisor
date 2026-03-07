@@ -66,16 +66,23 @@ I dati sono in `public/data/`:
 ### Script automatico (modelli)
 
 ```bash
+# Setup (solo la prima volta)
+python3 -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# oppure: .venv\Scripts\activate  # Windows
+
+pip install pandas pyarrow datasets
+
+# Esegui lo script
 python scripts/update_models.py
 ```
 
 Lo script:
-1. Carica la lista curata di modelli da `MODEL_CONFIGS`
-2. Recupera benchmark da HuggingFace API (se disponibili)
-3. Calcola VRAM stimata per ogni quantizzazione
-4. Preserva i benchmark esistenti se già presenti
+1. **Scrape Ollama Registry** → lista modelli e tag disponibili
+2. **Open LLM Leaderboard** → benchmark (IFEval, BBH, MATH, GPQA, MUSR, MMLU-PRO)
+3. **Calcola VRAM** → stima da parametri + bits-per-weight
 
-Per aggiungere un nuovo modello, modificare `MODEL_CONFIGS` in `scripts/update_models.py`.
+Per aggiungere un nuovo modello, modificare `OLLAMA_MODELS` in `scripts/update_models.py`.
 
 ### Modifica manuale
 

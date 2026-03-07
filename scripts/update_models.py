@@ -1,107 +1,293 @@
 #!/usr/bin/env python3
 """
-Script per aggiornare models.json con dati da Hugging Face
+Script per aggiornare models.json con dati da Ollama + HuggingFace Leaderboard
 
 Usage: python scripts/update_models.py
 
 Fonti dati:
-- Modelli: lista curata di modelli popolari su Ollama
-- Benchmark: Open LLM Leaderboard (HuggingFace API)
-- VRAM: calcolata da parametri + quantizzazione
+1. Ollama Registry (https://ollama.com/library) → modelli + tag disponibili
+2. Open LLM Leaderboard (HuggingFace) → benchmark
+3. Calcolo interno → VRAM stimata
+
+Requisiti:
+  pip install requests pandas pyarrow
 """
 
 import json
+import re
 import time
-import urllib.request
-import urllib.error
 from pathlib import Path
 from typing import Any
+from urllib.request import urlopen, Request
+from urllib.error import HTTPError, URLError
+
+# Prova a importare pandas per il leaderboard
+try:
+    import pandas as pd
+    HAS_PANDAS = True
+except ImportError:
+    HAS_PANDAS = False
+    print("WARN: pandas non installato, benchmark non disponibili")
+    print("      Installa con: pip install pandas pyarrow")
 
 DATA_DIR = Path(__file__).parent.parent / "public" / "data"
 
-# Configurazione modelli da tracciare (curata per Ollama)
-MODEL_CONFIGS = [
-    # Llama 3.x
-    {"id": "llama3.1-8b", "hf_id": "meta-llama/Llama-3.1-8B-Instruct", "family": "llama", "params_b": 8, "ollama_base": "llama3.1:8b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 131072},
-    {"id": "llama3.1-70b", "hf_id": "meta-llama/Llama-3.1-70B-Instruct", "family": "llama", "params_b": 70, "ollama_base": "llama3.1:70b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 131072},
-    {"id": "llama3.2-3b", "hf_id": "meta-llama/Llama-3.2-3B-Instruct", "family": "llama", "params_b": 3, "ollama_base": "llama3.2:3b", "capabilities": ["chat", "coding"], "context_length": 131072},
-    {"id": "llama3.3-70b", "hf_id": "meta-llama/Llama-3.3-70B-Instruct", "family": "llama", "params_b": 70, "ollama_base": "llama3.3:70b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 131072},
+# ============================================================
+# CONFIGURAZIONE MODELLI
+# ============================================================
+# Mappa: ollama_model -> hf_model_id (per matching benchmark)
+# Aggiungi qui i modelli che vuoi tracciare
 
-    # Qwen 2.5
-    {"id": "qwen2.5-7b", "hf_id": "Qwen/Qwen2.5-7B-Instruct", "family": "qwen", "params_b": 7, "ollama_base": "qwen2.5:7b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 32768},
-    {"id": "qwen2.5-14b", "hf_id": "Qwen/Qwen2.5-14B-Instruct", "family": "qwen", "params_b": 14, "ollama_base": "qwen2.5:14b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 32768},
-    {"id": "qwen2.5-32b", "hf_id": "Qwen/Qwen2.5-32B-Instruct", "family": "qwen", "params_b": 32, "ollama_base": "qwen2.5:32b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 32768},
-    {"id": "qwen2.5-72b", "hf_id": "Qwen/Qwen2.5-72B-Instruct", "family": "qwen", "params_b": 72, "ollama_base": "qwen2.5:72b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 32768},
+OLLAMA_MODELS = {
+    # Llama
+    "llama3.1": {
+        "hf_patterns": ["meta-llama/Llama-3.1", "Meta-Llama-3.1"],
+        "family": "llama",
+        "capabilities": ["chat", "coding", "reasoning"],
+    },
+    "llama3.2": {
+        "hf_patterns": ["meta-llama/Llama-3.2", "Meta-Llama-3.2"],
+        "family": "llama",
+        "capabilities": ["chat", "coding"],
+    },
+    "llama3.3": {
+        "hf_patterns": ["meta-llama/Llama-3.3", "Meta-Llama-3.3"],
+        "family": "llama",
+        "capabilities": ["chat", "coding", "reasoning"],
+    },
 
-    # Qwen Coder
-    {"id": "qwen2.5-coder-7b", "hf_id": "Qwen/Qwen2.5-Coder-7B-Instruct", "family": "qwen", "params_b": 7, "ollama_base": "qwen2.5-coder:7b", "capabilities": ["chat", "coding"], "context_length": 32768},
-    {"id": "qwen2.5-coder-14b", "hf_id": "Qwen/Qwen2.5-Coder-14B-Instruct", "family": "qwen", "params_b": 14, "ollama_base": "qwen2.5-coder:14b", "capabilities": ["chat", "coding"], "context_length": 32768},
-    {"id": "qwen2.5-coder-32b", "hf_id": "Qwen/Qwen2.5-Coder-32B-Instruct", "family": "qwen", "params_b": 32, "ollama_base": "qwen2.5-coder:32b", "capabilities": ["chat", "coding"], "context_length": 32768},
+    # Qwen
+    "qwen2.5": {
+        "hf_patterns": ["Qwen/Qwen2.5-", "Qwen2.5-"],
+        "family": "qwen",
+        "capabilities": ["chat", "coding", "reasoning"],
+    },
+    "qwen2.5-coder": {
+        "hf_patterns": ["Qwen/Qwen2.5-Coder", "Qwen2.5-Coder"],
+        "family": "qwen",
+        "capabilities": ["chat", "coding"],
+    },
 
     # DeepSeek
-    {"id": "deepseek-r1-7b", "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B", "family": "deepseek", "params_b": 7, "ollama_base": "deepseek-r1:7b", "capabilities": ["chat", "reasoning"], "context_length": 32768},
-    {"id": "deepseek-r1-14b", "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B", "family": "deepseek", "params_b": 14, "ollama_base": "deepseek-r1:14b", "capabilities": ["chat", "reasoning"], "context_length": 32768},
-    {"id": "deepseek-r1-32b", "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B", "family": "deepseek", "params_b": 32, "ollama_base": "deepseek-r1:32b", "capabilities": ["chat", "reasoning"], "context_length": 32768},
-    {"id": "deepseek-v3", "hf_id": "deepseek-ai/DeepSeek-V3", "family": "deepseek", "params_b": 671, "architecture": "moe", "ollama_base": "deepseek-v3", "capabilities": ["chat", "coding", "reasoning"], "context_length": 65536},
+    "deepseek-r1": {
+        "hf_patterns": ["deepseek-ai/DeepSeek-R1", "DeepSeek-R1"],
+        "family": "deepseek",
+        "capabilities": ["chat", "reasoning"],
+    },
+    "deepseek-v3": {
+        "hf_patterns": ["deepseek-ai/DeepSeek-V3", "DeepSeek-V3"],
+        "family": "deepseek",
+        "capabilities": ["chat", "coding", "reasoning"],
+        "architecture": "moe",
+    },
 
     # Mistral
-    {"id": "mistral-7b", "hf_id": "mistralai/Mistral-7B-Instruct-v0.3", "family": "mistral", "params_b": 7, "ollama_base": "mistral:7b", "capabilities": ["chat", "coding"], "context_length": 32768},
-    {"id": "mistral-nemo-12b", "hf_id": "mistralai/Mistral-Nemo-Instruct-2407", "family": "mistral", "params_b": 12, "ollama_base": "mistral-nemo:12b", "capabilities": ["chat", "coding"], "context_length": 131072},
-    {"id": "mistral-small-24b", "hf_id": "mistralai/Mistral-Small-24B-Instruct-2501", "family": "mistral", "params_b": 24, "ollama_base": "mistral-small:24b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 32768},
+    "mistral": {
+        "hf_patterns": ["mistralai/Mistral-7B", "Mistral-7B"],
+        "family": "mistral",
+        "capabilities": ["chat", "coding"],
+    },
+    "mistral-nemo": {
+        "hf_patterns": ["mistralai/Mistral-Nemo", "Mistral-Nemo"],
+        "family": "mistral",
+        "capabilities": ["chat", "coding"],
+    },
+    "mistral-small": {
+        "hf_patterns": ["mistralai/Mistral-Small", "Mistral-Small"],
+        "family": "mistral",
+        "capabilities": ["chat", "coding", "reasoning"],
+    },
 
     # Phi
-    {"id": "phi3-mini-3.8b", "hf_id": "microsoft/Phi-3-mini-4k-instruct", "family": "phi", "params_b": 3.8, "ollama_base": "phi3:mini", "capabilities": ["chat", "coding", "reasoning"], "context_length": 4096},
-    {"id": "phi4-14b", "hf_id": "microsoft/phi-4", "family": "phi", "params_b": 14, "ollama_base": "phi4:14b", "capabilities": ["chat", "coding", "reasoning"], "context_length": 16384},
+    "phi3": {
+        "hf_patterns": ["microsoft/Phi-3", "Phi-3"],
+        "family": "phi",
+        "capabilities": ["chat", "coding", "reasoning"],
+    },
+    "phi4": {
+        "hf_patterns": ["microsoft/phi-4", "phi-4"],
+        "family": "phi",
+        "capabilities": ["chat", "coding", "reasoning"],
+    },
 
     # Gemma
-    {"id": "gemma2-9b", "hf_id": "google/gemma-2-9b-it", "family": "gemma", "params_b": 9, "ollama_base": "gemma2:9b", "capabilities": ["chat", "reasoning"], "context_length": 8192},
-    {"id": "gemma2-27b", "hf_id": "google/gemma-2-27b-it", "family": "gemma", "params_b": 27, "ollama_base": "gemma2:27b", "capabilities": ["chat", "reasoning"], "context_length": 8192},
+    "gemma2": {
+        "hf_patterns": ["google/gemma-2", "gemma-2"],
+        "family": "gemma",
+        "capabilities": ["chat", "reasoning"],
+    },
 
-    # Vision models
-    {"id": "llava-v1.6-7b", "hf_id": "llava-hf/llava-v1.6-mistral-7b-hf", "family": "llava", "params_b": 7, "ollama_base": "llava:7b", "capabilities": ["chat", "vision"], "context_length": 4096},
-    {"id": "llava-v1.6-13b", "hf_id": "llava-hf/llava-v1.6-vicuna-13b-hf", "family": "llava", "params_b": 13, "ollama_base": "llava:13b", "capabilities": ["chat", "vision"], "context_length": 4096},
-]
-
-# Quantizzazioni standard con BPW (bits per weight)
-QUANT_CONFIGS = {
-    "small": [  # <= 10B params
-        {"level": "Q4_K_M", "bpw": 4.5, "quality": 0.94},
-        {"level": "Q6_K", "bpw": 6.5, "quality": 0.97},
-        {"level": "Q8_0", "bpw": 8.0, "quality": 0.995},
-    ],
-    "medium": [  # 10-40B params
-        {"level": "Q4_K_M", "bpw": 4.5, "quality": 0.95},
-        {"level": "Q6_K", "bpw": 6.5, "quality": 0.97},
-        {"level": "Q8_0", "bpw": 8.0, "quality": 0.995},
-    ],
-    "large": [  # > 40B params
-        {"level": "Q2_K", "bpw": 2.5, "quality": 0.82},
-        {"level": "Q4_K_M", "bpw": 4.5, "quality": 0.94},
-    ],
-    "moe": [  # MoE models
-        {"level": "Q4_K_M", "bpw": 4.5, "quality": 0.94},
-        {"level": "Q8_0", "bpw": 8.0, "quality": 0.995},
-    ],
+    # Vision
+    "llava": {
+        "hf_patterns": ["llava-hf/llava", "llava"],
+        "family": "llava",
+        "capabilities": ["chat", "vision"],
+    },
 }
 
-FAMILY_NAMES = {
-    "llama": "Llama",
-    "qwen": "Qwen",
-    "deepseek": "DeepSeek",
-    "mistral": "Mistral",
-    "phi": "Phi",
-    "gemma": "Gemma",
-    "llava": "LLaVA",
+# BPW (bits per weight) per quantizzazione
+QUANT_BPW = {
+    "fp16": 16.0,
+    "q8_0": 8.0,
+    "q6_k": 6.5,
+    "q5_k_m": 5.5,
+    "q5_k_s": 5.5,
+    "q5_1": 5.5,
+    "q5_0": 5.0,
+    "q4_k_m": 4.5,
+    "q4_k_s": 4.5,
+    "q4_1": 4.5,
+    "q4_0": 4.0,
+    "q3_k_l": 3.5,
+    "q3_k_m": 3.4,
+    "q3_k_s": 3.0,
+    "q2_k": 2.5,
 }
 
+QUANT_QUALITY = {
+    "fp16": 1.0,
+    "q8_0": 0.995,
+    "q6_k": 0.97,
+    "q5_k_m": 0.96,
+    "q5_k_s": 0.95,
+    "q5_1": 0.95,
+    "q5_0": 0.94,
+    "q4_k_m": 0.94,
+    "q4_k_s": 0.93,
+    "q4_1": 0.92,
+    "q4_0": 0.90,
+    "q3_k_l": 0.88,
+    "q3_k_m": 0.86,
+    "q3_k_s": 0.84,
+    "q2_k": 0.82,
+}
 
-def estimate_vram_mb(params_b: float, bpw: float, overhead: int = 500) -> int:
-    """Calcola VRAM stimata in MB."""
-    return round(params_b * bpw / 8 * 1024) + overhead
+# ============================================================
+# SCRAPING OLLAMA
+# ============================================================
+
+def fetch_url(url: str, timeout: int = 15) -> str | None:
+    """Fetch URL content."""
+    try:
+        req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urlopen(req, timeout=timeout) as resp:
+            return resp.read().decode("utf-8")
+    except (HTTPError, URLError, TimeoutError) as e:
+        print(f"  [!] Error fetching {url}: {e}")
+        return None
 
 
-def fetch_benchmarks(hf_model_id: str) -> dict[str, Any]:
-    """Fetch benchmark da HuggingFace API."""
+def scrape_ollama_models() -> list[str]:
+    """Scrape lista modelli da Ollama library."""
+    print("Fetching Ollama model list...")
+
+    html = fetch_url("https://ollama.com/library")
+    if not html:
+        return list(OLLAMA_MODELS.keys())
+
+    # Estrai href="/library/{model}"
+    matches = re.findall(r'href="/library/([a-z0-9._-]+)"', html, re.I)
+    models = sorted(set(matches))
+
+    # Filtra solo quelli che ci interessano
+    tracked = [m for m in models if m in OLLAMA_MODELS]
+    print(f"  Found {len(models)} models, tracking {len(tracked)}")
+
+    return tracked if tracked else list(OLLAMA_MODELS.keys())
+
+
+def scrape_ollama_tags(model_name: str) -> list[dict]:
+    """Scrape tag disponibili per un modello Ollama."""
+    url = f"https://ollama.com/library/{model_name}/tags"
+    html = fetch_url(url)
+
+    if not html:
+        return []
+
+    # Pattern: /library/model:tag
+    pattern = rf'href="/library/{re.escape(model_name)}:([^"]+)"'
+    tags = list(set(re.findall(pattern, html, re.I)))
+
+    return tags
+
+
+def parse_ollama_tag(tag: str) -> dict | None:
+    """
+    Parse un tag Ollama e estrai parametri e quantizzazione.
+
+    Esempi:
+      "8b" -> params=8, quant="q4_k_m" (default)
+      "8b-q8_0" -> params=8, quant="q8_0"
+      "70b-instruct-q4_k_m" -> params=70, quant="q4_k_m"
+    """
+    tag_lower = tag.lower()
+
+    # Estrai parametri (es. 8b, 70b, 3.8b)
+    param_match = re.search(r"(\d+\.?\d*)b", tag_lower)
+    if not param_match:
+        return None
+
+    params_b = float(param_match.group(1))
+
+    # Estrai quantizzazione
+    quant = "q4_k_m"  # default
+    for q in QUANT_BPW.keys():
+        if q in tag_lower:
+            quant = q
+            break
+
+    # Instruct o text?
+    is_instruct = "instruct" in tag_lower or "chat" in tag_lower
+
+    return {
+        "params_b": params_b,
+        "quant": quant,
+        "is_instruct": is_instruct,
+        "original_tag": tag,
+    }
+
+
+# ============================================================
+# BENCHMARK DAL LEADERBOARD
+# ============================================================
+
+_leaderboard_df = None
+
+def load_leaderboard() -> pd.DataFrame | None:
+    """Carica il dataset Open LLM Leaderboard."""
+    global _leaderboard_df
+
+    if _leaderboard_df is not None:
+        return _leaderboard_df
+
+    if not HAS_PANDAS:
+        return None
+
+    print("Loading Open LLM Leaderboard dataset...")
+
+    try:
+        # Prova prima con datasets library
+        try:
+            from datasets import load_dataset
+            ds = load_dataset("open-llm-leaderboard/contents", split="train")
+            _leaderboard_df = ds.to_pandas()
+            print(f"  Loaded {len(_leaderboard_df)} entries via datasets")
+            return _leaderboard_df
+        except ImportError:
+            pass
+
+        # Fallback: scarica direttamente il parquet
+        url = "https://huggingface.co/datasets/open-llm-leaderboard/contents/resolve/main/data/train-00000-of-00001.parquet"
+        _leaderboard_df = pd.read_parquet(url)
+        print(f"  Loaded {len(_leaderboard_df)} entries via parquet")
+        return _leaderboard_df
+    except Exception as e:
+        print(f"  [!] Error loading leaderboard: {e}")
+        return None
+
+
+def find_benchmark(model_name: str, params_b: float, hf_patterns: list[str]) -> dict:
+    """Cerca benchmark per un modello nel leaderboard."""
     benchmarks = {
         "humaneval": None,
         "mmlu_pro": None,
@@ -117,174 +303,269 @@ def fetch_benchmarks(hf_model_id: str) -> dict[str, Any]:
         "mmbench": None,
     }
 
+    df = load_leaderboard()
+    if df is None:
+        return benchmarks
+
+    # Cerca match nel leaderboard
+    for pattern in hf_patterns:
+        # Cerca modelli che matchano il pattern e hanno ~params_b parametri
+        mask = df["fullname"].str.contains(pattern, case=False, na=False)
+
+        if params_b > 0:
+            # Filtra per parametri simili (±20%)
+            param_col = "#Params (B)"
+            if param_col in df.columns:
+                param_mask = (df[param_col] >= params_b * 0.8) & (df[param_col] <= params_b * 1.2)
+                mask = mask & param_mask
+
+        matches = df[mask]
+
+        if len(matches) > 0:
+            # Prendi il match con score più alto
+            best = matches.loc[matches["Average ⬆️"].idxmax()]
+
+            # Mappa colonne leaderboard -> nostro schema
+            benchmarks["ifeval"] = _safe_float(best.get("IFEval"))
+            benchmarks["bbh"] = _safe_float(best.get("BBH"))
+            benchmarks["math"] = _safe_float(best.get("MATH Lvl 5"))
+            benchmarks["gpqa"] = _safe_float(best.get("GPQA"))
+            benchmarks["musr"] = _safe_float(best.get("MUSR"))
+            benchmarks["mmlu_pro"] = _safe_float(best.get("MMLU-PRO"))
+
+            return benchmarks
+
+    return benchmarks
+
+
+def _safe_float(val) -> float | None:
+    """Converte in float o None."""
+    if val is None or (isinstance(val, float) and pd.isna(val)):
+        return None
     try:
-        encoded_id = urllib.parse.quote(hf_model_id, safe="")
-        url = f"https://huggingface.co/api/models/{encoded_id}"
-
-        req = urllib.request.Request(url, headers={"Accept": "application/json"})
-        with urllib.request.urlopen(req, timeout=10) as response:
-            data = json.loads(response.read().decode())
-
-        # I benchmark potrebbero essere in cardData.eval_results
-        if data.get("cardData", {}).get("eval_results"):
-            for result in data["cardData"]["eval_results"]:
-                metric = (result.get("metric_name") or "").lower()
-                value = result.get("metric_value")
-
-                if "humaneval" in metric:
-                    benchmarks["humaneval"] = value
-                elif "mmlu" in metric:
-                    benchmarks["mmlu_pro"] = value
-                elif "math" in metric:
-                    benchmarks["math"] = value
-                elif "ifeval" in metric:
-                    benchmarks["ifeval"] = value
-                elif "bbh" in metric:
-                    benchmarks["bbh"] = value
-                elif "gpqa" in metric:
-                    benchmarks["gpqa"] = value
-                elif "mbpp" in metric:
-                    benchmarks["mbpp"] = value
-
-        return benchmarks
-
-    except urllib.error.HTTPError as e:
-        print(f"  [!] HF API {e.code} for {hf_model_id}")
-        return benchmarks
-    except Exception as e:
-        print(f"  [!] Error fetching {hf_model_id}: {e}")
-        return benchmarks
+        return round(float(val), 1)
+    except (ValueError, TypeError):
+        return None
 
 
-def generate_quantizations(config: dict) -> list[dict]:
-    """Genera quantizzazioni per un modello."""
-    params_b = config["params_b"]
-    architecture = config.get("architecture", "dense")
-    ollama_base = config["ollama_base"]
+# ============================================================
+# GENERAZIONE MODELLI
+# ============================================================
 
-    if architecture == "moe":
-        quant_configs = QUANT_CONFIGS["moe"]
-    elif params_b > 40:
-        quant_configs = QUANT_CONFIGS["large"]
-    elif params_b > 10:
-        quant_configs = QUANT_CONFIGS["medium"]
+def estimate_vram_mb(params_b: float, bpw: float, overhead: int = 500) -> int:
+    """Calcola VRAM stimata in MB."""
+    return round(params_b * bpw / 8 * 1024) + overhead
+
+
+def generate_model_entry(
+    ollama_name: str,
+    params_b: float,
+    quantizations: list[dict],
+    config: dict,
+    benchmarks: dict,
+) -> dict:
+    """Genera entry per models.json."""
+
+    # ID univoco
+    model_id = f"{ollama_name}-{int(params_b)}b"
+    if params_b != int(params_b):
+        model_id = f"{ollama_name}-{params_b}b"
+
+    # Nome leggibile
+    family_names = {
+        "llama": "Llama",
+        "qwen": "Qwen",
+        "deepseek": "DeepSeek",
+        "mistral": "Mistral",
+        "phi": "Phi",
+        "gemma": "Gemma",
+        "llava": "LLaVA",
+    }
+
+    family = config.get("family", ollama_name)
+    base_name = family_names.get(family, family.title())
+
+    # Estrai versione dal nome ollama (es. llama3.1 -> 3.1)
+    version_match = re.search(r"(\d+\.?\d*)", ollama_name)
+    version = version_match.group(1) if version_match else ""
+
+    if "coder" in ollama_name:
+        name = f"{base_name} {version} Coder {params_b}B"
+    elif "r1" in ollama_name:
+        name = f"{base_name} R1 {params_b}B"
+    elif "v3" in ollama_name:
+        name = f"{base_name} V3"
+    elif "nemo" in ollama_name:
+        name = f"{base_name} Nemo {params_b}B"
+    elif "small" in ollama_name:
+        name = f"{base_name} Small {params_b}B"
+    elif version:
+        name = f"{base_name} {version} {params_b}B"
     else:
-        quant_configs = QUANT_CONFIGS["small"]
+        name = f"{base_name} {params_b}B"
 
-    quantizations = []
-    for q in quant_configs:
-        tag = ollama_base if q["level"] == "Q4_K_M" else f"{ollama_base}-{q['level'].lower()}"
-        quantizations.append({
-            "level": q["level"],
-            "bpw": q["bpw"],
-            "vram_mb": estimate_vram_mb(params_b, q["bpw"]),
-            "quality": q["quality"],
-            "ollama_tag": tag,
-        })
+    # Context length (stima basata su famiglia)
+    context_lengths = {
+        "llama": 131072,
+        "qwen": 32768,
+        "deepseek": 32768,
+        "mistral": 32768,
+        "phi": 16384,
+        "gemma": 8192,
+        "llava": 4096,
+    }
 
-    return quantizations
+    return {
+        "id": model_id,
+        "name": name.strip(),
+        "family": family,
+        "params_b": params_b,
+        "architecture": config.get("architecture", "dense"),
+        "capabilities": config.get("capabilities", ["chat"]),
+        "context_length": context_lengths.get(family, 8192),
+        "release_date": None,  # Da popolare manualmente
+        "ollama_base": f"{ollama_name}:{int(params_b)}b" if params_b == int(params_b) else f"{ollama_name}:{params_b}b",
+        "quantizations": quantizations,
+        "benchmarks": benchmarks,
+    }
 
 
-def format_model_name(config: dict) -> str:
-    """Formatta il nome del modello per la UI."""
-    base = FAMILY_NAMES.get(config["family"], config["family"])
-    model_id = config["id"]
-    params = config["params_b"]
-
-    if "coder" in model_id:
-        return f"{base} 2.5 Coder {params}B"
-    if "r1" in model_id:
-        return f"{base} R1 Distill {params}B"
-    if "v3" in model_id:
-        return f"{base} V3"
-    if "nemo" in model_id:
-        return f"{base} Nemo {params}B"
-    if "small" in model_id:
-        return f"{base} Small {params}B"
-    if "mini" in model_id:
-        return f"{base}-3 Mini {params}B"
-
-    # Estrai versione dal pattern (es. llama3.1-8b -> 3.1)
-    import re
-    match = re.search(r"(\d+\.?\d*)-?\d*b", model_id, re.IGNORECASE)
-    if match:
-        return f"{base} {match.group(1)} {params}B"
-
-    return f"{base} {params}B"
-
+# ============================================================
+# MAIN
+# ============================================================
 
 def main():
     print("=" * 60)
-    print("LocalLLM Advisor - Model Data Updater")
+    print("LocalLLM Advisor - Full Data Updater")
     print("=" * 60)
     print()
+    print("Fonti:")
+    print("  1. Ollama Registry → modelli e quantizzazioni")
+    print("  2. Open LLM Leaderboard → benchmark")
+    print()
 
-    # Carica modelli esistenti per preservare benchmark manuali
+    # Carica modelli esistenti per preservare date
     models_path = DATA_DIR / "models.json"
     existing_models = []
-
     if models_path.exists():
         with open(models_path) as f:
             existing_models = json.load(f)
         print(f"Loaded {len(existing_models)} existing models")
-    else:
-        print("No existing models.json found, creating new")
-
     existing_map = {m["id"]: m for m in existing_models}
 
-    models = []
+    # Scrape modelli Ollama
+    ollama_models = scrape_ollama_models()
 
-    for config in MODEL_CONFIGS:
-        print(f"Processing {config['id']}...")
+    all_models = []
 
-        # Usa benchmark esistenti se disponibili
-        existing = existing_map.get(config["id"])
-        benchmarks = None
+    for ollama_name in ollama_models:
+        if ollama_name not in OLLAMA_MODELS:
+            continue
 
-        if existing and existing.get("benchmarks"):
-            # Verifica se ci sono benchmark non nulli
-            if any(v is not None for v in existing["benchmarks"].values()):
-                benchmarks = existing["benchmarks"]
+        config = OLLAMA_MODELS[ollama_name]
+        print(f"\nProcessing {ollama_name}...")
 
-        if not benchmarks:
-            benchmarks = fetch_benchmarks(config["hf_id"])
-            time.sleep(0.2)  # Rate limiting
+        # Scrape tag disponibili
+        tags = scrape_ollama_tags(ollama_name)
+        if not tags:
+            print(f"  [!] No tags found for {ollama_name}")
+            continue
 
-        model = {
-            "id": config["id"],
-            "name": format_model_name(config),
-            "family": config["family"],
-            "params_b": config["params_b"],
-            "architecture": config.get("architecture", "dense"),
-            "capabilities": config["capabilities"],
-            "context_length": config["context_length"],
-            "release_date": existing.get("release_date") if existing else None,
-            "ollama_base": config["ollama_base"],
-            "quantizations": generate_quantizations(config),
-            "benchmarks": benchmarks,
-        }
+        # Raggruppa per parametri
+        by_params: dict[float, list[dict]] = {}
+        for tag in tags:
+            parsed = parse_ollama_tag(tag)
+            if parsed and parsed["is_instruct"]:  # Solo instruct/chat
+                params = parsed["params_b"]
+                if params not in by_params:
+                    by_params[params] = []
+                by_params[params].append(parsed)
 
-        # Default release_date se non presente
-        if not model["release_date"]:
-            from datetime import date
-            model["release_date"] = date.today().isoformat()
+        # Per ogni size, genera entry
+        for params_b, tag_list in sorted(by_params.items()):
+            # Deduplica quantizzazioni
+            quants_seen = set()
+            quantizations = []
 
-        models.append(model)
+            for t in tag_list:
+                q = t["quant"]
+                if q in quants_seen:
+                    continue
+                quants_seen.add(q)
+
+                bpw = QUANT_BPW.get(q, 4.5)
+                quality = QUANT_QUALITY.get(q, 0.9)
+
+                quantizations.append({
+                    "level": q.upper(),
+                    "bpw": bpw,
+                    "vram_mb": estimate_vram_mb(params_b, bpw),
+                    "quality": quality,
+                    "ollama_tag": f"{ollama_name}:{t['original_tag']}",
+                })
+
+            # Ordina per quality (migliore prima)
+            quantizations.sort(key=lambda x: x["quality"], reverse=True)
+
+            # Limita a 3-4 quantizzazioni più utili
+            useful_quants = ["Q4_K_M", "Q6_K", "Q8_0", "Q2_K", "FP16"]
+            quantizations = [q for q in quantizations if q["level"] in useful_quants][:4]
+
+            if not quantizations:
+                # Fallback: prendi le prime 3
+                quantizations = sorted(tag_list, key=lambda x: QUANT_QUALITY.get(x["quant"], 0))[:3]
+                quantizations = [{
+                    "level": t["quant"].upper(),
+                    "bpw": QUANT_BPW.get(t["quant"], 4.5),
+                    "vram_mb": estimate_vram_mb(params_b, QUANT_BPW.get(t["quant"], 4.5)),
+                    "quality": QUANT_QUALITY.get(t["quant"], 0.9),
+                    "ollama_tag": f"{ollama_name}:{t['original_tag']}",
+                } for t in quantizations]
+
+            # Fetch benchmark
+            benchmarks = find_benchmark(
+                ollama_name,
+                params_b,
+                config.get("hf_patterns", [])
+            )
+
+            # Genera entry
+            model = generate_model_entry(
+                ollama_name,
+                params_b,
+                quantizations,
+                config,
+                benchmarks,
+            )
+
+            # Preserva release_date da esistenti
+            if model["id"] in existing_map:
+                model["release_date"] = existing_map[model["id"]].get("release_date")
+
+            if not model["release_date"]:
+                from datetime import date
+                model["release_date"] = date.today().isoformat()
+
+            all_models.append(model)
+            print(f"  + {model['name']} ({len(quantizations)} quants)")
+
+        time.sleep(0.3)  # Rate limiting
 
     # Ordina per famiglia e parametri
-    models.sort(key=lambda m: (m["family"], m["params_b"]))
+    all_models.sort(key=lambda m: (m["family"], m["params_b"]))
 
-    # Scrivi file
+    # Scrivi
     with open(models_path, "w") as f:
-        json.dump(models, f, indent=2)
+        json.dump(all_models, f, indent=2)
 
     print()
-    print(f"Written {len(models)} models to {models_path}")
+    print("=" * 60)
+    print(f"Written {len(all_models)} models to {models_path}")
     print()
     print("Summary by family:")
-    families = sorted(set(m["family"] for m in models))
+    families = sorted(set(m["family"] for m in all_models))
     for fam in families:
-        count = sum(1 for m in models if m["family"] == fam)
+        count = sum(1 for m in all_models if m["family"] == fam)
         print(f"  {fam}: {count} models")
 
 
