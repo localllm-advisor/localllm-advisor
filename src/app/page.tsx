@@ -74,7 +74,7 @@ export default function Home() {
     <div className="min-h-screen">
       {/* Header */}
       <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="mx-auto max-w-3xl px-4 py-4">
+        <div className="mx-auto max-w-7xl px-4 py-4">
           <h1 className="text-xl font-bold text-white">
             LocalLLM Advisor
           </h1>
@@ -85,7 +85,7 @@ export default function Home() {
       </header>
 
       {/* Form */}
-      <main className="mx-auto max-w-3xl px-4 py-8 space-y-8">
+      <main className="mx-auto max-w-3xl px-4 py-8 space-y-6">
         <section className="space-y-6">
           <GpuSelector
             gpus={gpus}
@@ -108,30 +108,30 @@ export default function Home() {
             Find My Models
           </button>
         </section>
-
-        {/* Results */}
-        {results && (
-          <section ref={resultsRef} className="pt-4">
-            <ResultsList
-              results={results}
-              gpuName={selectedGpu?.name ?? null}
-              vramMb={vramMb!}
-              useCase={useCase}
-            />
-          </section>
-        )}
-
-        {/* Footer */}
-        <footer className="border-t border-gray-800 pt-6 pb-8 text-center text-xs text-gray-500">
-          <p>
-            LocalLLM Advisor — Open source tool for the local AI community.
-          </p>
-          <p className="mt-1">
-            Data updated manually. Not affiliated with Ollama or any model
-            provider.
-          </p>
-        </footer>
       </main>
+
+      {/* Results - Full Width */}
+      {results && (
+        <section ref={resultsRef} className="mx-auto max-w-7xl px-4 py-6">
+          <ResultsList
+            results={results}
+            gpuName={selectedGpu?.name ?? null}
+            vramMb={vramMb!}
+            useCase={useCase}
+          />
+        </section>
+      )}
+
+      {/* Footer */}
+      <footer className="mx-auto max-w-7xl px-4 border-t border-gray-800 pt-6 pb-8 text-center text-xs text-gray-500">
+        <p>
+          LocalLLM Advisor — Open source tool for the local AI community.
+        </p>
+        <p className="mt-1">
+          Data updated manually. Not affiliated with Ollama or any model
+          provider.
+        </p>
+      </footer>
     </div>
   );
 }

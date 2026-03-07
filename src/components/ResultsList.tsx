@@ -1,7 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { ScoredModel, UseCase } from '@/lib/types';
+import { ScoredModel, UseCase, Benchmarks } from '@/lib/types';
+
+type ChartType = 'score' | 'speed' | 'vram' | 'quant' | 'benchmark' | null;
+
+interface ExpandedChartData {
+  type: ChartType;
+  benchKey?: keyof Benchmarks;
+}
 
 interface ResultsListProps {
   results: ScoredModel[];
@@ -9,6 +16,30 @@ interface ResultsListProps {
   vramMb: number;
   useCase: UseCase;
 }
+
+// Benchmarks per use case
+const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
+  chat: ['ifeval', 'mmlu_pro', 'bbh'],
+  coding: ['bigcodebench', 'math', 'bbh', 'ifeval'],
+  reasoning: ['math', 'gpqa', 'bbh', 'musr'],
+  creative: ['ifeval', 'mmlu_pro', 'bbh'],
+  vision: ['ifeval', 'mmlu_pro', 'bbh'],
+};
+
+const BENCHMARK_NAMES: Record<keyof Benchmarks, string> = {
+  humaneval: 'HumanEval',
+  mmlu_pro: 'MMLU-PRO',
+  math: 'MATH',
+  ifeval: 'IFEval',
+  bbh: 'BBH',
+  mmmu: 'MMMU',
+  gpqa: 'GPQA',
+  musr: 'MUSR',
+  mbpp: 'MBPP',
+  bigcodebench: 'BigCodeBench',
+  alpacaeval: 'AlpacaEval',
+  mmbench: 'MMBench',
+};
 
 // Colors for models (10)
 const MODEL_COLORS = [
@@ -31,6 +62,7 @@ export default function ResultsList({
   useCase,
 }: ResultsListProps) {
   const [selectedModel, setSelectedModel] = useState<number>(0);
+  const [expandedChart, setExpandedChart] = useState<ExpandedChartData>({ type: null });
   const vramGb = Math.round(vramMb / 1024);
   const gpuLabel = gpuName || `${vramGb}GB VRAM`;
   const topModels = results.slice(0, 10);
@@ -64,8 +96,8 @@ export default function ResultsList({
         </p>
       </div>
 
-      {/* Main Dashboard Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      {/* Main Dashboard Grid - Full Width */}
+      <div className="grid grid-cols-1 lg:grid-cols-4 xl:grid-cols-5 gap-4">
 
         {/* Left: Ranking Table */}
         <div className="lg:col-span-1 rounded-xl border border-gray-700 bg-gray-800/80 p-4">
@@ -101,14 +133,18 @@ export default function ResultsList({
         </div>
 
         {/* Right: Charts & Details */}
-        <div className="lg:col-span-2 space-y-4">
+        <div className="lg:col-span-3 xl:col-span-4 space-y-4">
 
           {/* Comparison Bars */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {/* Score */}
-            <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-3">
+            <button
+              onClick={() => setExpandedChart({ type: 'score' })}
+              className="rounded-xl border border-gray-700 bg-gray-800/80 p-3 text-left hover:border-gray-500 transition-colors cursor-pointer"
+            >
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-xs font-medium text-gray-400">Score</span>
+                <span className="text-[10px] text-gray-600">Click to expand</span>
               </div>
               <div className="space-y-0.5">
                 {topModels.map((r, i) => (
@@ -124,12 +160,16 @@ export default function ResultsList({
                   </div>
                 ))}
               </div>
-            </div>
+            </button>
 
             {/* Speed */}
-            <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-3">
+            <button
+              onClick={() => setExpandedChart({ type: 'speed' })}
+              className="rounded-xl border border-gray-700 bg-gray-800/80 p-3 text-left hover:border-gray-500 transition-colors cursor-pointer"
+            >
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-xs font-medium text-gray-400">Speed (tok/s)</span>
+                <span className="text-[10px] text-gray-600">Click to expand</span>
               </div>
               <div className="space-y-0.5">
                 {topModels.map((r, i) => {
@@ -148,12 +188,16 @@ export default function ResultsList({
                   );
                 })}
               </div>
-            </div>
+            </button>
 
             {/* VRAM */}
-            <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-3">
+            <button
+              onClick={() => setExpandedChart({ type: 'vram' })}
+              className="rounded-xl border border-gray-700 bg-gray-800/80 p-3 text-left hover:border-gray-500 transition-colors cursor-pointer"
+            >
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-xs font-medium text-gray-400">VRAM Usage</span>
+                <span className="text-[10px] text-gray-600">Click to expand</span>
               </div>
               <div className="space-y-0.5">
                 {topModels.map((r, i) => {
@@ -173,12 +217,16 @@ export default function ResultsList({
                   );
                 })}
               </div>
-            </div>
+            </button>
 
             {/* Quant Quality */}
-            <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-3">
+            <button
+              onClick={() => setExpandedChart({ type: 'quant' })}
+              className="rounded-xl border border-gray-700 bg-gray-800/80 p-3 text-left hover:border-gray-500 transition-colors cursor-pointer"
+            >
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-xs font-medium text-gray-400">Quant Quality</span>
+                <span className="text-[10px] text-gray-600">Click to expand</span>
               </div>
               <div className="space-y-0.5">
                 {topModels.map((r, i) => (
@@ -194,6 +242,61 @@ export default function ResultsList({
                   </div>
                 ))}
               </div>
+            </button>
+          </div>
+
+          {/* Benchmark Comparison Charts */}
+          <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-4">
+            <h3 className="text-sm font-semibold text-gray-300 mb-3">
+              Benchmark Comparison
+              <span className="ml-2 text-xs font-normal text-gray-500">
+                ({useCase})
+              </span>
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {USE_CASE_BENCHMARKS[useCase].map((benchKey) => {
+                const benchName = BENCHMARK_NAMES[benchKey];
+                const maxVal = Math.max(
+                  ...topModels.map((r) => r.model.benchmarks[benchKey] ?? 0),
+                  1
+                );
+                return (
+                  <button
+                    key={benchKey}
+                    onClick={() => setExpandedChart({ type: 'benchmark', benchKey })}
+                    className="space-y-1 text-left hover:bg-gray-700/30 p-2 -m-2 rounded-lg transition-colors cursor-pointer"
+                  >
+                    <div className="flex items-center justify-between text-xs font-medium text-gray-400 mb-1">
+                      <span>{benchName}</span>
+                      <span className="text-[10px] text-gray-600">Expand</span>
+                    </div>
+                    {topModels.map((r, i) => {
+                      const val = r.model.benchmarks[benchKey];
+                      const width = val !== null && val !== undefined ? (val / maxVal) * 100 : 0;
+                      return (
+                        <div key={`b-${benchKey}-${r.model.id}`} className="flex items-center gap-1">
+                          <div className={`w-1.5 h-1.5 rounded-full ${MODEL_COLORS[i]}`} />
+                          <div className="flex-1 h-2.5 bg-gray-900 rounded overflow-hidden">
+                            {val !== null && val !== undefined ? (
+                              <div
+                                className={`h-full ${MODEL_COLORS[i]} ${selectedModel === i ? 'opacity-100' : 'opacity-50'}`}
+                                style={{ width: `${width}%` }}
+                              />
+                            ) : (
+                              <div className="h-full flex items-center px-1">
+                                <span className="text-[8px] text-gray-600">N/A</span>
+                              </div>
+                            )}
+                          </div>
+                          <span className="text-[10px] text-gray-400 w-8 text-right">
+                            {val !== null && val !== undefined ? val.toFixed(1) : '—'}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
@@ -260,6 +363,95 @@ export default function ResultsList({
       {results.length > 10 && (
         <div className="text-center text-sm text-gray-500">
           +{results.length - 10} more models available
+        </div>
+      )}
+
+      {/* Expanded Chart Modal */}
+      {expandedChart.type && (
+        <div
+          className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
+          onClick={() => setExpandedChart({ type: null })}
+        >
+          <div
+            className="bg-gray-900 border border-gray-700 rounded-xl p-4 max-w-xl w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-sm font-bold text-white">
+                {expandedChart.type === 'score' && 'Score'}
+                {expandedChart.type === 'speed' && 'Speed (tok/s)'}
+                {expandedChart.type === 'vram' && 'VRAM Usage'}
+                {expandedChart.type === 'quant' && 'Quant Quality'}
+                {expandedChart.type === 'benchmark' && expandedChart.benchKey && BENCHMARK_NAMES[expandedChart.benchKey]}
+              </h2>
+              <button
+                onClick={() => setExpandedChart({ type: null })}
+                className="text-gray-400 hover:text-white text-xl leading-none"
+              >
+                ×
+              </button>
+            </div>
+
+            <div className="space-y-1.5">
+              {topModels.map((r, i) => {
+                let value: number | null = null;
+                let displayValue = '';
+                let barWidth = 0;
+                let barColor = MODEL_COLORS[i];
+
+                if (expandedChart.type === 'score') {
+                  value = r.score;
+                  displayValue = `${r.score}`;
+                  barWidth = (r.score / maxScore) * 100;
+                } else if (expandedChart.type === 'speed') {
+                  value = r.performance.tokensPerSecond;
+                  displayValue = value ? `${value}` : '—';
+                  barWidth = value ? (value / maxSpeed) * 100 : 0;
+                } else if (expandedChart.type === 'vram') {
+                  value = r.memory.vramPercent;
+                  displayValue = `${value}%`;
+                  barWidth = Math.min(value, 100);
+                  barColor = value > 90 ? 'bg-red-500' : value > 75 ? 'bg-yellow-500' : MODEL_COLORS[i];
+                } else if (expandedChart.type === 'quant') {
+                  value = r.quant.quality * 100;
+                  displayValue = r.quant.level;
+                  barWidth = value;
+                } else if (expandedChart.type === 'benchmark' && expandedChart.benchKey) {
+                  const benchVal = r.model.benchmarks[expandedChart.benchKey];
+                  const maxBench = Math.max(...topModels.map((m) => m.model.benchmarks[expandedChart.benchKey!] ?? 0), 1);
+                  value = benchVal ?? null;
+                  displayValue = value !== null ? value.toFixed(1) : '—';
+                  barWidth = value !== null ? (value / maxBench) * 100 : 0;
+                }
+
+                return (
+                  <div
+                    key={`exp-${r.model.id}`}
+                    className={`flex items-center gap-2 py-1 px-2 rounded cursor-pointer hover:bg-gray-800/50 ${selectedModel === i ? 'bg-gray-800' : ''}`}
+                    onClick={() => setSelectedModel(i)}
+                  >
+                    <span className={`w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold ${MODEL_COLORS[i]} text-white shrink-0`}>
+                      {i + 1}
+                    </span>
+                    <div className="w-28 shrink-0 text-xs text-white truncate">{r.model.name}</div>
+                    <div className="flex-1 h-4 bg-gray-800 rounded overflow-hidden">
+                      {value !== null ? (
+                        <div
+                          className={`h-full ${barColor}`}
+                          style={{ width: `${barWidth}%` }}
+                        />
+                      ) : (
+                        <span className="text-[10px] text-gray-600 px-1">N/A</span>
+                      )}
+                    </div>
+                    <div className="w-12 text-right text-xs text-gray-300">
+                      {displayValue}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       )}
     </div>
