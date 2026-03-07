@@ -46,7 +46,7 @@ src/
   lib/              # Engine di raccomandazione + tipi TypeScript
   hooks/            # React hook (useRecommendation)
 public/data/        # JSON statici (gpus.json, models.json)
-scripts/            # Script Python per aggiornamento dati (placeholder)
+scripts/            # Script Python per aggiornamento dati
 .github/workflows/  # Deploy automatico su GitHub Pages
 ```
 
@@ -59,8 +59,27 @@ scripts/            # Script Python per aggiornamento dati (placeholder)
 
 ## Aggiornare i dati
 
-I modelli e le GPU sono in `public/data/`. Per aggiungere un modello, editare `models.json` seguendo lo schema esistente. Campi chiave:
+I dati sono in `public/data/`:
+- `models.json` - modelli LLM con benchmark e quantizzazioni
+- `gpus.json` - GPU con VRAM e bandwidth
 
+### Script automatico (modelli)
+
+```bash
+python scripts/update_models.py
+```
+
+Lo script:
+1. Carica la lista curata di modelli da `MODEL_CONFIGS`
+2. Recupera benchmark da HuggingFace API (se disponibili)
+3. Calcola VRAM stimata per ogni quantizzazione
+4. Preserva i benchmark esistenti se già presenti
+
+Per aggiungere un nuovo modello, modificare `MODEL_CONFIGS` in `scripts/update_models.py`.
+
+### Modifica manuale
+
+I campi chiave in `models.json`:
 - `vram_mb`: VRAM stimata per la quantizzazione
 - `benchmarks`: score dai benchmark (null se non disponibile)
 - `ollama_tag`: tag esatto per `ollama run`

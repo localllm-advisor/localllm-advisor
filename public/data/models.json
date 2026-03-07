@@ -1,282 +1,39 @@
 [
   {
-    "id": "llama3.1-8b",
-    "name": "Llama 3.1 8B",
-    "family": "llama",
-    "params_b": 8,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding", "reasoning"],
-    "context_length": 131072,
-    "release_date": "2024-07-23",
-    "ollama_base": "llama3.1:8b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 5500, "quality": 0.94, "ollama_tag": "llama3.1:8b" },
-      { "level": "Q6_K", "bpw": 6.5, "vram_mb": 7200, "quality": 0.97, "ollama_tag": "llama3.1:8b-q6_K" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 8800, "quality": 0.995, "ollama_tag": "llama3.1:8b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 62.2,
-      "mmlu_pro": 48.3,
-      "math": 47.2,
-      "ifeval": 76.4,
-      "bbh": 67.8,
-      "mmmu": null,
-      "gpqa": 30.4,
-      "musr": 38.2,
-      "mbpp": 68.1,
-      "bigcodebench": null,
-      "alpacaeval": 25.8,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "llama3.1-70b",
-    "name": "Llama 3.1 70B",
-    "family": "llama",
-    "params_b": 70,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding", "reasoning"],
-    "context_length": 131072,
-    "release_date": "2024-07-23",
-    "ollama_base": "llama3.1:70b",
-    "quantizations": [
-      { "level": "Q2_K", "bpw": 2.5, "vram_mb": 24000, "quality": 0.82, "ollama_tag": "llama3.1:70b-q2_K" },
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 40000, "quality": 0.94, "ollama_tag": "llama3.1:70b" }
-    ],
-    "benchmarks": {
-      "humaneval": 80.5,
-      "mmlu_pro": 66.4,
-      "math": 68.0,
-      "ifeval": 87.5,
-      "bbh": 81.6,
-      "mmmu": null,
-      "gpqa": 46.7,
-      "musr": 56.1,
-      "mbpp": 82.6,
-      "bigcodebench": null,
-      "alpacaeval": 38.1,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "llama3.3-70b",
-    "name": "Llama 3.3 70B",
-    "family": "llama",
-    "params_b": 70,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding", "reasoning"],
-    "context_length": 131072,
-    "release_date": "2024-12-06",
-    "ollama_base": "llama3.3:70b",
-    "quantizations": [
-      { "level": "Q2_K", "bpw": 2.5, "vram_mb": 24000, "quality": 0.82, "ollama_tag": "llama3.3:70b-q2_K" },
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 40000, "quality": 0.94, "ollama_tag": "llama3.3:70b" }
-    ],
-    "benchmarks": {
-      "humaneval": 83.2,
-      "mmlu_pro": 68.9,
-      "math": 73.9,
-      "ifeval": 89.2,
-      "bbh": 83.4,
-      "mmmu": null,
-      "gpqa": 49.1,
-      "musr": 58.7,
-      "mbpp": 84.3,
-      "bigcodebench": null,
-      "alpacaeval": 41.2,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "qwen2.5-7b",
-    "name": "Qwen 2.5 7B",
-    "family": "qwen",
-    "params_b": 7,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding", "reasoning"],
-    "context_length": 32768,
-    "release_date": "2024-09-19",
-    "ollama_base": "qwen2.5:7b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 5000, "quality": 0.94, "ollama_tag": "qwen2.5:7b" },
-      { "level": "Q6_K", "bpw": 6.5, "vram_mb": 6500, "quality": 0.97, "ollama_tag": "qwen2.5:7b-q6_K" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 8000, "quality": 0.995, "ollama_tag": "qwen2.5:7b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 61.6,
-      "mmlu_pro": 56.3,
-      "math": 55.2,
-      "ifeval": 74.8,
-      "bbh": 62.1,
-      "mmmu": null,
-      "gpqa": 34.2,
-      "musr": 40.1,
-      "mbpp": 64.2,
-      "bigcodebench": null,
-      "alpacaeval": 23.1,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "qwen2.5-14b",
-    "name": "Qwen 2.5 14B",
-    "family": "qwen",
-    "params_b": 14,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding", "reasoning"],
-    "context_length": 32768,
-    "release_date": "2024-09-19",
-    "ollama_base": "qwen2.5:14b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 9200, "quality": 0.95, "ollama_tag": "qwen2.5:14b" },
-      { "level": "Q6_K", "bpw": 6.5, "vram_mb": 12500, "quality": 0.97, "ollama_tag": "qwen2.5:14b-q6_K" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 15000, "quality": 0.995, "ollama_tag": "qwen2.5:14b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 71.4,
-      "mmlu_pro": 63.5,
-      "math": 62.6,
-      "ifeval": 83.1,
-      "bbh": 71.2,
-      "mmmu": null,
-      "gpqa": 42.1,
-      "musr": 47.3,
-      "mbpp": 73.8,
-      "bigcodebench": null,
-      "alpacaeval": 30.5,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "qwen2.5-32b",
-    "name": "Qwen 2.5 32B",
-    "family": "qwen",
-    "params_b": 32,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding", "reasoning"],
-    "context_length": 32768,
-    "release_date": "2024-09-19",
-    "ollama_base": "qwen2.5:32b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 20000, "quality": 0.95, "ollama_tag": "qwen2.5:32b" },
-      { "level": "Q6_K", "bpw": 6.5, "vram_mb": 27000, "quality": 0.97, "ollama_tag": "qwen2.5:32b-q6_K" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 34000, "quality": 0.995, "ollama_tag": "qwen2.5:32b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 79.1,
-      "mmlu_pro": 69.4,
-      "math": 70.3,
-      "ifeval": 86.7,
-      "bbh": 78.5,
-      "mmmu": null,
-      "gpqa": 48.2,
-      "musr": 53.4,
-      "mbpp": 80.1,
-      "bigcodebench": null,
-      "alpacaeval": 36.8,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "qwen2.5-coder-7b",
-    "name": "Qwen 2.5 Coder 7B",
-    "family": "qwen",
-    "params_b": 7,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding"],
-    "context_length": 32768,
-    "release_date": "2024-11-12",
-    "ollama_base": "qwen2.5-coder:7b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 5000, "quality": 0.94, "ollama_tag": "qwen2.5-coder:7b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 8000, "quality": 0.995, "ollama_tag": "qwen2.5-coder:7b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 76.8,
-      "mmlu_pro": 45.2,
-      "math": 42.1,
-      "ifeval": 68.3,
-      "bbh": 52.6,
-      "mmmu": null,
-      "gpqa": null,
-      "musr": null,
-      "mbpp": 74.5,
-      "bigcodebench": 38.2,
-      "alpacaeval": null,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "qwen2.5-coder-14b",
-    "name": "Qwen 2.5 Coder 14B",
-    "family": "qwen",
-    "params_b": 14,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding"],
-    "context_length": 32768,
-    "release_date": "2024-11-12",
-    "ollama_base": "qwen2.5-coder:14b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 9200, "quality": 0.95, "ollama_tag": "qwen2.5-coder:14b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 15000, "quality": 0.995, "ollama_tag": "qwen2.5-coder:14b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 79.3,
-      "mmlu_pro": 62.1,
-      "math": 58.4,
-      "ifeval": 81.2,
-      "bbh": 67.8,
-      "mmmu": null,
-      "gpqa": null,
-      "musr": null,
-      "mbpp": 78.9,
-      "bigcodebench": 44.6,
-      "alpacaeval": null,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "qwen2.5-coder-32b",
-    "name": "Qwen 2.5 Coder 32B",
-    "family": "qwen",
-    "params_b": 32,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding"],
-    "context_length": 32768,
-    "release_date": "2024-11-12",
-    "ollama_base": "qwen2.5-coder:32b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 20000, "quality": 0.95, "ollama_tag": "qwen2.5-coder:32b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 34000, "quality": 0.995, "ollama_tag": "qwen2.5-coder:32b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 87.2,
-      "mmlu_pro": 66.8,
-      "math": 64.2,
-      "ifeval": 84.5,
-      "bbh": 72.4,
-      "mmmu": null,
-      "gpqa": null,
-      "musr": null,
-      "mbpp": 85.3,
-      "bigcodebench": 52.1,
-      "alpacaeval": null,
-      "mmbench": null
-    }
-  },
-  {
     "id": "deepseek-r1-7b",
     "name": "DeepSeek R1 Distill 7B",
     "family": "deepseek",
     "params_b": 7,
     "architecture": "dense",
-    "capabilities": ["chat", "reasoning"],
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
     "context_length": 32768,
     "release_date": "2025-01-20",
     "ollama_base": "deepseek-r1:7b",
     "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 5000, "quality": 0.94, "ollama_tag": "deepseek-r1:7b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 8000, "quality": 0.995, "ollama_tag": "deepseek-r1:7b-q8_0" }
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4532,
+        "quality": 0.94,
+        "ollama_tag": "deepseek-r1:7b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6324,
+        "quality": 0.97,
+        "ollama_tag": "deepseek-r1:7b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7668,
+        "quality": 0.995,
+        "ollama_tag": "deepseek-r1:7b-q8_0"
+      }
     ],
     "benchmarks": {
       "humaneval": 49.8,
@@ -299,13 +56,35 @@
     "family": "deepseek",
     "params_b": 14,
     "architecture": "dense",
-    "capabilities": ["chat", "reasoning"],
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
     "context_length": 32768,
     "release_date": "2025-01-20",
     "ollama_base": "deepseek-r1:14b",
     "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 9200, "quality": 0.95, "ollama_tag": "deepseek-r1:14b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 15000, "quality": 0.995, "ollama_tag": "deepseek-r1:14b-q8_0" }
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 8564,
+        "quality": 0.95,
+        "ollama_tag": "deepseek-r1:14b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 12148,
+        "quality": 0.97,
+        "ollama_tag": "deepseek-r1:14b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 14836,
+        "quality": 0.995,
+        "ollama_tag": "deepseek-r1:14b-q8_0"
+      }
     ],
     "benchmarks": {
       "humaneval": 58.2,
@@ -328,13 +107,35 @@
     "family": "deepseek",
     "params_b": 32,
     "architecture": "dense",
-    "capabilities": ["chat", "reasoning"],
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
     "context_length": 32768,
     "release_date": "2025-01-20",
     "ollama_base": "deepseek-r1:32b",
     "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 20000, "quality": 0.95, "ollama_tag": "deepseek-r1:32b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 34000, "quality": 0.995, "ollama_tag": "deepseek-r1:32b-q8_0" }
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18932,
+        "quality": 0.95,
+        "ollama_tag": "deepseek-r1:32b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 27124,
+        "quality": 0.97,
+        "ollama_tag": "deepseek-r1:32b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 33268,
+        "quality": 0.995,
+        "ollama_tag": "deepseek-r1:32b-q8_0"
+      }
     ],
     "benchmarks": {
       "humaneval": 67.4,
@@ -352,118 +153,47 @@
     }
   },
   {
-    "id": "mistral-7b",
-    "name": "Mistral 7B v0.3",
-    "family": "mistral",
-    "params_b": 7,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding"],
-    "context_length": 32768,
-    "release_date": "2024-05-22",
-    "ollama_base": "mistral:7b",
+    "id": "deepseek-v3",
+    "name": "DeepSeek V3",
+    "family": "deepseek",
+    "params_b": 671,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 65536,
+    "release_date": "2026-03-07",
+    "ollama_base": "deepseek-v3",
     "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 5000, "quality": 0.94, "ollama_tag": "mistral:7b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 8000, "quality": 0.995, "ollama_tag": "mistral:7b-q8_0" }
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 386996,
+        "quality": 0.94,
+        "ollama_tag": "deepseek-v3"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 687604,
+        "quality": 0.995,
+        "ollama_tag": "deepseek-v3-q8_0"
+      }
     ],
     "benchmarks": {
-      "humaneval": 42.7,
-      "mmlu_pro": 39.8,
-      "math": 28.4,
-      "ifeval": 66.2,
-      "bbh": 56.1,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 24.7,
-      "musr": 33.1,
-      "mbpp": 55.3,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
       "bigcodebench": null,
-      "alpacaeval": 21.4,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "mistral-nemo-12b",
-    "name": "Mistral Nemo 12B",
-    "family": "mistral",
-    "params_b": 12,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding"],
-    "context_length": 131072,
-    "release_date": "2024-07-18",
-    "ollama_base": "mistral-nemo:12b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 8000, "quality": 0.94, "ollama_tag": "mistral-nemo:12b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 13000, "quality": 0.995, "ollama_tag": "mistral-nemo:12b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 55.8,
-      "mmlu_pro": 52.4,
-      "math": 44.6,
-      "ifeval": 74.1,
-      "bbh": 64.2,
-      "mmmu": null,
-      "gpqa": 31.8,
-      "musr": 39.7,
-      "mbpp": 62.8,
-      "bigcodebench": null,
-      "alpacaeval": 27.3,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "phi3-mini-3.8b",
-    "name": "Phi-3 Mini 3.8B",
-    "family": "phi",
-    "params_b": 3.8,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding", "reasoning"],
-    "context_length": 4096,
-    "release_date": "2024-04-23",
-    "ollama_base": "phi3:mini",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 2800, "quality": 0.94, "ollama_tag": "phi3:mini" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 4200, "quality": 0.995, "ollama_tag": "phi3:mini-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 55.1,
-      "mmlu_pro": 41.3,
-      "math": 40.2,
-      "ifeval": 62.8,
-      "bbh": 52.4,
-      "mmmu": null,
-      "gpqa": 28.1,
-      "musr": 31.4,
-      "mbpp": 57.2,
-      "bigcodebench": null,
-      "alpacaeval": 16.2,
-      "mmbench": null
-    }
-  },
-  {
-    "id": "phi4-14b",
-    "name": "Phi-4 14B",
-    "family": "phi",
-    "params_b": 14,
-    "architecture": "dense",
-    "capabilities": ["chat", "coding", "reasoning"],
-    "context_length": 16384,
-    "release_date": "2024-12-12",
-    "ollama_base": "phi4:14b",
-    "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 9200, "quality": 0.95, "ollama_tag": "phi4:14b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 15000, "quality": 0.995, "ollama_tag": "phi4:14b-q8_0" }
-    ],
-    "benchmarks": {
-      "humaneval": 74.8,
-      "mmlu_pro": 64.2,
-      "math": 72.8,
-      "ifeval": 82.1,
-      "bbh": 76.4,
-      "mmmu": null,
-      "gpqa": 50.6,
-      "musr": 49.8,
-      "mbpp": 76.2,
-      "bigcodebench": 40.1,
-      "alpacaeval": 33.2,
+      "alpacaeval": null,
       "mmbench": null
     }
   },
@@ -473,13 +203,35 @@
     "family": "gemma",
     "params_b": 9,
     "architecture": "dense",
-    "capabilities": ["chat", "reasoning"],
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
     "context_length": 8192,
     "release_date": "2024-06-27",
     "ollama_base": "gemma2:9b",
     "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 6000, "quality": 0.94, "ollama_tag": "gemma2:9b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 10000, "quality": 0.995, "ollama_tag": "gemma2:9b-q8_0" }
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5684,
+        "quality": 0.94,
+        "ollama_tag": "gemma2:9b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7988,
+        "quality": 0.97,
+        "ollama_tag": "gemma2:9b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9716,
+        "quality": 0.995,
+        "ollama_tag": "gemma2:9b-q8_0"
+      }
     ],
     "benchmarks": {
       "humaneval": 51.2,
@@ -497,18 +249,284 @@
     }
   },
   {
+    "id": "gemma2-27b",
+    "name": "Gemma 2 27B",
+    "family": "gemma",
+    "params_b": 27,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 8192,
+    "release_date": "2026-03-07",
+    "ollama_base": "gemma2:27b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 16052,
+        "quality": 0.95,
+        "ollama_tag": "gemma2:27b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22964,
+        "quality": 0.97,
+        "ollama_tag": "gemma2:27b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 28148,
+        "quality": 0.995,
+        "ollama_tag": "gemma2:27b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama3.2-3b",
+    "name": "Llama 3.2 3B",
+    "family": "llama",
+    "params_b": 3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-03-07",
+    "ollama_base": "llama3.2:3b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2228,
+        "quality": 0.94,
+        "ollama_tag": "llama3.2:3b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2996,
+        "quality": 0.97,
+        "ollama_tag": "llama3.2:3b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3572,
+        "quality": 0.995,
+        "ollama_tag": "llama3.2:3b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama3.1-8b",
+    "name": "Llama 3.1 8B",
+    "family": "llama",
+    "params_b": 8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 131072,
+    "release_date": "2024-07-23",
+    "ollama_base": "llama3.1:8b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5108,
+        "quality": 0.94,
+        "ollama_tag": "llama3.1:8b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7156,
+        "quality": 0.97,
+        "ollama_tag": "llama3.1:8b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8692,
+        "quality": 0.995,
+        "ollama_tag": "llama3.1:8b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 62.2,
+      "mmlu_pro": 48.3,
+      "math": 47.2,
+      "ifeval": 76.4,
+      "bbh": 67.8,
+      "mmmu": null,
+      "gpqa": 30.4,
+      "musr": 38.2,
+      "mbpp": 68.1,
+      "bigcodebench": null,
+      "alpacaeval": 25.8,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama3.1-70b",
+    "name": "Llama 3.1 70B",
+    "family": "llama",
+    "params_b": 70,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 131072,
+    "release_date": "2024-07-23",
+    "ollama_base": "llama3.1:70b",
+    "quantizations": [
+      {
+        "level": "Q2_K",
+        "bpw": 2.5,
+        "vram_mb": 22900,
+        "quality": 0.82,
+        "ollama_tag": "llama3.1:70b-q2_k"
+      },
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 40820,
+        "quality": 0.94,
+        "ollama_tag": "llama3.1:70b"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 80.5,
+      "mmlu_pro": 66.4,
+      "math": 68,
+      "ifeval": 87.5,
+      "bbh": 81.6,
+      "mmmu": null,
+      "gpqa": 46.7,
+      "musr": 56.1,
+      "mbpp": 82.6,
+      "bigcodebench": null,
+      "alpacaeval": 38.1,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama3.3-70b",
+    "name": "Llama 3.3 70B",
+    "family": "llama",
+    "params_b": 70,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 131072,
+    "release_date": "2024-12-06",
+    "ollama_base": "llama3.3:70b",
+    "quantizations": [
+      {
+        "level": "Q2_K",
+        "bpw": 2.5,
+        "vram_mb": 22900,
+        "quality": 0.82,
+        "ollama_tag": "llama3.3:70b-q2_k"
+      },
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 40820,
+        "quality": 0.94,
+        "ollama_tag": "llama3.3:70b"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 83.2,
+      "mmlu_pro": 68.9,
+      "math": 73.9,
+      "ifeval": 89.2,
+      "bbh": 83.4,
+      "mmmu": null,
+      "gpqa": 49.1,
+      "musr": 58.7,
+      "mbpp": 84.3,
+      "bigcodebench": null,
+      "alpacaeval": 41.2,
+      "mmbench": null
+    }
+  },
+  {
     "id": "llava-v1.6-7b",
     "name": "LLaVA 1.6 7B",
     "family": "llava",
     "params_b": 7,
     "architecture": "dense",
-    "capabilities": ["chat", "vision"],
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
     "context_length": 4096,
     "release_date": "2024-01-30",
     "ollama_base": "llava:7b",
     "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 5500, "quality": 0.94, "ollama_tag": "llava:7b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 8800, "quality": 0.995, "ollama_tag": "llava:7b-q8_0" }
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4532,
+        "quality": 0.94,
+        "ollama_tag": "llava:7b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6324,
+        "quality": 0.97,
+        "ollama_tag": "llava:7b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7668,
+        "quality": 0.995,
+        "ollama_tag": "llava:7b-q8_0"
+      }
     ],
     "benchmarks": {
       "humaneval": null,
@@ -531,13 +549,35 @@
     "family": "llava",
     "params_b": 13,
     "architecture": "dense",
-    "capabilities": ["chat", "vision"],
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
     "context_length": 4096,
     "release_date": "2024-01-30",
     "ollama_base": "llava:13b",
     "quantizations": [
-      { "level": "Q4_K_M", "bpw": 4.5, "vram_mb": 8500, "quality": 0.95, "ollama_tag": "llava:13b" },
-      { "level": "Q8_0", "bpw": 8.0, "vram_mb": 14000, "quality": 0.995, "ollama_tag": "llava:13b-q8_0" }
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 7988,
+        "quality": 0.95,
+        "ollama_tag": "llava:13b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 11316,
+        "quality": 0.97,
+        "ollama_tag": "llava:13b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 13812,
+        "quality": 0.995,
+        "ollama_tag": "llava:13b-q8_0"
+      }
     ],
     "benchmarks": {
       "humaneval": null,
@@ -552,6 +592,618 @@
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": 74.8
+    }
+  },
+  {
+    "id": "mistral-7b",
+    "name": "Mistral 7 7B",
+    "family": "mistral",
+    "params_b": 7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 32768,
+    "release_date": "2024-05-22",
+    "ollama_base": "mistral:7b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4532,
+        "quality": 0.94,
+        "ollama_tag": "mistral:7b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6324,
+        "quality": 0.97,
+        "ollama_tag": "mistral:7b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7668,
+        "quality": 0.995,
+        "ollama_tag": "mistral:7b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 42.7,
+      "mmlu_pro": 39.8,
+      "math": 28.4,
+      "ifeval": 66.2,
+      "bbh": 56.1,
+      "mmmu": null,
+      "gpqa": 24.7,
+      "musr": 33.1,
+      "mbpp": 55.3,
+      "bigcodebench": null,
+      "alpacaeval": 21.4,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "mistral-nemo-12b",
+    "name": "Mistral Nemo 12B",
+    "family": "mistral",
+    "params_b": 12,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 131072,
+    "release_date": "2024-07-18",
+    "ollama_base": "mistral-nemo:12b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 7412,
+        "quality": 0.95,
+        "ollama_tag": "mistral-nemo:12b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 10484,
+        "quality": 0.97,
+        "ollama_tag": "mistral-nemo:12b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 12788,
+        "quality": 0.995,
+        "ollama_tag": "mistral-nemo:12b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 55.8,
+      "mmlu_pro": 52.4,
+      "math": 44.6,
+      "ifeval": 74.1,
+      "bbh": 64.2,
+      "mmmu": null,
+      "gpqa": 31.8,
+      "musr": 39.7,
+      "mbpp": 62.8,
+      "bigcodebench": null,
+      "alpacaeval": 27.3,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "mistral-small-24b",
+    "name": "Mistral Small 24B",
+    "family": "mistral",
+    "params_b": 24,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-03-07",
+    "ollama_base": "mistral-small:24b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 14324,
+        "quality": 0.95,
+        "ollama_tag": "mistral-small:24b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 20468,
+        "quality": 0.97,
+        "ollama_tag": "mistral-small:24b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 25076,
+        "quality": 0.995,
+        "ollama_tag": "mistral-small:24b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "phi3-mini-3.8b",
+    "name": "Phi-3 Mini 3.8B",
+    "family": "phi",
+    "params_b": 3.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-04-23",
+    "ollama_base": "phi3:mini",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2689,
+        "quality": 0.94,
+        "ollama_tag": "phi3:mini"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3662,
+        "quality": 0.97,
+        "ollama_tag": "phi3:mini-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4391,
+        "quality": 0.995,
+        "ollama_tag": "phi3:mini-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 55.1,
+      "mmlu_pro": 41.3,
+      "math": 40.2,
+      "ifeval": 62.8,
+      "bbh": 52.4,
+      "mmmu": null,
+      "gpqa": 28.1,
+      "musr": 31.4,
+      "mbpp": 57.2,
+      "bigcodebench": null,
+      "alpacaeval": 16.2,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "phi4-14b",
+    "name": "Phi 4 14B",
+    "family": "phi",
+    "params_b": 14,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 16384,
+    "release_date": "2024-12-12",
+    "ollama_base": "phi4:14b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 8564,
+        "quality": 0.95,
+        "ollama_tag": "phi4:14b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 12148,
+        "quality": 0.97,
+        "ollama_tag": "phi4:14b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 14836,
+        "quality": 0.995,
+        "ollama_tag": "phi4:14b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 74.8,
+      "mmlu_pro": 64.2,
+      "math": 72.8,
+      "ifeval": 82.1,
+      "bbh": 76.4,
+      "mmmu": null,
+      "gpqa": 50.6,
+      "musr": 49.8,
+      "mbpp": 76.2,
+      "bigcodebench": 40.1,
+      "alpacaeval": 33.2,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2.5-7b",
+    "name": "Qwen 2.5 7B",
+    "family": "qwen",
+    "params_b": 7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 32768,
+    "release_date": "2024-09-19",
+    "ollama_base": "qwen2.5:7b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4532,
+        "quality": 0.94,
+        "ollama_tag": "qwen2.5:7b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6324,
+        "quality": 0.97,
+        "ollama_tag": "qwen2.5:7b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7668,
+        "quality": 0.995,
+        "ollama_tag": "qwen2.5:7b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 61.6,
+      "mmlu_pro": 56.3,
+      "math": 55.2,
+      "ifeval": 74.8,
+      "bbh": 62.1,
+      "mmmu": null,
+      "gpqa": 34.2,
+      "musr": 40.1,
+      "mbpp": 64.2,
+      "bigcodebench": null,
+      "alpacaeval": 23.1,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2.5-coder-7b",
+    "name": "Qwen 2.5 Coder 7B",
+    "family": "qwen",
+    "params_b": 7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 32768,
+    "release_date": "2024-11-12",
+    "ollama_base": "qwen2.5-coder:7b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4532,
+        "quality": 0.94,
+        "ollama_tag": "qwen2.5-coder:7b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6324,
+        "quality": 0.97,
+        "ollama_tag": "qwen2.5-coder:7b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7668,
+        "quality": 0.995,
+        "ollama_tag": "qwen2.5-coder:7b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 76.8,
+      "mmlu_pro": 45.2,
+      "math": 42.1,
+      "ifeval": 68.3,
+      "bbh": 52.6,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": 74.5,
+      "bigcodebench": 38.2,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2.5-14b",
+    "name": "Qwen 2.5 14B",
+    "family": "qwen",
+    "params_b": 14,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 32768,
+    "release_date": "2024-09-19",
+    "ollama_base": "qwen2.5:14b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 8564,
+        "quality": 0.95,
+        "ollama_tag": "qwen2.5:14b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 12148,
+        "quality": 0.97,
+        "ollama_tag": "qwen2.5:14b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 14836,
+        "quality": 0.995,
+        "ollama_tag": "qwen2.5:14b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 71.4,
+      "mmlu_pro": 63.5,
+      "math": 62.6,
+      "ifeval": 83.1,
+      "bbh": 71.2,
+      "mmmu": null,
+      "gpqa": 42.1,
+      "musr": 47.3,
+      "mbpp": 73.8,
+      "bigcodebench": null,
+      "alpacaeval": 30.5,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2.5-coder-14b",
+    "name": "Qwen 2.5 Coder 14B",
+    "family": "qwen",
+    "params_b": 14,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 32768,
+    "release_date": "2024-11-12",
+    "ollama_base": "qwen2.5-coder:14b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 8564,
+        "quality": 0.95,
+        "ollama_tag": "qwen2.5-coder:14b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 12148,
+        "quality": 0.97,
+        "ollama_tag": "qwen2.5-coder:14b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 14836,
+        "quality": 0.995,
+        "ollama_tag": "qwen2.5-coder:14b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 79.3,
+      "mmlu_pro": 62.1,
+      "math": 58.4,
+      "ifeval": 81.2,
+      "bbh": 67.8,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": 78.9,
+      "bigcodebench": 44.6,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2.5-32b",
+    "name": "Qwen 2.5 32B",
+    "family": "qwen",
+    "params_b": 32,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 32768,
+    "release_date": "2024-09-19",
+    "ollama_base": "qwen2.5:32b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18932,
+        "quality": 0.95,
+        "ollama_tag": "qwen2.5:32b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 27124,
+        "quality": 0.97,
+        "ollama_tag": "qwen2.5:32b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 33268,
+        "quality": 0.995,
+        "ollama_tag": "qwen2.5:32b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 79.1,
+      "mmlu_pro": 69.4,
+      "math": 70.3,
+      "ifeval": 86.7,
+      "bbh": 78.5,
+      "mmmu": null,
+      "gpqa": 48.2,
+      "musr": 53.4,
+      "mbpp": 80.1,
+      "bigcodebench": null,
+      "alpacaeval": 36.8,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2.5-coder-32b",
+    "name": "Qwen 2.5 Coder 32B",
+    "family": "qwen",
+    "params_b": 32,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 32768,
+    "release_date": "2024-11-12",
+    "ollama_base": "qwen2.5-coder:32b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18932,
+        "quality": 0.95,
+        "ollama_tag": "qwen2.5-coder:32b"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 27124,
+        "quality": 0.97,
+        "ollama_tag": "qwen2.5-coder:32b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 33268,
+        "quality": 0.995,
+        "ollama_tag": "qwen2.5-coder:32b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 87.2,
+      "mmlu_pro": 66.8,
+      "math": 64.2,
+      "ifeval": 84.5,
+      "bbh": 72.4,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": 85.3,
+      "bigcodebench": 52.1,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2.5-72b",
+    "name": "Qwen 2.5 72B",
+    "family": "qwen",
+    "params_b": 72,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-03-07",
+    "ollama_base": "qwen2.5:72b",
+    "quantizations": [
+      {
+        "level": "Q2_K",
+        "bpw": 2.5,
+        "vram_mb": 23540,
+        "quality": 0.82,
+        "ollama_tag": "qwen2.5:72b-q2_k"
+      },
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 41972,
+        "quality": 0.94,
+        "ollama_tag": "qwen2.5:72b"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
     }
   }
 ]
