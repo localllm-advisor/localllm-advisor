@@ -2,9 +2,24 @@
 
 Sito statico dove l'utente seleziona la propria GPU, sceglie un use case, e ottiene una lista ordinata di modelli LLM con il comando Ollama pronto da copiare.
 
+## Prerequisiti
+
+- [Node.js](https://nodejs.org/) >= 18 (consigliato: 20 LTS)
+- npm (incluso con Node.js)
+
+Per verificare:
+```bash
+node -v   # deve essere >= 18
+npm -v
+```
+
 ## Setup locale
 
 ```bash
+# Clona il repo
+git clone https://github.com/localllm-advisor/localllm-advisor.git
+cd localllm-advisor
+
 # Installa dipendenze
 npm install
 
