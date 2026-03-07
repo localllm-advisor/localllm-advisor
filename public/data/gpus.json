@@ -1,0 +1,226 @@
+[
+  {
+    "name": "NVIDIA RTX 4090",
+    "vram_mb": 24576,
+    "bandwidth_gbps": 1008.4,
+    "vendor": "nvidia",
+    "aliases": ["4090", "RTX 4090", "rtx4090"]
+  },
+  {
+    "name": "NVIDIA RTX 4080 SUPER",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 736.3,
+    "vendor": "nvidia",
+    "aliases": ["4080S", "RTX 4080 Super", "4080 super"]
+  },
+  {
+    "name": "NVIDIA RTX 4080",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 716.8,
+    "vendor": "nvidia",
+    "aliases": ["4080", "RTX 4080", "rtx4080"]
+  },
+  {
+    "name": "NVIDIA RTX 4070 Ti SUPER",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 672.3,
+    "vendor": "nvidia",
+    "aliases": ["4070TiS", "RTX 4070 Ti Super", "4070 ti super"]
+  },
+  {
+    "name": "NVIDIA RTX 4070 Ti",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 504.2,
+    "vendor": "nvidia",
+    "aliases": ["4070Ti", "RTX 4070 Ti", "4070 ti"]
+  },
+  {
+    "name": "NVIDIA RTX 4070 SUPER",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 504.2,
+    "vendor": "nvidia",
+    "aliases": ["4070S", "RTX 4070 Super", "4070 super"]
+  },
+  {
+    "name": "NVIDIA RTX 4070",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 504.2,
+    "vendor": "nvidia",
+    "aliases": ["4070", "RTX 4070", "rtx4070"]
+  },
+  {
+    "name": "NVIDIA RTX 4060 Ti 16GB",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 288.0,
+    "vendor": "nvidia",
+    "aliases": ["4060Ti 16GB", "RTX 4060 Ti 16GB"]
+  },
+  {
+    "name": "NVIDIA RTX 4060 Ti 8GB",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 288.0,
+    "vendor": "nvidia",
+    "aliases": ["4060Ti", "RTX 4060 Ti", "4060 ti"]
+  },
+  {
+    "name": "NVIDIA RTX 4060",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 272.0,
+    "vendor": "nvidia",
+    "aliases": ["4060", "RTX 4060", "rtx4060"]
+  },
+  {
+    "name": "NVIDIA RTX 3090",
+    "vram_mb": 24576,
+    "bandwidth_gbps": 936.2,
+    "vendor": "nvidia",
+    "aliases": ["3090", "RTX 3090", "rtx3090"]
+  },
+  {
+    "name": "NVIDIA RTX 3080 10GB",
+    "vram_mb": 10240,
+    "bandwidth_gbps": 760.3,
+    "vendor": "nvidia",
+    "aliases": ["3080", "RTX 3080", "rtx3080"]
+  },
+  {
+    "name": "NVIDIA RTX 3070",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 448.0,
+    "vendor": "nvidia",
+    "aliases": ["3070", "RTX 3070", "rtx3070"]
+  },
+  {
+    "name": "NVIDIA RTX 3060 12GB",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 360.0,
+    "vendor": "nvidia",
+    "aliases": ["3060", "RTX 3060", "rtx3060", "3060 12GB"]
+  },
+  {
+    "name": "NVIDIA RTX 5090",
+    "vram_mb": 32768,
+    "bandwidth_gbps": 1792.0,
+    "vendor": "nvidia",
+    "aliases": ["5090", "RTX 5090", "rtx5090"]
+  },
+  {
+    "name": "NVIDIA RTX 5080",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 960.0,
+    "vendor": "nvidia",
+    "aliases": ["5080", "RTX 5080", "rtx5080"]
+  },
+  {
+    "name": "NVIDIA RTX 5070 Ti",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 896.0,
+    "vendor": "nvidia",
+    "aliases": ["5070Ti", "RTX 5070 Ti", "5070 ti"]
+  },
+  {
+    "name": "NVIDIA RTX 5070",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 672.0,
+    "vendor": "nvidia",
+    "aliases": ["5070", "RTX 5070", "rtx5070"]
+  },
+  {
+    "name": "AMD RX 7900 XTX",
+    "vram_mb": 24576,
+    "bandwidth_gbps": 960.0,
+    "vendor": "amd",
+    "aliases": ["7900XTX", "RX 7900 XTX", "7900 xtx"]
+  },
+  {
+    "name": "AMD RX 7900 XT",
+    "vram_mb": 20480,
+    "bandwidth_gbps": 800.0,
+    "vendor": "amd",
+    "aliases": ["7900XT", "RX 7900 XT", "7900 xt"]
+  },
+  {
+    "name": "AMD RX 7800 XT",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 624.0,
+    "vendor": "amd",
+    "aliases": ["7800XT", "RX 7800 XT", "7800 xt"]
+  },
+  {
+    "name": "AMD RX 7600",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 288.0,
+    "vendor": "amd",
+    "aliases": ["7600", "RX 7600", "rx7600"]
+  },
+  {
+    "name": "Apple M1 (8GB)",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 68.3,
+    "vendor": "apple",
+    "aliases": ["M1", "m1", "M1 8GB"]
+  },
+  {
+    "name": "Apple M1 Pro (16GB)",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 200.0,
+    "vendor": "apple",
+    "aliases": ["M1 Pro", "m1 pro", "M1 Pro 16GB"]
+  },
+  {
+    "name": "Apple M2 (8GB)",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 100.0,
+    "vendor": "apple",
+    "aliases": ["M2", "m2", "M2 8GB"]
+  },
+  {
+    "name": "Apple M2 Pro (16GB)",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 200.0,
+    "vendor": "apple",
+    "aliases": ["M2 Pro", "m2 pro", "M2 Pro 16GB"]
+  },
+  {
+    "name": "Apple M3 (8GB)",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 100.0,
+    "vendor": "apple",
+    "aliases": ["M3", "m3", "M3 8GB"]
+  },
+  {
+    "name": "Apple M3 Pro (18GB)",
+    "vram_mb": 18432,
+    "bandwidth_gbps": 150.0,
+    "vendor": "apple",
+    "aliases": ["M3 Pro", "m3 pro", "M3 Pro 18GB"]
+  },
+  {
+    "name": "Apple M3 Max (36GB)",
+    "vram_mb": 36864,
+    "bandwidth_gbps": 300.0,
+    "vendor": "apple",
+    "aliases": ["M3 Max", "m3 max", "M3 Max 36GB"]
+  },
+  {
+    "name": "Apple M4 (16GB)",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 120.0,
+    "vendor": "apple",
+    "aliases": ["M4", "m4", "M4 16GB"]
+  },
+  {
+    "name": "Apple M4 Pro (24GB)",
+    "vram_mb": 24576,
+    "bandwidth_gbps": 273.0,
+    "vendor": "apple",
+    "aliases": ["M4 Pro", "m4 pro", "M4 Pro 24GB"]
+  },
+  {
+    "name": "Apple M4 Max (48GB)",
+    "vram_mb": 49152,
+    "bandwidth_gbps": 546.0,
+    "vendor": "apple",
+    "aliases": ["M4 Max", "m4 max", "M4 Max 48GB"]
+  }
+]
