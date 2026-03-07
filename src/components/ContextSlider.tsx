@@ -7,8 +7,8 @@ interface ContextSliderProps {
   onChange: (value: number) => void;
 }
 
-const contextOptions = [4096, 8192, 16384, 32768];
-const labels = ['4K', '8K', '16K', '32K'];
+const contextOptions = [4096, 8192, 16384, 32768, 65536, 131072, 200000];
+const labels = ['4K', '8K', '16K', '32K', '64K', '128K', '200K'];
 
 export default function ContextSlider({ value, onChange }: ContextSliderProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -49,7 +49,7 @@ export default function ContextSlider({ value, onChange }: ContextSliderProps) {
             <input
               type="range"
               min="0"
-              max="3"
+              max={contextOptions.length - 1}
               step="1"
               value={currentIndex}
               onChange={(e) => onChange(contextOptions[parseInt(e.target.value)])}
@@ -65,9 +65,13 @@ export default function ContextSlider({ value, onChange }: ContextSliderProps) {
             ))}
           </div>
           <p className="text-xs text-gray-500">
-            Higher context uses more VRAM. Start with 4K unless you need long
-            documents.
+            Higher context uses more VRAM (KV cache grows linearly). 4K for chat, 8-16K for coding, 32K+ for long documents.
           </p>
+          {value >= 65536 && (
+            <p className="text-xs text-yellow-500">
+              High context ({labels[currentIndex]}) requires significant VRAM. Not all models support this.
+            </p>
+          )}
         </div>
       )}
     </div>
