@@ -4,6 +4,8 @@ Sito statico dove l'utente seleziona la propria GPU e RAM, sceglie un use case, 
 
 ## Features
 
+- **84 modelli LLM**: da 23 provider (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, etc.)
+- **57 modelli con benchmark**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench
 - **52 GPU supportate**: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
 - **32 CPU nel database**: per stime CPU inference
 - **3 modalita' di inferenza**: GPU full, GPU+RAM offload, CPU only
@@ -30,35 +32,19 @@ python3 --version
 git clone https://github.com/localllm-advisor/localllm-advisor.git
 cd localllm-advisor
 
-# Installa dipendenze
+# Installa dipendenze Node.js
 npm install
 ```
-
-### Scaricare i dati (IMPORTANTE!)
-
-**Prima di avviare il sito**, devi scaricare i dati dei modelli con lo script Python:
-
-```bash
-# Setup Python (solo la prima volta)
-python3 -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-# oppure: .venv\Scripts\activate  # Windows
-
-pip install requests beautifulsoup4 pandas pyarrow datasets
-
-# Scarica i dati dei modelli
-python scripts/update_models.py
-```
-
-Questo script scarica i benchmark da HuggingFace e genera `public/data/models.json`.
 
 ### Avviare il dev server
 
 ```bash
-# Dev server con hot reload
 npm run dev
-# Apre su http://localhost:3000
 ```
+
+Apri http://localhost:3000
+
+I dati dei modelli sono già inclusi in `public/data/models.json` (84 modelli, 57 con benchmark).
 
 > **Nota**: In sviluppo il sito e' su `http://localhost:3000`. In produzione (GitHub Pages) e' sotto `/localllm-advisor`.
 
@@ -94,9 +80,12 @@ src/
 public/data/
   gpus.json         # Database GPU (52 schede)
   cpus.json         # Database CPU (32 processori)
-  models.json       # Modelli LLM con benchmark
+  models.json       # Modelli LLM con benchmark (84 modelli)
+  hf_models.json    # Cache dati HuggingFace
 scripts/
-  update_models.py  # Script scraping dati
+  scrape_hf_models.py  # Scrape modelli da HuggingFace
+  merge_models.py      # Merge nel formato app
+  update_models.py     # Aggiorna benchmark
 ```
 
 ### Come funziona il recommendation engine
@@ -178,26 +167,42 @@ vram_mb = params_b * bpw / 8 * 1024 + overhead
 
 ## Aggiornare i dati
 
-### Script automatico (modelli)
+### Setup Python (solo la prima volta)
 
 ```bash
-# Setup (solo la prima volta)
 python3 -m venv .venv
 source .venv/bin/activate  # Linux/Mac
 # oppure: .venv\Scripts\activate  # Windows
 
-pip install requests beautifulsoup4 pandas pyarrow datasets
-
-# Esegui lo script
-python scripts/update_models.py
+pip install requests pandas pyarrow datasets
 ```
 
-Lo script:
-1. **Scrape Ollama Registry** - lista modelli e tag disponibili
-2. **Open LLM Leaderboard** (HuggingFace) - benchmark (IFEval, BBH, MATH, GPQA, MUSR, MMLU-PRO)
-3. **Calcola VRAM** - stima da parametri + bits-per-weight
+### Aggiornare i modelli
 
-Per aggiungere un nuovo modello, modificare `OLLAMA_MODELS` in `scripts/update_models.py`.
+```bash
+source .venv/bin/activate
+
+# 1. Scrape modelli da HuggingFace (84+ modelli)
+HF_TOKEN=hf_xxx python3 scripts/scrape_hf_models.py
+
+# 2. Merge nel formato dell'app
+python3 scripts/merge_models.py
+
+# 3. Aggiorna benchmark da Open LLM Leaderboard
+HF_TOKEN=hf_xxx python3 scripts/update_models.py
+```
+
+**Nota**: Il token HuggingFace (`HF_TOKEN`) e' opzionale ma consigliato per accedere a modelli gated (Llama, Mistral, etc.) e rate limit piu' alti. Puoi crearne uno su https://huggingface.co/settings/tokens
+
+### Script disponibili
+
+| Script | Descrizione |
+|--------|-------------|
+| `scrape_hf_models.py` | Scrape metadati da HuggingFace API (params, context, VRAM) |
+| `merge_models.py` | Converte e merge nel formato `models.json` |
+| `update_models.py` | Aggiorna benchmark da Open LLM Leaderboard e BigCodeBench |
+
+Per aggiungere un nuovo modello, modificare `TARGET_MODELS` in `scripts/scrape_hf_models.py`.
 
 ### Aggiungere una nuova GPU
 
