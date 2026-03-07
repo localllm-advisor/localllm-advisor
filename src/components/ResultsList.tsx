@@ -1,11 +1,12 @@
-import { ScoredModel } from '@/lib/types';
+import { ScoredModel, UseCase } from '@/lib/types';
 import ModelCard from './ModelCard';
+import BenchmarkChart from './BenchmarkChart';
 
 interface ResultsListProps {
   results: ScoredModel[];
   gpuName: string | null;
   vramMb: number;
-  useCase: string;
+  useCase: UseCase;
 }
 
 export default function ResultsList({
@@ -55,6 +56,11 @@ export default function ResultsList({
             rank={i + 1}
           />
         ))}
+      </div>
+
+      {/* Benchmark comparison chart */}
+      <div className="mt-8 rounded-xl border border-gray-700 bg-gray-800/80 p-5">
+        <BenchmarkChart results={results} useCase={useCase} />
       </div>
     </div>
   );
