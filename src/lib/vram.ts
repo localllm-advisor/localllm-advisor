@@ -134,6 +134,87 @@ export function calculateGpuLayers(
 }
 
 /**
+ * Calculate PCIe bandwidth in GB/s based on generation and lanes
+ */
+export function calculatePcieBandwidth(pcieGen?: number, pcieLanes?: number): number {
+  if (!pcieGen || !pcieLanes) return 16; // Default: PCIe 4.0 x16 ~32 GB/s effective
+
+  // Theoretical bandwidth per lane per direction (GB/s)
+  const bandwidthPerLane: Record<number, number> = {
+    3: 0.985,  // PCIe 3.0: ~1 GB/s per lane
+    4: 1.969,  // PCIe 4.0: ~2 GB/s per lane
+    5: 3.938,  // PCIe 5.0: ~4 GB/s per lane
+  };
+
+  const perLane = bandwidthPerLane[pcieGen] || 1.969;
+  // Effective bandwidth ~80% of theoretical due to encoding overhead
+  return perLane * pcieLanes * 0.8;
+}
+
+/**
+ * Calculate RAM bandwidth in GB/s based on speed and channels
+ */
+export function calculateRamBandwidth(ramSpeedMhz?: number, ramChannels?: number): number {
+  if (!ramSpeedMhz) return 50; // Default: DDR4-3200 dual channel ~50 GB/s
+
+  const channels = ramChannels || 2;
+  // DDR bandwidth = speed * 8 bytes * channels / 1000 (MHz to GB/s)
+  // DDR is double data rate, so effective rate is 2x
+  return (ramSpeedMhz * 8 * channels * 2) / 1000 / 1000;
+}
+
+/**
+ * Estimate CPU inference speed based on specs
+ */
+export function estimateCpuTokensPerSecond(
+  paramsB: number,
+  cpuCores?: number,
+  cpuThreads?: number,
+  baseClockGhz?: number,
+  boostClockGhz?: number,
+  l3CacheMb?: number,
+  avx2?: boolean,
+  avx512?: boolean,
+  amx?: boolean,
+  ramBandwidthGbps?: number
+): number {
+  // Base: very rough estimate, CPU inference is RAM bandwidth bound
+  const ramBw = ramBandwidthGbps || 50; // GB/s
+  const modelSizeGb = (paramsB * 4.5) / 8; // Assume Q4 quantization
+
+  // Base tok/s from RAM bandwidth
+  let toksPerSec = ramBw / modelSizeGb;
+
+  // CPU multipliers
+  const threads = cpuThreads || cpuCores || 4;
+  const clockGhz = boostClockGhz || baseClockGhz || 3.0;
+
+  // Thread scaling (diminishing returns after 8 threads for inference)
+  const threadMultiplier = Math.min(1 + Math.log2(threads / 4) * 0.3, 2.0);
+
+  // Clock scaling
+  const clockMultiplier = clockGhz / 3.5;
+
+  // Instruction set multipliers
+  let simdMultiplier = 1.0;
+  if (amx) {
+    simdMultiplier = 3.0; // AMX provides significant speedup for matrix ops
+  } else if (avx512) {
+    simdMultiplier = 2.0; // AVX-512 doubles throughput vs AVX2
+  } else if (avx2) {
+    simdMultiplier = 1.5; // AVX2 provides good speedup
+  }
+
+  // Cache bonus (larger L3 helps with KV cache)
+  const cacheMultiplier = l3CacheMb ? Math.min(1 + (l3CacheMb - 16) / 64, 1.5) : 1.0;
+
+  toksPerSec = toksPerSec * threadMultiplier * clockMultiplier * simdMultiplier * cacheMultiplier;
+
+  // CPU is still much slower than GPU, cap at reasonable values
+  return Math.min(Math.max(Math.round(toksPerSec), 1), 30);
+}
+
+/**
  * Estimate tokens per second for decode (autoregressive generation)
  * Based on memory bandwidth (memory-bound regime)
  */
@@ -142,8 +223,37 @@ export function estimateDecodeTokensPerSecond(
   bpw: number,
   bandwidthGbps?: number,
   inferenceMode: InferenceMode = 'gpu_full',
-  gpuLayers: number | 'all' = 'all'
+  gpuLayers: number | 'all' = 'all',
+  pcieGen?: number,
+  pcieLanes?: number,
+  cpuSpecs?: {
+    cores?: number;
+    threads?: number;
+    baseClockGhz?: number;
+    boostClockGhz?: number;
+    l3CacheMb?: number;
+    avx2?: boolean;
+    avx512?: boolean;
+    amx?: boolean;
+    ramBandwidthGbps?: number;
+  }
 ): number | null {
+  if (inferenceMode === 'cpu_only') {
+    // Use CPU-specific estimation
+    return estimateCpuTokensPerSecond(
+      paramsB,
+      cpuSpecs?.cores,
+      cpuSpecs?.threads,
+      cpuSpecs?.baseClockGhz,
+      cpuSpecs?.boostClockGhz,
+      cpuSpecs?.l3CacheMb,
+      cpuSpecs?.avx2,
+      cpuSpecs?.avx512,
+      cpuSpecs?.amx,
+      cpuSpecs?.ramBandwidthGbps
+    );
+  }
+
   if (!bandwidthGbps || bandwidthGbps <= 0) return null;
 
   const modelSizeGb = (paramsB * bpw) / 8;
@@ -154,14 +264,20 @@ export function estimateDecodeTokensPerSecond(
 
   // Apply penalties for offload modes
   if (inferenceMode === 'gpu_offload' && gpuLayers !== 'all') {
-    // Offloading slows down based on % of layers on CPU
     const estimatedLayers = Math.round(32 * (paramsB / 7));
     const gpuRatio = (gpuLayers as number) / estimatedLayers;
-    // PCIe transfer penalty: ~10-20x slower for CPU layers
-    toksPerSec = toksPerSec * (gpuRatio + (1 - gpuRatio) * 0.1);
-  } else if (inferenceMode === 'cpu_only') {
-    // CPU is much slower, typically 1-5 tok/s depending on cores
-    toksPerSec = Math.min(toksPerSec * 0.05, 5);
+
+    // PCIe bandwidth limits the offload speed
+    const pcieBw = calculatePcieBandwidth(pcieGen, pcieLanes);
+    const ramBw = cpuSpecs?.ramBandwidthGbps || 50;
+
+    // Effective bandwidth for CPU layers is min of PCIe and RAM
+    const cpuLayerBw = Math.min(pcieBw, ramBw);
+    const gpuLayerBw = bandwidthGbps;
+
+    // Weighted average based on layer distribution
+    const effectiveBw = gpuRatio * gpuLayerBw + (1 - gpuRatio) * cpuLayerBw;
+    toksPerSec = effectiveBw / modelSizeGb;
   }
 
   return Math.round(toksPerSec);

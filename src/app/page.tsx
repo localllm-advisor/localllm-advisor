@@ -27,16 +27,32 @@ export default function Home() {
       vram_mb: specs.vram_mb,
       useCase,
       contextLength,
+      // GPU specs
       bandwidth_gbps: specs.bandwidth_gbps,
       fp16_tflops: specs.fp16_tflops,
       tensor_cores: specs.tensor_cores,
-      ram_gb: specs.ram_gb,
-      cpu_cores: specs.cpu_cores,
-      cpu_threads: specs.cpu_threads,
-      avx2: specs.avx2,
-      avx512: specs.avx512,
+      pcie_gen: specs.pcie_gen,
+      pcie_lanes: specs.pcie_lanes,
+      // Multi-GPU
       gpu_count: specs.gpu_count,
       nvlink: specs.nvlink,
+      // CPU specs
+      cpu_cores: specs.cpu_cores,
+      cpu_threads: specs.cpu_threads,
+      base_clock_ghz: specs.base_clock_ghz,
+      boost_clock_ghz: specs.boost_clock_ghz,
+      l3_cache_mb: specs.l3_cache_mb,
+      avx2: specs.avx2,
+      avx512: specs.avx512,
+      amx: specs.amx,
+      // System RAM
+      ram_gb: specs.ram_gb,
+      ram_speed_mhz: specs.ram_speed_mhz,
+      ram_channels: specs.ram_channels,
+      // Storage
+      storage_type: specs.storage_type,
+      storage_speed_gbps: specs.storage_speed_gbps,
+      // Mode
       mode: specs.inference_mode,
     });
 
