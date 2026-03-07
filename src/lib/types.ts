@@ -125,21 +125,44 @@ export interface RecommendationInput {
   // GPU specs
   vram_mb: number;
   bandwidth_gbps?: number;
-  fp16_tflops?: number;
+  memory_type?: 'GDDR6' | 'GDDR6X' | 'GDDR7' | 'HBM2' | 'HBM2e' | 'HBM3' | 'Unified';
+  cuda_cores?: number;
+  stream_processors?: number;
+  gpu_cores?: number;
+  compute_units?: number;
   tensor_cores?: number;
-
-  // System RAM (for offloading)
-  ram_gb?: number;
-
-  // CPU specs (for CPU inference or hybrid)
-  cpu_cores?: number;
-  cpu_threads?: number;
-  avx2?: boolean;
-  avx512?: boolean;
+  fp16_tflops?: number;
+  fp32_tflops?: number;
+  int8_tops?: number;
+  pcie_gen?: number;
+  pcie_lanes?: number;
+  gpu_tdp_watts?: number;
 
   // Multi-GPU
   gpu_count?: number;
   nvlink?: boolean;
+
+  // CPU specs (for CPU inference or hybrid)
+  cpu_cores?: number;
+  cpu_threads?: number;
+  p_cores?: number;
+  e_cores?: number;
+  base_clock_ghz?: number;
+  boost_clock_ghz?: number;
+  l3_cache_mb?: number;
+  avx?: boolean;
+  avx2?: boolean;
+  avx512?: boolean;
+  amx?: boolean;
+
+  // System RAM (for offloading)
+  ram_gb?: number;
+  ram_speed_mhz?: number;
+  ram_channels?: number;
+
+  // Storage
+  storage_type?: 'nvme' | 'ssd' | 'hdd';
+  storage_speed_gbps?: number;
 
   // Inference mode preference
   mode?: 'gpu_only' | 'gpu_offload' | 'cpu_only' | 'auto';

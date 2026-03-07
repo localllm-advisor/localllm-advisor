@@ -110,7 +110,7 @@
       "gpqa": 14.8,
       "musr": 9.7,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 34.7,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -168,7 +168,7 @@
       "gpqa": 16.7,
       "musr": 9.1,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 42.8,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -551,7 +551,7 @@
         "bpw": 8.0,
         "vram_mb": 7668,
         "quality": 0.995,
-        "ollama_tag": "mistral:7b-instruct-q8_0"
+        "ollama_tag": "mistral:7b-instruct-v0.2-q8_0"
       },
       {
         "level": "Q6_K",
@@ -578,7 +578,7 @@
       "gpqa": 3.9,
       "musr": 4.3,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 19.5,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -695,7 +695,7 @@
       "gpqa": 11.1,
       "musr": 10.2,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 36.1,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -747,7 +747,7 @@
       "gpqa": 11.1,
       "musr": 10.2,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 36.1,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -772,7 +772,7 @@
         "bpw": 16.0,
         "vram_mb": 8282,
         "quality": 1.0,
-        "ollama_tag": "phi3:3.8b-mini-4k-instruct-fp16"
+        "ollama_tag": "phi3:3.8b-mini-128k-instruct-fp16"
       },
       {
         "level": "Q8_0",
@@ -786,14 +786,14 @@
         "bpw": 6.5,
         "vram_mb": 3662,
         "quality": 0.97,
-        "ollama_tag": "phi3:3.8b-mini-128k-instruct-q6_K"
+        "ollama_tag": "phi3:3.8b-mini-4k-instruct-q6_K"
       },
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
         "vram_mb": 2689,
         "quality": 0.94,
-        "ollama_tag": "phi3:3.8b-instruct"
+        "ollama_tag": "phi3:3.8b-mini-128k-instruct-q4_K_M"
       }
     ],
     "benchmarks": {
@@ -806,7 +806,7 @@
       "gpqa": 12.0,
       "musr": 10.1,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 36.8,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -845,7 +845,7 @@
         "bpw": 6.5,
         "vram_mb": 12148,
         "quality": 0.97,
-        "ollama_tag": "phi3:14b-medium-128k-instruct-q6_K"
+        "ollama_tag": "phi3:14b-medium-4k-instruct-q6_K"
       },
       {
         "level": "Q4_K_M",
@@ -865,7 +865,7 @@
       "gpqa": 11.5,
       "musr": 13.1,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 37.6,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -911,7 +911,7 @@
         "bpw": 4.5,
         "vram_mb": 788,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5:0.5b-instruct-q4_K_M"
+        "ollama_tag": "qwen2.5:0.5b-instruct"
       }
     ],
     "benchmarks": {
@@ -924,7 +924,7 @@
       "gpqa": 1.2,
       "musr": 1.4,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 8.8,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -969,7 +969,7 @@
         "bpw": 4.5,
         "vram_mb": 788,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5-coder:0.5b-instruct-q4_K_M"
+        "ollama_tag": "qwen2.5-coder:0.5b-instruct"
       }
     ],
     "benchmarks": {
@@ -1028,7 +1028,7 @@
         "bpw": 4.5,
         "vram_mb": 1364,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5:1.5b-instruct"
+        "ollama_tag": "qwen2.5:1.5b-instruct-q4_K_M"
       }
     ],
     "benchmarks": {
@@ -1041,7 +1041,7 @@
       "gpqa": 0.8,
       "musr": 3.2,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 27.0,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -1086,7 +1086,7 @@
         "bpw": 4.5,
         "vram_mb": 1364,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5-coder:1.5b-instruct"
+        "ollama_tag": "qwen2.5-coder:1.5b-instruct-q4_K_M"
       }
     ],
     "benchmarks": {
@@ -1099,7 +1099,7 @@
       "gpqa": 1.3,
       "musr": 2.6,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 27.0,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -1145,7 +1145,7 @@
         "bpw": 4.5,
         "vram_mb": 2228,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5:3b-instruct-q4_K_M"
+        "ollama_tag": "qwen2.5:3b-instruct"
       }
     ],
     "benchmarks": {
@@ -1203,7 +1203,7 @@
         "bpw": 4.5,
         "vram_mb": 2228,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5-coder:3b-instruct-q4_K_M"
+        "ollama_tag": "qwen2.5-coder:3b-instruct"
       }
     ],
     "benchmarks": {
@@ -1262,7 +1262,7 @@
         "bpw": 4.5,
         "vram_mb": 4532,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5:7b-instruct-q4_K_M"
+        "ollama_tag": "qwen2.5:7b-instruct"
       }
     ],
     "benchmarks": {
@@ -1275,7 +1275,7 @@
       "gpqa": 5.5,
       "musr": 8.5,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 40.4,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -1320,7 +1320,7 @@
         "bpw": 4.5,
         "vram_mb": 4532,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5-coder:7b-instruct-q4_K_M"
+        "ollama_tag": "qwen2.5-coder:7b-instruct"
       }
     ],
     "benchmarks": {
@@ -1333,7 +1333,7 @@
       "gpqa": 5.6,
       "musr": 9.5,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 40.4,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -1392,7 +1392,7 @@
       "gpqa": 12.4,
       "musr": 11.4,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 39.8,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -1450,7 +1450,7 @@
       "gpqa": 7.3,
       "musr": 7.0,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 48.2,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -1509,7 +1509,7 @@
       "gpqa": 11.7,
       "musr": 13.5,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 45.0,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -1567,7 +1567,7 @@
       "gpqa": 13.2,
       "musr": 13.7,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 49.0,
       "alpacaeval": null,
       "mmbench": null
     }
@@ -1613,7 +1613,7 @@
         "bpw": 4.5,
         "vram_mb": 41972,
         "quality": 0.94,
-        "ollama_tag": "qwen2.5:72b-instruct"
+        "ollama_tag": "qwen2.5:72b-instruct-q4_K_M"
       }
     ],
     "benchmarks": {
@@ -1626,7 +1626,7 @@
       "gpqa": 16.7,
       "musr": 11.7,
       "mbpp": null,
-      "bigcodebench": null,
+      "bigcodebench": 45.8,
       "alpacaeval": null,
       "mmbench": null
     }
