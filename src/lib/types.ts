@@ -39,25 +39,147 @@ export interface Model {
 
 export interface GPU {
   name: string;
-  vram_mb: number;
-  bandwidth_gbps: number;
   vendor: 'nvidia' | 'amd' | 'apple' | 'intel';
   aliases: string[];
+
+  // Memory
+  vram_mb: number;
+  bandwidth_gbps: number;
+  memory_type: 'GDDR6' | 'GDDR6X' | 'GDDR7' | 'HBM2' | 'HBM2e' | 'HBM3' | 'Unified';
+
+  // Compute
+  cuda_cores?: number;          // NVIDIA
+  stream_processors?: number;   // AMD
+  tensor_cores?: number;        // NVIDIA (for FP16/INT8 acceleration)
+  gpu_cores?: number;           // Apple Silicon
+  compute_units?: number;       // AMD/Intel
+
+  // Performance (theoretical)
+  fp16_tflops?: number;         // FP16 performance
+  fp32_tflops?: number;         // FP32 performance
+  int8_tops?: number;           // INT8 performance (Tensor cores)
+
+  // Architecture
+  architecture: string;         // e.g. "Ada Lovelace", "RDNA3", "M3"
+  compute_capability?: string;  // NVIDIA only, e.g. "8.9"
+
+  // Interface
+  pcie_gen?: number;            // PCIe generation (4, 5)
+  pcie_lanes?: number;          // Number of PCIe lanes (16, 8)
+
+  // Power
+  tdp_watts?: number;           // Thermal Design Power
+}
+
+export interface CPU {
+  name: string;
+  vendor: 'intel' | 'amd' | 'apple';
+
+  // Cores
+  cores: number;
+  threads: number;
+  p_cores?: number;             // Performance cores (Intel hybrid)
+  e_cores?: number;             // Efficiency cores (Intel hybrid)
+
+  // Clock
+  base_clock_ghz: number;
+  boost_clock_ghz?: number;
+
+  // Cache
+  l3_cache_mb: number;
+
+  // Instructions
+  avx: boolean;
+  avx2: boolean;
+  avx512: boolean;
+  amx?: boolean;                // Intel AMX for matrix ops
+
+  // Memory support
+  max_ram_gb: number;
+  ram_channels: number;
+  max_ram_speed_mhz: number;
+}
+
+export interface SystemConfig {
+  gpu: GPU | null;
+  cpu?: CPU | null;
+
+  // System RAM
+  ram_gb: number;
+  ram_speed_mhz?: number;
+  ram_channels?: number;
+
+  // Storage (affects model loading time)
+  storage_type?: 'nvme' | 'ssd' | 'hdd';
+  storage_speed_gbps?: number;
+
+  // Multi-GPU
+  gpu_count?: number;
+  nvlink?: boolean;
 }
 
 export interface RecommendationInput {
-  vram_mb: number;
   useCase: UseCase;
   contextLength: number;
+
+  // GPU specs
+  vram_mb: number;
   bandwidth_gbps?: number;
+  fp16_tflops?: number;
+  tensor_cores?: number;
+
+  // System RAM (for offloading)
+  ram_gb?: number;
+
+  // CPU specs (for CPU inference or hybrid)
+  cpu_cores?: number;
+  cpu_threads?: number;
+  avx2?: boolean;
+  avx512?: boolean;
+
+  // Multi-GPU
+  gpu_count?: number;
+  nvlink?: boolean;
+
+  // Inference mode preference
+  mode?: 'gpu_only' | 'gpu_offload' | 'cpu_only' | 'auto';
+}
+
+export type InferenceMode = 'gpu_full' | 'gpu_offload' | 'cpu_only' | 'not_possible';
+
+export interface PerformanceEstimate {
+  tokensPerSecond: number | null;
+  prefillTokensPerSecond: number | null;  // Prompt processing speed
+  timeToFirstToken: number | null;        // Latency in ms
+  loadTimeSeconds: number | null;         // Model loading time
+}
+
+export interface MemoryBreakdown {
+  modelVram: number;        // Base model size
+  kvCacheVram: number;      // KV cache for context
+  totalVram: number;        // Total GPU memory needed
+  vramPercent: number;      // % of available VRAM
+  ramOffload: number;       // Amount offloaded to RAM (if any)
+  totalRamUsed: number;     // Total system RAM used
 }
 
 export interface ScoredModel {
   model: Model;
   quant: Quantization;
   score: number;
-  vramPercent: number;
-  tokensPerSecond: number | null;
+
+  // How to run this model
+  inferenceMode: InferenceMode;
+  gpuLayers: number | 'all';    // Number of layers on GPU (for offload)
+
+  // Memory usage
+  memory: MemoryBreakdown;
+
+  // Performance estimates
+  performance: PerformanceEstimate;
+
+  // Warnings/notes
+  warnings: string[];
 }
 
 export interface BenchmarkWeight {

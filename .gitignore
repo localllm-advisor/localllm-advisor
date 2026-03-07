@@ -35,6 +35,10 @@ yarn-error.log*
 *.docx
 .claude/
 
+# python venv
+.venv/
+__pycache__/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
