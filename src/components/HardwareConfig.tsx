@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { GPU, CPU } from '@/lib/types';
+import { detectHardware, matchGpuFromRenderer, parseGpuRenderer } from '@/lib/detectHardware';
 
 export interface HardwareSpecs {
   // GPU
@@ -69,9 +70,27 @@ export default function HardwareConfig({
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [selectedGpu, setSelectedGpu] = useState<GPU | null>(null);
   const [selectedCpu, setSelectedCpu] = useState<CPU | null>(null);
+  const [detectedRenderer, setDetectedRenderer] = useState<string | null>(null);
+  const [detectedGpu, setDetectedGpu] = useState<GPU | null>(null);
+  const [hasAutoDetected, setHasAutoDetected] = useState(false);
 
   const gpuRef = useRef<HTMLDivElement>(null);
   const cpuRef = useRef<HTMLDivElement>(null);
+
+  // Auto-detect GPU on mount
+  useEffect(() => {
+    if (hasAutoDetected || selectedGpu || specs.vram_mb) return;
+
+    const hardware = detectHardware();
+    if (hardware.gpuRenderer) {
+      setDetectedRenderer(hardware.gpuRenderer);
+      const matched = matchGpuFromRenderer(hardware.gpuRenderer, gpus);
+      if (matched) {
+        setDetectedGpu(matched);
+      }
+    }
+    setHasAutoDetected(true);
+  }, [gpus, hasAutoDetected, selectedGpu, specs.vram_mb]);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -147,10 +166,75 @@ export default function HardwareConfig({
     onChange({ ...specs, [key]: value });
   }
 
+  function handleUseDetectedGpu() {
+    if (detectedGpu) {
+      handleGpuSelect(detectedGpu);
+      setDetectedGpu(null);
+      setDetectedRenderer(null);
+    }
+  }
+
+  function handleDismissDetectedGpu() {
+    setDetectedGpu(null);
+    setDetectedRenderer(null);
+  }
+
   const RAM_OPTIONS = [8, 16, 32, 64, 128];
 
   return (
     <div className="space-y-4">
+      {/* Auto-detected GPU banner */}
+      {detectedGpu && !selectedGpu && !specs.vram_mb && (
+        <div className="rounded-lg border border-green-600/50 bg-green-900/20 p-3 space-y-2">
+          <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            GPU Detected
+          </div>
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span className="text-white font-medium">{detectedGpu.name}</span>
+              <span className="text-gray-400 ml-2">({Math.round(detectedGpu.vram_mb / 1024)}GB VRAM)</span>
+            </div>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                onClick={handleUseDetectedGpu}
+                className="rounded-lg bg-green-600 px-3 py-1.5 text-sm text-white hover:bg-green-500"
+              >
+                Use this
+              </button>
+              <button
+                type="button"
+                onClick={handleDismissDetectedGpu}
+                className="rounded-lg bg-gray-700 px-3 py-1.5 text-sm text-gray-300 hover:bg-gray-600"
+              >
+                Choose different
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Detected but not matched */}
+      {detectedRenderer && !detectedGpu && !selectedGpu && !specs.vram_mb && (
+        <div className="rounded-lg border border-yellow-600/50 bg-yellow-900/20 p-3 space-y-1">
+          <div className="flex items-center gap-2 text-yellow-400 text-sm font-medium">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+            GPU detected but not in database
+          </div>
+          <p className="text-sm text-gray-400">
+            Detected: <span className="text-white">{parseGpuRenderer(detectedRenderer)}</span>
+          </p>
+          <p className="text-xs text-gray-500">
+            Select your GPU below or use Advanced to enter specs manually.
+          </p>
+        </div>
+      )}
+
       {/* GPU Selection */}
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-300">GPU</label>
