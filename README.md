@@ -1,6 +1,14 @@
 # LocalLLM Advisor
 
-Find the best local LLM for your hardware. Select your GPU and RAM, choose a use case, and get a ranked list of models with realistic performance estimates and ready-to-copy Ollama commands.
+Find the best local LLM for your hardware — or find the best hardware for your model.
+
+## Two Modes
+
+### Find Models (I have hardware)
+Select your GPU and RAM, choose a use case, and get a ranked list of models with realistic performance estimates and ready-to-copy Ollama commands.
+
+### Build for Model (I need hardware)
+Choose a model you want to run, set your speed and budget preferences, and get GPU recommendations with prices and buy links.
 
 ## Features
 
@@ -10,6 +18,15 @@ Find the best local LLM for your hardware. Select your GPU and RAM, choose a use
 - **52 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000/9000), Apple Silicon (M1-M4), Intel Arc
 - **32 CPUs** in database for CPU inference estimates
 - **Manual override** for any hardware spec
+
+### Hardware Recommendations (Build for Model)
+- **Reverse search**: select a model, get GPU recommendations
+- **Speed preferences**: Any, Usable (10+ tok/s), Fast (25+ tok/s), Blazing (50+ tok/s)
+- **Budget filters**: No limit, Under €500/€1000/€1500/€2000
+- **Quantization options**: Q4, Q6, Q8, FP16
+- **GPU prices**: 32 GPUs with EUR/USD prices and availability status
+- **Buy links**: Direct links to purchase recommended GPUs
+- **Multi-GPU**: Suggests 2x GPU configs when beneficial
 
 ### Model Database
 - **84 LLM models** from 23 providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
@@ -96,6 +113,7 @@ src/
     methodology/          # Methodology page
   components/
     HardwareConfig.tsx    # GPU/CPU selection with auto-detection
+    HardwareFinder.tsx    # Build for Model - reverse hardware search
     AdvancedOptions.tsx   # Filters panel (context, sort, quant, size, speed)
     UseCasePicker.tsx     # Use case selection
     ResultsList.tsx       # Results display with charts
@@ -103,6 +121,7 @@ src/
     VramBar.tsx           # VRAM usage visualization
   lib/
     engine.ts             # Recommendation engine
+    hardwareAdvisor.ts    # Reverse engine: model -> GPU recommendations
     vram.ts               # VRAM/performance calculations
     scoring.ts            # Benchmark-weighted scoring
     detectHardware.ts     # WebGL GPU detection
@@ -194,6 +213,9 @@ Edit `public/data/gpus.json`:
   "name": "RTX 5090",
   "vendor": "nvidia",
   "aliases": ["5090", "GeForce 5090"],
+  "price_eur": 2349,
+  "price_usd": 1999,
+  "availability": "available",
   "vram_mb": 32768,
   "bandwidth_gbps": 1792,
   "memory_type": "GDDR7",
@@ -204,6 +226,8 @@ Edit `public/data/gpus.json`:
   "tdp_watts": 575
 }
 ```
+
+Availability options: `available`, `preorder`, `used_only`, `discontinued`
 
 ### Add a New CPU
 
@@ -302,6 +326,8 @@ Events tracked:
 - [x] Advanced filters panel
 - [x] Context length up to 200K
 - [x] CPU-only mode without GPU
+- [x] "Build for Model" reverse hardware search
+- [x] GPU pricing database with buy links
 - [ ] Dark/light theme toggle
 - [ ] Export results (JSON/CSV)
 - [ ] PWA for offline use
