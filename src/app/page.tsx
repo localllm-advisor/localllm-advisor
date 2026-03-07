@@ -1,56 +1,40 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { GPU, UseCase } from '@/lib/types';
+import { UseCase } from '@/lib/types';
 import { useRecommendation } from '@/hooks/useRecommendation';
-import GpuSelector from '@/components/GpuSelector';
+import HardwareConfig, { HardwareSpecs } from '@/components/HardwareConfig';
 import UseCasePicker from '@/components/UseCasePicker';
 import ContextSlider from '@/components/ContextSlider';
-import RamSlider from '@/components/RamSlider';
 import ResultsList from '@/components/ResultsList';
 
 export default function Home() {
-  const { gpus, results, isLoading, error, runRecommendation } =
+  const { gpus, cpus, results, isLoading, error, runRecommendation } =
     useRecommendation();
 
-  const [selectedGpu, setSelectedGpu] = useState<GPU | null>(null);
-  const [manualVram, setManualVram] = useState<number | null>(null);
-  const [manualBandwidth, setManualBandwidth] = useState<number | null>(null);
+  const [specs, setSpecs] = useState<HardwareSpecs>({
+    vram_mb: null,
+    ram_gb: 16,
+  });
   const [useCase, setUseCase] = useState<UseCase>('chat');
   const [contextLength, setContextLength] = useState(4096);
-  const [ramGb, setRamGb] = useState(16);
   const resultsRef = useRef<HTMLDivElement>(null);
 
-  const vramMb = selectedGpu?.vram_mb ?? manualVram;
-  const bandwidthGbps = selectedGpu?.bandwidth_gbps ?? manualBandwidth ?? undefined;
-
-  function handleGpuSelect(gpu: GPU | null, manualVramGb?: number, manualBandwidthGbps?: number) {
-    if (gpu) {
-      setSelectedGpu(gpu);
-      setManualVram(null);
-      setManualBandwidth(null);
-    } else if (manualVramGb) {
-      setSelectedGpu(null);
-      setManualVram(manualVramGb * 1024);
-      setManualBandwidth(manualBandwidthGbps ?? null);
-    } else {
-      setSelectedGpu(null);
-      setManualVram(null);
-      setManualBandwidth(null);
-    }
-  }
-
   function handleSubmit() {
-    if (!vramMb) return;
+    if (!specs.vram_mb) return;
 
     runRecommendation({
-      vram_mb: vramMb,
+      vram_mb: specs.vram_mb,
       useCase,
       contextLength,
-      bandwidth_gbps: bandwidthGbps,
-      fp16_tflops: selectedGpu?.fp16_tflops,
-      tensor_cores: selectedGpu?.tensor_cores,
-      ram_gb: ramGb,
+      bandwidth_gbps: specs.bandwidth_gbps,
+      fp16_tflops: specs.fp16_tflops,
+      tensor_cores: specs.tensor_cores,
+      ram_gb: specs.ram_gb,
+      cpu_cores: specs.cpu_cores,
+      cpu_threads: specs.cpu_threads,
+      avx2: specs.avx2,
+      avx512: specs.avx512,
     });
 
     setTimeout(() => {
@@ -91,22 +75,21 @@ export default function Home() {
       {/* Form */}
       <main className="mx-auto max-w-3xl px-4 py-8 space-y-6">
         <section className="space-y-6">
-          <GpuSelector
+          <HardwareConfig
             gpus={gpus}
-            onSelect={handleGpuSelect}
-            selectedGpu={selectedGpu}
+            cpus={cpus}
+            specs={specs}
+            onChange={setSpecs}
           />
 
           <UseCasePicker selected={useCase} onChange={setUseCase} />
 
           <ContextSlider value={contextLength} onChange={setContextLength} />
 
-          <RamSlider value={ramGb} onChange={setRamGb} />
-
           {/* CTA */}
           <button
             onClick={handleSubmit}
-            disabled={!vramMb}
+            disabled={!specs.vram_mb}
             className="w-full rounded-xl bg-blue-600 px-6 py-4 text-lg font-semibold text-white transition-all hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-blue-600"
           >
             Find My Models
@@ -115,12 +98,12 @@ export default function Home() {
       </main>
 
       {/* Results - Full Width */}
-      {results && (
+      {results && specs.vram_mb && (
         <section ref={resultsRef} className="mx-auto max-w-7xl px-4 py-6">
           <ResultsList
             results={results}
-            gpuName={selectedGpu?.name ?? null}
-            vramMb={vramMb!}
+            gpuName={specs.gpu_name ?? null}
+            vramMb={specs.vram_mb}
             useCase={useCase}
           />
         </section>
