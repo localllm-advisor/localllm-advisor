@@ -1,212 +1,193 @@
 # LocalLLM Advisor
 
-Sito statico dove l'utente seleziona la propria GPU e RAM, sceglie un use case, e ottiene una lista ordinata di modelli LLM con stime di performance realistiche e comando Ollama pronto da copiare.
+Find the best local LLM for your hardware. Select your GPU and RAM, choose a use case, and get a ranked list of models with realistic performance estimates and ready-to-copy Ollama commands.
 
 ## Features
 
-- **84 modelli LLM**: da 23 provider (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, etc.)
-- **57 modelli con benchmark**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench
-- **52 GPU supportate**: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
-- **32 CPU nel database**: per stime CPU inference
-- **3 modalita' di inferenza**: GPU full, GPU+RAM offload, CPU only
-- **Stime performance realistiche**: tokens/sec, prefill speed, time-to-first-token, load time
-- **Memory breakdown**: VRAM usata, KV cache, offload su RAM
-- **Warnings intelligenti**: avvisi per VRAM al limite, velocita' bassa, modelli grandi
+### Hardware Detection
+- **Auto-detect GPU** via WebGL - automatically identifies your graphics card
+- **Auto-detect CPU** - detects thread count and Apple Silicon chips
+- **52 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000/9000), Apple Silicon (M1-M4), Intel Arc
+- **32 CPUs** in database for CPU inference estimates
+- **Manual override** for any hardware spec
 
-## Prerequisiti
+### Model Database
+- **84 LLM models** from 23 providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
+- **57 models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval
+- **4 quantization levels** per model: Q4_K_M, Q6_K, Q8_0, FP16
+- **MoE support** with active parameter detection
 
-- [Node.js](https://nodejs.org/) >= 18 (consigliato: 20 LTS)
-- npm (incluso con Node.js)
-- Python 3.8+ (per aggiornamento dati)
+### Performance Estimates
+- **Tokens/sec** (decode speed) - memory bandwidth bound
+- **Prefill speed** - compute bound, uses tensor cores
+- **Time-to-first-token** latency
+- **Model load time** based on storage speed
+- **VRAM breakdown**: model size, KV cache, overhead
+
+### Inference Modes
+| Mode | Description | Typical Speed |
+|------|-------------|---------------|
+| `gpu_full` | Model fully in VRAM | 30-100+ tok/s |
+| `gpu_offload` | Part in VRAM, part in RAM | 10-30 tok/s |
+| `cpu_only` | All in RAM, CPU inference | 1-10 tok/s |
+
+### Advanced Filters
+- **Context length**: 4K to 200K tokens
+- **Sort by**: Score, Speed, Quality, VRAM, Parameters
+- **Quantization filter**: Q4, Q6, Q8, FP16
+- **Model size filter**: Small (≤7B), Medium (8-13B), Large (14-34B), XL (35B+)
+- **Minimum speed**: 5/10/20/30/50+ tok/s
+- **Benchmark minimums**: MMLU-PRO, MATH, Coding
+- **Show/hide**: CPU-only models, GPU+RAM offload, only fits in VRAM
+
+### Use Cases
+5 use cases with different benchmark weights:
+- **Chat**: IFEval, MMLU-PRO, BBH
+- **Coding**: HumanEval, MBPP, BigCodeBench, IFEval
+- **Reasoning**: MATH, GPQA, BBH, MUSR
+- **Creative**: IFEval, AlpacaEval, MMLU-PRO
+- **Vision**: MMMU, MMBench, IFEval
+
+## Quick Start
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) >= 18 (recommended: 20 LTS)
+- npm (included with Node.js)
 
 ```bash
-node -v   # deve essere >= 18
+node -v   # must be >= 18
 npm -v
-python3 --version
 ```
 
-## Setup locale
+### Setup
 
 ```bash
-# Clona il repo
+# Clone the repo
 git clone https://github.com/localllm-advisor/localllm-advisor.git
 cd localllm-advisor
 
-# Installa dipendenze Node.js
+# Install dependencies
 npm install
-```
 
-### Avviare il dev server
-
-```bash
+# Start dev server
 npm run dev
 ```
 
-Apri http://localhost:3000
+Open http://localhost:3000
 
-I dati dei modelli sono già inclusi in `public/data/models.json` (84 modelli, 57 con benchmark).
-
-> **Nota**: In sviluppo il sito e' su `http://localhost:3000`. In produzione (GitHub Pages) e' sotto `/localllm-advisor`.
-
-### Build statica (come in produzione)
+### Production Build
 
 ```bash
 npm run build && npx serve out
-# Il sito sara' su http://localhost:3000/localllm-advisor
+# Site will be at http://localhost:3000/localllm-advisor
 ```
 
-## Architettura
+> **Note**: In development the site is at `http://localhost:3000`. In production (GitHub Pages) it's under `/localllm-advisor`.
 
-### Struttura progetto
+## Project Structure
 
 ```
 src/
-  app/              # Page e layout Next.js
-  components/       # Componenti React UI
-    GpuSelector     # Autocomplete GPU con fallback manuale
-    RamSlider       # Selettore RAM di sistema
-    UseCasePicker   # Selezione use case
-    ContextSlider   # Slider context length
-    ModelCard       # Card risultato con stats e warnings
-    VramBar         # Barra progresso VRAM
-    ResultsList     # Lista risultati
+  app/                    # Next.js pages and layouts
+    page.tsx              # Main page
+    about/                # About page
+    faq/                  # FAQ page
+    methodology/          # Methodology page
+  components/
+    HardwareConfig.tsx    # GPU/CPU selection with auto-detection
+    AdvancedOptions.tsx   # Filters panel (context, sort, quant, size, speed)
+    UseCasePicker.tsx     # Use case selection
+    ResultsList.tsx       # Results display with charts
+    ModelCard.tsx         # Individual model card with stats
+    VramBar.tsx           # VRAM usage visualization
   lib/
-    engine.ts       # Recommendation engine principale
-    vram.ts         # Calcoli VRAM, performance, inference mode
-    scoring.ts      # Sistema di scoring benchmark-weighted
-    types.ts        # TypeScript interfaces
+    engine.ts             # Recommendation engine
+    vram.ts               # VRAM/performance calculations
+    scoring.ts            # Benchmark-weighted scoring
+    detectHardware.ts     # WebGL GPU detection
+    types.ts              # TypeScript interfaces
   hooks/
-    useRecommendation.ts  # React hook per stato e fetch
+    useRecommendation.ts  # React hook for state and data fetching
 public/data/
-  gpus.json         # Database GPU (52 schede)
-  cpus.json         # Database CPU (32 processori)
-  models.json       # Modelli LLM con benchmark (84 modelli)
-  hf_models.json    # Cache dati HuggingFace
+  gpus.json               # GPU database (52 cards)
+  cpus.json               # CPU database (32 processors)
+  models.json             # LLM models with benchmarks (84 models)
 scripts/
-  scrape_hf_models.py  # Scrape modelli da HuggingFace
-  merge_models.py      # Merge nel formato app
-  update_models.py     # Aggiorna benchmark
+  scrape_hf_models.py     # Scrape models from HuggingFace
+  merge_models.py         # Merge into app format
+  update_models.py        # Update benchmarks from leaderboards
 ```
 
-### Come funziona il recommendation engine
+## How It Works
 
 ```
-Input utente          Engine                           Output
--------------         ------                           ------
-GPU (VRAM, BW)   -->  1. Filtra per capability    --> ScoredModel[]
-RAM di sistema   -->  2. Determina inference mode     - model
-Use case         -->  3. Calcola memory breakdown     - quant
-Context length   -->  4. Stima performance            - score
-                      5. Genera warnings              - inferenceMode
-                      6. Score + rank                 - memory {}
-                                                      - performance {}
-                                                      - warnings []
+User Input                Engine                              Output
+----------                ------                              ------
+GPU (VRAM, BW)    -->    1. Filter by capability      -->   ScoredModel[]
+CPU (cores, AVX)  -->    2. Apply advanced filters          - model
+RAM               -->    3. Determine inference mode        - quantization
+Use case          -->    4. Calculate memory breakdown      - score
+Context length    -->    5. Estimate performance            - inference mode
+Filters           -->    6. Generate warnings               - memory breakdown
+                         7. Score and rank                  - performance stats
+                         8. Sort by preference              - warnings
 ```
 
-### Inference Modes
+## Performance Calculations
 
-| Mode | Descrizione | Performance |
-|------|-------------|-------------|
-| `gpu_full` | Modello interamente in VRAM | Ottimale (30-100+ tok/s) |
-| `gpu_offload` | Parte in VRAM, parte in RAM | Ridotta (10-30 tok/s) |
-| `cpu_only` | Tutto su RAM + CPU | Molto lenta (1-5 tok/s) |
-| `not_possible` | Non abbastanza memoria | N/A |
-
-### Calcoli Performance
-
-**Tokens/sec (decode)** - memory bandwidth bound:
+**Decode speed** (memory bandwidth bound):
 ```
-tok/s = bandwidth_gbps / model_size_gb
+tokens/sec = bandwidth_gbps / model_size_gb
 ```
 
-**Prefill speed** - compute bound:
+**Prefill speed** (compute bound):
 ```
-tok/s = (fp16_tflops * utilization) / (params_b * 2)
-```
-
-**KV Cache** - per context oltre 4K:
-```
-kv_mb = 0.5 * sqrt(params_b / 7) * extra_context_k
+tokens/sec = (fp16_tflops * utilization) / (params_b * 2)
 ```
 
-**VRAM stima**:
+**KV Cache** (for context > 4K):
 ```
-vram_mb = params_b * bpw / 8 * 1024 + overhead
+kv_cache_mb = 0.5 * sqrt(params_b / 7) * extra_context_k
 ```
 
-## Database Hardware
+**VRAM estimate**:
+```
+vram_mb = params_b * bits_per_weight / 8 * 1024 + overhead
+```
 
-### GPU (`public/data/gpus.json`)
+## Updating Data
 
-52 GPU con specifiche complete:
-
-| Campo | Descrizione |
-|-------|-------------|
-| `vram_mb` | Memoria video in MB |
-| `bandwidth_gbps` | Bandwidth memoria GB/s |
-| `fp16_tflops` | Performance FP16 |
-| `tensor_cores` | Numero tensor cores (NVIDIA) |
-| `cuda_cores` | CUDA cores (NVIDIA) |
-| `architecture` | Ada Lovelace, RDNA3, M3, etc |
-| `memory_type` | GDDR6, GDDR6X, HBM3, Unified |
-| `tdp_watts` | Consumo energetico |
-
-**Vendor supportati**: NVIDIA, AMD, Apple, Intel
-
-### CPU (`public/data/cpus.json`)
-
-32 CPU con specifiche per CPU inference:
-
-| Campo | Descrizione |
-|-------|-------------|
-| `cores` / `threads` | Core fisici e thread |
-| `base_clock_ghz` | Frequenza base |
-| `l3_cache_mb` | Cache L3 |
-| `avx2` / `avx512` | Istruzioni vettoriali |
-| `max_ram_gb` | RAM massima supportata |
-
-## Aggiornare i dati
-
-### Setup Python (solo la prima volta)
+### Python Setup (first time only)
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate  # Linux/Mac
-# oppure: .venv\Scripts\activate  # Windows
+# or: .venv\Scripts\activate  # Windows
 
 pip install requests pandas pyarrow datasets
 ```
 
-### Aggiornare i modelli
+### Update Models
 
 ```bash
 source .venv/bin/activate
 
-# 1. Scrape modelli da HuggingFace (84+ modelli)
+# 1. Scrape models from HuggingFace
 HF_TOKEN=hf_xxx python3 scripts/scrape_hf_models.py
 
-# 2. Merge nel formato dell'app
+# 2. Merge into app format
 python3 scripts/merge_models.py
 
-# 3. Aggiorna benchmark da Open LLM Leaderboard
+# 3. Update benchmarks from Open LLM Leaderboard
 HF_TOKEN=hf_xxx python3 scripts/update_models.py
 ```
 
-**Nota**: Il token HuggingFace (`HF_TOKEN`) e' opzionale ma consigliato per accedere a modelli gated (Llama, Mistral, etc.) e rate limit piu' alti. Puoi crearne uno su https://huggingface.co/settings/tokens
+**Note**: HuggingFace token (`HF_TOKEN`) is optional but recommended for gated models (Llama, Mistral) and higher rate limits. Create one at https://huggingface.co/settings/tokens
 
-### Script disponibili
+### Add a New GPU
 
-| Script | Descrizione |
-|--------|-------------|
-| `scrape_hf_models.py` | Scrape metadati da HuggingFace API (params, context, VRAM) |
-| `merge_models.py` | Converte e merge nel formato `models.json` |
-| `update_models.py` | Aggiorna benchmark da Open LLM Leaderboard e BigCodeBench |
-
-Per aggiungere un nuovo modello, modificare `TARGET_MODELS` in `scripts/scrape_hf_models.py`.
-
-### Aggiungere una nuova GPU
-
-Editare `public/data/gpus.json`:
+Edit `public/data/gpus.json`:
 
 ```json
 {
@@ -219,16 +200,14 @@ Editare `public/data/gpus.json`:
   "cuda_cores": 21760,
   "tensor_cores": 680,
   "fp16_tflops": 209.5,
-  "fp32_tflops": 104.8,
   "architecture": "Blackwell",
-  "compute_capability": "10.0",
   "tdp_watts": 575
 }
 ```
 
-### Aggiungere una nuova CPU
+### Add a New CPU
 
-Editare `public/data/cpus.json`:
+Edit `public/data/cpus.json`:
 
 ```json
 {
@@ -239,70 +218,34 @@ Editare `public/data/cpus.json`:
   "base_clock_ghz": 4.3,
   "boost_clock_ghz": 5.7,
   "l3_cache_mb": 64,
-  "avx": true,
   "avx2": true,
   "avx512": true,
-  "max_ram_gb": 192,
-  "ram_channels": 2,
-  "max_ram_speed_mhz": 5600
+  "max_ram_gb": 192
 }
 ```
-
-## UI Components
-
-### GpuSelector
-Autocomplete con ricerca fuzzy su nome e alias. Fallback per inserimento manuale VRAM.
-
-### RamSlider
-Selettore RAM sistema: 8, 16, 32, 64, 128 GB. Usato per calcolare offload.
-
-### ModelCard
-Mostra per ogni risultato:
-- Rank, nome, parametri, quantizzazione
-- Score 0-100 pesato per use case
-- **Performance stats grid**: Speed, Prefill, VRAM, Load time
-- **VRAM bar** con colori (verde/giallo/rosso)
-- **Badge inference mode**: GPU+RAM, CPU only
-- **Warnings**: avvisi contestuali
-- **Comando Ollama** con copy button
-
-### UseCasePicker
-5 use case con pesi benchmark diversi:
-- **Chat**: IFEval, MMLU-PRO, BBH
-- **Coding**: HumanEval, MBPP, BigCodeBench, IFEval
-- **Reasoning**: MATH, GPQA, BBH, MUSR
-- **Creative**: IFEval, AlpacaEval, MMLU-PRO
-- **Vision**: MMMU, MMBench, IFEval
-
-### BenchmarkChart
-Grafico comparativo dei benchmark per i top 5 modelli:
-- Barre orizzontali per ogni benchmark rilevante
-- Legenda colori per identificare i modelli
-- Score breakdown con speed e quantizzazione
-- Adattivo al use case selezionato
 
 ## TypeScript Interfaces
 
 ```typescript
-// Input per recommendation
-interface RecommendationInput {
-  vram_mb: number;
-  useCase: 'chat' | 'coding' | 'reasoning' | 'creative' | 'vision';
-  contextLength: number;
-  bandwidth_gbps?: number;
-  fp16_tflops?: number;
-  tensor_cores?: number;
-  ram_gb?: number;
-  cpu_cores?: number;
-  mode?: 'gpu_only' | 'gpu_offload' | 'cpu_only' | 'auto';
+interface AdvancedFilters {
+  contextLength: number;              // 4096 - 200000
+  quantLevels: QuantLevel[];          // ['Q4_K_M', 'Q6_K', 'Q8_0', 'FP16']
+  minSpeed: number | null;            // tokens/sec minimum
+  sizeRanges: ModelSizeRange[];       // ['small', 'medium', 'large', 'xlarge']
+  sortBy: SortBy;                     // 'score' | 'speed' | 'quality' | 'vram' | 'params'
+  minMmlu: number | null;
+  minMath: number | null;
+  minCoding: number | null;
+  showCpuOnly: boolean;
+  showOffload: boolean;
+  showOnlyFitsVram: boolean;
 }
 
-// Output per ogni modello
 interface ScoredModel {
   model: Model;
   quant: Quantization;
   score: number;
-  inferenceMode: 'gpu_full' | 'gpu_offload' | 'cpu_only' | 'not_possible';
+  inferenceMode: 'gpu_full' | 'gpu_offload' | 'cpu_only';
   gpuLayers: number | 'all';
   memory: {
     modelVram: number;
@@ -310,7 +253,6 @@ interface ScoredModel {
     totalVram: number;
     vramPercent: number;
     ramOffload: number;
-    totalRamUsed: number;
   };
   performance: {
     tokensPerSecond: number | null;
@@ -322,43 +264,50 @@ interface ScoredModel {
 }
 ```
 
-## Deploy
+## Deployment
 
-Il repo ha un workflow GitHub Actions (`.github/workflows/deploy.yml`) che al push su `main`:
-1. Builda il sito statico
-2. Lo deploya su GitHub Pages
+The repo has a GitHub Actions workflow (`.github/workflows/deploy.yml`) that on push to `main`:
+1. Builds the static site
+2. Deploys to GitHub Pages
 
-Per attivarlo: repo Settings -> Pages -> Source: **GitHub Actions**.
+To enable: repo Settings -> Pages -> Source: **GitHub Actions**
 
-Il sito sara' su `https://localllm-advisor.github.io/localllm-advisor/`
+Site will be at `https://localllm-advisor.github.io/localllm-advisor/`
 
 ## Analytics
 
-Per abilitare Google Analytics, crea un file `.env.local`:
+To enable Google Analytics, create `.env.local`:
 
 ```bash
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
-Sostituisci `G-XXXXXXXXXX` con il tuo Measurement ID da Google Analytics 4.
+Events tracked:
+- `find_models` - when user searches for models (with GPU/VRAM as label)
 
-Gli eventi tracciati:
-- `find_models` - quando l'utente cerca modelli (con GPU/VRAM come label)
+## Tech Stack
 
-## Stack
+- **Next.js 14** (Static Export)
+- **TypeScript** + **Tailwind CSS**
+- **Zero backend** - all client-side
+- **Python** for data scraping
 
-- Next.js 14 (Static Export)
-- TypeScript + Tailwind CSS
-- Zero backend, tutto client-side
-- Python per data scraping
+## Roadmap
 
-## TODO
-
-- [x] ~~Aggiungere input CPU per stime CPU inference~~ (fatto!)
-- [x] ~~Multi-GPU support UI~~ (fatto!)
-- [x] ~~Benchmark comparativo tra modelli~~ (fatto!)
+- [x] CPU inference support
+- [x] Multi-GPU support
+- [x] Benchmark comparison charts
+- [x] Auto GPU detection (WebGL)
+- [x] Auto CPU detection
+- [x] Advanced filters panel
+- [x] Context length up to 200K
+- [x] CPU-only mode without GPU
 - [ ] Dark/light theme toggle
-- [ ] Export risultati (JSON/CSV)
-- [ ] PWA per uso offline
-- [ ] Radar chart per comparazione visiva
-- [ ] Filtri avanzati (famiglia modello, architettura)
+- [ ] Export results (JSON/CSV)
+- [ ] PWA for offline use
+- [ ] Model comparison radar chart
+- [ ] Filter by model family/architecture
+
+## License
+
+MIT
