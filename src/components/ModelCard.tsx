@@ -11,8 +11,10 @@ interface ModelCardProps {
 
 export default function ModelCard({ result, rank }: ModelCardProps) {
   const [copied, setCopied] = useState(false);
-  const { model, quant, score, vramPercent, tokensPerSecond } = result;
+  const { model, quant, score, memory, performance, inferenceMode, warnings } = result;
 
+  const vramPercent = memory.vramPercent;
+  const tokensPerSecond = performance.tokensPerSecond;
   const vramGb = (quant.vram_mb / 1024).toFixed(1);
   const command = `ollama run ${quant.ollama_tag}`;
 
@@ -51,7 +53,7 @@ export default function ModelCard({ result, rank }: ModelCardProps) {
                 {model.params_b}B
               </span>
             </h3>
-            <p className="text-xs text-gray-400 flex items-center gap-2">
+            <p className="text-xs text-gray-400 flex items-center gap-2 flex-wrap">
               <span>{quant.level}</span>
               <span>•</span>
               <span>{vramGb}GB VRAM</span>
@@ -66,6 +68,20 @@ export default function ModelCard({ result, rank }: ModelCardProps) {
                 {'★'.repeat(stars)}
                 {'☆'.repeat(5 - stars)}
               </span>
+              {inferenceMode !== 'gpu_full' && (
+                <>
+                  <span>•</span>
+                  <span className={
+                    inferenceMode === 'gpu_offload' ? 'text-yellow-400' :
+                    inferenceMode === 'cpu_only' ? 'text-orange-400' :
+                    'text-red-400'
+                  }>
+                    {inferenceMode === 'gpu_offload' && 'GPU+RAM'}
+                    {inferenceMode === 'cpu_only' && 'CPU only'}
+                    {inferenceMode === 'not_possible' && 'Too large'}
+                  </span>
+                </>
+              )}
             </p>
           </div>
         </div>
@@ -77,6 +93,23 @@ export default function ModelCard({ result, rank }: ModelCardProps) {
 
       {/* VRAM bar */}
       <VramBar percent={vramPercent} />
+
+      {/* Warnings */}
+      {warnings.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {warnings.map((warning, i) => (
+            <span
+              key={i}
+              className="inline-flex items-center gap-1 rounded-md bg-yellow-500/10 px-2 py-1 text-xs text-yellow-400 border border-yellow-500/20"
+            >
+              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              {warning}
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Ollama command */}
       <div className="flex items-center gap-2 rounded-lg bg-gray-900 border border-gray-700 px-3 py-2.5">

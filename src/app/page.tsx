@@ -42,6 +42,8 @@ export default function Home() {
       useCase,
       contextLength,
       bandwidth_gbps: bandwidthGbps,
+      fp16_tflops: selectedGpu?.fp16_tflops,
+      tensor_cores: selectedGpu?.tensor_cores,
     });
 
     setTimeout(() => {
