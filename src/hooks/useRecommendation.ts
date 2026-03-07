@@ -14,9 +14,10 @@ export function useRecommendation() {
   useEffect(() => {
     async function loadData() {
       try {
+        const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
         const [gpuRes, modelRes] = await Promise.all([
-          fetch('/data/gpus.json'),
-          fetch('/data/models.json'),
+          fetch(`${basePath}/data/gpus.json`),
+          fetch(`${basePath}/data/models.json`),
         ]);
 
         if (!gpuRes.ok || !modelRes.ok) {
