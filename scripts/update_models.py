@@ -524,144 +524,125 @@ def generate_model_entry(
 
 
 # ============================================================
+# BENCHMARK MATCHING
+# ============================================================
+
+# Pattern HF per ogni famiglia di modelli
+HF_PATTERNS_BY_FAMILY = {
+    "llama": ["meta-llama/Llama", "Meta-Llama"],
+    "qwen": ["Qwen/Qwen", "Qwen2", "Qwen3"],
+    "mistral": ["mistralai/Mistral", "Mistral-"],
+    "phi": ["microsoft/Phi", "microsoft/phi"],
+    "gemma": ["google/gemma", "gemma-"],
+    "deepseek": ["deepseek-ai/DeepSeek", "DeepSeek-"],
+    "falcon": ["tiiuae/falcon", "tiiuae/Falcon"],
+    "yi": ["01-ai/Yi"],
+    "vicuna": ["lmsys/vicuna"],
+    "starcoder": ["bigcode/starcoder"],
+    "codellama": ["meta-llama/CodeLlama"],
+    "command": ["CohereForAI/c4ai-command"],
+    "olmo": ["allenai/OLMo"],
+    "glm": ["THUDM/glm", "zai-org/GLM"],
+    "grok": ["xai-org/grok"],
+    "bloom": ["bigscience/bloom"],
+    "stablelm": ["stabilityai/stablelm"],
+    "zephyr": ["HuggingFaceH4/zephyr"],
+    "hermes": ["NousResearch/Nous-Hermes"],
+    "wizard": ["WizardLMTeam/Wizard"],
+    "openchat": ["openchat/openchat"],
+    "solar": ["upstage/SOLAR"],
+    "orca": ["microsoft/Orca"],
+    "granite": ["ibm-granite/granite"],
+    "nemotron": ["nvidia/NVIDIA-Nemotron"],
+    "exaone": ["LGAI-EXAONE/EXAONE"],
+    "kimi": ["moonshotai/Kimi"],
+    "minimax": ["MiniMaxAI/MiniMax"],
+    "mimo": ["XiaomiMiMo/MiMo"],
+    "ernie": ["baidu/ERNIE"],
+    "embedding": ["nomic-ai/nomic-embed", "BAAI/bge"],
+}
+
+
+def get_hf_patterns(family: str, name: str) -> list[str]:
+    """Ottieni pattern HF per un modello."""
+    patterns = HF_PATTERNS_BY_FAMILY.get(family, [])
+
+    # Aggiungi pattern basati sul nome
+    if "coder" in name.lower():
+        patterns = patterns + ["Coder"]
+    if "r1" in name.lower():
+        patterns = patterns + ["R1"]
+    if "v3" in name.lower():
+        patterns = patterns + ["V3"]
+
+    return patterns if patterns else [name]
+
+
+# ============================================================
 # MAIN
 # ============================================================
 
 def main():
     print("=" * 60)
-    print("LocalLLM Advisor - Full Data Updater")
+    print("LocalLLM Advisor - Benchmark Updater")
     print("=" * 60)
     print()
-    print("Fonti:")
-    print("  1. Ollama Registry → modelli e quantizzazioni")
-    print("  2. Open LLM Leaderboard → IFEval, BBH, MATH, GPQA, MUSR, MMLU-PRO")
-    print("  3. EvalPlus → HumanEval, MBPP")
-    print("  4. BigCodeBench → BigCodeBench")
+    print("Fonti benchmark:")
+    print("  1. Open LLM Leaderboard → IFEval, BBH, MATH, GPQA, MUSR, MMLU-PRO")
+    print("  2. BigCodeBench → BigCodeBench")
     print()
 
-    # Carica modelli esistenti per preservare date
+    # Carica modelli esistenti
     models_path = DATA_DIR / "models.json"
-    existing_models = []
-    if models_path.exists():
-        with open(models_path) as f:
-            existing_models = json.load(f)
-        print(f"Loaded {len(existing_models)} existing models")
-    existing_map = {m["id"]: m for m in existing_models}
+    if not models_path.exists():
+        print(f"ERROR: {models_path} not found!")
+        print("Run scrape_hf_models.py and merge_models.py first.")
+        return
 
-    # Scrape modelli Ollama
-    ollama_models = scrape_ollama_models()
+    with open(models_path) as f:
+        models = json.load(f)
+    print(f"Loaded {len(models)} models")
 
-    all_models = []
+    # Aggiorna benchmark per ogni modello
+    updated = 0
+    for i, model in enumerate(models, 1):
+        family = model.get("family", "")
+        name = model.get("name", "")
+        params_b = model.get("params_b", 0)
 
-    for ollama_name in ollama_models:
-        if ollama_name not in OLLAMA_MODELS:
+        # Salta modelli embedding
+        if family == "embedding" or "embed" in name.lower():
             continue
 
-        config = OLLAMA_MODELS[ollama_name]
-        print(f"\nProcessing {ollama_name}...")
+        # Ottieni pattern HF
+        hf_patterns = get_hf_patterns(family, name)
 
-        # Scrape tag disponibili
-        tags = scrape_ollama_tags(ollama_name)
-        if not tags:
-            print(f"  [!] No tags found for {ollama_name}")
-            continue
+        # Cerca benchmark
+        benchmarks = find_benchmark(name, params_b, hf_patterns)
 
-        # Raggruppa per parametri
-        by_params: dict[float, list[dict]] = {}
-        for tag in tags:
-            parsed = parse_ollama_tag(tag)
-            if parsed and parsed["is_instruct"]:  # Solo instruct/chat
-                params = parsed["params_b"]
-                if params not in by_params:
-                    by_params[params] = []
-                by_params[params].append(parsed)
-
-        # Per ogni size, genera entry
-        for params_b, tag_list in sorted(by_params.items()):
-            # Deduplica quantizzazioni
-            quants_seen = set()
-            quantizations = []
-
-            for t in tag_list:
-                q = t["quant"]
-                if q in quants_seen:
-                    continue
-                quants_seen.add(q)
-
-                bpw = QUANT_BPW.get(q, 4.5)
-                quality = QUANT_QUALITY.get(q, 0.9)
-
-                quantizations.append({
-                    "level": q.upper(),
-                    "bpw": bpw,
-                    "vram_mb": estimate_vram_mb(params_b, bpw),
-                    "quality": quality,
-                    "ollama_tag": f"{ollama_name}:{t['original_tag']}",
-                })
-
-            # Ordina per quality (migliore prima)
-            quantizations.sort(key=lambda x: x["quality"], reverse=True)
-
-            # Limita a 3-4 quantizzazioni più utili
-            useful_quants = ["Q4_K_M", "Q6_K", "Q8_0", "Q2_K", "FP16"]
-            quantizations = [q for q in quantizations if q["level"] in useful_quants][:4]
-
-            if not quantizations:
-                # Fallback: prendi le prime 3
-                quantizations = sorted(tag_list, key=lambda x: QUANT_QUALITY.get(x["quant"], 0))[:3]
-                quantizations = [{
-                    "level": t["quant"].upper(),
-                    "bpw": QUANT_BPW.get(t["quant"], 4.5),
-                    "vram_mb": estimate_vram_mb(params_b, QUANT_BPW.get(t["quant"], 4.5)),
-                    "quality": QUANT_QUALITY.get(t["quant"], 0.9),
-                    "ollama_tag": f"{ollama_name}:{t['original_tag']}",
-                } for t in quantizations]
-
-            # Fetch benchmark
-            benchmarks = find_benchmark(
-                ollama_name,
-                params_b,
-                config.get("hf_patterns", [])
-            )
-
-            # Genera entry
-            model = generate_model_entry(
-                ollama_name,
-                params_b,
-                quantizations,
-                config,
-                benchmarks,
-            )
-
-            # Preserva release_date da esistenti
-            if model["id"] in existing_map:
-                model["release_date"] = existing_map[model["id"]].get("release_date")
-
-            if not model["release_date"]:
-                from datetime import date
-                model["release_date"] = date.today().isoformat()
-
-            all_models.append(model)
-            print(f"  + {model['name']} ({len(quantizations)} quants)")
-
-        time.sleep(0.3)  # Rate limiting
-
-    # Ordina per famiglia e parametri
-    all_models.sort(key=lambda m: (m["family"], m["params_b"]))
+        # Aggiorna solo se troviamo benchmark
+        has_benchmarks = any(v is not None for v in benchmarks.values())
+        if has_benchmarks:
+            old_benchmarks = model.get("benchmarks", {})
+            # Merge: preserva vecchi benchmark, aggiungi nuovi
+            for k, v in benchmarks.items():
+                if v is not None:
+                    old_benchmarks[k] = v
+            model["benchmarks"] = old_benchmarks
+            updated += 1
+            print(f"  [{i}/{len(models)}] ✓ {name}: updated benchmarks")
+        else:
+            if i <= 20 or i % 10 == 0:  # Log primi 20 e ogni 10
+                print(f"  [{i}/{len(models)}] - {name}: no benchmarks found")
 
     # Scrivi
     with open(models_path, "w") as f:
-        json.dump(all_models, f, indent=2)
+        json.dump(models, f, indent=2)
 
     print()
     print("=" * 60)
-    print(f"Written {len(all_models)} models to {models_path}")
-    print()
-    print("Summary by family:")
-    families = sorted(set(m["family"] for m in all_models))
-    for fam in families:
-        count = sum(1 for m in all_models if m["family"] == fam)
-        print(f"  {fam}: {count} models")
+    print(f"Updated benchmarks for {updated}/{len(models)} models")
+    print(f"Written to {models_path}")
 
 
 if __name__ == "__main__":
