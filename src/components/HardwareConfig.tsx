@@ -73,6 +73,7 @@ export default function HardwareConfig({
   const [detectedRenderer, setDetectedRenderer] = useState<string | null>(null);
   const [detectedGpu, setDetectedGpu] = useState<GPU | null>(null);
   const [hasAutoDetected, setHasAutoDetected] = useState(false);
+  const [isSoftwareRenderer, setIsSoftwareRenderer] = useState(false);
 
   const gpuRef = useRef<HTMLDivElement>(null);
   const cpuRef = useRef<HTMLDivElement>(null);
@@ -82,7 +83,9 @@ export default function HardwareConfig({
     if (hasAutoDetected || selectedGpu || specs.vram_mb) return;
 
     const hardware = detectHardware();
-    if (hardware.gpuRenderer) {
+    if (hardware.isSoftwareRenderer) {
+      setIsSoftwareRenderer(true);
+    } else if (hardware.gpuRenderer) {
       setDetectedRenderer(hardware.gpuRenderer);
       const matched = matchGpuFromRenderer(hardware.gpuRenderer, gpus);
       if (matched) {
@@ -183,6 +186,29 @@ export default function HardwareConfig({
 
   return (
     <div className="space-y-4">
+      {/* Software renderer warning */}
+      {isSoftwareRenderer && !selectedGpu && !specs.vram_mb && (
+        <div className="rounded-lg border border-orange-600/50 bg-orange-900/20 p-3 space-y-1">
+          <div className="flex items-center gap-2 text-orange-400 text-sm font-medium">
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            GPU detection unavailable
+          </div>
+          <p className="text-sm text-gray-400">
+            Your browser is using software rendering. This can happen with:
+          </p>
+          <ul className="text-xs text-gray-500 list-disc list-inside space-y-0.5">
+            <li>Remote desktop or virtual machine</li>
+            <li>Hardware acceleration disabled in browser settings</li>
+            <li>Outdated GPU drivers</li>
+          </ul>
+          <p className="text-xs text-gray-500 mt-1">
+            Please select your GPU manually below.
+          </p>
+        </div>
+      )}
+
       {/* Auto-detected GPU banner */}
       {detectedGpu && !selectedGpu && !specs.vram_mb && (
         <div className="rounded-lg border border-green-600/50 bg-green-900/20 p-3 space-y-2">
@@ -802,7 +828,7 @@ export default function HardwareConfig({
               ))}
             </div>
             <p className="text-xs text-gray-500">
-              Auto: best mode based on VRAM. GPU Only: fail if model doesn't fit. Offload: use system RAM. CPU: no GPU.
+              Auto: best mode based on VRAM. GPU Only: fail if model does not fit. Offload: use system RAM. CPU: no GPU.
             </p>
           </div>
         </div>

@@ -9,14 +9,43 @@ export interface DetectedHardware {
   gpuVendor: string | null;
   deviceMemoryGb: number | null;
   coreCount: number | null;
+  isSoftwareRenderer: boolean;
+}
+
+/**
+ * Software/fallback renderers that should be ignored
+ */
+const SOFTWARE_RENDERERS = [
+  'microsoft basic render driver',
+  'basic render driver',
+  'swiftshader',
+  'llvmpipe',
+  'softpipe',
+  'software rasterizer',
+  'mesa',
+  'vmware',
+  'virtualbox',
+  'parallel',
+  'remote desktop',
+  'rdp',
+  'citrix',
+];
+
+/**
+ * Check if a renderer is a software/fallback renderer
+ */
+export function isSoftwareRenderer(renderer: string): boolean {
+  if (!renderer) return true;
+  const lower = renderer.toLowerCase();
+  return SOFTWARE_RENDERERS.some(sw => lower.includes(sw));
 }
 
 /**
  * Detect GPU using WebGL debug info
  */
-export function detectGpuWebGL(): { renderer: string | null; vendor: string | null } {
+export function detectGpuWebGL(): { renderer: string | null; vendor: string | null; isSoftware: boolean } {
   if (typeof window === 'undefined') {
-    return { renderer: null, vendor: null };
+    return { renderer: null, vendor: null, isSoftware: false };
   }
 
   try {
@@ -24,23 +53,25 @@ export function detectGpuWebGL(): { renderer: string | null; vendor: string | nu
     const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
 
     if (!gl || !(gl instanceof WebGLRenderingContext)) {
-      return { renderer: null, vendor: null };
+      return { renderer: null, vendor: null, isSoftware: false };
     }
 
     const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
     if (!debugInfo) {
-      return { renderer: null, vendor: null };
+      return { renderer: null, vendor: null, isSoftware: false };
     }
 
     const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
     const vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+    const isSoftware = isSoftwareRenderer(renderer || '');
 
     return {
-      renderer: renderer || null,
-      vendor: vendor || null,
+      renderer: isSoftware ? null : (renderer || null),
+      vendor: isSoftware ? null : (vendor || null),
+      isSoftware,
     };
   } catch {
-    return { renderer: null, vendor: null };
+    return { renderer: null, vendor: null, isSoftware: false };
   }
 }
 
@@ -68,12 +99,13 @@ export function detectCoreCount(): number | null {
  * Detect all available hardware info
  */
 export function detectHardware(): DetectedHardware {
-  const { renderer, vendor } = detectGpuWebGL();
+  const { renderer, vendor, isSoftware } = detectGpuWebGL();
   return {
     gpuRenderer: renderer,
     gpuVendor: vendor,
     deviceMemoryGb: detectSystemMemory(),
     coreCount: detectCoreCount(),
+    isSoftwareRenderer: isSoftware,
   };
 }
 
