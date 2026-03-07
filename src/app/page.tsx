@@ -8,12 +8,16 @@ import HardwareConfig, { HardwareSpecs } from '@/components/HardwareConfig';
 import UseCasePicker from '@/components/UseCasePicker';
 import AdvancedOptions, { DEFAULT_FILTERS } from '@/components/AdvancedOptions';
 import ResultsList from '@/components/ResultsList';
+import HardwareFinder from '@/components/HardwareFinder';
 import { trackEvent } from '@/components/Analytics';
 
+type AppMode = 'find-models' | 'build-hardware';
+
 export default function Home() {
-  const { gpus, cpus, results, isLoading, error, runRecommendation } =
+  const { gpus, cpus, models, results, isLoading, error, runRecommendation } =
     useRecommendation();
 
+  const [mode, setMode] = useState<AppMode>('find-models');
   const [specs, setSpecs] = useState<HardwareSpecs>({
     vram_mb: null,
     ram_gb: 16,
@@ -99,10 +103,13 @@ export default function Home() {
               LocalLLM Advisor
             </h1>
             <p className="text-sm text-gray-400">
-              Find the best local LLM for your hardware
+              {mode === 'find-models'
+                ? 'Find the best local LLM for your hardware'
+                : 'Find hardware to run your desired model'
+              }
             </p>
           </div>
-          <nav className="flex gap-6 text-sm">
+          <nav className="hidden md:flex gap-6 text-sm">
             <Link href="/methodology" className="text-gray-400 hover:text-white transition-colors">
               Methodology
             </Link>
@@ -124,33 +131,73 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Form */}
-      <main className="mx-auto max-w-3xl px-4 py-8 space-y-6">
-        <section className="space-y-6">
-          <HardwareConfig
-            gpus={gpus}
-            cpus={cpus}
-            specs={specs}
-            onChange={setSpecs}
-          />
-
-          <UseCasePicker selected={useCase} onChange={setUseCase} />
-
-          <AdvancedOptions filters={filters} onChange={setFilters} />
-
-          {/* CTA */}
+      {/* Mode Tabs */}
+      <div className="mx-auto max-w-3xl px-4 pt-6">
+        <div className="flex rounded-xl bg-gray-800 p-1">
           <button
-            onClick={handleSubmit}
-            disabled={!canSearch}
-            className="w-full rounded-xl bg-blue-600 px-6 py-4 text-lg font-semibold text-white transition-all hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-blue-600"
+            onClick={() => setMode('find-models')}
+            className={`flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-all ${
+              mode === 'find-models'
+                ? 'bg-blue-600 text-white shadow-lg'
+                : 'text-gray-400 hover:text-white hover:bg-gray-700'
+            }`}
           >
-            {isCpuOnlyMode ? 'Find CPU Models' : 'Find My Models'}
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Find Models
+            <span className="hidden sm:inline text-xs opacity-75">I have hardware</span>
           </button>
-        </section>
+          <button
+            onClick={() => setMode('build-hardware')}
+            className={`flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-all ${
+              mode === 'build-hardware'
+                ? 'bg-orange-600 text-white shadow-lg'
+                : 'text-gray-400 hover:text-white hover:bg-gray-700'
+            }`}
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+            </svg>
+            Build for Model
+            <span className="hidden sm:inline text-xs opacity-75">I need hardware</span>
+          </button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <main className="mx-auto max-w-3xl px-4 py-6 space-y-6">
+        {mode === 'find-models' ? (
+          <section className="space-y-6">
+            <HardwareConfig
+              gpus={gpus}
+              cpus={cpus}
+              specs={specs}
+              onChange={setSpecs}
+            />
+
+            <UseCasePicker selected={useCase} onChange={setUseCase} />
+
+            <AdvancedOptions filters={filters} onChange={setFilters} />
+
+            {/* CTA */}
+            <button
+              onClick={handleSubmit}
+              disabled={!canSearch}
+              className="w-full rounded-xl bg-blue-600 px-6 py-4 text-lg font-semibold text-white transition-all hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-blue-600"
+            >
+              {isCpuOnlyMode ? 'Find CPU Models' : 'Find My Models'}
+            </button>
+          </section>
+        ) : (
+          <section className="space-y-6">
+            <HardwareFinder models={models} gpus={gpus} />
+          </section>
+        )}
       </main>
 
-      {/* Results - Full Width */}
-      {results && canSearch && (
+      {/* Results - Full Width (only for Find Models mode) */}
+      {mode === 'find-models' && results && canSearch && (
         <section ref={resultsRef} className="mx-auto max-w-7xl px-4 py-6">
           <ResultsList
             results={results}
