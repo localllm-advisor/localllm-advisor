@@ -32,7 +32,29 @@ cd localllm-advisor
 
 # Installa dipendenze
 npm install
+```
 
+### Scaricare i dati (IMPORTANTE!)
+
+**Prima di avviare il sito**, devi scaricare i dati dei modelli con lo script Python:
+
+```bash
+# Setup Python (solo la prima volta)
+python3 -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# oppure: .venv\Scripts\activate  # Windows
+
+pip install requests beautifulsoup4 pandas pyarrow datasets
+
+# Scarica i dati dei modelli
+python scripts/update_models.py
+```
+
+Questo script scarica i benchmark da HuggingFace e genera `public/data/models.json`.
+
+### Avviare il dev server
+
+```bash
 # Dev server con hot reload
 npm run dev
 # Apre su http://localhost:3000
@@ -314,8 +336,8 @@ Il sito sara' su `https://localllm-advisor.github.io/localllm-advisor/`
 
 ## TODO
 
-- [ ] Aggiungere input CPU per stime CPU inference
-- [ ] Multi-GPU support UI
+- [x] ~~Aggiungere input CPU per stime CPU inference~~ (fatto!)
+- [x] ~~Multi-GPU support UI~~ (fatto!)
 - [x] ~~Benchmark comparativo tra modelli~~ (fatto!)
 - [ ] Dark/light theme toggle
 - [ ] Export risultati (JSON/CSV)
