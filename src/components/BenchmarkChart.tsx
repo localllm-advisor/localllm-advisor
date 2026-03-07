@@ -134,39 +134,137 @@ export default function BenchmarkChart({ results, useCase }: BenchmarkChartProps
         })}
       </div>
 
-      {/* Score breakdown */}
-      <div className="border-t border-gray-700 pt-4">
-        <h4 className="text-sm font-medium text-gray-300 mb-3">Overall Score Breakdown</h4>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {topModels.map((result, i) => (
-            <div
-              key={result.model.id}
-              className="bg-gray-800/50 rounded-lg p-3 border border-gray-700"
-            >
-              <div className="flex items-center gap-2 mb-2">
-                <div className={`w-2 h-2 rounded ${MODEL_COLORS[i]}`} />
-                <span className="text-sm font-medium text-white truncate">
-                  {result.model.name}
-                </span>
-              </div>
-              <div className="grid grid-cols-3 gap-2 text-xs">
-                <div>
-                  <div className="text-gray-500">Score</div>
-                  <div className="text-white font-semibold">{result.score}</div>
+      {/* Performance Comparison */}
+      <div className="border-t border-gray-700 pt-4 space-y-4">
+        <h4 className="text-sm font-medium text-gray-300">Performance Comparison</h4>
+
+        {/* Score comparison */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-gray-200">Score</span>
+            <span className="text-xs text-gray-500">Overall ranking (0-100)</span>
+          </div>
+          <div className="space-y-1">
+            {topModels.map((result, i) => (
+              <div key={`score-${result.model.id}`} className="flex items-center gap-2">
+                <div className="w-28 text-xs text-gray-400 truncate">
+                  {result.model.name.replace(/\s+\d+(\.\d+)?B$/i, '')} {result.model.params_b}B
                 </div>
-                <div>
-                  <div className="text-gray-500">Speed</div>
-                  <div className="text-white">
-                    {result.performance.tokensPerSecond ?? '—'} t/s
+                <div className="flex-1 h-5 bg-gray-800 rounded overflow-hidden">
+                  <div
+                    className={`h-full ${MODEL_COLORS[i]} transition-all duration-500`}
+                    style={{ width: `${result.score}%` }}
+                  />
+                </div>
+                <div className="w-12 text-xs text-gray-300 text-right font-semibold">
+                  {result.score}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Speed comparison */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-gray-200">Speed</span>
+            <span className="text-xs text-gray-500">Tokens per second</span>
+          </div>
+          <div className="space-y-1">
+            {(() => {
+              const maxSpeed = Math.max(
+                ...topModels.map((r) => r.performance.tokensPerSecond ?? 0),
+                1
+              );
+              return topModels.map((result, i) => {
+                const speed = result.performance.tokensPerSecond;
+                const width = speed !== null ? (speed / maxSpeed) * 100 : 0;
+                return (
+                  <div key={`speed-${result.model.id}`} className="flex items-center gap-2">
+                    <div className="w-28 text-xs text-gray-400 truncate">
+                      {result.model.name.replace(/\s+\d+(\.\d+)?B$/i, '')} {result.model.params_b}B
+                    </div>
+                    <div className="flex-1 h-5 bg-gray-800 rounded overflow-hidden">
+                      {speed !== null ? (
+                        <div
+                          className={`h-full ${MODEL_COLORS[i]} transition-all duration-500`}
+                          style={{ width: `${width}%` }}
+                        />
+                      ) : (
+                        <div className="h-full flex items-center px-2">
+                          <span className="text-xs text-gray-600">N/A</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="w-12 text-xs text-gray-300 text-right">
+                      {speed !== null ? `${speed}` : '—'}
+                    </div>
+                  </div>
+                );
+              });
+            })()}
+          </div>
+        </div>
+
+        {/* Quant Quality comparison */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-gray-200">Quant Quality</span>
+            <span className="text-xs text-gray-500">Quantization fidelity (0-100%)</span>
+          </div>
+          <div className="space-y-1">
+            {topModels.map((result, i) => {
+              const quality = result.quant.quality * 100;
+              return (
+                <div key={`quant-${result.model.id}`} className="flex items-center gap-2">
+                  <div className="w-28 text-xs text-gray-400 truncate">
+                    {result.model.name.replace(/\s+\d+(\.\d+)?B$/i, '')} {result.model.params_b}B
+                  </div>
+                  <div className="flex-1 h-5 bg-gray-800 rounded overflow-hidden">
+                    <div
+                      className={`h-full ${MODEL_COLORS[i]} transition-all duration-500`}
+                      style={{ width: `${quality}%` }}
+                    />
+                  </div>
+                  <div className="w-12 text-xs text-gray-300 text-right">
+                    {result.quant.level}
                   </div>
                 </div>
-                <div>
-                  <div className="text-gray-500">Quant</div>
-                  <div className="text-white">{result.quant.level}</div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* VRAM Usage comparison */}
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-gray-200">VRAM Usage</span>
+            <span className="text-xs text-gray-500">% of available VRAM</span>
+          </div>
+          <div className="space-y-1">
+            {topModels.map((result, i) => {
+              const vramPercent = result.memory.vramPercent;
+              const barColor = vramPercent > 90 ? 'bg-red-500' :
+                               vramPercent > 75 ? 'bg-yellow-500' :
+                               MODEL_COLORS[i];
+              return (
+                <div key={`vram-${result.model.id}`} className="flex items-center gap-2">
+                  <div className="w-28 text-xs text-gray-400 truncate">
+                    {result.model.name.replace(/\s+\d+(\.\d+)?B$/i, '')} {result.model.params_b}B
+                  </div>
+                  <div className="flex-1 h-5 bg-gray-800 rounded overflow-hidden">
+                    <div
+                      className={`h-full ${barColor} transition-all duration-500`}
+                      style={{ width: `${Math.min(vramPercent, 100)}%` }}
+                    />
+                  </div>
+                  <div className="w-12 text-xs text-gray-300 text-right">
+                    {vramPercent}%
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
