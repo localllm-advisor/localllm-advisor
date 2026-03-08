@@ -183,7 +183,7 @@ export default function Home() {
             <div className="text-center mb-12">
               <h2 className={`text-4xl sm:text-5xl font-bold mb-4 tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 Find the Perfect LLM
-                <span className={`block text-transparent bg-clip-text bg-gradient-to-r ${isDark ? 'from-blue-400 to-purple-400' : 'from-blue-600 to-purple-600'}`}>
+                <span className={`block ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
                   for Your Hardware
                 </span>
               </h2>
