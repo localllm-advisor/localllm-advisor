@@ -1,15 +1,45 @@
 # LocalLLM Advisor
 
-Find the best local LLM for your hardware. Select your GPU and RAM, choose a use case, and get a ranked list of models with realistic performance estimates and ready-to-copy Ollama commands.
+Find the best local LLM for your hardware — or find the best hardware for your model.
+
+## Two Modes
+
+### Find Models (I have hardware)
+Select your GPU and RAM, choose a use case, and get a ranked list of models with realistic performance estimates and ready-to-copy Ollama commands.
+
+### Build for Model (I need hardware)
+Choose a model you want to run, set your speed and budget preferences, and get GPU recommendations with prices and buy links.
 
 ## Features
 
 ### Hardware Detection
 - **Auto-detect GPU** via WebGL - automatically identifies your graphics card
 - **Auto-detect CPU** - detects thread count and Apple Silicon chips
-- **52 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000/9000), Apple Silicon (M1-M4), Intel Arc
+- **56 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
 - **32 CPUs** in database for CPU inference estimates
 - **Manual override** for any hardware spec
+
+### Hardware Recipe (Build for Model)
+Complete hardware recommendations for any model:
+
+- **VRAM Requirements**: Shows exact GB needed at Q4, Q6, Q8, FP16
+- **Feasibility Check**: Single GPU / Multi-GPU / Cloud required
+- **Speed Preferences**: Any, Usable (10+ tok/s), Fast (25+ tok/s), Blazing (50+ tok/s)
+- **Budget Filters**: No limit, Under $500/$1000/$1500/$2000/$3000/$5000
+- **Recommended Builds**:
+  - Budget - cheapest option that works
+  - Best Value - optimal speed per dollar
+  - Fastest - maximum performance
+- **Multi-GPU Configs**: 2x, 4x, 8x GPU setups with scaling estimates
+- **Cloud Alternatives**: RunPod, Vast.ai, Lambda with $/hr pricing
+- **System Requirements**: RAM, PSU wattage, PCIe slots needed
+- **Datacenter Scale**: For 1000B+ models, shows H100 cluster requirements
+
+Works for any model size:
+- Small models (7B): Single RTX 4060 sufficient
+- Large models (70B): RTX 4090 or multi-GPU options
+- Massive models (405B+): Cloud options with cost estimates
+- Extreme models (1000B+): Datacenter requirements (e.g., "9x H100 @ $22/hr")
 
 ### Model Database
 - **84 LLM models** from 23 providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
@@ -96,6 +126,7 @@ src/
     methodology/          # Methodology page
   components/
     HardwareConfig.tsx    # GPU/CPU selection with auto-detection
+    HardwareFinder.tsx    # Build for Model - reverse hardware search
     AdvancedOptions.tsx   # Filters panel (context, sort, quant, size, speed)
     UseCasePicker.tsx     # Use case selection
     ResultsList.tsx       # Results display with charts
@@ -103,6 +134,7 @@ src/
     VramBar.tsx           # VRAM usage visualization
   lib/
     engine.ts             # Recommendation engine
+    hardwareAdvisor.ts    # Reverse engine: model -> GPU recommendations
     vram.ts               # VRAM/performance calculations
     scoring.ts            # Benchmark-weighted scoring
     detectHardware.ts     # WebGL GPU detection
@@ -110,13 +142,15 @@ src/
   hooks/
     useRecommendation.ts  # React hook for state and data fetching
 public/data/
-  gpus.json               # GPU database (52 cards)
+  gpus.json               # GPU database (56 cards)
   cpus.json               # CPU database (32 processors)
   models.json             # LLM models with benchmarks (84 models)
 scripts/
   scrape_hf_models.py     # Scrape models from HuggingFace
   merge_models.py         # Merge into app format
   update_models.py        # Update benchmarks from leaderboards
+  update_gpu_prices.py    # Update GPU prices from Newegg (USD)
+  scrape_gpus_simple.py   # Full GPU scraper with specs + prices
 ```
 
 ## How It Works
@@ -165,7 +199,7 @@ python3 -m venv .venv
 source .venv/bin/activate  # Linux/Mac
 # or: .venv\Scripts\activate  # Windows
 
-pip install requests pandas pyarrow datasets
+pip install -r requirements.txt
 ```
 
 ### Update Models
@@ -183,6 +217,17 @@ python3 scripts/merge_models.py
 HF_TOKEN=hf_xxx python3 scripts/update_models.py
 ```
 
+### Update GPU Prices
+
+```bash
+source .venv/bin/activate
+
+# Update USD prices from Newegg
+python3 scripts/update_gpu_prices.py
+```
+
+The script scrapes current prices from Newegg for all 44 purchasable GPUs (excludes Apple Silicon which is not sold separately).
+
 **Note**: HuggingFace token (`HF_TOKEN`) is optional but recommended for gated models (Llama, Mistral) and higher rate limits. Create one at https://huggingface.co/settings/tokens
 
 ### Add a New GPU
@@ -191,19 +236,25 @@ Edit `public/data/gpus.json`:
 
 ```json
 {
-  "name": "RTX 5090",
+  "name": "NVIDIA RTX 5090",
   "vendor": "nvidia",
-  "aliases": ["5090", "GeForce 5090"],
+  "aliases": ["RTX 5090", "rtx 5090", "RTX5090"],
+  "price_usd": 1999,
+  "availability": "available",
   "vram_mb": 32768,
   "bandwidth_gbps": 1792,
   "memory_type": "GDDR7",
   "cuda_cores": 21760,
   "tensor_cores": 680,
-  "fp16_tflops": 209.5,
+  "fp16_tflops": 209,
+  "fp32_tflops": 104,
   "architecture": "Blackwell",
+  "compute_capability": "10.0",
   "tdp_watts": 575
 }
 ```
+
+Availability options: `available`, `preorder`, `used_only`, `discontinued`
 
 ### Add a New CPU
 
@@ -302,6 +353,12 @@ Events tracked:
 - [x] Advanced filters panel
 - [x] Context length up to 200K
 - [x] CPU-only mode without GPU
+- [x] "Build for Model" reverse hardware search
+- [x] GPU pricing database with buy links
+- [x] Complete Hardware Recipe system
+- [x] Cloud provider alternatives (RunPod, Vast.ai, Lambda)
+- [x] Multi-GPU configurations (2x, 4x, 8x)
+- [x] Datacenter-scale requirements for 1000B+ models
 - [ ] Dark/light theme toggle
 - [ ] Export results (JSON/CSV)
 - [ ] PWA for offline use

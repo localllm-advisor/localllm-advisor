@@ -51,5 +51,9 @@ export function useRecommendation() {
     return scored;
   }
 
-  return { gpus, cpus, models, results, isLoading, error, runRecommendation };
+  function clearResults() {
+    setResults(null);
+  }
+
+  return { gpus, cpus, models, results, isLoading, error, runRecommendation, clearResults };
 }

@@ -42,6 +42,12 @@ export interface GPU {
   vendor: 'nvidia' | 'amd' | 'apple' | 'intel';
   aliases: string[];
 
+  // Pricing (optional)
+  price_usd?: number;
+  price_eur?: number;
+  affiliate_url?: string;
+  availability?: 'available' | 'preorder' | 'used_only' | 'discontinued';
+
   // Memory
   vram_mb: number;
   bandwidth_gbps: number;

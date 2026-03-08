@@ -2,547 +2,899 @@
   {
     "name": "NVIDIA RTX 5090",
     "vendor": "nvidia",
-    "aliases": ["5090", "RTX 5090", "rtx5090"],
     "vram_mb": 32768,
     "bandwidth_gbps": 1792,
     "memory_type": "GDDR7",
     "cuda_cores": 21760,
     "tensor_cores": 680,
-    "fp16_tflops": 209,
     "fp32_tflops": 104,
-    "int8_tops": 419,
+    "fp16_tflops": 209,
     "architecture": "Blackwell",
     "compute_capability": "10.0",
+    "tdp_watts": 575,
     "pcie_gen": 5,
     "pcie_lanes": 16,
-    "tdp_watts": 575
+    "aliases": [
+      "rtx 5090",
+      "RTX 5090",
+      "NVIDIA RTX 5090",
+      "RTX5090"
+    ],
+    "availability": "available",
+    "price_usd": 3699
   },
   {
     "name": "NVIDIA RTX 5080",
     "vendor": "nvidia",
-    "aliases": ["5080", "RTX 5080", "rtx5080"],
     "vram_mb": 16384,
     "bandwidth_gbps": 960,
     "memory_type": "GDDR7",
     "cuda_cores": 10752,
     "tensor_cores": 336,
-    "fp16_tflops": 110,
     "fp32_tflops": 55,
-    "int8_tops": 220,
+    "fp16_tflops": 110,
     "architecture": "Blackwell",
     "compute_capability": "10.0",
+    "tdp_watts": 360,
     "pcie_gen": 5,
     "pcie_lanes": 16,
-    "tdp_watts": 360
+    "aliases": [
+      "NVIDIA RTX 5080",
+      "rtx 5080",
+      "RTX5080",
+      "RTX 5080"
+    ],
+    "availability": "available",
+    "price_usd": 1599
   },
   {
     "name": "NVIDIA RTX 5070 Ti",
     "vendor": "nvidia",
-    "aliases": ["5070Ti", "RTX 5070 Ti", "5070 ti"],
     "vram_mb": 16384,
     "bandwidth_gbps": 896,
     "memory_type": "GDDR7",
     "cuda_cores": 8960,
     "tensor_cores": 280,
-    "fp16_tflops": 93,
     "fp32_tflops": 47,
-    "int8_tops": 186,
+    "fp16_tflops": 93,
     "architecture": "Blackwell",
     "compute_capability": "10.0",
+    "tdp_watts": 300,
     "pcie_gen": 5,
     "pcie_lanes": 16,
-    "tdp_watts": 300
+    "aliases": [
+      "RTX 5070 Ti",
+      "RTX5070Ti",
+      "NVIDIA RTX 5070 Ti",
+      "rtx 5070 ti"
+    ],
+    "availability": "available",
+    "price_usd": 1159
   },
   {
     "name": "NVIDIA RTX 5070",
     "vendor": "nvidia",
-    "aliases": ["5070", "RTX 5070", "rtx5070"],
     "vram_mb": 12288,
     "bandwidth_gbps": 672,
     "memory_type": "GDDR7",
     "cuda_cores": 6144,
     "tensor_cores": 192,
-    "fp16_tflops": 64,
     "fp32_tflops": 32,
-    "int8_tops": 128,
+    "fp16_tflops": 64,
     "architecture": "Blackwell",
     "compute_capability": "10.0",
+    "tdp_watts": 250,
     "pcie_gen": 5,
     "pcie_lanes": 8,
-    "tdp_watts": 250
+    "aliases": [
+      "RTX5070",
+      "rtx 5070",
+      "NVIDIA RTX 5070",
+      "RTX 5070"
+    ],
+    "availability": "available",
+    "price_usd": 669
   },
   {
     "name": "NVIDIA RTX 4090",
     "vendor": "nvidia",
-    "aliases": ["4090", "RTX 4090", "rtx4090"],
     "vram_mb": 24576,
     "bandwidth_gbps": 1008,
     "memory_type": "GDDR6X",
     "cuda_cores": 16384,
     "tensor_cores": 512,
+    "fp32_tflops": 82.6,
     "fp16_tflops": 165,
-    "fp32_tflops": 82,
-    "int8_tops": 330,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 450,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 450
+    "aliases": [
+      "rtx 4090",
+      "RTX 4090",
+      "RTX4090",
+      "NVIDIA RTX 4090"
+    ],
+    "availability": "available",
+    "price_usd": 3745
   },
   {
     "name": "NVIDIA RTX 4080 SUPER",
     "vendor": "nvidia",
-    "aliases": ["4080S", "RTX 4080 Super", "4080 super"],
     "vram_mb": 16384,
     "bandwidth_gbps": 736,
     "memory_type": "GDDR6X",
     "cuda_cores": 10240,
     "tensor_cores": 320,
-    "fp16_tflops": 104,
     "fp32_tflops": 52,
-    "int8_tops": 208,
+    "fp16_tflops": 104,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 320,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 320
+    "aliases": [
+      "NVIDIA RTX 4080 SUPER",
+      "RTX4080SUPER",
+      "RTX 4080 SUPER",
+      "rtx 4080 super"
+    ],
+    "availability": "available",
+    "price_usd": 1295
   },
   {
     "name": "NVIDIA RTX 4080",
     "vendor": "nvidia",
-    "aliases": ["4080", "RTX 4080", "rtx4080"],
     "vram_mb": 16384,
     "bandwidth_gbps": 717,
     "memory_type": "GDDR6X",
     "cuda_cores": 9728,
     "tensor_cores": 304,
+    "fp32_tflops": 48.7,
     "fp16_tflops": 97,
-    "fp32_tflops": 48,
-    "int8_tops": 194,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 320,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 320
+    "aliases": [
+      "rtx 4080",
+      "NVIDIA RTX 4080",
+      "RTX4080",
+      "RTX 4080"
+    ],
+    "availability": "available",
+    "price_usd": 1399
   },
   {
     "name": "NVIDIA RTX 4070 Ti SUPER",
     "vendor": "nvidia",
-    "aliases": ["4070TiS", "RTX 4070 Ti Super", "4070 ti super"],
     "vram_mb": 16384,
     "bandwidth_gbps": 672,
     "memory_type": "GDDR6X",
     "cuda_cores": 8448,
     "tensor_cores": 264,
-    "fp16_tflops": 88,
     "fp32_tflops": 44,
-    "int8_tops": 176,
+    "fp16_tflops": 88,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 285,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 285
+    "aliases": [
+      "RTX4070TiSUPER",
+      "NVIDIA RTX 4070 Ti SUPER",
+      "rtx 4070 ti super",
+      "RTX 4070 Ti SUPER"
+    ],
+    "availability": "available",
+    "price_usd": 999
   },
   {
     "name": "NVIDIA RTX 4070 Ti",
     "vendor": "nvidia",
-    "aliases": ["4070Ti", "RTX 4070 Ti", "4070 ti"],
     "vram_mb": 12288,
     "bandwidth_gbps": 504,
     "memory_type": "GDDR6X",
     "cuda_cores": 7680,
     "tensor_cores": 240,
-    "fp16_tflops": 80,
     "fp32_tflops": 40,
-    "int8_tops": 160,
+    "fp16_tflops": 80,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 285,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 285
+    "aliases": [
+      "RTX 4070 Ti",
+      "NVIDIA RTX 4070 Ti",
+      "rtx 4070 ti",
+      "RTX4070Ti"
+    ],
+    "availability": "available",
+    "price_usd": 2099
   },
   {
     "name": "NVIDIA RTX 4070 SUPER",
     "vendor": "nvidia",
-    "aliases": ["4070S", "RTX 4070 Super", "4070 super"],
     "vram_mb": 12288,
     "bandwidth_gbps": 504,
     "memory_type": "GDDR6X",
     "cuda_cores": 7168,
     "tensor_cores": 224,
+    "fp32_tflops": 35.5,
     "fp16_tflops": 75,
-    "fp32_tflops": 35,
-    "int8_tops": 150,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 220,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 220
+    "aliases": [
+      "NVIDIA RTX 4070 SUPER",
+      "RTX 4070 SUPER",
+      "RTX4070SUPER",
+      "rtx 4070 super"
+    ],
+    "availability": "available",
+    "price_usd": 549
   },
   {
     "name": "NVIDIA RTX 4070",
     "vendor": "nvidia",
-    "aliases": ["4070", "RTX 4070", "rtx4070"],
     "vram_mb": 12288,
     "bandwidth_gbps": 504,
     "memory_type": "GDDR6X",
     "cuda_cores": 5888,
     "tensor_cores": 184,
-    "fp16_tflops": 58,
     "fp32_tflops": 29,
-    "int8_tops": 116,
+    "fp16_tflops": 58,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 200,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 200
+    "aliases": [
+      "RTX4070",
+      "RTX 4070",
+      "NVIDIA RTX 4070",
+      "rtx 4070"
+    ],
+    "availability": "available",
+    "price_usd": 655
   },
   {
     "name": "NVIDIA RTX 4060 Ti 16GB",
     "vendor": "nvidia",
-    "aliases": ["4060Ti 16GB", "RTX 4060 Ti 16GB"],
     "vram_mb": 16384,
     "bandwidth_gbps": 288,
     "memory_type": "GDDR6",
     "cuda_cores": 4352,
     "tensor_cores": 136,
-    "fp16_tflops": 44,
     "fp32_tflops": 22,
-    "int8_tops": 88,
+    "fp16_tflops": 44,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 165,
     "pcie_gen": 4,
     "pcie_lanes": 8,
-    "tdp_watts": 165
+    "aliases": [
+      "rtx 4060 ti 16gb",
+      "RTX 4060 Ti 16GB",
+      "NVIDIA RTX 4060 Ti 16GB",
+      "RTX4060Ti16GB"
+    ],
+    "availability": "available",
+    "price_usd": 479
   },
   {
     "name": "NVIDIA RTX 4060 Ti 8GB",
     "vendor": "nvidia",
-    "aliases": ["4060Ti", "RTX 4060 Ti", "4060 ti"],
     "vram_mb": 8192,
     "bandwidth_gbps": 288,
     "memory_type": "GDDR6",
     "cuda_cores": 4352,
     "tensor_cores": 136,
-    "fp16_tflops": 44,
     "fp32_tflops": 22,
-    "int8_tops": 88,
+    "fp16_tflops": 44,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 160,
     "pcie_gen": 4,
     "pcie_lanes": 8,
-    "tdp_watts": 160
+    "aliases": [
+      "rtx 4060 ti 8gb",
+      "NVIDIA RTX 4060 Ti 8GB",
+      "RTX 4060 Ti 8GB",
+      "RTX4060Ti8GB"
+    ],
+    "availability": "available",
+    "price_usd": 479
   },
   {
     "name": "NVIDIA RTX 4060",
     "vendor": "nvidia",
-    "aliases": ["4060", "RTX 4060", "rtx4060"],
     "vram_mb": 8192,
     "bandwidth_gbps": 272,
     "memory_type": "GDDR6",
     "cuda_cores": 3072,
     "tensor_cores": 96,
+    "fp32_tflops": 15.1,
     "fp16_tflops": 30,
-    "fp32_tflops": 15,
-    "int8_tops": 60,
     "architecture": "Ada Lovelace",
     "compute_capability": "8.9",
+    "tdp_watts": 115,
     "pcie_gen": 4,
     "pcie_lanes": 8,
-    "tdp_watts": 115
-  },
-  {
-    "name": "NVIDIA RTX 3090",
-    "vendor": "nvidia",
-    "aliases": ["3090", "RTX 3090", "rtx3090"],
-    "vram_mb": 24576,
-    "bandwidth_gbps": 936,
-    "memory_type": "GDDR6X",
-    "cuda_cores": 10496,
-    "tensor_cores": 328,
-    "fp16_tflops": 71,
-    "fp32_tflops": 35,
-    "int8_tops": 142,
-    "architecture": "Ampere",
-    "compute_capability": "8.6",
-    "pcie_gen": 4,
-    "pcie_lanes": 16,
-    "tdp_watts": 350
+    "aliases": [
+      "NVIDIA RTX 4060",
+      "rtx 4060",
+      "RTX 4060",
+      "RTX4060"
+    ],
+    "availability": "available",
+    "price_usd": 479
   },
   {
     "name": "NVIDIA RTX 3090 Ti",
     "vendor": "nvidia",
-    "aliases": ["3090Ti", "RTX 3090 Ti", "3090 ti"],
     "vram_mb": 24576,
     "bandwidth_gbps": 1008,
     "memory_type": "GDDR6X",
     "cuda_cores": 10752,
     "tensor_cores": 336,
-    "fp16_tflops": 80,
     "fp32_tflops": 40,
-    "int8_tops": 160,
+    "fp16_tflops": 80,
     "architecture": "Ampere",
     "compute_capability": "8.6",
+    "tdp_watts": 450,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 450
+    "availability": "used_only",
+    "aliases": [
+      "RTX 3090 Ti",
+      "RTX3090Ti",
+      "rtx 3090 ti",
+      "NVIDIA RTX 3090 Ti"
+    ],
+    "price_usd": 2185
+  },
+  {
+    "name": "NVIDIA RTX 3090",
+    "vendor": "nvidia",
+    "vram_mb": 24576,
+    "bandwidth_gbps": 936,
+    "memory_type": "GDDR6X",
+    "cuda_cores": 10496,
+    "tensor_cores": 328,
+    "fp32_tflops": 35.6,
+    "fp16_tflops": 71,
+    "architecture": "Ampere",
+    "compute_capability": "8.6",
+    "tdp_watts": 350,
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "availability": "used_only",
+    "aliases": [
+      "RTX 3090",
+      "NVIDIA RTX 3090",
+      "rtx 3090",
+      "RTX3090"
+    ],
+    "price_usd": 1510
+  },
+  {
+    "name": "NVIDIA RTX 3080 Ti",
+    "vendor": "nvidia",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 912,
+    "memory_type": "GDDR6X",
+    "cuda_cores": 10240,
+    "tensor_cores": 320,
+    "fp32_tflops": 34.1,
+    "fp16_tflops": 68,
+    "architecture": "Ampere",
+    "compute_capability": "8.6",
+    "tdp_watts": 350,
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "availability": "used_only",
+    "aliases": [
+      "RTX 3080 Ti",
+      "NVIDIA RTX 3080 Ti",
+      "RTX3080Ti",
+      "rtx 3080 ti"
+    ],
+    "price_usd": 1345
   },
   {
     "name": "NVIDIA RTX 3080 12GB",
     "vendor": "nvidia",
-    "aliases": ["3080 12GB", "RTX 3080 12GB"],
     "vram_mb": 12288,
     "bandwidth_gbps": 912,
     "memory_type": "GDDR6X",
     "cuda_cores": 8960,
     "tensor_cores": 280,
+    "fp32_tflops": 30.6,
     "fp16_tflops": 61,
-    "fp32_tflops": 30,
-    "int8_tops": 122,
     "architecture": "Ampere",
     "compute_capability": "8.6",
+    "tdp_watts": 350,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 350
+    "availability": "used_only",
+    "aliases": [
+      "NVIDIA RTX 3080 12GB",
+      "RTX 3080 12GB",
+      "rtx 3080 12gb",
+      "RTX308012GB"
+    ],
+    "price_usd": 599
   },
   {
     "name": "NVIDIA RTX 3080 10GB",
     "vendor": "nvidia",
-    "aliases": ["3080", "RTX 3080", "rtx3080"],
     "vram_mb": 10240,
     "bandwidth_gbps": 760,
     "memory_type": "GDDR6X",
     "cuda_cores": 8704,
     "tensor_cores": 272,
+    "fp32_tflops": 29.8,
     "fp16_tflops": 60,
-    "fp32_tflops": 30,
-    "int8_tops": 120,
     "architecture": "Ampere",
     "compute_capability": "8.6",
+    "tdp_watts": 320,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 320
+    "availability": "used_only",
+    "aliases": [
+      "RTX 3080 10GB",
+      "NVIDIA RTX 3080 10GB",
+      "rtx 3080 10gb",
+      "RTX308010GB"
+    ],
+    "price_usd": 429
   },
   {
     "name": "NVIDIA RTX 3070 Ti",
     "vendor": "nvidia",
-    "aliases": ["3070Ti", "RTX 3070 Ti", "3070 ti"],
     "vram_mb": 8192,
     "bandwidth_gbps": 608,
     "memory_type": "GDDR6X",
     "cuda_cores": 6144,
     "tensor_cores": 192,
+    "fp32_tflops": 21.7,
     "fp16_tflops": 43,
-    "fp32_tflops": 21,
-    "int8_tops": 86,
     "architecture": "Ampere",
     "compute_capability": "8.6",
+    "tdp_watts": 290,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 290
+    "availability": "used_only",
+    "aliases": [
+      "RTX3070Ti",
+      "rtx 3070 ti",
+      "RTX 3070 Ti",
+      "NVIDIA RTX 3070 Ti"
+    ],
+    "price_usd": 499
   },
   {
     "name": "NVIDIA RTX 3070",
     "vendor": "nvidia",
-    "aliases": ["3070", "RTX 3070", "rtx3070"],
     "vram_mb": 8192,
     "bandwidth_gbps": 448,
     "memory_type": "GDDR6",
     "cuda_cores": 5888,
     "tensor_cores": 184,
+    "fp32_tflops": 20.3,
     "fp16_tflops": 40,
-    "fp32_tflops": 20,
-    "int8_tops": 80,
     "architecture": "Ampere",
     "compute_capability": "8.6",
+    "tdp_watts": 220,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 220
-  },
-  {
-    "name": "NVIDIA RTX 3060 12GB",
-    "vendor": "nvidia",
-    "aliases": ["3060", "RTX 3060", "rtx3060", "3060 12GB"],
-    "vram_mb": 12288,
-    "bandwidth_gbps": 360,
-    "memory_type": "GDDR6",
-    "cuda_cores": 3584,
-    "tensor_cores": 112,
-    "fp16_tflops": 25,
-    "fp32_tflops": 12,
-    "int8_tops": 50,
-    "architecture": "Ampere",
-    "compute_capability": "8.6",
-    "pcie_gen": 4,
-    "pcie_lanes": 16,
-    "tdp_watts": 170
+    "availability": "used_only",
+    "aliases": [
+      "rtx 3070",
+      "NVIDIA RTX 3070",
+      "RTX3070",
+      "RTX 3070"
+    ],
+    "price_usd": 325
   },
   {
     "name": "NVIDIA RTX 3060 Ti",
     "vendor": "nvidia",
-    "aliases": ["3060Ti", "RTX 3060 Ti", "3060 ti"],
     "vram_mb": 8192,
     "bandwidth_gbps": 448,
     "memory_type": "GDDR6",
     "cuda_cores": 4864,
     "tensor_cores": 152,
+    "fp32_tflops": 16.2,
     "fp16_tflops": 32,
-    "fp32_tflops": 16,
-    "int8_tops": 64,
     "architecture": "Ampere",
     "compute_capability": "8.6",
+    "tdp_watts": 200,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 200
+    "availability": "used_only",
+    "aliases": [
+      "RTX3060Ti",
+      "RTX 3060 Ti",
+      "rtx 3060 ti",
+      "NVIDIA RTX 3060 Ti"
+    ],
+    "price_usd": 643
+  },
+  {
+    "name": "NVIDIA RTX 3060 12GB",
+    "vendor": "nvidia",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 360,
+    "memory_type": "GDDR6",
+    "cuda_cores": 3584,
+    "tensor_cores": 112,
+    "fp32_tflops": 12.7,
+    "fp16_tflops": 25,
+    "architecture": "Ampere",
+    "compute_capability": "8.6",
+    "tdp_watts": 170,
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "aliases": [
+      "NVIDIA RTX 3060 12GB",
+      "rtx 3060 12gb",
+      "RTX306012GB",
+      "RTX 3060 12GB"
+    ],
+    "availability": "available",
+    "price_usd": 339
   },
   {
     "name": "AMD RX 7900 XTX",
     "vendor": "amd",
-    "aliases": ["7900XTX", "RX 7900 XTX", "7900 xtx"],
     "vram_mb": 24576,
     "bandwidth_gbps": 960,
     "memory_type": "GDDR6",
     "stream_processors": 6144,
     "compute_units": 96,
-    "fp16_tflops": 123,
     "fp32_tflops": 61,
+    "fp16_tflops": 123,
     "architecture": "RDNA3",
+    "tdp_watts": 355,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 355
+    "aliases": [
+      "RX7900XTX",
+      "RX 7900 XTX",
+      "rx 7900 xtx",
+      "AMD RX 7900 XTX"
+    ],
+    "availability": "available",
+    "price_usd": 879
   },
   {
     "name": "AMD RX 7900 XT",
     "vendor": "amd",
-    "aliases": ["7900XT", "RX 7900 XT", "7900 xt"],
     "vram_mb": 20480,
     "bandwidth_gbps": 800,
     "memory_type": "GDDR6",
     "stream_processors": 5376,
     "compute_units": 84,
+    "fp32_tflops": 52,
     "fp16_tflops": 103,
-    "fp32_tflops": 51,
     "architecture": "RDNA3",
+    "tdp_watts": 315,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 315
+    "aliases": [
+      "AMD RX 7900 XT",
+      "RX 7900 XT",
+      "rx 7900 xt",
+      "RX7900XT"
+    ],
+    "availability": "available",
+    "price_usd": 679
   },
   {
     "name": "AMD RX 7900 GRE",
     "vendor": "amd",
-    "aliases": ["7900GRE", "RX 7900 GRE", "7900 gre"],
     "vram_mb": 16384,
     "bandwidth_gbps": 576,
     "memory_type": "GDDR6",
     "stream_processors": 5120,
     "compute_units": 80,
-    "fp16_tflops": 92,
     "fp32_tflops": 46,
+    "fp16_tflops": 92,
     "architecture": "RDNA3",
+    "tdp_watts": 260,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 260
+    "aliases": [
+      "RX 7900 GRE",
+      "rx 7900 gre",
+      "AMD RX 7900 GRE",
+      "RX7900GRE"
+    ],
+    "availability": "available",
+    "price_usd": 509
   },
   {
     "name": "AMD RX 7800 XT",
     "vendor": "amd",
-    "aliases": ["7800XT", "RX 7800 XT", "7800 xt"],
     "vram_mb": 16384,
     "bandwidth_gbps": 624,
     "memory_type": "GDDR6",
     "stream_processors": 3840,
     "compute_units": 60,
-    "fp16_tflops": 75,
     "fp32_tflops": 37,
+    "fp16_tflops": 75,
     "architecture": "RDNA3",
+    "tdp_watts": 263,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 263
+    "aliases": [
+      "rx 7800 xt",
+      "RX7800XT",
+      "AMD RX 7800 XT",
+      "RX 7800 XT"
+    ],
+    "availability": "available",
+    "price_usd": 752
   },
   {
     "name": "AMD RX 7700 XT",
     "vendor": "amd",
-    "aliases": ["7700XT", "RX 7700 XT", "7700 xt"],
     "vram_mb": 12288,
     "bandwidth_gbps": 432,
     "memory_type": "GDDR6",
     "stream_processors": 3456,
     "compute_units": 54,
-    "fp16_tflops": 60,
     "fp32_tflops": 30,
+    "fp16_tflops": 60,
     "architecture": "RDNA3",
+    "tdp_watts": 245,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 245
+    "aliases": [
+      "RX 7700 XT",
+      "rx 7700 xt",
+      "AMD RX 7700 XT",
+      "RX7700XT"
+    ],
+    "availability": "available",
+    "price_usd": 399
+  },
+  {
+    "name": "AMD RX 7600 XT",
+    "vendor": "amd",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 288,
+    "memory_type": "GDDR6",
+    "stream_processors": 2048,
+    "compute_units": 32,
+    "fp32_tflops": 22,
+    "fp16_tflops": 44,
+    "architecture": "RDNA3",
+    "tdp_watts": 190,
+    "pcie_gen": 4,
+    "pcie_lanes": 8,
+    "aliases": [
+      "RX 7600 XT",
+      "AMD RX 7600 XT",
+      "RX7600XT",
+      "rx 7600 xt"
+    ],
+    "availability": "available",
+    "price_usd": 329
   },
   {
     "name": "AMD RX 7600",
     "vendor": "amd",
-    "aliases": ["7600", "RX 7600", "rx7600"],
     "vram_mb": 8192,
     "bandwidth_gbps": 288,
     "memory_type": "GDDR6",
     "stream_processors": 2048,
     "compute_units": 32,
-    "fp16_tflops": 44,
     "fp32_tflops": 22,
+    "fp16_tflops": 44,
     "architecture": "RDNA3",
+    "tdp_watts": 165,
     "pcie_gen": 4,
     "pcie_lanes": 8,
-    "tdp_watts": 165
+    "aliases": [
+      "rx 7600",
+      "RX 7600",
+      "AMD RX 7600",
+      "RX7600"
+    ],
+    "availability": "available",
+    "price_usd": 279
+  },
+  {
+    "name": "AMD RX 6950 XT",
+    "vendor": "amd",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 576,
+    "memory_type": "GDDR6",
+    "stream_processors": 5120,
+    "compute_units": 80,
+    "fp32_tflops": 23.6,
+    "fp16_tflops": 47,
+    "architecture": "RDNA2",
+    "tdp_watts": 335,
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "availability": "used_only",
+    "aliases": [
+      "RX6950XT",
+      "rx 6950 xt",
+      "AMD RX 6950 XT",
+      "RX 6950 XT"
+    ]
   },
   {
     "name": "AMD RX 6900 XT",
     "vendor": "amd",
-    "aliases": ["6900XT", "RX 6900 XT", "6900 xt"],
     "vram_mb": 16384,
     "bandwidth_gbps": 512,
     "memory_type": "GDDR6",
     "stream_processors": 5120,
     "compute_units": 80,
+    "fp32_tflops": 23.04,
     "fp16_tflops": 46,
-    "fp32_tflops": 23,
     "architecture": "RDNA2",
+    "tdp_watts": 300,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 300
+    "availability": "used_only",
+    "aliases": [
+      "RX 6900 XT",
+      "RX6900XT",
+      "rx 6900 xt",
+      "AMD RX 6900 XT"
+    ],
+    "price_usd": 469
   },
   {
     "name": "AMD RX 6800 XT",
     "vendor": "amd",
-    "aliases": ["6800XT", "RX 6800 XT", "6800 xt"],
     "vram_mb": 16384,
     "bandwidth_gbps": 512,
     "memory_type": "GDDR6",
     "stream_processors": 4608,
     "compute_units": 72,
+    "fp32_tflops": 20.7,
     "fp16_tflops": 41,
-    "fp32_tflops": 20,
     "architecture": "RDNA2",
+    "tdp_watts": 300,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 300
+    "availability": "used_only",
+    "aliases": [
+      "RX6800XT",
+      "RX 6800 XT",
+      "AMD RX 6800 XT",
+      "rx 6800 xt"
+    ],
+    "price_usd": 599
   },
   {
     "name": "AMD RX 6800",
     "vendor": "amd",
-    "aliases": ["6800", "RX 6800", "rx6800"],
     "vram_mb": 16384,
     "bandwidth_gbps": 512,
     "memory_type": "GDDR6",
     "stream_processors": 3840,
     "compute_units": 60,
+    "fp32_tflops": 16.2,
     "fp16_tflops": 33,
-    "fp32_tflops": 16,
     "architecture": "RDNA2",
+    "tdp_watts": 250,
     "pcie_gen": 4,
     "pcie_lanes": 16,
-    "tdp_watts": 250
+    "availability": "used_only",
+    "aliases": [
+      "rx 6800",
+      "RX6800",
+      "AMD RX 6800",
+      "RX 6800"
+    ],
+    "price_usd": 599
+  },
+  {
+    "name": "AMD RX 6700 XT",
+    "vendor": "amd",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 384,
+    "memory_type": "GDDR6",
+    "stream_processors": 2560,
+    "compute_units": 40,
+    "fp32_tflops": 13.2,
+    "fp16_tflops": 26,
+    "architecture": "RDNA2",
+    "tdp_watts": 230,
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "availability": "used_only",
+    "aliases": [
+      "RX6700XT",
+      "AMD RX 6700 XT",
+      "RX 6700 XT",
+      "rx 6700 xt"
+    ],
+    "price_usd": 344
+  },
+  {
+    "name": "Intel Arc A770 16GB",
+    "vendor": "intel",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 560,
+    "memory_type": "GDDR6",
+    "compute_units": 32,
+    "fp32_tflops": 17.2,
+    "fp16_tflops": 35,
+    "architecture": "Alchemist",
+    "tdp_watts": 225,
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "aliases": [
+      "Intel Arc A770 16GB",
+      "arc a770 16gb",
+      "ArcA77016GB",
+      "Arc A770 16GB"
+    ],
+    "availability": "available",
+    "price_usd": 379
+  },
+  {
+    "name": "Intel Arc A750",
+    "vendor": "intel",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 512,
+    "memory_type": "GDDR6",
+    "compute_units": 28,
+    "fp32_tflops": 15.3,
+    "fp16_tflops": 30,
+    "architecture": "Alchemist",
+    "tdp_watts": 225,
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "aliases": [
+      "ArcA750",
+      "arc a750",
+      "Intel Arc A750",
+      "Arc A750"
+    ],
+    "availability": "available",
+    "price_usd": 279
+  },
+  {
+    "name": "Intel Arc B580",
+    "vendor": "intel",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 456,
+    "memory_type": "GDDR6",
+    "compute_units": 20,
+    "fp32_tflops": 14.5,
+    "fp16_tflops": 29,
+    "architecture": "Battlemage",
+    "tdp_watts": 190,
+    "pcie_gen": 4,
+    "pcie_lanes": 8,
+    "aliases": [
+      "Intel Arc B580",
+      "ArcB580",
+      "Arc B580",
+      "arc b580"
+    ],
+    "availability": "available",
+    "price_usd": 424
   },
   {
     "name": "Apple M1 (8GB)",
     "vendor": "apple",
-    "aliases": ["M1", "m1", "M1 8GB"],
     "vram_mb": 8192,
     "bandwidth_gbps": 68,
     "memory_type": "Unified",
@@ -550,12 +902,18 @@
     "fp16_tflops": 2.6,
     "fp32_tflops": 2.6,
     "architecture": "M1",
-    "tdp_watts": 20
+    "tdp_watts": 20,
+    "aliases": [
+      "M1(8GB)",
+      "m1 (8gb)",
+      "M1 (8GB)",
+      "Apple M1 (8GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M1 Pro (16GB)",
     "vendor": "apple",
-    "aliases": ["M1 Pro", "m1 pro", "M1 Pro 16GB"],
     "vram_mb": 16384,
     "bandwidth_gbps": 200,
     "memory_type": "Unified",
@@ -563,12 +921,18 @@
     "fp16_tflops": 5.2,
     "fp32_tflops": 5.2,
     "architecture": "M1 Pro",
-    "tdp_watts": 30
+    "tdp_watts": 30,
+    "aliases": [
+      "m1 pro (16gb)",
+      "Apple M1 Pro (16GB)",
+      "M1 Pro (16GB)",
+      "M1Pro(16GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M1 Max (32GB)",
     "vendor": "apple",
-    "aliases": ["M1 Max", "m1 max", "M1 Max 32GB"],
     "vram_mb": 32768,
     "bandwidth_gbps": 400,
     "memory_type": "Unified",
@@ -576,12 +940,18 @@
     "fp16_tflops": 10.4,
     "fp32_tflops": 10.4,
     "architecture": "M1 Max",
-    "tdp_watts": 60
+    "tdp_watts": 60,
+    "aliases": [
+      "M1 Max (32GB)",
+      "m1 max (32gb)",
+      "Apple M1 Max (32GB)",
+      "M1Max(32GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M1 Ultra (64GB)",
     "vendor": "apple",
-    "aliases": ["M1 Ultra", "m1 ultra", "M1 Ultra 64GB"],
     "vram_mb": 65536,
     "bandwidth_gbps": 800,
     "memory_type": "Unified",
@@ -589,12 +959,18 @@
     "fp16_tflops": 21,
     "fp32_tflops": 21,
     "architecture": "M1 Ultra",
-    "tdp_watts": 100
+    "tdp_watts": 100,
+    "aliases": [
+      "Apple M1 Ultra (64GB)",
+      "m1 ultra (64gb)",
+      "M1 Ultra (64GB)",
+      "M1Ultra(64GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M2 (8GB)",
     "vendor": "apple",
-    "aliases": ["M2", "m2", "M2 8GB"],
     "vram_mb": 8192,
     "bandwidth_gbps": 100,
     "memory_type": "Unified",
@@ -602,12 +978,18 @@
     "fp16_tflops": 3.6,
     "fp32_tflops": 3.6,
     "architecture": "M2",
-    "tdp_watts": 22
+    "tdp_watts": 22,
+    "aliases": [
+      "Apple M2 (8GB)",
+      "m2 (8gb)",
+      "M2 (8GB)",
+      "M2(8GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M2 Pro (16GB)",
     "vendor": "apple",
-    "aliases": ["M2 Pro", "m2 pro", "M2 Pro 16GB"],
     "vram_mb": 16384,
     "bandwidth_gbps": 200,
     "memory_type": "Unified",
@@ -615,12 +997,18 @@
     "fp16_tflops": 6.8,
     "fp32_tflops": 6.8,
     "architecture": "M2 Pro",
-    "tdp_watts": 30
+    "tdp_watts": 30,
+    "aliases": [
+      "m2 pro (16gb)",
+      "M2 Pro (16GB)",
+      "M2Pro(16GB)",
+      "Apple M2 Pro (16GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M2 Max (32GB)",
     "vendor": "apple",
-    "aliases": ["M2 Max", "m2 max", "M2 Max 32GB"],
     "vram_mb": 32768,
     "bandwidth_gbps": 400,
     "memory_type": "Unified",
@@ -628,12 +1016,18 @@
     "fp16_tflops": 13.6,
     "fp32_tflops": 13.6,
     "architecture": "M2 Max",
-    "tdp_watts": 60
+    "tdp_watts": 60,
+    "aliases": [
+      "M2 Max (32GB)",
+      "m2 max (32gb)",
+      "Apple M2 Max (32GB)",
+      "M2Max(32GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M2 Ultra (64GB)",
     "vendor": "apple",
-    "aliases": ["M2 Ultra", "m2 ultra", "M2 Ultra 64GB"],
     "vram_mb": 65536,
     "bandwidth_gbps": 800,
     "memory_type": "Unified",
@@ -641,12 +1035,18 @@
     "fp16_tflops": 27.2,
     "fp32_tflops": 27.2,
     "architecture": "M2 Ultra",
-    "tdp_watts": 100
+    "tdp_watts": 100,
+    "aliases": [
+      "M2Ultra(64GB)",
+      "M2 Ultra (64GB)",
+      "Apple M2 Ultra (64GB)",
+      "m2 ultra (64gb)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M3 (8GB)",
     "vendor": "apple",
-    "aliases": ["M3", "m3", "M3 8GB"],
     "vram_mb": 8192,
     "bandwidth_gbps": 100,
     "memory_type": "Unified",
@@ -654,12 +1054,18 @@
     "fp16_tflops": 4.1,
     "fp32_tflops": 4.1,
     "architecture": "M3",
-    "tdp_watts": 22
+    "tdp_watts": 22,
+    "aliases": [
+      "m3 (8gb)",
+      "M3(8GB)",
+      "Apple M3 (8GB)",
+      "M3 (8GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M3 Pro (18GB)",
     "vendor": "apple",
-    "aliases": ["M3 Pro", "m3 pro", "M3 Pro 18GB"],
     "vram_mb": 18432,
     "bandwidth_gbps": 150,
     "memory_type": "Unified",
@@ -667,12 +1073,18 @@
     "fp16_tflops": 7.4,
     "fp32_tflops": 7.4,
     "architecture": "M3 Pro",
-    "tdp_watts": 30
+    "tdp_watts": 30,
+    "aliases": [
+      "M3 Pro (18GB)",
+      "m3 pro (18gb)",
+      "M3Pro(18GB)",
+      "Apple M3 Pro (18GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M3 Max (36GB)",
     "vendor": "apple",
-    "aliases": ["M3 Max", "m3 max", "M3 Max 36GB"],
     "vram_mb": 36864,
     "bandwidth_gbps": 300,
     "memory_type": "Unified",
@@ -680,12 +1092,18 @@
     "fp16_tflops": 16.4,
     "fp32_tflops": 16.4,
     "architecture": "M3 Max",
-    "tdp_watts": 60
+    "tdp_watts": 60,
+    "aliases": [
+      "m3 max (36gb)",
+      "Apple M3 Max (36GB)",
+      "M3Max(36GB)",
+      "M3 Max (36GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M3 Max (48GB)",
     "vendor": "apple",
-    "aliases": ["M3 Max 48GB", "m3 max 48"],
     "vram_mb": 49152,
     "bandwidth_gbps": 400,
     "memory_type": "Unified",
@@ -693,12 +1111,18 @@
     "fp16_tflops": 16.4,
     "fp32_tflops": 16.4,
     "architecture": "M3 Max",
-    "tdp_watts": 60
+    "tdp_watts": 60,
+    "aliases": [
+      "m3 max (48gb)",
+      "M3 Max (48GB)",
+      "M3Max(48GB)",
+      "Apple M3 Max (48GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M4 (16GB)",
     "vendor": "apple",
-    "aliases": ["M4", "m4", "M4 16GB"],
     "vram_mb": 16384,
     "bandwidth_gbps": 120,
     "memory_type": "Unified",
@@ -706,12 +1130,18 @@
     "fp16_tflops": 4.6,
     "fp32_tflops": 4.6,
     "architecture": "M4",
-    "tdp_watts": 22
+    "tdp_watts": 22,
+    "aliases": [
+      "m4 (16gb)",
+      "M4(16GB)",
+      "M4 (16GB)",
+      "Apple M4 (16GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M4 Pro (24GB)",
     "vendor": "apple",
-    "aliases": ["M4 Pro", "m4 pro", "M4 Pro 24GB"],
     "vram_mb": 24576,
     "bandwidth_gbps": 273,
     "memory_type": "Unified",
@@ -719,12 +1149,18 @@
     "fp16_tflops": 9.2,
     "fp32_tflops": 9.2,
     "architecture": "M4 Pro",
-    "tdp_watts": 30
+    "tdp_watts": 30,
+    "aliases": [
+      "Apple M4 Pro (24GB)",
+      "M4 Pro (24GB)",
+      "m4 pro (24gb)",
+      "M4Pro(24GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M4 Pro (48GB)",
     "vendor": "apple",
-    "aliases": ["M4 Pro 48GB", "m4 pro 48"],
     "vram_mb": 49152,
     "bandwidth_gbps": 273,
     "memory_type": "Unified",
@@ -732,12 +1168,18 @@
     "fp16_tflops": 9.2,
     "fp32_tflops": 9.2,
     "architecture": "M4 Pro",
-    "tdp_watts": 30
+    "tdp_watts": 30,
+    "aliases": [
+      "Apple M4 Pro (48GB)",
+      "M4 Pro (48GB)",
+      "M4Pro(48GB)",
+      "m4 pro (48gb)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M4 Max (48GB)",
     "vendor": "apple",
-    "aliases": ["M4 Max", "m4 max", "M4 Max 48GB"],
     "vram_mb": 49152,
     "bandwidth_gbps": 546,
     "memory_type": "Unified",
@@ -745,12 +1187,18 @@
     "fp16_tflops": 18.4,
     "fp32_tflops": 18.4,
     "architecture": "M4 Max",
-    "tdp_watts": 60
+    "tdp_watts": 60,
+    "aliases": [
+      "M4 Max (48GB)",
+      "M4Max(48GB)",
+      "Apple M4 Max (48GB)",
+      "m4 max (48gb)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M4 Max (64GB)",
     "vendor": "apple",
-    "aliases": ["M4 Max 64GB", "m4 max 64"],
     "vram_mb": 65536,
     "bandwidth_gbps": 546,
     "memory_type": "Unified",
@@ -758,12 +1206,18 @@
     "fp16_tflops": 18.4,
     "fp32_tflops": 18.4,
     "architecture": "M4 Max",
-    "tdp_watts": 60
+    "tdp_watts": 60,
+    "aliases": [
+      "m4 max (64gb)",
+      "M4Max(64GB)",
+      "M4 Max (64GB)",
+      "Apple M4 Max (64GB)"
+    ],
+    "availability": "available"
   },
   {
     "name": "Apple M4 Max (128GB)",
     "vendor": "apple",
-    "aliases": ["M4 Max 128GB", "m4 max 128"],
     "vram_mb": 131072,
     "bandwidth_gbps": 546,
     "memory_type": "Unified",
@@ -771,36 +1225,13 @@
     "fp16_tflops": 18.4,
     "fp32_tflops": 18.4,
     "architecture": "M4 Max",
-    "tdp_watts": 60
-  },
-  {
-    "name": "Intel Arc A770 16GB",
-    "vendor": "intel",
-    "aliases": ["A770", "Arc A770", "arc a770"],
-    "vram_mb": 16384,
-    "bandwidth_gbps": 560,
-    "memory_type": "GDDR6",
-    "compute_units": 32,
-    "fp16_tflops": 35,
-    "fp32_tflops": 17,
-    "architecture": "Alchemist",
-    "pcie_gen": 4,
-    "pcie_lanes": 16,
-    "tdp_watts": 225
-  },
-  {
-    "name": "Intel Arc A750",
-    "vendor": "intel",
-    "aliases": ["A750", "Arc A750", "arc a750"],
-    "vram_mb": 8192,
-    "bandwidth_gbps": 512,
-    "memory_type": "GDDR6",
-    "compute_units": 28,
-    "fp16_tflops": 30,
-    "fp32_tflops": 15,
-    "architecture": "Alchemist",
-    "pcie_gen": 4,
-    "pcie_lanes": 16,
-    "tdp_watts": 225
+    "tdp_watts": 60,
+    "aliases": [
+      "m4 max (128gb)",
+      "M4Max(128GB)",
+      "M4 Max (128GB)",
+      "Apple M4 Max (128GB)"
+    ],
+    "availability": "available"
   }
 ]
