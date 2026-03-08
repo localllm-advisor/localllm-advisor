@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -11,11 +11,12 @@ import {
   getUser,
   signInWithGitHub,
   signInWithGoogle,
+  signOut,
 } from '@/lib/supabase';
 import { useTheme } from '@/components/ThemeProvider';
 import { User } from '@supabase/supabase-js';
 
-export default function BenchmarksPage() {
+function BenchmarksContent() {
   const searchParams = useSearchParams();
   const { theme } = useTheme();
   const isDark = theme === 'dark';
@@ -113,6 +114,11 @@ export default function BenchmarksPage() {
     }
   };
 
+  const handleSignOut = async () => {
+    await signOut();
+    setUser(null);
+  };
+
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
     return date.toLocaleDateString('en-US', {
@@ -138,13 +144,52 @@ export default function BenchmarksPage() {
                 </svg>
                 Back to Advisor
               </Link>
-              <div className="h-6 w-px bg-gray-700" />
+              <div className={`h-6 w-px ${isDark ? 'bg-gray-700' : 'bg-gray-300'}`} />
               <h1 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 Community Benchmarks
               </h1>
             </div>
-            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              {benchmarks.length} results
+            <div className="flex items-center gap-4">
+              <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                {benchmarks.length} results
+              </span>
+              {/* User status */}
+              {user ? (
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2">
+                    {user.user_metadata?.avatar_url ? (
+                      <img
+                        src={user.user_metadata.avatar_url}
+                        alt=""
+                        className="w-7 h-7 rounded-full"
+                      />
+                    ) : (
+                      <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium ${isDark ? 'bg-blue-600 text-white' : 'bg-blue-500 text-white'}`}>
+                        {(user.user_metadata?.name || user.email || '?')[0].toUpperCase()}
+                      </div>
+                    )}
+                    <span className={`text-sm hidden sm:inline ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                      {user.user_metadata?.name || user.email?.split('@')[0]}
+                    </span>
+                  </div>
+                  <button
+                    onClick={handleSignOut}
+                    className={`text-xs px-2 py-1 rounded ${isDark ? 'text-gray-400 hover:text-white hover:bg-gray-700' : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'} transition-colors`}
+                  >
+                    Sign out
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setShowLoginModal(true)}
+                  className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                  </svg>
+                  Sign in
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -246,7 +291,7 @@ export default function BenchmarksPage() {
                           ? 'text-gray-500 hover:text-green-400 hover:bg-gray-700'
                           : 'text-gray-400 hover:text-green-600 hover:bg-gray-100'
                       }`}
-                      title="Helpful benchmark"
+                      title={user ? 'Helpful benchmark' : 'Sign in to vote'}
                     >
                       <svg className="w-5 h-5" fill={benchmark.user_vote === 1 ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
@@ -270,7 +315,7 @@ export default function BenchmarksPage() {
                           ? 'text-gray-500 hover:text-red-400 hover:bg-gray-700'
                           : 'text-gray-400 hover:text-red-600 hover:bg-gray-100'
                       }`}
-                      title="Not helpful"
+                      title={user ? 'Not helpful' : 'Sign in to vote'}
                     >
                       <svg className="w-5 h-5" fill={benchmark.user_vote === -1 ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -422,5 +467,17 @@ export default function BenchmarksPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function BenchmarksPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+        <div className="text-gray-400">Loading...</div>
+      </div>
+    }>
+      <BenchmarksContent />
+    </Suspense>
   );
 }
