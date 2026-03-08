@@ -43,7 +43,7 @@ Works for any model size:
 
 ### Model Database
 - **147 LLM models** from 25+ providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
-- **57 models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval
+- **113 models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, MBPP
 - **4 quantization levels** per model: Q4_K_M, Q6_K, Q8_0, FP16
 - **MoE support** with active parameter detection
 
@@ -75,6 +75,15 @@ Works for any model size:
 ### Theme Support
 - **Dark/Light mode** - toggle in header, persisted in localStorage
 - **System preference** - auto-detects OS theme on first visit
+
+### Model Detail Modal
+Click on any model to view complete specifications:
+- **All benchmarks** with visual bars (HumanEval, MBPP, BigCodeBench, MMLU-PRO, MATH, IFEval, BBH, GPQA, MUSR)
+- **All quantizations** available (Q4_K_M, Q6_K, Q8_0, FP16) with VRAM requirements
+- **Performance estimates**: decode speed, prefill speed, time-to-first-token, load time
+- **Model info**: family, architecture, parameters, context length, release date, capabilities
+- **Ready-to-copy** Ollama command
+- **Direct links** to Ollama library and HuggingFace
 
 ### Use Cases
 5 use cases with different benchmark weights:
