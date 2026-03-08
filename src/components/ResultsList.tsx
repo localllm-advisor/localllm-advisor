@@ -289,6 +289,7 @@ export default function ResultsList({
   const [viewMode, setViewMode] = useState<ViewMode>('dashboard');
   const [compareSet, setCompareSet] = useState<Set<number>>(new Set());
   const [detailModel, setDetailModel] = useState<ScoredModel | null>(null);
+  const [copiedTag, setCopiedTag] = useState<string | null>(null);
   const vramGb = Math.round(vramMb / 1024);
   const gpuLabel = gpuName || `${vramGb}GB VRAM`;
   const topModels = results.slice(0, 10);
@@ -840,10 +841,27 @@ export default function ResultsList({
                 $ ollama run {selected.quant.ollama_tag}
               </code>
               <button
-                onClick={() => navigator.clipboard.writeText(`ollama run ${selected.quant.ollama_tag}`)}
-                className="text-xs text-gray-400 hover:text-white px-2 py-1 rounded bg-gray-800 hover:bg-gray-700"
+                onClick={() => {
+                  navigator.clipboard.writeText(`ollama run ${selected.quant.ollama_tag}`);
+                  setCopiedTag(selected.quant.ollama_tag);
+                  setTimeout(() => setCopiedTag(null), 2000);
+                }}
+                className={`text-xs px-2 py-1 rounded flex items-center gap-1 transition-colors ${
+                  copiedTag === selected.quant.ollama_tag
+                    ? 'bg-green-600 text-white'
+                    : 'text-gray-400 hover:text-white bg-gray-800 hover:bg-gray-700'
+                }`}
               >
-                Copy
+                {copiedTag === selected.quant.ollama_tag ? (
+                  <>
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Copied!
+                  </>
+                ) : (
+                  'Copy'
+                )}
               </button>
             </div>
 
@@ -1235,6 +1253,7 @@ function OurPickCard({
   onViewDetails: () => void;
   useCase: UseCase;
 }) {
+  const [copied, setCopied] = useState(false);
   const model = rec.model;
   const speed = model.performance.tokensPerSecond ?? 0;
   const vram = (model.quant.vram_mb / 1024).toFixed(1);
@@ -1302,10 +1321,25 @@ function OurPickCard({
               onClick={(e) => {
                 e.stopPropagation();
                 navigator.clipboard.writeText(`ollama run ${model.quant.ollama_tag}`);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
               }}
-              className="text-xs text-gray-400 hover:text-white px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 shrink-0"
+              className={`text-xs px-2 py-1 rounded shrink-0 flex items-center gap-1 transition-colors ${
+                copied
+                  ? 'bg-green-600 text-white'
+                  : 'text-gray-400 hover:text-white bg-gray-800 hover:bg-gray-700'
+              }`}
             >
-              Copy
+              {copied ? (
+                <>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Copied!
+                </>
+              ) : (
+                'Copy'
+              )}
             </button>
           </div>
 

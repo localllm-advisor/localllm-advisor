@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { ScoredModel } from '@/lib/types';
 import { useTheme } from './ThemeProvider';
 
@@ -26,6 +27,7 @@ const BENCHMARK_INFO: Record<string, { name: string; description: string }> = {
 export default function ModelDetailModal({ model, onClose }: ModelDetailModalProps) {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  const [copied, setCopied] = useState(false);
 
   const m = model.model;
   const quant = model.quant;
@@ -252,10 +254,25 @@ export default function ModelDetailModal({ model, onClose }: ModelDetailModalPro
               <span className="text-green-400">$</span>
               <code className="text-green-400 flex-1">ollama run {quant.ollama_tag}</code>
               <button
-                onClick={() => navigator.clipboard.writeText(`ollama run ${quant.ollama_tag}`)}
-                className="px-3 py-1 rounded bg-gray-700 hover:bg-gray-600 text-white text-xs transition-colors"
+                onClick={() => {
+                  navigator.clipboard.writeText(`ollama run ${quant.ollama_tag}`);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                className={`px-3 py-1 rounded text-xs transition-colors flex items-center gap-1 ${
+                  copied ? 'bg-green-600 text-white' : 'bg-gray-700 hover:bg-gray-600 text-white'
+                }`}
               >
-                Copy
+                {copied ? (
+                  <>
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Copied!
+                  </>
+                ) : (
+                  'Copy'
+                )}
               </button>
             </div>
           </Section>
