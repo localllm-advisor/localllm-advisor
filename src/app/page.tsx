@@ -128,13 +128,13 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm sticky top-0 z-10">
+      <header className={`border-b backdrop-blur-sm sticky top-0 z-10 ${isDark ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-white/80'}`}>
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold text-white">
+            <h1 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
               LocalLLM Advisor
             </h1>
-            <p className="text-sm text-gray-400">
+            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               {mode === 'find-models'
                 ? 'Find the best local LLM for your hardware'
                 : 'Find hardware to run your desired model'
@@ -143,26 +143,26 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <nav className="hidden md:flex gap-6 text-sm">
-              <Link href="/benchmarks" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+              <Link href="/benchmarks" className={`flex items-center gap-1 transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
                 Benchmarks
               </Link>
-              <Link href="/methodology" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/methodology" className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 Methodology
               </Link>
-              <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/faq" className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 FAQ
               </Link>
-              <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/about" className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 About
               </Link>
               <a
                 href="https://github.com/localllm-advisor/localllm-advisor"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 GitHub
               </a>
@@ -183,7 +183,7 @@ export default function Home() {
             <div className="text-center mb-12">
               <h2 className={`text-4xl sm:text-5xl font-bold mb-4 tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 Find the Perfect LLM
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
+                <span className={`block text-transparent bg-clip-text bg-gradient-to-r ${isDark ? 'from-blue-400 to-purple-400' : 'from-blue-600 to-purple-600'}`}>
                   for Your Hardware
                 </span>
               </h2>
