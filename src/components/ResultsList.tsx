@@ -3,6 +3,7 @@
 import { useState, useMemo, useRef } from 'react';
 import { ScoredModel, UseCase, Benchmarks } from '@/lib/types';
 import RadarChart from './RadarChart';
+import ModelDetailModal from './ModelDetailModal';
 
 // Export utilities
 function exportToJSON(results: ScoredModel[], gpuName: string | null, vramMb: number, useCase: UseCase) {
@@ -287,6 +288,7 @@ export default function ResultsList({
   const [expandedChart, setExpandedChart] = useState<ExpandedChartData>({ type: null });
   const [viewMode, setViewMode] = useState<ViewMode>('dashboard');
   const [compareSet, setCompareSet] = useState<Set<number>>(new Set());
+  const [detailModel, setDetailModel] = useState<ScoredModel | null>(null);
   const vramGb = Math.round(vramMb / 1024);
   const gpuLabel = gpuName || `${vramGb}GB VRAM`;
   const topModels = results.slice(0, 10);
@@ -401,6 +403,7 @@ export default function ResultsList({
               rec={recommendations[0]}
               isSelected={selectedModel === recommendations[0].index}
               onSelect={() => setSelectedModel(recommendations[0].index)}
+              onViewDetails={() => setDetailModel(recommendations[0].model)}
               useCase={useCase}
             />
           )}
@@ -572,6 +575,7 @@ export default function ResultsList({
                 />
                 <button
                   onClick={() => setSelectedModel(i)}
+                  onDoubleClick={() => setDetailModel(result)}
                   className="flex-1 flex items-center gap-2 text-left min-w-0"
                 >
                   <span className={`w-5 h-5 shrink-0 rounded flex items-center justify-center text-[10px] font-bold ${MODEL_COLORS[i]} text-white`}>
@@ -586,6 +590,15 @@ export default function ResultsList({
                     </div>
                   </div>
                   <div className="text-sm font-bold text-white shrink-0 w-8 text-right">{result.score}</div>
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); setDetailModel(result); }}
+                  className="p-1 rounded hover:bg-gray-600 text-gray-400 hover:text-white transition-colors"
+                  title="View details"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </button>
               </div>
             ))}
@@ -1134,6 +1147,14 @@ export default function ResultsList({
           </div>
         </div>
       )}
+
+      {/* Model Detail Modal */}
+      {detailModel && (
+        <ModelDetailModal
+          model={detailModel}
+          onClose={() => setDetailModel(null)}
+        />
+      )}
     </div>
   );
 }
@@ -1205,11 +1226,13 @@ function OurPickCard({
   rec,
   isSelected,
   onSelect,
+  onViewDetails,
   useCase,
 }: {
   rec: Recommendation;
   isSelected: boolean;
   onSelect: () => void;
+  onViewDetails: () => void;
   useCase: UseCase;
 }) {
   const model = rec.model;
@@ -1285,6 +1308,20 @@ function OurPickCard({
               Copy
             </button>
           </div>
+
+          {/* View Details Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onViewDetails();
+            }}
+            className="mt-3 w-full px-4 py-2 text-sm font-medium bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors flex items-center justify-center gap-2"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            View Full Details
+          </button>
         </div>
 
         {/* Right: Benchmarks & Links */}
