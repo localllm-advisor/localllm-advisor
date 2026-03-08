@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { ThemeToggle, useTheme } from '@/components/ThemeProvider';
 import { UseCase, AdvancedFilters } from '@/lib/types';
@@ -11,6 +11,7 @@ import AdvancedOptions, { DEFAULT_FILTERS } from '@/components/AdvancedOptions';
 import ResultsList from '@/components/ResultsList';
 import HardwareFinder from '@/components/HardwareFinder';
 import { trackEvent } from '@/components/Analytics';
+import { getUser } from '@/lib/supabase';
 
 type AppMode = 'find-models' | 'build-hardware';
 
@@ -28,11 +29,27 @@ export default function Home() {
   const [useCase, setUseCaseRaw] = useState<UseCase>('chat');
   const [filters, setFiltersRaw] = useState<AdvancedFilters>(DEFAULT_FILTERS);
   const [buildForModelId, setBuildForModelId] = useState<string | undefined>();
-  const [showHero, setShowHero] = useState(true);
+  const [showHero, setShowHero] = useState(false); // Start hidden, show only if needed
   const resultsRef = useRef<HTMLDivElement>(null);
   const toolRef = useRef<HTMLDivElement>(null);
 
+  // Check if hero should be shown (first visit and not logged in)
+  useEffect(() => {
+    async function checkHeroVisibility() {
+      const hasSeenHero = localStorage.getItem('hasSeenHero');
+      const user = await getUser();
+
+      // Show hero only if: never seen before AND not logged in
+      if (!hasSeenHero && !user) {
+        setShowHero(true);
+      }
+    }
+    checkHeroVisibility();
+  }, []);
+
   const scrollToTool = () => {
+    // Save that user has seen the hero
+    localStorage.setItem('hasSeenHero', 'true');
     setShowHero(false);
     // Wait for transition to complete, then scroll to top
     setTimeout(() => {
