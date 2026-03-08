@@ -84,28 +84,52 @@ def find_evalplus_score(model_name: str, params_b: float, family: str) -> dict:
             "mbpp": data[model_lower].get("mbpp"),
         }
 
-    # Try partial matches
+    # Build search patterns
     search_terms = [
         model_name,
         f"{family}-{params_b}b",
         f"{family}{params_b}b",
+        f"{family}{int(params_b)}b",
     ]
 
-    # Add common variations
+    # Add variations for specific families
+    if family == "qwen":
+        # Qwen 1.5 72B -> Qwen1.5-72B-Chat
+        search_terms.extend([
+            f"qwen{model_name.split()[-1].lower().replace('b', '')}",
+            f"qwen1.5-{int(params_b)}b",
+            f"qwen2.5-{int(params_b)}b",
+            f"qwen2.5-coder-{int(params_b)}b",
+        ])
+
     if "coder" in model_lower:
         search_terms.append(model_name.replace("-", " "))
+        search_terms.append(f"codeqwen")
+        search_terms.append(f"{family}coder")
 
+    # Try partial matches
     for term in search_terms:
-        term_lower = term.lower()
+        term_lower = term.lower().replace(" ", "").replace("-", "")
         for key, scores in data.items():
-            if term_lower in key or key in term_lower:
+            key_normalized = key.lower().replace(" ", "").replace("-", "")
+
+            # Check if terms match
+            if term_lower in key_normalized or key_normalized in term_lower:
                 # Check size match if available
                 size = scores.get("size")
-                if size and abs(size - params_b) / params_b < 0.2:  # 20% tolerance
-                    return {
-                        "humaneval": scores.get("humaneval"),
-                        "mbpp": scores.get("mbpp"),
-                    }
+                if size:
+                    if abs(size - params_b) / max(params_b, 0.1) < 0.25:  # 25% tolerance
+                        return {
+                            "humaneval": scores.get("humaneval"),
+                            "mbpp": scores.get("mbpp"),
+                        }
+                else:
+                    # No size info, check if param appears in name
+                    if str(int(params_b)) in key or f"{params_b}" in key:
+                        return {
+                            "humaneval": scores.get("humaneval"),
+                            "mbpp": scores.get("mbpp"),
+                        }
 
     return {"humaneval": None, "mbpp": None}
 

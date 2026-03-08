@@ -171,7 +171,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 25.6,
       "mmlu_pro": 1.4,
       "math": 0.0,
       "ifeval": 17.5,
@@ -179,7 +179,7 @@
       "mmmu": null,
       "gpqa": 0.0,
       "musr": 2.2,
-      "mbpp": null,
+      "mbpp": 47.9,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -232,7 +232,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 39.6,
       "mmlu_pro": 14.7,
       "math": 19.6,
       "ifeval": 40.4,
@@ -240,7 +240,7 @@
       "mmmu": null,
       "gpqa": 3.9,
       "musr": 3.6,
-      "mbpp": null,
+      "mbpp": 58.7,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -355,7 +355,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 44.5,
       "mmlu_pro": 41.0,
       "math": 17.1,
       "ifeval": 41.9,
@@ -1154,7 +1154,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 20.7,
       "mmlu_pro": 13.9,
       "math": 3.7,
       "ifeval": 46.2,
@@ -1162,7 +1162,7 @@
       "mmmu": null,
       "gpqa": 4.1,
       "musr": 12.9,
-      "mbpp": null,
+      "mbpp": 46.6,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -1215,7 +1215,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 41.5,
       "mmlu_pro": 17.6,
       "math": 6.2,
       "ifeval": 40.3,
@@ -1223,7 +1223,7 @@
       "mmmu": null,
       "gpqa": 4.0,
       "musr": 14.9,
-      "mbpp": null,
+      "mbpp": 52.4,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -2097,7 +2097,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 35.4,
       "mmlu_pro": 31.1,
       "math": 15.6,
       "ifeval": 49.2,
@@ -2105,7 +2105,7 @@
       "mmmu": null,
       "gpqa": 8.7,
       "musr": 8.6,
-      "mbpp": null,
+      "mbpp": 46.8,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -2158,7 +2158,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 35.4,
       "mmlu_pro": 31.1,
       "math": 15.6,
       "ifeval": 49.2,
@@ -2166,7 +2166,7 @@
       "mmmu": null,
       "gpqa": 8.7,
       "musr": 8.6,
-      "mbpp": null,
+      "mbpp": 46.8,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -2219,7 +2219,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 11.6,
       "mmlu_pro": 31.1,
       "math": 15.6,
       "ifeval": 49.2,
@@ -2278,7 +2278,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 62.8,
       "mmlu_pro": 31.1,
       "math": 15.6,
       "ifeval": 49.2,
@@ -2286,7 +2286,7 @@
       "mmmu": null,
       "gpqa": 8.7,
       "musr": 8.6,
-      "mbpp": null,
+      "mbpp": 55.6,
       "bigcodebench": 32.8,
       "alpacaeval": null,
       "mmbench": null
@@ -2340,7 +2340,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 62.8,
       "mmlu_pro": 31.1,
       "math": 15.6,
       "ifeval": 49.2,
@@ -2348,7 +2348,7 @@
       "mmmu": null,
       "gpqa": 8.7,
       "musr": 8.6,
-      "mbpp": null,
+      "mbpp": 55.6,
       "bigcodebench": 32.8,
       "alpacaeval": null,
       "mmbench": null
@@ -2594,7 +2594,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 38.4,
       "mmlu_pro": 10.3,
       "math": 1.4,
       "ifeval": 39.8,
@@ -2602,7 +2602,7 @@
       "mmmu": null,
       "gpqa": 0.0,
       "musr": 8.2,
-      "mbpp": null,
+      "mbpp": 52.6,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -2655,7 +2655,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 38.4,
       "mmlu_pro": 10.3,
       "math": 1.4,
       "ifeval": 39.8,
@@ -2663,7 +2663,7 @@
       "mmmu": null,
       "gpqa": 0.0,
       "musr": 8.2,
-      "mbpp": null,
+      "mbpp": 52.6,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -2716,7 +2716,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 15.9,
       "mmlu_pro": 10.3,
       "math": 1.4,
       "ifeval": 39.8,
@@ -2901,7 +2901,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 43.9,
       "mmlu_pro": 17.1,
       "math": 4.3,
       "ifeval": 46.0,
@@ -2909,7 +2909,7 @@
       "mmmu": null,
       "gpqa": 2.6,
       "musr": 7.2,
-      "mbpp": null,
+      "mbpp": 56.3,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -2962,7 +2962,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 50.6,
       "mmlu_pro": 48.1,
       "math": 48.3,
       "ifeval": 90.0,
@@ -3023,7 +3023,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 50.6,
       "mmlu_pro": 48.1,
       "math": 48.3,
       "ifeval": 90.0,
@@ -3084,7 +3084,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 50.6,
       "mmlu_pro": 48.1,
       "math": 48.3,
       "ifeval": 90.0,
@@ -3144,7 +3144,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 50.6,
       "mmlu_pro": 48.1,
       "math": 48.3,
       "ifeval": 90.0,
@@ -3206,7 +3206,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 50.6,
       "mmlu_pro": 48.1,
       "math": 48.3,
       "ifeval": 90.0,
@@ -5005,7 +5005,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 67.7,
       "mmlu_pro": 28.8,
       "math": 15.2,
       "ifeval": 68.6,
@@ -5013,7 +5013,7 @@
       "mmmu": null,
       "gpqa": 5.3,
       "musr": 6.6,
-      "mbpp": null,
+      "mbpp": 54.5,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -5434,7 +5434,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 37.2,
       "mmlu_pro": 28.3,
       "math": 12.2,
       "ifeval": 65.0,
@@ -5442,7 +5442,7 @@
       "mmmu": null,
       "gpqa": 6.5,
       "musr": 11.7,
-      "mbpp": null,
+      "mbpp": 36.2,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -5993,7 +5993,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 45.1,
       "mmlu_pro": 18.1,
       "math": 2.9,
       "ifeval": 27.4,
@@ -6001,7 +6001,7 @@
       "mmmu": null,
       "gpqa": 2.9,
       "musr": 13.8,
-      "mbpp": null,
+      "mbpp": 54.2,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -7001,7 +7001,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 45.7,
       "mmlu_pro": 36.5,
       "math": 50.0,
       "ifeval": 75.9,
@@ -7009,7 +7009,7 @@
       "mmmu": null,
       "gpqa": 5.5,
       "musr": 8.5,
-      "mbpp": null,
+      "mbpp": 60.8,
       "bigcodebench": 29.1,
       "alpacaeval": null,
       "mmbench": null
@@ -7062,7 +7062,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 45.7,
       "mmlu_pro": 36.5,
       "math": 50.0,
       "ifeval": 75.9,
@@ -7070,7 +7070,7 @@
       "mmmu": null,
       "gpqa": 5.5,
       "musr": 8.5,
-      "mbpp": null,
+      "mbpp": 60.8,
       "bigcodebench": 29.1,
       "alpacaeval": null,
       "mmbench": null
@@ -7122,7 +7122,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 45.7,
       "mmlu_pro": 36.5,
       "math": 50.0,
       "ifeval": 75.9,
@@ -7130,7 +7130,7 @@
       "mmmu": null,
       "gpqa": 5.5,
       "musr": 8.5,
-      "mbpp": null,
+      "mbpp": 60.8,
       "bigcodebench": 29.1,
       "alpacaeval": null,
       "mmbench": null
@@ -7190,7 +7190,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 45.7,
       "mmlu_pro": 36.5,
       "math": 50.0,
       "ifeval": 75.9,
@@ -7198,7 +7198,7 @@
       "mmmu": null,
       "gpqa": 5.5,
       "musr": 8.5,
-      "mbpp": null,
+      "mbpp": 60.8,
       "bigcodebench": 29.1,
       "alpacaeval": null,
       "mmbench": null
@@ -7261,7 +7261,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 45.7,
       "mmlu_pro": 36.5,
       "math": 50.0,
       "ifeval": 75.9,
@@ -7269,7 +7269,7 @@
       "mmmu": null,
       "gpqa": 5.5,
       "musr": 8.5,
-      "mbpp": null,
+      "mbpp": 60.8,
       "bigcodebench": 29.1,
       "alpacaeval": null,
       "mmbench": null
@@ -7733,7 +7733,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 87.2,
       "mmlu_pro": 51.9,
       "math": 62.5,
       "ifeval": 83.5,
@@ -7741,7 +7741,7 @@
       "mmmu": null,
       "gpqa": 11.7,
       "musr": 13.5,
-      "mbpp": null,
+      "mbpp": 77.0,
       "bigcodebench": 45.0,
       "alpacaeval": null,
       "mmbench": null
@@ -7793,7 +7793,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 87.2,
       "mmlu_pro": 51.9,
       "math": 62.5,
       "ifeval": 83.5,
@@ -7801,7 +7801,7 @@
       "mmmu": null,
       "gpqa": 11.7,
       "musr": 13.5,
-      "mbpp": null,
+      "mbpp": 77.0,
       "bigcodebench": 45.0,
       "alpacaeval": null,
       "mmbench": null
@@ -7932,7 +7932,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 87.2,
       "mmlu_pro": 51.9,
       "math": 62.5,
       "ifeval": 83.5,
@@ -7940,7 +7940,7 @@
       "mmmu": null,
       "gpqa": 11.7,
       "musr": 13.5,
-      "mbpp": null,
+      "mbpp": 77.0,
       "bigcodebench": 45.0,
       "alpacaeval": null,
       "mmbench": null
@@ -8070,7 +8070,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 59.1,
       "mmlu_pro": 51.4,
       "math": 59.8,
       "ifeval": 86.4,
@@ -8078,7 +8078,7 @@
       "mmmu": null,
       "gpqa": 16.7,
       "musr": 11.7,
-      "mbpp": null,
+      "mbpp": 61.6,
       "bigcodebench": 38.5,
       "alpacaeval": null,
       "mmbench": null
@@ -8131,7 +8131,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 59.1,
       "mmlu_pro": 51.4,
       "math": 59.8,
       "ifeval": 86.4,
@@ -8139,7 +8139,7 @@
       "mmmu": null,
       "gpqa": 16.7,
       "musr": 11.7,
-      "mbpp": null,
+      "mbpp": 61.6,
       "bigcodebench": 38.5,
       "alpacaeval": null,
       "mmbench": null
@@ -8191,7 +8191,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 59.1,
       "mmlu_pro": 51.4,
       "math": 59.8,
       "ifeval": 86.4,
@@ -8199,7 +8199,7 @@
       "mmmu": null,
       "gpqa": 16.7,
       "musr": 11.7,
-      "mbpp": null,
+      "mbpp": 61.6,
       "bigcodebench": 38.5,
       "alpacaeval": null,
       "mmbench": null
@@ -8640,7 +8640,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 27.4,
       "mmlu_pro": 7.1,
       "math": 1.5,
       "ifeval": 20.4,
@@ -8701,7 +8701,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 29.9,
       "mmlu_pro": 7.1,
       "math": 3.1,
       "ifeval": 22.1,
@@ -8824,7 +8824,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 60.4,
       "mmlu_pro": 15.0,
       "math": 6.0,
       "ifeval": 27.8,
@@ -8832,7 +8832,7 @@
       "mmmu": null,
       "gpqa": 3.1,
       "musr": 2.9,
-      "mbpp": null,
+      "mbpp": 65.1,
       "bigcodebench": 37.6,
       "alpacaeval": null,
       "mmbench": null
@@ -9129,7 +9129,7 @@
       }
     ],
     "benchmarks": {
-      "humaneval": null,
+      "humaneval": 45.7,
       "mmlu_pro": 33.1,
       "math": 22.6,
       "ifeval": 60.5,
@@ -9137,7 +9137,7 @@
       "mmmu": null,
       "gpqa": 11.3,
       "musr": 12.8,
-      "mbpp": null,
+      "mbpp": 60.8,
       "bigcodebench": 38.1,
       "alpacaeval": null,
       "mmbench": null
