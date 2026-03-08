@@ -70,6 +70,10 @@ Works for any model size:
 - **Benchmark minimums**: MMLU-PRO, MATH, Coding
 - **Show/hide**: CPU-only models, GPU+RAM offload, only fits in VRAM
 
+### Theme Support
+- **Dark/Light mode** - toggle in header, persisted in localStorage
+- **System preference** - auto-detects OS theme on first visit
+
 ### Use Cases
 5 use cases with different benchmark weights:
 - **Chat**: IFEval, MMLU-PRO, BBH
@@ -359,10 +363,10 @@ Events tracked:
 - [x] Cloud provider alternatives (RunPod, Vast.ai, Lambda)
 - [x] Multi-GPU configurations (2x, 4x, 8x)
 - [x] Datacenter-scale requirements for 1000B+ models
-- [ ] Dark/light theme toggle
+- [x] Dark/light theme toggle
+- [x] Model comparison radar chart
 - [ ] Export results (JSON/CSV)
 - [ ] PWA for offline use
-- [ ] Model comparison radar chart
 - [ ] Filter by model family/architecture
 
 ## License

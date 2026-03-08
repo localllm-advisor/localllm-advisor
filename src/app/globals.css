@@ -2,7 +2,409 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Default: Dark theme */
+:root {
+  --color-bg: #0a0a0a;
+  --color-text: #ededed;
+  --color-text-muted: #9ca3af;
+  --color-border: #374151;
+  --color-surface: #1f2937;
+  --color-surface-hover: #374151;
+}
+
+/* Light theme */
+.light {
+  --color-bg: #ffffff;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-surface: #f9fafb;
+  --color-surface-hover: #f3f4f6;
+}
+
 body {
-  color: #ededed;
-  background: #0a0a0a;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+/* Light theme overrides for Tailwind gray colors */
+.light .bg-gray-900\/50,
+.light .bg-gray-900 {
+  background-color: #f9fafb !important;
+}
+
+.light .bg-gray-800\/50,
+.light .bg-gray-800\/80,
+.light .bg-gray-800 {
+  background-color: #f3f4f6 !important;
+}
+
+.light .bg-gray-700 {
+  background-color: #e5e7eb !important;
+}
+
+.light .border-gray-800,
+.light .border-gray-700 {
+  border-color: #e5e7eb !important;
+}
+
+.light .border-gray-600 {
+  border-color: #d1d5db !important;
+}
+
+.light .text-white {
+  color: #111827 !important;
+}
+
+.light .text-gray-200,
+.light .text-gray-300 {
+  color: #374151 !important;
+}
+
+.light .text-gray-400 {
+  color: #6b7280 !important;
+}
+
+.light .text-gray-500 {
+  color: #9ca3af !important;
+}
+
+.light .hover\:text-white:hover {
+  color: #111827 !important;
+}
+
+.light .hover\:bg-gray-700:hover {
+  background-color: #e5e7eb !important;
+}
+
+.light .hover\:bg-gray-600:hover {
+  background-color: #d1d5db !important;
+}
+
+.light .hover\:text-gray-300:hover {
+  color: #374151 !important;
+}
+
+/* Input fields in light mode */
+.light input,
+.light select {
+  background-color: #ffffff !important;
+  border-color: #d1d5db !important;
+  color: #111827 !important;
+}
+
+.light input::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Dropdowns in light mode */
+.light ul.absolute {
+  background-color: #ffffff !important;
+  border-color: #e5e7eb !important;
+}
+
+.light ul.absolute li:hover {
+  background-color: #f3f4f6 !important;
+}
+
+/* Cards with gradients */
+.light .bg-gradient-to-br {
+  background: linear-gradient(to bottom right, #f9fafb, #f3f4f6) !important;
+}
+
+.light .bg-gradient-to-r {
+  background: linear-gradient(to right, #fef3c7, #fed7aa) !important;
+}
+
+/* Our Pick card in light mode */
+.light .from-yellow-900\/20 {
+  --tw-gradient-from: #fef9c3 !important;
+}
+
+.light .to-orange-900\/20 {
+  --tw-gradient-to: #ffedd5 !important;
+}
+
+.light .from-gray-800\/90 {
+  --tw-gradient-from: #f9fafb !important;
+}
+
+.light .to-gray-900\/90 {
+  --tw-gradient-to: #f3f4f6 !important;
+}
+
+/* Badge gradient for Our Pick */
+.light .from-yellow-500 {
+  --tw-gradient-from: #fbbf24 !important;
+}
+
+.light .to-orange-500 {
+  --tw-gradient-to: #f97316 !important;
+}
+
+/* Yellow borders in light mode */
+.light .border-yellow-500\/50,
+.light .border-yellow-500\/30 {
+  border-color: #fbbf24 !important;
+}
+
+.light .border-yellow-500 {
+  border-color: #f59e0b !important;
+}
+
+/* Yellow backgrounds */
+.light .bg-yellow-500\/10 {
+  background-color: #fef9c3 !important;
+}
+
+/* Badge text should be darker on light backgrounds */
+.light .bg-green-500 .text-white,
+.light .bg-purple-500 .text-white,
+.light .bg-blue-500 .text-white {
+  color: #1f2937 !important;
+}
+
+/* Stats boxes in Our Pick card */
+.light .bg-gray-800\/30 {
+  background-color: #f3f4f6 !important;
+}
+
+/* Hardware Recipe gradient */
+.light .from-blue-900\/30 {
+  --tw-gradient-from: #dbeafe !important;
+}
+
+.light .to-purple-900\/30 {
+  --tw-gradient-to: #f3e8ff !important;
+}
+
+.light .border-blue-700\/50 {
+  border-color: #93c5fd !important;
+}
+
+/* Purple quant boxes */
+.light .bg-purple-600\/30 {
+  background-color: #f3e8ff !important;
+}
+
+.light .border-purple-500 {
+  border-color: #c084fc !important;
+}
+
+.light .text-purple-300 {
+  color: #7c3aed !important;
+}
+
+/* Status badges in light mode */
+.light .bg-green-600\/20 {
+  background-color: #dcfce7 !important;
+}
+
+.light .bg-yellow-600\/20 {
+  background-color: #fef9c3 !important;
+}
+
+.light .bg-orange-600\/20 {
+  background-color: #ffedd5 !important;
+}
+
+.light .bg-red-600\/20 {
+  background-color: #fee2e2 !important;
+}
+
+.light .bg-blue-600\/20 {
+  background-color: #dbeafe !important;
+}
+
+.light .bg-gray-600\/20 {
+  background-color: #f3f4f6 !important;
+}
+
+/* Status badge borders */
+.light .border-green-600\/30 {
+  border-color: #86efac !important;
+}
+
+.light .border-yellow-600\/30 {
+  border-color: #fde047 !important;
+}
+
+.light .border-orange-600\/30 {
+  border-color: #fdba74 !important;
+}
+
+.light .border-red-600\/30 {
+  border-color: #fca5a5 !important;
+}
+
+.light .border-blue-600\/30 {
+  border-color: #93c5fd !important;
+}
+
+.light .border-gray-600\/30 {
+  border-color: #d1d5db !important;
+}
+
+/* Warning/error boxes */
+.light .bg-yellow-900\/10 {
+  background-color: #fefce8 !important;
+}
+
+.light .border-yellow-600\/50 {
+  border-color: #facc15 !important;
+}
+
+.light .bg-red-900\/10 {
+  background-color: #fef2f2 !important;
+}
+
+.light .border-red-600\/50 {
+  border-color: #f87171 !important;
+}
+
+.light .bg-orange-900\/10 {
+  background-color: #fff7ed !important;
+}
+
+.light .border-orange-600\/50 {
+  border-color: #fb923c !important;
+}
+
+/* Comparison table rows */
+.light .bg-gray-900\/30 {
+  background-color: #f3f4f6 !important;
+}
+
+.light .bg-gray-900\/50 {
+  background-color: #e5e7eb !important;
+}
+
+.light .bg-gray-800\/80 {
+  background-color: #f9fafb !important;
+}
+
+.light .divide-gray-800 > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e5e7eb !important;
+}
+
+/* Progress bars background */
+.light .bg-gray-900 {
+  background-color: #e5e7eb !important;
+}
+
+/* Model colors - make sure they stay visible in light mode */
+.light .bg-green-500 {
+  background-color: #22c55e !important;
+}
+
+.light .bg-cyan-500 {
+  background-color: #06b6d4 !important;
+}
+
+.light .bg-teal-500 {
+  background-color: #14b8a6 !important;
+}
+
+.light .bg-indigo-500 {
+  background-color: #6366f1 !important;
+}
+
+.light .bg-pink-500 {
+  background-color: #ec4899 !important;
+}
+
+.light .bg-orange-500 {
+  background-color: #f97316 !important;
+}
+
+/* Softer button colors in light mode */
+.light .bg-blue-600 {
+  background-color: #60a5fa !important; /* blue-400 */
+}
+
+.light .bg-blue-500 {
+  background-color: #93c5fd !important; /* blue-300 */
+}
+
+.light .bg-green-600 {
+  background-color: #4ade80 !important; /* green-400 */
+}
+
+.light .bg-green-500 {
+  background-color: #86efac !important; /* green-300 */
+}
+
+.light .bg-orange-600 {
+  background-color: #fb923c !important; /* orange-400 */
+}
+
+.light .bg-purple-600 {
+  background-color: #c084fc !important; /* purple-400 */
+}
+
+.light .bg-purple-500 {
+  background-color: #d8b4fe !important; /* purple-300 */
+}
+
+.light .bg-red-500 {
+  background-color: #fca5a5 !important; /* red-300 */
+}
+
+.light .bg-yellow-500 {
+  background-color: #fde047 !important; /* yellow-300 */
+}
+
+.light .text-blue-400 {
+  color: #2563eb !important;
+}
+
+.light .text-green-400 {
+  color: #16a34a !important;
+}
+
+.light .text-yellow-400,
+.light .text-yellow-500 {
+  color: #ca8a04 !important;
+}
+
+.light .text-orange-400 {
+  color: #ea580c !important;
+}
+
+.light .text-red-400 {
+  color: #dc2626 !important;
+}
+
+.light .text-purple-400 {
+  color: #9333ea !important;
+}
+
+/* Banners/alerts in light mode */
+.light .bg-green-900\/20 {
+  background-color: #dcfce7 !important;
+}
+
+.light .bg-yellow-900\/20 {
+  background-color: #fef9c3 !important;
+}
+
+.light .bg-orange-900\/20 {
+  background-color: #ffedd5 !important;
+}
+
+.light .bg-blue-900\/20 {
+  background-color: #dbeafe !important;
+}
+
+.light .bg-red-900\/20 {
+  background-color: #fee2e2 !important;
+}
+
+/* Code blocks */
+.light code {
+  color: #16a34a !important;
+}
+
+.light .font-mono {
+  background-color: #f3f4f6 !important;
 }

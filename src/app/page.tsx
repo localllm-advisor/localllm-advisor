@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
+import { ThemeToggle } from '@/components/ThemeProvider';
 import { UseCase, AdvancedFilters } from '@/lib/types';
 import { useRecommendation } from '@/hooks/useRecommendation';
 import HardwareConfig, { HardwareSpecs } from '@/components/HardwareConfig';
@@ -132,25 +133,28 @@ export default function Home() {
               }
             </p>
           </div>
-          <nav className="hidden md:flex gap-6 text-sm">
-            <Link href="/methodology" className="text-gray-400 hover:text-white transition-colors">
-              Methodology
-            </Link>
-            <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
-              FAQ
-            </Link>
-            <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
-              About
-            </Link>
-            <a
-              href="https://github.com/localllm-advisor/localllm-advisor"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              GitHub
-            </a>
-          </nav>
+          <div className="flex items-center gap-4">
+            <nav className="hidden md:flex gap-6 text-sm">
+              <Link href="/methodology" className="text-gray-400 hover:text-white transition-colors">
+                Methodology
+              </Link>
+              <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+                FAQ
+              </Link>
+              <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+                About
+              </Link>
+              <a
+                href="https://github.com/localllm-advisor/localllm-advisor"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                GitHub
+              </a>
+            </nav>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -254,7 +258,7 @@ export default function Home() {
           </a>
         </div>
         <p>
-          LocalLLM Advisor — Open source tool for the local AI community.
+          LocalLLM Advisor — Find the best local LLM for your hardware.
         </p>
         <p className="mt-1">
           Data updated manually. Not affiliated with Ollama or any model provider.
