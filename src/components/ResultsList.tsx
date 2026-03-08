@@ -733,7 +733,9 @@ export default function ResultsList({
               </span>
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {USE_CASE_BENCHMARKS[useCase].map((benchKey) => {
+              {USE_CASE_BENCHMARKS[useCase]
+                .filter((benchKey) => topModels.some(r => r.model.benchmarks[benchKey] !== null && r.model.benchmarks[benchKey] !== undefined))
+                .map((benchKey) => {
                 const benchName = BENCHMARK_NAMES[benchKey];
                 return (
                   <button
@@ -999,7 +1001,9 @@ export default function ResultsList({
               </tr>
 
               {/* Benchmarks */}
-              {USE_CASE_BENCHMARKS[useCase].map(benchKey => {
+              {USE_CASE_BENCHMARKS[useCase]
+                .filter(benchKey => compareModels.some(r => r.model.benchmarks[benchKey] !== null && r.model.benchmarks[benchKey] !== undefined))
+                .map(benchKey => {
                 const values = compareModels.map(r => r.model.benchmarks[benchKey]);
                 const maxVal = Math.max(...values.filter((v): v is number => v !== null));
                 return (
@@ -1152,8 +1156,10 @@ function ComparisonRadar({
     // Speed still needs relative scale (no clear max)
     const maxSpeed = Math.max(...models.map(m => m.performance.tokensPerSecond ?? 0), 1);
 
-    // Get relevant benchmarks for use case
-    const benchmarks = USE_CASE_BENCHMARKS[useCase].slice(0, 4); // Max 4 benchmarks
+    // Get relevant benchmarks for use case - only those with data
+    const benchmarks = USE_CASE_BENCHMARKS[useCase]
+      .filter(benchKey => models.some(m => m.model.benchmarks[benchKey] !== null && m.model.benchmarks[benchKey] !== undefined))
+      .slice(0, 4); // Max 4 benchmarks
 
     // Build data points - using absolute scales where applicable
     const data = [
@@ -1209,7 +1215,9 @@ function OurPickCard({
   const model = rec.model;
   const speed = model.performance.tokensPerSecond ?? 0;
   const vram = (model.quant.vram_mb / 1024).toFixed(1);
-  const benchmarks = USE_CASE_BENCHMARKS[useCase].slice(0, 4);
+  const benchmarks = USE_CASE_BENCHMARKS[useCase]
+    .filter(benchKey => model.model.benchmarks[benchKey] !== null && model.model.benchmarks[benchKey] !== undefined)
+    .slice(0, 4);
 
   // Generate links
   const ollamaBase = model.model.ollama_base.split(':')[0]; // Remove tag if present

@@ -51,8 +51,11 @@ const MODEL_COLORS = [
 ];
 
 export default function BenchmarkChart({ results, useCase }: BenchmarkChartProps) {
-  const benchmarks = USE_CASE_BENCHMARKS[useCase];
   const topModels = results.slice(0, 5); // Show top 5 models
+
+  // Filter benchmarks to only those with data for at least one model
+  const benchmarks = USE_CASE_BENCHMARKS[useCase]
+    .filter(benchKey => topModels.some(r => r.model.benchmarks[benchKey] !== null && r.model.benchmarks[benchKey] !== undefined));
 
   // Find max value for scaling
   const maxValue = Math.max(
