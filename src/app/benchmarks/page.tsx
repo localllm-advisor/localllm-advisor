@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, Suspense, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -15,6 +15,82 @@ import {
 } from '@/lib/supabase';
 import { useTheme } from '@/components/ThemeProvider';
 import { User } from '@supabase/supabase-js';
+
+// Grouped benchmark type
+interface GroupedBenchmark {
+  key: string;
+  model_id: string;
+  quant_level: string;
+  gpu_name: string;
+  gpu_vram_mb?: number;
+  tokens_per_second: number;
+  runtime?: string;
+  cpu_name?: string;
+  ram_gb?: number;
+  context_length?: number;
+  prefill_tokens_per_second?: number;
+  time_to_first_token_ms?: number;
+  // Aggregated fields
+  submission_count: number;
+  total_vote_score: number;
+  notes: string[];
+  latest_date: string;
+  // For voting - use the first benchmark's id
+  benchmark_ids: string[];
+  user_votes: (number | undefined)[];
+}
+
+function groupBenchmarks(benchmarks: BenchmarkWithVotes[]): GroupedBenchmark[] {
+  const groups = new Map<string, GroupedBenchmark>();
+
+  for (const b of benchmarks) {
+    // Key: same model, quant, gpu, and similar speed (within 1 tok/s)
+    const speedRounded = Math.round(b.tokens_per_second);
+    const key = `${b.model_id}|${b.quant_level}|${b.gpu_name}|${speedRounded}`;
+
+    if (groups.has(key)) {
+      const group = groups.get(key)!;
+      group.submission_count++;
+      group.total_vote_score += b.vote_score;
+      if (b.notes) group.notes.push(b.notes);
+      if (b.created_at && b.created_at > group.latest_date) {
+        group.latest_date = b.created_at;
+      }
+      group.benchmark_ids.push(b.id!);
+      group.user_votes.push(b.user_vote);
+      // Take additional fields if missing
+      if (!group.prefill_tokens_per_second && b.prefill_tokens_per_second) {
+        group.prefill_tokens_per_second = b.prefill_tokens_per_second;
+      }
+      if (!group.time_to_first_token_ms && b.time_to_first_token_ms) {
+        group.time_to_first_token_ms = b.time_to_first_token_ms;
+      }
+    } else {
+      groups.set(key, {
+        key,
+        model_id: b.model_id,
+        quant_level: b.quant_level,
+        gpu_name: b.gpu_name,
+        gpu_vram_mb: b.gpu_vram_mb,
+        tokens_per_second: b.tokens_per_second,
+        runtime: b.runtime,
+        cpu_name: b.cpu_name,
+        ram_gb: b.ram_gb,
+        context_length: b.context_length,
+        prefill_tokens_per_second: b.prefill_tokens_per_second,
+        time_to_first_token_ms: b.time_to_first_token_ms,
+        submission_count: 1,
+        total_vote_score: b.vote_score,
+        notes: b.notes ? [b.notes] : [],
+        latest_date: b.created_at || '',
+        benchmark_ids: [b.id!],
+        user_votes: [b.user_vote],
+      });
+    }
+  }
+
+  return Array.from(groups.values());
+}
 
 function BenchmarksContent() {
   const searchParams = useSearchParams();
@@ -128,6 +204,25 @@ function BenchmarksContent() {
     });
   };
 
+  // Group similar benchmarks
+  const groupedBenchmarks = useMemo(() => {
+    const groups = groupBenchmarks(benchmarks);
+    // Sort groups based on current sort
+    if (sortBy === 'vote_score') {
+      groups.sort((a, b) => b.total_vote_score - a.total_vote_score);
+    } else if (sortBy === 'tokens_per_second') {
+      groups.sort((a, b) => b.tokens_per_second - a.tokens_per_second);
+    } else {
+      groups.sort((a, b) => b.latest_date.localeCompare(a.latest_date));
+    }
+    return groups;
+  }, [benchmarks, sortBy]);
+
+  // Check if user has voted on any benchmark in a group
+  const hasUserVotedInGroup = (group: GroupedBenchmark, voteType: 1 | -1) => {
+    return group.user_votes.some(v => v === voteType);
+  };
+
   return (
     <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
       {/* Header */}
@@ -151,7 +246,7 @@ function BenchmarksContent() {
             </div>
             <div className="flex items-center gap-4">
               <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                {benchmarks.length} results
+                {groupedBenchmarks.length} results ({benchmarks.length} submissions)
               </span>
               {/* User status */}
               {user ? (
@@ -275,18 +370,18 @@ function BenchmarksContent() {
           </div>
         ) : (
           <div className="space-y-4">
-            {benchmarks.map((benchmark) => (
+            {groupedBenchmarks.map((group) => (
               <div
-                key={benchmark.id}
+                key={group.key}
                 className={`rounded-xl border p-4 transition-colors ${isDark ? 'border-gray-700 bg-gray-800/50 hover:bg-gray-800' : 'border-gray-200 bg-white hover:bg-gray-50'}`}
               >
                 <div className="flex gap-4">
                   {/* Voting */}
                   <div className="flex flex-col items-center gap-1">
                     <button
-                      onClick={() => handleVote(benchmark.id!, 1)}
+                      onClick={() => handleVote(group.benchmark_ids[0], 1)}
                       className={`p-1.5 rounded-lg transition-colors ${
-                        benchmark.user_vote === 1
+                        hasUserVotedInGroup(group, 1)
                           ? 'bg-green-500/20 text-green-500'
                           : isDark
                           ? 'text-gray-500 hover:text-green-400 hover:bg-gray-700'
@@ -294,23 +389,23 @@ function BenchmarksContent() {
                       }`}
                       title={user ? 'Helpful benchmark' : 'Sign in to vote'}
                     >
-                      <svg className="w-5 h-5" fill={benchmark.user_vote === 1 ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5" fill={hasUserVotedInGroup(group, 1) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
                       </svg>
                     </button>
                     <span className={`text-sm font-bold ${
-                      benchmark.vote_score > 0
+                      group.total_vote_score > 0
                         ? 'text-green-500'
-                        : benchmark.vote_score < 0
+                        : group.total_vote_score < 0
                         ? 'text-red-500'
                         : isDark ? 'text-gray-500' : 'text-gray-400'
                     }`}>
-                      {benchmark.vote_score}
+                      {group.total_vote_score}
                     </span>
                     <button
-                      onClick={() => handleVote(benchmark.id!, -1)}
+                      onClick={() => handleVote(group.benchmark_ids[0], -1)}
                       className={`p-1.5 rounded-lg transition-colors ${
-                        benchmark.user_vote === -1
+                        hasUserVotedInGroup(group, -1)
                           ? 'bg-red-500/20 text-red-500'
                           : isDark
                           ? 'text-gray-500 hover:text-red-400 hover:bg-gray-700'
@@ -318,7 +413,7 @@ function BenchmarksContent() {
                       }`}
                       title={user ? 'Not helpful' : 'Sign in to vote'}
                     >
-                      <svg className="w-5 h-5" fill={benchmark.user_vote === -1 ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5" fill={hasUserVotedInGroup(group, -1) ? 'currentColor' : 'none'} stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </button>
@@ -328,24 +423,31 @@ function BenchmarksContent() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <div>
-                        <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                          {benchmark.model_id}
-                        </h3>
+                        <div className="flex items-center gap-2">
+                          <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                            {group.model_id}
+                          </h3>
+                          {group.submission_count > 1 && (
+                            <span className={`text-xs px-1.5 py-0.5 rounded-full font-medium ${isDark ? 'bg-green-500/20 text-green-400' : 'bg-green-100 text-green-700'}`}>
+                              {group.submission_count}x confirmed
+                            </span>
+                          )}
+                        </div>
                         <div className="flex items-center gap-2 mt-1">
                           <span className={`text-xs px-2 py-0.5 rounded ${isDark ? 'bg-blue-500/20 text-blue-400' : 'bg-blue-100 text-blue-700'}`}>
-                            {benchmark.quant_level}
+                            {group.quant_level}
                           </span>
                           <span className={`text-xs px-2 py-0.5 rounded ${isDark ? 'bg-purple-500/20 text-purple-400' : 'bg-purple-100 text-purple-700'}`}>
-                            {benchmark.runtime || 'ollama'}
+                            {group.runtime || 'ollama'}
                           </span>
                         </div>
                       </div>
                       <div className="text-right">
                         <div className="text-2xl font-bold text-green-500">
-                          {benchmark.tokens_per_second} <span className="text-sm font-normal">tok/s</span>
+                          {group.tokens_per_second} <span className="text-sm font-normal">tok/s</span>
                         </div>
                         <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                          {formatDate(benchmark.created_at!)}
+                          {formatDate(group.latest_date)}
                         </div>
                       </div>
                     </div>
@@ -356,65 +458,74 @@ function BenchmarksContent() {
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                         </svg>
-                        <span className="font-medium">{benchmark.gpu_name}</span>
-                        {benchmark.gpu_vram_mb && (
+                        <span className="font-medium">{group.gpu_name}</span>
+                        {group.gpu_vram_mb && (
                           <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>
-                            ({Math.round(benchmark.gpu_vram_mb / 1024)} GB)
+                            ({Math.round(group.gpu_vram_mb / 1024)} GB)
                           </span>
                         )}
                       </div>
 
-                      {benchmark.cpu_name && (
+                      {group.cpu_name && (
                         <div className="flex items-center gap-1.5">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                           </svg>
-                          <span>{benchmark.cpu_name}</span>
+                          <span>{group.cpu_name}</span>
                         </div>
                       )}
 
-                      {benchmark.ram_gb && (
+                      {group.ram_gb && (
                         <div className="flex items-center gap-1.5">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                           </svg>
-                          <span>{benchmark.ram_gb} GB RAM</span>
+                          <span>{group.ram_gb} GB RAM</span>
                         </div>
                       )}
 
-                      {benchmark.context_length && (
+                      {group.context_length && (
                         <div className="flex items-center gap-1.5">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h7" />
                           </svg>
-                          <span>{benchmark.context_length.toLocaleString()} ctx</span>
+                          <span>{group.context_length.toLocaleString()} ctx</span>
                         </div>
                       )}
                     </div>
 
                     {/* Additional metrics */}
-                    {(benchmark.prefill_tokens_per_second || benchmark.time_to_first_token_ms) && (
+                    {(group.prefill_tokens_per_second || group.time_to_first_token_ms) && (
                       <div className={`flex gap-4 mt-3 pt-3 border-t text-sm ${isDark ? 'border-gray-700 text-gray-400' : 'border-gray-200 text-gray-600'}`}>
-                        {benchmark.prefill_tokens_per_second && (
+                        {group.prefill_tokens_per_second && (
                           <div>
                             <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>Prefill:</span>{' '}
-                            <span className="font-medium">{benchmark.prefill_tokens_per_second} tok/s</span>
+                            <span className="font-medium">{group.prefill_tokens_per_second} tok/s</span>
                           </div>
                         )}
-                        {benchmark.time_to_first_token_ms && (
+                        {group.time_to_first_token_ms && (
                           <div>
                             <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>TTFT:</span>{' '}
-                            <span className="font-medium">{benchmark.time_to_first_token_ms} ms</span>
+                            <span className="font-medium">{group.time_to_first_token_ms} ms</span>
                           </div>
                         )}
                       </div>
                     )}
 
-                    {/* Notes */}
-                    {benchmark.notes && (
-                      <div className={`mt-3 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                        <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>Notes:</span>{' '}
-                        {benchmark.notes}
+                    {/* Notes - show all collected notes */}
+                    {group.notes.length > 0 && (
+                      <div className={`mt-3 pt-3 border-t text-sm ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+                        <span className={`font-medium ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                          Notes ({group.notes.length}):
+                        </span>
+                        <ul className={`mt-1 space-y-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                          {group.notes.map((note, idx) => (
+                            <li key={idx} className="flex items-start gap-2">
+                              <span className={isDark ? 'text-gray-600' : 'text-gray-400'}>•</span>
+                              <span>{note}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
                   </div>
