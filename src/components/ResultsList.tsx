@@ -3,6 +3,7 @@
 import { useState, useMemo, useRef } from 'react';
 import { ScoredModel, UseCase, Benchmarks } from '@/lib/types';
 import RadarChart from './RadarChart';
+import ModelDetailModal from './ModelDetailModal';
 
 // Export utilities
 function exportToJSON(results: ScoredModel[], gpuName: string | null, vramMb: number, useCase: UseCase) {
@@ -105,7 +106,7 @@ interface ResultsListProps {
 // Benchmarks per use case
 const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   chat: ['ifeval', 'mmlu_pro', 'bbh'],
-  coding: ['bigcodebench', 'math', 'bbh', 'ifeval'],
+  coding: ['bigcodebench', 'humaneval', 'math', 'ifeval'],
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
   creative: ['ifeval', 'mmlu_pro', 'bbh'],
   vision: ['ifeval', 'mmlu_pro', 'bbh'],
@@ -287,6 +288,8 @@ export default function ResultsList({
   const [expandedChart, setExpandedChart] = useState<ExpandedChartData>({ type: null });
   const [viewMode, setViewMode] = useState<ViewMode>('dashboard');
   const [compareSet, setCompareSet] = useState<Set<number>>(new Set());
+  const [detailModel, setDetailModel] = useState<ScoredModel | null>(null);
+  const [copiedTag, setCopiedTag] = useState<string | null>(null);
   const vramGb = Math.round(vramMb / 1024);
   const gpuLabel = gpuName || `${vramGb}GB VRAM`;
   const topModels = results.slice(0, 10);
@@ -401,6 +404,7 @@ export default function ResultsList({
               rec={recommendations[0]}
               isSelected={selectedModel === recommendations[0].index}
               onSelect={() => setSelectedModel(recommendations[0].index)}
+              onViewDetails={() => setDetailModel(recommendations[0].model)}
               useCase={useCase}
             />
           )}
@@ -572,6 +576,7 @@ export default function ResultsList({
                 />
                 <button
                   onClick={() => setSelectedModel(i)}
+                  onDoubleClick={() => setDetailModel(result)}
                   className="flex-1 flex items-center gap-2 text-left min-w-0"
                 >
                   <span className={`w-5 h-5 shrink-0 rounded flex items-center justify-center text-[10px] font-bold ${MODEL_COLORS[i]} text-white`}>
@@ -586,6 +591,15 @@ export default function ResultsList({
                     </div>
                   </div>
                   <div className="text-sm font-bold text-white shrink-0 w-8 text-right">{result.score}</div>
+                </button>
+                <button
+                  onClick={(e) => { e.stopPropagation(); setDetailModel(result); }}
+                  className="p-1 rounded hover:bg-gray-600 text-gray-400 hover:text-white transition-colors"
+                  title="View details"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
                 </button>
               </div>
             ))}
@@ -733,7 +747,9 @@ export default function ResultsList({
               </span>
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {USE_CASE_BENCHMARKS[useCase].map((benchKey) => {
+              {USE_CASE_BENCHMARKS[useCase]
+                .filter((benchKey) => topModels.some(r => r.model.benchmarks[benchKey] !== null && r.model.benchmarks[benchKey] !== undefined))
+                .map((benchKey) => {
                 const benchName = BENCHMARK_NAMES[benchKey];
                 return (
                   <button
@@ -825,10 +841,27 @@ export default function ResultsList({
                 $ ollama run {selected.quant.ollama_tag}
               </code>
               <button
-                onClick={() => navigator.clipboard.writeText(`ollama run ${selected.quant.ollama_tag}`)}
-                className="text-xs text-gray-400 hover:text-white px-2 py-1 rounded bg-gray-800 hover:bg-gray-700"
+                onClick={() => {
+                  navigator.clipboard.writeText(`ollama run ${selected.quant.ollama_tag}`);
+                  setCopiedTag(selected.quant.ollama_tag);
+                  setTimeout(() => setCopiedTag(null), 2000);
+                }}
+                className={`text-xs px-2 py-1 rounded flex items-center gap-1 transition-colors ${
+                  copiedTag === selected.quant.ollama_tag
+                    ? 'bg-green-600 text-white'
+                    : 'text-gray-400 hover:text-white bg-gray-800 hover:bg-gray-700'
+                }`}
               >
-                Copy
+                {copiedTag === selected.quant.ollama_tag ? (
+                  <>
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    Copied!
+                  </>
+                ) : (
+                  'Copy'
+                )}
               </button>
             </div>
 
@@ -999,7 +1032,9 @@ export default function ResultsList({
               </tr>
 
               {/* Benchmarks */}
-              {USE_CASE_BENCHMARKS[useCase].map(benchKey => {
+              {USE_CASE_BENCHMARKS[useCase]
+                .filter(benchKey => compareModels.some(r => r.model.benchmarks[benchKey] !== null && r.model.benchmarks[benchKey] !== undefined))
+                .map(benchKey => {
                 const values = compareModels.map(r => r.model.benchmarks[benchKey]);
                 const maxVal = Math.max(...values.filter((v): v is number => v !== null));
                 return (
@@ -1130,6 +1165,14 @@ export default function ResultsList({
           </div>
         </div>
       )}
+
+      {/* Model Detail Modal */}
+      {detailModel && (
+        <ModelDetailModal
+          model={detailModel}
+          onClose={() => setDetailModel(null)}
+        />
+      )}
     </div>
   );
 }
@@ -1152,8 +1195,10 @@ function ComparisonRadar({
     // Speed still needs relative scale (no clear max)
     const maxSpeed = Math.max(...models.map(m => m.performance.tokensPerSecond ?? 0), 1);
 
-    // Get relevant benchmarks for use case
-    const benchmarks = USE_CASE_BENCHMARKS[useCase].slice(0, 4); // Max 4 benchmarks
+    // Get relevant benchmarks for use case - only those with data
+    const benchmarks = USE_CASE_BENCHMARKS[useCase]
+      .filter(benchKey => models.some(m => m.model.benchmarks[benchKey] !== null && m.model.benchmarks[benchKey] !== undefined))
+      .slice(0, 4); // Max 4 benchmarks
 
     // Build data points - using absolute scales where applicable
     const data = [
@@ -1199,17 +1244,22 @@ function OurPickCard({
   rec,
   isSelected,
   onSelect,
+  onViewDetails,
   useCase,
 }: {
   rec: Recommendation;
   isSelected: boolean;
   onSelect: () => void;
+  onViewDetails: () => void;
   useCase: UseCase;
 }) {
+  const [copied, setCopied] = useState(false);
   const model = rec.model;
   const speed = model.performance.tokensPerSecond ?? 0;
   const vram = (model.quant.vram_mb / 1024).toFixed(1);
-  const benchmarks = USE_CASE_BENCHMARKS[useCase].slice(0, 4);
+  const benchmarks = USE_CASE_BENCHMARKS[useCase]
+    .filter(benchKey => model.model.benchmarks[benchKey] !== null && model.model.benchmarks[benchKey] !== undefined)
+    .slice(0, 4);
 
   // Generate links
   const ollamaBase = model.model.ollama_base.split(':')[0]; // Remove tag if present
@@ -1271,12 +1321,41 @@ function OurPickCard({
               onClick={(e) => {
                 e.stopPropagation();
                 navigator.clipboard.writeText(`ollama run ${model.quant.ollama_tag}`);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
               }}
-              className="text-xs text-gray-400 hover:text-white px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 shrink-0"
+              className={`text-xs px-2 py-1 rounded shrink-0 flex items-center gap-1 transition-colors ${
+                copied
+                  ? 'bg-green-600 text-white'
+                  : 'text-gray-400 hover:text-white bg-gray-800 hover:bg-gray-700'
+              }`}
             >
-              Copy
+              {copied ? (
+                <>
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                  Copied!
+                </>
+              ) : (
+                'Copy'
+              )}
             </button>
           </div>
+
+          {/* View Details Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onViewDetails();
+            }}
+            className="mt-3 w-full px-4 py-2 text-sm font-medium bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors flex items-center justify-center gap-2"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            View Full Details
+          </button>
         </div>
 
         {/* Right: Benchmarks & Links */}

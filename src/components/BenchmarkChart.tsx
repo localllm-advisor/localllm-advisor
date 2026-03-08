@@ -27,10 +27,10 @@ const BENCHMARK_INFO: Record<keyof Benchmarks, { name: string; description: stri
 // Data sources:
 // - Open LLM Leaderboard: ifeval, mmlu_pro, bbh, math, gpqa, musr
 // - BigCodeBench: bigcodebench
-// TODO: Add HumanEval/MBPP when EvalPlus data becomes available
+// - EvalPlus: humaneval, mbpp
 const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   chat: ['ifeval', 'mmlu_pro', 'bbh'],
-  coding: ['bigcodebench', 'math', 'bbh', 'ifeval'],  // bigcodebench + reasoning proxies
+  coding: ['bigcodebench', 'humaneval', 'math', 'ifeval'],
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
   creative: ['ifeval', 'mmlu_pro', 'bbh'],
   vision: ['ifeval', 'mmlu_pro', 'bbh'],  // Placeholder until MMMU/MMBench available
@@ -51,8 +51,11 @@ const MODEL_COLORS = [
 ];
 
 export default function BenchmarkChart({ results, useCase }: BenchmarkChartProps) {
-  const benchmarks = USE_CASE_BENCHMARKS[useCase];
   const topModels = results.slice(0, 5); // Show top 5 models
+
+  // Filter benchmarks to only those with data for at least one model
+  const benchmarks = USE_CASE_BENCHMARKS[useCase]
+    .filter(benchKey => topModels.some(r => r.model.benchmarks[benchKey] !== null && r.model.benchmarks[benchKey] !== undefined));
 
   // Find max value for scaling
   const maxValue = Math.max(

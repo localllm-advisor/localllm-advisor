@@ -1,8 +1,10 @@
 import { Benchmarks, UseCase, UseCaseWeights, BenchmarkWeight } from './types';
 
 // Benchmark weights per use case
-// Note: Using only benchmarks available from Open LLM Leaderboard
-// TODO: Add HumanEval, MBPP, BigCodeBench from EvalPlus/BigCodeBench leaderboards
+// Sources:
+// - Open LLM Leaderboard: ifeval, mmlu_pro, bbh, math, gpqa, musr
+// - EvalPlus: humaneval, mbpp
+// - BigCodeBench: bigcodebench
 // TODO: Add AlpacaEval from AlpacaEval leaderboard
 // TODO: Add MMMU, MMBench from vision leaderboards
 const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
@@ -17,13 +19,11 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
     wQuant: 0.25,
   },
   coding: {
-    // BigCodeBench + reasoning benchmarks as proxy for coding ability
-    // TODO: Add HumanEval/MBPP when EvalPlus data becomes available
     benchmarks: [
-      { key: 'bigcodebench', weight: 0.35 },// Complex coding tasks
-      { key: 'math', weight: 0.25 },        // Logical reasoning (correlates with coding)
-      { key: 'bbh', weight: 0.25 },         // Complex reasoning
-      { key: 'ifeval', weight: 0.15 },      // Instruction following
+      { key: 'bigcodebench', weight: 0.30 },// Complex coding tasks
+      { key: 'humaneval', weight: 0.25 },   // Code generation (EvalPlus)
+      { key: 'math', weight: 0.25 },        // Logical reasoning (proxy for coding)
+      { key: 'ifeval', weight: 0.20 },      // Instruction following
     ],
     wQuality: 0.55,
     wSpeed: 0.25,
