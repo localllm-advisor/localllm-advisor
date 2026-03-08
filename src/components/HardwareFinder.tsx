@@ -16,15 +16,36 @@ const QUANT_OPTIONS = [
   { value: 'FP16', label: 'FP16 (Max)', bpw: 16 },
 ];
 
+const SPEED_OPTIONS = [
+  { value: 'any', label: 'Any', minToks: 1, desc: 'Just make it run' },
+  { value: 'usable', label: 'Usable', minToks: 10, desc: '10+ tok/s' },
+  { value: 'fast', label: 'Fast', minToks: 25, desc: '25+ tok/s' },
+  { value: 'blazing', label: 'Blazing', minToks: 50, desc: '50+ tok/s' },
+];
+
+const BUDGET_OPTIONS = [
+  { value: 'any', label: 'No limit', maxUsd: null },
+  { value: 'under500', label: 'Under $500', maxUsd: 500 },
+  { value: 'under1000', label: 'Under $1,000', maxUsd: 1000 },
+  { value: 'under1500', label: 'Under $1,500', maxUsd: 1500 },
+  { value: 'under2000', label: 'Under $2,000', maxUsd: 2000 },
+  { value: 'under3000', label: 'Under $3,000', maxUsd: 3000 },
+  { value: 'under5000', label: 'Under $5,000', maxUsd: 5000 },
+];
+
 export default function HardwareFinder({ models, gpus }: HardwareFinderProps) {
   const [selectedModelId, setSelectedModelId] = useState<string>('');
   const [quantPref, setQuantPref] = useState<string>('Q4_K_M');
+  const [speedPref, setSpeedPref] = useState<string>('usable');
+  const [budgetPref, setBudgetPref] = useState<string>('any');
   const [modelQuery, setModelQuery] = useState('');
   const [isModelDropdownOpen, setIsModelDropdownOpen] = useState(false);
   const [showAllOptions, setShowAllOptions] = useState(false);
 
   const selectedModel = models.find(m => m.id === selectedModelId);
   const selectedQuant = QUANT_OPTIONS.find(q => q.value === quantPref);
+  const selectedSpeed = SPEED_OPTIONS.find(s => s.value === speedPref);
+  const selectedBudget = BUDGET_OPTIONS.find(b => b.value === budgetPref);
 
   const filteredModels = useMemo(() => {
     const q = modelQuery.toLowerCase();
@@ -39,8 +60,14 @@ export default function HardwareFinder({ models, gpus }: HardwareFinderProps) {
 
   const recipe = useMemo(() => {
     if (!selectedModel) return null;
-    return buildHardwareRecipe(selectedModel, gpus, selectedQuant?.bpw || 4.5);
-  }, [selectedModel, gpus, selectedQuant]);
+    return buildHardwareRecipe(
+      selectedModel,
+      gpus,
+      selectedQuant?.bpw || 4.5,
+      selectedSpeed?.minToks || 10,
+      selectedBudget?.maxUsd || null
+    );
+  }, [selectedModel, gpus, selectedQuant, selectedSpeed, selectedBudget]);
 
   const handleSelectModel = (model: Model) => {
     setSelectedModelId(model.id);
@@ -116,6 +143,49 @@ export default function HardwareFinder({ models, gpus }: HardwareFinderProps) {
         <p className="text-xs text-gray-500">
           Lower quant = less VRAM needed but slightly lower quality
         </p>
+      </div>
+
+      {/* Speed Preference */}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-gray-300">Desired Speed</label>
+        <div className="flex flex-wrap gap-2">
+          {SPEED_OPTIONS.map(opt => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => setSpeedPref(opt.value)}
+              className={`px-4 py-2 rounded-lg text-sm transition-colors ${
+                speedPref === opt.value
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+              }`}
+            >
+              {opt.label}
+              <span className="ml-1 text-xs opacity-75">({opt.desc})</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Budget */}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-gray-300">Budget</label>
+        <div className="flex flex-wrap gap-2">
+          {BUDGET_OPTIONS.map(opt => (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => setBudgetPref(opt.value)}
+              className={`px-4 py-2 rounded-lg text-sm transition-colors ${
+                budgetPref === opt.value
+                  ? 'bg-green-600 text-white'
+                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Recipe Results */}

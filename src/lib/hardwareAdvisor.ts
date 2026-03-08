@@ -115,7 +115,9 @@ function estimateTokensPerSecond(
 export function buildHardwareRecipe(
   model: Model,
   gpus: GPU[],
-  bpw: number = 4.5
+  bpw: number = 4.5,
+  minTokensPerSec: number = 10,
+  maxPriceUsd: number | null = null
 ): HardwareRecipe {
   const vramRequired = calculateVramGb(model.params_b, bpw);
   const allVramRequirements = calculateAllVramRequirements(model.params_b);
@@ -177,8 +179,14 @@ export function buildHardwareRecipe(
     return true;
   });
 
+  // Apply speed and budget filters
+  let filteredOptions = dedupedOptions.filter(opt => opt.estimatedToksPerSec >= minTokensPerSec);
+  if (maxPriceUsd !== null) {
+    filteredOptions = filteredOptions.filter(opt => opt.totalPrice !== null && opt.totalPrice <= maxPriceUsd);
+  }
+
   // Sort options: single GPU first, then by value (speed per dollar)
-  dedupedOptions.sort((a, b) => {
+  filteredOptions.sort((a, b) => {
     // Prioritize fewer GPUs
     if (a.gpuCount !== b.gpuCount) return a.gpuCount - b.gpuCount;
     // Then by speed/price ratio
@@ -187,23 +195,23 @@ export function buildHardwareRecipe(
     return bValue - aValue;
   });
 
-  // Find featured options
-  const singleGpuOptions = dedupedOptions.filter(o => o.gpuCount === 1);
-  const multiGpuOptions = dedupedOptions.filter(o => o.gpuCount > 1);
+  // Find featured options from filtered list
+  const singleGpuOptions = filteredOptions.filter(o => o.gpuCount === 1);
+  const multiGpuOptions = filteredOptions.filter(o => o.gpuCount > 1);
 
   // Budget: cheapest option
-  const withPrice = dedupedOptions.filter(o => o.totalPrice !== null);
+  const withPrice = filteredOptions.filter(o => o.totalPrice !== null);
   const budgetOption = withPrice.length > 0
     ? withPrice.reduce((a, b) => (a.totalPrice! < b.totalPrice! ? a : b))
     : null;
 
   // Premium: fastest option
-  const premiumOption = dedupedOptions.length > 0
-    ? dedupedOptions.reduce((a, b) => (a.estimatedToksPerSec > b.estimatedToksPerSec ? a : b))
+  const premiumOption = filteredOptions.length > 0
+    ? filteredOptions.reduce((a, b) => (a.estimatedToksPerSec > b.estimatedToksPerSec ? a : b))
     : null;
 
   // Recommended: best value (speed per dollar) with decent speed
-  const goodOptions = withPrice.filter(o => o.estimatedToksPerSec >= 10);
+  const goodOptions = withPrice.filter(o => o.estimatedToksPerSec >= minTokensPerSec);
   const recommendedOption = goodOptions.length > 0
     ? goodOptions.reduce((a, b) => {
         const aValue = a.estimatedToksPerSec / a.totalPrice!;
@@ -236,16 +244,16 @@ export function buildHardwareRecipe(
   // Sort cloud by price
   cloudOptions.sort((a, b) => a.pricePerHour - b.pricePerHour);
 
-  // Determine feasibility
+  // Determine feasibility (based on filtered options that meet criteria)
   const canRunSingleGpu = singleGpuOptions.length > 0;
-  const canRunDualGpu = dedupedOptions.some(o => o.gpuCount <= 2);
-  const canRunConsumer = dedupedOptions.length > 0;
+  const canRunDualGpu = filteredOptions.some(o => o.gpuCount <= 2);
+  const canRunConsumer = filteredOptions.length > 0;
 
   let minGpusNeeded = 0;
   if (canRunSingleGpu) minGpusNeeded = 1;
-  else if (dedupedOptions.some(o => o.gpuCount === 2)) minGpusNeeded = 2;
-  else if (dedupedOptions.some(o => o.gpuCount === 4)) minGpusNeeded = 4;
-  else if (dedupedOptions.some(o => o.gpuCount === 8)) minGpusNeeded = 8;
+  else if (filteredOptions.some(o => o.gpuCount === 2)) minGpusNeeded = 2;
+  else if (filteredOptions.some(o => o.gpuCount === 4)) minGpusNeeded = 4;
+  else if (filteredOptions.some(o => o.gpuCount === 8)) minGpusNeeded = 8;
 
   // System requirements
   const maxGpuTdp = premiumOption ? (premiumOption.gpu.tdp_watts || 300) : 300;
@@ -282,7 +290,7 @@ export function buildHardwareRecipe(
     budgetOption,
     recommendedOption,
     premiumOption,
-    allOptions: dedupedOptions.slice(0, 12), // Limit to 12 options
+    allOptions: filteredOptions.slice(0, 12), // Limit to 12 options
     cloudOptions: cloudOptions.slice(0, 4),   // Top 4 cloud options
     systemRequirements,
   };
