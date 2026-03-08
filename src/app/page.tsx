@@ -14,18 +14,32 @@ import { trackEvent } from '@/components/Analytics';
 type AppMode = 'find-models' | 'build-hardware';
 
 export default function Home() {
-  const { gpus, cpus, models, results, isLoading, error, runRecommendation } =
+  const { gpus, cpus, models, results, isLoading, error, runRecommendation, clearResults } =
     useRecommendation();
 
   const [mode, setMode] = useState<AppMode>('find-models');
-  const [specs, setSpecs] = useState<HardwareSpecs>({
+  const [specs, setSpecsRaw] = useState<HardwareSpecs>({
     vram_mb: null,
     ram_gb: 16,
   });
-  const [useCase, setUseCase] = useState<UseCase>('chat');
-  const [filters, setFilters] = useState<AdvancedFilters>(DEFAULT_FILTERS);
+  const [useCase, setUseCaseRaw] = useState<UseCase>('chat');
+  const [filters, setFiltersRaw] = useState<AdvancedFilters>(DEFAULT_FILTERS);
   const [buildForModelId, setBuildForModelId] = useState<string | undefined>();
   const resultsRef = useRef<HTMLDivElement>(null);
+
+  // Wrap setters to clear results when inputs change
+  const setSpecs = (newSpecs: HardwareSpecs) => {
+    setSpecsRaw(newSpecs);
+    clearResults();
+  };
+  const setUseCase = (newUseCase: UseCase) => {
+    setUseCaseRaw(newUseCase);
+    clearResults();
+  };
+  const setFilters = (newFilters: AdvancedFilters) => {
+    setFiltersRaw(newFilters);
+    clearResults();
+  };
 
   // Handle "Build for this model" from results
   const handleBuildForModel = (modelId: string) => {
