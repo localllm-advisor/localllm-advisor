@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { ScoredModel, UseCase, Benchmarks } from '@/lib/types';
+import RadarChart from './RadarChart';
 
 type ChartType = 'score' | 'speed' | 'vram' | 'quant' | 'benchmark' | null;
 
@@ -679,9 +680,21 @@ export default function ResultsList({
 
       {/* Comparison View */}
       {viewMode === 'compare' && compareModels.length >= 2 && (
-        <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-4 overflow-x-auto">
-          <h3 className="text-lg font-semibold text-white mb-4">Model Comparison</h3>
-          <table className="w-full text-sm">
+        <div className="space-y-4">
+          {/* Radar Chart */}
+          <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-4">
+            <h3 className="text-lg font-semibold text-white mb-4 text-center">Visual Comparison</h3>
+            <ComparisonRadar
+              models={compareModels}
+              useCase={useCase}
+              colors={Array.from(compareSet).map(i => MODEL_COLORS[i])}
+            />
+          </div>
+
+          {/* Comparison Table */}
+          <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-4 overflow-x-auto">
+            <h3 className="text-lg font-semibold text-white mb-4">Detailed Comparison</h3>
+            <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-gray-700">
                 <th className="text-left py-2 px-3 text-gray-400 font-medium">Spec</th>
@@ -847,6 +860,7 @@ export default function ResultsList({
               </tr>
             </tbody>
           </table>
+          </div>
         </div>
       )}
 
@@ -946,5 +960,66 @@ export default function ResultsList({
         </div>
       )}
     </div>
+  );
+}
+
+// ============================================================================
+// Comparison Radar Chart
+// ============================================================================
+
+function ComparisonRadar({
+  models,
+  useCase,
+  colors,
+}: {
+  models: ScoredModel[];
+  useCase: UseCase;
+  colors: string[];
+}) {
+  const radarData = useMemo(() => {
+    // Get max values for normalization
+    const maxScore = Math.max(...models.map(m => m.score), 1);
+    const maxSpeed = Math.max(...models.map(m => m.performance.tokensPerSecond ?? 0), 1);
+
+    // Get relevant benchmarks for use case
+    const benchmarks = USE_CASE_BENCHMARKS[useCase].slice(0, 4); // Max 4 benchmarks
+    const benchMaxes: Record<string, number> = {};
+    benchmarks.forEach(b => {
+      benchMaxes[b] = Math.max(...models.map(m => m.model.benchmarks[b] ?? 0), 1);
+    });
+
+    // Build data points
+    const data = [
+      {
+        label: 'Score',
+        values: models.map(m => (m.score / maxScore) * 100),
+      },
+      {
+        label: 'Speed',
+        values: models.map(m => ((m.performance.tokensPerSecond ?? 0) / maxSpeed) * 100),
+      },
+      {
+        label: 'VRAM Eff.',
+        values: models.map(m => Math.max(0, 100 - m.memory.vramPercent)),
+      },
+      ...benchmarks.map(benchKey => ({
+        label: BENCHMARK_NAMES[benchKey],
+        values: models.map(m => {
+          const val = m.model.benchmarks[benchKey];
+          return val !== null && val !== undefined ? (val / benchMaxes[benchKey]) * 100 : 0;
+        }),
+      })),
+    ];
+
+    return data;
+  }, [models, useCase]);
+
+  return (
+    <RadarChart
+      data={radarData}
+      modelNames={models.map(m => m.model.name)}
+      colors={colors}
+      size={320}
+    />
   );
 }
