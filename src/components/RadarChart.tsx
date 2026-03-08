@@ -1,5 +1,7 @@
 'use client';
 
+import { useTheme } from './ThemeProvider';
+
 interface RadarDataPoint {
   label: string;
   values: number[]; // One value per model, normalized 0-100
@@ -13,6 +15,10 @@ interface RadarChartProps {
 }
 
 export default function RadarChart({ data, modelNames, colors, size = 300 }: RadarChartProps) {
+  const { theme } = useTheme();
+  const gridColor = theme === 'light' ? '#d1d5db' : '#374151';
+  const labelColor = theme === 'light' ? '#6b7280' : '#9ca3af';
+
   const center = size / 2;
   const radius = (size / 2) - 40; // Leave room for labels
   const angleStep = (2 * Math.PI) / data.length;
@@ -85,7 +91,7 @@ export default function RadarChart({ data, modelNames, colors, size = 300 }: Rad
             cy={center}
             r={(pct / 100) * radius}
             fill="none"
-            stroke="#374151"
+            stroke={gridColor}
             strokeWidth="1"
             strokeDasharray={pct === 100 ? "0" : "4 4"}
             opacity={0.5}
@@ -100,7 +106,7 @@ export default function RadarChart({ data, modelNames, colors, size = 300 }: Rad
             y1={center}
             x2={axis.x2}
             y2={axis.y2}
-            stroke="#374151"
+            stroke={gridColor}
             strokeWidth="1"
           />
         ))}
@@ -141,7 +147,7 @@ export default function RadarChart({ data, modelNames, colors, size = 300 }: Rad
             y={l.y}
             textAnchor="middle"
             dominantBaseline="middle"
-            className="fill-gray-400 text-xs"
+            fill={labelColor}
             fontSize="11"
           >
             {l.label}
