@@ -387,7 +387,7 @@ export default function ResultsList({
         {/* Left: Ranking Table */}
         <div className="lg:col-span-1 rounded-xl border border-gray-700 bg-gray-800/80 p-4">
           <h3 className="text-sm font-semibold text-gray-300 mb-3">Top 10 Models</h3>
-          <div className="space-y-1.5 max-h-[350px] overflow-y-auto pr-1">
+          <div className="space-y-1.5">
             {topModels.map((result, i) => (
               <div
                 key={result.model.id}
