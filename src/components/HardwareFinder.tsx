@@ -19,12 +19,12 @@ const SPEED_OPTIONS: { value: SpeedPreference; label: string; minToks: number; d
   { value: 'blazing', label: 'Blazing', minToks: 50, desc: '50+ tok/s' },
 ];
 
-const BUDGET_OPTIONS: { value: BudgetRange; label: string; maxEur: number | null }[] = [
-  { value: 'any', label: 'No limit', maxEur: null },
-  { value: 'under500', label: 'Under €500', maxEur: 500 },
-  { value: 'under1000', label: 'Under €1,000', maxEur: 1000 },
-  { value: 'under1500', label: 'Under €1,500', maxEur: 1500 },
-  { value: 'under2000', label: 'Under €2,000', maxEur: 2000 },
+const BUDGET_OPTIONS: { value: BudgetRange; label: string; maxUsd: number | null }[] = [
+  { value: 'any', label: 'No limit', maxUsd: null },
+  { value: 'under500', label: 'Under $500', maxUsd: 500 },
+  { value: 'under1000', label: 'Under $1,000', maxUsd: 1000 },
+  { value: 'under1500', label: 'Under $1,500', maxUsd: 1500 },
+  { value: 'under2000', label: 'Under $2,000', maxUsd: 2000 },
 ];
 
 const QUANT_OPTIONS = [
@@ -45,12 +45,15 @@ export default function HardwareFinder({ models, gpus }: HardwareFinderProps) {
   const selectedModel = models.find(m => m.id === selectedModelId);
 
   const filteredModels = useMemo(() => {
-    if (!modelQuery) return models.slice(0, 20);
     const q = modelQuery.toLowerCase();
-    return models.filter(m =>
-      m.name.toLowerCase().includes(q) ||
-      m.family.toLowerCase().includes(q)
-    ).slice(0, 20);
+    const filtered = modelQuery
+      ? models.filter(m =>
+          m.name.toLowerCase().includes(q) ||
+          m.family.toLowerCase().includes(q)
+        )
+      : models;
+    // Sort by params descending (bigger models first)
+    return filtered.sort((a, b) => b.params_b - a.params_b);
   }, [models, modelQuery]);
 
   const recommendations = useMemo(() => {
@@ -64,7 +67,7 @@ export default function HardwareFinder({ models, gpus }: HardwareFinderProps) {
       selectedModel,
       gpus,
       speedOpt?.minToks || 10,
-      budgetOpt?.maxEur || null,
+      budgetOpt?.maxUsd || null,
       quantOpt?.bpw || 4.5
     );
   }, [selectedModel, gpus, speedPref, budgetRange, quantPref]);
@@ -221,11 +224,9 @@ export default function HardwareFinder({ models, gpus }: HardwareFinderProps) {
 
 function HardwareCard({ rec, rank }: { rec: HardwareRecommendation; rank: number }) {
   const rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '•';
-  const priceDisplay = rec.gpu.price_eur
-    ? `€${rec.gpu.price_eur.toLocaleString()}`
-    : rec.gpu.price_usd
-      ? `$${rec.gpu.price_usd.toLocaleString()}`
-      : 'Price N/A';
+  const priceDisplay = rec.gpu.price_usd
+    ? `$${rec.gpu.price_usd.toLocaleString()}`
+    : 'Price N/A';
 
   const availabilityBadge = rec.gpu.availability === 'used_only'
     ? { text: 'Used', color: 'bg-yellow-600' }
@@ -277,12 +278,12 @@ function HardwareCard({ rec, rank }: { rec: HardwareRecommendation; rank: number
 
         <div className="text-right shrink-0">
           <div className="text-xl font-bold text-white">
-            {rec.gpuCount > 1
-              ? `€${((rec.gpu.price_eur || 0) * rec.gpuCount).toLocaleString()}`
+            {rec.gpuCount > 1 && rec.gpu.price_usd
+              ? `$${((rec.gpu.price_usd) * rec.gpuCount).toLocaleString()}`
               : priceDisplay
             }
           </div>
-          {rec.gpuCount > 1 && rec.gpu.price_eur && (
+          {rec.gpuCount > 1 && rec.gpu.price_usd && (
             <div className="text-xs text-gray-500">
               {rec.gpuCount}x {priceDisplay}
             </div>

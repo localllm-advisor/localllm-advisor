@@ -43,16 +43,16 @@ export function findHardwareForModel(
   model: Model,
   gpus: GPU[],
   minTokensPerSec: number = 10,
-  maxPriceEur: number | null = null,
+  maxPriceUsd: number | null = null,
   bpw: number = 4.5
 ): HardwareRecommendation[] {
   const modelVramGb = calculateModelVramGb(model.params_b, bpw);
   const recommendations: HardwareRecommendation[] = [];
 
-  // Sort GPUs by value (bandwidth per euro) for better recommendations
+  // Sort GPUs by value (bandwidth per dollar) for better recommendations
   const sortedGpus = [...gpus].sort((a, b) => {
-    const aValue = a.bandwidth_gbps / (a.price_eur || 10000);
-    const bValue = b.bandwidth_gbps / (b.price_eur || 10000);
+    const aValue = a.bandwidth_gbps / (a.price_usd || 10000);
+    const bValue = b.bandwidth_gbps / (b.price_usd || 10000);
     return bValue - aValue;
   });
 
@@ -64,9 +64,9 @@ export function findHardwareForModel(
       const toksPerSec = estimateTokensPerSecond(gpu.bandwidth_gbps, modelVramGb, 1);
 
       if (toksPerSec >= minTokensPerSec) {
-        const price = gpu.price_eur || null;
+        const price = gpu.price_usd || null;
 
-        if (maxPriceEur === null || (price && price <= maxPriceEur)) {
+        if (maxPriceUsd === null || (price && price <= maxPriceUsd)) {
           recommendations.push({
             gpu,
             gpuCount: 1,
@@ -80,16 +80,16 @@ export function findHardwareForModel(
     }
 
     // Try 2x GPU (only for high-end cards, makes sense)
-    if (gpu.vram_mb >= 8192 && gpu.price_eur) { // Only for 8GB+ cards with price
+    if (gpu.vram_mb >= 8192 && gpu.price_usd) { // Only for 8GB+ cards with price
       const dualVramGb = (gpu.vram_mb / 1024) * 2 * 0.95; // 5% overhead for multi-GPU
 
       if (dualVramGb >= modelVramGb) {
         const toksPerSec = estimateTokensPerSecond(gpu.bandwidth_gbps, modelVramGb, 2);
 
         if (toksPerSec >= minTokensPerSec) {
-          const price = gpu.price_eur * 2;
+          const price = gpu.price_usd * 2;
 
-          if (maxPriceEur === null || price <= maxPriceEur) {
+          if (maxPriceUsd === null || price <= maxPriceUsd) {
             // Check if this is actually better than single GPU options
             recommendations.push({
               gpu,
@@ -163,10 +163,10 @@ export function findCheapestHardware(
 export function findFastestHardware(
   model: Model,
   gpus: GPU[],
-  maxPriceEur: number,
+  maxPriceUsd: number,
   bpw: number = 4.5
 ): HardwareRecommendation | null {
-  const results = findHardwareForModel(model, gpus, 1, maxPriceEur, bpw);
+  const results = findHardwareForModel(model, gpus, 1, maxPriceUsd, bpw);
 
   if (results.length === 0) return null;
 
