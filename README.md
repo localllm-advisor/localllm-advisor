@@ -85,6 +85,20 @@ Click on any model to view complete specifications:
 - **Ready-to-copy** Ollama command
 - **Direct links** to Ollama library and HuggingFace
 
+### Community Benchmarks
+Real-world performance data crowdsourced from users:
+- **Submit your benchmarks**: Login with GitHub/Google, enter your GPU and measured tok/s
+- **Aggregated stats**: Average, median, min/max performance per GPU
+- **Visual comparison**: See how different GPUs perform with each model
+- **Verified data**: Community-driven, more accurate than theoretical estimates
+
+Example:
+```
+RTX 4090 (23 reports)  ████████████████████  67 tok/s avg (range: 58-72)
+RTX 4070 (12 reports)  ████████████          42 tok/s avg (range: 38-47)
+RTX 3080 (8 reports)   ██████████            35 tok/s avg (range: 31-39)
+```
+
 ### Use Cases
 5 use cases with different benchmark weights:
 - **Chat**: IFEval, MMLU-PRO, BBH
@@ -120,6 +134,106 @@ npm run dev
 ```
 
 Open http://localhost:3000
+
+> **Note**: Community Benchmarks require Supabase setup (see below). The app works without it, but users won't be able to submit or view community benchmarks.
+
+## Community Benchmarks Setup (Supabase)
+
+Community Benchmarks uses [Supabase](https://supabase.com) for storing user-submitted benchmark data with GitHub/Google authentication.
+
+### 1. Create Supabase Project
+
+1. Go to [supabase.com](https://supabase.com) and create a free account
+2. Create a new project
+3. Note your project URL and anon key from Settings → API
+
+### 2. Configure Environment Variables
+
+Create `.env.local` in the project root:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+```
+
+### 3. Run Database Schema
+
+1. Go to your Supabase Dashboard → SQL Editor
+2. Copy the contents of `supabase/schema.sql`
+3. Paste and click "Run"
+
+This creates:
+- `benchmarks` table with RLS (Row Level Security) policies
+- `benchmark_stats` view for aggregated statistics
+- Indexes for performance
+- Triggers for timestamps
+
+### 4. Enable OAuth Providers
+
+#### GitHub Authentication
+
+1. Go to Supabase Dashboard → Authentication → Providers
+2. Enable "GitHub"
+3. Go to [GitHub Developer Settings](https://github.com/settings/developers) → OAuth Apps → New OAuth App
+4. Fill in:
+   - **Application name**: LocalLLM Advisor
+   - **Homepage URL**: `http://localhost:3000` (or your production URL)
+   - **Authorization callback URL**: `https://your-project-id.supabase.co/auth/v1/callback`
+5. Copy the Client ID and Client Secret to Supabase
+
+#### Google Authentication
+
+1. Go to Supabase Dashboard → Authentication → Providers
+2. Enable "Google"
+3. Go to [Google Cloud Console](https://console.cloud.google.com) → APIs & Services → Credentials
+4. Create OAuth 2.0 Client ID (Web application)
+5. Add Authorized redirect URI: `https://your-project-id.supabase.co/auth/v1/callback`
+6. Copy the Client ID and Client Secret to Supabase
+
+### 5. Configure Redirect URLs
+
+In Supabase Dashboard → Authentication → URL Configuration:
+
+- **Site URL**: `http://localhost:3000` (development) or your production URL
+- **Redirect URLs**: Add both `http://localhost:3000` and your production URL
+
+### 6. Test the Setup
+
+```bash
+npm run dev
+```
+
+1. Open a model detail modal
+2. Click "Submit yours" in Community Benchmarks section
+3. Login with GitHub or Google
+4. Submit a benchmark
+5. Verify it appears in the stats
+
+### Database Schema
+
+```sql
+-- Main table
+benchmarks (
+  id, user_id, model_id, quant_level,
+  gpu_name, gpu_vram_mb, cpu_name, ram_gb,
+  tokens_per_second, prefill_tokens_per_second,
+  time_to_first_token_ms, context_length,
+  runtime, notes, created_at, verified, flagged
+)
+
+-- Aggregated view
+benchmark_stats (
+  model_id, quant_level, gpu_name,
+  submission_count, avg_tps, min_tps, max_tps, median_tps
+)
+```
+
+### Security
+
+- **Row Level Security (RLS)** enabled on all tables
+- Users can only insert/update/delete their own benchmarks
+- Public read access for non-flagged benchmarks
+- Flagging system for moderation
 
 ### Production Build
 
