@@ -4,202 +4,223 @@ Problemi da risolvere in ordine di priorità.
 
 ---
 
-## 🔴 Priorità Alta (senza questi il prodotto non funziona)
+## ✅ Completati
 
-### 1. Espandere il database modelli
-
-**Problema:** Abbiamo ~10 modelli. Un tool di raccomandazione con pochi modelli è inutile.
-
-**Obiettivo:** Almeno 40-50 modelli.
-
-**Modelli da aggiungere:**
-- Llama 3.1 (8B, 70B, 405B)
-- Llama 3.2 (1B, 3B, 11B-Vision, 90B-Vision)
-- Mistral (7B, Nemo 12B, Small 22B, Large 123B)
-- Mixtral (8x7B, 8x22B)
-- Qwen 2.5 (0.5B, 1.5B, 3B, 7B, 14B, 32B, 72B)
-- Qwen 2.5 Coder (tutte le size)
-- DeepSeek V2, V2.5, Coder
-- Phi-3 (mini, small, medium)
-- Phi-3.5 (mini, MoE)
-- Gemma 2 (2B, 9B, 27B)
-- Command-R, Command-R+
-- Yi (6B, 9B, 34B)
-- InternLM 2.5
-- GLM-4
-
-**Come fare:**
-1. Esegui `python scripts/update_models.py` (aggiorna OLLAMA_MODELS nello script)
-2. Oppure aggiungi manualmente a `public/data/models.json`
-
-**File da modificare:**
-- `scripts/update_models.py` (lista OLLAMA_MODELS)
-- `public/data/models.json`
+- [x] **Database modelli espanso** - 84 modelli da 23 provider
+- [x] **Auto-detect GPU** - WebGL detection funzionante
+- [x] **Auto-detect CPU** - Thread count e Apple Silicon
+- [x] **Filtri avanzati** - Context, quant, size, speed, benchmarks
+- [x] **Hardware Recipe** - Sistema completo per raccomandazioni hardware
+- [x] **Multi-GPU** - Configurazioni 2x, 4x, 8x con scaling
+- [x] **Cloud alternatives** - RunPod, Vast.ai, Lambda
+- [x] **GPU price scraper** - Prezzi USD da Newegg
 
 ---
 
-### 2. Mobile responsive
+## 🔴 Priorità Alta
 
-**Problema:** Il sito probabilmente è inutilizzabile su mobile. Molta gente cerca da telefono.
+### 1. Mobile responsive
+
+**Problema:** Il sito non è ottimizzato per mobile.
 
 **Cosa controllare:**
 - [ ] Homepage form
 - [ ] Hardware selector dropdowns
 - [ ] Results cards
-- [ ] Comparison table (deve scrollare orizzontalmente)
-- [ ] Charts
+- [ ] Hardware Recipe cards
 - [ ] Navigation header
 
 **Come testare:**
-1. Chrome DevTools → Toggle device toolbar (Ctrl+Shift+M)
-2. Testa su iPhone SE (320px) e iPhone 12 (390px)
-
-**File da modificare:**
-- `src/components/HardwareConfig.tsx`
-- `src/components/ResultsList.tsx`
-- `src/app/page.tsx`
+Chrome DevTools → Toggle device toolbar (Ctrl+Shift+M)
 
 ---
 
-### 3. Validazione con dati reali
+### 2. Validazione con benchmark reali
 
-**Problema:** Diciamo "45 tok/s stimati" ma l'utente non può verificare. Zero credibilità.
+**Problema:** Le stime sono teoriche. Serve validazione con dati reali.
 
-**Soluzione:** Aggiungere sezione con benchmark reali della community.
+**Soluzione:**
+- [ ] Creare `public/data/real-benchmarks.json`
+- [ ] Raccogliere dati da Reddit/YouTube/Discord
+- [ ] Mostrare range "stimato vs reale"
 
-**Opzioni:**
-1. **Manuale:** Crea `public/data/real-benchmarks.json` con dati da Reddit/YouTube
-2. **Crowdsourced:** Form dove utenti riportano i loro risultati
-3. **Link esterni:** Linka a post/video con test reali
-
-**Esempio struttura:**
+**Esempio:**
 ```json
 {
-  "model": "llama3:8b-q4",
-  "gpu": "RTX 4070 Ti",
-  "actual_toks": 52,
-  "source": "reddit.com/r/LocalLLaMA/xxx",
-  "date": "2024-12"
+  "model": "llama3.1:70b-q4",
+  "gpu": "RTX 4090",
+  "estimated_toks": 45,
+  "actual_toks": 42,
+  "source": "reddit.com/r/LocalLLaMA/xxx"
 }
 ```
 
 ---
 
-## 🟡 Priorità Media (migliorano il prodotto)
+### 3. Prezzi EUR
 
-### 4. SEO e visibilità
+**Problema:** Attualmente solo USD (Newegg). Geizhals/Idealo bloccano scraping.
 
-**Problema:** Nessuno troverà il sito su Google.
-
-**TODO:**
-- [ ] Aggiungere meta tags per ogni pagina
-- [ ] Creare sitemap.xml
-- [ ] Post su r/LocalLLaMA (non spam, valore genuino)
-- [ ] Postare su HackerNews (Show HN)
-
-**Contenuti da creare (per SEO):**
-- "Best LLM for RTX 4060" (una pagina per GPU popolare)
-- "How much VRAM do I need for Llama 3?"
-- "Local LLM speed comparison 2025"
+**Opzioni:**
+- [ ] Usare Playwright per bypass anti-bot
+- [ ] API ufficiali (se esistono)
+- [ ] Conversione USD→EUR con tasso fisso
+- [ ] Input manuale prezzi EUR
 
 ---
 
-### 5. Share configuration
+## 🟡 Priorità Media
 
-**Problema:** Non puoi condividere "guarda cosa gira sulla mia RTX 4070".
+### 4. SEO e meta tags
 
-**Soluzione:** Parametri URL.
+- [ ] Meta description per ogni pagina
+- [ ] Open Graph tags per social sharing
+- [ ] Sitemap.xml
+- [ ] Schema.org markup per GPU/Model data
+
+**Pagine da creare (SEO):**
+- "Best GPU for Llama 3.1 70B"
+- "RTX 4090 vs RTX 5090 for LLM"
+- "How much VRAM for DeepSeek V3"
+
+---
+
+### 5. Share configuration via URL
 
 **Esempio:**
 ```
-/localllm-advisor?gpu=rtx4070ti&usecase=coding&context=8192
+/localllm-advisor?gpu=rtx4090&model=llama3.1-70b&quant=q4
 ```
 
-**File da modificare:**
-- `src/app/page.tsx` (leggere query params, settare stato iniziale)
+Permette di condividere "guarda cosa mi serve per far girare X".
 
 ---
 
-### 6. Export risultati
+### 6. Cost comparison: Buy vs Rent
 
-**Problema:** Utente non può salvare/condividere i risultati.
+**Problema:** Hardware Recipe mostra GPU a $3000 e cloud a $2/hr, ma non calcola il break-even.
 
-**Soluzione:** Bottone "Export JSON" / "Export CSV".
+**Soluzione:**
+```
+RTX 4090: $1,800
+Cloud equivalent: $0.69/hr (RunPod)
+Break-even: 2,609 ore (~109 giorni 24/7)
 
-**File da modificare:**
-- `src/components/ResultsList.tsx`
-
----
-
-## 🟢 Priorità Bassa (nice to have)
-
-### 7. Auto-detect GPU
-
-Usa WebGL per rilevare la GPU automaticamente.
-
-```javascript
-const gl = document.createElement('canvas').getContext('webgl');
-const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
-const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
-// renderer = "NVIDIA GeForce RTX 4070 Ti"
+Se usi <4 ore/giorno → Cloud conviene
+Se usi >4 ore/giorno → Compra GPU
 ```
 
-**Nota:** Funziona solo su desktop, non sempre accurato.
+---
+
+### 7. Affiliate links
+
+- [ ] Amazon affiliate tag per link GPU
+- [ ] Tracking click per analytics
+- [ ] Disclosure "affiliate link" visibile
 
 ---
 
-### 8. Dark/Light mode toggle
+### 8. Export risultati
 
-Attualmente solo dark mode. Alcuni preferiscono light.
-
-**File da modificare:**
-- `tailwind.config.ts` (aggiungere darkMode: 'class')
-- `src/app/layout.tsx` (toggle state)
-- Tutti i componenti (aggiungere classi dark:)
+- [ ] Export JSON dei risultati
+- [ ] Export CSV per spreadsheet
+- [ ] Screenshot/immagine condivisibile
 
 ---
 
-### 9. PWA (Progressive Web App)
+## 🟢 Priorità Bassa
 
-Funziona offline, installabile su telefono.
+### 9. Dark/Light mode toggle
 
-**Come fare:**
-- Aggiungere `manifest.json`
-- Aggiungere service worker
-- Next.js: usa `next-pwa` package
+Attualmente solo dark. Alcuni preferiscono light.
 
 ---
 
-### 10. Filtri avanzati
+### 10. PWA (Progressive Web App)
 
-Filtrare modelli per:
-- Famiglia (Llama, Qwen, Mistral...)
-- Architettura (dense, MoE)
-- Size range (< 10B, 10-30B, > 30B)
-- Capabilities (vision, coding)
+- [ ] manifest.json
+- [ ] Service worker per offline
+- [ ] Install prompt
 
 ---
 
-## 📊 Metriche da tracciare (Analytics)
+### 11. Model comparison
 
-Una volta che GA è configurato, monitora:
+Seleziona 2-3 modelli e confronta side-by-side:
+- Benchmark scores
+- VRAM requirements
+- Speed estimates
 
-1. **Quali GPU vengono cercate di più** → focus su quelle
-2. **Quale use case è più popolare** → ottimizza per quello
-3. **Bounce rate** → se alto, c'è un problema UX
-4. **Tempo sulla pagina** → se basso, non trovano quello che cercano
+---
+
+### 12. Ollama command in Hardware Recipe
+
+Dopo aver mostrato l'hardware consigliato, mostrare:
+```bash
+# Installa Ollama
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Scarica il modello
+ollama pull llama3.1:70b-q4_K_M
+
+# Esegui
+ollama run llama3.1:70b-q4_K_M
+```
+
+---
+
+### 13. Più cloud provider
+
+Aggiungere:
+- [ ] Together.ai
+- [ ] Replicate
+- [ ] Modal
+- [ ] Paperspace
+- [ ] CoreWeave
+
+---
+
+### 14. GPU usate
+
+Database prezzi per GPU usate (eBay, r/hardwareswap):
+- RTX 3090 usata ~$700
+- RTX 4090 usata ~$1400
+
+---
+
+## 📊 Analytics da tracciare
+
+1. **GPU più cercate** → focus documentazione
+2. **Modelli più cercati** → priorità aggiornamenti
+3. **Click su "Buy on Amazon"** → revenue potenziale
+4. **Click su cloud providers** → partnership?
+5. **Bounce rate per device** → mobile problems
 
 ---
 
 ## 🚀 Per lanciare
 
-Prima di annunciare pubblicamente:
+1. [ ] Mobile responsive testato
+2. [ ] Almeno 5 benchmark reali verificati
+3. [ ] Post r/LocalLLaMA preparato
+4. [ ] README con screenshot
+5. [ ] Video demo (optional)
 
-1. [ ] Almeno 40 modelli nel database
-2. [ ] Mobile funzionante
-3. [ ] Testato su 3+ browser (Chrome, Firefox, Safari)
-4. [ ] Post preparato per r/LocalLLaMA
-5. [ ] README con screenshot/GIF
+---
+
+## Note tecniche
+
+### Perché Geizhals blocca?
+Geizhals ha protezione anti-bot aggressiva (403 Forbidden). Opzioni:
+1. Playwright con headless browser (richiede più risorse)
+2. Proxy rotation (costoso)
+3. Rispettare robots.txt e non scrapare
+
+### Rate limiting Newegg
+Attualmente 1-2 sec delay tra richieste. Se iniziano a bloccare:
+1. Aumentare delay a 3-5 sec
+2. Aggiungere retry con exponential backoff
+3. Caching più aggressivo (24h invece di on-demand)
 
 ---
 
