@@ -30,7 +30,7 @@ const BENCHMARK_INFO: Record<keyof Benchmarks, { name: string; description: stri
 // - EvalPlus: humaneval, mbpp
 const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   chat: ['ifeval', 'mmlu_pro', 'bbh'],
-  coding: ['humaneval', 'mbpp', 'bigcodebench', 'ifeval'],
+  coding: ['bigcodebench', 'humaneval', 'math', 'ifeval'],
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
   creative: ['ifeval', 'mmlu_pro', 'bbh'],
   vision: ['ifeval', 'mmlu_pro', 'bbh'],  // Placeholder until MMMU/MMBench available

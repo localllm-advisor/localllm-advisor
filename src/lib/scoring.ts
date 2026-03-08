@@ -20,10 +20,10 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
   },
   coding: {
     benchmarks: [
-      { key: 'humaneval', weight: 0.30 },   // Code generation (EvalPlus)
-      { key: 'mbpp', weight: 0.25 },        // Code generation (EvalPlus)
       { key: 'bigcodebench', weight: 0.30 },// Complex coding tasks
-      { key: 'ifeval', weight: 0.15 },      // Instruction following
+      { key: 'humaneval', weight: 0.25 },   // Code generation (EvalPlus)
+      { key: 'math', weight: 0.25 },        // Logical reasoning (proxy for coding)
+      { key: 'ifeval', weight: 0.20 },      // Instruction following
     ],
     wQuality: 0.55,
     wSpeed: 0.25,
