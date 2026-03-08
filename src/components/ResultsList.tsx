@@ -274,39 +274,53 @@ export default function ResultsList({
             </svg>
             Our Recommendations
           </h3>
-          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-            {recommendations.map((rec) => {
-              const speed = rec.model.performance.tokensPerSecond ?? 0;
-              const vram = (rec.model.quant.vram_mb / 1024).toFixed(1);
-              return (
-                <button
-                  key={`rec-${rec.index}`}
-                  onClick={() => setSelectedModel(rec.index)}
-                  className={`text-left rounded-lg border p-3 transition-all ${
-                    selectedModel === rec.index
-                      ? 'border-yellow-500/50 bg-yellow-500/10'
-                      : 'border-gray-700 bg-gray-800/50 hover:border-gray-600 hover:bg-gray-800'
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <span className={`px-2 py-0.5 rounded text-xs font-medium text-white ${rec.badgeColor}`}>
-                      {rec.badge}
-                    </span>
-                    <span className="text-lg font-bold text-white">{rec.model.score}</span>
-                  </div>
-                  <h4 className="font-medium text-white text-sm mb-1 truncate">
-                    {rec.model.model.name}
-                  </h4>
-                  <p className="text-xs text-gray-400 mb-2">{rec.reason}</p>
-                  <div className="flex items-center gap-3 text-xs text-gray-500">
-                    <span>{rec.model.quant.level}</span>
-                    <span>{vram}GB</span>
-                    {speed > 0 && <span className="text-green-400">{speed} tok/s</span>}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
+
+          {/* Our Pick - Featured Card */}
+          {recommendations[0] && (
+            <OurPickCard
+              rec={recommendations[0]}
+              isSelected={selectedModel === recommendations[0].index}
+              onSelect={() => setSelectedModel(recommendations[0].index)}
+              useCase={useCase}
+            />
+          )}
+
+          {/* Other recommendations - smaller cards */}
+          {recommendations.length > 1 && (
+            <div className="grid gap-3 md:grid-cols-3 mt-4">
+              {recommendations.slice(1).map((rec) => {
+                const speed = rec.model.performance.tokensPerSecond ?? 0;
+                const vram = (rec.model.quant.vram_mb / 1024).toFixed(1);
+                return (
+                  <button
+                    key={`rec-${rec.index}`}
+                    onClick={() => setSelectedModel(rec.index)}
+                    className={`text-left rounded-lg border p-3 transition-all ${
+                      selectedModel === rec.index
+                        ? 'border-yellow-500/50 bg-yellow-500/10'
+                        : 'border-gray-700 bg-gray-800/50 hover:border-gray-600 hover:bg-gray-800'
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <span className={`px-2 py-0.5 rounded text-xs font-medium text-white ${rec.badgeColor}`}>
+                        {rec.badge}
+                      </span>
+                      <span className="text-lg font-bold text-white">{rec.model.score}</span>
+                    </div>
+                    <h4 className="font-medium text-white text-sm mb-1 truncate">
+                      {rec.model.model.name}
+                    </h4>
+                    <p className="text-xs text-gray-400 mb-2">{rec.reason}</p>
+                    <div className="flex items-center gap-3 text-xs text-gray-500">
+                      <span>{rec.model.quant.level}</span>
+                      <span>{vram}GB</span>
+                      {speed > 0 && <span className="text-green-400">{speed} tok/s</span>}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )}
 
           {/* Quick insights as tags */}
           {selected && (
@@ -1021,5 +1035,152 @@ function ComparisonRadar({
       colors={colors}
       size={320}
     />
+  );
+}
+
+// ============================================================================
+// Our Pick Featured Card
+// ============================================================================
+
+function OurPickCard({
+  rec,
+  isSelected,
+  onSelect,
+  useCase,
+}: {
+  rec: Recommendation;
+  isSelected: boolean;
+  onSelect: () => void;
+  useCase: UseCase;
+}) {
+  const model = rec.model;
+  const speed = model.performance.tokensPerSecond ?? 0;
+  const vram = (model.quant.vram_mb / 1024).toFixed(1);
+  const benchmarks = USE_CASE_BENCHMARKS[useCase].slice(0, 4);
+
+  // Generate links
+  const ollamaBase = model.model.ollama_base.split(':')[0]; // Remove tag if present
+  const ollamaLink = `https://ollama.com/library/${ollamaBase}`;
+  const hfLink = `https://huggingface.co/models?search=${encodeURIComponent(model.model.name)}`;
+
+  return (
+    <div
+      onClick={onSelect}
+      className={`rounded-xl border p-4 cursor-pointer transition-all ${
+        isSelected
+          ? 'border-yellow-500 bg-yellow-500/10'
+          : 'border-yellow-500/30 bg-gradient-to-r from-yellow-900/20 to-orange-900/20 hover:border-yellow-500/50'
+      }`}
+    >
+      <div className="flex flex-col lg:flex-row gap-4">
+        {/* Left: Main Info */}
+        <div className="flex-1">
+          <div className="flex items-start gap-3 mb-3">
+            <span className={`px-3 py-1 rounded-lg text-sm font-semibold text-white ${rec.badgeColor}`}>
+              ⭐ {rec.badge}
+            </span>
+            <div className="flex-1">
+              <h4 className="text-lg font-semibold text-white">{model.model.name}</h4>
+              <p className="text-sm text-gray-400">{rec.reason}</p>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-bold text-white">{model.score}</div>
+              <div className="text-xs text-gray-500">score</div>
+            </div>
+          </div>
+
+          {/* Specs Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
+            <div className="bg-gray-800/50 rounded-lg px-3 py-2">
+              <div className="text-[10px] text-gray-500 uppercase">Params</div>
+              <div className="text-sm font-medium text-white">{model.model.params_b}B</div>
+            </div>
+            <div className="bg-gray-800/50 rounded-lg px-3 py-2">
+              <div className="text-[10px] text-gray-500 uppercase">Context</div>
+              <div className="text-sm font-medium text-white">{(model.model.context_length / 1024).toFixed(0)}K</div>
+            </div>
+            <div className="bg-gray-800/50 rounded-lg px-3 py-2">
+              <div className="text-[10px] text-gray-500 uppercase">VRAM</div>
+              <div className="text-sm font-medium text-white">{vram}GB</div>
+            </div>
+            <div className="bg-gray-800/50 rounded-lg px-3 py-2">
+              <div className="text-[10px] text-gray-500 uppercase">Speed</div>
+              <div className="text-sm font-medium text-green-400">{speed} tok/s</div>
+            </div>
+          </div>
+
+          {/* Ollama Command */}
+          <div className="flex items-center gap-2 rounded-lg bg-gray-900 border border-gray-700 px-3 py-2">
+            <code className="flex-1 text-sm text-green-400 font-mono truncate">
+              ollama run {model.quant.ollama_tag}
+            </code>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                navigator.clipboard.writeText(`ollama run ${model.quant.ollama_tag}`);
+              }}
+              className="text-xs text-gray-400 hover:text-white px-2 py-1 rounded bg-gray-800 hover:bg-gray-700 shrink-0"
+            >
+              Copy
+            </button>
+          </div>
+        </div>
+
+        {/* Right: Benchmarks & Links */}
+        <div className="lg:w-64 space-y-3">
+          {/* Key Benchmarks */}
+          <div className="bg-gray-800/30 rounded-lg p-3">
+            <div className="text-[10px] text-gray-500 uppercase mb-2">Key Benchmarks</div>
+            <div className="space-y-1.5">
+              {benchmarks.map(benchKey => {
+                const val = model.model.benchmarks[benchKey];
+                return (
+                  <div key={benchKey} className="flex items-center gap-2">
+                    <span className="text-xs text-gray-400 w-20 truncate">{BENCHMARK_NAMES[benchKey]}</span>
+                    <div className="flex-1 h-2 bg-gray-700 rounded overflow-hidden">
+                      <div
+                        className="h-full bg-blue-500"
+                        style={{ width: `${val ?? 0}%` }}
+                      />
+                    </div>
+                    <span className="text-xs text-white w-8 text-right">
+                      {val !== null && val !== undefined ? val.toFixed(0) : '—'}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Links */}
+          <div className="flex gap-2">
+            <a
+              href={ollamaLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white text-xs font-medium transition-colors"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+              Ollama
+            </a>
+            <a
+              href={hfLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white text-xs font-medium transition-colors"
+            >
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+              HuggingFace
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
