@@ -322,6 +322,39 @@ export default function ResultsList({
             </div>
           )}
 
+          {/* Action buttons */}
+          <div className="flex flex-wrap gap-3 mt-4 pt-3 border-t border-gray-700/50">
+            {/* Compare recommendations button */}
+            {recommendations.length >= 2 && (
+              <button
+                onClick={() => {
+                  const indices = recommendations.slice(0, 4).map(r => r.index);
+                  setCompareSet(new Set(indices));
+                  setViewMode('compare');
+                }}
+                className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                Compare Top {Math.min(recommendations.length, 4)}
+              </button>
+            )}
+
+            {/* Build hardware button */}
+            {selected && onBuildForModel && (
+              <button
+                onClick={() => onBuildForModel(selected.model.id)}
+                className="flex items-center gap-2 px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+                Build Hardware for {selected.model.name}
+              </button>
+            )}
+          </div>
+
           {/* Quick insights as tags */}
           {selected && (
             <div className="mt-4 pt-3 border-t border-gray-700/50 flex flex-wrap items-center gap-2">
