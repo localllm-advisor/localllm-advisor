@@ -1272,7 +1272,7 @@ function OurPickCard({
       className={`rounded-xl border p-4 cursor-pointer transition-all ${
         isSelected
           ? 'border-yellow-500 bg-yellow-500/10'
-          : 'border-yellow-500/30 bg-gradient-to-r from-yellow-900/20 to-orange-900/20 hover:border-yellow-500/50'
+          : 'border-yellow-500/30 our-pick-gradient from-yellow-900/20 to-orange-900/20 hover:border-yellow-500/50'
       }`}
     >
       <div className="flex flex-col lg:flex-row gap-4">

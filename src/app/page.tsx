@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { ThemeToggle } from '@/components/ThemeProvider';
+import { ThemeToggle, useTheme } from '@/components/ThemeProvider';
 import { UseCase, AdvancedFilters } from '@/lib/types';
 import { useRecommendation } from '@/hooks/useRecommendation';
 import HardwareConfig, { HardwareSpecs } from '@/components/HardwareConfig';
@@ -15,6 +15,8 @@ import { trackEvent } from '@/components/Analytics';
 type AppMode = 'find-models' | 'build-hardware';
 
 export default function Home() {
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
   const { gpus, cpus, models, results, isLoading, error, runRecommendation, clearResults } =
     useRecommendation();
 
@@ -26,7 +28,17 @@ export default function Home() {
   const [useCase, setUseCaseRaw] = useState<UseCase>('chat');
   const [filters, setFiltersRaw] = useState<AdvancedFilters>(DEFAULT_FILTERS);
   const [buildForModelId, setBuildForModelId] = useState<string | undefined>();
+  const [showHero, setShowHero] = useState(true);
   const resultsRef = useRef<HTMLDivElement>(null);
+  const toolRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTool = () => {
+    setShowHero(false);
+    // Wait for transition to complete, then scroll to top
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 300);
+  };
 
   // Wrap setters to clear results when inputs change
   const setSpecs = (newSpecs: HardwareSpecs) => {
@@ -120,13 +132,13 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm sticky top-0 z-10">
+      <header className={`border-b backdrop-blur-sm sticky top-0 z-10 ${isDark ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-white/80'}`}>
         <div className="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold text-white">
+            <h1 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
               LocalLLM Advisor
             </h1>
-            <p className="text-sm text-gray-400">
+            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               {mode === 'find-models'
                 ? 'Find the best local LLM for your hardware'
                 : 'Find hardware to run your desired model'
@@ -135,26 +147,26 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <nav className="hidden md:flex gap-6 text-sm">
-              <Link href="/benchmarks" className="text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+              <Link href="/benchmarks" className={`flex items-center gap-1 transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
                 Benchmarks
               </Link>
-              <Link href="/methodology" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/methodology" className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 Methodology
               </Link>
-              <Link href="/faq" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/faq" className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 FAQ
               </Link>
-              <Link href="/about" className="text-gray-400 hover:text-white transition-colors">
+              <Link href="/about" className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 About
               </Link>
               <a
                 href="https://github.com/localllm-advisor/localllm-advisor"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
               >
                 GitHub
               </a>
@@ -164,8 +176,101 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Hero Section */}
+      <section
+        className={`relative overflow-hidden border-b transition-all duration-700 ease-in-out ${isDark ? 'border-gray-800' : 'border-gray-200'} ${showHero ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden border-none'}`}
+      >
+        {/* Background gradient */}
+          <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10' : 'bg-gradient-to-br from-blue-100/50 via-transparent to-purple-100/50'}`} />
+
+          <div className="relative mx-auto max-w-5xl px-4 py-16 sm:py-20">
+            {/* Main headline */}
+            <div className="text-center mb-12">
+              <h2 className={`text-4xl sm:text-5xl font-bold mb-4 tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                Find the Perfect LLM
+                <span className={`block ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
+                  for Your Hardware
+                </span>
+              </h2>
+              <p className={`text-lg sm:text-xl max-w-2xl mx-auto ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                Stop guessing. Get instant recommendations based on your actual GPU, RAM, and use case.
+                Ready-to-run Ollama commands included.
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="flex justify-center gap-8 sm:gap-16 mb-12">
+              <div className="text-center">
+                <div className={`text-3xl sm:text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{models.length}</div>
+                <div className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>LLM Models</div>
+              </div>
+              <div className="text-center">
+                <div className={`text-3xl sm:text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{gpus.length}</div>
+                <div className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>GPUs Supported</div>
+              </div>
+              <div className="text-center">
+                <div className={`text-3xl sm:text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>5</div>
+                <div className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>Use Cases</div>
+              </div>
+            </div>
+
+            {/* Feature highlights */}
+            <div className="grid sm:grid-cols-3 gap-6 mb-12">
+              <div className={`flex items-start gap-3 p-4 rounded-xl border ${isDark ? 'bg-gray-800/50 border-gray-700/50' : 'bg-white border-gray-200 shadow-sm'}`}>
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Auto-Detect Hardware</h3>
+                  <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Automatically identifies your GPU via WebGL</p>
+                </div>
+              </div>
+
+              <div className={`flex items-start gap-3 p-4 rounded-xl border ${isDark ? 'bg-gray-800/50 border-gray-700/50' : 'bg-white border-gray-200 shadow-sm'}`}>
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Performance Estimates</h3>
+                  <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Real tok/s speeds based on your specs</p>
+                </div>
+              </div>
+
+              <div className={`flex items-start gap-3 p-4 rounded-xl border ${isDark ? 'bg-gray-800/50 border-gray-700/50' : 'bg-white border-gray-200 shadow-sm'}`}>
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Copy & Run</h3>
+                  <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>One-click Ollama commands ready to paste</p>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center">
+              <button
+                onClick={scrollToTool}
+                className="inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40"
+              >
+                Start Now
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+              </button>
+              <p className={`mt-3 text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>Free, no signup required</p>
+            </div>
+          </div>
+        </section>
+
       {/* Mode Tabs */}
-      <div className="mx-auto max-w-3xl px-4 pt-6">
+      <div ref={toolRef} className="mx-auto max-w-3xl px-4 pt-6">
         <div className="flex rounded-xl bg-gray-800 p-1">
           <button
             onClick={() => {

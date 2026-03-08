@@ -112,7 +112,8 @@ body {
   background: linear-gradient(to bottom right, #f9fafb, #f3f4f6) !important;
 }
 
-.light .bg-gradient-to-r {
+/* Only apply yellow gradient to "Our Pick" card, not all gradients */
+.light .our-pick-gradient {
   background: linear-gradient(to right, #fef3c7, #fed7aa) !important;
 }
 
