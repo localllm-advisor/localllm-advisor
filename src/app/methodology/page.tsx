@@ -310,20 +310,6 @@ export default function MethodologyPage() {
               </ul>
             </div>
           </section>
-
-          {/* Full Documentation */}
-          <section>
-            <h2 className="text-xl font-semibold text-white mb-3">Full Documentation</h2>
-            <p>
-              For complete implementation details, see the{' '}
-              <a href="https://github.com/localllm-advisor/localllm-advisor/blob/main/docs/calcoli.md"
-                 target="_blank" rel="noopener noreferrer"
-                 className="text-blue-400 hover:text-blue-300">
-                full calculation documentation
-              </a>{' '}
-              in our GitHub repository.
-            </p>
-          </section>
         </div>
       </main>
 
