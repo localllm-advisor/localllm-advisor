@@ -319,28 +319,58 @@ export default function ResultsList({
             })}
           </div>
 
-          {/* Contextual tip */}
+          {/* Quick insights as tags */}
           {selected && (
-            <div className="mt-4 pt-3 border-t border-gray-700/50">
-              <p className="text-xs text-gray-400">
-                <span className="text-yellow-500">Tip:</span>{' '}
-                {selected.performance.tokensPerSecond && selected.performance.tokensPerSecond >= 40 ? (
-                  <>At {selected.performance.tokensPerSecond} tok/s, {selected.model.name} will feel instant — great for interactive use.</>
-                ) : selected.performance.tokensPerSecond && selected.performance.tokensPerSecond >= 20 ? (
-                  <>At {selected.performance.tokensPerSecond} tok/s, responses from {selected.model.name} arrive smoothly with minimal waiting.</>
-                ) : selected.performance.tokensPerSecond && selected.performance.tokensPerSecond >= 10 ? (
-                  <>At {selected.performance.tokensPerSecond} tok/s, {selected.model.name} is comfortable for chat but you&apos;ll notice the generation.</>
-                ) : selected.performance.tokensPerSecond ? (
-                  <>At {selected.performance.tokensPerSecond} tok/s, {selected.model.name} requires patience. Consider a smaller model for faster iteration.</>
-                ) : (
-                  <>Select a model to see performance insights.</>
-                )}
-                {selected.memory.vramPercent > 85 && (
-                  <span className="block mt-1 text-yellow-400">
-                    Warning: {selected.model.name} uses {selected.memory.vramPercent}% of your VRAM — leave headroom for longer contexts.
-                  </span>
-                )}
-              </p>
+            <div className="mt-4 pt-3 border-t border-gray-700/50 flex flex-wrap items-center gap-2">
+              <span className="text-xs text-gray-500">Selected:</span>
+              <span className="text-xs font-medium text-white">{selected.model.name}</span>
+
+              {/* Speed tag */}
+              {selected.performance.tokensPerSecond && (
+                <span className={`px-2 py-0.5 rounded text-xs font-medium ${
+                  selected.performance.tokensPerSecond >= 40
+                    ? 'bg-green-500/20 text-green-400 border border-green-500/30'
+                    : selected.performance.tokensPerSecond >= 20
+                    ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                    : selected.performance.tokensPerSecond >= 10
+                    ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                    : 'bg-orange-500/20 text-orange-400 border border-orange-500/30'
+                }`}>
+                  {selected.performance.tokensPerSecond >= 40 ? '⚡ Instant'
+                    : selected.performance.tokensPerSecond >= 20 ? '🚀 Fast'
+                    : selected.performance.tokensPerSecond >= 10 ? '✓ Usable'
+                    : '🐢 Slow'}
+                </span>
+              )}
+
+              {/* VRAM tag */}
+              <span className={`px-2 py-0.5 rounded text-xs font-medium ${
+                selected.memory.vramPercent > 90
+                  ? 'bg-red-500/20 text-red-400 border border-red-500/30'
+                  : selected.memory.vramPercent > 75
+                  ? 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
+                  : 'bg-gray-500/20 text-gray-400 border border-gray-500/30'
+              }`}>
+                {selected.memory.vramPercent}% VRAM
+              </span>
+
+              {/* Quality tag based on score */}
+              <span className={`px-2 py-0.5 rounded text-xs font-medium ${
+                selected.score >= 80
+                  ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+                  : selected.score >= 60
+                  ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                  : 'bg-gray-500/20 text-gray-400 border border-gray-500/30'
+              }`}>
+                {selected.score >= 80 ? '★ Top tier' : selected.score >= 60 ? '● Good' : '○ Basic'}
+              </span>
+
+              {/* Warning tag if needed */}
+              {selected.memory.vramPercent > 85 && (
+                <span className="px-2 py-0.5 rounded text-xs font-medium bg-red-500/20 text-red-400 border border-red-500/30">
+                  ⚠ Tight fit
+                </span>
+              )}
             </div>
           )}
         </div>
