@@ -66,6 +66,8 @@ Works for any model size:
 - **Sort by**: Score, Speed, Quality, VRAM, Parameters
 - **Quantization filter**: Q4, Q6, Q8, FP16
 - **Model size filter**: Small (≤7B), Medium (8-13B), Large (14-34B), XL (35B+)
+- **Model family**: Llama, Qwen, Mistral, Gemma, Phi, DeepSeek, and 17 more families
+- **Architecture**: Dense (standard) or MoE (Mixture of Experts)
 - **Minimum speed**: 5/10/20/30/50+ tok/s
 - **Benchmark minimums**: MMLU-PRO, MATH, Coding
 - **Show/hide**: CPU-only models, GPU+RAM offload, only fits in VRAM
@@ -366,8 +368,8 @@ Events tracked:
 - [x] Dark/light theme toggle
 - [x] Model comparison radar chart
 - [x] Export results (JSON/CSV)
+- [x] Filter by model family/architecture
 - [ ] PWA for offline use
-- [ ] Filter by model family/architecture
 
 ## License
 

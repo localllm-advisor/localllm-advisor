@@ -216,6 +216,20 @@ export function recommend(
           continue;
         }
       }
+
+      // Filter by model family
+      if (filters.families && filters.families.length > 0) {
+        if (!filters.families.includes(model.family as typeof filters.families[number])) {
+          continue;
+        }
+      }
+
+      // Filter by architecture
+      if (filters.architectures && filters.architectures.length > 0) {
+        if (!filters.architectures.includes(model.architecture)) {
+          continue;
+        }
+      }
     }
 
     for (const quant of model.quantizations) {

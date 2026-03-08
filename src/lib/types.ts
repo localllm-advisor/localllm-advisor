@@ -229,6 +229,14 @@ export type QuantLevel = 'Q4_K_M' | 'Q6_K' | 'Q8_0' | 'FP16';
 
 export type ModelSizeRange = 'small' | 'medium' | 'large' | 'xlarge';
 
+export type ModelFamily =
+  | 'bloom' | 'command' | 'deepseek' | 'embedding' | 'ernie' | 'exaone'
+  | 'falcon' | 'gemma' | 'glm' | 'kimi' | 'llama' | 'mimo' | 'minimax'
+  | 'mistral' | 'nemotron' | 'olmo' | 'other' | 'phi' | 'qwen'
+  | 'stablelm' | 'starcoder' | 'yi' | 'zephyr';
+
+export type ModelArchitecture = 'dense' | 'moe';
+
 export interface AdvancedFilters {
   contextLength: number;
 
@@ -240,6 +248,12 @@ export interface AdvancedFilters {
 
   // Model size filter (params)
   sizeRanges: ModelSizeRange[]; // small: ≤7B, medium: 8-13B, large: 14-34B, xlarge: 35B+
+
+  // Model family filter
+  families: ModelFamily[];
+
+  // Architecture filter
+  architectures: ModelArchitecture[];
 
   // Sort
   sortBy: SortBy;

@@ -354,6 +354,14 @@ body {
   background-color: #fde047 !important; /* yellow-300 */
 }
 
+.light .bg-cyan-600 {
+  background-color: #22d3ee !important; /* cyan-400 */
+}
+
+.light .bg-indigo-600 {
+  background-color: #818cf8 !important; /* indigo-400 */
+}
+
 .light .text-blue-400 {
   color: #2563eb !important;
 }

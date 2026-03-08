@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { AdvancedFilters, QuantLevel, ModelSizeRange, SortBy } from '@/lib/types';
+import { AdvancedFilters, QuantLevel, ModelSizeRange, SortBy, ModelFamily, ModelArchitecture } from '@/lib/types';
 
 interface AdvancedOptionsProps {
   filters: AdvancedFilters;
@@ -42,11 +42,47 @@ const SPEED_OPTIONS = [
   { value: 50, label: '50+ tok/s' },
 ];
 
+const FAMILY_OPTIONS: { value: ModelFamily; label: string }[] = [
+  { value: 'llama', label: 'Llama' },
+  { value: 'qwen', label: 'Qwen' },
+  { value: 'mistral', label: 'Mistral' },
+  { value: 'gemma', label: 'Gemma' },
+  { value: 'phi', label: 'Phi' },
+  { value: 'deepseek', label: 'DeepSeek' },
+  { value: 'falcon', label: 'Falcon' },
+  { value: 'command', label: 'Command' },
+  { value: 'glm', label: 'GLM' },
+  { value: 'kimi', label: 'Kimi' },
+  { value: 'exaone', label: 'EXAONE' },
+  { value: 'nemotron', label: 'Nemotron' },
+  { value: 'yi', label: 'Yi' },
+  { value: 'bloom', label: 'BLOOM' },
+  { value: 'starcoder', label: 'StarCoder' },
+  { value: 'stablelm', label: 'StableLM' },
+  { value: 'olmo', label: 'OLMo' },
+  { value: 'mimo', label: 'MiMo' },
+  { value: 'minimax', label: 'MiniMax' },
+  { value: 'ernie', label: 'ERNIE' },
+  { value: 'embedding', label: 'Embedding' },
+  { value: 'zephyr', label: 'Zephyr' },
+  { value: 'other', label: 'Other' },
+];
+
+const ARCHITECTURE_OPTIONS: { value: ModelArchitecture; label: string; desc: string }[] = [
+  { value: 'dense', label: 'Dense', desc: 'Standard transformer' },
+  { value: 'moe', label: 'MoE', desc: 'Mixture of Experts' },
+];
+
+const ALL_FAMILIES: ModelFamily[] = FAMILY_OPTIONS.map(f => f.value);
+const ALL_ARCHITECTURES: ModelArchitecture[] = ['dense', 'moe'];
+
 export const DEFAULT_FILTERS: AdvancedFilters = {
   contextLength: 4096,
   quantLevels: ['Q4_K_M', 'Q6_K', 'Q8_0', 'FP16'],
   minSpeed: null,
   sizeRanges: ['small', 'medium', 'large', 'xlarge'],
+  families: ALL_FAMILIES,
+  architectures: ALL_ARCHITECTURES,
   sortBy: 'score',
   minMmlu: null,
   minMath: null,
@@ -87,12 +123,45 @@ export default function AdvancedOptions({ filters, onChange }: AdvancedOptionsPr
     }
   }
 
+  function toggleFamily(family: ModelFamily) {
+    const current = filters.families;
+    if (current.includes(family)) {
+      if (current.length > 1) {
+        updateFilter('families', current.filter(f => f !== family));
+      }
+    } else {
+      updateFilter('families', [...current, family]);
+    }
+  }
+
+  function toggleArchitecture(arch: ModelArchitecture) {
+    const current = filters.architectures;
+    if (current.includes(arch)) {
+      if (current.length > 1) {
+        updateFilter('architectures', current.filter(a => a !== arch));
+      }
+    } else {
+      updateFilter('architectures', [...current, arch]);
+    }
+  }
+
+  function selectAllFamilies() {
+    updateFilter('families', ALL_FAMILIES);
+  }
+
+  function clearFamilies() {
+    // Keep at least one
+    updateFilter('families', [ALL_FAMILIES[0]]);
+  }
+
   // Count active filters
   const activeFilters = [
     filters.contextLength !== 4096,
     filters.quantLevels.length < 4,
     filters.minSpeed !== null,
     filters.sizeRanges.length < 4,
+    filters.families.length < ALL_FAMILIES.length,
+    filters.architectures.length < 2,
     filters.sortBy !== 'score',
     filters.minMmlu !== null,
     filters.minMath !== null,
@@ -219,6 +288,74 @@ export default function AdvancedOptions({ filters, onChange }: AdvancedOptionsPr
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* Model Family Filter */}
+          <div className="space-y-2">
+            <div className="flex items-center justify-between">
+              <label className="block text-sm font-medium text-gray-300">Model Family</label>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={selectAllFamilies}
+                  className="text-xs text-blue-400 hover:text-blue-300"
+                >
+                  All
+                </button>
+                <span className="text-gray-600">|</span>
+                <button
+                  type="button"
+                  onClick={clearFamilies}
+                  className="text-xs text-gray-400 hover:text-gray-300"
+                >
+                  Clear
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto">
+              {FAMILY_OPTIONS.map(opt => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => toggleFamily(opt.value)}
+                  className={`px-2.5 py-1 rounded-lg text-xs transition-colors ${
+                    filters.families.includes(opt.value)
+                      ? 'bg-cyan-600 text-white'
+                      : 'bg-gray-700 text-gray-400 hover:bg-gray-600'
+                  }`}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500">
+              {filters.families.length} of {ALL_FAMILIES.length} families selected
+            </p>
+          </div>
+
+          {/* Architecture Filter */}
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-gray-300">Architecture</label>
+            <div className="flex flex-wrap gap-2">
+              {ARCHITECTURE_OPTIONS.map(opt => (
+                <button
+                  key={opt.value}
+                  type="button"
+                  onClick={() => toggleArchitecture(opt.value)}
+                  className={`px-3 py-1.5 rounded-lg text-sm transition-colors ${
+                    filters.architectures.includes(opt.value)
+                      ? 'bg-indigo-600 text-white'
+                      : 'bg-gray-700 text-gray-400 hover:bg-gray-600'
+                  }`}
+                  title={opt.desc}
+                >
+                  {opt.label}
+                </button>
+              ))}
+            </div>
+            <p className="text-xs text-gray-500">
+              Dense: standard transformer. MoE: Mixture of Experts (e.g., Mixtral, DeepSeek).
+            </p>
           </div>
 
           {/* Minimum Speed */}
