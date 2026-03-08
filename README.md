@@ -19,14 +19,27 @@ Choose a model you want to run, set your speed and budget preferences, and get G
 - **32 CPUs** in database for CPU inference estimates
 - **Manual override** for any hardware spec
 
-### Hardware Recommendations (Build for Model)
-- **Reverse search**: select a model, get GPU recommendations
-- **Speed preferences**: Any, Usable (10+ tok/s), Fast (25+ tok/s), Blazing (50+ tok/s)
-- **Budget filters**: No limit, Under $500/$1000/$1500/$2000
-- **Quantization options**: Q4, Q6, Q8, FP16
-- **GPU prices**: 56 GPUs with USD prices from Newegg
-- **Buy links**: Direct links to purchase recommended GPUs
-- **Multi-GPU**: Suggests 2x GPU configs when beneficial
+### Hardware Recipe (Build for Model)
+Complete hardware recommendations for any model:
+
+- **VRAM Requirements**: Shows exact GB needed at Q4, Q6, Q8, FP16
+- **Feasibility Check**: Single GPU / Multi-GPU / Cloud required
+- **Speed Preferences**: Any, Usable (10+ tok/s), Fast (25+ tok/s), Blazing (50+ tok/s)
+- **Budget Filters**: No limit, Under $500/$1000/$1500/$2000/$3000/$5000
+- **Recommended Builds**:
+  - Budget - cheapest option that works
+  - Best Value - optimal speed per dollar
+  - Fastest - maximum performance
+- **Multi-GPU Configs**: 2x, 4x, 8x GPU setups with scaling estimates
+- **Cloud Alternatives**: RunPod, Vast.ai, Lambda with $/hr pricing
+- **System Requirements**: RAM, PSU wattage, PCIe slots needed
+- **Datacenter Scale**: For 1000B+ models, shows H100 cluster requirements
+
+Works for any model size:
+- Small models (7B): Single RTX 4060 sufficient
+- Large models (70B): RTX 4090 or multi-GPU options
+- Massive models (405B+): Cloud options with cost estimates
+- Extreme models (1000B+): Datacenter requirements (e.g., "9x H100 @ $22/hr")
 
 ### Model Database
 - **84 LLM models** from 23 providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
@@ -342,6 +355,10 @@ Events tracked:
 - [x] CPU-only mode without GPU
 - [x] "Build for Model" reverse hardware search
 - [x] GPU pricing database with buy links
+- [x] Complete Hardware Recipe system
+- [x] Cloud provider alternatives (RunPod, Vast.ai, Lambda)
+- [x] Multi-GPU configurations (2x, 4x, 8x)
+- [x] Datacenter-scale requirements for 1000B+ models
 - [ ] Dark/light theme toggle
 - [ ] Export results (JSON/CSV)
 - [ ] PWA for offline use
