@@ -15,7 +15,7 @@ Choose a model you want to run, set your speed and budget preferences, and get G
 ### Hardware Detection
 - **Auto-detect GPU** via WebGL - automatically identifies your graphics card
 - **Auto-detect CPU** - detects thread count and Apple Silicon chips
-- **56 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
+- **56 GPUs** in database with pricing: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
 - **32 CPUs** in database for CPU inference estimates
 - **Manual override** for any hardware spec
 
@@ -42,10 +42,11 @@ Works for any model size:
 - Extreme models (1000B+): Datacenter requirements (e.g., "9x H100 @ $22/hr")
 
 ### Model Database
-- **147 LLM models** from 25+ providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
-- **113 models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, MBPP
+- **132 LLM models** from 16 families (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
+- **100% benchmark coverage**: every model has scored benchmarks (MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, GPQA, MUSR)
 - **4 quantization levels** per model: Q4_K_M, Q6_K, Q8_0, FP16
 - **MoE support** with active parameter detection
+- **GGUF download links** for 71% of models (bartowski, TheBloke)
 
 ### Performance Estimates
 - **Tokens/sec** (decode speed) - memory bandwidth bound
@@ -110,11 +111,11 @@ Dedicated page for browsing all community benchmarks with advanced features:
 
 ### Use Cases
 5 use cases with different benchmark weights:
-- **Chat**: IFEval, MMLU-PRO, BBH
-- **Coding**: HumanEval, MBPP, BigCodeBench, IFEval
+- **Chat**: IFEval, MMLU-PRO, BBH, GPQA
+- **Coding**: HumanEval, BigCodeBench, MATH, IFEval
 - **Reasoning**: MATH, GPQA, BBH, MUSR
-- **Creative**: IFEval, AlpacaEval, MMLU-PRO
-- **Vision**: MMMU, MMBench, IFEval
+- **Creative**: IFEval, MMLU-PRO, BBH
+- **Vision**: IFEval, MMLU-PRO, BBH, GPQA (filtered by vision capability)
 
 ## Quick Start
 
@@ -301,13 +302,14 @@ src/
   hooks/
     useRecommendation.ts  # React hook for state and data fetching
 public/data/
-  gpus.json               # GPU database (56 cards)
+  gpus.json               # GPU database (56 cards, all with prices)
   cpus.json               # CPU database (32 processors)
-  models.json             # LLM models with benchmarks (84 models)
+  models.json             # LLM models with benchmarks (132 models, 100% coverage)
 scripts/
   scrape_hf_models.py     # Scrape models from HuggingFace
   merge_models.py         # Merge into app format
   update_models.py        # Update benchmarks from leaderboards
+  upgrade_data_v2.py      # One-shot data cleanup + new models + benchmarks
   update_gpu_prices.py    # Update GPU prices from Newegg (USD)
   scrape_gpus_simple.py   # Full GPU scraper with specs + prices
 ```

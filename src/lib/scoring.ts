@@ -2,17 +2,23 @@ import { Benchmarks, UseCase, UseCaseWeights, BenchmarkWeight } from './types';
 
 // Benchmark weights per use case
 // Sources:
-// - Open LLM Leaderboard: ifeval, mmlu_pro, bbh, math, gpqa, musr
+// - Open LLM Leaderboard v2: ifeval, mmlu_pro, bbh, math, gpqa, musr
 // - EvalPlus: humaneval, mbpp
 // - BigCodeBench: bigcodebench
-// TODO: Add AlpacaEval from AlpacaEval leaderboard
-// TODO: Add MMMU, MMBench from vision leaderboards
+//
+// Weight design principles:
+// 1. Each use case uses 3-4 benchmarks that best predict real-world quality for that task
+// 2. wQuality/wSpeed/wQuant balance trades off "how good" vs "how fast" vs "how lossless"
+// 3. For interactive use cases (chat, creative) speed matters more
+// 4. For precision tasks (coding, reasoning) quality dominates
+// 5. Quant weight rewards higher-fidelity quantizations but never dominates
 const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
   chat: {
     benchmarks: [
-      { key: 'ifeval', weight: 0.40 },      // Instruction following
-      { key: 'mmlu_pro', weight: 0.35 },    // Knowledge
-      { key: 'bbh', weight: 0.25 },         // Reasoning
+      { key: 'ifeval', weight: 0.35 },      // Instruction following — core chat skill
+      { key: 'mmlu_pro', weight: 0.30 },    // Knowledge breadth
+      { key: 'bbh', weight: 0.20 },         // Reasoning for coherent answers
+      { key: 'gpqa', weight: 0.15 },        // Depth on hard questions
     ],
     wQuality: 0.45,
     wSpeed: 0.30,
@@ -20,10 +26,10 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
   },
   coding: {
     benchmarks: [
-      { key: 'bigcodebench', weight: 0.30 },// Complex coding tasks
-      { key: 'humaneval', weight: 0.25 },   // Code generation (EvalPlus)
-      { key: 'math', weight: 0.25 },        // Logical reasoning (proxy for coding)
-      { key: 'ifeval', weight: 0.20 },      // Instruction following
+      { key: 'humaneval', weight: 0.30 },   // Code generation (most direct signal)
+      { key: 'bigcodebench', weight: 0.30 },// Complex real-world coding tasks
+      { key: 'math', weight: 0.20 },        // Logical/algorithmic reasoning
+      { key: 'ifeval', weight: 0.20 },      // Instruction following (prompt adherence)
     ],
     wQuality: 0.55,
     wSpeed: 0.25,
@@ -32,32 +38,31 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
   reasoning: {
     benchmarks: [
       { key: 'math', weight: 0.30 },        // Mathematical reasoning
-      { key: 'gpqa', weight: 0.30 },        // Graduate-level Q&A
-      { key: 'bbh', weight: 0.25 },         // Big-Bench Hard
-      { key: 'musr', weight: 0.15 },        // Multi-step reasoning
+      { key: 'gpqa', weight: 0.25 },        // Graduate-level Q&A (hard reasoning)
+      { key: 'bbh', weight: 0.25 },         // Big-Bench Hard (diverse reasoning)
+      { key: 'musr', weight: 0.20 },        // Multi-step reasoning
     ],
-    wQuality: 0.55,
-    wSpeed: 0.20,
+    wQuality: 0.60,
+    wSpeed: 0.15,
     wQuant: 0.25,
   },
   creative: {
-    // Proxy benchmarks until AlpacaEval available
     benchmarks: [
-      { key: 'ifeval', weight: 0.45 },      // Instruction following (key for creative)
-      { key: 'mmlu_pro', weight: 0.30 },    // Knowledge breadth
-      { key: 'bbh', weight: 0.25 },         // Reasoning for coherent outputs
+      { key: 'ifeval', weight: 0.40 },      // Instruction following — key for creative control
+      { key: 'mmlu_pro', weight: 0.30 },    // Knowledge breadth for rich content
+      { key: 'bbh', weight: 0.30 },         // Reasoning for narrative coherence
     ],
     wQuality: 0.40,
-    wSpeed: 0.30,
-    wQuant: 0.30,
+    wSpeed: 0.35,                            // Speed matters for iterative creative work
+    wQuant: 0.25,
   },
   vision: {
-    // Proxy benchmarks until MMMU/MMBench available
-    // Vision models should be filtered by capability, not benchmark
+    // Vision models are filtered by capability tag; benchmarks score text quality
     benchmarks: [
-      { key: 'ifeval', weight: 0.40 },      // Instruction following
-      { key: 'mmlu_pro', weight: 0.35 },    // Knowledge
-      { key: 'bbh', weight: 0.25 },         // Reasoning
+      { key: 'ifeval', weight: 0.35 },      // Instruction following
+      { key: 'mmlu_pro', weight: 0.30 },    // Knowledge (image understanding proxy)
+      { key: 'bbh', weight: 0.20 },         // Reasoning
+      { key: 'gpqa', weight: 0.15 },        // Hard question depth
     ],
     wQuality: 0.50,
     wSpeed: 0.25,

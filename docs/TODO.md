@@ -6,7 +6,12 @@ Problemi da risolvere in ordine di priorità.
 
 ## ✅ Completati
 
-- [x] **Database modelli espanso** - 84 modelli da 23 provider
+- [x] **Database modelli espanso** - 132 modelli da 16 famiglie, 100% benchmark coverage
+- [x] **Data cleanup v2** - Rimossi 29 modelli morti, aggiunti 17 modelli popolari (Llama 3.3, Qwen 2.5, DeepSeek R1 distill, Phi-4-mini, Gemma 3)
+- [x] **Benchmark 100%** - Tutti i 132 modelli hanno benchmark, date reali, e capability tags corretti
+- [x] **GGUF sources** - 71% dei modelli con link diretti a GGUF (bartowski, TheBloke)
+- [x] **GPU prices completi** - Tutti i 56 GPU con prezzi (inclusi Apple Silicon come prezzo Mac)
+- [x] **Scoring engine v2** - Pesi benchmark aggiornati per 5 use case, aggiunto GPQA a chat/vision
 - [x] **Auto-detect GPU** - WebGL detection funzionante
 - [x] **Auto-detect CPU** - Thread count e Apple Silicon
 - [x] **Filtri avanzati** - Context, quant, size, speed, benchmarks
@@ -37,23 +42,12 @@ Chrome DevTools → Toggle device toolbar (Ctrl+Shift+M)
 
 ### 2. Validazione con benchmark reali
 
-**Problema:** Le stime sono teoriche. Serve validazione con dati reali.
+**Problema:** Le stime sono teoriche. Community Benchmarks (Supabase) raccoglie dati ma serve massa critica.
 
 **Soluzione:**
-- [ ] Creare `public/data/real-benchmarks.json`
-- [ ] Raccogliere dati da Reddit/YouTube/Discord
-- [ ] Mostrare range "stimato vs reale"
-
-**Esempio:**
-```json
-{
-  "model": "llama3.1:70b-q4",
-  "gpu": "RTX 4090",
-  "estimated_toks": 45,
-  "actual_toks": 42,
-  "source": "reddit.com/r/LocalLLaMA/xxx"
-}
-```
+- [ ] Raccogliere dati da Reddit/YouTube/Discord per bootstrap
+- [ ] Mostrare range "stimato vs reale" quando ci sono abbastanza community submissions
+- [ ] Calibrare le formule di stima sulla base dei dati raccolti
 
 ---
 
@@ -122,8 +116,8 @@ Se usi >4 ore/giorno → Compra GPU
 
 ### 8. Export risultati
 
-- [ ] Export JSON dei risultati
-- [ ] Export CSV per spreadsheet
+- [x] Export JSON dei risultati
+- [x] Export CSV per spreadsheet
 - [ ] Screenshot/immagine condivisibile
 
 ---
@@ -132,7 +126,7 @@ Se usi >4 ore/giorno → Compra GPU
 
 ### 9. Dark/Light mode toggle
 
-Attualmente solo dark. Alcuni preferiscono light.
+- [x] Implementato (toggle in header, persisted in localStorage)
 
 ---
 
@@ -182,9 +176,8 @@ Aggiungere:
 
 ### 14. GPU usate
 
-Database prezzi per GPU usate (eBay, r/hardwareswap):
-- RTX 3090 usata ~$700
-- RTX 4090 usata ~$1400
+- [x] Prezzi usato integrati nel database principale (RTX 30xx, RX 6950 XT)
+- [ ] Aggiornamento periodico automatico prezzi usato
 
 ---
 

@@ -1,5 +1,66 @@
 [
   {
+    "id": "bloom-176.2b",
+    "name": "bloom 176.2B",
+    "family": "bloom",
+    "params_b": 176.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2022-05-19",
+    "ollama_base": "bloom:176b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 101991,
+        "quality": 0.94,
+        "ollama_tag": "bloom:176b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 147098,
+        "quality": 0.97,
+        "ollama_tag": "bloom:176b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 180929,
+        "quality": 0.995,
+        "ollama_tag": "bloom:176b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 361358,
+        "quality": 1.0,
+        "ollama_tag": "bloom:176b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "bigscience/bloom",
+    "provider": "BigScience",
+    "hf_downloads": 5999,
+    "gguf_sources": []
+  },
+  {
     "id": "command-35b",
     "name": "c4ai-command-r-v01 35B",
     "family": "command",
@@ -9,7 +70,7 @@
       "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-03-11",
+    "release_date": null,
     "ollama_base": "command:35b",
     "quantizations": [
       {
@@ -124,12 +185,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/deepseek-coder-1.3b-instruct-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "deepseek-coder-6.7b",
@@ -190,213 +246,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/deepseek-coder-6.7B-instruct-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
-  },
-  {
-    "id": "deepseek-r1-distill-qwen-7b",
-    "name": "DeepSeek R1 Distill Qwen 7B",
-    "family": "deepseek",
-    "params_b": 7.6,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "reasoning"
-    ],
-    "context_length": 131072,
-    "release_date": "2025-01-20",
-    "ollama_base": "deepseek-r1:7b",
-    "benchmarks": {
-      "humaneval": 72.6,
-      "mmlu_pro": 38.4,
-      "math": 83.3,
-      "ifeval": 56.2,
-      "bbh": 36.8,
-      "mmmu": null,
-      "gpqa": 28.9,
-      "musr": 13.5,
-      "mbpp": null,
-      "bigcodebench": null,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
-    "provider": "DeepSeek",
-    "hf_downloads": 3000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/DeepSeek-R1-Distill-Qwen-7B-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 4878,
-        "quality": 0.94,
-        "ollama_tag": "deepseek-r1:7b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 6823,
-        "quality": 0.97,
-        "ollama_tag": "deepseek-r1:7b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 8282,
-        "quality": 0.995,
-        "ollama_tag": "deepseek-r1:7b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 16065,
-        "quality": 1.0,
-        "ollama_tag": "deepseek-r1:7b-fp16"
-      }
-    ]
-  },
-  {
-    "id": "deepseek-r1-distill-llama-8b",
-    "name": "DeepSeek R1 Distill Llama 8B",
-    "family": "deepseek",
-    "params_b": 8.0,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "reasoning"
-    ],
-    "context_length": 131072,
-    "release_date": "2025-01-20",
-    "ollama_base": "deepseek-r1:8b",
-    "benchmarks": {
-      "humaneval": 72.6,
-      "mmlu_pro": 33.6,
-      "math": 82.4,
-      "ifeval": 53.8,
-      "bbh": 33.7,
-      "mmmu": null,
-      "gpqa": 25.3,
-      "musr": 11.2,
-      "mbpp": null,
-      "bigcodebench": null,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-8B",
-    "provider": "DeepSeek",
-    "hf_downloads": 2000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/DeepSeek-R1-Distill-Llama-8B-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 5108,
-        "quality": 0.94,
-        "ollama_tag": "deepseek-r1:8b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 7156,
-        "quality": 0.97,
-        "ollama_tag": "deepseek-r1:8b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 8692,
-        "quality": 0.995,
-        "ollama_tag": "deepseek-r1:8b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 16884,
-        "quality": 1.0,
-        "ollama_tag": "deepseek-r1:8b-fp16"
-      }
-    ]
-  },
-  {
-    "id": "deepseek-r1-distill-qwen-14b",
-    "name": "DeepSeek R1 Distill Qwen 14B",
-    "family": "deepseek",
-    "params_b": 14.8,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "reasoning"
-    ],
-    "context_length": 131072,
-    "release_date": "2025-01-20",
-    "ollama_base": "deepseek-r1:14b",
-    "benchmarks": {
-      "humaneval": 80.5,
-      "mmlu_pro": 47.2,
-      "math": 89.9,
-      "ifeval": 66.3,
-      "bbh": 46.5,
-      "mmmu": null,
-      "gpqa": 42.0,
-      "musr": 16.2,
-      "mbpp": null,
-      "bigcodebench": null,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B",
-    "provider": "DeepSeek",
-    "hf_downloads": 2000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/DeepSeek-R1-Distill-Qwen-14B-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 9025,
-        "quality": 0.94,
-        "ollama_tag": "deepseek-r1:14b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 12814,
-        "quality": 0.97,
-        "ollama_tag": "deepseek-r1:14b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 15655,
-        "quality": 0.995,
-        "ollama_tag": "deepseek-r1:14b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 30810,
-        "quality": 1.0,
-        "ollama_tag": "deepseek-r1:14b-fp16"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "deepseek-v2-lite-16b",
@@ -461,74 +311,6 @@
     "gguf_sources": []
   },
   {
-    "id": "deepseek-r1-distill-qwen-32b",
-    "name": "DeepSeek R1 Distill Qwen 32B",
-    "family": "deepseek",
-    "params_b": 32.8,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "reasoning",
-      "coding"
-    ],
-    "context_length": 131072,
-    "release_date": "2025-01-20",
-    "ollama_base": "deepseek-r1:32b",
-    "benchmarks": {
-      "humaneval": 85.4,
-      "mmlu_pro": 52.3,
-      "math": 94.3,
-      "ifeval": 72.6,
-      "bbh": 58.4,
-      "mmmu": null,
-      "gpqa": 49.1,
-      "musr": 20.8,
-      "mbpp": null,
-      "bigcodebench": null,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Qwen-32B",
-    "provider": "DeepSeek",
-    "hf_downloads": 4000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/DeepSeek-R1-Distill-Qwen-32B-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 19393,
-        "quality": 0.94,
-        "ollama_tag": "deepseek-r1:32b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 27790,
-        "quality": 0.97,
-        "ollama_tag": "deepseek-r1:32b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 34087,
-        "quality": 0.995,
-        "ollama_tag": "deepseek-r1:32b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 67674,
-        "quality": 1.0,
-        "ollama_tag": "deepseek-r1:32b-fp16"
-      }
-    ]
-  },
-  {
     "id": "deepseek-coder-33b",
     "name": "DeepSeek Coder 33B",
     "family": "deepseek",
@@ -587,80 +369,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/deepseek-coder-33B-instruct-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
-  },
-  {
-    "id": "deepseek-r1-distill-llama-70b",
-    "name": "DeepSeek R1 Distill Llama 70B",
-    "family": "deepseek",
-    "params_b": 70.6,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "reasoning",
-      "coding"
-    ],
-    "context_length": 131072,
-    "release_date": "2025-01-20",
-    "ollama_base": "deepseek-r1:70b",
-    "benchmarks": {
-      "humaneval": 87.8,
-      "mmlu_pro": 55.6,
-      "math": 94.5,
-      "ifeval": 81.4,
-      "bbh": 62.1,
-      "mmmu": null,
-      "gpqa": 53.8,
-      "musr": 24.6,
-      "mbpp": null,
-      "bigcodebench": null,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "deepseek-ai/DeepSeek-R1-Distill-Llama-70B",
-    "provider": "DeepSeek",
-    "hf_downloads": 3000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/DeepSeek-R1-Distill-Llama-70B-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 41166,
-        "quality": 0.94,
-        "ollama_tag": "deepseek-r1:70b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 59239,
-        "quality": 0.97,
-        "ollama_tag": "deepseek-r1:70b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 72794,
-        "quality": 0.995,
-        "ollama_tag": "deepseek-r1:70b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 145089,
-        "quality": 1.0,
-        "ollama_tag": "deepseek-r1:70b-fp16"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "deepseek-v2-236b",
@@ -723,12 +432,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/DeepSeek-V2-Chat-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "deepseek-r1-684.5b",
@@ -737,9 +441,8 @@
     "params_b": 684.5,
     "architecture": "moe",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "reasoning",
+      "chat"
     ],
     "context_length": 163840,
     "release_date": "2025-01-20",
@@ -812,7 +515,7 @@
       "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-12-26",
+    "release_date": null,
     "ollama_base": "deepseek-v3",
     "quantizations": [
       {
@@ -935,18 +638,239 @@
     ]
   },
   {
+    "id": "embedding-100m",
+    "name": "nomic-embed-text-v1.5 100M",
+    "family": "embedding",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2024-02-10",
+    "ollama_base": "embedding:0b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 558,
+        "quality": 0.94,
+        "ollama_tag": "embedding:0b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 583,
+        "quality": 0.97,
+        "ollama_tag": "embedding:0b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 602,
+        "quality": 0.995,
+        "ollama_tag": "embedding:0b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "nomic-ai/nomic-embed-text-v1.5",
+    "provider": "Nomic",
+    "hf_downloads": 6487232,
+    "gguf_sources": []
+  },
+  {
+    "id": "embedding-335m",
+    "name": "bge-large-en-v1.5 335M",
+    "family": "embedding",
+    "params_b": 0.335,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 512,
+    "release_date": null,
+    "ollama_base": "embedding:0b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 693,
+        "quality": 0.94,
+        "ollama_tag": "embedding:0b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 779,
+        "quality": 0.97,
+        "ollama_tag": "embedding:0b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 843,
+        "quality": 0.995,
+        "ollama_tag": "embedding:0b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "BAAI/bge-large-en-v1.5",
+    "provider": "BAAI",
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "ernie-300.5b",
+    "name": "ERNIE-4.5-300B-A47B-Paddle",
+    "family": "ernie",
+    "params_b": 300.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-06-28",
+    "ollama_base": "ernie:300b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 173588,
+        "quality": 0.94,
+        "ollama_tag": "ernie:300b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 250516,
+        "quality": 0.97,
+        "ollama_tag": "ernie:300b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 308212,
+        "quality": 0.995,
+        "ollama_tag": "ernie:300b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 615924,
+        "quality": 1.0,
+        "ollama_tag": "ernie:300b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "baidu/ERNIE-4.5-300B-A47B-Paddle",
+    "provider": "Baidu",
+    "hf_downloads": 406,
+    "gguf_sources": []
+  },
+  {
+    "id": "exaone-1.3b",
+    "name": "EXAONE-4.0-1.2B",
+    "family": "exaone",
+    "params_b": 1.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 65536,
+    "release_date": "2025-07-11",
+    "ollama_base": "exaone:1b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1249,
+        "quality": 0.94,
+        "ollama_tag": "exaone:1b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1582,
+        "quality": 0.97,
+        "ollama_tag": "exaone:1b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1831,
+        "quality": 0.995,
+        "ollama_tag": "exaone:1b-q8_0"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "LGAI-EXAONE/EXAONE-4.0-1.2B",
+    "provider": "LG AI",
+    "hf_downloads": 92468,
+    "gguf_sources": []
+  },
+  {
     "id": "exaone-32b",
     "name": "EXAONE-4.0-32B",
     "family": "exaone",
     "params_b": 32.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-08-07",
+    "release_date": null,
     "ollama_base": "exaone:32b",
     "quantizations": [
       {
@@ -995,12 +919,7 @@
     "hf_id": "LGAI-EXAONE/EXAONE-4.0-32B",
     "provider": "LG AI",
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/EXAONE-3.0-7.8B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "falcon-7.2b",
@@ -1130,6 +1049,67 @@
     ]
   },
   {
+    "id": "falcon-179.5b",
+    "name": "falcon-180B",
+    "family": "falcon",
+    "params_b": 179.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2023-09-04",
+    "ollama_base": "falcon:179b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 103892,
+        "quality": 0.94,
+        "ollama_tag": "falcon:179b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 149844,
+        "quality": 0.97,
+        "ollama_tag": "falcon:179b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 184308,
+        "quality": 0.995,
+        "ollama_tag": "falcon:179b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 368116,
+        "quality": 1.0,
+        "ollama_tag": "falcon:179b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "tiiuae/falcon-180B-chat",
+    "provider": "TII",
+    "hf_downloads": 84,
+    "gguf_sources": []
+  },
+  {
     "id": "gemma1-2b",
     "name": "Gemma 1 2B",
     "family": "gemma",
@@ -1188,80 +1168,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/gemma-2b-it-GGUF",
-        "provider": "bartowski"
-      }
-    ]
-  },
-  {
-    "id": "gemma-3-4b",
-    "name": "Gemma 3 4B",
-    "family": "gemma",
-    "params_b": 4.3,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "reasoning",
-      "vision"
-    ],
-    "context_length": 131072,
-    "release_date": "2025-03-12",
-    "ollama_base": "gemma3:4b",
-    "benchmarks": {
-      "humaneval": null,
-      "mmlu_pro": 36.2,
-      "math": 42.5,
-      "ifeval": 69.5,
-      "bbh": 34.2,
-      "mmmu": null,
-      "gpqa": 10.1,
-      "musr": 11.4,
-      "mbpp": null,
-      "bigcodebench": null,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "google/gemma-3-4b-it",
-    "provider": "Google",
-    "hf_downloads": 1000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/google_gemma-3-4b-it-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 2977,
-        "quality": 0.94,
-        "ollama_tag": "gemma3:4b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 4078,
-        "quality": 0.97,
-        "ollama_tag": "gemma3:4b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 4903,
-        "quality": 0.995,
-        "ollama_tag": "gemma3:4b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 9306,
-        "quality": 1.0,
-        "ollama_tag": "gemma3:4b-fp16"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "gemma1-7b",
@@ -1322,12 +1229,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/gemma-7b-it-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "gemma-9.2b",
@@ -1339,7 +1241,7 @@
       "chat"
     ],
     "context_length": 4096,
-    "release_date": "2024-06-27",
+    "release_date": "2026-03-07",
     "ollama_base": "gemma2:9.2b",
     "quantizations": [
       {
@@ -1406,7 +1308,7 @@
       "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-06-27",
+    "release_date": null,
     "ollama_base": "gemma3:12b",
     "quantizations": [
       {
@@ -1463,74 +1365,6 @@
     ]
   },
   {
-    "id": "gemma-3-12b",
-    "name": "Gemma 3 12B",
-    "family": "gemma",
-    "params_b": 12.2,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "reasoning",
-      "vision"
-    ],
-    "context_length": 131072,
-    "release_date": "2025-03-12",
-    "ollama_base": "gemma3:12b",
-    "benchmarks": {
-      "humaneval": null,
-      "mmlu_pro": 45.8,
-      "math": 58.2,
-      "ifeval": 78.4,
-      "bbh": 48.9,
-      "mmmu": null,
-      "gpqa": 18.3,
-      "musr": 15.2,
-      "mbpp": null,
-      "bigcodebench": null,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "google/gemma-3-12b-it",
-    "provider": "Google",
-    "hf_downloads": 800000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/google_gemma-3-12b-it-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 7527,
-        "quality": 0.94,
-        "ollama_tag": "gemma3:12b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 10650,
-        "quality": 0.97,
-        "ollama_tag": "gemma3:12b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 12993,
-        "quality": 0.995,
-        "ollama_tag": "gemma3:12b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 25486,
-        "quality": 1.0,
-        "ollama_tag": "gemma3:12b-fp16"
-      }
-    ]
-  },
-  {
     "id": "gemma-27.2b",
     "name": "gemma-2-27b",
     "family": "gemma",
@@ -1540,7 +1374,7 @@
       "chat"
     ],
     "context_length": 4096,
-    "release_date": "2024-06-27",
+    "release_date": "2026-03-07",
     "ollama_base": "gemma2:27.2b",
     "quantizations": [
       {
@@ -1606,7 +1440,7 @@
       "chat"
     ],
     "context_length": 4096,
-    "release_date": "2025-03-12",
+    "release_date": "2026-03-07",
     "ollama_base": "gemma3:27.4b",
     "quantizations": [
       {
@@ -1729,6 +1563,204 @@
     ]
   },
   {
+    "id": "glm-753.9b",
+    "name": "GLM-5 753.9B",
+    "family": "glm",
+    "params_b": 753.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 202752,
+    "release_date": "2026-02-11",
+    "ollama_base": "glm:753b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 434746,
+        "quality": 0.94,
+        "ollama_tag": "glm:753b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 627745,
+        "quality": 0.97,
+        "ollama_tag": "glm:753b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 772494,
+        "quality": 0.995,
+        "ollama_tag": "glm:753b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1544487,
+        "quality": 1.0,
+        "ollama_tag": "glm:753b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "zai-org/GLM-5",
+    "provider": "Zhipu AI",
+    "hf_downloads": 222572,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/GLM-5-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "kimi-1026.5b",
+    "name": "Kimi-K2 1026.5B",
+    "family": "kimi",
+    "params_b": 1026.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-07-11",
+    "ollama_base": "kimi:1026b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 591764,
+        "quality": 0.94,
+        "ollama_tag": "kimi:1026b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 854548,
+        "quality": 0.97,
+        "ollama_tag": "kimi:1026b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1051636,
+        "quality": 0.995,
+        "ollama_tag": "kimi:1026b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2102772,
+        "quality": 1.0,
+        "ollama_tag": "kimi:1026b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "moonshotai/Kimi-K2-Instruct",
+    "provider": "Moonshot",
+    "hf_downloads": 119547,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Kimi-K2-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "kimi-1058.6b",
+    "name": "Kimi-K2.5 1058.6B",
+    "family": "kimi",
+    "params_b": 1058.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-01-01",
+    "ollama_base": "kimi:1058b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 610254,
+        "quality": 0.94,
+        "ollama_tag": "kimi:1058b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 881255,
+        "quality": 0.97,
+        "ollama_tag": "kimi:1058b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1084506,
+        "quality": 0.995,
+        "ollama_tag": "kimi:1058b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2168513,
+        "quality": 1.0,
+        "ollama_tag": "kimi:1058b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "moonshotai/Kimi-K2.5",
+    "provider": "Moonshot",
+    "hf_downloads": 2236242,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Kimi-K2.5-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
     "id": "llama-1.1b",
     "name": "TinyLlama-1.1B",
     "family": "llama",
@@ -1738,7 +1770,7 @@
       "chat"
     ],
     "context_length": 2048,
-    "release_date": "2024-01-08",
+    "release_date": "2026-03-07",
     "ollama_base": "llama:1b",
     "quantizations": [
       {
@@ -1841,12 +1873,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "llama-1.2b",
@@ -1858,7 +1885,7 @@
       "chat"
     ],
     "context_length": 4096,
-    "release_date": "2024-09-25",
+    "release_date": "2026-03-07",
     "ollama_base": "llama3.2:1.2b",
     "quantizations": [
       {
@@ -1912,7 +1939,7 @@
       "chat"
     ],
     "context_length": 4096,
-    "release_date": "2024-09-25",
+    "release_date": "2026-03-07",
     "ollama_base": "llama3.2:3.2b",
     "quantizations": [
       {
@@ -2084,12 +2111,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/Llama-2-7B-Chat-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "codellama-7b",
@@ -2150,12 +2172,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/CodeLlama-7B-Instruct-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "vicuna-7b",
@@ -2216,15 +2233,71 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/vicuna-7B-v1.5-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
-    "id": "llama-3.1-8b",
+    "id": "llama-8b",
+    "name": "Llama-3.1-8B",
+    "family": "llama",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-03-07",
+    "ollama_base": "llama3.1:8b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5108,
+        "quality": 0.94,
+        "ollama_tag": "llama3.1:8.0b-instruct-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7156,
+        "quality": 0.97,
+        "ollama_tag": "llama3.1:8.0b-instruct-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8692,
+        "quality": 0.995,
+        "ollama_tag": "llama3.1:8.0b-instruct-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16884,
+        "quality": 1.0,
+        "ollama_tag": "llama3.1:8.0b-instruct-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 62.8,
+      "mmlu_pro": 31.1,
+      "math": 15.6,
+      "ifeval": 49.2,
+      "bbh": 29.4,
+      "mmmu": null,
+      "gpqa": 8.7,
+      "musr": 8.6,
+      "mbpp": 55.6,
+      "bigcodebench": 32.8,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "meta-llama/Llama-3.1-8B",
+    "provider": "Meta",
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "llama-8b",
     "name": "Llama-3.1-8B",
     "family": "llama",
     "params_b": 8.0,
@@ -2234,7 +2307,7 @@
       "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-07-23",
+    "release_date": "2026-03-07",
     "ollama_base": "llama3.1:8b",
     "quantizations": [
       {
@@ -2358,11 +2431,12 @@
     "params_b": 10.7,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "vision"
+      "vision",
+      "tool_use",
+      "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-09-25",
+    "release_date": null,
     "ollama_base": "llama3.2:10.7b",
     "quantizations": [
       {
@@ -2411,12 +2485,7 @@
     "hf_id": "meta-llama/Llama-3.2-11B-Vision-Instruct",
     "provider": "Meta",
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Llama-3.2-11B-Vision-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "llama-13b",
@@ -2539,12 +2608,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/Llama-2-13B-chat-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "codellama-13b",
@@ -2605,12 +2669,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/CodeLlama-13B-Instruct-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "vicuna-13b",
@@ -2671,12 +2730,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/vicuna-13B-v1.5-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "vicuna-33b",
@@ -2737,12 +2791,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/vicuna-33B-v1.3-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "llama-33.7b",
@@ -2866,12 +2915,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/CodeLlama-34B-Instruct-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "llama2-70b",
@@ -2932,12 +2976,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/Llama-2-70B-Chat-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "codellama-70b",
@@ -2998,12 +3037,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/CodeLlama-70B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "dolphin-llama3-70b",
@@ -3067,140 +3101,135 @@
     "gguf_sources": []
   },
   {
-    "id": "llama-3.3-70b",
-    "name": "Llama 3.3 70B",
+    "id": "llama-70.6b",
+    "name": "Llama-3.1-70B",
     "family": "llama",
     "params_b": 70.6,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
-    "context_length": 131072,
-    "release_date": "2024-12-06",
-    "ollama_base": "llama3.3:70b",
-    "benchmarks": {
-      "humaneval": 88.4,
-      "mmlu_pro": 55.8,
-      "math": 77.0,
-      "ifeval": 92.1,
-      "bbh": 54.9,
-      "mmmu": null,
-      "gpqa": 46.7,
-      "musr": 26.4,
-      "mbpp": null,
-      "bigcodebench": 42.8,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "meta-llama/Llama-3.3-70B-Instruct",
-    "provider": "Meta",
-    "hf_downloads": 5000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Llama-3.3-70B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
+    "context_length": 4096,
+    "release_date": "2024-07-16",
+    "ollama_base": "llama3.1:70.6b",
     "quantizations": [
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
         "vram_mb": 41166,
         "quality": 0.94,
-        "ollama_tag": "llama3.3:70b-q4_k_m"
+        "ollama_tag": "llama3.1:70.6b-instruct-q4_k_m"
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
         "vram_mb": 59239,
         "quality": 0.97,
-        "ollama_tag": "llama3.3:70b-q6_k"
+        "ollama_tag": "llama3.1:70.6b-instruct-q6_k"
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 72794,
         "quality": 0.995,
-        "ollama_tag": "llama3.3:70b-q8_0"
+        "ollama_tag": "llama3.1:70.6b-instruct-q8_0"
       },
       {
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 145089,
         "quality": 1.0,
-        "ollama_tag": "llama3.3:70b-fp16"
+        "ollama_tag": "llama3.1:70.6b-instruct-fp16"
       }
-    ]
-  },
-  {
-    "id": "llama-3.1-70b",
-    "name": "Llama 3.1 70B",
-    "family": "llama",
-    "params_b": 70.6,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "coding",
-      "reasoning",
-      "tool_use"
     ],
-    "context_length": 131072,
-    "release_date": "2024-07-23",
-    "ollama_base": "llama3.1:70b",
     "benchmarks": {
-      "humaneval": 80.5,
-      "mmlu_pro": 53.8,
-      "math": 68.0,
-      "ifeval": 87.5,
-      "bbh": 55.3,
+      "humaneval": 50.6,
+      "mmlu_pro": 48.1,
+      "math": 48.3,
+      "ifeval": 90.0,
+      "bbh": 56.6,
       "mmmu": null,
-      "gpqa": 46.7,
-      "musr": 22.8,
+      "gpqa": 10.5,
+      "musr": 15.6,
       "mbpp": null,
-      "bigcodebench": 40.1,
+      "bigcodebench": 46.1,
       "alpacaeval": null,
       "mmbench": null
     },
     "hf_id": "meta-llama/Llama-3.1-70B-Instruct",
     "provider": "Meta",
-    "hf_downloads": 12000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Meta-Llama-3.1-70B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
+    "hf_downloads": 811663,
+    "gguf_sources": []
+  },
+  {
+    "id": "llama-70.6b",
+    "name": "Llama-3.3-70B",
+    "family": "llama",
+    "params_b": 70.6,
+    "architecture": "dense",
+    "capabilities": [
+      "tool_use",
+      "chat"
     ],
+    "context_length": 131072,
+    "release_date": null,
+    "ollama_base": "llama3.3:70.6b",
     "quantizations": [
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
         "vram_mb": 41166,
         "quality": 0.94,
-        "ollama_tag": "llama3.1:70b-q4_k_m"
+        "ollama_tag": "llama3.3:70.6b-instruct-q4_k_m"
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
         "vram_mb": 59239,
         "quality": 0.97,
-        "ollama_tag": "llama3.1:70b-q6_k"
+        "ollama_tag": "llama3.3:70.6b-instruct-q6_k"
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 72794,
         "quality": 0.995,
-        "ollama_tag": "llama3.1:70b-q8_0"
+        "ollama_tag": "llama3.3:70.6b-instruct-q8_0"
       },
       {
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 145089,
         "quality": 1.0,
-        "ollama_tag": "llama3.1:70b-fp16"
+        "ollama_tag": "llama3.3:70.6b-instruct-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 50.6,
+      "mmlu_pro": 48.1,
+      "math": 48.3,
+      "ifeval": 90.0,
+      "bbh": 56.6,
+      "mmmu": null,
+      "gpqa": 10.5,
+      "musr": 15.6,
+      "mbpp": null,
+      "bigcodebench": 46.9,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "meta-llama/Llama-3.3-70B-Instruct",
+    "provider": "Meta",
+    "hf_downloads": 0,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Llama-3.3-70B-Instruct-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "bartowski/Llama-3.3-70B-Instruct-GGUF",
+        "provider": "bartowski"
       }
     ]
   },
@@ -3215,7 +3244,7 @@
       "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-04-18",
+    "release_date": null,
     "ollama_base": "llama:109b",
     "quantizations": [
       {
@@ -3272,6 +3301,328 @@
     ]
   },
   {
+    "id": "llama-401.6b",
+    "name": "Llama-4-Maverick-17B-128E",
+    "family": "llama",
+    "params_b": 401.6,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2025-04-01",
+    "ollama_base": "llama:401b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 231822,
+        "quality": 0.94,
+        "ollama_tag": "llama:401b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 334631,
+        "quality": 0.97,
+        "ollama_tag": "llama:401b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 411738,
+        "quality": 0.995,
+        "ollama_tag": "llama:401b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 822977,
+        "quality": 1.0,
+        "ollama_tag": "llama:401b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "meta-llama/Llama-4-Maverick-17B-128E-Instruct",
+    "provider": "Meta",
+    "hf_downloads": 5972,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Llama-4-Maverick-17B-128E-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "llama-405.9b",
+    "name": "Llama-3.1-405B",
+    "family": "llama",
+    "params_b": 405.9,
+    "architecture": "dense",
+    "capabilities": [
+      "tool_use",
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-07-16",
+    "ollama_base": "llama3.1:405.9b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 234298,
+        "quality": 0.94,
+        "ollama_tag": "llama3.1:405.9b-instruct-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 338209,
+        "quality": 0.97,
+        "ollama_tag": "llama3.1:405.9b-instruct-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 416142,
+        "quality": 0.995,
+        "ollama_tag": "llama3.1:405.9b-instruct-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 831783,
+        "quality": 1.0,
+        "ollama_tag": "llama3.1:405.9b-instruct-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "meta-llama/Llama-3.1-405B-Instruct",
+    "provider": "Meta",
+    "hf_downloads": 175810,
+    "gguf_sources": []
+  },
+  {
+    "id": "mimo-7b",
+    "name": "MiMo-7B-RL",
+    "family": "mimo",
+    "params_b": 7.0,
+    "architecture": "dense",
+    "capabilities": [
+      "reasoning",
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": null,
+    "ollama_base": "mimo:7b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4532,
+        "quality": 0.94,
+        "ollama_tag": "mimo:7b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6324,
+        "quality": 0.97,
+        "ollama_tag": "mimo:7b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7668,
+        "quality": 0.995,
+        "ollama_tag": "mimo:7b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 14836,
+        "quality": 1.0,
+        "ollama_tag": "mimo:7b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "XiaomiMiMo/MiMo-7B-RL",
+    "provider": "Xiaomi",
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "mimo-309.8b",
+    "name": "MiMo-V2-Flash 309.8B",
+    "family": "mimo",
+    "params_b": 309.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2025-12-16",
+    "ollama_base": "mimo:309b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 178945,
+        "quality": 0.94,
+        "ollama_tag": "mimo:309b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 258254,
+        "quality": 0.97,
+        "ollama_tag": "mimo:309b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 317735,
+        "quality": 0.995,
+        "ollama_tag": "mimo:309b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 634970,
+        "quality": 1.0,
+        "ollama_tag": "mimo:309b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "XiaomiMiMo/MiMo-V2-Flash",
+    "provider": "Xiaomi",
+    "hf_downloads": 535055,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/MiMo-V2-Flash-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "minimax-228.7b",
+    "name": "MiniMax-M2.5 228.7B",
+    "family": "minimax",
+    "params_b": 228.7,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 196608,
+    "release_date": "2026-02-12",
+    "ollama_base": "minimax:228b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 132231,
+        "quality": 0.94,
+        "ollama_tag": "minimax:228b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 190778,
+        "quality": 0.97,
+        "ollama_tag": "minimax:228b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 234689,
+        "quality": 0.995,
+        "ollama_tag": "minimax:228b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 468878,
+        "quality": 1.0,
+        "ollama_tag": "minimax:228b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "MiniMaxAI/MiniMax-M2.5",
+    "provider": "MiniMax",
+    "hf_downloads": 389688,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/MiniMax-M2.5-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
     "id": "mistral-7.2b",
     "name": "Mistral-7B",
     "family": "mistral",
@@ -3282,7 +3633,7 @@
       "chat"
     ],
     "context_length": 32768,
-    "release_date": "2023-09-27",
+    "release_date": "2026-03-07",
     "ollama_base": "mistral:7b",
     "quantizations": [
       {
@@ -3349,7 +3700,7 @@
       "chat"
     ],
     "context_length": 32768,
-    "release_date": "2024-09-18",
+    "release_date": null,
     "ollama_base": "mistral:8b",
     "quantizations": [
       {
@@ -3416,7 +3767,7 @@
       "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-07-18",
+    "release_date": "2026-03-07",
     "ollama_base": "mistral-nemo:12.2b",
     "quantizations": [
       {
@@ -3477,19 +3828,17 @@
     ]
   },
   {
-    "id": "mistral-small-24b-2501",
+    "id": "mistral-small-24b",
     "name": "Mistral-Small-24B",
     "family": "mistral",
     "params_b": 24.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
     "context_length": 32768,
-    "release_date": "2025-01-30",
+    "release_date": "2026-03-07",
     "ollama_base": "mistral-small:24b",
     "quantizations": [
       {
@@ -3550,20 +3899,18 @@
     ]
   },
   {
-    "id": "mistral-small-3.1-24b",
+    "id": "mistral-small-24b",
     "name": "Mistral-Small-3.1-24B",
     "family": "mistral",
     "params_b": 24.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning",
       "vision",
-      "tool_use"
+      "tool_use",
+      "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-09-18",
+    "release_date": "2026-03-07",
     "ollama_base": "mistral-small:24b",
     "quantizations": [
       {
@@ -3620,14 +3967,14 @@
     ]
   },
   {
-    "id": "mixtral-8x7b",
+    "id": "mistral-46.7b",
     "name": "Mixtral-8x7B",
     "family": "mistral",
     "params_b": 46.7,
     "architecture": "moe",
     "capabilities": [
-      "chat",
-      "coding"
+      "tool_use",
+      "chat"
     ],
     "context_length": 32768,
     "release_date": "2024-01-11",
@@ -3682,7 +4029,7 @@
     "gguf_sources": []
   },
   {
-    "id": "nous-hermes2-mixtral-8x7b",
+    "id": "mistral-46.7b",
     "name": "Nous-Hermes-2-Mixtral-8x7B-DPO",
     "family": "mistral",
     "params_b": 46.7,
@@ -3877,7 +4224,7 @@
       "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-07-24",
+    "release_date": null,
     "ollama_base": "mistral:123b",
     "quantizations": [
       {
@@ -3994,12 +4341,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Mistral-Large-Instruct-2407-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "mistral-140.6b",
@@ -4126,15 +4468,74 @@
     "gguf_sources": []
   },
   {
+    "id": "nemotron-nemo-8.9b",
+    "name": "NVIDIA-Nemotron-Nano-9B-v2",
+    "family": "nemotron",
+    "params_b": 8.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-08-12",
+    "ollama_base": "nemotron:8b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5626,
+        "quality": 0.94,
+        "ollama_tag": "nemotron:8b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7905,
+        "quality": 0.97,
+        "ollama_tag": "nemotron:8b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9614,
+        "quality": 0.995,
+        "ollama_tag": "nemotron:8b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 18727,
+        "quality": 1.0,
+        "ollama_tag": "nemotron:8b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
+    "provider": "NVIDIA",
+    "hf_downloads": 225279,
+    "gguf_sources": []
+  },
+  {
     "id": "nemotron-nemo-31.6b",
     "name": "NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
     "family": "nemotron",
     "params_b": 31.6,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "chat"
     ],
     "context_length": 262144,
     "release_date": "2025-12-04",
@@ -4171,13 +4572,13 @@
     ],
     "benchmarks": {
       "humaneval": null,
-      "mmlu_pro": 47.8,
-      "math": 55.4,
-      "ifeval": 83.2,
-      "bbh": 62.5,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 18.9,
-      "musr": 22.3,
+      "gpqa": null,
+      "musr": null,
       "mbpp": null,
       "bigcodebench": null,
       "alpacaeval": null,
@@ -4186,6 +4587,377 @@
     "hf_id": "nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16",
     "provider": "NVIDIA",
     "hf_downloads": 1071247,
+    "gguf_sources": []
+  },
+  {
+    "id": "olmo-32.2b",
+    "name": "OLMo-2-0325-32B",
+    "family": "olmo",
+    "params_b": 32.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2025-03-12",
+    "ollama_base": "olmo:32b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19047,
+        "quality": 0.94,
+        "ollama_tag": "olmo:32b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 27290,
+        "quality": 0.97,
+        "ollama_tag": "olmo:32b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 33473,
+        "quality": 0.995,
+        "ollama_tag": "olmo:32b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 66446,
+        "quality": 1.0,
+        "ollama_tag": "olmo:32b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "allenai/OLMo-2-0325-32B-Instruct",
+    "provider": "Allen Institute",
+    "hf_downloads": 3634,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/OLMo-2-0325-32B-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "smollm-135m",
+    "name": "SmolLM 135M",
+    "family": "other",
+    "params_b": 0.135,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2024-07-01",
+    "ollama_base": "smollm:135m",
+    "hf_id": "HuggingFaceTB/SmolLM-135M-Instruct",
+    "provider": "HuggingFace",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 578,
+        "quality": 0.94,
+        "ollama_tag": "smollm:135m-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 612,
+        "quality": 0.97,
+        "ollama_tag": "smollm:135m-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 638,
+        "quality": 0.995,
+        "ollama_tag": "smollm:135m-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 776,
+        "quality": 1.0,
+        "ollama_tag": "smollm:135m-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "smollm-360m",
+    "name": "SmolLM 360M",
+    "family": "other",
+    "params_b": 0.36,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2024-07-01",
+    "ollama_base": "smollm:360m",
+    "hf_id": "HuggingFaceTB/SmolLM-360M-Instruct",
+    "provider": "HuggingFace",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 707,
+        "quality": 0.94,
+        "ollama_tag": "smollm:360m-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 800,
+        "quality": 0.97,
+        "ollama_tag": "smollm:360m-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 869,
+        "quality": 0.995,
+        "ollama_tag": "smollm:360m-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1237,
+        "quality": 1.0,
+        "ollama_tag": "smollm:360m-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "smollm-1.7b",
+    "name": "SmolLM 1.7B",
+    "family": "other",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2024-07-01",
+    "ollama_base": "smollm:1.7b",
+    "hf_id": "HuggingFaceTB/SmolLM-1.7B-Instruct",
+    "provider": "HuggingFace",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1479,
+        "quality": 0.94,
+        "ollama_tag": "smollm:1.7b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1914,
+        "quality": 0.97,
+        "ollama_tag": "smollm:1.7b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2241,
+        "quality": 0.995,
+        "ollama_tag": "smollm:1.7b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3982,
+        "quality": 1.0,
+        "ollama_tag": "smollm:1.7b:fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "smollm2-1.7b",
+    "name": "SmolLM2 1.7B",
+    "family": "other",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2024-11-01",
+    "ollama_base": "smollm2:1.7b",
+    "hf_id": "HuggingFaceTB/SmolLM2-1.7B-Instruct",
+    "provider": "HuggingFace",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1479,
+        "quality": 0.94,
+        "ollama_tag": "smollm2:1.7b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1914,
+        "quality": 0.97,
+        "ollama_tag": "smollm2:1.7b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2241,
+        "quality": 0.995,
+        "ollama_tag": "smollm2:1.7b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3982,
+        "quality": 1.0,
+        "ollama_tag": "smollm2:1.7b:fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "granite-3b",
+    "name": "Granite 3B",
+    "family": "other",
+    "params_b": 3.0,
+    "architecture": "dense",
+    "capabilities": [
+      "coding"
+    ],
+    "context_length": 8192,
+    "release_date": "2024-05-06",
+    "ollama_base": "granite-code:3b",
+    "hf_id": "ibm-granite/granite-3b-code-instruct",
+    "provider": "IBM",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2228,
+        "quality": 0.94,
+        "ollama_tag": "granite-code:3b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2996,
+        "quality": 0.97,
+        "ollama_tag": "granite-code:3b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3572,
+        "quality": 0.995,
+        "ollama_tag": "granite-code:3b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6644,
+        "quality": 1.0,
+        "ollama_tag": "granite-code:3b:fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_downloads": 0,
     "gguf_sources": []
   },
   {
@@ -4247,12 +5019,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/openchat-3.5-0106-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "orca2-7b",
@@ -4497,12 +5264,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/WizardLM-2-7B-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "internlm2-7b",
@@ -4686,12 +5448,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/SOLAR-10.7B-Instruct-v1.0-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "orca2-13b",
@@ -4754,6 +5511,317 @@
     },
     "hf_downloads": 0,
     "gguf_sources": []
+  },
+  {
+    "id": "other-16.8b",
+    "name": "Ling-lite 16.8B",
+    "family": "other",
+    "params_b": 16.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2025-02-28",
+    "ollama_base": "other:16b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 10177,
+        "quality": 0.94,
+        "ollama_tag": "other:16b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 14478,
+        "quality": 0.97,
+        "ollama_tag": "other:16b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 17703,
+        "quality": 0.995,
+        "ollama_tag": "other:16b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 34906,
+        "quality": 1.0,
+        "ollama_tag": "other:16b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "inclusionAI/Ling-lite",
+    "provider": "Ant Group",
+    "hf_downloads": 463,
+    "gguf_sources": []
+  },
+  {
+    "id": "granite-20b",
+    "name": "Granite 20B",
+    "family": "other",
+    "params_b": 20.0,
+    "architecture": "dense",
+    "capabilities": [
+      "coding"
+    ],
+    "context_length": 8192,
+    "release_date": "2024-05-06",
+    "ollama_base": "granite-code:20b",
+    "hf_id": "ibm-granite/granite-20b-code-instruct",
+    "provider": "IBM",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 12020,
+        "quality": 0.94,
+        "ollama_tag": "granite-code:20b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 17140,
+        "quality": 0.97,
+        "ollama_tag": "granite-code:20b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 20980,
+        "quality": 0.995,
+        "ollama_tag": "granite-code:20b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 41460,
+        "quality": 1.0,
+        "ollama_tag": "granite-code:20b:fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "internlm2-20b",
+    "name": "InternLM 2 20B",
+    "family": "other",
+    "params_b": 20.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 32768,
+    "release_date": "2024-01-17",
+    "ollama_base": "internlm2:20b",
+    "hf_id": "internlm/internlm2-chat-20b",
+    "provider": "Shanghai AI Lab",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 12020,
+        "quality": 0.94,
+        "ollama_tag": "internlm2:20b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 17140,
+        "quality": 0.97,
+        "ollama_tag": "internlm2:20b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 20980,
+        "quality": 0.995,
+        "ollama_tag": "internlm2:20b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 41460,
+        "quality": 1.0,
+        "ollama_tag": "internlm2:20b:fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "granite-34b",
+    "name": "Granite 34B",
+    "family": "other",
+    "params_b": 34.0,
+    "architecture": "dense",
+    "capabilities": [
+      "coding"
+    ],
+    "context_length": 8192,
+    "release_date": "2024-05-06",
+    "ollama_base": "granite-code:34b",
+    "hf_id": "ibm-granite/granite-34b-code-instruct",
+    "provider": "IBM",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 20084,
+        "quality": 0.94,
+        "ollama_tag": "granite-code:34b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28788,
+        "quality": 0.97,
+        "ollama_tag": "granite-code:34b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 35316,
+        "quality": 0.995,
+        "ollama_tag": "granite-code:34b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 70132,
+        "quality": 1.0,
+        "ollama_tag": "granite-code:34b:fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_downloads": 0,
+    "gguf_sources": []
+  },
+  {
+    "id": "other-142.8b",
+    "name": "dots.llm1.inst 142.8B",
+    "family": "other",
+    "params_b": 142.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2025-05-14",
+    "ollama_base": "other:142b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 82753,
+        "quality": 0.94,
+        "ollama_tag": "other:142b-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 119310,
+        "quality": 0.97,
+        "ollama_tag": "other:142b-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 146727,
+        "quality": 0.995,
+        "ollama_tag": "other:142b-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 292954,
+        "quality": 1.0,
+        "ollama_tag": "other:142b-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "rednote-hilab/dots.llm1.inst",
+    "provider": "Rednote",
+    "hf_downloads": 5250,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/dots.llm1.inst-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   },
   {
     "id": "phi1-1.3b",
@@ -4939,12 +6007,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/phi-2-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "phi-3.8b",
@@ -4956,7 +6019,7 @@
       "chat"
     ],
     "context_length": 4096,
-    "release_date": "2024-04-23",
+    "release_date": "2026-03-07",
     "ollama_base": "phi3:3.8b",
     "quantizations": [
       {
@@ -5013,86 +6076,16 @@
     ]
   },
   {
-    "id": "phi-4-mini-3.8b",
-    "name": "Phi-4-mini 3.8B",
-    "family": "phi",
-    "params_b": 3.8,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
-    ],
-    "context_length": 128000,
-    "release_date": "2025-02-27",
-    "ollama_base": "phi4-mini:3.8b",
-    "benchmarks": {
-      "humaneval": 80.5,
-      "mmlu_pro": 52.8,
-      "math": 71.2,
-      "ifeval": 66.8,
-      "bbh": 46.5,
-      "mmmu": null,
-      "gpqa": 24.6,
-      "musr": 16.8,
-      "mbpp": null,
-      "bigcodebench": 33.1,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "microsoft/Phi-4-mini-instruct",
-    "provider": "Microsoft",
-    "hf_downloads": 1500000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Phi-4-mini-instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 2689,
-        "quality": 0.94,
-        "ollama_tag": "phi4-mini:3.8b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 3662,
-        "quality": 0.97,
-        "ollama_tag": "phi4-mini:3.8b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 4391,
-        "quality": 0.995,
-        "ollama_tag": "phi4-mini:3.8b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 8282,
-        "quality": 1.0,
-        "ollama_tag": "phi4-mini:3.8b-fp16"
-      }
-    ]
-  },
-  {
-    "id": "phi-3-medium-14b",
+    "id": "phi-14b",
     "name": "Phi-3-medium-14b",
     "family": "phi",
     "params_b": 14.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "chat"
     ],
     "context_length": 4096,
-    "release_date": "2024-05-21",
+    "release_date": "2026-03-07",
     "ollama_base": "phi3:14b",
     "quantizations": [
       {
@@ -5144,18 +6137,17 @@
     "gguf_sources": []
   },
   {
-    "id": "phi-4-14b",
+    "id": "phi-14b",
     "name": "phi-4 14B",
     "family": "phi",
     "params_b": 14.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "reasoning",
+      "chat"
     ],
     "context_length": 16384,
-    "release_date": "2024-12-12",
+    "release_date": "2026-03-07",
     "ollama_base": "phi4:14b",
     "quantizations": [
       {
@@ -5216,18 +6208,17 @@
     ]
   },
   {
-    "id": "phi-4-reasoning-14b",
+    "id": "phi-14b",
     "name": "Phi-4-reasoning 14B",
     "family": "phi",
     "params_b": 14.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
       "reasoning",
-      "coding"
+      "chat"
     ],
     "context_length": 32768,
-    "release_date": "2025-04-01",
+    "release_date": "2026-03-07",
     "ollama_base": "phi4:14b",
     "quantizations": [
       {
@@ -5284,18 +6275,17 @@
     ]
   },
   {
-    "id": "phi-4-multimodal-14b",
+    "id": "phi-14b",
     "name": "Phi-4-multimodal 14B",
     "family": "phi",
     "params_b": 14.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
       "vision",
-      "reasoning"
+      "chat"
     ],
     "context_length": 131072,
-    "release_date": "2025-01-07",
+    "release_date": "2026-03-07",
     "ollama_base": "phi4:14b",
     "quantizations": [
       {
@@ -5408,72 +6398,6 @@
     "gguf_sources": []
   },
   {
-    "id": "qwen2.5-0.5b",
-    "name": "Qwen 2.5 0.5B",
-    "family": "qwen",
-    "params_b": 0.5,
-    "architecture": "dense",
-    "capabilities": [
-      "chat"
-    ],
-    "context_length": 32768,
-    "release_date": "2024-09-19",
-    "ollama_base": "qwen2.5:0.5b",
-    "benchmarks": {
-      "humaneval": 36.6,
-      "mmlu_pro": 14.7,
-      "math": 34.5,
-      "ifeval": 36.9,
-      "bbh": 11.3,
-      "mmmu": null,
-      "gpqa": 2.9,
-      "musr": 3.2,
-      "mbpp": null,
-      "bigcodebench": 14.8,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "Qwen/Qwen2.5-0.5B-Instruct",
-    "provider": "Alibaba",
-    "hf_downloads": 2000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2.5-0.5B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 788,
-        "quality": 0.94,
-        "ollama_tag": "qwen2.5:0.5b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 916,
-        "quality": 0.97,
-        "ollama_tag": "qwen2.5:0.5b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 1012,
-        "quality": 0.995,
-        "ollama_tag": "qwen2.5:0.5b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 1524,
-        "quality": 1.0,
-        "ollama_tag": "qwen2.5:0.5b-fp16"
-      }
-    ]
-  },
-  {
     "id": "qwen-800m",
     "name": "Qwen3-0.6B",
     "family": "qwen",
@@ -5483,7 +6407,7 @@
       "chat"
     ],
     "context_length": 40960,
-    "release_date": "2025-04-29",
+    "release_date": "2026-03-07",
     "ollama_base": "qwen3:800m",
     "quantizations": [
       {
@@ -5542,7 +6466,7 @@
       "chat"
     ],
     "context_length": 262144,
-    "release_date": "2025-06-01",
+    "release_date": "2026-03-07",
     "ollama_base": "qwen3:900m",
     "quantizations": [
       {
@@ -5599,10 +6523,11 @@
     "architecture": "dense",
     "capabilities": [
       "coding",
+      "tool_use",
       "chat"
     ],
     "context_length": 32768,
-    "release_date": "2024-11-12",
+    "release_date": "2026-03-07",
     "ollama_base": "qwen2.5-coder:1.5b",
     "quantizations": [
       {
@@ -5717,73 +6642,6 @@
     "gguf_sources": []
   },
   {
-    "id": "qwen2.5-1.5b",
-    "name": "Qwen 2.5 1.5B",
-    "family": "qwen",
-    "params_b": 1.5,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "coding"
-    ],
-    "context_length": 32768,
-    "release_date": "2024-09-19",
-    "ollama_base": "qwen2.5:1.5b",
-    "benchmarks": {
-      "humaneval": 61.6,
-      "mmlu_pro": 24.2,
-      "math": 55.2,
-      "ifeval": 47.3,
-      "bbh": 19.6,
-      "mmmu": null,
-      "gpqa": 4.8,
-      "musr": 6.5,
-      "mbpp": null,
-      "bigcodebench": 22.1,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "Qwen/Qwen2.5-1.5B-Instruct",
-    "provider": "Alibaba",
-    "hf_downloads": 2500000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2.5-1.5B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 1364,
-        "quality": 0.94,
-        "ollama_tag": "qwen2.5:1.5b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 1748,
-        "quality": 0.97,
-        "ollama_tag": "qwen2.5:1.5b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 2036,
-        "quality": 0.995,
-        "ollama_tag": "qwen2.5:1.5b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 3572,
-        "quality": 1.0,
-        "ollama_tag": "qwen2.5:1.5b-fp16"
-      }
-    ]
-  },
-  {
     "id": "qwen1.5-1.8b",
     "name": "Qwen 1.5 1.8B",
     "family": "qwen",
@@ -5854,7 +6712,7 @@
       "chat"
     ],
     "context_length": 262144,
-    "release_date": "2025-06-01",
+    "release_date": "2026-02-28",
     "ollama_base": "qwen3:2.3b",
     "quantizations": [
       {
@@ -5900,73 +6758,6 @@
       {
         "repo": "unsloth/Qwen3.5-2B-GGUF",
         "provider": "unsloth"
-      }
-    ]
-  },
-  {
-    "id": "qwen2.5-3b",
-    "name": "Qwen 2.5 3B",
-    "family": "qwen",
-    "params_b": 3.1,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "coding"
-    ],
-    "context_length": 32768,
-    "release_date": "2024-09-19",
-    "ollama_base": "qwen2.5:3b",
-    "benchmarks": {
-      "humaneval": 69.5,
-      "mmlu_pro": 32.6,
-      "math": 62.5,
-      "ifeval": 58.1,
-      "bbh": 30.4,
-      "mmmu": null,
-      "gpqa": 5.4,
-      "musr": 9.8,
-      "mbpp": null,
-      "bigcodebench": 28.9,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "Qwen/Qwen2.5-3B-Instruct",
-    "provider": "Alibaba",
-    "hf_downloads": 3000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2.5-3B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 2286,
-        "quality": 0.94,
-        "ollama_tag": "qwen2.5:3b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 3079,
-        "quality": 0.97,
-        "ollama_tag": "qwen2.5:3b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 3674,
-        "quality": 0.995,
-        "ollama_tag": "qwen2.5:3b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 6849,
-        "quality": 1.0,
-        "ollama_tag": "qwen2.5:3b-fp16"
       }
     ]
   },
@@ -6109,7 +6900,7 @@
       "chat"
     ],
     "context_length": 262144,
-    "release_date": "2025-06-01",
+    "release_date": "2026-02-27",
     "ollama_base": "qwen3:4.7b",
     "quantizations": [
       {
@@ -6224,12 +7015,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen1.5-7B-Chat-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "qwen2-math-7b",
@@ -6290,12 +7076,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2-Math-7B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "qwen-7.6b",
@@ -6508,141 +7289,6 @@
     ]
   },
   {
-    "id": "qwen2.5-7b",
-    "name": "Qwen 2.5 7B",
-    "family": "qwen",
-    "params_b": 7.6,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
-    ],
-    "context_length": 131072,
-    "release_date": "2024-09-19",
-    "ollama_base": "qwen2.5:7b",
-    "benchmarks": {
-      "humaneval": 84.8,
-      "mmlu_pro": 45.0,
-      "math": 75.5,
-      "ifeval": 74.6,
-      "bbh": 41.1,
-      "mmmu": null,
-      "gpqa": 12.4,
-      "musr": 15.6,
-      "mbpp": null,
-      "bigcodebench": 38.2,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "Qwen/Qwen2.5-7B-Instruct",
-    "provider": "Alibaba",
-    "hf_downloads": 8000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2.5-7B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 4878,
-        "quality": 0.94,
-        "ollama_tag": "qwen2.5:7b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 6823,
-        "quality": 0.97,
-        "ollama_tag": "qwen2.5:7b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 8282,
-        "quality": 0.995,
-        "ollama_tag": "qwen2.5:7b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 16065,
-        "quality": 1.0,
-        "ollama_tag": "qwen2.5:7b-fp16"
-      }
-    ]
-  },
-  {
-    "id": "qwen2.5-coder-7b",
-    "name": "Qwen 2.5 Coder 7B",
-    "family": "qwen",
-    "params_b": 7.6,
-    "architecture": "dense",
-    "capabilities": [
-      "coding",
-      "chat"
-    ],
-    "context_length": 131072,
-    "release_date": "2024-11-12",
-    "ollama_base": "qwen2.5-coder:7b",
-    "benchmarks": {
-      "humaneval": 88.4,
-      "mmlu_pro": 36.8,
-      "math": 66.2,
-      "ifeval": 65.3,
-      "bbh": 33.5,
-      "mmmu": null,
-      "gpqa": 8.1,
-      "musr": 10.2,
-      "mbpp": null,
-      "bigcodebench": 41.4,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "Qwen/Qwen2.5-Coder-7B-Instruct",
-    "provider": "Alibaba",
-    "hf_downloads": 3000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2.5-Coder-7B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 4878,
-        "quality": 0.94,
-        "ollama_tag": "qwen2.5-coder:7b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 6823,
-        "quality": 0.97,
-        "ollama_tag": "qwen2.5-coder:7b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 8282,
-        "quality": 0.995,
-        "ollama_tag": "qwen2.5-coder:7b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 16065,
-        "quality": 1.0,
-        "ollama_tag": "qwen2.5-coder:7b-fp16"
-      }
-    ]
-  },
-  {
     "id": "qwen-vision-8.3b",
     "name": "Qwen2.5-VL-7B",
     "family": "qwen",
@@ -6720,7 +7366,7 @@
       "chat"
     ],
     "context_length": 262144,
-    "release_date": "2025-06-01",
+    "release_date": "2026-02-27",
     "ollama_base": "qwen3:9.7b",
     "quantizations": [
       {
@@ -6835,12 +7481,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen1.5-14B-Chat-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "qwen-coder-14.8b",
@@ -6921,12 +7562,11 @@
     "params_b": 14.8,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "tool_use",
+      "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-09-19",
+    "release_date": null,
     "ollama_base": "qwen2.5:14.8b",
     "quantizations": [
       {
@@ -6992,7 +7632,7 @@
       "chat"
     ],
     "context_length": 262144,
-    "release_date": "2025-06-01",
+    "release_date": "2026-02-24",
     "ollama_base": "qwen3:27.8b",
     "quantizations": [
       {
@@ -7107,12 +7747,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen1.5-32B-Chat-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "qwen-32.5b",
@@ -7121,12 +7756,11 @@
     "params_b": 32.5,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "tool_use",
+      "chat"
     ],
     "context_length": 131072,
-    "release_date": "2024-09-19",
+    "release_date": null,
     "ollama_base": "qwen2.5:32.5b",
     "quantizations": [
       {
@@ -7179,74 +7813,6 @@
       {
         "repo": "bartowski/Qwen2.5-32B-Instruct-GGUF",
         "provider": "bartowski"
-      }
-    ]
-  },
-  {
-    "id": "qwen2.5-coder-32b",
-    "name": "Qwen 2.5 Coder 32B",
-    "family": "qwen",
-    "params_b": 32.5,
-    "architecture": "dense",
-    "capabilities": [
-      "coding",
-      "chat",
-      "reasoning"
-    ],
-    "context_length": 131072,
-    "release_date": "2024-11-12",
-    "ollama_base": "qwen2.5-coder:32b",
-    "benchmarks": {
-      "humaneval": 92.7,
-      "mmlu_pro": 50.7,
-      "math": 83.9,
-      "ifeval": 81.5,
-      "bbh": 56.4,
-      "mmmu": null,
-      "gpqa": 22.7,
-      "musr": 18.5,
-      "mbpp": null,
-      "bigcodebench": 53.2,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "Qwen/Qwen2.5-Coder-32B-Instruct",
-    "provider": "Alibaba",
-    "hf_downloads": 5000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2.5-Coder-32B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 19220,
-        "quality": 0.94,
-        "ollama_tag": "qwen2.5-coder:32b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 27540,
-        "quality": 0.97,
-        "ollama_tag": "qwen2.5-coder:32b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 33780,
-        "quality": 0.995,
-        "ollama_tag": "qwen2.5-coder:32b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 67060,
-        "quality": 1.0,
-        "ollama_tag": "qwen2.5-coder:32b-fp16"
       }
     ]
   },
@@ -7400,12 +7966,10 @@
     "params_b": 36.0,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "chat"
     ],
     "context_length": 262144,
-    "release_date": "2025-06-01",
+    "release_date": "2026-02-24",
     "ollama_base": "qwen3:36b",
     "quantizations": [
       {
@@ -7520,12 +8084,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen1.5-72B-Chat-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "qwen2-math-72b",
@@ -7586,12 +8145,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2-Math-72B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "qwen-72.7b",
@@ -7657,75 +8211,6 @@
       {
         "repo": "bartowski/Qwen2.5-72B-Instruct-GGUF",
         "provider": "bartowski"
-      }
-    ]
-  },
-  {
-    "id": "qwen2.5-72b",
-    "name": "Qwen 2.5 72B",
-    "family": "qwen",
-    "params_b": 72.7,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "coding",
-      "reasoning",
-      "tool_use"
-    ],
-    "context_length": 131072,
-    "release_date": "2024-09-19",
-    "ollama_base": "qwen2.5:72b",
-    "benchmarks": {
-      "humaneval": 86.6,
-      "mmlu_pro": 58.1,
-      "math": 83.1,
-      "ifeval": 86.1,
-      "bbh": 64.1,
-      "mmmu": null,
-      "gpqa": 37.4,
-      "musr": 28.6,
-      "mbpp": null,
-      "bigcodebench": 48.5,
-      "alpacaeval": null,
-      "mmbench": null
-    },
-    "hf_id": "Qwen/Qwen2.5-72B-Instruct",
-    "provider": "Alibaba",
-    "hf_downloads": 4000000,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Qwen2.5-72B-Instruct-GGUF",
-        "provider": "bartowski"
-      }
-    ],
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 42375,
-        "quality": 0.94,
-        "ollama_tag": "qwen2.5:72b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 60986,
-        "quality": 0.97,
-        "ollama_tag": "qwen2.5:72b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8.0,
-        "vram_mb": 74945,
-        "quality": 0.995,
-        "ollama_tag": "qwen2.5:72b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16.0,
-        "vram_mb": 149390,
-        "quality": 1.0,
-        "ollama_tag": "qwen2.5:72b-fp16"
       }
     ]
   },
@@ -7797,12 +8282,10 @@
     "params_b": 125.1,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "coding",
-      "reasoning"
+      "chat"
     ],
     "context_length": 262144,
-    "release_date": "2025-06-01",
+    "release_date": "2026-02-24",
     "ollama_base": "qwen3:125.1b",
     "quantizations": [
       {
@@ -7854,6 +8337,206 @@
     "gguf_sources": [
       {
         "repo": "unsloth/Qwen3.5-122B-A10B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "qwen-235.1b",
+    "name": "Qwen3-235B-A22B",
+    "family": "qwen",
+    "params_b": 235.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2025-04-27",
+    "ollama_base": "qwen3:235.1b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 135918,
+        "quality": 0.94,
+        "ollama_tag": "qwen3:235.1b-instruct-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 196103,
+        "quality": 0.97,
+        "ollama_tag": "qwen3:235.1b-instruct-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 241242,
+        "quality": 0.995,
+        "ollama_tag": "qwen3:235.1b-instruct-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 481985,
+        "quality": 1.0,
+        "ollama_tag": "qwen3:235.1b-instruct-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "Qwen/Qwen3-235B-A22B",
+    "provider": "Alibaba",
+    "hf_downloads": 685468,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-235B-A22B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "qwen-403.4b",
+    "name": "Qwen3.5-397B-A17B",
+    "family": "qwen",
+    "params_b": 403.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-02-16",
+    "ollama_base": "qwen3:403.4b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 232858,
+        "quality": 0.94,
+        "ollama_tag": "qwen3:403.4b-instruct-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 336129,
+        "quality": 0.97,
+        "ollama_tag": "qwen3:403.4b-instruct-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 413582,
+        "quality": 0.995,
+        "ollama_tag": "qwen3:403.4b-instruct-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 826663,
+        "quality": 1.0,
+        "ollama_tag": "qwen3:403.4b-instruct-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "Qwen/Qwen3.5-397B-A17B",
+    "provider": "Alibaba",
+    "hf_downloads": 1409496,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3.5-397B-A17B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "qwen-coder-480.2b",
+    "name": "Qwen3-Coder-480B-A35B",
+    "family": "qwen",
+    "params_b": 480.2,
+    "architecture": "moe",
+    "capabilities": [
+      "coding",
+      "tool_use",
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2025-07-22",
+    "ollama_base": "qwen3:480.2b",
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 277095,
+        "quality": 0.94,
+        "ollama_tag": "qwen3:480.2b-instruct-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 400026,
+        "quality": 0.97,
+        "ollama_tag": "qwen3:480.2b-instruct-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 492225,
+        "quality": 0.995,
+        "ollama_tag": "qwen3:480.2b-instruct-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 983950,
+        "quality": 1.0,
+        "ollama_tag": "qwen3:480.2b-instruct-fp16"
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "hf_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "provider": "Alibaba",
+    "hf_downloads": 74333,
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-Coder-480B-A35B-Instruct-GGUF",
         "provider": "unsloth"
       }
     ]
@@ -7971,12 +8654,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/starcoder2-3b-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "starcoder2-7b",
@@ -8037,12 +8715,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/starcoder2-7b-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "starcoder-coder-7.2b",
@@ -8165,12 +8838,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/starcoder2-15b-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "yi-coder-1.5b",
@@ -8292,12 +8960,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/Yi-6B-Chat-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "yi-6.1b",
@@ -8480,12 +9143,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/Yi-Coder-9B-Chat-GGUF",
-        "provider": "bartowski"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "yi-34b",
@@ -8546,12 +9204,7 @@
       "mmbench": null
     },
     "hf_downloads": 0,
-    "gguf_sources": [
-      {
-        "repo": "TheBloke/Yi-34B-Chat-GGUF",
-        "provider": "TheBloke"
-      }
-    ]
+    "gguf_sources": []
   },
   {
     "id": "zephyr-7.2b",
