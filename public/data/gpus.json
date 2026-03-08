@@ -21,7 +21,7 @@
       "RTX5090"
     ],
     "availability": "available",
-    "price_usd": 1999
+    "price_usd": 3699
   },
   {
     "name": "NVIDIA RTX 5080",
@@ -45,7 +45,7 @@
       "RTX 5080"
     ],
     "availability": "available",
-    "price_usd": 999
+    "price_usd": 1599
   },
   {
     "name": "NVIDIA RTX 5070 Ti",
@@ -69,7 +69,7 @@
       "rtx 5070 ti"
     ],
     "availability": "available",
-    "price_usd": 749
+    "price_usd": 1159
   },
   {
     "name": "NVIDIA RTX 5070",
@@ -93,7 +93,7 @@
       "RTX 5070"
     ],
     "availability": "available",
-    "price_usd": 549
+    "price_usd": 669
   },
   {
     "name": "NVIDIA RTX 4090",
@@ -117,7 +117,7 @@
       "NVIDIA RTX 4090"
     ],
     "availability": "available",
-    "price_usd": 1599
+    "price_usd": 3745
   },
   {
     "name": "NVIDIA RTX 4080 SUPER",
@@ -141,7 +141,7 @@
       "rtx 4080 super"
     ],
     "availability": "available",
-    "price_usd": 999
+    "price_usd": 1295
   },
   {
     "name": "NVIDIA RTX 4080",
@@ -165,7 +165,7 @@
       "RTX 4080"
     ],
     "availability": "available",
-    "price_usd": 1199
+    "price_usd": 1399
   },
   {
     "name": "NVIDIA RTX 4070 Ti SUPER",
@@ -189,7 +189,7 @@
       "RTX 4070 Ti SUPER"
     ],
     "availability": "available",
-    "price_usd": 799
+    "price_usd": 999
   },
   {
     "name": "NVIDIA RTX 4070 Ti",
@@ -213,7 +213,7 @@
       "RTX4070Ti"
     ],
     "availability": "available",
-    "price_usd": 799
+    "price_usd": 2099
   },
   {
     "name": "NVIDIA RTX 4070 SUPER",
@@ -237,7 +237,7 @@
       "rtx 4070 super"
     ],
     "availability": "available",
-    "price_usd": 599
+    "price_usd": 549
   },
   {
     "name": "NVIDIA RTX 4070",
@@ -261,7 +261,7 @@
       "rtx 4070"
     ],
     "availability": "available",
-    "price_usd": 549
+    "price_usd": 655
   },
   {
     "name": "NVIDIA RTX 4060 Ti 16GB",
@@ -285,7 +285,7 @@
       "RTX4060Ti16GB"
     ],
     "availability": "available",
-    "price_usd": 499
+    "price_usd": 479
   },
   {
     "name": "NVIDIA RTX 4060 Ti 8GB",
@@ -309,7 +309,7 @@
       "RTX4060Ti8GB"
     ],
     "availability": "available",
-    "price_usd": 399
+    "price_usd": 479
   },
   {
     "name": "NVIDIA RTX 4060",
@@ -333,7 +333,7 @@
       "RTX4060"
     ],
     "availability": "available",
-    "price_usd": 299
+    "price_usd": 479
   },
   {
     "name": "NVIDIA RTX 3090 Ti",
@@ -356,7 +356,8 @@
       "RTX3090Ti",
       "rtx 3090 ti",
       "NVIDIA RTX 3090 Ti"
-    ]
+    ],
+    "price_usd": 2185
   },
   {
     "name": "NVIDIA RTX 3090",
@@ -379,7 +380,8 @@
       "NVIDIA RTX 3090",
       "rtx 3090",
       "RTX3090"
-    ]
+    ],
+    "price_usd": 1510
   },
   {
     "name": "NVIDIA RTX 3080 Ti",
@@ -402,7 +404,8 @@
       "NVIDIA RTX 3080 Ti",
       "RTX3080Ti",
       "rtx 3080 ti"
-    ]
+    ],
+    "price_usd": 1345
   },
   {
     "name": "NVIDIA RTX 3080 12GB",
@@ -425,7 +428,8 @@
       "RTX 3080 12GB",
       "rtx 3080 12gb",
       "RTX308012GB"
-    ]
+    ],
+    "price_usd": 599
   },
   {
     "name": "NVIDIA RTX 3080 10GB",
@@ -448,7 +452,8 @@
       "NVIDIA RTX 3080 10GB",
       "rtx 3080 10gb",
       "RTX308010GB"
-    ]
+    ],
+    "price_usd": 429
   },
   {
     "name": "NVIDIA RTX 3070 Ti",
@@ -471,7 +476,8 @@
       "rtx 3070 ti",
       "RTX 3070 Ti",
       "NVIDIA RTX 3070 Ti"
-    ]
+    ],
+    "price_usd": 499
   },
   {
     "name": "NVIDIA RTX 3070",
@@ -494,7 +500,8 @@
       "NVIDIA RTX 3070",
       "RTX3070",
       "RTX 3070"
-    ]
+    ],
+    "price_usd": 325
   },
   {
     "name": "NVIDIA RTX 3060 Ti",
@@ -517,7 +524,8 @@
       "RTX 3060 Ti",
       "rtx 3060 ti",
       "NVIDIA RTX 3060 Ti"
-    ]
+    ],
+    "price_usd": 643
   },
   {
     "name": "NVIDIA RTX 3060 12GB",
@@ -541,7 +549,7 @@
       "RTX 3060 12GB"
     ],
     "availability": "available",
-    "price_usd": 329
+    "price_usd": 339
   },
   {
     "name": "AMD RX 7900 XTX",
@@ -564,7 +572,7 @@
       "AMD RX 7900 XTX"
     ],
     "availability": "available",
-    "price_usd": 999
+    "price_usd": 879
   },
   {
     "name": "AMD RX 7900 XT",
@@ -587,7 +595,7 @@
       "RX7900XT"
     ],
     "availability": "available",
-    "price_usd": 899
+    "price_usd": 679
   },
   {
     "name": "AMD RX 7900 GRE",
@@ -610,7 +618,7 @@
       "RX7900GRE"
     ],
     "availability": "available",
-    "price_usd": 549
+    "price_usd": 509
   },
   {
     "name": "AMD RX 7800 XT",
@@ -633,7 +641,7 @@
       "RX 7800 XT"
     ],
     "availability": "available",
-    "price_usd": 499
+    "price_usd": 752
   },
   {
     "name": "AMD RX 7700 XT",
@@ -656,7 +664,7 @@
       "RX7700XT"
     ],
     "availability": "available",
-    "price_usd": 449
+    "price_usd": 399
   },
   {
     "name": "AMD RX 7600 XT",
@@ -702,7 +710,7 @@
       "RX7600"
     ],
     "availability": "available",
-    "price_usd": 269
+    "price_usd": 279
   },
   {
     "name": "AMD RX 6950 XT",
@@ -746,7 +754,8 @@
       "RX6900XT",
       "rx 6900 xt",
       "AMD RX 6900 XT"
-    ]
+    ],
+    "price_usd": 469
   },
   {
     "name": "AMD RX 6800 XT",
@@ -768,7 +777,8 @@
       "RX 6800 XT",
       "AMD RX 6800 XT",
       "rx 6800 xt"
-    ]
+    ],
+    "price_usd": 599
   },
   {
     "name": "AMD RX 6800",
@@ -790,7 +800,8 @@
       "RX6800",
       "AMD RX 6800",
       "RX 6800"
-    ]
+    ],
+    "price_usd": 599
   },
   {
     "name": "AMD RX 6700 XT",
@@ -812,7 +823,8 @@
       "AMD RX 6700 XT",
       "RX 6700 XT",
       "rx 6700 xt"
-    ]
+    ],
+    "price_usd": 344
   },
   {
     "name": "Intel Arc A770 16GB",
@@ -834,7 +846,7 @@
       "Arc A770 16GB"
     ],
     "availability": "available",
-    "price_usd": 349
+    "price_usd": 379
   },
   {
     "name": "Intel Arc A750",
@@ -856,7 +868,7 @@
       "Arc A750"
     ],
     "availability": "available",
-    "price_usd": 289
+    "price_usd": 279
   },
   {
     "name": "Intel Arc B580",
@@ -878,7 +890,7 @@
       "arc b580"
     ],
     "availability": "available",
-    "price_usd": 249
+    "price_usd": 424
   },
   {
     "name": "Apple M1 (8GB)",

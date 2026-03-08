@@ -15,16 +15,16 @@ Choose a model you want to run, set your speed and budget preferences, and get G
 ### Hardware Detection
 - **Auto-detect GPU** via WebGL - automatically identifies your graphics card
 - **Auto-detect CPU** - detects thread count and Apple Silicon chips
-- **52 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000/9000), Apple Silicon (M1-M4), Intel Arc
+- **56 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
 - **32 CPUs** in database for CPU inference estimates
 - **Manual override** for any hardware spec
 
 ### Hardware Recommendations (Build for Model)
 - **Reverse search**: select a model, get GPU recommendations
 - **Speed preferences**: Any, Usable (10+ tok/s), Fast (25+ tok/s), Blazing (50+ tok/s)
-- **Budget filters**: No limit, Under €500/€1000/€1500/€2000
+- **Budget filters**: No limit, Under $500/$1000/$1500/$2000
 - **Quantization options**: Q4, Q6, Q8, FP16
-- **GPU prices**: 32 GPUs with EUR/USD prices and availability status
+- **GPU prices**: 56 GPUs with USD prices from Newegg
 - **Buy links**: Direct links to purchase recommended GPUs
 - **Multi-GPU**: Suggests 2x GPU configs when beneficial
 
@@ -129,13 +129,15 @@ src/
   hooks/
     useRecommendation.ts  # React hook for state and data fetching
 public/data/
-  gpus.json               # GPU database (52 cards)
+  gpus.json               # GPU database (56 cards)
   cpus.json               # CPU database (32 processors)
   models.json             # LLM models with benchmarks (84 models)
 scripts/
   scrape_hf_models.py     # Scrape models from HuggingFace
   merge_models.py         # Merge into app format
   update_models.py        # Update benchmarks from leaderboards
+  update_gpu_prices.py    # Update GPU prices from Newegg (USD)
+  scrape_gpus_simple.py   # Full GPU scraper with specs + prices
 ```
 
 ## How It Works
@@ -207,22 +209,11 @@ HF_TOKEN=hf_xxx python3 scripts/update_models.py
 ```bash
 source .venv/bin/activate
 
-# Quick update: just prices from Geizhals/Newegg
+# Update USD prices from Newegg
 python3 scripts/update_gpu_prices.py
-
-# Full scrape: specs + prices from TechPowerUp, PCPartPicker, Amazon
-python3 scripts/scrape_gpus.py
-
-# With Amazon affiliate tag
-python3 scripts/scrape_gpus.py --affiliate-tag your-tag-20
-
-# Test mode (3 GPUs only)
-python3 scripts/scrape_gpus.py --test
 ```
 
-Price sources:
-- **EUR**: Geizhals.de, Idealo.de
-- **USD**: Newegg, PCPartPicker
+The script scrapes current prices from Newegg for all 44 purchasable GPUs (excludes Apple Silicon which is not sold separately).
 
 **Note**: HuggingFace token (`HF_TOKEN`) is optional but recommended for gated models (Llama, Mistral) and higher rate limits. Create one at https://huggingface.co/settings/tokens
 
@@ -232,10 +223,9 @@ Edit `public/data/gpus.json`:
 
 ```json
 {
-  "name": "RTX 5090",
+  "name": "NVIDIA RTX 5090",
   "vendor": "nvidia",
-  "aliases": ["5090", "GeForce 5090"],
-  "price_eur": 2349,
+  "aliases": ["RTX 5090", "rtx 5090", "RTX5090"],
   "price_usd": 1999,
   "availability": "available",
   "vram_mb": 32768,
@@ -243,8 +233,10 @@ Edit `public/data/gpus.json`:
   "memory_type": "GDDR7",
   "cuda_cores": 21760,
   "tensor_cores": 680,
-  "fp16_tflops": 209.5,
+  "fp16_tflops": 209,
+  "fp32_tflops": 104,
   "architecture": "Blackwell",
+  "compute_capability": "10.0",
   "tdp_watts": 575
 }
 ```
