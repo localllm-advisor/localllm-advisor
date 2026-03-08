@@ -313,17 +313,40 @@ function RecipeDisplay({
               This model is too large for consumer GPUs
             </p>
             <p className="text-gray-400 text-sm">
-              Requires {recipe.vramRequired.toFixed(0)}GB+ VRAM. Maximum consumer GPU is 32GB (RTX 5090).
+              Requires {recipe.vramRequired.toFixed(0)}GB VRAM. Maximum consumer GPU is 32GB (RTX 5090).
+              {recipe.vramRequired > 256 && (
+                <span className="block mt-1">
+                  Even 8x RTX 5090 (256GB) wouldn't be enough.
+                </span>
+              )}
             </p>
           </div>
 
-          {recipe.cloudOptions.length > 0 && (
+          {recipe.cloudOptions.length > 0 ? (
             <div className="space-y-3">
               <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide">Cloud Options</h4>
               <div className="grid gap-3 md:grid-cols-2">
                 {recipe.cloudOptions.map((cloud, idx) => (
                   <CloudCard key={idx} cloud={cloud} />
                 ))}
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-xl border border-orange-600/50 bg-orange-900/10 p-4">
+              <p className="text-orange-400 mb-2 font-medium">
+                Datacenter-scale infrastructure required
+              </p>
+              <p className="text-gray-400 text-sm">
+                This model requires {recipe.vramRequired.toFixed(0)}GB VRAM - more than 16x H100 80GB (1.28TB).
+                You'll need a large GPU cluster or consider a smaller quantization.
+              </p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className="px-3 py-1 rounded bg-gray-700 text-gray-300 text-sm">
+                  ~{Math.ceil(recipe.vramRequired / 80)} x H100 80GB needed
+                </span>
+                <span className="px-3 py-1 rounded bg-gray-700 text-gray-300 text-sm">
+                  ~${(Math.ceil(recipe.vramRequired / 80) * 2.5).toFixed(0)}/hr estimated
+                </span>
               </div>
             </div>
           )}

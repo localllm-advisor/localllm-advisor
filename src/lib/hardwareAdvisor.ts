@@ -238,10 +238,10 @@ export function buildHardwareRecipe(
       })
     : budgetOption;
 
-  // Cloud options
+  // Cloud options - try up to 16 GPUs for very large models
   const cloudOptions: CloudOption[] = [];
   for (const cloud of CLOUD_GPUS) {
-    for (const count of [1, 2, 4, 8]) {
+    for (const count of [1, 2, 4, 8, 16]) {
       const totalVram = cloud.vramGb * count;
       if (totalVram >= vramRequired) {
         const toksPerSec = estimateTokensPerSecond(cloud.bandwidthGbps, vramRequired, count);
