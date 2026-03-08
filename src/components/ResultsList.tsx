@@ -405,20 +405,20 @@ export default function ResultsList({
                 />
                 <button
                   onClick={() => setSelectedModel(i)}
-                  className="flex-1 flex items-center gap-2 text-left"
+                  className="flex-1 flex items-center gap-2 text-left min-w-0"
                 >
-                  <span className={`w-5 h-5 rounded flex items-center justify-center text-[10px] font-bold ${MODEL_COLORS[i]} text-white`}>
+                  <span className={`w-5 h-5 shrink-0 rounded flex items-center justify-center text-[10px] font-bold ${MODEL_COLORS[i]} text-white`}>
                     {i + 1}
                   </span>
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 overflow-hidden">
                     <div className="text-xs font-medium text-white truncate">
                       {result.model.name}
                     </div>
-                    <div className="text-[10px] text-gray-500">
+                    <div className="text-[10px] text-gray-500 truncate">
                       {result.quant.level} &middot; {(result.quant.vram_mb / 1024).toFixed(1)}GB
                     </div>
                   </div>
-                  <div className="text-sm font-bold text-white">{result.score}</div>
+                  <div className="text-sm font-bold text-white shrink-0 w-8 text-right">{result.score}</div>
                 </button>
               </div>
             ))}
