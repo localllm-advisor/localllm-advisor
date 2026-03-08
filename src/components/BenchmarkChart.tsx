@@ -27,10 +27,10 @@ const BENCHMARK_INFO: Record<keyof Benchmarks, { name: string; description: stri
 // Data sources:
 // - Open LLM Leaderboard: ifeval, mmlu_pro, bbh, math, gpqa, musr
 // - BigCodeBench: bigcodebench
-// TODO: Add HumanEval/MBPP when EvalPlus data becomes available
+// - EvalPlus: humaneval, mbpp
 const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   chat: ['ifeval', 'mmlu_pro', 'bbh'],
-  coding: ['bigcodebench', 'math', 'bbh', 'ifeval'],  // bigcodebench + reasoning proxies
+  coding: ['humaneval', 'mbpp', 'bigcodebench', 'ifeval'],
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
   creative: ['ifeval', 'mmlu_pro', 'bbh'],
   vision: ['ifeval', 'mmlu_pro', 'bbh'],  // Placeholder until MMMU/MMBench available

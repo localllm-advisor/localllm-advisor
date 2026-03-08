@@ -105,7 +105,7 @@ interface ResultsListProps {
 // Benchmarks per use case
 const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   chat: ['ifeval', 'mmlu_pro', 'bbh'],
-  coding: ['bigcodebench', 'math', 'bbh', 'ifeval'],
+  coding: ['humaneval', 'mbpp', 'bigcodebench', 'ifeval'],
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
   creative: ['ifeval', 'mmlu_pro', 'bbh'],
   vision: ['ifeval', 'mmlu_pro', 'bbh'],
