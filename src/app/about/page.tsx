@@ -35,7 +35,7 @@ export default function AboutPage() {
           <section>
             <h2 className="text-xl font-semibold text-white mb-3">What is this?</h2>
             <p>
-              LocalLLM Advisor is a free, open-source tool that helps you find the best Large Language Model
+              LocalLLM Advisor is a free tool that helps you find the best Large Language Model
               for your specific hardware. Instead of guessing whether a model will run on your GPU,
               you get concrete estimates based on real specifications.
             </p>
