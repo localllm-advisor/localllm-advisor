@@ -34,7 +34,10 @@ export default function Home() {
 
   const scrollToTool = () => {
     setShowHero(false);
-    toolRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // After hero hides, scroll to top smoothly
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 50);
   };
 
   // Wrap setters to clear results when inputs change
