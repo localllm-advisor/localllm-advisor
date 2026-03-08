@@ -33,6 +33,7 @@ export default function Home() {
   const toolRef = useRef<HTMLDivElement>(null);
 
   const scrollToTool = () => {
+    setShowHero(false);
     toolRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
