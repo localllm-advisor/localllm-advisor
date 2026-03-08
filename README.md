@@ -184,7 +184,7 @@ python3 -m venv .venv
 source .venv/bin/activate  # Linux/Mac
 # or: .venv\Scripts\activate  # Windows
 
-pip install requests pandas pyarrow datasets
+pip install -r requirements.txt
 ```
 
 ### Update Models
@@ -206,7 +206,6 @@ HF_TOKEN=hf_xxx python3 scripts/update_models.py
 
 ```bash
 source .venv/bin/activate
-pip install requests beautifulsoup4 lxml
 
 # Quick update: just prices from Geizhals/Newegg
 python3 scripts/update_gpu_prices.py
