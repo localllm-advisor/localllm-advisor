@@ -157,19 +157,20 @@ function BenchmarksContent() {
               {user ? (
                 <div className="flex items-center gap-3">
                   <div className="flex items-center gap-2">
-                    {user.user_metadata?.avatar_url ? (
+                    {(user.user_metadata?.avatar_url || user.user_metadata?.picture) ? (
                       <img
-                        src={user.user_metadata.avatar_url}
+                        src={user.user_metadata.avatar_url || user.user_metadata.picture}
                         alt=""
                         className="w-7 h-7 rounded-full"
+                        referrerPolicy="no-referrer"
                       />
                     ) : (
                       <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-medium ${isDark ? 'bg-blue-600 text-white' : 'bg-blue-500 text-white'}`}>
-                        {(user.user_metadata?.name || user.email || '?')[0].toUpperCase()}
+                        {(user.user_metadata?.name || user.user_metadata?.full_name || user.email || '?')[0].toUpperCase()}
                       </div>
                     )}
                     <span className={`text-sm hidden sm:inline ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                      {user.user_metadata?.name || user.email?.split('@')[0]}
+                      {user.user_metadata?.name || user.user_metadata?.full_name || user.email?.split('@')[0]}
                     </span>
                   </div>
                   <button
