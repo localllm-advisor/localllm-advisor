@@ -273,7 +273,7 @@ function RecipeDisplay({
         </div>
       </div>
 
-      {/* Featured Options */}
+      {/* Featured Options - when filters match */}
       {(recipe.budgetOption || recipe.recommendedOption || recipe.premiumOption) && (
         <div className="space-y-3">
           <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide">Recommended Builds</h4>
@@ -291,21 +291,46 @@ function RecipeDisplay({
         </div>
       )}
 
-      {/* No Consumer Options - Show Cloud First */}
-      {!recipe.canRunConsumer && recipe.cloudOptions.length > 0 && (
-        <div className="rounded-xl border border-yellow-600/50 bg-yellow-900/10 p-4">
-          <p className="text-yellow-400 mb-3">
-            This model requires more VRAM than available consumer GPUs. Consider cloud options:
-          </p>
+      {/* No filtered options but we have theoretical options - show minimum requirement */}
+      {recipe.allOptions.length === 0 && recipe.minimumViableOption && (
+        <div className="space-y-3">
+          <div className="rounded-xl border border-yellow-600/50 bg-yellow-900/10 p-4">
+            <p className="text-yellow-400 mb-3">
+              No GPUs match your speed/budget filters. Here's the minimum hardware required:
+            </p>
+          </div>
           <div className="grid gap-3 md:grid-cols-2">
-            {recipe.cloudOptions.map((cloud, idx) => (
-              <CloudCard key={idx} cloud={cloud} />
-            ))}
+            <OptionCard option={recipe.minimumViableOption} badge="Minimum Required" badgeColor="bg-yellow-600" />
           </div>
         </div>
       )}
 
-      {/* Cloud Options (when consumer options exist) */}
+      {/* No consumer options at all - show cloud + theoretical minimum */}
+      {!recipe.canRunConsumer && (
+        <div className="space-y-4">
+          <div className="rounded-xl border border-red-600/50 bg-red-900/10 p-4">
+            <p className="text-red-400 mb-2 font-medium">
+              This model is too large for consumer GPUs
+            </p>
+            <p className="text-gray-400 text-sm">
+              Requires {recipe.vramRequired.toFixed(0)}GB+ VRAM. Maximum consumer GPU is 32GB (RTX 5090).
+            </p>
+          </div>
+
+          {recipe.cloudOptions.length > 0 && (
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide">Cloud Options</h4>
+              <div className="grid gap-3 md:grid-cols-2">
+                {recipe.cloudOptions.map((cloud, idx) => (
+                  <CloudCard key={idx} cloud={cloud} />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Cloud Alternatives (when consumer options exist) */}
       {recipe.canRunConsumer && recipe.cloudOptions.length > 0 && (
         <div className="space-y-3">
           <h4 className="text-sm font-medium text-gray-400 uppercase tracking-wide">Cloud Alternatives</h4>
@@ -317,19 +342,22 @@ function RecipeDisplay({
         </div>
       )}
 
-      {/* All Options Toggle */}
-      {recipe.allOptions.length > 3 && (
+      {/* All Options Toggle - show theoretical options */}
+      {recipe.allTheoreticalOptions.length > 0 && (
         <div className="space-y-3">
           <button
             onClick={() => setShowAllOptions(!showAllOptions)}
             className="text-sm text-blue-400 hover:text-blue-300 transition-colors"
           >
-            {showAllOptions ? '▼ Hide all options' : `▶ Show all ${recipe.allOptions.length} options`}
+            {showAllOptions
+              ? '▼ Hide all options'
+              : `▶ Show all ${recipe.allTheoreticalOptions.length} hardware options`
+            }
           </button>
 
           {showAllOptions && (
             <div className="grid gap-2">
-              {recipe.allOptions.map((opt, idx) => (
+              {recipe.allTheoreticalOptions.map((opt, idx) => (
                 <CompactOptionRow key={idx} option={opt} />
               ))}
             </div>

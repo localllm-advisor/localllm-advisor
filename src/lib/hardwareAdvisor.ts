@@ -41,17 +41,23 @@ export interface HardwareRecipe {
   vramRequired: number;        // GB needed for selected quant
   allVramRequirements: VramRequirements;
 
-  // Feasibility
+  // Feasibility (theoretical - ignoring filters)
   canRunSingleGpu: boolean;
   canRunDualGpu: boolean;
   canRunConsumer: boolean;     // Any consumer GPU setup works
   minGpusNeeded: number;       // Minimum GPUs needed (1, 2, 4, 8, or 0 if impossible)
 
-  // Hardware options
-  budgetOption: HardwareOption | null;      // Cheapest that works
-  recommendedOption: HardwareOption | null; // Best value
-  premiumOption: HardwareOption | null;     // Fastest
-  allOptions: HardwareOption[];             // All viable options
+  // Minimum hardware requirement (ignoring speed/budget filters)
+  minimumViableOption: HardwareOption | null;  // Cheapest option that can physically run the model
+
+  // Hardware options (filtered by speed/budget preferences)
+  budgetOption: HardwareOption | null;      // Cheapest that meets criteria
+  recommendedOption: HardwareOption | null; // Best value that meets criteria
+  premiumOption: HardwareOption | null;     // Fastest that meets criteria
+  allOptions: HardwareOption[];             // All options meeting criteria
+
+  // All theoretical options (ignoring filters) - for "show all" view
+  allTheoreticalOptions: HardwareOption[];
 
   // Cloud fallback
   cloudOptions: CloudOption[];
@@ -179,17 +185,29 @@ export function buildHardwareRecipe(
     return true;
   });
 
-  // Apply speed and budget filters
+  // Sort all theoretical options: single GPU first, then by price
+  const allTheoreticalOptions = [...dedupedOptions].sort((a, b) => {
+    if (a.gpuCount !== b.gpuCount) return a.gpuCount - b.gpuCount;
+    const aPrice = a.totalPrice || 999999;
+    const bPrice = b.totalPrice || 999999;
+    return aPrice - bPrice;
+  });
+
+  // Minimum viable option: cheapest that can physically run the model (ignoring speed)
+  const theoreticalWithPrice = allTheoreticalOptions.filter(o => o.totalPrice !== null);
+  const minimumViableOption = theoreticalWithPrice.length > 0
+    ? theoreticalWithPrice.reduce((a, b) => (a.totalPrice! < b.totalPrice! ? a : b))
+    : null;
+
+  // Apply speed and budget filters for user preferences
   let filteredOptions = dedupedOptions.filter(opt => opt.estimatedToksPerSec >= minTokensPerSec);
   if (maxPriceUsd !== null) {
     filteredOptions = filteredOptions.filter(opt => opt.totalPrice !== null && opt.totalPrice <= maxPriceUsd);
   }
 
-  // Sort options: single GPU first, then by value (speed per dollar)
+  // Sort filtered options: single GPU first, then by value (speed per dollar)
   filteredOptions.sort((a, b) => {
-    // Prioritize fewer GPUs
     if (a.gpuCount !== b.gpuCount) return a.gpuCount - b.gpuCount;
-    // Then by speed/price ratio
     const aValue = a.estimatedToksPerSec / (a.totalPrice || 10000);
     const bValue = b.estimatedToksPerSec / (b.totalPrice || 10000);
     return bValue - aValue;
@@ -199,13 +217,13 @@ export function buildHardwareRecipe(
   const singleGpuOptions = filteredOptions.filter(o => o.gpuCount === 1);
   const multiGpuOptions = filteredOptions.filter(o => o.gpuCount > 1);
 
-  // Budget: cheapest option
+  // Budget: cheapest filtered option
   const withPrice = filteredOptions.filter(o => o.totalPrice !== null);
   const budgetOption = withPrice.length > 0
     ? withPrice.reduce((a, b) => (a.totalPrice! < b.totalPrice! ? a : b))
     : null;
 
-  // Premium: fastest option
+  // Premium: fastest filtered option
   const premiumOption = filteredOptions.length > 0
     ? filteredOptions.reduce((a, b) => (a.estimatedToksPerSec > b.estimatedToksPerSec ? a : b))
     : null;
@@ -244,16 +262,17 @@ export function buildHardwareRecipe(
   // Sort cloud by price
   cloudOptions.sort((a, b) => a.pricePerHour - b.pricePerHour);
 
-  // Determine feasibility (based on filtered options that meet criteria)
-  const canRunSingleGpu = singleGpuOptions.length > 0;
-  const canRunDualGpu = filteredOptions.some(o => o.gpuCount <= 2);
-  const canRunConsumer = filteredOptions.length > 0;
+  // Determine feasibility (based on theoretical options, not filtered)
+  const theoreticalSingleGpu = allTheoreticalOptions.filter(o => o.gpuCount === 1);
+  const canRunSingleGpu = theoreticalSingleGpu.length > 0;
+  const canRunDualGpu = allTheoreticalOptions.some(o => o.gpuCount <= 2);
+  const canRunConsumer = allTheoreticalOptions.length > 0;
 
   let minGpusNeeded = 0;
   if (canRunSingleGpu) minGpusNeeded = 1;
-  else if (filteredOptions.some(o => o.gpuCount === 2)) minGpusNeeded = 2;
-  else if (filteredOptions.some(o => o.gpuCount === 4)) minGpusNeeded = 4;
-  else if (filteredOptions.some(o => o.gpuCount === 8)) minGpusNeeded = 8;
+  else if (allTheoreticalOptions.some(o => o.gpuCount === 2)) minGpusNeeded = 2;
+  else if (allTheoreticalOptions.some(o => o.gpuCount === 4)) minGpusNeeded = 4;
+  else if (allTheoreticalOptions.some(o => o.gpuCount === 8)) minGpusNeeded = 8;
 
   // System requirements
   const maxGpuTdp = premiumOption ? (premiumOption.gpu.tdp_watts || 300) : 300;
@@ -287,11 +306,13 @@ export function buildHardwareRecipe(
     canRunDualGpu,
     canRunConsumer,
     minGpusNeeded,
+    minimumViableOption,
     budgetOption,
     recommendedOption,
     premiumOption,
-    allOptions: filteredOptions.slice(0, 12), // Limit to 12 options
-    cloudOptions: cloudOptions.slice(0, 4),   // Top 4 cloud options
+    allOptions: filteredOptions.slice(0, 12),
+    allTheoreticalOptions: allTheoreticalOptions.slice(0, 20),
+    cloudOptions: cloudOptions.slice(0, 4),
     systemRequirements,
   };
 }
