@@ -42,7 +42,7 @@ Works for any model size:
 - Extreme models (1000B+): Datacenter requirements (e.g., "9x H100 @ $22/hr")
 
 ### Model Database
-- **84 LLM models** from 23 providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
+- **147 LLM models** from 25+ providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
 - **57 models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval
 - **4 quantization levels** per model: Q4_K_M, Q6_K, Q8_0, FP16
 - **MoE support** with active parameter detection
@@ -330,6 +330,36 @@ The repo has a GitHub Actions workflow (`.github/workflows/deploy.yml`) that on 
 To enable: repo Settings -> Pages -> Source: **GitHub Actions**
 
 Site will be at `https://localllm-advisor.github.io/localllm-advisor/`
+
+## Community Discussions
+
+The app includes community discussions powered by [Giscus](https://giscus.app/) (GitHub Discussions).
+
+### Setup Giscus
+
+1. **Enable Discussions** in your GitHub repository:
+   - Go to repo Settings → General → Features → Check "Discussions"
+
+2. **Create categories** in Discussions:
+   - Go to Discussions tab → Categories → New category
+   - Create: `Models` (for model discussions), `GPUs` (for GPU discussions)
+
+3. **Configure Giscus**:
+   - Go to https://giscus.app/
+   - Enter your repo: `localllm-advisor/localllm-advisor`
+   - Select category: `Models`
+   - Copy the `data-repo-id` and `data-category-id` values
+
+4. **Update the component**:
+   - Edit `src/components/Giscus.tsx`
+   - Fill in `data-repo-id` and `data-category-id`
+
+### Features
+
+- **Discuss button** on each model card opens a discussion modal
+- **GitHub login** required to comment
+- **Reactions** enabled (thumbs up, heart, etc.)
+- **Theme sync** with dark/light mode
 
 ## Analytics
 
