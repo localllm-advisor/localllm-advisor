@@ -34,10 +34,10 @@ export default function Home() {
 
   const scrollToTool = () => {
     setShowHero(false);
-    // After hero hides, scroll to top smoothly
+    // Wait for transition to complete, then scroll to top
     setTimeout(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 50);
+    }, 300);
   };
 
   // Wrap setters to clear results when inputs change
@@ -177,9 +177,10 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      {showHero && (
-        <section className={`relative overflow-hidden border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
-          {/* Background gradient */}
+      <section
+        className={`relative overflow-hidden border-b transition-all duration-700 ease-in-out ${isDark ? 'border-gray-800' : 'border-gray-200'} ${showHero ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden border-none'}`}
+      >
+        {/* Background gradient */}
           <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10' : 'bg-gradient-to-br from-blue-100/50 via-transparent to-purple-100/50'}`} />
 
           <div className="relative mx-auto max-w-5xl px-4 py-16 sm:py-20">
@@ -267,7 +268,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-      )}
 
       {/* Mode Tabs */}
       <div ref={toolRef} className="mx-auto max-w-3xl px-4 pt-6">
