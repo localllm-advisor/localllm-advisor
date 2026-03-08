@@ -202,6 +202,29 @@ python3 scripts/merge_models.py
 HF_TOKEN=hf_xxx python3 scripts/update_models.py
 ```
 
+### Update GPU Prices
+
+```bash
+source .venv/bin/activate
+pip install requests beautifulsoup4 lxml
+
+# Quick update: just prices from Geizhals/Newegg
+python3 scripts/update_gpu_prices.py
+
+# Full scrape: specs + prices from TechPowerUp, PCPartPicker, Amazon
+python3 scripts/scrape_gpus.py
+
+# With Amazon affiliate tag
+python3 scripts/scrape_gpus.py --affiliate-tag your-tag-20
+
+# Test mode (3 GPUs only)
+python3 scripts/scrape_gpus.py --test
+```
+
+Price sources:
+- **EUR**: Geizhals.de, Idealo.de
+- **USD**: Newegg, PCPartPicker
+
 **Note**: HuggingFace token (`HF_TOKEN`) is optional but recommended for gated models (Llama, Mistral) and higher rate limits. Create one at https://huggingface.co/settings/tokens
 
 ### Add a New GPU
