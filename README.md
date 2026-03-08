@@ -99,6 +99,15 @@ RTX 4070 (12 reports)  ████████████          42 tok/s av
 RTX 3080 (8 reports)   ██████████            35 tok/s avg (range: 31-39)
 ```
 
+### Benchmarks Page (`/benchmarks`)
+Dedicated page for browsing all community benchmarks with advanced features:
+- **Full list view**: All benchmarks in one scrollable page
+- **Voting system**: Upvote/downvote helpful benchmarks
+- **Filters**: By model, GPU, quantization level
+- **Sorting**: Top voted, fastest, or newest
+- **Detailed cards**: Hardware info, metrics, and notes for each submission
+- **Direct linking**: Link to specific model benchmarks via `?model=llama3.1:70b`
+
 ### Use Cases
 5 use cases with different benchmark weights:
 - **Chat**: IFEval, MMLU-PRO, BBH
@@ -209,6 +218,14 @@ npm run dev
 4. Submit a benchmark
 5. Verify it appears in the stats
 
+**Test the Benchmarks Page:**
+
+1. Click "Benchmarks" in the header navigation
+2. Browse all submitted benchmarks
+3. Use filters to narrow by model, GPU, or quantization
+4. Vote on benchmarks (requires login)
+5. Test direct linking: `/benchmarks?model=llama3.1:70b`
+
 ### Database Schema
 
 ```sql
@@ -221,10 +238,22 @@ benchmarks (
   runtime, notes, created_at, verified, flagged
 )
 
+-- Votes table
+benchmark_votes (
+  id, user_id, benchmark_id,
+  vote_type,  -- 1 = upvote, -1 = downvote
+  created_at
+)
+
 -- Aggregated view
 benchmark_stats (
   model_id, quant_level, gpu_name,
   submission_count, avg_tps, min_tps, max_tps, median_tps
+)
+
+-- Benchmarks with vote counts
+benchmarks_with_votes (
+  ..., upvotes, downvotes, vote_score
 )
 ```
 
@@ -250,6 +279,7 @@ npm run build && npx serve out
 src/
   app/                    # Next.js pages and layouts
     page.tsx              # Main page
+    benchmarks/           # Community benchmarks page with voting
     about/                # About page
     faq/                  # FAQ page
     methodology/          # Methodology page
