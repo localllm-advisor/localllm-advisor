@@ -449,14 +449,14 @@ export default function ResultsList({
 
           {/* Comparison Bars */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {/* Score */}
+            {/* Score - absolute scale 0-100 */}
             <button
               onClick={() => setExpandedChart({ type: 'score' })}
               className="rounded-xl border border-gray-700 bg-gray-800/80 p-3 text-left hover:border-gray-500 transition-colors cursor-pointer"
             >
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-xs font-medium text-gray-400">Score</span>
-                <span className="text-[10px] text-gray-600">Click to expand</span>
+                <span className="text-[10px] text-gray-600">/100</span>
               </div>
               <div className="space-y-0.5">
                 {topModels.map((r, i) => (
@@ -465,7 +465,7 @@ export default function ResultsList({
                     <div className="flex-1 h-2.5 bg-gray-900 rounded overflow-hidden">
                       <div
                         className={`h-full ${MODEL_COLORS[i]} ${selectedModel === i ? 'opacity-100' : 'opacity-50'}`}
-                        style={{ width: `${(r.score / maxScore) * 100}%` }}
+                        style={{ width: `${r.score}%` }}
                       />
                     </div>
                     <span className="text-[10px] text-gray-400 w-6 text-right">{r.score}</span>
@@ -557,21 +557,17 @@ export default function ResultsList({
             </button>
           </div>
 
-          {/* Benchmark Comparison Charts */}
+          {/* Benchmark Comparison Charts - absolute scale 0-100 */}
           <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-4">
             <h3 className="text-sm font-semibold text-gray-300 mb-3">
               Benchmark Comparison
               <span className="ml-2 text-xs font-normal text-gray-500">
-                ({useCase})
+                ({useCase}) — scale 0-100
               </span>
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
               {USE_CASE_BENCHMARKS[useCase].map((benchKey) => {
                 const benchName = BENCHMARK_NAMES[benchKey];
-                const maxVal = Math.max(
-                  ...topModels.map((r) => r.model.benchmarks[benchKey] ?? 0),
-                  1
-                );
                 return (
                   <button
                     key={benchKey}
@@ -580,11 +576,12 @@ export default function ResultsList({
                   >
                     <div className="flex items-center justify-between text-xs font-medium text-gray-400 mb-1">
                       <span>{benchName}</span>
-                      <span className="text-[10px] text-gray-600">Expand</span>
+                      <span className="text-[10px] text-gray-600">/100</span>
                     </div>
                     {topModels.map((r, i) => {
                       const val = r.model.benchmarks[benchKey];
-                      const width = val !== null && val !== undefined ? (val / maxVal) * 100 : 0;
+                      // Absolute scale: value is already 0-100
+                      const width = val !== null && val !== undefined ? val : 0;
                       return (
                         <div key={`b-${benchKey}-${r.model.id}`} className="flex items-center gap-1">
                           <div className={`w-1.5 h-1.5 rounded-full ${MODEL_COLORS[i]}`} />
@@ -914,26 +911,26 @@ export default function ResultsList({
                 if (expandedChart.type === 'score') {
                   value = r.score;
                   displayValue = `${r.score}`;
-                  barWidth = (r.score / maxScore) * 100;
+                  barWidth = r.score; // Absolute scale 0-100
                 } else if (expandedChart.type === 'speed') {
                   value = r.performance.tokensPerSecond;
                   displayValue = value ? `${value}` : '—';
+                  // Speed uses relative scale (no clear max)
                   barWidth = value ? (value / maxSpeed) * 100 : 0;
                 } else if (expandedChart.type === 'vram') {
                   value = r.memory.vramPercent;
                   displayValue = `${value}%`;
-                  barWidth = Math.min(value, 100);
+                  barWidth = Math.min(value, 100); // Already absolute 0-100
                   barColor = value > 90 ? 'bg-red-500' : value > 75 ? 'bg-yellow-500' : MODEL_COLORS[i];
                 } else if (expandedChart.type === 'quant') {
                   value = r.quant.quality * 100;
                   displayValue = r.quant.level;
-                  barWidth = value;
+                  barWidth = value; // Already 0-100
                 } else if (expandedChart.type === 'benchmark' && expandedChart.benchKey) {
                   const benchVal = r.model.benchmarks[expandedChart.benchKey];
-                  const maxBench = Math.max(...topModels.map((m) => m.model.benchmarks[expandedChart.benchKey!] ?? 0), 1);
                   value = benchVal ?? null;
                   displayValue = value !== null ? value.toFixed(1) : '—';
-                  barWidth = value !== null ? (value / maxBench) * 100 : 0;
+                  barWidth = value !== null ? value : 0; // Absolute scale 0-100
                 }
 
                 return (
@@ -985,35 +982,31 @@ function ComparisonRadar({
 }) {
   const radarData = useMemo(() => {
     // Get max values for normalization
-    const maxScore = Math.max(...models.map(m => m.score), 1);
+    // Speed still needs relative scale (no clear max)
     const maxSpeed = Math.max(...models.map(m => m.performance.tokensPerSecond ?? 0), 1);
 
     // Get relevant benchmarks for use case
     const benchmarks = USE_CASE_BENCHMARKS[useCase].slice(0, 4); // Max 4 benchmarks
-    const benchMaxes: Record<string, number> = {};
-    benchmarks.forEach(b => {
-      benchMaxes[b] = Math.max(...models.map(m => m.model.benchmarks[b] ?? 0), 1);
-    });
 
-    // Build data points
+    // Build data points - using absolute scales where applicable
     const data = [
       {
         label: 'Score',
-        values: models.map(m => (m.score / maxScore) * 100),
+        values: models.map(m => m.score), // Absolute 0-100
       },
       {
         label: 'Speed',
-        values: models.map(m => ((m.performance.tokensPerSecond ?? 0) / maxSpeed) * 100),
+        values: models.map(m => ((m.performance.tokensPerSecond ?? 0) / maxSpeed) * 100), // Relative (no clear max)
       },
       {
         label: 'VRAM Eff.',
-        values: models.map(m => Math.max(0, 100 - m.memory.vramPercent)),
+        values: models.map(m => Math.max(0, 100 - m.memory.vramPercent)), // Absolute 0-100
       },
       ...benchmarks.map(benchKey => ({
         label: BENCHMARK_NAMES[benchKey],
         values: models.map(m => {
           const val = m.model.benchmarks[benchKey];
-          return val !== null && val !== undefined ? (val / benchMaxes[benchKey]) * 100 : 0;
+          return val !== null && val !== undefined ? val : 0; // Absolute 0-100
         }),
       })),
     ];
