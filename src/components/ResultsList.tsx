@@ -44,6 +44,142 @@ const BENCHMARK_NAMES: Record<keyof Benchmarks, string> = {
   mmbench: 'MMBench',
 };
 
+// Use case labels
+const USE_CASE_LABELS: Record<UseCase, string> = {
+  chat: 'Chat',
+  coding: 'Coding',
+  reasoning: 'Reasoning',
+  creative: 'Creative Writing',
+  vision: 'Vision',
+};
+
+// Speed experience descriptions
+function getSpeedDescription(toksPerSec: number): string {
+  if (toksPerSec >= 60) return 'Instant responses';
+  if (toksPerSec >= 40) return 'Very fast, feels instant';
+  if (toksPerSec >= 25) return 'Fast and fluid';
+  if (toksPerSec >= 15) return 'Comfortable for chat';
+  if (toksPerSec >= 8) return 'Usable but noticeable delay';
+  if (toksPerSec >= 4) return 'Slow, requires patience';
+  return 'Very slow';
+}
+
+// Compute smart recommendations
+interface Recommendation {
+  model: ScoredModel;
+  index: number;
+  badge: string;
+  badgeColor: string;
+  reason: string;
+}
+
+function computeRecommendations(
+  results: ScoredModel[],
+  useCase: UseCase
+): Recommendation[] {
+  if (results.length === 0) return [];
+
+  const recommendations: Recommendation[] = [];
+  const top10 = results.slice(0, 10);
+
+  // Find fastest model
+  const fastest = top10.reduce((best, curr, idx) => {
+    const currSpeed = curr.performance.tokensPerSecond ?? 0;
+    const bestSpeed = best.model.performance.tokensPerSecond ?? 0;
+    return currSpeed > bestSpeed ? { model: curr, index: idx } : best;
+  }, { model: top10[0], index: 0 });
+
+  // Find most capable (highest score among larger models)
+  const mostCapable = top10.reduce((best, curr, idx) => {
+    // Prefer higher score, but also consider model size as a tie-breaker
+    if (curr.score > best.model.score) return { model: curr, index: idx };
+    if (curr.score === best.model.score && curr.model.params_b > best.model.model.params_b) {
+      return { model: curr, index: idx };
+    }
+    return best;
+  }, { model: top10[0], index: 0 });
+
+  // Find best value (good score with lower VRAM, faster speed)
+  const bestValue = top10.reduce((best, curr, idx) => {
+    const currSpeed = curr.performance.tokensPerSecond ?? 0;
+    const bestSpeed = best.model.performance.tokensPerSecond ?? 0;
+    // Value = score * speed_factor / vram_usage
+    const currValue = (curr.score * Math.sqrt(currSpeed)) / (curr.memory.vramPercent || 1);
+    const bestValue = (best.model.score * Math.sqrt(bestSpeed)) / (best.model.memory.vramPercent || 1);
+    return currValue > bestValue ? { model: curr, index: idx } : best;
+  }, { model: top10[0], index: 0 });
+
+  // Our Pick: Best overall considering everything
+  // Weighted combination of score, speed, and efficiency
+  const ourPick = top10.reduce((best, curr, idx) => {
+    const currSpeed = curr.performance.tokensPerSecond ?? 0;
+    const bestSpeed = best.model.performance.tokensPerSecond ?? 0;
+
+    // Normalize factors (rough estimates)
+    const currScoreN = curr.score / 100;
+    const bestScoreN = best.model.score / 100;
+    const currSpeedN = Math.min(currSpeed / 50, 1); // Cap at 50 tok/s
+    const bestSpeedN = Math.min(bestSpeed / 50, 1);
+    const currVramN = 1 - (curr.memory.vramPercent / 100);
+    const bestVramN = 1 - (best.model.memory.vramPercent / 100);
+
+    // Weighted score: 50% quality, 30% speed, 20% VRAM headroom
+    const currTotal = currScoreN * 0.5 + currSpeedN * 0.3 + currVramN * 0.2;
+    const bestTotal = bestScoreN * 0.5 + bestSpeedN * 0.3 + bestVramN * 0.2;
+
+    return currTotal > bestTotal ? { model: curr, index: idx } : best;
+  }, { model: top10[0], index: 0 });
+
+  // Build recommendations list (avoid duplicates)
+  const usedIndices = new Set<number>();
+
+  // Always add Our Pick first
+  recommendations.push({
+    ...ourPick,
+    badge: 'Our Pick',
+    badgeColor: 'bg-gradient-to-r from-yellow-500 to-orange-500',
+    reason: `Best overall for ${USE_CASE_LABELS[useCase].toLowerCase()} on your hardware`,
+  });
+  usedIndices.add(ourPick.index);
+
+  // Add Fastest if different
+  if (!usedIndices.has(fastest.index)) {
+    const speed = fastest.model.performance.tokensPerSecond ?? 0;
+    recommendations.push({
+      ...fastest,
+      badge: 'Fastest',
+      badgeColor: 'bg-green-500',
+      reason: `${speed} tok/s — ${getSpeedDescription(speed).toLowerCase()}`,
+    });
+    usedIndices.add(fastest.index);
+  }
+
+  // Add Most Capable if different
+  if (!usedIndices.has(mostCapable.index)) {
+    recommendations.push({
+      ...mostCapable,
+      badge: 'Most Capable',
+      badgeColor: 'bg-purple-500',
+      reason: `Highest benchmark scores (${mostCapable.model.model.params_b}B parameters)`,
+    });
+    usedIndices.add(mostCapable.index);
+  }
+
+  // Add Best Value if different
+  if (!usedIndices.has(bestValue.index)) {
+    const speed = bestValue.model.performance.tokensPerSecond ?? 0;
+    const vram = (bestValue.model.quant.vram_mb / 1024).toFixed(1);
+    recommendations.push({
+      ...bestValue,
+      badge: 'Best Value',
+      badgeColor: 'bg-blue-500',
+      reason: `Great balance: ${speed} tok/s, only ${vram}GB VRAM`,
+    });
+  }
+
+  return recommendations;
+}
+
 // Colors for models (10)
 const MODEL_COLORS = [
   'bg-blue-500',
@@ -102,6 +238,9 @@ export default function ResultsList({
   const maxSpeed = Math.max(...topModels.map(r => r.performance.tokensPerSecond ?? 0), 1);
   const maxScore = Math.max(...topModels.map(r => r.score), 1);
 
+  // Compute recommendations
+  const recommendations = computeRecommendations(results, useCase);
+
   return (
     <div className="space-y-4">
       {/* Header */}
@@ -136,6 +275,76 @@ export default function ResultsList({
           )}
         </div>
       </div>
+
+      {/* Recommendations Panel */}
+      {viewMode === 'dashboard' && recommendations.length > 0 && (
+        <div className="rounded-xl border border-gray-700 bg-gradient-to-br from-gray-800/90 to-gray-900/90 p-4">
+          <h3 className="text-sm font-semibold text-gray-300 mb-3 flex items-center gap-2">
+            <svg className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            Our Recommendations
+          </h3>
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
+            {recommendations.map((rec) => {
+              const speed = rec.model.performance.tokensPerSecond ?? 0;
+              const vram = (rec.model.quant.vram_mb / 1024).toFixed(1);
+              return (
+                <button
+                  key={`rec-${rec.index}`}
+                  onClick={() => setSelectedModel(rec.index)}
+                  className={`text-left rounded-lg border p-3 transition-all ${
+                    selectedModel === rec.index
+                      ? 'border-yellow-500/50 bg-yellow-500/10'
+                      : 'border-gray-700 bg-gray-800/50 hover:border-gray-600 hover:bg-gray-800'
+                  }`}
+                >
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <span className={`px-2 py-0.5 rounded text-xs font-medium text-white ${rec.badgeColor}`}>
+                      {rec.badge}
+                    </span>
+                    <span className="text-lg font-bold text-white">{rec.model.score}</span>
+                  </div>
+                  <h4 className="font-medium text-white text-sm mb-1 truncate">
+                    {rec.model.model.name}
+                  </h4>
+                  <p className="text-xs text-gray-400 mb-2">{rec.reason}</p>
+                  <div className="flex items-center gap-3 text-xs text-gray-500">
+                    <span>{rec.model.quant.level}</span>
+                    <span>{vram}GB</span>
+                    {speed > 0 && <span className="text-green-400">{speed} tok/s</span>}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Contextual tip */}
+          {selected && (
+            <div className="mt-4 pt-3 border-t border-gray-700/50">
+              <p className="text-xs text-gray-400">
+                <span className="text-yellow-500">Tip:</span>{' '}
+                {selected.performance.tokensPerSecond && selected.performance.tokensPerSecond >= 40 ? (
+                  <>At {selected.performance.tokensPerSecond} tok/s, {selected.model.name} will feel instant — great for interactive use.</>
+                ) : selected.performance.tokensPerSecond && selected.performance.tokensPerSecond >= 20 ? (
+                  <>At {selected.performance.tokensPerSecond} tok/s, responses from {selected.model.name} arrive smoothly with minimal waiting.</>
+                ) : selected.performance.tokensPerSecond && selected.performance.tokensPerSecond >= 10 ? (
+                  <>At {selected.performance.tokensPerSecond} tok/s, {selected.model.name} is comfortable for chat but you&apos;ll notice the generation.</>
+                ) : selected.performance.tokensPerSecond ? (
+                  <>At {selected.performance.tokensPerSecond} tok/s, {selected.model.name} requires patience. Consider a smaller model for faster iteration.</>
+                ) : (
+                  <>Select a model to see performance insights.</>
+                )}
+                {selected.memory.vramPercent > 85 && (
+                  <span className="block mt-1 text-yellow-400">
+                    Warning: {selected.model.name} uses {selected.memory.vramPercent}% of your VRAM — leave headroom for longer contexts.
+                  </span>
+                )}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Legend */}
       <div className="flex flex-wrap items-center gap-x-4 gap-y-1 rounded-lg bg-gray-800/50 border border-gray-700 px-4 py-2">
