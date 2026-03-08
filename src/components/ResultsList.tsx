@@ -1,8 +1,89 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useRef } from 'react';
 import { ScoredModel, UseCase, Benchmarks } from '@/lib/types';
 import RadarChart from './RadarChart';
+
+// Export utilities
+function exportToJSON(results: ScoredModel[], gpuName: string | null, vramMb: number, useCase: UseCase) {
+  const data = {
+    exported: new Date().toISOString(),
+    hardware: {
+      gpu: gpuName || 'Unknown',
+      vram_gb: Math.round(vramMb / 1024),
+    },
+    useCase,
+    results: results.map(r => ({
+      rank: results.indexOf(r) + 1,
+      model: r.model.name,
+      family: r.model.family,
+      params_b: r.model.params_b,
+      quantization: r.quant.level,
+      score: r.score,
+      inference_mode: r.inferenceMode,
+      vram_gb: +(r.quant.vram_mb / 1024).toFixed(1),
+      vram_percent: r.memory.vramPercent,
+      tokens_per_sec: r.performance.tokensPerSecond,
+      ollama_command: `ollama run ${r.quant.ollama_tag}`,
+      benchmarks: r.model.benchmarks,
+    })),
+  };
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `llm-recommendations-${useCase}-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function exportToCSV(results: ScoredModel[], gpuName: string | null, vramMb: number, useCase: UseCase) {
+  const headers = [
+    'Rank', 'Model', 'Family', 'Params (B)', 'Quantization', 'Score',
+    'Inference Mode', 'VRAM (GB)', 'VRAM %', 'Tokens/sec', 'Ollama Command',
+    'MMLU-PRO', 'MATH', 'IFEval', 'BBH', 'HumanEval', 'BigCodeBench'
+  ];
+
+  const rows = results.map((r, i) => [
+    i + 1,
+    r.model.name,
+    r.model.family,
+    r.model.params_b,
+    r.quant.level,
+    r.score,
+    r.inferenceMode,
+    (r.quant.vram_mb / 1024).toFixed(1),
+    r.memory.vramPercent,
+    r.performance.tokensPerSecond ?? '',
+    `ollama run ${r.quant.ollama_tag}`,
+    r.model.benchmarks.mmlu_pro ?? '',
+    r.model.benchmarks.math ?? '',
+    r.model.benchmarks.ifeval ?? '',
+    r.model.benchmarks.bbh ?? '',
+    r.model.benchmarks.humaneval ?? '',
+    r.model.benchmarks.bigcodebench ?? '',
+  ]);
+
+  const csvContent = [
+    `# LocalLLM Advisor Export - ${new Date().toISOString()}`,
+    `# Hardware: ${gpuName || 'Unknown'} (${Math.round(vramMb / 1024)}GB VRAM)`,
+    `# Use Case: ${useCase}`,
+    '',
+    headers.join(','),
+    ...rows.map(row => row.map(cell =>
+      typeof cell === 'string' && cell.includes(',') ? `"${cell}"` : cell
+    ).join(','))
+  ].join('\n');
+
+  const blob = new Blob([csvContent], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `llm-recommendations-${useCase}-${new Date().toISOString().split('T')[0]}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
 
 type ChartType = 'score' | 'speed' | 'vram' | 'quant' | 'benchmark' | null;
 
@@ -242,6 +323,9 @@ export default function ResultsList({
   // Compute recommendations
   const recommendations = computeRecommendations(results, useCase);
 
+  const [showExportMenu, setShowExportMenu] = useState(false);
+  const exportRef = useRef<HTMLDivElement>(null);
+
   return (
     <div className="space-y-4">
       {/* Header */}
@@ -252,17 +336,53 @@ export default function ResultsList({
           {' '}&middot;{' '}
           <span className="font-semibold text-blue-400 capitalize">{useCase}</span>
         </p>
-        {viewMode === 'compare' && (
-          <button
-            onClick={() => setViewMode('dashboard')}
-            className="px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors flex items-center gap-1"
-          >
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-            </svg>
-            Back to Results
-          </button>
-        )}
+        <div className="flex items-center gap-2">
+          {/* Export dropdown */}
+          <div className="relative" ref={exportRef}>
+            <button
+              onClick={() => setShowExportMenu(!showExportMenu)}
+              className="px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors flex items-center gap-1"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Export
+            </button>
+            {showExportMenu && (
+              <div className="absolute right-0 mt-1 w-32 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-30">
+                <button
+                  onClick={() => {
+                    exportToJSON(results, gpuName, vramMb, useCase);
+                    setShowExportMenu(false);
+                  }}
+                  className="w-full px-3 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 rounded-t-lg"
+                >
+                  JSON
+                </button>
+                <button
+                  onClick={() => {
+                    exportToCSV(results, gpuName, vramMb, useCase);
+                    setShowExportMenu(false);
+                  }}
+                  className="w-full px-3 py-2 text-left text-sm text-gray-300 hover:bg-gray-700 rounded-b-lg"
+                >
+                  CSV
+                </button>
+              </div>
+            )}
+          </div>
+          {viewMode === 'compare' && (
+            <button
+              onClick={() => setViewMode('dashboard')}
+              className="px-3 py-1.5 text-xs font-medium bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-colors flex items-center gap-1"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to Results
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Recommendations Panel */}
