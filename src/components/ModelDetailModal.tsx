@@ -1,8 +1,10 @@
 'use client';
 
-import { useState } from 'react';
-import { ScoredModel } from '@/lib/types';
+import { useState, useEffect } from 'react';
+import { ScoredModel, GPU } from '@/lib/types';
 import { useTheme } from './ThemeProvider';
+import CommunityBenchmarks from './CommunityBenchmarks';
+import BenchmarkSubmitModal from './BenchmarkSubmitModal';
 
 interface ModelDetailModalProps {
   model: ScoredModel;
@@ -28,6 +30,17 @@ export default function ModelDetailModal({ model, onClose }: ModelDetailModalPro
   const { theme } = useTheme();
   const isDark = theme === 'dark';
   const [copied, setCopied] = useState(false);
+  const [showBenchmarkSubmit, setShowBenchmarkSubmit] = useState(false);
+  const [gpus, setGpus] = useState<GPU[]>([]);
+  const [refreshBenchmarks, setRefreshBenchmarks] = useState(0);
+
+  // Load GPUs for the benchmark submit form
+  useEffect(() => {
+    fetch('/data/gpus.json')
+      .then(res => res.json())
+      .then(data => setGpus(data))
+      .catch(console.error);
+  }, []);
 
   const m = model.model;
   const quant = model.quant;
@@ -202,6 +215,15 @@ export default function ModelDetailModal({ model, onClose }: ModelDetailModalPro
             </Section>
           )}
 
+          {/* Community Benchmarks */}
+          <CommunityBenchmarks
+            key={refreshBenchmarks}
+            modelId={m.id}
+            modelName={m.name}
+            quantLevel={quant.level}
+            onSubmitClick={() => setShowBenchmarkSubmit(true)}
+          />
+
           {/* Model Info */}
           <Section title="Model Info" isDark={isDark}>
             <div className="grid grid-cols-2 gap-4">
@@ -306,6 +328,18 @@ export default function ModelDetailModal({ model, onClose }: ModelDetailModalPro
           </div>
         </div>
       </div>
+
+      {/* Benchmark Submit Modal */}
+      {showBenchmarkSubmit && (
+        <BenchmarkSubmitModal
+          modelId={m.id}
+          modelName={m.name}
+          quantLevel={quant.level}
+          gpus={gpus}
+          onClose={() => setShowBenchmarkSubmit(false)}
+          onSuccess={() => setRefreshBenchmarks(prev => prev + 1)}
+        />
+      )}
     </div>
   );
 }
