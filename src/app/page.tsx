@@ -24,7 +24,16 @@ export default function Home() {
   });
   const [useCase, setUseCase] = useState<UseCase>('chat');
   const [filters, setFilters] = useState<AdvancedFilters>(DEFAULT_FILTERS);
+  const [buildForModelId, setBuildForModelId] = useState<string | undefined>();
   const resultsRef = useRef<HTMLDivElement>(null);
+
+  // Handle "Build for this model" from results
+  const handleBuildForModel = (modelId: string) => {
+    setBuildForModelId(modelId);
+    setMode('build-hardware');
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Check if we can run a search
   const isCpuOnlyMode = specs.inference_mode === 'cpu_only';
@@ -135,7 +144,10 @@ export default function Home() {
       <div className="mx-auto max-w-3xl px-4 pt-6">
         <div className="flex rounded-xl bg-gray-800 p-1">
           <button
-            onClick={() => setMode('find-models')}
+            onClick={() => {
+              setMode('find-models');
+              setBuildForModelId(undefined);
+            }}
             className={`flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-all ${
               mode === 'find-models'
                 ? 'bg-blue-600 text-white shadow-lg'
@@ -149,7 +161,10 @@ export default function Home() {
             <span className="hidden sm:inline text-xs opacity-75">I have hardware</span>
           </button>
           <button
-            onClick={() => setMode('build-hardware')}
+            onClick={() => {
+              setMode('build-hardware');
+              setBuildForModelId(undefined);
+            }}
             className={`flex-1 flex items-center justify-center gap-2 rounded-lg px-4 py-3 text-sm font-medium transition-all ${
               mode === 'build-hardware'
                 ? 'bg-orange-600 text-white shadow-lg'
@@ -191,7 +206,7 @@ export default function Home() {
           </section>
         ) : (
           <section className="space-y-6">
-            <HardwareFinder models={models} gpus={gpus} />
+            <HardwareFinder models={models} gpus={gpus} initialModelId={buildForModelId} />
           </section>
         )}
       </main>
@@ -204,6 +219,7 @@ export default function Home() {
             gpuName={isCpuOnlyMode ? 'CPU Only' : (specs.gpu_name ?? null)}
             vramMb={specs.vram_mb || 0}
             useCase={useCase}
+            onBuildForModel={handleBuildForModel}
           />
         </section>
       )}

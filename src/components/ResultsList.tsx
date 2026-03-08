@@ -17,6 +17,7 @@ interface ResultsListProps {
   gpuName: string | null;
   vramMb: number;
   useCase: UseCase;
+  onBuildForModel?: (modelId: string) => void;
 }
 
 // Benchmarks per use case
@@ -62,6 +63,7 @@ export default function ResultsList({
   gpuName,
   vramMb,
   useCase,
+  onBuildForModel,
 }: ResultsListProps) {
   const [selectedModel, setSelectedModel] = useState<number>(0);
   const [expandedChart, setExpandedChart] = useState<ExpandedChartData>({ type: null });
@@ -418,6 +420,19 @@ export default function ResultsList({
                 Copy
               </button>
             </div>
+
+            {/* Build for this model link */}
+            {onBuildForModel && (
+              <button
+                onClick={() => onBuildForModel(selected.model.id)}
+                className="mt-3 w-full flex items-center justify-center gap-2 rounded-lg border border-orange-600/50 bg-orange-600/10 px-4 py-2.5 text-sm font-medium text-orange-400 hover:bg-orange-600/20 hover:border-orange-500 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
+                </svg>
+                Build hardware for {selected.model.name}
+              </button>
+            )}
           </div>
         </div>
       </div>

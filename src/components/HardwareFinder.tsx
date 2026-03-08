@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Model, GPU } from '@/lib/types';
 import { buildHardwareRecipe, HardwareRecipe, HardwareOption, CloudOption } from '@/lib/hardwareAdvisor';
 
 interface HardwareFinderProps {
   models: Model[];
   gpus: GPU[];
+  initialModelId?: string;
 }
 
 const QUANT_OPTIONS = [
@@ -33,7 +34,7 @@ const BUDGET_OPTIONS = [
   { value: 'under5000', label: 'Under $5,000', maxUsd: 5000 },
 ];
 
-export default function HardwareFinder({ models, gpus }: HardwareFinderProps) {
+export default function HardwareFinder({ models, gpus, initialModelId }: HardwareFinderProps) {
   const [selectedModelId, setSelectedModelId] = useState<string>('');
   const [quantPref, setQuantPref] = useState<string>('Q4_K_M');
   const [speedPref, setSpeedPref] = useState<string>('usable');
@@ -41,6 +42,17 @@ export default function HardwareFinder({ models, gpus }: HardwareFinderProps) {
   const [modelQuery, setModelQuery] = useState('');
   const [isModelDropdownOpen, setIsModelDropdownOpen] = useState(false);
   const [showAllOptions, setShowAllOptions] = useState(false);
+
+  // Handle initial model selection from props
+  useEffect(() => {
+    if (initialModelId && models.length > 0) {
+      const model = models.find(m => m.id === initialModelId);
+      if (model) {
+        setSelectedModelId(initialModelId);
+        setModelQuery(model.name);
+      }
+    }
+  }, [initialModelId, models]);
 
   const selectedModel = models.find(m => m.id === selectedModelId);
   const selectedQuant = QUANT_OPTIONS.find(q => q.value === quantPref);
