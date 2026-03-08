@@ -258,7 +258,7 @@ export default function Home() {
           </a>
         </div>
         <p>
-          LocalLLM Advisor — Open source tool for the local AI community.
+          LocalLLM Advisor — Find the best local LLM for your hardware.
         </p>
         <p className="mt-1">
           Data updated manually. Not affiliated with Ollama or any model provider.
