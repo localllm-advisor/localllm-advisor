@@ -365,7 +365,7 @@ Events tracked:
 - [x] Datacenter-scale requirements for 1000B+ models
 - [x] Dark/light theme toggle
 - [x] Model comparison radar chart
-- [ ] Export results (JSON/CSV)
+- [x] Export results (JSON/CSV)
 - [ ] PWA for offline use
 - [ ] Filter by model family/architecture
 
