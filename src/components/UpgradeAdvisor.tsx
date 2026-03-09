@@ -288,22 +288,23 @@ export default function UpgradeAdvisor({
         <div className="flex items-start justify-between mb-6">
           <div>
             <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-              Your Setup Score
+              Your Hardware Rating
             </h3>
             <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              Performance ranking for {useCase} tasks
+              How your setup compares for {useCase} tasks
             </p>
           </div>
           <div className="text-right">
-            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl ${setupAnalysis.tier.bgColor} border ${setupAnalysis.tier.borderColor}`}>
-              <span className="text-3xl">{setupAnalysis.tier.emoji}</span>
+            <div className={`inline-flex items-center gap-3 px-4 py-3 rounded-xl ${setupAnalysis.tier.bgColor} border ${setupAnalysis.tier.borderColor}`}>
+              <span className="text-4xl">{setupAnalysis.tier.emoji}</span>
               <div>
                 <div className={`text-2xl font-bold ${setupAnalysis.tier.color}`}>
                   {setupAnalysis.tier.label}
                 </div>
-                <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                  Score: {setupAnalysis.compositeScore}/100
-                </div>
+              </div>
+              <div className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                {setupAnalysis.compositeScore}
+                <span className={`text-sm font-normal ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>/100</span>
               </div>
             </div>
           </div>
@@ -360,10 +361,13 @@ export default function UpgradeAdvisor({
         )}
 
         {/* Stats Grid */}
+        <div className={`text-xs uppercase tracking-wide mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+          What You Can Run
+        </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <StatBox
-            label="Avg Score"
-            value={setupAnalysis.avgScore}
+            label="Best Model Quality"
+            value={setupAnalysis.bestModel.score}
             suffix="/100"
             isDark={isDark}
           />
@@ -374,7 +378,7 @@ export default function UpgradeAdvisor({
             isDark={isDark}
           />
           <StatBox
-            label="GPU Full"
+            label="GPU Full Models"
             value={setupAnalysis.gpuFullCount}
             suffix={` / ${setupAnalysis.totalModelsWithQ4}`}
             isDark={isDark}
