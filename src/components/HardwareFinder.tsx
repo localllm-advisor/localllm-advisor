@@ -435,6 +435,11 @@ function OptionCard({ option, badge, badgeColor }: { option: HardwareOption; bad
 
       <h5 className="font-semibold text-white mb-1">
         {option.gpuCount > 1 && `${option.gpuCount}x `}{option.gpu.name}
+        {option.gpu.price_usd && (
+          <span className="text-gray-400 font-normal text-sm ml-2">
+            (${option.gpu.price_usd.toLocaleString()}{option.gpuCount > 1 ? ' each' : ''})
+          </span>
+        )}
       </h5>
 
       <div className="space-y-1 text-sm">
@@ -518,6 +523,10 @@ function CompactOptionRow({ option }: { option: HardwareOption }) {
     ? `$${option.totalPrice.toLocaleString()}`
     : 'N/A';
 
+  const unitPrice = option.gpu.price_usd
+    ? `$${option.gpu.price_usd.toLocaleString()}`
+    : null;
+
   return (
     <div className="flex items-center justify-between rounded-lg border border-gray-700 bg-gray-800/30 px-4 py-2 text-sm">
       <div className="flex items-center gap-3">
@@ -527,6 +536,9 @@ function CompactOptionRow({ option }: { option: HardwareOption }) {
           </span>
         )}
         <span className="text-white font-medium">{option.gpu.name}</span>
+        {unitPrice && option.gpuCount === 1 && (
+          <span className="text-gray-500 text-xs">{unitPrice}</span>
+        )}
       </div>
       <div className="flex items-center gap-4 text-gray-400">
         <span>{option.totalVramGb.toFixed(0)}GB</span>

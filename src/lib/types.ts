@@ -23,6 +23,11 @@ export interface Benchmarks {
   mmbench: number | null;
 }
 
+export interface GGUFSource {
+  repo: string;
+  provider: string;
+}
+
 export interface Model {
   id: string;
   name: string;
@@ -35,6 +40,11 @@ export interface Model {
   ollama_base: string;
   quantizations: Quantization[];
   benchmarks: Benchmarks;
+  // Optional metadata
+  hf_id?: string;
+  provider?: string;
+  hf_downloads?: number;
+  gguf_sources?: GGUFSource[];
 }
 
 export interface GPU {

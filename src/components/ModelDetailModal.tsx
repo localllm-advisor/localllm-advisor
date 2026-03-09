@@ -299,6 +299,49 @@ export default function ModelDetailModal({ model, onClose }: ModelDetailModalPro
             </div>
           </Section>
 
+          {/* GGUF Downloads */}
+          {m.gguf_sources && m.gguf_sources.length > 0 && (
+            <Section title="GGUF Downloads" isDark={isDark}>
+              <div className="space-y-2">
+                {m.gguf_sources.map((source, idx) => {
+                  // Use search URL to handle naming variations (e.g., microsoft_Phi-4 vs Phi-4)
+                  const repoName = source.repo.split('/')[1] || source.repo;
+                  const searchQuery = `${source.provider} ${m.name} GGUF`;
+                  const searchUrl = `https://huggingface.co/models?search=${encodeURIComponent(searchQuery)}`;
+
+                  return (
+                    <a
+                      key={idx}
+                      href={searchUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-between p-3 rounded-lg border transition-colors ${
+                        isDark
+                          ? 'border-gray-700 bg-gray-800/30 hover:bg-gray-800 hover:border-gray-600'
+                          : 'border-gray-200 bg-gray-50 hover:bg-gray-100 hover:border-gray-300'
+                      }`}
+                    >
+                      <div className="flex items-center gap-3">
+                        <span className="text-lg">📦</span>
+                        <div>
+                          <div className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                            {repoName}
+                          </div>
+                          <div className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                            by {source.provider}
+                          </div>
+                        </div>
+                      </div>
+                      <svg className={`w-5 h-5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
+                    </a>
+                  );
+                })}
+              </div>
+            </Section>
+          )}
+
           {/* Links */}
           <div className="flex gap-3">
             <a
