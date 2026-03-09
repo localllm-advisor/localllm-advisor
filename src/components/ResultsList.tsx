@@ -306,6 +306,9 @@ export default function ResultsList({
 
   const compareModels = Array.from(compareSet).map(i => topModels[i]);
 
+  const [showExportMenu, setShowExportMenu] = useState(false);
+  const exportRef = useRef<HTMLDivElement>(null);
+
   if (results.length === 0) {
     return (
       <div className="rounded-xl border border-gray-700 bg-gray-800/50 p-8 text-center">
@@ -319,15 +322,11 @@ export default function ResultsList({
 
   const selected = topModels[selectedModel];
 
-  // Get max values for scaling
+  // Get max speed for scaling
   const maxSpeed = Math.max(...topModels.map(r => r.performance.tokensPerSecond ?? 0), 1);
-  const maxScore = Math.max(...topModels.map(r => r.score), 1);
 
   // Compute recommendations
   const recommendations = computeRecommendations(results, useCase);
-
-  const [showExportMenu, setShowExportMenu] = useState(false);
-  const exportRef = useRef<HTMLDivElement>(null);
 
   return (
     <div className="space-y-4">

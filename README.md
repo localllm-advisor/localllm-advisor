@@ -119,6 +119,22 @@ Comprehensive hardware evaluation and upgrade recommendations:
 - Clickable cards navigate to **"Build for Model"** mode with model pre-selected
 - Shows capability comparison (speed, quality, VRAM fit)
 
+### GPU Price Tracker (`/gpu-prices`)
+Track GPU prices over time with alerts and deal notifications:
+
+- **Price History**: Track prices from Newegg and Amazon over time
+- **Price Trends**: See if prices are rising, dropping, or stable (7-day comparison)
+- **Hot Deals**: GPUs currently below their 30-day average price
+- **Price Alerts**: Set alerts to get notified when a GPU drops below your target price
+- **Retailer Links**: Direct links to buy from the source with the best price
+- **Search & Filter**: Find GPUs by name, filter by vendor (NVIDIA/AMD), sort by price or trend
+
+**Data Sources**:
+- Newegg (primary)
+- Amazon (secondary)
+
+**Automated Updates**: GitHub Actions workflow runs daily to scrape latest prices.
+
 ### Community Benchmarks
 Real-world performance data crowdsourced from users:
 - **Submit your benchmarks**: Login with GitHub/Google, enter your GPU and measured tok/s
@@ -260,6 +276,32 @@ npm run dev
 4. Vote on benchmarks (requires login)
 5. Test direct linking: `/benchmarks?model=llama3.1:70b`
 
+### GPU Price Tracking Setup
+
+1. **Run the price tracking schema**:
+   - Go to Supabase Dashboard → SQL Editor
+   - Copy the contents of `supabase/gpu_prices_schema.sql`
+   - Paste and click "Run"
+
+2. **Configure GitHub Actions secrets** (for automated daily scraping):
+   - Go to repo Settings → Secrets and variables → Actions
+   - Add `SUPABASE_URL` (your project URL)
+   - Add `SUPABASE_SERVICE_KEY` (service role key from Supabase → Settings → API)
+
+3. **Manual scraping** (optional):
+   ```bash
+   # Install dependencies
+   pip install -r scripts/requirements.txt
+
+   # Run scraper (dry run)
+   python scripts/scrape_gpu_prices.py --dry-run
+
+   # Run scraper (saves to Supabase)
+   SUPABASE_URL=https://xxx.supabase.co SUPABASE_SERVICE_KEY=xxx python scripts/scrape_gpu_prices.py
+   ```
+
+The GitHub Actions workflow (`.github/workflows/scrape-gpu-prices.yml`) runs daily at 6:00 UTC.
+
 ### Database Schema
 
 ```sql
@@ -289,6 +331,24 @@ benchmark_stats (
 benchmarks_with_votes (
   ..., upvotes, downvotes, vote_score
 )
+
+-- GPU price history
+gpu_prices (
+  id, gpu_name, price_usd, retailer,
+  retailer_url, in_stock, scraped_at, scraped_date
+)
+
+-- Price alerts
+price_alerts (
+  id, user_id, gpu_name, target_price_usd,
+  alert_type, is_active, triggered_at, created_at
+)
+
+-- Aggregated price stats (view)
+gpu_price_stats (
+  gpu_name, current_price_usd, avg_30d,
+  min_30d, max_30d, price_7d_ago, data_points_30d
+)
 ```
 
 ### Security
@@ -314,6 +374,7 @@ src/
   app/                    # Next.js pages and layouts
     page.tsx              # Main page
     benchmarks/           # Community benchmarks page with voting
+    gpu-prices/           # GPU price tracker page
     about/                # About page
     faq/                  # FAQ page
     methodology/          # Methodology page
@@ -326,6 +387,9 @@ src/
     ModelCard.tsx         # Individual model card with stats
     VramBar.tsx           # VRAM usage visualization
     UpgradeAdvisor.tsx    # Setup Score & Upgrade recommendations
+    PriceHistoryChart.tsx # GPU price history SVG chart
+    PriceTrendBadge.tsx   # Price trend indicator (rising/dropping/stable)
+    PriceAlertModal.tsx   # Create price alerts modal
   lib/
     engine.ts             # Recommendation engine
     hardwareAdvisor.ts    # Reverse engine: model -> GPU recommendations
@@ -345,6 +409,10 @@ scripts/
   update_models.py        # Update benchmarks from leaderboards
   update_gpu_prices.py    # Update GPU prices from Newegg (USD)
   scrape_gpus_simple.py   # Full GPU scraper with specs + prices
+  scrape_gpu_prices.py    # Daily price scraper for Supabase (Newegg/Amazon)
+supabase/
+  schema.sql              # Community benchmarks schema
+  gpu_prices_schema.sql   # GPU price tracking schema
 ```
 
 ## How It Works
@@ -590,6 +658,7 @@ Events tracked:
 - [x] Setup Score & Upgrade Advisor
 - [x] GGUF download links in model details
 - [x] GPU prices displayed in hardware finder
+- [x] GPU Price Tracker with alerts and history
 - [ ] PWA for offline use
 
 ## License

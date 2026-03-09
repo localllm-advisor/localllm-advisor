@@ -1,9 +1,11 @@
 'use client';
 
-import { useMemo, useEffect, useState, useRef } from 'react';
-import { ScoredModel, GPU, UseCase, Model } from '@/lib/types';
+import { useMemo, useEffect, useState } from 'react';
+import { ScoredModel, GPU, UseCase, Model, GpuPriceStats } from '@/lib/types';
 import { useTheme } from './ThemeProvider';
-import { getGpuBenchmarkStats, getGlobalBenchmarkStats } from '@/lib/supabase';
+import { getGpuBenchmarkStats, getGlobalBenchmarkStats, getMultipleGpuPriceStats } from '@/lib/supabase';
+import PriceTrendBadge from './PriceTrendBadge';
+import PriceAlertModal from './PriceAlertModal';
 
 // Score component explanations
 const SCORE_EXPLANATIONS = {
@@ -83,6 +85,10 @@ export default function UpgradeAdvisor({
   // Community benchmark stats
   const [communityStats, setCommunityStats] = useState<CommunityStats | null>(null);
   const [loadingStats, setLoadingStats] = useState(true);
+
+  // GPU price stats
+  const [priceStats, setPriceStats] = useState<Map<string, GpuPriceStats>>(new Map());
+  const [alertModalGpu, setAlertModalGpu] = useState<GPU | null>(null);
 
   // Fetch community benchmark data
   useEffect(() => {
@@ -251,6 +257,19 @@ export default function UpgradeAdvisor({
 
     return [budget, midRange, premium].filter(Boolean) as GpuUpgrade[];
   }, [currentGpu, currentVramMb, allGpus, allModels]);
+
+  // Fetch price stats for upgrade GPUs
+  useEffect(() => {
+    async function fetchPriceStats() {
+      if (gpuUpgrades.length === 0) return;
+
+      const gpuNames = gpuUpgrades.map(u => u.gpu.name);
+      const stats = await getMultipleGpuPriceStats(gpuNames);
+      setPriceStats(stats);
+    }
+
+    fetchPriceStats();
+  }, [gpuUpgrades]);
 
   // Find model upgrade suggestions (better models that could fit)
   const modelUpgrades = useMemo(() => {
@@ -438,10 +457,21 @@ export default function UpgradeAdvisor({
                 badge={idx === 0 ? 'Best Value' : idx === 1 ? 'Balanced' : 'Premium'}
                 badgeColor={idx === 0 ? 'bg-green-600' : idx === 1 ? 'bg-blue-600' : 'bg-purple-600'}
                 isDark={isDark}
+                priceStats={priceStats.get(upgrade.gpu.name)}
+                onSetAlert={() => setAlertModalGpu(upgrade.gpu)}
               />
             ))}
           </div>
         </div>
+      )}
+
+      {/* Price Alert Modal */}
+      {alertModalGpu && (
+        <PriceAlertModal
+          gpuName={alertModalGpu.name}
+          currentPrice={alertModalGpu.price_usd}
+          onClose={() => setAlertModalGpu(null)}
+        />
       )}
 
       {/* Model Alternatives */}
@@ -508,14 +538,23 @@ function UpgradeCard({
   upgrade,
   badge,
   badgeColor,
-  isDark
+  isDark,
+  priceStats,
+  onSetAlert,
 }: {
   upgrade: GpuUpgrade;
   badge: string;
   badgeColor: string;
   isDark: boolean;
+  priceStats?: GpuPriceStats;
+  onSetAlert?: () => void;
 }) {
   const amazonUrl = `https://www.amazon.com/s?k=${encodeURIComponent(upgrade.gpu.name)}`;
+
+  // Calculate percent change if we have price data
+  const percentChange = priceStats?.current_price_usd && priceStats?.price_7d_ago
+    ? ((priceStats.current_price_usd - priceStats.price_7d_ago) / priceStats.price_7d_ago) * 100
+    : undefined;
 
   return (
     <div className={`rounded-xl border p-4 ${
@@ -525,9 +564,16 @@ function UpgradeCard({
         <span className={`px-2 py-0.5 rounded text-xs text-white ${badgeColor}`}>
           {badge}
         </span>
-        <span className={`text-lg font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-          +${upgrade.priceDiff.toLocaleString()}
-        </span>
+        <div className="text-right">
+          <span className={`text-lg font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            +${upgrade.priceDiff.toLocaleString()}
+          </span>
+          {priceStats && (
+            <div className="mt-1">
+              <PriceTrendBadge trend={priceStats.trend} percentChange={percentChange} />
+            </div>
+          )}
+        </div>
       </div>
 
       <a
@@ -541,6 +587,18 @@ function UpgradeCard({
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
         </svg>
       </a>
+
+      {/* Price stats if available */}
+      {priceStats?.current_price_usd && (
+        <div className={`mb-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+          Current: <span className={isDark ? 'text-white' : 'text-gray-900'}>${priceStats.current_price_usd.toLocaleString()}</span>
+          {priceStats.min_30d && priceStats.min_30d < priceStats.current_price_usd && (
+            <span className="text-green-400 ml-2">
+              (30d low: ${priceStats.min_30d.toLocaleString()})
+            </span>
+          )}
+        </div>
+      )}
 
       <div className="space-y-1.5 text-sm">
         <div className="flex justify-between">
@@ -557,8 +615,26 @@ function UpgradeCard({
         </div>
       </div>
 
-      <div className={`mt-3 pt-3 border-t text-xs ${isDark ? 'border-gray-700 text-gray-500' : 'border-gray-200 text-gray-400'}`}>
-        ${Math.round(upgrade.valueScore)} per model unlocked
+      <div className={`mt-3 pt-3 border-t flex items-center justify-between ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+        <span className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+          ${Math.round(upgrade.valueScore)} per model unlocked
+        </span>
+        {onSetAlert && (
+          <button
+            onClick={onSetAlert}
+            className={`flex items-center gap-1 text-xs px-2 py-1 rounded-lg transition-colors ${
+              isDark
+                ? 'text-gray-400 hover:text-white hover:bg-gray-700'
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+            }`}
+            title="Set price alert"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+            Alert
+          </button>
+        )}
       </div>
     </div>
   );

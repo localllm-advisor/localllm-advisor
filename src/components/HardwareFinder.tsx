@@ -308,7 +308,7 @@ function RecipeDisplay({
         <div className="space-y-3">
           <div className="rounded-xl border border-yellow-600/50 bg-yellow-900/10 p-4">
             <p className="text-yellow-400 mb-3">
-              No GPUs match your speed/budget filters. Here's the minimum hardware required:
+              No GPUs match your speed/budget filters. Here&apos;s the minimum hardware required:
             </p>
           </div>
           <div className="grid gap-3 md:grid-cols-2">
@@ -328,7 +328,7 @@ function RecipeDisplay({
               Requires {recipe.vramRequired.toFixed(0)}GB VRAM. Maximum consumer GPU is 32GB (RTX 5090).
               {recipe.vramRequired > 256 && (
                 <span className="block mt-1">
-                  Even 8x RTX 5090 (256GB) wouldn't be enough.
+                  Even 8x RTX 5090 (256GB) wouldn&apos;t be enough.
                 </span>
               )}
             </p>
@@ -350,7 +350,7 @@ function RecipeDisplay({
               </p>
               <p className="text-gray-400 text-sm">
                 This model requires {recipe.vramRequired.toFixed(0)}GB VRAM - more than 16x H100 80GB (1.28TB).
-                You'll need a large GPU cluster or consider a smaller quantization.
+                You&apos;ll need a large GPU cluster or consider a smaller quantization.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 <span className="px-3 py-1 rounded bg-gray-700 text-gray-300 text-sm">
