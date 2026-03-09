@@ -1,9 +1,33 @@
 'use client';
 
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect, useState, useRef } from 'react';
 import { ScoredModel, GPU, UseCase, Model } from '@/lib/types';
 import { useTheme } from './ThemeProvider';
 import { getGpuBenchmarkStats, getGlobalBenchmarkStats } from '@/lib/supabase';
+
+// Score component explanations
+const SCORE_EXPLANATIONS = {
+  vram: {
+    label: 'VRAM Capacity',
+    description: 'How your GPU memory compares to others. More VRAM = bigger models.',
+  },
+  bandwidth: {
+    label: 'Memory Bandwidth',
+    description: 'How fast your GPU can read model weights. Higher = faster token generation.',
+  },
+  coverage: {
+    label: 'Model Coverage',
+    description: 'Percentage of all models you can run entirely on GPU (no CPU offload needed).',
+  },
+  quality: {
+    label: 'Best Quality',
+    description: 'The benchmark score of the best model you can run. Higher = smarter responses.',
+  },
+  speed: {
+    label: 'Speed',
+    description: 'Average generation speed in tokens/second. 30+ is conversational, 60+ is fast.',
+  },
+};
 
 interface UpgradeAdvisorProps {
   results: ScoredModel[];
@@ -286,18 +310,16 @@ export default function UpgradeAdvisor({
         </div>
 
         {/* Score Breakdown */}
-        <div className="mb-6">
-          <div className={`text-xs uppercase tracking-wide mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            Score Breakdown
-          </div>
-          <div className="space-y-2">
-            <ScoreBar label="VRAM Capacity" value={setupAnalysis.vramScore} weight="25%" isDark={isDark} color="bg-blue-500" />
-            <ScoreBar label="Memory Bandwidth" value={setupAnalysis.bandwidthScore} weight="20%" isDark={isDark} color="bg-purple-500" />
-            <ScoreBar label="Model Coverage" value={setupAnalysis.modelCoverageScore} weight="25%" isDark={isDark} color="bg-green-500" />
-            <ScoreBar label="Best Quality" value={setupAnalysis.qualityScore} weight="15%" isDark={isDark} color="bg-yellow-500" />
-            <ScoreBar label="Speed" value={setupAnalysis.speedScore} weight="15%" isDark={isDark} color="bg-orange-500" />
-          </div>
-        </div>
+        <ScoreBreakdown
+          scores={{
+            vram: setupAnalysis.vramScore,
+            bandwidth: setupAnalysis.bandwidthScore,
+            coverage: setupAnalysis.modelCoverageScore,
+            quality: setupAnalysis.qualityScore,
+            speed: setupAnalysis.speedScore,
+          }}
+          isDark={isDark}
+        />
 
         {/* Community Comparison */}
         {!loadingStats && communityStats && communityStats.gpuBenchmarkCount > 0 && (
@@ -559,33 +581,90 @@ function ModelSuggestion({ model, isDark }: { model: ScoredModel; isDark: boolea
   );
 }
 
-function ScoreBar({
-  label,
-  value,
-  weight,
-  isDark,
-  color
+function ScoreBreakdown({
+  scores,
+  isDark
 }: {
-  label: string;
-  value: number;
-  weight: string;
+  scores: { vram: number; bandwidth: number; coverage: number; quality: number; speed: number };
   isDark: boolean;
-  color: string;
 }) {
+  const [showExplanations, setShowExplanations] = useState(false);
+
+  const scoreItems = [
+    { key: 'vram', value: scores.vram, color: 'bg-blue-500' },
+    { key: 'bandwidth', value: scores.bandwidth, color: 'bg-purple-500' },
+    { key: 'coverage', value: scores.coverage, color: 'bg-green-500' },
+    { key: 'quality', value: scores.quality, color: 'bg-yellow-500' },
+    { key: 'speed', value: scores.speed, color: 'bg-orange-500' },
+  ] as const;
+
   return (
-    <div className="flex items-center gap-3">
-      <div className={`w-32 text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-        {label}
-        <span className="ml-1 opacity-50">({weight})</span>
+    <div className="mb-6">
+      <div className="flex items-center justify-between mb-3">
+        <div className={`text-xs uppercase tracking-wide ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+          Score Breakdown
+        </div>
+        <button
+          onClick={() => setShowExplanations(!showExplanations)}
+          className={`flex items-center gap-1 text-xs px-2 py-1 rounded-lg transition-colors ${
+            showExplanations
+              ? 'bg-blue-500/20 text-blue-400'
+              : isDark
+                ? 'text-gray-400 hover:text-white hover:bg-gray-700'
+                : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+          }`}
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {showExplanations ? 'Hide info' : 'What do these mean?'}
+        </button>
       </div>
-      <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
-        <div
-          className={`h-full ${color} transition-all duration-500`}
-          style={{ width: `${value}%` }}
-        />
-      </div>
-      <div className={`w-10 text-right text-xs font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
-        {value}
+
+      {/* Explanations panel */}
+      {showExplanations && (
+        <div className={`mb-4 p-4 rounded-xl text-sm space-y-3 ${
+          isDark ? 'bg-gray-800/80 border border-gray-700' : 'bg-gray-50 border border-gray-200'
+        }`}>
+          {Object.entries(SCORE_EXPLANATIONS).map(([key, info]) => (
+            <div key={key} className="flex gap-3">
+              <div className={`w-3 h-3 mt-1 rounded-full ${
+                key === 'vram' ? 'bg-blue-500' :
+                key === 'bandwidth' ? 'bg-purple-500' :
+                key === 'coverage' ? 'bg-green-500' :
+                key === 'quality' ? 'bg-yellow-500' : 'bg-orange-500'
+              }`} />
+              <div>
+                <div className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  {info.label}
+                </div>
+                <div className={isDark ? 'text-gray-400' : 'text-gray-600'}>
+                  {info.description}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Score bars */}
+      <div className="space-y-2">
+        {scoreItems.map(({ key, value, color }) => (
+          <div key={key} className="flex items-center gap-3">
+            <div className={`w-32 text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              {SCORE_EXPLANATIONS[key].label}
+            </div>
+            <div className={`flex-1 h-2 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
+              <div
+                className={`h-full ${color} transition-all duration-500`}
+                style={{ width: `${value}%` }}
+              />
+            </div>
+            <div className={`w-10 text-right text-xs font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              {value}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
