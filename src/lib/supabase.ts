@@ -347,13 +347,219 @@ export async function getFilterOptions(): Promise<{
     supabase.from('benchmarks').select('quant_level').eq('flagged', false),
   ]);
 
-  const uniqueModels = [...new Set(modelsRes.data?.map(r => r.model_id) || [])].sort();
-  const uniqueGpus = [...new Set(gpusRes.data?.map(r => r.gpu_name) || [])].sort();
-  const uniqueQuants = [...new Set(quantsRes.data?.map(r => r.quant_level) || [])].sort();
+  const uniqueModels = Array.from(new Set(modelsRes.data?.map(r => r.model_id) || [])).sort();
+  const uniqueGpus = Array.from(new Set(gpusRes.data?.map(r => r.gpu_name) || [])).sort();
+  const uniqueQuants = Array.from(new Set(quantsRes.data?.map(r => r.quant_level) || [])).sort();
 
   return {
     models: uniqueModels,
     gpus: uniqueGpus,
     quantLevels: uniqueQuants,
   };
+}
+
+// ============================================
+// GPU Price Tracking Functions
+// ============================================
+
+import type { GpuPricePoint, GpuPriceStats, PriceAlert, PriceTrend, AlertType } from './types';
+
+// Helper to calculate trend from price data
+function calculateTrend(currentPrice: number | null, price7dAgo: number | null): PriceTrend {
+  if (!currentPrice || !price7dAgo) return 'stable';
+  const changePercent = ((currentPrice - price7dAgo) / price7dAgo) * 100;
+  if (changePercent > 3) return 'rising';
+  if (changePercent < -3) return 'dropping';
+  return 'stable';
+}
+
+// Get price history for a GPU (for charts)
+export async function getGpuPriceHistory(gpuName: string, days = 30): Promise<GpuPricePoint[]> {
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - days);
+
+  const { data, error } = await supabase
+    .from('gpu_prices')
+    .select('*')
+    .eq('gpu_name', gpuName)
+    .gte('scraped_at', startDate.toISOString())
+    .order('scraped_at', { ascending: true });
+
+  if (error) {
+    console.error('Error fetching GPU price history:', error);
+    return [];
+  }
+
+  return data || [];
+}
+
+// Get price stats for a single GPU
+export async function getGpuPriceStats(gpuName: string): Promise<GpuPriceStats | null> {
+  const { data, error } = await supabase
+    .from('gpu_price_stats')
+    .select('*')
+    .eq('gpu_name', gpuName)
+    .single();
+
+  if (error || !data) {
+    return null;
+  }
+
+  return {
+    ...data,
+    trend: calculateTrend(data.current_price_usd, data.price_7d_ago),
+  };
+}
+
+// Get price stats for multiple GPUs (batch query for UpgradeAdvisor)
+export async function getMultipleGpuPriceStats(gpuNames: string[]): Promise<Map<string, GpuPriceStats>> {
+  if (gpuNames.length === 0) return new Map();
+
+  const { data, error } = await supabase
+    .from('gpu_price_stats')
+    .select('*')
+    .in('gpu_name', gpuNames);
+
+  if (error || !data) {
+    console.error('Error fetching GPU price stats:', error);
+    return new Map();
+  }
+
+  const statsMap = new Map<string, GpuPriceStats>();
+  for (const row of data) {
+    statsMap.set(row.gpu_name, {
+      ...row,
+      trend: calculateTrend(row.current_price_usd, row.price_7d_ago),
+    });
+  }
+
+  return statsMap;
+}
+
+// Get current prices with retailer info for multiple GPUs (for deals section)
+export async function getCurrentGpuPrices(gpuNames: string[]): Promise<Map<string, GpuPricePoint[]>> {
+  if (gpuNames.length === 0) return new Map();
+
+  // Get today's date for filtering recent prices
+  const today = new Date();
+  today.setDate(today.getDate() - 1); // Include yesterday's prices too
+
+  const { data, error } = await supabase
+    .from('gpu_prices')
+    .select('*')
+    .in('gpu_name', gpuNames)
+    .gte('scraped_at', today.toISOString())
+    .order('price_usd', { ascending: true });
+
+  if (error || !data) {
+    console.error('Error fetching current GPU prices:', error);
+    return new Map();
+  }
+
+  // Group by GPU name, keeping only the best price per retailer
+  const pricesMap = new Map<string, GpuPricePoint[]>();
+  for (const row of data) {
+    const existing = pricesMap.get(row.gpu_name) || [];
+    // Only add if we don't already have this retailer
+    if (!existing.some(p => p.retailer === row.retailer)) {
+      existing.push(row);
+      pricesMap.set(row.gpu_name, existing);
+    }
+  }
+
+  return pricesMap;
+}
+
+// Get user's price alerts
+export async function getUserPriceAlerts(): Promise<PriceAlert[]> {
+  const user = await getUser();
+  if (!user) return [];
+
+  const { data, error } = await supabase
+    .from('price_alerts')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false });
+
+  if (error) {
+    console.error('Error fetching price alerts:', error);
+    return [];
+  }
+
+  return data || [];
+}
+
+// Create a new price alert
+export async function createPriceAlert(input: {
+  gpu_name: string;
+  target_price_usd: number;
+  alert_type: AlertType;
+}): Promise<{ success: boolean; error?: string; alert?: PriceAlert }> {
+  const user = await getUser();
+  if (!user) {
+    return { success: false, error: 'You must be logged in to create alerts' };
+  }
+
+  const { data, error } = await supabase
+    .from('price_alerts')
+    .insert({
+      user_id: user.id,
+      gpu_name: input.gpu_name,
+      target_price_usd: input.target_price_usd,
+      alert_type: input.alert_type,
+    })
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error creating price alert:', error);
+    return { success: false, error: error.message };
+  }
+
+  return { success: true, alert: data };
+}
+
+// Update a price alert
+export async function updatePriceAlert(
+  alertId: string,
+  updates: Partial<Pick<PriceAlert, 'target_price_usd' | 'alert_type' | 'is_active'>>
+): Promise<{ success: boolean; error?: string }> {
+  const user = await getUser();
+  if (!user) {
+    return { success: false, error: 'You must be logged in to update alerts' };
+  }
+
+  const { error } = await supabase
+    .from('price_alerts')
+    .update(updates)
+    .eq('id', alertId)
+    .eq('user_id', user.id);
+
+  if (error) {
+    console.error('Error updating price alert:', error);
+    return { success: false, error: error.message };
+  }
+
+  return { success: true };
+}
+
+// Delete a price alert
+export async function deletePriceAlert(alertId: string): Promise<{ success: boolean; error?: string }> {
+  const user = await getUser();
+  if (!user) {
+    return { success: false, error: 'You must be logged in to delete alerts' };
+  }
+
+  const { error } = await supabase
+    .from('price_alerts')
+    .delete()
+    .eq('id', alertId)
+    .eq('user_id', user.id);
+
+  if (error) {
+    console.error('Error deleting price alert:', error);
+    return { success: false, error: error.message };
+  }
+
+  return { success: true };
 }

@@ -33,6 +33,8 @@ export interface Model {
   context_length: number;
   release_date: string;
   ollama_base: string;
+  hf_id?: string;
+  provider?: string;
   quantizations: Quantization[];
   benchmarks: Benchmarks;
 }
@@ -224,6 +226,43 @@ export interface UseCaseWeights {
 }
 
 export type SortBy = 'score' | 'speed' | 'quality' | 'vram' | 'params';
+
+// GPU Price Tracking Types
+export type PriceTrend = 'rising' | 'dropping' | 'stable';
+export type Retailer = 'newegg' | 'amazon' | 'bestbuy';
+export type AlertType = 'below' | 'above' | 'any_change';
+
+export interface GpuPricePoint {
+  id: string;
+  gpu_name: string;
+  price_usd: number;
+  retailer: Retailer;
+  retailer_url: string | null;
+  in_stock: boolean;
+  scraped_at: string;
+}
+
+export interface GpuPriceStats {
+  gpu_name: string;
+  current_price_usd: number | null;
+  avg_30d: number | null;
+  min_30d: number | null;
+  max_30d: number | null;
+  price_7d_ago: number | null;
+  data_points_30d: number;
+  trend: PriceTrend;
+}
+
+export interface PriceAlert {
+  id: string;
+  user_id: string;
+  gpu_name: string;
+  target_price_usd: number;
+  alert_type: AlertType;
+  is_active: boolean;
+  triggered_at: string | null;
+  created_at: string;
+}
 
 export type QuantLevel = 'Q4_K_M' | 'Q6_K' | 'Q8_0' | 'FP16';
 

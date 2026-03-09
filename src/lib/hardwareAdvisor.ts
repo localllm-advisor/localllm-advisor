@@ -213,10 +213,6 @@ export function buildHardwareRecipe(
     return bValue - aValue;
   });
 
-  // Find featured options from filtered list
-  const singleGpuOptions = filteredOptions.filter(o => o.gpuCount === 1);
-  const multiGpuOptions = filteredOptions.filter(o => o.gpuCount > 1);
-
   // Budget: cheapest filtered option
   const withPrice = filteredOptions.filter(o => o.totalPrice !== null);
   const budgetOption = withPrice.length > 0
