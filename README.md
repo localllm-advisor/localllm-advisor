@@ -42,8 +42,8 @@ Works for any model size:
 - Extreme models (1000B+): Datacenter requirements (e.g., "9x H100 @ $22/hr")
 
 ### Model Database
-- **147 LLM models** from 25+ providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
-- **113 models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, MBPP
+- **132 LLM models** from 25+ providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
+- **Models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, MBPP
 - **4 quantization levels** per model: Q4_K_M, Q6_K, Q8_0, FP16
 - **MoE support** with active parameter detection
 
@@ -84,6 +84,40 @@ Click on any model to view complete specifications:
 - **Model info**: family, architecture, parameters, context length, release date, capabilities
 - **Ready-to-copy** Ollama command
 - **Direct links** to Ollama library and HuggingFace
+- **GGUF downloads**: Links to HuggingFace GGUF repositories (bartowski, unsloth, etc.)
+
+### Setup Score & Upgrade Advisor
+Comprehensive hardware evaluation and upgrade recommendations:
+
+**Your Hardware Rating** (0-100 score with tier badges):
+- **Diamond** (85+): Top-tier setup, can run almost anything
+- **Gold** (70+): Excellent setup for most models
+- **Silver** (55+): Good mid-range capability
+- **Bronze** (40+): Entry-level, limited to smaller models
+- **Starter** (<40): Basic setup, consider upgrades
+
+**Score Components** (with expandable explanations):
+- **VRAM Capacity**: How your GPU memory compares to others
+- **Memory Bandwidth**: How fast your GPU can read model weights
+- **Model Coverage**: Percentage of all models you can run entirely on GPU
+- **Best Quality**: The benchmark score of the best model you can run
+- **Speed**: Average generation speed in tokens/second
+
+**Community Data Integration**:
+- Score incorporates real-world benchmarks from the community (30% weight)
+- Compares your GPU against global performance data
+- Shows percentile ranking among submitted benchmarks
+
+**Upgrade Your Hardware**:
+- GPU upgrade suggestions ranked by cost/benefit ratio
+- Shows expected speed improvement and new models unlocked
+- Direct **Amazon links** for easy purchasing
+- Price displayed for each recommendation
+
+**Alternative Models**:
+- Suggests similar models with better performance on your hardware
+- Clickable cards navigate to **"Build for Model"** mode with model pre-selected
+- Shows capability comparison (speed, quality, VRAM fit)
 
 ### Community Benchmarks
 Real-world performance data crowdsourced from users:
@@ -291,6 +325,7 @@ src/
     ResultsList.tsx       # Results display with charts
     ModelCard.tsx         # Individual model card with stats
     VramBar.tsx           # VRAM usage visualization
+    UpgradeAdvisor.tsx    # Setup Score & Upgrade recommendations
   lib/
     engine.ts             # Recommendation engine
     hardwareAdvisor.ts    # Reverse engine: model -> GPU recommendations
@@ -552,6 +587,9 @@ Events tracked:
 - [x] Model comparison radar chart
 - [x] Export results (JSON/CSV)
 - [x] Filter by model family/architecture
+- [x] Setup Score & Upgrade Advisor
+- [x] GGUF download links in model details
+- [x] GPU prices displayed in hardware finder
 - [ ] PWA for offline use
 
 ## License
