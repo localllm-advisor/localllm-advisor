@@ -425,6 +425,7 @@ export default function Home() {
               allGpus={gpus}
               allModels={models}
               useCase={useCase}
+              onBuildForModel={handleBuildForModel}
             />
           )}
         </section>

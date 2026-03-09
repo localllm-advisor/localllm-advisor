@@ -36,6 +36,7 @@ interface UpgradeAdvisorProps {
   allGpus: GPU[];
   allModels: Model[];
   useCase: UseCase;
+  onBuildForModel?: (modelId: string) => void;
 }
 
 interface GpuUpgrade {
@@ -74,6 +75,7 @@ export default function UpgradeAdvisor({
   allGpus,
   allModels,
   useCase,
+  onBuildForModel,
 }: UpgradeAdvisorProps) {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
@@ -462,6 +464,7 @@ export default function UpgradeAdvisor({
                 key={model.model.id}
                 model={model}
                 isDark={isDark}
+                onClick={() => onBuildForModel?.(model.model.id)}
               />
             ))}
           </div>
@@ -512,6 +515,8 @@ function UpgradeCard({
   badgeColor: string;
   isDark: boolean;
 }) {
+  const amazonUrl = `https://www.amazon.com/s?k=${encodeURIComponent(upgrade.gpu.name)}`;
+
   return (
     <div className={`rounded-xl border p-4 ${
       isDark ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'
@@ -525,9 +530,17 @@ function UpgradeCard({
         </span>
       </div>
 
-      <h4 className={`font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-        {upgrade.gpu.name}
-      </h4>
+      <a
+        href={amazonUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`font-semibold mb-2 flex items-center gap-1 group ${isDark ? 'text-white' : 'text-gray-900'}`}
+      >
+        <span className="group-hover:text-blue-400 transition-colors">{upgrade.gpu.name}</span>
+        <svg className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 group-hover:text-blue-400 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
 
       <div className="space-y-1.5 text-sm">
         <div className="flex justify-between">
@@ -551,11 +564,24 @@ function UpgradeCard({
   );
 }
 
-function ModelSuggestion({ model, isDark }: { model: ScoredModel; isDark: boolean }) {
+function ModelSuggestion({
+  model,
+  isDark,
+  onClick
+}: {
+  model: ScoredModel;
+  isDark: boolean;
+  onClick?: () => void;
+}) {
   return (
-    <div className={`flex items-center justify-between p-3 rounded-lg ${
-      isDark ? 'bg-gray-800/50' : 'bg-white border border-gray-200'
-    }`}>
+    <button
+      onClick={onClick}
+      className={`w-full flex items-center justify-between p-3 rounded-lg text-left transition-colors ${
+        isDark
+          ? 'bg-gray-800/50 hover:bg-gray-700/50'
+          : 'bg-white border border-gray-200 hover:bg-gray-50'
+      }`}
+    >
       <div className="flex items-center gap-3">
         <div className={`w-10 h-10 rounded-lg flex items-center justify-center text-sm font-bold ${
           isDark ? 'bg-gray-700 text-white' : 'bg-gray-100 text-gray-700'
@@ -571,17 +597,22 @@ function ModelSuggestion({ model, isDark }: { model: ScoredModel; isDark: boolea
           </div>
         </div>
       </div>
-      <div className="text-right">
-        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-          {(model.memory.totalVram / 1024).toFixed(1)} GB
+      <div className="flex items-center gap-3">
+        <div className="text-right">
+          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            {(model.memory.totalVram / 1024).toFixed(1)} GB
+          </div>
+          <div className={`text-xs ${
+            model.inferenceMode === 'gpu_full' ? 'text-green-400' : 'text-yellow-400'
+          }`}>
+            {model.inferenceMode === 'gpu_full' ? 'GPU Full' : 'Offload'}
+          </div>
         </div>
-        <div className={`text-xs ${
-          model.inferenceMode === 'gpu_full' ? 'text-green-400' : 'text-yellow-400'
-        }`}>
-          {model.inferenceMode === 'gpu_full' ? 'GPU Full' : 'Offload'}
-        </div>
+        <svg className={`w-5 h-5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
       </div>
-    </div>
+    </button>
   );
 }
 
