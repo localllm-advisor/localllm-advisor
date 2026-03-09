@@ -10,6 +10,7 @@ import UseCasePicker from '@/components/UseCasePicker';
 import AdvancedOptions, { DEFAULT_FILTERS } from '@/components/AdvancedOptions';
 import ResultsList from '@/components/ResultsList';
 import HardwareFinder from '@/components/HardwareFinder';
+import UpgradeAdvisor from '@/components/UpgradeAdvisor';
 import { trackEvent } from '@/components/Analytics';
 import { getUser, signOut, signInWithGitHub, signInWithGoogle } from '@/lib/supabase';
 import { User } from '@supabase/supabase-js';
@@ -406,7 +407,7 @@ export default function Home() {
 
       {/* Results - Full Width (only for Find Models mode) */}
       {mode === 'find-models' && results && canSearch && (
-        <section ref={resultsRef} className="mx-auto max-w-7xl px-4 py-6">
+        <section ref={resultsRef} className="mx-auto max-w-7xl px-4 py-6 space-y-8">
           <ResultsList
             results={results}
             gpuName={isCpuOnlyMode ? 'CPU Only' : (specs.gpu_name ?? null)}
@@ -414,6 +415,19 @@ export default function Home() {
             useCase={useCase}
             onBuildForModel={handleBuildForModel}
           />
+
+          {/* Upgrade Advisor */}
+          {!isCpuOnlyMode && specs.gpu_name && (
+            <UpgradeAdvisor
+              results={results}
+              currentGpu={gpus.find(g => g.name === specs.gpu_name) || null}
+              currentVramMb={specs.vram_mb || 0}
+              allGpus={gpus}
+              allModels={models}
+              useCase={useCase}
+              onBuildForModel={handleBuildForModel}
+            />
+          )}
         </section>
       )}
 
