@@ -362,7 +362,7 @@ export async function getFilterOptions(): Promise<{
 // GPU Price Tracking Functions
 // ============================================
 
-import type { GpuPricePoint, GpuPriceStats, PriceAlert, PriceTrend, AlertType } from './types';
+import type { GpuPricePoint, GpuPriceStats, PriceAlert, PriceTrend, AlertType, GpuReview, GpuReviewStats, NewGpuReviewInput } from './types';
 
 // Helper to calculate trend from price data
 function calculateTrend(currentPrice: number | null, price7dAgo: number | null): PriceTrend {
@@ -562,4 +562,230 @@ export async function deletePriceAlert(alertId: string): Promise<{ success: bool
   }
 
   return { success: true };
+}
+
+// ============================================
+// GPU Review Functions
+// ============================================
+
+// Get reviews for a GPU
+export async function getGpuReviews(gpuName: string, options?: {
+  sortBy?: 'upvotes' | 'rating_overall' | 'created_at';
+  limit?: number;
+}): Promise<GpuReview[]> {
+  const sortBy = options?.sortBy || 'upvotes';
+  const sortColumn = sortBy === 'upvotes' ? 'upvotes' : sortBy;
+
+  let query = supabase
+    .from('gpu_reviews')
+    .select('*')
+    .eq('gpu_name', gpuName)
+    .eq('is_hidden', false)
+    .order(sortColumn, { ascending: false });
+
+  if (options?.limit) {
+    query = query.limit(options.limit);
+  }
+
+  const { data, error } = await query;
+
+  if (error) {
+    console.error('Error fetching GPU reviews:', error);
+    return [];
+  }
+
+  // If user is logged in, fetch their votes
+  const user = await getUser();
+  if (user && data && data.length > 0) {
+    const reviewIds = data.map(r => r.id);
+    const { data: votes } = await supabase
+      .from('gpu_review_votes')
+      .select('review_id, vote_type')
+      .eq('user_id', user.id)
+      .in('review_id', reviewIds);
+
+    const voteMap = new Map(votes?.map(v => [v.review_id, v.vote_type]) || []);
+    return data.map(r => ({
+      ...r,
+      user_vote: voteMap.get(r.id) || null,
+    }));
+  }
+
+  return data || [];
+}
+
+// Get review stats for multiple GPUs
+export async function getGpuReviewStats(gpuNames: string[]): Promise<Map<string, GpuReviewStats>> {
+  if (gpuNames.length === 0) return new Map();
+
+  const { data, error } = await supabase
+    .from('gpu_review_stats')
+    .select('*')
+    .in('gpu_name', gpuNames);
+
+  if (error || !data) {
+    console.error('Error fetching GPU review stats:', error);
+    return new Map();
+  }
+
+  const statsMap = new Map<string, GpuReviewStats>();
+  for (const row of data) {
+    statsMap.set(row.gpu_name, row);
+  }
+
+  return statsMap;
+}
+
+// Get single GPU review stats
+export async function getSingleGpuReviewStats(gpuName: string): Promise<GpuReviewStats | null> {
+  const { data, error } = await supabase
+    .from('gpu_review_stats')
+    .select('*')
+    .eq('gpu_name', gpuName)
+    .single();
+
+  if (error || !data) {
+    return null;
+  }
+
+  return data;
+}
+
+// Create/update review (upsert)
+export async function submitGpuReview(input: NewGpuReviewInput): Promise<{ success: boolean; error?: string; review?: GpuReview }> {
+  const user = await getUser();
+  if (!user) {
+    return { success: false, error: 'You must be logged in to submit reviews' };
+  }
+
+  const reviewData = {
+    user_id: user.id,
+    gpu_name: input.gpu_name,
+    rating_overall: input.rating_overall,
+    rating_llm_performance: input.rating_llm_performance || null,
+    rating_value: input.rating_value || null,
+    rating_noise_temps: input.rating_noise_temps || null,
+    title: input.title || null,
+    body: input.body,
+    pros: input.pros || [],
+    cons: input.cons || [],
+    models_tested: input.models_tested || [],
+    typical_speed_tps: input.typical_speed_tps || null,
+    vram_usage_percent: input.vram_usage_percent || null,
+    use_case: input.use_case || null,
+    best_for: input.best_for || [],
+    purchase_price_usd: input.purchase_price_usd || null,
+    months_owned: input.months_owned || null,
+    updated_at: new Date().toISOString(),
+  };
+
+  const { data, error } = await supabase
+    .from('gpu_reviews')
+    .upsert(reviewData, {
+      onConflict: 'user_id,gpu_name',
+    })
+    .select()
+    .single();
+
+  if (error) {
+    console.error('Error submitting GPU review:', error);
+    return { success: false, error: error.message };
+  }
+
+  return { success: true, review: data };
+}
+
+// Delete review
+export async function deleteGpuReview(reviewId: string): Promise<{ success: boolean; error?: string }> {
+  const user = await getUser();
+  if (!user) {
+    return { success: false, error: 'You must be logged in to delete reviews' };
+  }
+
+  const { error } = await supabase
+    .from('gpu_reviews')
+    .delete()
+    .eq('id', reviewId)
+    .eq('user_id', user.id);
+
+  if (error) {
+    console.error('Error deleting GPU review:', error);
+    return { success: false, error: error.message };
+  }
+
+  return { success: true };
+}
+
+// Vote on review
+export async function voteOnGpuReview(reviewId: string, voteType: 1 | -1): Promise<{ success: boolean; error?: string }> {
+  const user = await getUser();
+  if (!user) {
+    return { success: false, error: 'You must be logged in to vote' };
+  }
+
+  // Check if user already voted
+  const { data: existingVote } = await supabase
+    .from('gpu_review_votes')
+    .select('id, vote_type')
+    .eq('user_id', user.id)
+    .eq('review_id', reviewId)
+    .single();
+
+  if (existingVote) {
+    if (existingVote.vote_type === voteType) {
+      // Same vote, remove it (toggle off)
+      const { error } = await supabase
+        .from('gpu_review_votes')
+        .delete()
+        .eq('id', existingVote.id);
+
+      if (error) {
+        return { success: false, error: error.message };
+      }
+    } else {
+      // Different vote, update it
+      const { error } = await supabase
+        .from('gpu_review_votes')
+        .update({ vote_type: voteType })
+        .eq('id', existingVote.id);
+
+      if (error) {
+        return { success: false, error: error.message };
+      }
+    }
+  } else {
+    // New vote
+    const { error } = await supabase
+      .from('gpu_review_votes')
+      .insert({
+        user_id: user.id,
+        review_id: reviewId,
+        vote_type: voteType,
+      });
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+  }
+
+  return { success: true };
+}
+
+// Get user's review for a GPU (to check if already reviewed)
+export async function getUserGpuReview(gpuName: string): Promise<GpuReview | null> {
+  const user = await getUser();
+  if (!user) return null;
+
+  const { data, error } = await supabase
+    .from('gpu_reviews')
+    .select('*')
+    .eq('user_id', user.id)
+    .eq('gpu_name', gpuName)
+    .single();
+
+  if (error || !data) {
+    return null;
+  }
+
+  return data;
 }

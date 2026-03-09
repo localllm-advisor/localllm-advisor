@@ -135,6 +135,22 @@ Track GPU prices over time with alerts and deal notifications:
 
 **Automated Updates**: GitHub Actions workflow runs daily to scrape latest prices.
 
+### GPU Reviews & External Links
+Community-driven GPU reviews specifically for LLM use cases:
+
+- **Star Ratings**: Overall rating (1-5 stars) plus sub-ratings for LLM performance, value, and noise/temps
+- **Pros/Cons Lists**: Quick summary of advantages and disadvantages
+- **"Best For" Tags**: Budget, large models (70B+), multi-GPU, quiet operation, beginners
+- **LLM Context**: Models tested, typical speed (tok/s), VRAM usage, use case
+- **Voting System**: Upvote/downvote helpful reviews
+- **Purchase Info**: Price paid, months owned
+- **External Links**: Direct links to Reddit r/LocalLLaMA discussions, Ollama issues, llama.cpp issues
+
+**Integration Points**:
+- GPU list shows average rating and review count
+- GPU detail panel has Reviews tab
+- UpgradeAdvisor shows ratings for recommended GPUs
+
 ### Community Benchmarks
 Real-world performance data crowdsourced from users:
 - **Submit your benchmarks**: Login with GitHub/Google, enter your GPU and measured tok/s
@@ -349,6 +365,27 @@ gpu_price_stats (
   gpu_name, current_price_usd, avg_30d,
   min_30d, max_30d, price_7d_ago, data_points_30d
 )
+
+-- GPU reviews
+gpu_reviews (
+  id, user_id, gpu_name,
+  rating_overall, rating_llm_performance, rating_value, rating_noise_temps,
+  title, body, pros, cons,
+  models_tested, typical_speed_tps, vram_usage_percent, use_case,
+  best_for, purchase_price_usd, months_owned,
+  upvotes, downvotes, is_hidden, created_at, updated_at
+)
+
+-- Review votes
+gpu_review_votes (
+  id, user_id, review_id, vote_type, created_at
+)
+
+-- Aggregated review stats (view)
+gpu_review_stats (
+  gpu_name, review_count, avg_rating,
+  avg_llm_performance, avg_value, avg_speed_tps
+)
 ```
 
 ### Security
@@ -390,6 +427,12 @@ src/
     PriceHistoryChart.tsx # GPU price history SVG chart
     PriceTrendBadge.tsx   # Price trend indicator (rising/dropping/stable)
     PriceAlertModal.tsx   # Create price alerts modal
+    StarRating.tsx        # Star rating display/input component
+    GpuReviewCard.tsx     # Single GPU review with voting
+    GpuReviewList.tsx     # List of reviews with sorting
+    GpuReviewForm.tsx     # Submit/edit review modal
+    GpuReviewStats.tsx    # Aggregate review stats display
+    ExternalLinks.tsx     # Reddit/GitHub discussion links
   lib/
     engine.ts             # Recommendation engine
     hardwareAdvisor.ts    # Reverse engine: model -> GPU recommendations
@@ -659,6 +702,7 @@ Events tracked:
 - [x] GGUF download links in model details
 - [x] GPU prices displayed in hardware finder
 - [x] GPU Price Tracker with alerts and history
+- [x] GPU Reviews & External Links for LLM use cases
 - [ ] PWA for offline use
 
 ## License

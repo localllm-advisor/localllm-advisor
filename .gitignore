@@ -43,3 +43,6 @@ __pycache__/
 *.tsbuildinfo
 next-env.d.ts
 .env.local
+
+# gh cli
+gh_*/
