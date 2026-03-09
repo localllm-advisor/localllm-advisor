@@ -1,9 +1,9 @@
 'use client';
 
 import { useMemo, useEffect, useState } from 'react';
-import { ScoredModel, GPU, UseCase, Model, GpuPriceStats } from '@/lib/types';
+import { ScoredModel, GPU, UseCase, Model, GpuPriceStats, GpuReviewStats as GpuReviewStatsType } from '@/lib/types';
 import { useTheme } from './ThemeProvider';
-import { getGpuBenchmarkStats, getGlobalBenchmarkStats, getMultipleGpuPriceStats } from '@/lib/supabase';
+import { getGpuBenchmarkStats, getGlobalBenchmarkStats, getMultipleGpuPriceStats, getGpuReviewStats } from '@/lib/supabase';
 import PriceTrendBadge from './PriceTrendBadge';
 import PriceAlertModal from './PriceAlertModal';
 
@@ -89,6 +89,9 @@ export default function UpgradeAdvisor({
   // GPU price stats
   const [priceStats, setPriceStats] = useState<Map<string, GpuPriceStats>>(new Map());
   const [alertModalGpu, setAlertModalGpu] = useState<GPU | null>(null);
+
+  // GPU review stats
+  const [reviewStats, setReviewStats] = useState<Map<string, GpuReviewStatsType>>(new Map());
 
   // Fetch community benchmark data
   useEffect(() => {
@@ -258,17 +261,21 @@ export default function UpgradeAdvisor({
     return [budget, midRange, premium].filter(Boolean) as GpuUpgrade[];
   }, [currentGpu, currentVramMb, allGpus, allModels]);
 
-  // Fetch price stats for upgrade GPUs
+  // Fetch price and review stats for upgrade GPUs
   useEffect(() => {
-    async function fetchPriceStats() {
+    async function fetchStats() {
       if (gpuUpgrades.length === 0) return;
 
       const gpuNames = gpuUpgrades.map(u => u.gpu.name);
-      const stats = await getMultipleGpuPriceStats(gpuNames);
-      setPriceStats(stats);
+      const [prices, reviews] = await Promise.all([
+        getMultipleGpuPriceStats(gpuNames),
+        getGpuReviewStats(gpuNames),
+      ]);
+      setPriceStats(prices);
+      setReviewStats(reviews);
     }
 
-    fetchPriceStats();
+    fetchStats();
   }, [gpuUpgrades]);
 
   // Find model upgrade suggestions (better models that could fit)
@@ -458,6 +465,7 @@ export default function UpgradeAdvisor({
                 badgeColor={idx === 0 ? 'bg-green-600' : idx === 1 ? 'bg-blue-600' : 'bg-purple-600'}
                 isDark={isDark}
                 priceStats={priceStats.get(upgrade.gpu.name)}
+                reviewStats={reviewStats.get(upgrade.gpu.name)}
                 onSetAlert={() => setAlertModalGpu(upgrade.gpu)}
               />
             ))}
@@ -540,6 +548,7 @@ function UpgradeCard({
   badgeColor,
   isDark,
   priceStats,
+  reviewStats,
   onSetAlert,
 }: {
   upgrade: GpuUpgrade;
@@ -547,6 +556,7 @@ function UpgradeCard({
   badgeColor: string;
   isDark: boolean;
   priceStats?: GpuPriceStats;
+  reviewStats?: GpuReviewStatsType;
   onSetAlert?: () => void;
 }) {
   const amazonUrl = `https://www.amazon.com/s?k=${encodeURIComponent(upgrade.gpu.name)}`;
@@ -580,13 +590,23 @@ function UpgradeCard({
         href={amazonUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className={`font-semibold mb-2 flex items-center gap-1 group ${isDark ? 'text-white' : 'text-gray-900'}`}
+        className={`font-semibold mb-1 flex items-center gap-1 group ${isDark ? 'text-white' : 'text-gray-900'}`}
       >
         <span className="group-hover:text-blue-400 transition-colors">{upgrade.gpu.name}</span>
         <svg className="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 group-hover:text-blue-400 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
         </svg>
       </a>
+
+      {/* Review stats */}
+      {reviewStats && reviewStats.review_count > 0 && (
+        <div className={`mb-2 flex items-center gap-1 text-sm ${isDark ? 'text-yellow-400/80' : 'text-yellow-500'}`}>
+          <span>{'★'.repeat(Math.round(reviewStats.avg_rating))}</span>
+          <span className={isDark ? 'text-gray-400' : 'text-gray-500'}>
+            {reviewStats.avg_rating.toFixed(1)} ({reviewStats.review_count} reviews)
+          </span>
+        </div>
+      )}
 
       {/* Price stats if available */}
       {priceStats?.current_price_usd && (

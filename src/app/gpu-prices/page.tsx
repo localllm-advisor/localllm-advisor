@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { ThemeToggle, useTheme } from '@/components/ThemeProvider';
-import { GPU, GpuPriceStats, GpuPricePoint, PriceAlert } from '@/lib/types';
+import { GPU, GpuPriceStats, GpuPricePoint, PriceAlert, GpuReview, GpuReviewStats as GpuReviewStatsType } from '@/lib/types';
 import {
   getGpuPriceHistory,
   getMultipleGpuPriceStats,
@@ -14,10 +14,16 @@ import {
   signInWithGitHub,
   signInWithGoogle,
   signOut,
+  getSingleGpuReviewStats,
+  getGpuReviewStats,
 } from '@/lib/supabase';
 import PriceHistoryChart from '@/components/PriceHistoryChart';
 import PriceTrendBadge from '@/components/PriceTrendBadge';
 import PriceAlertModal from '@/components/PriceAlertModal';
+import GpuReviewList from '@/components/GpuReviewList';
+import GpuReviewForm from '@/components/GpuReviewForm';
+import GpuReviewStats from '@/components/GpuReviewStats';
+import ExternalLinks from '@/components/ExternalLinks';
 import { User } from '@supabase/supabase-js';
 
 // Retailer display config
@@ -58,6 +64,14 @@ export default function GpuPricesPage() {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [currentPrices, setCurrentPrices] = useState<Map<string, GpuPricePoint[]>>(new Map());
 
+  // Reviews state
+  const [selectedGpuReviewStats, setSelectedGpuReviewStats] = useState<GpuReviewStatsType | null>(null);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [editingReview, setEditingReview] = useState<GpuReview | null>(null);
+  const [reviewRefreshKey, setReviewRefreshKey] = useState(0);
+  const [activeTab, setActiveTab] = useState<'prices' | 'reviews'>('prices');
+  const [allReviewStats, setAllReviewStats] = useState<Map<string, GpuReviewStatsType>>(new Map());
+
   // Load GPUs and price data
   useEffect(() => {
     async function loadData() {
@@ -67,12 +81,14 @@ export default function GpuPricesPage() {
         setGpus(gpuData);
 
         const gpuNames = gpuData.map(g => g.name);
-        const [stats, prices] = await Promise.all([
+        const [stats, prices, reviewStats] = await Promise.all([
           getMultipleGpuPriceStats(gpuNames),
           getCurrentGpuPrices(gpuNames),
+          getGpuReviewStats(gpuNames),
         ]);
         setPriceStats(stats);
         setCurrentPrices(prices);
+        setAllReviewStats(reviewStats);
 
         const currentUser = await getUser();
         setUser(currentUser);
@@ -90,18 +106,23 @@ export default function GpuPricesPage() {
     loadData();
   }, []);
 
-  // Load price history when GPU is selected
+  // Load price history and review stats when GPU is selected
   useEffect(() => {
     async function loadHistory() {
       if (!selectedGpu) {
         setSelectedGpuHistory([]);
+        setSelectedGpuReviewStats(null);
         return;
       }
 
       setLoadingHistory(true);
       try {
-        const history = await getGpuPriceHistory(selectedGpu, 90);
+        const [history, reviewStats] = await Promise.all([
+          getGpuPriceHistory(selectedGpu, 90),
+          getSingleGpuReviewStats(selectedGpu),
+        ]);
         setSelectedGpuHistory(history);
+        setSelectedGpuReviewStats(reviewStats);
       } catch (error) {
         console.error('Error loading price history:', error);
       } finally {
@@ -110,7 +131,15 @@ export default function GpuPricesPage() {
     }
 
     loadHistory();
+    setActiveTab('prices'); // Reset tab when GPU changes
   }, [selectedGpu]);
+
+  // Refresh review stats when reviews change
+  useEffect(() => {
+    if (selectedGpu && reviewRefreshKey > 0) {
+      getSingleGpuReviewStats(selectedGpu).then(setSelectedGpuReviewStats);
+    }
+  }, [reviewRefreshKey, selectedGpu]);
 
   // Get latest prices by retailer for selected GPU
   const retailerPrices = useMemo(() => {
@@ -438,8 +467,19 @@ export default function GpuPricesPage() {
                           <div className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
                             {gpu.name}
                           </div>
-                          <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                            {gpu.vram_mb / 1024} GB
+                          <div className="flex items-center gap-2">
+                            <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                              {gpu.vram_mb / 1024} GB
+                            </span>
+                            {allReviewStats.get(gpu.name) && allReviewStats.get(gpu.name)!.review_count > 0 && (
+                              <span className={`text-xs flex items-center gap-0.5 ${isDark ? 'text-yellow-400/70' : 'text-yellow-500'}`}>
+                                <span>★</span>
+                                {allReviewStats.get(gpu.name)!.avg_rating.toFixed(1)}
+                                <span className={`ml-0.5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                                  ({allReviewStats.get(gpu.name)!.review_count})
+                                </span>
+                              </span>
+                            )}
                           </div>
                         </div>
                         <div className="text-right">
@@ -474,14 +514,25 @@ export default function GpuPricesPage() {
                       <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                         {selectedGpu}
                       </h2>
-                      {selectedGpuStats && (
-                        <div className="flex items-center gap-3 mt-2">
-                          <span className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                            ${selectedGpuStats.current_price_usd?.toLocaleString() ?? 'N/A'}
-                          </span>
-                          <PriceTrendBadge trend={selectedGpuStats.trend} size="md" />
-                        </div>
-                      )}
+                      <div className="flex items-center gap-4 mt-2">
+                        {selectedGpuStats && (
+                          <div className="flex items-center gap-3">
+                            <span className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                              ${selectedGpuStats.current_price_usd?.toLocaleString() ?? 'N/A'}
+                            </span>
+                            <PriceTrendBadge trend={selectedGpuStats.trend} size="md" />
+                          </div>
+                        )}
+                        {selectedGpuReviewStats && selectedGpuReviewStats.review_count > 0 && (
+                          <button
+                            onClick={() => setActiveTab('reviews')}
+                            className={`flex items-center gap-1 text-sm ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
+                          >
+                            <span className="text-yellow-400">{'★'.repeat(Math.round(selectedGpuReviewStats.avg_rating))}</span>
+                            <span>{selectedGpuReviewStats.avg_rating.toFixed(1)} ({selectedGpuReviewStats.review_count} reviews)</span>
+                          </button>
+                        )}
+                      </div>
                     </div>
                     <button
                       onClick={() => setAlertModalGpu(selectedGpu)}
@@ -494,106 +545,178 @@ export default function GpuPricesPage() {
                     </button>
                   </div>
 
-                  {/* Prices by Retailer */}
-                  {retailerPrices.length > 0 && (
-                    <div className="mb-6">
-                      <h3 className={`text-lg font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                        Current Prices by Retailer
-                      </h3>
-                      <div className="grid gap-3 md:grid-cols-3">
-                        {retailerPrices.map(price => {
-                          const config = RETAILER_CONFIG[price.retailer];
-                          return (
-                            <a
-                              key={price.retailer}
-                              href={price.retailer_url || config?.url(selectedGpu)}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className={`p-4 rounded-xl border transition-all hover:scale-[1.02] ${
-                                isDark
-                                  ? 'bg-gray-800/50 border-gray-700 hover:border-gray-600'
-                                  : 'bg-gray-50 border-gray-200 hover:border-gray-300'
-                              }`}
-                            >
-                              <div className="flex items-center justify-between mb-2">
-                                <span className={`font-medium ${config?.color || (isDark ? 'text-white' : 'text-gray-900')}`}>
-                                  {config?.name || price.retailer}
-                                </span>
-                                <svg className={`w-4 h-4 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                </svg>
-                              </div>
-                              <div className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                ${price.price_usd.toLocaleString()}
-                              </div>
-                              <div className={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                                {price.in_stock ? '✓ In Stock' : '✗ Out of Stock'}
-                                {' • '}
-                                {new Date(price.scraped_at).toLocaleDateString()}
-                              </div>
-                            </a>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Price Stats */}
-                  {selectedGpuStats && (
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                      <div className={`p-4 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
-                        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Current</div>
-                        <div className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                          ${selectedGpuStats.current_price_usd?.toLocaleString() ?? 'N/A'}
-                        </div>
-                      </div>
-                      <div className={`p-4 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
-                        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>30-Day Avg</div>
-                        <div className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                          ${selectedGpuStats.avg_30d?.toLocaleString() ?? 'N/A'}
-                        </div>
-                      </div>
-                      <div className={`p-4 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
-                        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>30-Day Low</div>
-                        <div className="text-xl font-bold text-green-400">
-                          ${selectedGpuStats.min_30d?.toLocaleString() ?? 'N/A'}
-                        </div>
-                      </div>
-                      <div className={`p-4 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
-                        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>30-Day High</div>
-                        <div className="text-xl font-bold text-red-400">
-                          ${selectedGpuStats.max_30d?.toLocaleString() ?? 'N/A'}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Price Chart */}
-                  <div>
-                    <h3 className={`text-lg font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                      Price History (90 days)
-                    </h3>
-                    {loadingHistory ? (
-                      <div className="flex items-center justify-center py-20">
-                        <div className="animate-spin w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full"></div>
-                      </div>
-                    ) : selectedGpuHistory.length > 1 ? (
-                      <PriceHistoryChart
-                        data={selectedGpuHistory}
-                        trend={selectedGpuStats?.trend ?? 'stable'}
-                        width={600}
-                        height={250}
-                        isDark={isDark}
-                        showAxis={true}
-                      />
-                    ) : (
-                      <div className={`py-16 text-center rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
-                        <p className={isDark ? 'text-gray-400' : 'text-gray-500'}>
-                          Not enough price data yet. Check back after a few days of tracking.
-                        </p>
-                      </div>
-                    )}
+                  {/* Tabs */}
+                  <div className={`flex gap-1 p-1 rounded-lg mb-6 ${isDark ? 'bg-gray-800' : 'bg-gray-100'}`}>
+                    <button
+                      onClick={() => setActiveTab('prices')}
+                      className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                        activeTab === 'prices'
+                          ? 'bg-blue-600 text-white'
+                          : isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      Prices & History
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('reviews')}
+                      className={`flex-1 px-4 py-2 text-sm font-medium rounded-md transition-colors ${
+                        activeTab === 'reviews'
+                          ? 'bg-blue-600 text-white'
+                          : isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      Reviews {selectedGpuReviewStats && selectedGpuReviewStats.review_count > 0 && `(${selectedGpuReviewStats.review_count})`}
+                    </button>
                   </div>
+
+                  {/* Prices Tab */}
+                  {activeTab === 'prices' && (
+                    <>
+                      {/* Prices by Retailer */}
+                      {retailerPrices.length > 0 && (
+                        <div className="mb-6">
+                          <h3 className={`text-lg font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                            Current Prices by Retailer
+                          </h3>
+                          <div className="grid gap-3 md:grid-cols-3">
+                            {retailerPrices.map(price => {
+                              const config = RETAILER_CONFIG[price.retailer];
+                              return (
+                                <a
+                                  key={price.retailer}
+                                  href={price.retailer_url || config?.url(selectedGpu)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className={`p-4 rounded-xl border transition-all hover:scale-[1.02] ${
+                                    isDark
+                                      ? 'bg-gray-800/50 border-gray-700 hover:border-gray-600'
+                                      : 'bg-gray-50 border-gray-200 hover:border-gray-300'
+                                  }`}
+                                >
+                                  <div className="flex items-center justify-between mb-2">
+                                    <span className={`font-medium ${config?.color || (isDark ? 'text-white' : 'text-gray-900')}`}>
+                                      {config?.name || price.retailer}
+                                    </span>
+                                    <svg className={`w-4 h-4 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                  </div>
+                                  <div className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                    ${price.price_usd.toLocaleString()}
+                                  </div>
+                                  <div className={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                                    {price.in_stock ? '✓ In Stock' : '✗ Out of Stock'}
+                                    {' • '}
+                                    {new Date(price.scraped_at).toLocaleDateString()}
+                                  </div>
+                                </a>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Price Stats */}
+                      {selectedGpuStats && (
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                          <div className={`p-4 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+                            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Current</div>
+                            <div className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                              ${selectedGpuStats.current_price_usd?.toLocaleString() ?? 'N/A'}
+                            </div>
+                          </div>
+                          <div className={`p-4 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+                            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>30-Day Avg</div>
+                            <div className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                              ${selectedGpuStats.avg_30d?.toLocaleString() ?? 'N/A'}
+                            </div>
+                          </div>
+                          <div className={`p-4 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+                            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>30-Day Low</div>
+                            <div className="text-xl font-bold text-green-400">
+                              ${selectedGpuStats.min_30d?.toLocaleString() ?? 'N/A'}
+                            </div>
+                          </div>
+                          <div className={`p-4 rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+                            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>30-Day High</div>
+                            <div className="text-xl font-bold text-red-400">
+                              ${selectedGpuStats.max_30d?.toLocaleString() ?? 'N/A'}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Price Chart */}
+                      <div className="mb-6">
+                        <h3 className={`text-lg font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                          Price History (90 days)
+                        </h3>
+                        {loadingHistory ? (
+                          <div className="flex items-center justify-center py-20">
+                            <div className="animate-spin w-6 h-6 border-2 border-blue-500 border-t-transparent rounded-full"></div>
+                          </div>
+                        ) : selectedGpuHistory.length > 1 ? (
+                          <PriceHistoryChart
+                            data={selectedGpuHistory}
+                            trend={selectedGpuStats?.trend ?? 'stable'}
+                            width={600}
+                            height={250}
+                            isDark={isDark}
+                            showAxis={true}
+                          />
+                        ) : (
+                          <div className={`py-16 text-center rounded-xl ${isDark ? 'bg-gray-800/50' : 'bg-gray-50'}`}>
+                            <p className={isDark ? 'text-gray-400' : 'text-gray-500'}>
+                              Not enough price data yet. Check back after a few days of tracking.
+                            </p>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* External Links */}
+                      {selectedGpu && (
+                        <ExternalLinks
+                          gpuName={selectedGpu}
+                          vendor={gpus.find(g => g.name === selectedGpu)?.vendor || 'nvidia'}
+                        />
+                      )}
+                    </>
+                  )}
+
+                  {/* Reviews Tab */}
+                  {activeTab === 'reviews' && selectedGpu && (
+                    <div className="space-y-6">
+                      {/* Review Stats Summary */}
+                      {selectedGpuReviewStats && selectedGpuReviewStats.review_count > 0 && (
+                        <GpuReviewStats stats={selectedGpuReviewStats} />
+                      )}
+
+                      {/* Review List */}
+                      <GpuReviewList
+                        gpuName={selectedGpu}
+                        onWriteReview={() => {
+                          if (!user) {
+                            setShowLoginModal(true);
+                          } else {
+                            setEditingReview(null);
+                            setShowReviewForm(true);
+                          }
+                        }}
+                        onEditReview={(review) => {
+                          setEditingReview(review);
+                          setShowReviewForm(true);
+                        }}
+                        onLoginRequired={() => setShowLoginModal(true)}
+                        refreshKey={reviewRefreshKey}
+                      />
+
+                      {/* External Links */}
+                      <ExternalLinks
+                        gpuName={selectedGpu}
+                        vendor={gpus.find(g => g.name === selectedGpu)?.vendor || 'nvidia'}
+                      />
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className={`rounded-2xl border p-12 text-center ${
@@ -623,6 +746,21 @@ export default function GpuPricesPage() {
           onClose={() => setAlertModalGpu(null)}
           onSuccess={() => {
             getUserPriceAlerts().then(setUserAlerts);
+          }}
+        />
+      )}
+
+      {/* Review Form Modal */}
+      {showReviewForm && selectedGpu && (
+        <GpuReviewForm
+          gpuName={selectedGpu}
+          existingReview={editingReview}
+          onClose={() => {
+            setShowReviewForm(false);
+            setEditingReview(null);
+          }}
+          onSuccess={() => {
+            setReviewRefreshKey(prev => prev + 1);
           }}
         />
       )}

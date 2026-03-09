@@ -307,3 +307,63 @@ export interface AdvancedFilters {
   showOffload: boolean;
   showOnlyFitsVram: boolean;
 }
+
+// GPU Review Types
+export type GpuUseCase = 'chat' | 'coding' | 'reasoning' | 'mixed';
+export type BestForTag = 'budget' | 'large_models' | 'multi_gpu' | 'quiet' | 'power_efficient' | 'beginners';
+
+export interface GpuReview {
+  id: string;
+  user_id: string;
+  gpu_name: string;
+  rating_overall: number;
+  rating_llm_performance: number | null;
+  rating_value: number | null;
+  rating_noise_temps: number | null;
+  title: string | null;
+  body: string;
+  pros: string[];
+  cons: string[];
+  models_tested: string[];
+  typical_speed_tps: number | null;
+  vram_usage_percent: number | null;
+  use_case: GpuUseCase | null;
+  best_for: BestForTag[];
+  purchase_price_usd: number | null;
+  months_owned: number | null;
+  upvotes: number;
+  downvotes: number;
+  created_at: string;
+  updated_at: string;
+  // Joined fields
+  user_vote?: number | null;
+  author_email?: string;
+}
+
+export interface GpuReviewStats {
+  gpu_name: string;
+  review_count: number;
+  avg_rating: number;
+  avg_llm_performance: number | null;
+  avg_value: number | null;
+  avg_speed_tps: number | null;
+}
+
+export interface NewGpuReviewInput {
+  gpu_name: string;
+  rating_overall: number;
+  rating_llm_performance?: number;
+  rating_value?: number;
+  rating_noise_temps?: number;
+  title?: string;
+  body: string;
+  pros?: string[];
+  cons?: string[];
+  models_tested?: string[];
+  typical_speed_tps?: number;
+  vram_usage_percent?: number;
+  use_case?: GpuUseCase;
+  best_for?: BestForTag[];
+  purchase_price_usd?: number;
+  months_owned?: number;
+}
