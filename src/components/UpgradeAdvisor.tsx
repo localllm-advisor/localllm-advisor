@@ -1,8 +1,9 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { ScoredModel, GPU, UseCase, Model } from '@/lib/types';
 import { useTheme } from './ThemeProvider';
+import { getGpuBenchmarkStats, getGlobalBenchmarkStats } from '@/lib/supabase';
 
 interface UpgradeAdvisorProps {
   results: ScoredModel[];
@@ -23,14 +24,24 @@ interface GpuUpgrade {
   valueScore: number; // Lower is better ($ per model unlocked)
 }
 
-// Tier thresholds for setup scoring
-const TIER_THRESHOLDS = {
-  diamond: { minScore: 85, minSpeed: 50, label: 'Diamond', emoji: '💎', color: 'text-cyan-400' },
-  gold: { minScore: 70, minSpeed: 30, label: 'Gold', emoji: '🥇', color: 'text-yellow-400' },
-  silver: { minScore: 55, minSpeed: 15, label: 'Silver', emoji: '🥈', color: 'text-gray-300' },
-  bronze: { minScore: 40, minSpeed: 8, label: 'Bronze', emoji: '🥉', color: 'text-orange-400' },
-  starter: { minScore: 0, minSpeed: 0, label: 'Starter', emoji: '🌱', color: 'text-green-400' },
-};
+interface CommunityStats {
+  gpuAvgTps: number;
+  gpuMaxTps: number;
+  gpuBenchmarkCount: number;
+  gpuModelsCovered: number;
+  globalRank: number;
+  totalGpus: number;
+  percentile: number;
+}
+
+// Tier thresholds based on composite score (0-100)
+const TIER_THRESHOLDS = [
+  { minScore: 85, label: 'Diamond', emoji: '💎', color: 'text-cyan-400', bgColor: 'bg-cyan-500/20', borderColor: 'border-cyan-500/30' },
+  { minScore: 70, label: 'Gold', emoji: '🥇', color: 'text-yellow-400', bgColor: 'bg-yellow-500/20', borderColor: 'border-yellow-500/30' },
+  { minScore: 55, label: 'Silver', emoji: '🥈', color: 'text-gray-300', bgColor: 'bg-gray-500/20', borderColor: 'border-gray-500/30' },
+  { minScore: 40, label: 'Bronze', emoji: '🥉', color: 'text-orange-400', bgColor: 'bg-orange-500/20', borderColor: 'border-orange-500/30' },
+  { minScore: 0, label: 'Starter', emoji: '🌱', color: 'text-green-400', bgColor: 'bg-green-500/20', borderColor: 'border-green-500/30' },
+];
 
 export default function UpgradeAdvisor({
   results,
@@ -43,11 +54,54 @@ export default function UpgradeAdvisor({
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
+  // Community benchmark stats
+  const [communityStats, setCommunityStats] = useState<CommunityStats | null>(null);
+  const [loadingStats, setLoadingStats] = useState(true);
+
+  // Fetch community benchmark data
+  useEffect(() => {
+    async function fetchCommunityStats() {
+      if (!currentGpu) {
+        setLoadingStats(false);
+        return;
+      }
+
+      try {
+        const [gpuStats, globalStats] = await Promise.all([
+          getGpuBenchmarkStats(currentGpu.name),
+          getGlobalBenchmarkStats(),
+        ]);
+
+        // Find rank among all GPUs with benchmarks
+        const rank = globalStats.allGpuStats.findIndex(g => g.gpuName === currentGpu.name) + 1;
+        const percentile = rank > 0
+          ? Math.round((1 - rank / globalStats.allGpuStats.length) * 100)
+          : null;
+
+        setCommunityStats({
+          gpuAvgTps: gpuStats.avgTps,
+          gpuMaxTps: gpuStats.maxTps,
+          gpuBenchmarkCount: gpuStats.benchmarkCount,
+          gpuModelsCovered: gpuStats.modelsCovered,
+          globalRank: rank,
+          totalGpus: globalStats.allGpuStats.length,
+          percentile: percentile ?? 50, // Default to 50 if no data
+        });
+      } catch (error) {
+        console.error('Error fetching community stats:', error);
+      } finally {
+        setLoadingStats(false);
+      }
+    }
+
+    fetchCommunityStats();
+  }, [currentGpu]);
+
   // Calculate setup score and tier
   const setupAnalysis = useMemo(() => {
     if (results.length === 0) return null;
 
-    const bestModel = results[0]; // Assuming sorted by score
+    const bestModel = results[0];
     const avgScore = results.slice(0, 5).reduce((sum, r) => sum + r.score, 0) / Math.min(5, results.length);
     const avgSpeed = results.slice(0, 5).reduce((sum, r) => sum + (r.performance.tokensPerSecond || 0), 0) / Math.min(5, results.length);
 
@@ -56,32 +110,65 @@ export default function UpgradeAdvisor({
     const offloadCount = results.filter(r => r.inferenceMode === 'gpu_offload').length;
     const cpuOnlyCount = results.filter(r => r.inferenceMode === 'cpu_only').length;
 
-    // Determine tier
-    let tier = TIER_THRESHOLDS.starter;
-    for (const [, t] of Object.entries(TIER_THRESHOLDS)) {
-      if (avgScore >= t.minScore && avgSpeed >= t.minSpeed) {
-        tier = t;
-        break;
-      }
-    }
+    // === COMPOSITE SCORE CALCULATION ===
+    // 1. VRAM Score (25%): Position in GPU VRAM ranking
+    const sortedByVram = [...allGpus].filter(g => g.vram_mb > 0).sort((a, b) => b.vram_mb - a.vram_mb);
+    const vramRank = sortedByVram.findIndex(g => g.vram_mb <= currentVramMb) + 1;
+    const vramScore = Math.round((1 - vramRank / sortedByVram.length) * 100);
 
-    // Calculate percentile (simplified: based on VRAM position in GPU list)
-    const sortedGpus = [...allGpus].sort((a, b) => b.vram_mb - a.vram_mb);
-    const vramRank = sortedGpus.findIndex(g => g.vram_mb <= currentVramMb) + 1;
-    const percentile = Math.round((1 - vramRank / sortedGpus.length) * 100);
+    // 2. Bandwidth Score (20%): Position in GPU bandwidth ranking
+    const sortedByBw = [...allGpus].filter(g => g.bandwidth_gbps > 0).sort((a, b) => b.bandwidth_gbps - a.bandwidth_gbps);
+    const currentBw = currentGpu?.bandwidth_gbps || 0;
+    const bwRank = sortedByBw.findIndex(g => g.bandwidth_gbps <= currentBw) + 1;
+    const bandwidthScore = Math.round((1 - bwRank / sortedByBw.length) * 100);
+
+    // 3. Model Coverage Score (25%): % of models runnable at GPU Full
+    const totalModelsWithQ4 = allModels.filter(m => m.quantizations.some(q => q.level === 'Q4_K_M')).length;
+    const modelCoverageScore = Math.round((gpuFullCount / totalModelsWithQ4) * 100);
+
+    // 4. Quality Score (15%): Best achievable model score
+    const qualityScore = bestModel.score;
+
+    // 5. Speed Score (15%): Normalized speed (60+ tok/s = 100, logarithmic scale)
+    const speedScore = Math.min(100, Math.round(Math.log2(avgSpeed + 1) / Math.log2(61) * 100));
+
+    // Composite score with weights
+    const compositeScore = Math.round(
+      vramScore * 0.25 +
+      bandwidthScore * 0.20 +
+      modelCoverageScore * 0.25 +
+      qualityScore * 0.15 +
+      speedScore * 0.15
+    );
+
+    // Adjust with community data if available
+    const finalScore = communityStats && communityStats.gpuBenchmarkCount > 0
+      ? Math.round(compositeScore * 0.7 + communityStats.percentile * 0.3)
+      : compositeScore;
+
+    // Determine tier based on final score
+    const tier = TIER_THRESHOLDS.find(t => finalScore >= t.minScore) || TIER_THRESHOLDS[TIER_THRESHOLDS.length - 1];
 
     return {
       bestModel,
       avgScore: Math.round(avgScore),
       avgSpeed: Math.round(avgSpeed),
+      compositeScore: finalScore,
       tier,
-      percentile,
+      // Breakdown
+      vramScore,
+      bandwidthScore,
+      modelCoverageScore,
+      qualityScore,
+      speedScore,
+      // Counts
       gpuFullCount,
       offloadCount,
       cpuOnlyCount,
       totalModels: results.length,
+      totalModelsWithQ4,
     };
-  }, [results, currentVramMb, allGpus]);
+  }, [results, currentVramMb, currentGpu, allGpus, allModels, communityStats]);
 
   // Calculate GPU upgrade suggestions
   const gpuUpgrades = useMemo(() => {
@@ -184,14 +271,71 @@ export default function UpgradeAdvisor({
             </p>
           </div>
           <div className="text-right">
-            <div className={`text-4xl font-bold ${setupAnalysis.tier.color}`}>
-              {setupAnalysis.tier.emoji} {setupAnalysis.tier.label}
-            </div>
-            <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              Top {100 - setupAnalysis.percentile}% of setups
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl ${setupAnalysis.tier.bgColor} border ${setupAnalysis.tier.borderColor}`}>
+              <span className="text-3xl">{setupAnalysis.tier.emoji}</span>
+              <div>
+                <div className={`text-2xl font-bold ${setupAnalysis.tier.color}`}>
+                  {setupAnalysis.tier.label}
+                </div>
+                <div className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                  Score: {setupAnalysis.compositeScore}/100
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Score Breakdown */}
+        <div className="mb-6">
+          <div className={`text-xs uppercase tracking-wide mb-2 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            Score Breakdown
+          </div>
+          <div className="space-y-2">
+            <ScoreBar label="VRAM Capacity" value={setupAnalysis.vramScore} weight="25%" isDark={isDark} color="bg-blue-500" />
+            <ScoreBar label="Memory Bandwidth" value={setupAnalysis.bandwidthScore} weight="20%" isDark={isDark} color="bg-purple-500" />
+            <ScoreBar label="Model Coverage" value={setupAnalysis.modelCoverageScore} weight="25%" isDark={isDark} color="bg-green-500" />
+            <ScoreBar label="Best Quality" value={setupAnalysis.qualityScore} weight="15%" isDark={isDark} color="bg-yellow-500" />
+            <ScoreBar label="Speed" value={setupAnalysis.speedScore} weight="15%" isDark={isDark} color="bg-orange-500" />
+          </div>
+        </div>
+
+        {/* Community Comparison */}
+        {!loadingStats && communityStats && communityStats.gpuBenchmarkCount > 0 && (
+          <div className={`mb-6 p-4 rounded-xl ${isDark ? 'bg-blue-900/20 border border-blue-800/50' : 'bg-blue-50 border border-blue-200'}`}>
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-blue-400">📊</span>
+              <span className={`text-sm font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                Community Benchmarks
+              </span>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
+              <div>
+                <div className={isDark ? 'text-gray-400' : 'text-gray-500'}>Your GPU Rank</div>
+                <div className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  #{communityStats.globalRank} of {communityStats.totalGpus}
+                </div>
+              </div>
+              <div>
+                <div className={isDark ? 'text-gray-400' : 'text-gray-500'}>Community Avg</div>
+                <div className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  {communityStats.gpuAvgTps} tok/s
+                </div>
+              </div>
+              <div>
+                <div className={isDark ? 'text-gray-400' : 'text-gray-500'}>Community Max</div>
+                <div className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  {communityStats.gpuMaxTps} tok/s
+                </div>
+              </div>
+              <div>
+                <div className={isDark ? 'text-gray-400' : 'text-gray-500'}>Benchmarks</div>
+                <div className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  {communityStats.gpuBenchmarkCount} submissions
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Stats Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -210,7 +354,7 @@ export default function UpgradeAdvisor({
           <StatBox
             label="GPU Full"
             value={setupAnalysis.gpuFullCount}
-            suffix=" models"
+            suffix={` / ${setupAnalysis.totalModelsWithQ4}`}
             isDark={isDark}
             highlight
           />
@@ -223,8 +367,8 @@ export default function UpgradeAdvisor({
         </div>
 
         {/* Inference Mode Breakdown */}
-        <div className="mt-4 pt-4 border-t border-gray-700">
-          <div className="flex items-center gap-4 text-sm">
+        <div className={`mt-4 pt-4 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+          <div className="flex items-center gap-4 text-sm flex-wrap">
             <span className={isDark ? 'text-gray-400' : 'text-gray-500'}>Inference modes:</span>
             <span className="flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
@@ -410,6 +554,38 @@ function ModelSuggestion({ model, isDark }: { model: ScoredModel; isDark: boolea
         }`}>
           {model.inferenceMode === 'gpu_full' ? 'GPU Full' : 'Offload'}
         </div>
+      </div>
+    </div>
+  );
+}
+
+function ScoreBar({
+  label,
+  value,
+  weight,
+  isDark,
+  color
+}: {
+  label: string;
+  value: number;
+  weight: string;
+  isDark: boolean;
+  color: string;
+}) {
+  return (
+    <div className="flex items-center gap-3">
+      <div className={`w-32 text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+        {label}
+        <span className="ml-1 opacity-50">({weight})</span>
+      </div>
+      <div className="flex-1 h-2 bg-gray-700 rounded-full overflow-hidden">
+        <div
+          className={`h-full ${color} transition-all duration-500`}
+          style={{ width: `${value}%` }}
+        />
+      </div>
+      <div className={`w-10 text-right text-xs font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+        {value}
       </div>
     </div>
   );

@@ -257,6 +257,84 @@ export async function voteBenchmark(benchmarkId: string, voteType: 1 | -1): Prom
   return { success: true };
 }
 
+// Get community benchmark stats for a specific GPU (for comparison)
+export async function getGpuBenchmarkStats(gpuName: string): Promise<{
+  avgTps: number;
+  maxTps: number;
+  benchmarkCount: number;
+  modelsCovered: number;
+  percentileData: { tps: number; count: number }[];
+}> {
+  const { data, error } = await supabase
+    .from('benchmarks')
+    .select('tokens_per_second, model_id')
+    .eq('gpu_name', gpuName)
+    .eq('flagged', false);
+
+  if (error || !data || data.length === 0) {
+    return { avgTps: 0, maxTps: 0, benchmarkCount: 0, modelsCovered: 0, percentileData: [] };
+  }
+
+  const tpsValues = data.map(d => d.tokens_per_second);
+  const avgTps = tpsValues.reduce((a, b) => a + b, 0) / tpsValues.length;
+  const maxTps = Math.max(...tpsValues);
+  const uniqueModels = new Set(data.map(d => d.model_id));
+
+  // Create percentile buckets
+  const sortedTps = [...tpsValues].sort((a, b) => a - b);
+  const percentileData = [
+    { tps: sortedTps[Math.floor(sortedTps.length * 0.25)] || 0, count: 25 },
+    { tps: sortedTps[Math.floor(sortedTps.length * 0.5)] || 0, count: 50 },
+    { tps: sortedTps[Math.floor(sortedTps.length * 0.75)] || 0, count: 75 },
+    { tps: sortedTps[Math.floor(sortedTps.length * 0.9)] || 0, count: 90 },
+  ];
+
+  return {
+    avgTps: Math.round(avgTps),
+    maxTps: Math.round(maxTps),
+    benchmarkCount: data.length,
+    modelsCovered: uniqueModels.size,
+    percentileData,
+  };
+}
+
+// Get global benchmark stats for percentile calculation
+export async function getGlobalBenchmarkStats(): Promise<{
+  allGpuStats: { gpuName: string; avgTps: number; benchmarkCount: number }[];
+  overallAvgTps: number;
+  overallMaxTps: number;
+}> {
+  const { data, error } = await supabase
+    .from('benchmarks')
+    .select('gpu_name, tokens_per_second')
+    .eq('flagged', false);
+
+  if (error || !data || data.length === 0) {
+    return { allGpuStats: [], overallAvgTps: 0, overallMaxTps: 0 };
+  }
+
+  // Group by GPU
+  const gpuGroups = new Map<string, number[]>();
+  for (const d of data) {
+    if (!gpuGroups.has(d.gpu_name)) {
+      gpuGroups.set(d.gpu_name, []);
+    }
+    gpuGroups.get(d.gpu_name)!.push(d.tokens_per_second);
+  }
+
+  const allGpuStats = Array.from(gpuGroups.entries()).map(([gpuName, tpsValues]) => ({
+    gpuName,
+    avgTps: Math.round(tpsValues.reduce((a, b) => a + b, 0) / tpsValues.length),
+    benchmarkCount: tpsValues.length,
+  })).sort((a, b) => b.avgTps - a.avgTps);
+
+  const allTps = data.map(d => d.tokens_per_second);
+  const overallAvgTps = Math.round(allTps.reduce((a, b) => a + b, 0) / allTps.length);
+  const overallMaxTps = Math.max(...allTps);
+
+  return { allGpuStats, overallAvgTps, overallMaxTps };
+}
+
 // Get unique values for filters
 export async function getFilterOptions(): Promise<{
   models: string[];
