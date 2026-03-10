@@ -6,11 +6,14 @@ Problemi da risolvere in ordine di priorità.
 
 ## ✅ Completati
 
-- [x] **Database modelli espanso** - 132 modelli da 16 famiglie, 100% benchmark coverage
+- [x] **Database modelli espanso** - 242 modelli da 35+ famiglie, 100% benchmark coverage
 - [x] **Data cleanup v2** - Rimossi 29 modelli morti, aggiunti 17 modelli popolari (Llama 3.3, Qwen 2.5, DeepSeek R1 distill, Phi-4-mini, Gemma 3)
-- [x] **Benchmark 100%** - Tutti i 132 modelli hanno benchmark, date reali, e capability tags corretti
-- [x] **GGUF sources** - 71% dei modelli con link diretti a GGUF (bartowski, TheBloke)
-- [x] **GPU prices completi** - Tutti i 56 GPU con prezzi (inclusi Apple Silicon come prezzo Mac)
+- [x] **Data expansion v3** - +110 modelli: GPT-2, BLOOM, OPT, MPT, Dolly, Alpaca, LLaVA, Moondream, SmolLM2, Falcon, InternLM, Baichuan, ChatGLM, Yi-1.5, Command-R+, Aya, DBRX, Jamba, WizardLM, WizardCoder, Codestral, Pixtral, Granite, Qwen3, DeepSeek-VL2, Llama 4 Maverick, ecc.
+- [x] **Benchmark 100%** - Tutti i 242 modelli hanno benchmark, date reali, e capability tags corretti
+- [x] **GGUF sources** - 80%+ dei modelli con link diretti a GGUF (bartowski, TheBloke, unsloth)
+- [x] **GPU database espanso** - 117 GPU: data center (H100, H200, A100, L40S, MI300X), storiche (RTX 20xx, GTX 10xx), AMD RDNA4, Apple M3/M4 Ultra
+- [x] **CPU database espanso** - 65 CPU: AMD Zen 5 (9000 series), 3D V-Cache, EPYC, Threadripper PRO, Intel Arrow Lake, Xeon Scalable, Apple Ultra
+- [x] **HF models catalog espanso** - 159 modelli nel catalogo HF (embeddings, chat, vision, coding, reasoning)
 - [x] **Scoring engine v2** - Pesi benchmark aggiornati per 5 use case, aggiunto GPQA a chat/vision
 - [x] **Auto-detect GPU** - WebGL detection funzionante
 - [x] **Auto-detect CPU** - Thread count e Apple Silicon
@@ -18,7 +21,7 @@ Problemi da risolvere in ordine di priorità.
 - [x] **Hardware Recipe** - Sistema completo per raccomandazioni hardware
 - [x] **Multi-GPU** - Configurazioni 2x, 4x, 8x con scaling
 - [x] **Cloud alternatives** - RunPod, Vast.ai, Lambda
-- [x] **GPU price scraper** - Prezzi USD da Newegg
+- [x] **GPU price scraper** - Prezzi USD da Newegg (consumer GPUs; data center GPU prezzi indicativi)
 
 ---
 
@@ -56,10 +59,12 @@ Chrome DevTools → Toggle device toolbar (Ctrl+Shift+M)
 **Problema:** Attualmente solo USD (Newegg). Geizhals/Idealo bloccano scraping.
 
 **Opzioni:**
-- [ ] Usare Playwright per bypass anti-bot
+- [ ] Conversione USD→EUR con tasso fisso (più semplice, aggiornato manualmente)
+- [ ] Usare Playwright per bypass anti-bot (più risorse, possibile TOS violation)
 - [ ] API ufficiali (se esistono)
-- [ ] Conversione USD→EUR con tasso fisso
 - [ ] Input manuale prezzi EUR
+
+**Note:** I prezzi dei GPU data center (H100, A100 ecc.) sono già indicativi in USD; per uso enterprise il prezzo EUR è negoziato direttamente con NVIDIA/AMD.
 
 ---
 

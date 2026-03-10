@@ -15,8 +15,8 @@ Choose a model you want to run, set your speed and budget preferences, and get G
 ### Hardware Detection
 - **Auto-detect GPU** via WebGL - automatically identifies your graphics card
 - **Auto-detect CPU** - detects thread count and Apple Silicon chips
-- **56 GPUs** in database with pricing: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
-- **32 CPUs** in database for CPU inference estimates
+- **117 GPUs** in database with pricing: NVIDIA (GTX 10xx/16xx, RTX 20xx/30xx/40xx/50xx, data center H100/H200/A100/L40S/T4/V100), AMD (RDNA/RDNA2/RDNA3/RDNA4/Instinct MI300X), Apple Silicon (M1–M4 Ultra), Intel Arc
+- **65 CPUs** in database for CPU inference estimates
 - **Manual override** for any hardware spec
 
 ### Hardware Recipe (Build for Model)
@@ -42,11 +42,12 @@ Works for any model size:
 - Extreme models (1000B+): Datacenter requirements (e.g., "9x H100 @ $22/hr")
 
 ### Model Database
-- **132 LLM models** from 16 families (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
+- **242 LLM models** from 35+ families (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, OpenAI GPT-2, BigScience BLOOM, Meta OPT/MPT, Databricks, LLaVA, InternLM, Baichuan, Yi, ChatGLM, DBRX, Jamba, WizardLM, and more)
+- **Broad era coverage**: from GPT-2 (2019) and LLaMA 1 (2023) to Qwen3 and Llama 4 (2025)
 - **100% benchmark coverage**: every model has scored benchmarks (MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, GPQA, MUSR)
 - **4 quantization levels** per model: Q4_K_M, Q6_K, Q8_0, FP16
 - **MoE support** with active parameter detection
-- **GGUF download links** for 71% of models (bartowski, TheBloke)
+- **GGUF download links** for 80%+ of models (bartowski, TheBloke, unsloth)
 
 ### Performance Estimates
 - **Tokens/sec** (decode speed) - memory bandwidth bound
@@ -302,9 +303,10 @@ src/
   hooks/
     useRecommendation.ts  # React hook for state and data fetching
 public/data/
-  gpus.json               # GPU database (56 cards, all with prices)
-  cpus.json               # CPU database (32 processors)
-  models.json             # LLM models with benchmarks (132 models, 100% coverage)
+  gpus.json               # GPU database (117 cards, consumer + data center)
+  cpus.json               # CPU database (65 processors, AMD/Intel/Apple)
+  hf_models.json          # HuggingFace model catalog (159 models, embeddings + chat + vision)
+  models.json             # LLM models with benchmarks (242 models, 35+ families)
 scripts/
   scrape_hf_models.py     # Scrape models from HuggingFace
   merge_models.py         # Merge into app format
