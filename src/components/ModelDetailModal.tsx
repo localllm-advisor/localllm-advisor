@@ -49,7 +49,7 @@ export default function ModelDetailModal({ model, onClose }: ModelDetailModalPro
 
   // Get all benchmarks with values
   const benchmarksWithValues = Object.entries(m.benchmarks)
-    .filter(([_, val]) => val !== null && val !== undefined)
+    .filter(([, val]) => val !== null && val !== undefined)
     .sort((a, b) => (b[1] as number) - (a[1] as number));
 
   // Generate links

@@ -14,7 +14,7 @@ interface CommunityBenchmarksProps {
 
 export default function CommunityBenchmarks({
   modelId,
-  modelName,
+  // modelName - reserved for future use
   quantLevel,
   onSubmitClick,
 }: CommunityBenchmarksProps) {

@@ -12,7 +12,9 @@ const CONTEXT_OPTIONS = [4096, 8192, 16384, 32768, 65536, 131072, 200000];
 const CONTEXT_LABELS = ['4K', '8K', '16K', '32K', '64K', '128K', '200K'];
 
 const QUANT_OPTIONS: { value: QuantLevel; label: string; desc: string }[] = [
+  { value: 'Q3_K_M', label: 'Q3', desc: 'Ultra compact' },
   { value: 'Q4_K_M', label: 'Q4', desc: 'Smallest, fastest' },
+  { value: 'Q5_K_M', label: 'Q5', desc: 'Balanced size' },
   { value: 'Q6_K', label: 'Q6', desc: 'Good balance' },
   { value: 'Q8_0', label: 'Q8', desc: 'High quality' },
   { value: 'FP16', label: 'FP16', desc: 'Maximum quality' },
@@ -78,7 +80,7 @@ const ALL_ARCHITECTURES: ModelArchitecture[] = ['dense', 'moe'];
 
 export const DEFAULT_FILTERS: AdvancedFilters = {
   contextLength: 4096,
-  quantLevels: ['Q4_K_M', 'Q6_K', 'Q8_0', 'FP16'],
+  quantLevels: ['Q3_K_M', 'Q4_K_M', 'Q5_K_M', 'Q6_K', 'Q8_0', 'FP16'],
   minSpeed: null,
   sizeRanges: ['small', 'medium', 'large', 'xlarge'],
   families: ALL_FAMILIES,

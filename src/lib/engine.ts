@@ -194,6 +194,10 @@ export function recommend(
     if (useCase === 'vision' && !model.capabilities.includes('vision')) {
       continue;
     }
+    // Embedding use case should only show embedding models
+    if (useCase === 'embedding' && model.family !== 'embedding') {
+      continue;
+    }
 
     // Apply advanced filters if provided
     if (filters) {

@@ -34,6 +34,8 @@ const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
   creative: ['ifeval', 'mmlu_pro', 'bbh'],
   vision: ['ifeval', 'mmlu_pro', 'bbh'],  // Placeholder until MMMU/MMBench available
+  roleplay: ['ifeval', 'mmlu_pro', 'bbh'],  // Similar to creative
+  embedding: ['mmlu_pro', 'bbh', 'ifeval'],  // Knowledge representation
 };
 
 // Colors for each model (up to 10)

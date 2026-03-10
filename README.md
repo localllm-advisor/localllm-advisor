@@ -45,7 +45,10 @@ Works for any model size:
 - **242 LLM models** from 35+ families (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, OpenAI GPT-2, BigScience BLOOM, Meta OPT/MPT, Databricks, LLaVA, InternLM, Baichuan, Yi, ChatGLM, DBRX, Jamba, WizardLM, and more)
 - **Broad era coverage**: from GPT-2 (2019) and LLaMA 1 (2023) to Qwen3 and Llama 4 (2025)
 - **100% benchmark coverage**: every model has scored benchmarks (MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, GPQA, MUSR)
-- **4 quantization levels** per model: Q4_K_M, Q6_K, Q8_0, FP16
+- **Vision models**: LLaVA, Moondream, InternVL2, MiniCPM-V, Pixtral, Llama Vision, Qwen-VL
+- **Embedding models**: Nomic, mxbai, BGE-M3, Snowflake Arctic
+- **Models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, MBPP, MMMU, MMBench
+- **6 quantization levels** per model: Q3_K_M, Q4_K_M, Q5_K_M, Q6_K, Q8_0, FP16
 - **MoE support** with active parameter detection
 - **GGUF download links** for 80%+ of models (bartowski, TheBloke, unsloth)
 
@@ -66,7 +69,7 @@ Works for any model size:
 ### Advanced Filters
 - **Context length**: 4K to 200K tokens
 - **Sort by**: Score, Speed, Quality, VRAM, Parameters
-- **Quantization filter**: Q4, Q6, Q8, FP16
+- **Quantization filter**: Q3, Q4, Q5, Q6, Q8, FP16
 - **Model size filter**: Small (≤7B), Medium (8-13B), Large (14-34B), XL (35B+)
 - **Model family**: Llama, Qwen, Mistral, Gemma, Phi, DeepSeek, and 17 more families
 - **Architecture**: Dense (standard) or MoE (Mixture of Experts)
@@ -86,6 +89,72 @@ Click on any model to view complete specifications:
 - **Model info**: family, architecture, parameters, context length, release date, capabilities
 - **Ready-to-copy** Ollama command
 - **Direct links** to Ollama library and HuggingFace
+- **GGUF downloads**: Links to HuggingFace GGUF repositories (bartowski, unsloth, etc.)
+
+### Setup Score & Upgrade Advisor
+Comprehensive hardware evaluation and upgrade recommendations:
+
+**Your Hardware Rating** (0-100 score with tier badges):
+- **Diamond** (85+): Top-tier setup, can run almost anything
+- **Gold** (70+): Excellent setup for most models
+- **Silver** (55+): Good mid-range capability
+- **Bronze** (40+): Entry-level, limited to smaller models
+- **Starter** (<40): Basic setup, consider upgrades
+
+**Score Components** (with expandable explanations):
+- **VRAM Capacity**: How your GPU memory compares to others
+- **Memory Bandwidth**: How fast your GPU can read model weights
+- **Model Coverage**: Percentage of all models you can run entirely on GPU
+- **Best Quality**: The benchmark score of the best model you can run
+- **Speed**: Average generation speed in tokens/second
+
+**Community Data Integration**:
+- Score incorporates real-world benchmarks from the community (30% weight)
+- Compares your GPU against global performance data
+- Shows percentile ranking among submitted benchmarks
+
+**Upgrade Your Hardware**:
+- GPU upgrade suggestions ranked by cost/benefit ratio
+- Shows expected speed improvement and new models unlocked
+- Direct **Amazon links** for easy purchasing
+- Price displayed for each recommendation
+
+**Alternative Models**:
+- Suggests similar models with better performance on your hardware
+- Clickable cards navigate to **"Build for Model"** mode with model pre-selected
+- Shows capability comparison (speed, quality, VRAM fit)
+
+### GPU Price Tracker (`/gpu-prices`)
+Track GPU prices over time with alerts and deal notifications:
+
+- **Price History**: Track prices from Newegg and Amazon over time
+- **Price Trends**: See if prices are rising, dropping, or stable (7-day comparison)
+- **Hot Deals**: GPUs currently below their 30-day average price
+- **Price Alerts**: Set alerts to get notified when a GPU drops below your target price
+- **Retailer Links**: Direct links to buy from the source with the best price
+- **Search & Filter**: Find GPUs by name, filter by vendor (NVIDIA/AMD), sort by price or trend
+
+**Data Sources**:
+- Newegg (primary)
+- Amazon (secondary)
+
+**Automated Updates**: GitHub Actions workflow runs daily to scrape latest prices.
+
+### GPU Reviews & External Links
+Community-driven GPU reviews specifically for LLM use cases:
+
+- **Star Ratings**: Overall rating (1-5 stars) plus sub-ratings for LLM performance, value, and noise/temps
+- **Pros/Cons Lists**: Quick summary of advantages and disadvantages
+- **"Best For" Tags**: Budget, large models (70B+), multi-GPU, quiet operation, beginners
+- **LLM Context**: Models tested, typical speed (tok/s), VRAM usage, use case
+- **Voting System**: Upvote/downvote helpful reviews
+- **Purchase Info**: Price paid, months owned
+- **External Links**: Direct links to Reddit r/LocalLLaMA discussions, Ollama issues, llama.cpp issues
+
+**Integration Points**:
+- GPU list shows average rating and review count
+- GPU detail panel has Reviews tab
+- UpgradeAdvisor shows ratings for recommended GPUs
 
 ### Community Benchmarks
 Real-world performance data crowdsourced from users:
@@ -111,12 +180,14 @@ Dedicated page for browsing all community benchmarks with advanced features:
 - **Direct linking**: Link to specific model benchmarks via `?model=llama3.1:70b`
 
 ### Use Cases
-5 use cases with different benchmark weights:
-- **Chat**: IFEval, MMLU-PRO, BBH, GPQA
-- **Coding**: HumanEval, BigCodeBench, MATH, IFEval
+7 use cases with different benchmark weights:
+- **Chat**: IFEval, MMLU-PRO, BBH
+- **Coding**: HumanEval, MBPP, BigCodeBench, IFEval
 - **Reasoning**: MATH, GPQA, BBH, MUSR
-- **Creative**: IFEval, MMLU-PRO, BBH
-- **Vision**: IFEval, MMLU-PRO, BBH, GPQA (filtered by vision capability)
+- **Creative**: IFEval, AlpacaEval, MMLU-PRO
+- **Vision**: MMMU, MMBench, IFEval (filters to vision-capable models)
+- **Roleplay**: IFEval, MMLU-PRO, BBH (optimized for interactive RP)
+- **Embedding**: MMLU-PRO, BBH, IFEval (filters to embedding models)
 
 ## Quick Start
 
@@ -228,6 +299,32 @@ npm run dev
 4. Vote on benchmarks (requires login)
 5. Test direct linking: `/benchmarks?model=llama3.1:70b`
 
+### GPU Price Tracking Setup
+
+1. **Run the price tracking schema**:
+   - Go to Supabase Dashboard → SQL Editor
+   - Copy the contents of `supabase/gpu_prices_schema.sql`
+   - Paste and click "Run"
+
+2. **Configure GitHub Actions secrets** (for automated daily scraping):
+   - Go to repo Settings → Secrets and variables → Actions
+   - Add `SUPABASE_URL` (your project URL)
+   - Add `SUPABASE_SERVICE_KEY` (service role key from Supabase → Settings → API)
+
+3. **Manual scraping** (optional):
+   ```bash
+   # Install dependencies
+   pip install -r scripts/requirements.txt
+
+   # Run scraper (dry run)
+   python scripts/scrape_gpu_prices.py --dry-run
+
+   # Run scraper (saves to Supabase)
+   SUPABASE_URL=https://xxx.supabase.co SUPABASE_SERVICE_KEY=xxx python scripts/scrape_gpu_prices.py
+   ```
+
+The GitHub Actions workflow (`.github/workflows/scrape-gpu-prices.yml`) runs daily at 6:00 UTC.
+
 ### Database Schema
 
 ```sql
@@ -257,6 +354,45 @@ benchmark_stats (
 benchmarks_with_votes (
   ..., upvotes, downvotes, vote_score
 )
+
+-- GPU price history
+gpu_prices (
+  id, gpu_name, price_usd, retailer,
+  retailer_url, in_stock, scraped_at, scraped_date
+)
+
+-- Price alerts
+price_alerts (
+  id, user_id, gpu_name, target_price_usd,
+  alert_type, is_active, triggered_at, created_at
+)
+
+-- Aggregated price stats (view)
+gpu_price_stats (
+  gpu_name, current_price_usd, avg_30d,
+  min_30d, max_30d, price_7d_ago, data_points_30d
+)
+
+-- GPU reviews
+gpu_reviews (
+  id, user_id, gpu_name,
+  rating_overall, rating_llm_performance, rating_value, rating_noise_temps,
+  title, body, pros, cons,
+  models_tested, typical_speed_tps, vram_usage_percent, use_case,
+  best_for, purchase_price_usd, months_owned,
+  upvotes, downvotes, is_hidden, created_at, updated_at
+)
+
+-- Review votes
+gpu_review_votes (
+  id, user_id, review_id, vote_type, created_at
+)
+
+-- Aggregated review stats (view)
+gpu_review_stats (
+  gpu_name, review_count, avg_rating,
+  avg_llm_performance, avg_value, avg_speed_tps
+)
 ```
 
 ### Security
@@ -282,6 +418,7 @@ src/
   app/                    # Next.js pages and layouts
     page.tsx              # Main page
     benchmarks/           # Community benchmarks page with voting
+    gpu-prices/           # GPU price tracker page
     about/                # About page
     faq/                  # FAQ page
     methodology/          # Methodology page
@@ -293,6 +430,16 @@ src/
     ResultsList.tsx       # Results display with charts
     ModelCard.tsx         # Individual model card with stats
     VramBar.tsx           # VRAM usage visualization
+    UpgradeAdvisor.tsx    # Setup Score & Upgrade recommendations
+    PriceHistoryChart.tsx # GPU price history SVG chart
+    PriceTrendBadge.tsx   # Price trend indicator (rising/dropping/stable)
+    PriceAlertModal.tsx   # Create price alerts modal
+    StarRating.tsx        # Star rating display/input component
+    GpuReviewCard.tsx     # Single GPU review with voting
+    GpuReviewList.tsx     # List of reviews with sorting
+    GpuReviewForm.tsx     # Submit/edit review modal
+    GpuReviewStats.tsx    # Aggregate review stats display
+    ExternalLinks.tsx     # Reddit/GitHub discussion links
   lib/
     engine.ts             # Recommendation engine
     hardwareAdvisor.ts    # Reverse engine: model -> GPU recommendations
@@ -314,6 +461,10 @@ scripts/
   upgrade_data_v2.py      # One-shot data cleanup + new models + benchmarks
   update_gpu_prices.py    # Update GPU prices from Newegg (USD)
   scrape_gpus_simple.py   # Full GPU scraper with specs + prices
+  scrape_gpu_prices.py    # Daily price scraper for Supabase (Newegg/Amazon)
+supabase/
+  schema.sql              # Community benchmarks schema
+  gpu_prices_schema.sql   # GPU price tracking schema
 ```
 
 ## How It Works
@@ -443,7 +594,7 @@ Edit `public/data/cpus.json`:
 ```typescript
 interface AdvancedFilters {
   contextLength: number;              // 4096 - 200000
-  quantLevels: QuantLevel[];          // ['Q4_K_M', 'Q6_K', 'Q8_0', 'FP16']
+  quantLevels: QuantLevel[];          // ['Q3_K_M', 'Q4_K_M', 'Q5_K_M', 'Q6_K', 'Q8_0', 'FP16']
   minSpeed: number | null;            // tokens/sec minimum
   sizeRanges: ModelSizeRange[];       // ['small', 'medium', 'large', 'xlarge']
   sortBy: SortBy;                     // 'score' | 'speed' | 'quality' | 'vram' | 'params'
@@ -556,6 +707,11 @@ Events tracked:
 - [x] Model comparison radar chart
 - [x] Export results (JSON/CSV)
 - [x] Filter by model family/architecture
+- [x] Setup Score & Upgrade Advisor
+- [x] GGUF download links in model details
+- [x] GPU prices displayed in hardware finder
+- [x] GPU Price Tracker with alerts and history
+- [x] GPU Reviews & External Links for LLM use cases
 - [ ] PWA for offline use
 
 ## License

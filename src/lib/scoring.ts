@@ -68,6 +68,28 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
     wSpeed: 0.25,
     wQuant: 0.25,
   },
+  roleplay: {
+    // Roleplay prioritizes creative instruction-following and knowledge
+    benchmarks: [
+      { key: 'ifeval', weight: 0.50 },      // Instruction following (key for roleplay)
+      { key: 'mmlu_pro', weight: 0.25 },    // Knowledge for character consistency
+      { key: 'bbh', weight: 0.25 },         // Reasoning for coherent responses
+    ],
+    wQuality: 0.35,
+    wSpeed: 0.35,                           // Speed matters for interactive RP
+    wQuant: 0.30,
+  },
+  embedding: {
+    // Embedding models focus on quality over speed
+    benchmarks: [
+      { key: 'mmlu_pro', weight: 0.50 },    // Knowledge representation
+      { key: 'bbh', weight: 0.30 },         // Reasoning/understanding
+      { key: 'ifeval', weight: 0.20 },      // General capability
+    ],
+    wQuality: 0.70,
+    wSpeed: 0.10,                           // Speed less important for embeddings
+    wQuant: 0.20,
+  },
 };
 
 export function getUseCaseWeights(useCase: UseCase): UseCaseWeights {

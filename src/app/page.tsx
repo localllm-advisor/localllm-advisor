@@ -10,6 +10,7 @@ import UseCasePicker from '@/components/UseCasePicker';
 import AdvancedOptions, { DEFAULT_FILTERS } from '@/components/AdvancedOptions';
 import ResultsList from '@/components/ResultsList';
 import HardwareFinder from '@/components/HardwareFinder';
+import UpgradeAdvisor from '@/components/UpgradeAdvisor';
 import { trackEvent } from '@/components/Analytics';
 import { getUser, signOut, signInWithGitHub, signInWithGoogle } from '@/lib/supabase';
 import { User } from '@supabase/supabase-js';
@@ -178,6 +179,12 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
                 Benchmarks
+              </Link>
+              <Link href="/gpu-prices" className={`flex items-center gap-1 transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                GPU Prices
               </Link>
               <Link href="/methodology" className={`transition-colors ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                 Methodology
@@ -406,7 +413,7 @@ export default function Home() {
 
       {/* Results - Full Width (only for Find Models mode) */}
       {mode === 'find-models' && results && canSearch && (
-        <section ref={resultsRef} className="mx-auto max-w-7xl px-4 py-6">
+        <section ref={resultsRef} className="mx-auto max-w-7xl px-4 py-6 space-y-8">
           <ResultsList
             results={results}
             gpuName={isCpuOnlyMode ? 'CPU Only' : (specs.gpu_name ?? null)}
@@ -414,6 +421,19 @@ export default function Home() {
             useCase={useCase}
             onBuildForModel={handleBuildForModel}
           />
+
+          {/* Upgrade Advisor */}
+          {!isCpuOnlyMode && specs.gpu_name && (
+            <UpgradeAdvisor
+              results={results}
+              currentGpu={gpus.find(g => g.name === specs.gpu_name) || null}
+              currentVramMb={specs.vram_mb || 0}
+              allGpus={gpus}
+              allModels={models}
+              useCase={useCase}
+              onBuildForModel={handleBuildForModel}
+            />
+          )}
         </section>
       )}
 
