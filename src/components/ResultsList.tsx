@@ -110,6 +110,8 @@ const USE_CASE_BENCHMARKS: Record<UseCase, (keyof Benchmarks)[]> = {
   reasoning: ['math', 'gpqa', 'bbh', 'musr'],
   creative: ['ifeval', 'mmlu_pro', 'bbh'],
   vision: ['ifeval', 'mmlu_pro', 'bbh'],
+  roleplay: ['ifeval', 'mmlu_pro', 'bbh'],
+  embedding: ['mmlu_pro', 'bbh', 'ifeval'],
 };
 
 const BENCHMARK_NAMES: Record<keyof Benchmarks, string> = {
@@ -134,6 +136,8 @@ const USE_CASE_LABELS: Record<UseCase, string> = {
   reasoning: 'Reasoning',
   creative: 'Creative Writing',
   vision: 'Vision',
+  roleplay: 'Roleplay',
+  embedding: 'Embedding',
 };
 
 // Speed experience descriptions

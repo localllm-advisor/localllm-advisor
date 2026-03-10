@@ -135,6 +135,17 @@ export default function HardwareConfig({
     return gpu.name.toLowerCase().includes(q) || gpu.aliases.some((a) => a.toLowerCase().includes(q));
   });
 
+  // Sort GPUs by vendor to ensure all vendors are visible in the dropdown
+  // Order: nvidia, amd, intel, apple (most common discrete GPUs first)
+  const vendorOrder: Record<string, number> = { nvidia: 0, amd: 1, intel: 2, apple: 3 };
+  const sortedGpus = [...filteredGpus].sort((a, b) => {
+    const aOrder = vendorOrder[a.vendor] ?? 4;
+    const bOrder = vendorOrder[b.vendor] ?? 4;
+    if (aOrder !== bOrder) return aOrder - bOrder;
+    // Within same vendor, sort by VRAM descending (higher VRAM first)
+    return b.vram_mb - a.vram_mb;
+  });
+
   const filteredCpus = cpus.filter((cpu) => {
     const q = cpuQuery.toLowerCase();
     return cpu.name.toLowerCase().includes(q);
@@ -322,15 +333,23 @@ export default function HardwareConfig({
             placeholder="Search GPU (e.g. 4070, M3 Pro, 7900 XTX)..."
             className="w-full rounded-lg border border-gray-600 bg-gray-800 px-4 py-2.5 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none text-sm"
           />
-          {gpuOpen && filteredGpus.length > 0 && (
-            <ul className="absolute z-20 mt-1 max-h-48 w-full overflow-auto rounded-lg border border-gray-600 bg-gray-800 shadow-xl">
-              {filteredGpus.slice(0, 20).map((gpu) => (
+          {gpuOpen && sortedGpus.length > 0 && (
+            <ul className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-gray-600 bg-gray-800 shadow-xl">
+              {sortedGpus.slice(0, 50).map((gpu) => (
                 <li
                   key={gpu.name}
                   onClick={() => handleGpuSelect(gpu)}
-                  className="cursor-pointer px-4 py-2 hover:bg-gray-700 text-gray-200 text-sm flex justify-between"
+                  className="cursor-pointer px-4 py-2 hover:bg-gray-700 text-gray-200 text-sm flex justify-between items-center"
                 >
-                  <span>{gpu.name}</span>
+                  <span className="flex items-center gap-2">
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-medium uppercase ${
+                      gpu.vendor === 'nvidia' ? 'bg-green-900/50 text-green-400' :
+                      gpu.vendor === 'amd' ? 'bg-red-900/50 text-red-400' :
+                      gpu.vendor === 'intel' ? 'bg-blue-900/50 text-blue-400' :
+                      'bg-gray-700 text-gray-300'
+                    }`}>{gpu.vendor}</span>
+                    <span>{gpu.name}</span>
+                  </span>
                   <span className="text-gray-500">{Math.round(gpu.vram_mb / 1024)}GB</span>
                 </li>
               ))}

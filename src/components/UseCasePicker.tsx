@@ -13,6 +13,8 @@ const useCases: { value: UseCase; label: string; icon: string }[] = [
   { value: 'reasoning', label: 'Reasoning', icon: '🧠' },
   { value: 'creative', label: 'Creative', icon: '✨' },
   { value: 'vision', label: 'Vision', icon: '👁️' },
+  { value: 'roleplay', label: 'Roleplay', icon: '🎭' },
+  { value: 'embedding', label: 'Embedding', icon: '🔢' },
 ];
 
 export default function UseCasePicker({
@@ -24,7 +26,7 @@ export default function UseCasePicker({
       <label className="block text-sm font-medium text-gray-300">
         What will you use it for?
       </label>
-      <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
         {useCases.map(({ value, label, icon }) => (
           <button
             key={value}

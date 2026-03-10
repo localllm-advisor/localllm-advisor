@@ -15,8 +15,8 @@ Choose a model you want to run, set your speed and budget preferences, and get G
 ### Hardware Detection
 - **Auto-detect GPU** via WebGL - automatically identifies your graphics card
 - **Auto-detect CPU** - detects thread count and Apple Silicon chips
-- **56 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
-- **32 CPUs** in database for CPU inference estimates
+- **61 GPUs** in database: NVIDIA (RTX 30/40/50), AMD (RX 6000/7000), Apple Silicon (M1-M4), Intel Arc
+- **35 CPUs** in database: Intel (12th-14th gen), AMD (Ryzen 5000/7000/9000), Apple Silicon (M1-M4 including Ultra)
 - **Manual override** for any hardware spec
 
 ### Hardware Recipe (Build for Model)
@@ -42,9 +42,11 @@ Works for any model size:
 - Extreme models (1000B+): Datacenter requirements (e.g., "9x H100 @ $22/hr")
 
 ### Model Database
-- **132 LLM models** from 25+ providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
-- **Models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, MBPP
-- **4 quantization levels** per model: Q4_K_M, Q6_K, Q8_0, FP16
+- **160+ LLM models** from 25+ providers (Meta, Mistral, Qwen, Google, Microsoft, DeepSeek, Cohere, etc.)
+- **Vision models**: LLaVA, Moondream, InternVL2, MiniCPM-V, Pixtral, Llama Vision, Qwen-VL
+- **Embedding models**: Nomic, mxbai, BGE-M3, Snowflake Arctic
+- **Models with benchmarks**: MMLU-PRO, MATH, IFEval, BBH, BigCodeBench, HumanEval, MBPP, MMMU, MMBench
+- **6 quantization levels** per model: Q3_K_M, Q4_K_M, Q5_K_M, Q6_K, Q8_0, FP16
 - **MoE support** with active parameter detection
 
 ### Performance Estimates
@@ -64,7 +66,7 @@ Works for any model size:
 ### Advanced Filters
 - **Context length**: 4K to 200K tokens
 - **Sort by**: Score, Speed, Quality, VRAM, Parameters
-- **Quantization filter**: Q4, Q6, Q8, FP16
+- **Quantization filter**: Q3, Q4, Q5, Q6, Q8, FP16
 - **Model size filter**: Small (≤7B), Medium (8-13B), Large (14-34B), XL (35B+)
 - **Model family**: Llama, Qwen, Mistral, Gemma, Phi, DeepSeek, and 17 more families
 - **Architecture**: Dense (standard) or MoE (Mixture of Experts)
@@ -175,12 +177,14 @@ Dedicated page for browsing all community benchmarks with advanced features:
 - **Direct linking**: Link to specific model benchmarks via `?model=llama3.1:70b`
 
 ### Use Cases
-5 use cases with different benchmark weights:
+7 use cases with different benchmark weights:
 - **Chat**: IFEval, MMLU-PRO, BBH
 - **Coding**: HumanEval, MBPP, BigCodeBench, IFEval
 - **Reasoning**: MATH, GPQA, BBH, MUSR
 - **Creative**: IFEval, AlpacaEval, MMLU-PRO
-- **Vision**: MMMU, MMBench, IFEval
+- **Vision**: MMMU, MMBench, IFEval (filters to vision-capable models)
+- **Roleplay**: IFEval, MMLU-PRO, BBH (optimized for interactive RP)
+- **Embedding**: MMLU-PRO, BBH, IFEval (filters to embedding models)
 
 ## Quick Start
 
@@ -443,9 +447,9 @@ src/
   hooks/
     useRecommendation.ts  # React hook for state and data fetching
 public/data/
-  gpus.json               # GPU database (56 cards)
-  cpus.json               # CPU database (32 processors)
-  models.json             # LLM models with benchmarks (84 models)
+  gpus.json               # GPU database (61 cards)
+  cpus.json               # CPU database (35 processors)
+  models.json             # LLM models with benchmarks (160+ models)
 scripts/
   scrape_hf_models.py     # Scrape models from HuggingFace
   merge_models.py         # Merge into app format
@@ -585,7 +589,7 @@ Edit `public/data/cpus.json`:
 ```typescript
 interface AdvancedFilters {
   contextLength: number;              // 4096 - 200000
-  quantLevels: QuantLevel[];          // ['Q4_K_M', 'Q6_K', 'Q8_0', 'FP16']
+  quantLevels: QuantLevel[];          // ['Q3_K_M', 'Q4_K_M', 'Q5_K_M', 'Q6_K', 'Q8_0', 'FP16']
   minSpeed: number | null;            // tokens/sec minimum
   sizeRanges: ModelSizeRange[];       // ['small', 'medium', 'large', 'xlarge']
   sortBy: SortBy;                     // 'score' | 'speed' | 'quality' | 'vram' | 'params'

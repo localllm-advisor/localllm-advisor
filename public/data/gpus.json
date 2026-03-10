@@ -552,6 +552,55 @@
     "price_usd": 339
   },
   {
+    "name": "NVIDIA RTX 3050 8GB",
+    "vendor": "nvidia",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 224,
+    "memory_type": "GDDR6",
+    "cuda_cores": 2560,
+    "tensor_cores": 80,
+    "fp32_tflops": 9.1,
+    "fp16_tflops": 18,
+    "architecture": "Ampere",
+    "compute_capability": "8.6",
+    "tdp_watts": 130,
+    "pcie_gen": 4,
+    "pcie_lanes": 8,
+    "aliases": [
+      "NVIDIA RTX 3050 8GB",
+      "rtx 3050 8gb",
+      "RTX30508GB",
+      "RTX 3050 8GB",
+      "RTX 3050"
+    ],
+    "availability": "available",
+    "price_usd": 199
+  },
+  {
+    "name": "NVIDIA RTX 3050 6GB",
+    "vendor": "nvidia",
+    "vram_mb": 6144,
+    "bandwidth_gbps": 168,
+    "memory_type": "GDDR6",
+    "cuda_cores": 2048,
+    "tensor_cores": 64,
+    "fp32_tflops": 7.3,
+    "fp16_tflops": 14.6,
+    "architecture": "Ampere",
+    "compute_capability": "8.6",
+    "tdp_watts": 70,
+    "pcie_gen": 4,
+    "pcie_lanes": 8,
+    "aliases": [
+      "NVIDIA RTX 3050 6GB",
+      "rtx 3050 6gb",
+      "RTX30506GB",
+      "RTX 3050 6GB"
+    ],
+    "availability": "available",
+    "price_usd": 169
+  },
+  {
     "name": "AMD RX 7900 XTX",
     "vendor": "amd",
     "vram_mb": 24576,
@@ -732,7 +781,8 @@
       "rx 6950 xt",
       "AMD RX 6950 XT",
       "RX 6950 XT"
-    ]
+    ],
+    "price_usd": 449
   },
   {
     "name": "AMD RX 6900 XT",
@@ -825,6 +875,74 @@
       "rx 6700 xt"
     ],
     "price_usd": 344
+  },
+  {
+    "name": "AMD RX 6750 XT",
+    "vendor": "amd",
+    "vram_mb": 12288,
+    "bandwidth_gbps": 432,
+    "memory_type": "GDDR6",
+    "stream_processors": 2560,
+    "compute_units": 40,
+    "fp32_tflops": 13.3,
+    "fp16_tflops": 26.6,
+    "architecture": "RDNA2",
+    "tdp_watts": 250,
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "availability": "used_only",
+    "aliases": [
+      "RX6750XT",
+      "AMD RX 6750 XT",
+      "RX 6750 XT",
+      "rx 6750 xt"
+    ],
+    "price_usd": 299
+  },
+  {
+    "name": "AMD RX 6650 XT",
+    "vendor": "amd",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 280,
+    "memory_type": "GDDR6",
+    "stream_processors": 2048,
+    "compute_units": 32,
+    "fp32_tflops": 10.8,
+    "fp16_tflops": 21.6,
+    "architecture": "RDNA2",
+    "tdp_watts": 180,
+    "pcie_gen": 4,
+    "pcie_lanes": 8,
+    "availability": "available",
+    "aliases": [
+      "RX6650XT",
+      "AMD RX 6650 XT",
+      "RX 6650 XT",
+      "rx 6650 xt"
+    ],
+    "price_usd": 229
+  },
+  {
+    "name": "Intel Arc A380",
+    "vendor": "intel",
+    "vram_mb": 6144,
+    "bandwidth_gbps": 186,
+    "memory_type": "GDDR6",
+    "compute_units": 8,
+    "fp32_tflops": 4.0,
+    "fp16_tflops": 8.0,
+    "architecture": "Alchemist",
+    "tdp_watts": 75,
+    "pcie_gen": 4,
+    "pcie_lanes": 8,
+    "availability": "available",
+    "aliases": [
+      "ArcA380",
+      "Intel Arc A380",
+      "Arc A380",
+      "arc a380"
+    ],
+    "price_usd": 139
   },
   {
     "name": "Intel Arc A770 16GB",

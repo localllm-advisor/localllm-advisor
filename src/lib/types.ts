@@ -1,4 +1,4 @@
-export type UseCase = 'chat' | 'coding' | 'reasoning' | 'creative' | 'vision';
+export type UseCase = 'chat' | 'coding' | 'reasoning' | 'creative' | 'vision' | 'roleplay' | 'embedding';
 
 export interface Quantization {
   level: string;
@@ -264,7 +264,7 @@ export interface PriceAlert {
   created_at: string;
 }
 
-export type QuantLevel = 'Q4_K_M' | 'Q6_K' | 'Q8_0' | 'FP16';
+export type QuantLevel = 'Q3_K_M' | 'Q4_K_M' | 'Q5_K_M' | 'Q6_K' | 'Q8_0' | 'FP16';
 
 export type ModelSizeRange = 'small' | 'medium' | 'large' | 'xlarge';
 
