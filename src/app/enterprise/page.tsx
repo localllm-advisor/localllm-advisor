@@ -606,7 +606,7 @@ export default function EnterprisePage() {
                 <div className={`rounded-xl p-6 border ${isDark ? 'bg-gray-800/30 border-gray-700' : 'bg-white border-gray-200'}`}>
                   <div className={`text-xs font-semibold mb-3 ${isDark ? 'text-purple-400' : 'text-purple-600'}`}>ULTRA</div>
                   <h3 className={`text-xl font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>Ultra</h3>
-                  <p className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>&euro;500<span className={`text-sm font-normal ${isDark ? 'text-gray-500' : 'text-gray-400'}`}> one-time</span></p>
+                  <p className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>&euro;300<span className={`text-sm font-normal ${isDark ? 'text-gray-500' : 'text-gray-400'}`}> one-time</span></p>
                   <ul className={`space-y-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     <li className="flex gap-2"><span className="text-purple-500">&#10003;</span> Everything in Plus</li>
                     <li className="flex gap-2"><span className="text-purple-500">&#10003;</span> GDPR infrastructure compliance assessment</li>

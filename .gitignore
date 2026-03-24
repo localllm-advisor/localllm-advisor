@@ -34,6 +34,7 @@ yarn-error.log*
 # internal docs
 *.docx
 .claude/
+docs/
 
 # python venv
 .venv/

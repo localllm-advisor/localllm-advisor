@@ -15,7 +15,7 @@ interface EnterprisePaywallProps {
 
 /**
  * EnterprisePaywall — a 3-tier pricing overlay for gated content.
- * Shows Free (active), Plus (€149), and Ultra (€500) options.
+ * Shows Free (active), Plus (€149), and Ultra (€300) options.
  * When Stripe is not configured, shows a "Coming Soon" notice on paid tiers.
  */
 export default function EnterprisePaywall({
