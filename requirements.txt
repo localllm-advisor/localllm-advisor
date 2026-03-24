@@ -1,0 +1,18 @@
+# LocalLLM Advisor - Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Data scraping
+requests>=2.28.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Headless browser (for anti-bot bypass)
+playwright>=1.40.0
+
+# HuggingFace integration (for model scraping)
+datasets>=2.14.0
+huggingface-hub>=0.17.0
+
+# Data processing
+pandas>=2.0.0
+pyarrow>=14.0.0

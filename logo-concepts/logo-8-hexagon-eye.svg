@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none">
+  <!-- Logo 8: Hexagonal chip with privacy eye — AI Power + Privacy -->
+  <defs>
+    <linearGradient id="g8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="50%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Hexagon -->
+  <polygon points="53,14 88,32 88,68 53,86 18,68 18,32" fill="url(#g8)" opacity="0.1" stroke="url(#g8)" stroke-width="2.5"/>
+
+  <!-- Inner hexagon -->
+  <polygon points="53,28 74,38 74,62 53,72 32,62 32,38" fill="none" stroke="url(#g8)" stroke-width="1" opacity="0.3"/>
+
+  <!-- Eye shape in center (privacy/watching over your data) -->
+  <path d="M35 50 C42 38 64 38 71 50 C64 62 42 62 35 50 Z" fill="none" stroke="url(#g8)" stroke-width="2"/>
+  <!-- Iris -->
+  <circle cx="53" cy="50" r="7" fill="url(#g8)" opacity="0.2" stroke="url(#g8)" stroke-width="1.5"/>
+  <!-- Pupil (with a small chip pattern) -->
+  <circle cx="53" cy="50" r="3.5" fill="url(#g8)"/>
+  <!-- Cross-hair in pupil (compute) -->
+  <line x1="53" y1="47" x2="53" y2="53" stroke="white" stroke-width="0.8" opacity="0.5"/>
+  <line x1="50" y1="50" x2="56" y2="50" stroke="white" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Hex corner nodes (computation) -->
+  <circle cx="53" cy="14" r="2" fill="#8B5CF6"/>
+  <circle cx="88" cy="32" r="2" fill="#3B82F6"/>
+  <circle cx="88" cy="68" r="2" fill="#8B5CF6"/>
+  <circle cx="53" cy="86" r="2" fill="#3B82F6"/>
+  <circle cx="18" cy="68" r="2" fill="#8B5CF6"/>
+  <circle cx="18" cy="32" r="2" fill="#3B82F6"/>
+
+  <!-- Text -->
+  <text x="105" y="52" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#E2E8F0">LocalLLM</text>
+  <text x="105" y="80" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="400" fill="#94A3B8" letter-spacing="4">ADVISOR</text>
+</svg>

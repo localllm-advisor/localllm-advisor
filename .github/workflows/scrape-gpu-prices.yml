@@ -1,0 +1,35 @@
+name: Scrape GPU Prices
+
+on:
+  schedule:
+    # Run every hour at :00 (GitHub Actions may delay up to a few minutes)
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45  # Abort if scrape takes longer than 45 min (safety net)
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Run GPU price scraper
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: python scripts/scrape_gpu_prices.py
+
+      - name: Summary
+        run: echo "GPU price scraping completed at $(date)"
