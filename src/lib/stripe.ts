@@ -66,7 +66,7 @@ export const SIZING_TIERS: TierConfig[] = [
   {
     id: 'ultra',
     label: 'Ultra',
-    price: '€500',
+    price: '€300',
     priceNote: 'one-time',
     accent: 'purple',
     stripeLink: STRIPE_ULTRA_LINK,
@@ -117,7 +117,7 @@ export const TCO_TIERS: TierConfig[] = [
   {
     id: 'ultra',
     label: 'Ultra',
-    price: '€500',
+    price: '€300',
     priceNote: 'one-time',
     accent: 'purple',
     stripeLink: STRIPE_ULTRA_LINK,

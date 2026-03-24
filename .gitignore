@@ -34,6 +34,7 @@ yarn-error.log*
 # internal docs
 *.docx
 .claude/
+docs/
 
 # python venv
 .venv/
@@ -42,7 +43,6 @@ __pycache__/
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-.env.local
 
 # gh cli
 gh_*/
@@ -54,3 +54,5 @@ node_modules/
 out/
 .env
 .env.production
+.env.local
+.env.example
