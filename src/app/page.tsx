@@ -10,6 +10,7 @@ import CountUp from '@/components/CountUp';
 import Logo from '@/components/Logo';
 import TypeWriter from '@/components/TypeWriter';
 import MeshGradient from '@/components/MeshGradient';
+import QuickCheck from '@/components/QuickCheck';
 
 export default function LandingPage() {
   const { theme } = useTheme();
