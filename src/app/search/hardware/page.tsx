@@ -5,6 +5,7 @@ import HardwareFinder from '@/components/HardwareFinder';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
 import Footer from '@/components/Footer';
+import PageHero from '@/components/PageHero';
 import { useTheme } from '@/components/ThemeProvider';
 
 export default function HardwareSearchPage() {
@@ -29,19 +30,17 @@ export default function HardwareSearchPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`min-h-screen flex flex-col ${isDark ? 'bg-orange-950/40' : 'bg-orange-50/70'}`}>
       <Navbar />
       <BackButton />
 
+      <PageHero
+        title="Find the Right Hardware"
+        subtitle="Select a model and get hardware recommendations based on your budget and speed preferences."
+        accent="orange"
+      />
+
       <main className="flex-1 mx-auto max-w-3xl px-4 py-12 w-full">
-        <div className="mb-8">
-          <h1 className={`text-4xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Find the Right Hardware
-          </h1>
-          <p className={`text-lg ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            Select a model and get hardware recommendations based on your budget and speed preferences
-          </p>
-        </div>
 
         <HardwareFinder models={models} gpus={gpus} />
       </main>

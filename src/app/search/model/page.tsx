@@ -14,6 +14,7 @@ import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
 import Footer from '@/components/Footer';
 import EmailCapture from '@/components/EmailCapture';
+import PageHero from '@/components/PageHero';
 import { trackEvent } from '@/components/Analytics';
 
 export default function ModelSearchPage() {
@@ -119,22 +120,19 @@ export default function ModelSearchPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`min-h-screen flex flex-col ${isDark ? 'bg-blue-950/40' : 'bg-blue-50/70'}`}>
       {/* Navigation */}
       <Navbar />
       <BackButton />
 
+      <PageHero
+        title="Find Models"
+        subtitle="Discover the perfect local LLM for your hardware."
+        accent="blue"
+      />
+
       {/* Main Content */}
       <main className="flex-1 mx-auto w-full max-w-3xl px-4 py-8 space-y-6">
-        {/* Page Header */}
-        <div className="mb-8">
-          <h1 className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Find Models
-          </h1>
-          <p className={`text-sm mt-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            Discover the perfect local LLM for your hardware
-          </p>
-        </div>
 
         {/* Step 1: Hardware Configuration */}
         <section className={`rounded-xl border transition-all ${

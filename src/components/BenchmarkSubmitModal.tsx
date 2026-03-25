@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useTheme } from './ThemeProvider';
 import {
   supabase,
   submitBenchmark,
   signInWithGitHub,
   signInWithGoogle,
+  setAuthReturnAction,
   BenchmarkSubmission,
 } from '@/lib/supabase';
 import { User } from '@supabase/supabase-js';
@@ -41,6 +42,9 @@ export default function BenchmarkSubmitModal({
 
   // Form state
   const [gpuName, setGpuName] = useState('');
+  const [gpuSearch, setGpuSearch] = useState('');
+  const [gpuDropdownOpen, setGpuDropdownOpen] = useState(false);
+  const gpuDropdownRef = useRef<HTMLDivElement>(null);
   const [customGpu, setCustomGpu] = useState('');
   const [tokensPerSecond, setTokensPerSecond] = useState('');
   const [prefillTps, setPrefillTps] = useState('');
@@ -72,6 +76,17 @@ export default function BenchmarkSubmitModal({
     });
 
     return () => subscription.unsubscribe();
+  }, []);
+
+  // Close GPU dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (gpuDropdownRef.current && !gpuDropdownRef.current.contains(e.target as Node)) {
+        setGpuDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -188,7 +203,12 @@ export default function BenchmarkSubmitModal({
               )}
               <div className="flex flex-col gap-3">
                 <button
-                  onClick={async () => { setLoginError(null); const res = await signInWithGitHub(); if (res?.error) setLoginError(res.error); }}
+                  onClick={async () => {
+                    setLoginError(null);
+                    setAuthReturnAction({ type: 'submit-benchmark', modelId: modelId, quantLevel: quantLevel });
+                    const res = await signInWithGitHub();
+                    if (res?.error) setLoginError(res.error);
+                  }}
                   className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -197,7 +217,12 @@ export default function BenchmarkSubmitModal({
                   Continue with GitHub
                 </button>
                 <button
-                  onClick={async () => { setLoginError(null); const res = await signInWithGoogle(); if (res?.error) setLoginError(res.error); }}
+                  onClick={async () => {
+                    setLoginError(null);
+                    setAuthReturnAction({ type: 'submit-benchmark', modelId: modelId, quantLevel: quantLevel });
+                    const res = await signInWithGoogle();
+                    if (res?.error) setLoginError(res.error);
+                  }}
                   className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-colors border ${
                     isDark
                       ? 'bg-gray-800 hover:bg-gray-700 text-white border-gray-600'
@@ -238,35 +263,74 @@ export default function BenchmarkSubmitModal({
                 </div>
               )}
 
-              {/* GPU Selection */}
-              <div>
+              {/* GPU Selection — searchable dropdown, max 10 visible + Other */}
+              <div ref={gpuDropdownRef} className="relative">
                 <label className={labelClass}>GPU *</label>
-                <select
-                  value={gpuName}
-                  onChange={(e) => setGpuName(e.target.value)}
+                <input
+                  type="text"
+                  value={gpuName === 'other' ? 'Other' : gpuSearch || gpuName}
+                  onChange={(e) => {
+                    setGpuSearch(e.target.value);
+                    setGpuName('');
+                    setGpuDropdownOpen(true);
+                  }}
+                  onFocus={() => setGpuDropdownOpen(true)}
+                  placeholder="Search GPU (e.g. RTX 4070, M3 Pro)..."
                   className={inputClass}
-                  required
-                >
-                  <option value="">Select your GPU...</option>
-                  {gpus
-                    .filter(g => g.vendor !== 'apple') // Separate Apple Silicon
-                    .sort((a, b) => a.name.localeCompare(b.name))
-                    .map((gpu) => (
-                      <option key={gpu.name} value={gpu.name}>
-                        {gpu.name}
-                      </option>
-                    ))}
-                  <optgroup label="Apple Silicon">
-                    {gpus
-                      .filter(g => g.vendor === 'apple')
-                      .map((gpu) => (
-                        <option key={gpu.name} value={gpu.name}>
-                          {gpu.name}
-                        </option>
-                      ))}
-                  </optgroup>
-                  <option value="other">Other (specify)</option>
-                </select>
+                  required={!gpuName}
+                />
+                {gpuDropdownOpen && (
+                  <ul className={`absolute z-30 mt-1 max-h-[22rem] w-full overflow-auto rounded-lg border shadow-xl ${isDark ? 'border-gray-600 bg-gray-800' : 'border-gray-300 bg-white'}`}>
+                    {(() => {
+                      const q = gpuSearch.toLowerCase();
+                      const allGpus = [
+                        ...gpus.filter(g => g.vendor !== 'apple').sort((a, b) => a.name.localeCompare(b.name)),
+                        ...gpus.filter(g => g.vendor === 'apple'),
+                      ];
+                      const filtered = q ? allGpus.filter(g => g.name.toLowerCase().includes(q)) : allGpus;
+                      const visible = filtered.slice(0, 10);
+                      const remaining = filtered.length - 10;
+                      return (
+                        <>
+                          {visible.map(gpu => (
+                            <li
+                              key={gpu.name}
+                              onClick={() => {
+                                setGpuName(gpu.name);
+                                setGpuSearch('');
+                                setGpuDropdownOpen(false);
+                              }}
+                              className={`cursor-pointer px-4 py-2.5 text-sm flex justify-between ${isDark ? 'hover:bg-gray-700 text-gray-200' : 'hover:bg-gray-100 text-gray-800'}`}
+                            >
+                              <span>{gpu.name}</span>
+                              <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>{Math.round(gpu.vram_mb / 1024)}GB</span>
+                            </li>
+                          ))}
+                          {remaining > 0 && (
+                            <li className={`px-4 py-2 text-xs ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                              {remaining} more — type to refine
+                            </li>
+                          )}
+                          {filtered.length === 0 && (
+                            <li className={`px-4 py-2.5 text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                              No matches found
+                            </li>
+                          )}
+                          <li
+                            onClick={() => {
+                              setGpuName('other');
+                              setGpuSearch('');
+                              setGpuDropdownOpen(false);
+                            }}
+                            className={`cursor-pointer px-4 py-2.5 text-sm font-medium border-t ${isDark ? 'hover:bg-gray-700 text-blue-400 border-gray-700' : 'hover:bg-gray-100 text-blue-600 border-gray-200'}`}
+                          >
+                            Other (specify manually)
+                          </li>
+                        </>
+                      );
+                    })()}
+                  </ul>
+                )}
                 {gpuName === 'other' && (
                   <input
                     type="text"

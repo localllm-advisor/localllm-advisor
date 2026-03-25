@@ -9,7 +9,7 @@ import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
 import Logo from '@/components/Logo';
 import TypeWriter from '@/components/TypeWriter';
-import ParticleField from '@/components/ParticleField';
+import MeshGradient from '@/components/MeshGradient';
 
 export default function LandingPage() {
   const { theme } = useTheme();
@@ -25,8 +25,8 @@ export default function LandingPage() {
         <section className={`relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
           {/* Gradient Background */}
           <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10' : 'bg-gradient-to-br from-blue-100/50 via-transparent to-purple-100/50'}`} />
-          {/* Interactive Particle Background */}
-          <ParticleField />
+          {/* Animated Mesh Gradient Background */}
+          <MeshGradient />
 
           <div className="relative mx-auto max-w-5xl px-4 py-16 sm:py-24 lg:py-32">
             {/* Main Content */}
@@ -127,9 +127,55 @@ export default function LandingPage() {
                 </div>
               </Reveal>
 
-              {/* Newsletter — integrated into hero, no separation */}
+              {/* Beginner Guide Card */}
               <Reveal delay={600}>
-                <div className="pt-12 mx-auto max-w-xl">
+                <div className="pt-12 mx-auto max-w-2xl">
+                  <Link href="/guide">
+                    <div className={`group relative overflow-hidden rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                      isDark
+                        ? 'border-cyan-500/30 bg-gradient-to-r from-cyan-950/40 via-blue-950/30 to-cyan-950/40 hover:border-cyan-400/60 hover:shadow-2xl hover:shadow-cyan-500/20'
+                        : 'border-cyan-200 bg-gradient-to-r from-cyan-50/80 via-blue-50/60 to-cyan-50/80 hover:border-cyan-400 hover:shadow-2xl hover:shadow-cyan-400/20'
+                    }`}>
+                      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                        isDark
+                          ? 'bg-gradient-to-r from-cyan-600/0 via-cyan-600/10 to-cyan-600/0'
+                          : 'bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-cyan-400/0'
+                      }`} />
+                      <div className="relative p-6 flex items-center gap-5">
+                        <div className={`w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-300 ${
+                          isDark ? 'bg-cyan-500/20 group-hover:bg-cyan-500/30 group-hover:scale-110' : 'bg-cyan-100 group-hover:bg-cyan-200 group-hover:scale-110'
+                        }`}>
+                          <svg className={`w-6 h-6 ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                          </svg>
+                        </div>
+                        <div className="flex-1 min-w-0 text-left">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className={`text-lg font-bold group-hover:text-cyan-500 transition-colors ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                              New to Local AI?
+                            </h3>
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                              isDark ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30' : 'bg-cyan-100 text-cyan-600 border border-cyan-200'
+                            }`}>
+                              Guide
+                            </span>
+                          </div>
+                          <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                            Step-by-step beginner guide — from zero to your first chatbot in minutes
+                          </p>
+                        </div>
+                        <svg className={`w-5 h-5 flex-shrink-0 transition-all duration-300 group-hover:translate-x-1.5 ${isDark ? 'text-cyan-500 group-hover:text-cyan-400' : 'text-cyan-400 group-hover:text-cyan-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </Reveal>
+
+              {/* Newsletter — integrated into hero, no separation */}
+              <Reveal delay={700}>
+                <div className="pt-8 mx-auto max-w-xl">
                   <EmailCapture variant="landing" />
                 </div>
               </Reveal>

@@ -11,10 +11,12 @@ import {
   signInWithGitHub,
   signInWithGoogle,
   signOut,
+  setAuthReturnAction,
 } from '@/lib/supabase';
 import { useTheme } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
+import PageHero from '@/components/PageHero';
 import { User } from '@supabase/supabase-js';
 
 // Grouped benchmark type
@@ -225,17 +227,21 @@ function BenchmarksContent() {
   };
 
   return (
-    <div className={`min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+    <div className={`min-h-screen ${isDark ? 'bg-gray-900 bg-orange-950/40' : 'bg-gray-50 bg-orange-50/70'}`}>
       <Navbar />
       <BackButton />
+
+      <PageHero
+        title="Community Benchmarks"
+        subtitle="Real-world LLM performance data submitted and voted on by the community."
+        accent="orange"
+      />
 
       {/* Sub-header with page title + auth */}
       <div className={`border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex items-center justify-between">
-            <h1 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-              Community Benchmarks
-            </h1>
+            <div />
             <div className="flex items-center gap-4">
               <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 {groupedBenchmarks.length} results ({benchmarks.length} submissions)
@@ -540,7 +546,7 @@ function BenchmarksContent() {
             </p>
             <div className="space-y-3">
               <button
-                onClick={() => signInWithGitHub()}
+                onClick={() => { setAuthReturnAction({ type: 'login' }); signInWithGitHub(); }}
                 className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-gray-900 hover:bg-gray-800 text-white rounded-lg transition-colors"
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -549,7 +555,7 @@ function BenchmarksContent() {
                 Continue with GitHub
               </button>
               <button
-                onClick={() => signInWithGoogle()}
+                onClick={() => { setAuthReturnAction({ type: 'login' }); signInWithGoogle(); }}
                 className={`w-full flex items-center justify-center gap-3 px-4 py-3 border rounded-lg transition-colors ${isDark ? 'border-gray-600 hover:bg-gray-700 text-white' : 'border-gray-300 hover:bg-gray-50 text-gray-900'}`}
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24">

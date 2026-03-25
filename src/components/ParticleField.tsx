@@ -40,7 +40,7 @@ export default function ParticleField() {
         y: Math.random() * canvas.height,
         vx: (Math.random() - 0.5) * 0.3,
         vy: (Math.random() - 0.5) * 0.3,
-        size: Math.random() * 1.5 + 0.5,
+        size: isDark ? Math.random() * 1.2 + 0.3 : Math.random() * 2 + 0.8,
       }));
     }
 
@@ -77,7 +77,7 @@ export default function ParticleField() {
           const dist = Math.sqrt(dx * dx + dy * dy);
 
           if (dist < maxDist) {
-            const opacity = (1 - dist / maxDist) * (isDark ? 0.12 : 0.08);
+            const opacity = (1 - dist / maxDist) * (isDark ? 0.06 : 0.15);
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);

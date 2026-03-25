@@ -2,6 +2,7 @@
 
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
+import PageHero from '@/components/PageHero';
 import Footer from '@/components/Footer';
 import { useTheme } from '@/components/ThemeProvider';
 
@@ -15,18 +16,17 @@ export default function PrivacyPolicyPage() {
   const li = `text-sm leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'}`;
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`min-h-screen flex flex-col ${isDark ? 'bg-purple-950/40' : 'bg-purple-50/70'}`}>
       <Navbar />
       <BackButton />
 
-      <main className="flex-1 mx-auto w-full max-w-3xl px-4 py-8">
-        <h1 className={`text-3xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-          Privacy Policy
-        </h1>
-        <p className={`text-sm mb-8 ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
-          Last updated: March 24, 2026
-        </p>
+      <PageHero
+        title="Privacy Policy"
+        subtitle="Last updated: March 24, 2026"
+        accent="purple"
+      />
 
+      <main className="flex-1 mx-auto w-full max-w-3xl px-4 py-8">
         <div className={`rounded-xl border p-6 sm:p-8 ${isDark ? 'border-gray-700 bg-gray-800/50' : 'border-gray-200 bg-gray-50'}`}>
 
           <h2 className={h2}>1. What is this</h2>
