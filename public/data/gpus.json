@@ -2236,6 +2236,31 @@
     "price_usd": 130
   },
   {
+    "name": "AMD RX 580",
+    "vendor": "amd",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 256,
+    "memory_type": "GDDR5",
+    "cuda_cores": 2304,
+    "tensor_cores": 0,
+    "fp32_tflops": 6.2,
+    "fp16_tflops": 6.2,
+    "architecture": "GCN 4.0",
+    "compute_capability": "N/A",
+    "tdp_watts": 185,
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "aliases": [
+      "rx 580",
+      "RX 580",
+      "AMD RX 580",
+      "AMD Radeon RX 580",
+      "Radeon RX 580"
+    ],
+    "availability": "discontinued",
+    "price_usd": 0
+  },
+  {
     "name": "AMD Instinct MI300X",
     "vendor": "amd",
     "vram_mb": 196608,
