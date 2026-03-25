@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ScoredModel } from '@/lib/types';
 import VramBar from './VramBar';
+import { CLOUD_PROVIDERS, getCloudUrl } from '@/lib/cloudReferrals';
 
 interface ModelCardProps {
   result: ScoredModel;
@@ -142,6 +143,26 @@ export default function ModelCard({ result, rank }: ModelCardProps) {
               {warning}
             </span>
           ))}
+        </div>
+      )}
+
+      {/* Cloud suggestion for models that don't fit */}
+      {inferenceMode === 'not_possible' && (
+        <div className="flex items-center gap-3 rounded-lg border border-blue-500/20 bg-blue-950/20 px-3 py-2">
+          <svg className="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+          </svg>
+          <p className="text-xs text-gray-400">
+            Too large for your GPU?{' '}
+            {CLOUD_PROVIDERS.slice(0, 2).map((p, i) => (
+              <span key={p.slug}>
+                {i > 0 && ' or '}
+                <a href={getCloudUrl(p.slug)} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">
+                  {p.name} ({p.priceLabel})
+                </a>
+              </span>
+            ))}
+          </p>
         </div>
       )}
 

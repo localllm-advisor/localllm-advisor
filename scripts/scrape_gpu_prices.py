@@ -649,13 +649,13 @@ class GpuPriceScraper:
         ]
 
         resp = requests.post(
-            f"{supabase_url}/rest/v1/gpu_prices",
+            f"{supabase_url}/rest/v1/gpu_prices?on_conflict=gpu_name,retailer,scraped_date",
             headers=headers,
             json=payload,
             timeout=30,
         )
 
-        if resp.status_code in (200, 201):
+        if resp.status_code in (200, 201, 204):
             print(f"✓ Saved {len(payload)} records to Supabase (table: gpu_prices)")
         else:
             print(f"✗ Supabase error {resp.status_code}: {resp.text[:500]}")

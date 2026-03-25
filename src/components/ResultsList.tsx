@@ -4,6 +4,7 @@ import { useState, useMemo, useRef } from 'react';
 import { ScoredModel, UseCase, Benchmarks } from '@/lib/types';
 import RadarChart from './RadarChart';
 import ModelDetailModal from './ModelDetailModal';
+import { CLOUD_PROVIDERS, getCloudUrl } from '@/lib/cloudReferrals';
 
 // Export utilities
 function exportToJSON(results: ScoredModel[], gpuName: string | null, vramMb: number, useCase: UseCase) {
@@ -315,11 +316,50 @@ export default function ResultsList({
 
   if (results.length === 0) {
     return (
-      <div className="rounded-xl border border-gray-700 bg-gray-800/50 p-8 text-center">
-        <p className="text-lg text-gray-300">No compatible models found.</p>
-        <p className="mt-2 text-sm text-gray-500">
-          Try lowering the context length or selecting a different use case.
-        </p>
+      <div className="space-y-4">
+        <div className="rounded-xl border border-gray-700 bg-gray-800/50 p-8 text-center">
+          <p className="text-lg text-gray-300">No compatible models found.</p>
+          <p className="mt-2 text-sm text-gray-500">
+            Try lowering the context length or selecting a different use case.
+          </p>
+        </div>
+
+        {/* Cloud alternative suggestion */}
+        <div className="rounded-xl border border-blue-500/30 bg-gradient-to-r from-blue-950/40 via-indigo-950/30 to-blue-950/40 p-6">
+          <div className="flex items-center gap-2 mb-3">
+            <svg className="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+            </svg>
+            <h3 className="text-base font-semibold text-white">Run it in the cloud instead</h3>
+          </div>
+          <p className="text-sm text-gray-400 mb-4">
+            Your GPU doesn&apos;t have enough VRAM for this setup, but cloud GPU providers let you rent powerful hardware by the hour — no upfront cost.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {CLOUD_PROVIDERS.map((p) => (
+              <a
+                key={p.slug}
+                href={getCloudUrl(p.slug)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col justify-between rounded-lg border border-gray-700 bg-gray-800/60 p-3 transition-colors hover:border-blue-500"
+              >
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-sm text-white">{p.name}</span>
+                    {p.highlight && (
+                      <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-blue-500/20 text-blue-400">
+                        {p.highlight}
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">{p.description}</p>
+                </div>
+                <p className="text-xs font-medium text-green-400 mt-2">{p.priceLabel}</p>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

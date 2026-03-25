@@ -7,6 +7,7 @@ import CollapsibleSection from '@/components/CollapsibleSection';
 import { SIZING_TIERS, type PricingTier } from '@/lib/stripe';
 import type { Model, GPU, FleetSizingInput } from '@/lib/types';
 import { estimateModelSizeMb, estimateKvCacheMb } from '@/lib/vram';
+import { generateSizingReport } from '@/lib/generateReport';
 
 // ── Types ───────────────────────────────────────────────
 interface GpuFleetPlan {
@@ -732,6 +733,47 @@ export default function EnterpriseSizingCalculator() {
               </div>
             </div>
           </div>
+
+          {/* Download Report Button */}
+          {activeTier !== 'free' && (
+            <button
+              onClick={() => generateSizingReport({
+                result: {
+                  model: result.model,
+                  quantLevel: result.quantLevel,
+                  modelSizeGb: result.modelSizeGb,
+                  vramPerInstance: result.vramPerInstance,
+                  peakConcurrent: result.peakConcurrent,
+                  gpuPlans: result.gpuPlans.map(p => ({
+                    gpu: p.gpu,
+                    tpDegree: p.tpDegree,
+                    totalReplicas: p.totalReplicas,
+                    totalGpus: p.totalGpus,
+                    nodesNeeded: p.nodesNeeded,
+                    estimatedToksPerSec: p.tokPerSecPerReplica * p.totalReplicas,
+                    estimatedConcurrent: p.concurrentPerReplica * p.totalReplicas,
+                    totalPowerWatts: p.totalPowerWatts,
+                    totalFirstYearCost: p.totalFirstYearCost,
+                    tier: p.tier,
+                  })),
+                },
+                concurrentUsers: input.concurrentUsers,
+                contextLength: input.contextLength,
+                redundancy: input.redundancy,
+                targetLatencyMs: input.targetLatencyMs,
+              })}
+              className={`w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg font-medium text-sm transition-all ${
+                isDark
+                  ? 'bg-blue-600 hover:bg-blue-500 text-white'
+                  : 'bg-blue-600 hover:bg-blue-500 text-white'
+              }`}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17v3a2 2 0 002 2h14a2 2 0 002-2v-3" />
+              </svg>
+              Download Sizing Report (PDF)
+            </button>
+          )}
 
           {/* GPU Plans */}
           <div className="space-y-4">

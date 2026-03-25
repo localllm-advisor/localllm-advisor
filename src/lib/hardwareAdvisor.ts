@@ -75,20 +75,7 @@ export interface HardwareRecipe {
 // Cloud Providers
 // ============================================================================
 
-// Referral tag placeholder: replace '' with your referral ID when ready
-// e.g. REFERRAL_TAGS.runpod = 'ref_abc123'
-const REFERRAL_TAGS = {
-  runpod: '',   // RunPod referral ID
-  vastai: '',   // Vast.ai referral ID
-  lambda: '',   // Lambda referral ID
-};
-
-function cloudLink(base: string, provider: keyof typeof REFERRAL_TAGS): string {
-  const tag = REFERRAL_TAGS[provider];
-  if (!tag) return base;
-  const sep = base.includes('?') ? '&' : '?';
-  return `${base}${sep}ref=${tag}`;
-}
+import { cloudLink } from './cloudReferrals';
 
 const CLOUD_GPUS = [
   { provider: 'RunPod', gpu: 'RTX 4090', vramGb: 24, bandwidthGbps: 1008, pricePerHour: 0.69, link: cloudLink('https://runpod.io', 'runpod') },

@@ -4,11 +4,11 @@
  * HOW TO ACTIVATE:
  * 1. Create a Stripe account at https://stripe.com (requires Partita IVA in Italy)
  * 2. Create two Payment Links in the Stripe dashboard:
- *    - "Plus Report" at €149
- *    - "Ultra Report" at €500
+ *    - "Hardware Sizing Report" at $49 (one-time)
+ *    - "Continuous Monitoring" at $199/mo (recurring)
  * 3. Add the Payment Link URLs to your .env.local:
- *    NEXT_PUBLIC_STRIPE_PLUS_LINK=https://buy.stripe.com/your_plus_link
- *    NEXT_PUBLIC_STRIPE_ULTRA_LINK=https://buy.stripe.com/your_ultra_link
+ *    NEXT_PUBLIC_STRIPE_PLUS_LINK=https://buy.stripe.com/your_report_link
+ *    NEXT_PUBLIC_STRIPE_ULTRA_LINK=https://buy.stripe.com/your_monitoring_link
  * 4. Redeploy — paid features activate automatically.
  */
 
@@ -23,7 +23,7 @@ export type PricingTier = 'free' | 'plus' | 'ultra';
 export interface TierConfig {
   id: PricingTier;
   label: string;
-  price: string;       // display string, e.g. "€149"
+  price: string;       // display string, e.g. "$49"
   priceNote: string;   // e.g. "one-time"
   accent: string;      // Tailwind color prefix
   stripeLink: string;
@@ -34,8 +34,8 @@ export interface TierConfig {
 export const SIZING_TIERS: TierConfig[] = [
   {
     id: 'free',
-    label: 'Free',
-    price: '€0',
+    label: 'Explorer',
+    price: '$0',
     priceNote: 'forever',
     accent: 'green',
     stripeLink: '',
@@ -48,36 +48,36 @@ export const SIZING_TIERS: TierConfig[] = [
   },
   {
     id: 'plus',
-    label: 'Plus',
-    price: '€149',
-    priceNote: 'one-time',
+    label: 'Sizing Report',
+    price: '$49',
+    priceNote: 'one-time PDF',
     accent: 'blue',
     stripeLink: STRIPE_PLUS_LINK,
     highlighted: true,
     features: [
+      'Downloadable PDF report with your exact specs',
       'All 24 GPU configurations compared (NVIDIA, AMD, Intel)',
       'Full cost breakdown per GPU (hardware, electricity, maintenance)',
+      'Build vs. Cloud TCO comparison for your workload',
       'Cost-per-concurrent-user efficiency ranking',
-      'First-year TCO analysis for every option',
-      'Deployment topology details',
-      'Exportable data for procurement',
+      'Deployment topology & rack layout recommendations',
     ],
   },
   {
     id: 'ultra',
-    label: 'Ultra',
-    price: '€300',
-    priceNote: 'one-time',
+    label: 'Monitoring',
+    price: '$199',
+    priceNote: '/month',
     accent: 'purple',
     stripeLink: STRIPE_ULTRA_LINK,
     features: [
-      'Everything in Plus',
+      'Everything in Sizing Report',
+      'Live GPU price monitoring dashboard',
+      'Weekly price drop alerts via email',
       'GDPR infrastructure compliance assessment',
       'Multi-model fleet optimization (run 2+ models on same hardware)',
-      'Power & cooling infrastructure specifications',
       '12-month scaling roadmap with growth projections',
-      'Executive-ready PDF report with compliance appendix',
-      'Rack layout & networking topology recommendations',
+      'Priority support via email',
     ],
   },
 ];
@@ -85,8 +85,8 @@ export const SIZING_TIERS: TierConfig[] = [
 export const TCO_TIERS: TierConfig[] = [
   {
     id: 'free',
-    label: 'Free',
-    price: '€0',
+    label: 'Explorer',
+    price: '$0',
     priceNote: 'forever',
     accent: 'green',
     stripeLink: '',
@@ -99,35 +99,35 @@ export const TCO_TIERS: TierConfig[] = [
   },
   {
     id: 'plus',
-    label: 'Plus',
-    price: '€149',
-    priceNote: 'one-time',
+    label: 'TCO Report',
+    price: '$49',
+    priceNote: 'one-time PDF',
     accent: 'blue',
     stripeLink: STRIPE_PLUS_LINK,
     highlighted: true,
     features: [
+      'Downloadable PDF with full TCO analysis',
       'Full cumulative cost timeline (month-by-month)',
       'Exact dollar savings for each provider',
       'Detailed on-prem vs. cloud cost breakdown',
       'Growth-adjusted projections over 12–36 months',
       'Per-provider input vs. output token cost split',
-      'Exportable comparison data',
     ],
   },
   {
     id: 'ultra',
-    label: 'Ultra',
-    price: '€300',
-    priceNote: 'one-time',
+    label: 'Monitoring',
+    price: '$199',
+    priceNote: '/month',
     accent: 'purple',
     stripeLink: STRIPE_ULTRA_LINK,
     features: [
-      'Everything in Plus',
+      'Everything in TCO Report',
       'Sensitivity analysis (3 growth scenarios)',
       'Hidden cloud costs analysis (egress, SLA penalties, support tiers)',
       'GDPR compliance cost addendum (DPO, auditing, breach insurance)',
       'Carbon footprint comparison (on-prem vs. cloud)',
-      'Executive-ready PDF report for board presentations',
+      'Monthly updated reports as prices change',
       'Custom cloud provider pricing (your negotiated rates)',
     ],
   },

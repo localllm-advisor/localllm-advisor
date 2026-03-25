@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import { useTheme } from '@/components/ThemeProvider';
+import { CLOUD_PROVIDERS, getCloudUrl } from '@/lib/cloudReferrals';
 
 /* ------------------------------------------------------------------ */
 /*  Section wrapper                                                    */
@@ -346,25 +347,26 @@ export default function GuidePage() {
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3">
-            {[
-              { name: 'RunPod', desc: 'On-demand GPU pods, starting ~$0.20/hr', url: 'https://runpod.io' },
-              { name: 'Vast.ai', desc: 'GPU marketplace, cheap spot instances', url: 'https://vast.ai' },
-              { name: 'Lambda', desc: 'A100/H100 instances for serious workloads', url: 'https://lambdalabs.com' },
-              { name: 'AWS / GCP / Azure', desc: 'Enterprise-grade, pay-per-second GPU VMs', url: '#' },
-            ].map((p) => (
+            {CLOUD_PROVIDERS.map((p) => (
               <div
-                key={p.name}
+                key={p.slug}
                 className={`rounded-xl p-4 text-sm ${
                   isDark ? 'bg-gray-900/60' : 'bg-gray-50'
                 }`}
               >
-                <p className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{p.name}</p>
-                <p className={isDark ? 'text-gray-400' : 'text-gray-500'}>{p.desc}</p>
-                {p.url !== '#' && (
-                  <a href={p.url} target="_blank" rel="noopener noreferrer" className={`${link} text-xs mt-1 inline-block`}>
-                    Visit site &rarr;
-                  </a>
-                )}
+                <div className="flex items-center gap-2">
+                  <p className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{p.name}</p>
+                  {p.highlight && (
+                    <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full ${isDark ? 'bg-blue-500/20 text-blue-400' : 'bg-blue-100 text-blue-700'}`}>
+                      {p.highlight}
+                    </span>
+                  )}
+                </div>
+                <p className={isDark ? 'text-gray-400' : 'text-gray-500'}>{p.description}</p>
+                <p className={`text-xs font-medium mt-1 ${isDark ? 'text-green-400' : 'text-green-600'}`}>{p.priceLabel}</p>
+                <a href={getCloudUrl(p.slug)} target="_blank" rel="noopener noreferrer" className={`${link} text-xs mt-1 inline-block`}>
+                  Get started &rarr;
+                </a>
               </div>
             ))}
           </div>
