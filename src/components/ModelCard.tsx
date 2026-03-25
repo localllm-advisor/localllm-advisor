@@ -38,7 +38,7 @@ export default function ModelCard({ result, rank }: ModelCardProps) {
   const stars = Math.round(quant.quality * 5);
 
   return (
-    <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-5 space-y-3 hover:border-gray-600 transition-colors">
+    <div className="rounded-xl border border-gray-700 bg-gray-800/80 p-5 space-y-3 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5 hover:-translate-y-0.5 transition-all duration-300">
       {/* Header: rank, name, score */}
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-3">

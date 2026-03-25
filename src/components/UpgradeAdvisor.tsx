@@ -576,8 +576,8 @@ function UpgradeCard({
     : undefined;
 
   return (
-    <div className={`rounded-xl border p-4 ${
-      isDark ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'
+    <div className={`rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 ${
+      isDark ? 'bg-gray-800/50 border-gray-700 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5' : 'bg-white border-gray-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100/50'
     }`}>
       <div className="flex items-start justify-between mb-3">
         <span className={`px-2 py-0.5 rounded text-xs text-white ${badgeColor}`}>

@@ -534,7 +534,7 @@ function OptionCard({ option, badge, badgeColor, isDark }: { option: HardwareOpt
     : 'Price N/A';
 
   return (
-    <div className={`rounded-xl border p-4 transition-colors ${isDark ? 'border-gray-700 bg-gray-800/50 hover:border-gray-600' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
+    <div className={`rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 ${isDark ? 'border-gray-700 bg-gray-800/50 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5' : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100/50'}`}>
       <div className="flex items-start justify-between mb-3">
         <span className={`px-2 py-0.5 rounded text-xs text-white ${badgeColor}`}>
           {badge}

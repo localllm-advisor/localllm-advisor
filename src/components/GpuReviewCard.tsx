@@ -97,8 +97,8 @@ export default function GpuReviewCard({
   };
 
   return (
-    <div className={`p-4 rounded-xl border ${
-      isDark ? 'bg-gray-800/50 border-gray-700' : 'bg-white border-gray-200'
+    <div className={`p-4 rounded-xl border transition-all duration-300 ${
+      isDark ? 'bg-gray-800/50 border-gray-700 hover:border-gray-600 hover:shadow-md hover:shadow-black/20' : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-md hover:shadow-gray-200/50'
     }`}>
       {/* Header */}
       <div className="flex items-start justify-between mb-3">

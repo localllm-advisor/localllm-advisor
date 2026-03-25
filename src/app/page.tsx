@@ -8,6 +8,8 @@ import EmailCapture from '@/components/EmailCapture';
 import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
 import Logo from '@/components/Logo';
+import TypeWriter from '@/components/TypeWriter';
+import ParticleField from '@/components/ParticleField';
 
 export default function LandingPage() {
   const { theme } = useTheme();
@@ -23,6 +25,8 @@ export default function LandingPage() {
         <section className={`relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
           {/* Gradient Background */}
           <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10' : 'bg-gradient-to-br from-blue-100/50 via-transparent to-purple-100/50'}`} />
+          {/* Interactive Particle Background */}
+          <ParticleField />
 
           <div className="relative mx-auto max-w-5xl px-4 py-16 sm:py-24 lg:py-32">
             {/* Main Content */}
@@ -37,10 +41,21 @@ export default function LandingPage() {
                 </div>
               </Reveal>
 
-              {/* Tagline */}
+              {/* Tagline — typing effect */}
               <Reveal delay={100}>
-                <p className={`text-2xl sm:text-3xl font-semibold ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
-                  Run AI locally. Keep your data yours.
+                <p className={`text-2xl sm:text-3xl font-semibold h-[1.5em] ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
+                  <TypeWriter
+                    phrases={[
+                      'Run AI locally. Keep your data yours.',
+                      'Find the best LLM for your GPU.',
+                      'No cloud. No API fees. Total privacy.',
+                      'From Llama to Mistral — ranked for your hardware.',
+                    ]}
+                    typingSpeed={45}
+                    pauseDuration={2500}
+                    deletingSpeed={20}
+                    cursorColor={isDark ? 'text-blue-400' : 'text-blue-600'}
+                  />
                 </p>
               </Reveal>
 
