@@ -6,6 +6,7 @@ import {
   supabase,
   signInWithGitHub,
   signInWithGoogle,
+  setAuthReturnAction,
   createPriceAlert,
   getGpuPriceStats,
 } from '@/lib/supabase';
@@ -174,7 +175,7 @@ export default function PriceAlertModal({
               )}
               <div className="flex flex-col gap-3">
                 <button
-                  onClick={async () => { setLoginError(null); const res = await signInWithGitHub(); if (res?.error) setLoginError(res.error); }}
+                  onClick={async () => { setLoginError(null); setAuthReturnAction({ type: 'create-alert', gpuName }); const res = await signInWithGitHub(); if (res?.error) setLoginError(res.error); }}
                   className="flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
                 >
                   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -183,7 +184,7 @@ export default function PriceAlertModal({
                   Continue with GitHub
                 </button>
                 <button
-                  onClick={async () => { setLoginError(null); const res = await signInWithGoogle(); if (res?.error) setLoginError(res.error); }}
+                  onClick={async () => { setLoginError(null); setAuthReturnAction({ type: 'create-alert', gpuName }); const res = await signInWithGoogle(); if (res?.error) setLoginError(res.error); }}
                   className={`flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg font-medium transition-colors border ${
                     isDark
                       ? 'bg-gray-800 hover:bg-gray-700 text-white border-gray-600'

@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
+import PageHero from '@/components/PageHero';
 import Footer from '@/components/Footer';
 import { useTheme } from '@/components/ThemeProvider';
 import Reveal from '@/components/Reveal';
@@ -95,6 +96,7 @@ const COMPLIANCE_OPTIONS = [
 export default function EnterprisePage() {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
+  // Will find and update the outer div below
 
   const [activeTab, setActiveTab] = useState<TabId>('sizing');
 
@@ -201,9 +203,14 @@ export default function EnterprisePage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`min-h-screen flex flex-col ${isDark ? 'bg-indigo-950/40' : 'bg-indigo-50/70'}`}>
       <Navbar />
       <BackButton />
+      <PageHero
+        title="Enterprise Solutions"
+        subtitle="Fleet sizing, TCO comparison, and custom deployment plans for teams and businesses."
+        accent="indigo"
+      />
 
       <main className="flex-1 w-full">
         {/* Hero Section */}

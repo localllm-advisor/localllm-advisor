@@ -3,6 +3,7 @@
 import Reveal from '@/components/Reveal';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
+import PageHero from '@/components/PageHero';
 import Footer from '@/components/Footer';
 import { useTheme } from '@/components/ThemeProvider';
 
@@ -22,20 +23,16 @@ export default function MethodologyPage() {
   const warnBg = isDark ? 'bg-yellow-900/20 border border-yellow-700/50' : 'bg-yellow-50 border border-yellow-200';
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className={`min-h-screen flex flex-col ${isDark ? 'bg-green-950/40' : 'bg-green-50/70'}`}>
       <Navbar />
       <BackButton />
+      <PageHero
+        title="Methodology"
+        subtitle="How we calculate performance estimates and recommendations."
+        accent="green"
+      />
 
       <main className="flex-1 mx-auto max-w-3xl px-4 py-12">
-        <Reveal delay={0}>
-          <h1 className={`text-3xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Methodology</h1>
-        </Reveal>
-        <Reveal delay={100}>
-          <p className={`mb-8 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            How we calculate performance estimates and recommendations.
-          </p>
-        </Reveal>
-
         <div className={`space-y-10 ${prose}`}>
           {/* Model Size */}
           <Reveal delay={200}>

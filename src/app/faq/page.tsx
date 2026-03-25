@@ -2,9 +2,11 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import Reveal from '@/components/Reveal';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
+import Footer from '@/components/Footer';
+import PageHero from '@/components/PageHero';
+import { useTheme } from '@/components/ThemeProvider';
 
 interface FAQItem {
   question: string;
@@ -123,6 +125,8 @@ const CATEGORIES = [
 export default function FAQPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [openItems, setOpenItems] = useState<Set<number>>(new Set([0]));
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const filteredFAQs = selectedCategory === 'all'
     ? FAQ_ITEMS
@@ -139,20 +143,17 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className={`min-h-screen flex flex-col ${isDark ? 'bg-green-950/40' : 'bg-green-50/70'}`}>
       <Navbar />
       <BackButton />
 
-      <main className="mx-auto max-w-3xl px-4 py-12">
-        <Reveal delay={0}>
-          <h1 className="text-3xl font-bold text-white mb-2">Frequently Asked Questions</h1>
-        </Reveal>
-        <Reveal delay={100}>
-          <p className="text-gray-400 mb-8">
-            Everything you need to know about running LLMs locally.
-          </p>
-        </Reveal>
+      <PageHero
+        title="Frequently Asked Questions"
+        subtitle="Everything you need to know about running LLMs locally."
+        accent="green"
+      />
 
+      <main className="flex-1 mx-auto max-w-3xl px-4 py-12">
         {/* Category Filter */}
         <div className="flex flex-wrap gap-2 mb-8">
           {CATEGORIES.map(cat => (
@@ -162,7 +163,7 @@ export default function FAQPage() {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                 selectedCategory === cat.id
                   ? 'bg-blue-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                  : isDark ? 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white' : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900'
               }`}
             >
               {cat.label}
@@ -178,13 +179,13 @@ export default function FAQPage() {
             return (
               <div
                 key={globalIndex}
-                className="rounded-xl border border-gray-700 bg-gray-800/50 overflow-hidden"
+                className={`rounded-xl border ${isDark ? 'border-gray-700 bg-gray-800/50' : 'border-gray-200 bg-white'} overflow-hidden`}
               >
                 <button
                   onClick={() => toggleItem(globalIndex)}
-                  className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-800/80 transition-colors"
+                  className={`w-full flex items-center justify-between px-5 py-4 text-left ${isDark ? 'hover:bg-gray-800/80' : 'hover:bg-gray-50'} transition-colors`}
                 >
-                  <span className="font-medium text-white pr-4">{item.question}</span>
+                  <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'} pr-4`}>{item.question}</span>
                   <svg
                     className={`w-5 h-5 text-gray-400 transform transition-transform flex-shrink-0 ${isOpen ? 'rotate-180' : ''}`}
                     fill="none"
@@ -195,7 +196,7 @@ export default function FAQPage() {
                   </svg>
                 </button>
                 {isOpen && (
-                  <div className="px-5 pb-4 text-gray-300 text-sm leading-relaxed border-t border-gray-700/50 pt-3">
+                  <div className={`px-5 pb-4 text-sm leading-relaxed border-t ${isDark ? 'text-gray-300 border-gray-700/50' : 'text-gray-600 border-gray-200'} pt-3`}>
                     {item.answer}
                   </div>
                 )}
@@ -205,15 +206,15 @@ export default function FAQPage() {
         </div>
 
         {/* Still have questions */}
-        <div className="mt-12 p-6 rounded-xl bg-gray-800/50 border border-gray-700 text-center">
-          <h3 className="text-lg font-semibold text-white mb-2">Still have questions?</h3>
-          <p className="text-gray-400 text-sm mb-4">
+        <div className={`mt-12 p-6 rounded-xl border text-center ${isDark ? 'bg-gray-800/50 border-gray-700' : 'bg-gray-50 border-gray-200'}`}>
+          <h3 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'} mb-2`}>Still have questions?</h3>
+          <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
             Check our methodology page for technical details, or reach out to us by email.
           </p>
           <div className="flex justify-center gap-4">
             <Link
               href="/methodology"
-              className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors"
+              className={`px-4 py-2 rounded-lg text-sm transition-colors ${isDark ? 'bg-gray-700 hover:bg-gray-600 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-900'}`}
             >
               View Methodology
             </Link>
@@ -227,22 +228,7 @@ export default function FAQPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="mx-auto max-w-4xl px-4 border-t border-gray-800 pt-6 pb-8 text-center text-xs text-gray-500">
-        <div className="flex justify-center gap-6 mb-4">
-          <Link href="/" className="hover:text-gray-300 transition-colors">Home</Link>
-          <Link href="/methodology" className="hover:text-gray-300 transition-colors">Methodology</Link>
-          <Link href="/faq" className="hover:text-gray-300 transition-colors">FAQ</Link>
-          <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
-          <a
-            href="mailto:info@localllm-advisor.com"
-            className="hover:text-gray-300 transition-colors"
-          >
-            Contact
-          </a>
-        </div>
-        <p>LocalLLM Advisor — Free tool for the local AI community.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

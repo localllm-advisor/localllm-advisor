@@ -118,13 +118,44 @@ export async function submitBenchmark(benchmark: BenchmarkSubmission): Promise<{
   return { success: true };
 }
 
+// ============================================
+// Auth Return Action helpers
+// ============================================
+// Before OAuth redirect, save a "pending action" so we can re-open
+// the right modal when the user lands back on the page.
+
+export type AuthReturnAction =
+  | { type: 'submit-benchmark'; modelId?: string; quantLevel?: string }
+  | { type: 'submit-review'; gpuName?: string }
+  | { type: 'create-alert'; gpuName?: string }
+  | { type: 'login' };
+
+export function setAuthReturnAction(action: AuthReturnAction) {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem('llm_auth_return_action', JSON.stringify(action));
+  } catch { /* quota exceeded, ignore */ }
+}
+
+export function getAuthReturnAction(): AuthReturnAction | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = localStorage.getItem('llm_auth_return_action');
+    if (!raw) return null;
+    localStorage.removeItem('llm_auth_return_action');
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
 // Auth helpers
 export async function signInWithGitHub(): Promise<{ error?: string }> {
   if (!supabase) return { error: 'Authentication is not configured' };
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'github',
     options: {
-      redirectTo: typeof window !== 'undefined' ? window.location.origin : undefined,
+      redirectTo: typeof window !== 'undefined' ? window.location.href : undefined,
     },
   });
 
@@ -143,7 +174,7 @@ export async function signInWithGoogle(): Promise<{ error?: string }> {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: typeof window !== 'undefined' ? window.location.origin : undefined,
+      redirectTo: typeof window !== 'undefined' ? window.location.href : undefined,
     },
   });
 
