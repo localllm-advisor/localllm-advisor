@@ -661,7 +661,7 @@ class GpuPriceScraper:
             print("ERROR: SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables must be set.")
             sys.exit(1)
 
-                headers = {
+        headers = {
             "apikey": supabase_key,
             "Authorization": f"Bearer {supabase_key}",
             "Content-Type": "application/json",
@@ -673,7 +673,7 @@ class GpuPriceScraper:
       
         print(f"Prepared {len(self.results)} raw results → {len(payload)} deduplicated rows for {today}")
         
-      if not payload:
+        if not payload:
             print("No records to save.")
             return
 
