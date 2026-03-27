@@ -609,6 +609,40 @@ class GpuPriceScraper:
         print(f"Total price records scraped: {len(self.results)}")
         print(f"{'='*60}\n")
 
+    def _dedupe_results_for_day(self, scraped_date: str) -> list[dict]:
+        """
+        Deduplicate by (gpu_name, retailer, scraped_date).
+        Keep the cheapest in-stock result if multiple exist for the same key.
+        """
+        deduped: dict[tuple[str, str, str], dict] = {}
+
+        for r in self.results:
+            key = (r.gpu_name, r.retailer, scraped_date)
+            row = {
+                "gpu_name": r.gpu_name,
+                "price_usd": r.price_usd,
+                "retailer": r.retailer,
+                "retailer_url": r.retailer_url,
+                "in_stock": r.in_stock,
+                "scraped_date": scraped_date,
+            }
+
+            existing = deduped.get(key)
+            if existing is None:
+                deduped[key] = row
+                continue
+
+            # Prefer in-stock over out-of-stock
+            if row["in_stock"] and not existing["in_stock"]:
+                deduped[key] = row
+                continue
+
+            # If both have same stock status, keep lower price
+            if row["in_stock"] == existing["in_stock"] and row["price_usd"] < existing["price_usd"]:
+                deduped[key] = row
+
+        return list(deduped.values())
+  
     # ─────────────────────────────────────────────────────────────────────
     # Supabase persistence
     # ─────────────────────────────────────────────────────────────────────
@@ -627,39 +661,62 @@ class GpuPriceScraper:
             print("ERROR: SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables must be set.")
             sys.exit(1)
 
-        headers = {
+                headers = {
             "apikey": supabase_key,
             "Authorization": f"Bearer {supabase_key}",
             "Content-Type": "application/json",
-            # ON CONFLICT (gpu_name, retailer, scraped_date) → update price + in_stock
-            "Prefer": "resolution=merge-duplicates",
+            "Prefer": "resolution=merge-duplicates,return=representation",
         }
 
         today = datetime.utcnow().strftime("%Y-%m-%d")
-        payload = [
-            {
-                "gpu_name": r.gpu_name,
-                "price_usd": r.price_usd,
-                "retailer": r.retailer,
-                "retailer_url": r.retailer_url,
-                "in_stock": r.in_stock,
-                "scraped_date": today,
-            }
-            for r in self.results
-        ]
+        payload = self._dedupe_results_for_day(today)
+      
+        print(f"Prepared {len(self.results)} raw results → {len(payload)} deduplicated rows for {today}")
+        
+      if not payload:
+            print("No records to save.")
+            return
 
-        resp = requests.post(
-            f"{supabase_url}/rest/v1/gpu_prices",
-            headers=headers,
-            json=payload,
-            timeout=30,
+        url = (
+            f"{supabase_url}/rest/v1/gpu_prices"
+            f"?on_conflict=gpu_name,retailer,scraped_date"
         )
 
-        if resp.status_code in (200, 201):
-            print(f"✓ Saved {len(payload)} records to Supabase (table: gpu_prices)")
-        else:
-            print(f"✗ Supabase error {resp.status_code}: {resp.text[:500]}")
-            sys.exit(1)
+        for attempt in range(3):
+            try:
+                resp = requests.post(
+                    url,
+                    headers=headers,
+                    json=payload,
+                    timeout=30,
+                )
+
+                if resp.status_code in (200, 201):
+                    print(f"✓ Upserted {len(payload)} records to Supabase (table: gpu_prices)")
+                    return
+
+                print(f"✗ Supabase error {resp.status_code}: {resp.text[:500]}")
+
+                # Retry only on transient 5xx / rate limit style failures
+                if resp.status_code >= 500 or resp.status_code == 429:
+                    wait = (2 ** attempt) * random.uniform(2, 5)
+                    print(f"  [retry] waiting {wait:.1f}s before retry...")
+                    time.sleep(wait)
+                    continue
+
+                sys.exit(1)
+
+            except requests.RequestException as exc:
+                print(f"✗ Supabase request error: {exc}")
+                if attempt < 2:
+                    wait = (2 ** attempt) * random.uniform(2, 5)
+                    print(f"  [retry] waiting {wait:.1f}s before retry...")
+                    time.sleep(wait)
+                    continue
+                sys.exit(1)
+
+        print("✗ Failed to save to Supabase after retries.")
+        sys.exit(1)
 
     # ─────────────────────────────────────────────────────────────────────
     # Helpers
