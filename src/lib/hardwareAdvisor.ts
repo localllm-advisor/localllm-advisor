@@ -1,4 +1,5 @@
 import { Model, GPU } from './types';
+import { getCloudProviderUrl } from './affiliateLinks';
 
 // ============================================================================
 // Types
@@ -75,29 +76,17 @@ export interface HardwareRecipe {
 // Cloud Providers
 // ============================================================================
 
-// Referral tag placeholder: replace '' with your referral ID when ready
-// e.g. REFERRAL_TAGS.runpod = 'ref_abc123'
-const REFERRAL_TAGS = {
-  runpod: '',   // RunPod referral ID
-  vastai: '',   // Vast.ai referral ID
-  lambda: '',   // Lambda referral ID
-};
-
-function cloudLink(base: string, provider: keyof typeof REFERRAL_TAGS): string {
-  const tag = REFERRAL_TAGS[provider];
-  if (!tag) return base;
-  const sep = base.includes('?') ? '&' : '?';
-  return `${base}${sep}ref=${tag}`;
-}
-
+// Cloud provider links are managed centrally in affiliateLinks.ts.
+// Referral URLs come from env vars (NEXT_PUBLIC_RUNPOD_REF_URL, etc.) so they
+// are active in every environment as soon as the variable is set.
 const CLOUD_GPUS = [
-  { provider: 'RunPod', gpu: 'RTX 4090', vramGb: 24, bandwidthGbps: 1008, pricePerHour: 0.69, link: cloudLink('https://runpod.io', 'runpod') },
-  { provider: 'RunPod', gpu: 'A100 80GB', vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.99, link: cloudLink('https://runpod.io', 'runpod') },
-  { provider: 'RunPod', gpu: 'H100 80GB', vramGb: 80, bandwidthGbps: 3350, pricePerHour: 3.99, link: cloudLink('https://runpod.io', 'runpod') },
-  { provider: 'Vast.ai', gpu: 'RTX 4090', vramGb: 24, bandwidthGbps: 1008, pricePerHour: 0.40, link: cloudLink('https://vast.ai', 'vastai') },
-  { provider: 'Vast.ai', gpu: 'A100 80GB', vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.50, link: cloudLink('https://vast.ai', 'vastai') },
-  { provider: 'Lambda', gpu: 'A100 80GB', vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.29, link: cloudLink('https://lambdalabs.com', 'lambda') },
-  { provider: 'Lambda', gpu: 'H100 80GB', vramGb: 80, bandwidthGbps: 3350, pricePerHour: 2.49, link: cloudLink('https://lambdalabs.com', 'lambda') },
+  { provider: 'RunPod',  gpu: 'RTX 4090',   vramGb: 24, bandwidthGbps: 1008, pricePerHour: 0.69, link: getCloudProviderUrl('RunPod') },
+  { provider: 'RunPod',  gpu: 'A100 80GB',  vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.99, link: getCloudProviderUrl('RunPod') },
+  { provider: 'RunPod',  gpu: 'H100 80GB',  vramGb: 80, bandwidthGbps: 3350, pricePerHour: 3.99, link: getCloudProviderUrl('RunPod') },
+  { provider: 'Vast.ai', gpu: 'RTX 4090',   vramGb: 24, bandwidthGbps: 1008, pricePerHour: 0.40, link: getCloudProviderUrl('Vast.ai') },
+  { provider: 'Vast.ai', gpu: 'A100 80GB',  vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.50, link: getCloudProviderUrl('Vast.ai') },
+  { provider: 'Lambda',  gpu: 'A100 80GB',  vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.29, link: getCloudProviderUrl('Lambda') },
+  { provider: 'Lambda',  gpu: 'H100 80GB',  vramGb: 80, bandwidthGbps: 3350, pricePerHour: 2.49, link: getCloudProviderUrl('Lambda') },
 ];
 
 // ============================================================================

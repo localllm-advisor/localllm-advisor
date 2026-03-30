@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { Model, GPU } from '@/lib/types';
 import { buildHardwareRecipe, HardwareRecipe, HardwareOption, CloudOption } from '@/lib/hardwareAdvisor';
 import { useTheme } from '@/components/ThemeProvider';
+import { getRetailerLinks } from '@/lib/affiliateLinks';
 
 interface HardwareFinderProps {
   models: Model[];
@@ -547,38 +548,21 @@ function OptionCard({ option, badge, badgeColor, isDark }: { option: HardwareOpt
       <div className="mt-3 space-y-2">
         <p className={`text-xs font-medium ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>Compare prices</p>
         <div className="grid grid-cols-2 gap-1.5">
-          <a
-            href={`https://www.amazon.com/s?k=${encodeURIComponent(option.gpu.name)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`text-center rounded-md px-2 py-1.5 text-xs font-medium transition-all border ${isDark ? 'bg-blue-700/30 hover:bg-blue-600/50 text-blue-300 hover:text-blue-200 border-blue-600/30 hover:border-blue-500/50' : 'bg-blue-50 hover:bg-blue-100 text-blue-700 hover:text-blue-800 border-blue-200 hover:border-blue-300'}`}
-          >
-            Amazon
-          </a>
-          <a
-            href={`https://www.newegg.com/p/pl?d=${encodeURIComponent(option.gpu.name)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`text-center rounded-md px-2 py-1.5 text-xs font-medium transition-all border ${isDark ? 'bg-blue-800/30 hover:bg-blue-700/50 text-blue-300 hover:text-blue-200 border-blue-700/30 hover:border-blue-600/50' : 'bg-blue-100/80 hover:bg-blue-100 text-blue-700 hover:text-blue-800 border-blue-200 hover:border-blue-300'}`}
-          >
-            Newegg
-          </a>
-          <a
-            href={`https://www.bhphotovideo.com/c/search?q=${encodeURIComponent(option.gpu.name)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`text-center rounded-md px-2 py-1.5 text-xs font-medium transition-all border ${isDark ? 'bg-indigo-700/30 hover:bg-indigo-600/50 text-indigo-300 hover:text-indigo-200 border-indigo-600/30 hover:border-indigo-500/50' : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 hover:text-indigo-800 border-indigo-200 hover:border-indigo-300'}`}
-          >
-            B&H Photo
-          </a>
-          <a
-            href={`https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(option.gpu.name)}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`text-center rounded-md px-2 py-1.5 text-xs font-medium transition-all border ${isDark ? 'bg-violet-700/30 hover:bg-violet-600/50 text-violet-300 hover:text-violet-200 border-violet-600/30 hover:border-violet-500/50' : 'bg-violet-50 hover:bg-violet-100 text-violet-700 hover:text-violet-800 border-violet-200 hover:border-violet-300'}`}
-          >
-            eBay
-          </a>
+          {getRetailerLinks(option.gpu.name, option.gpu).map((retailer) => (
+            <a
+              key={retailer.name}
+              href={retailer.href}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              className={`text-center rounded-md px-2 py-1.5 text-xs font-medium transition-all border ${
+                isDark
+                  ? 'bg-blue-700/30 hover:bg-blue-600/50 text-blue-300 hover:text-blue-200 border-blue-600/30 hover:border-blue-500/50'
+                  : 'bg-blue-50 hover:bg-blue-100 text-blue-700 hover:text-blue-800 border-blue-200 hover:border-blue-300'
+              }`}
+            >
+              {retailer.name}
+            </a>
+          ))}
         </div>
       </div>
     </div>

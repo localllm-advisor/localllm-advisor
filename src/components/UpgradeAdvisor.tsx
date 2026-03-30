@@ -6,6 +6,7 @@ import { useTheme } from './ThemeProvider';
 import { getGpuBenchmarkStats, getGlobalBenchmarkStats, getMultipleGpuPriceStats, getGpuReviewStats } from '@/lib/supabase';
 import PriceTrendBadge from './PriceTrendBadge';
 import PriceAlertModal from './PriceAlertModal';
+import { getRetailerLinks } from '@/lib/affiliateLinks';
 
 // Score component explanations
 const SCORE_EXPLANATIONS = {
@@ -562,13 +563,10 @@ function UpgradeCard({
   reviewStats?: GpuReviewStatsType;
   onSetAlert?: () => void;
 }) {
-  const gpuSearch = encodeURIComponent(upgrade.gpu.name);
-  const retailers = [
-    { name: 'Amazon', href: `https://www.amazon.com/s?k=${gpuSearch}` },
-    { name: 'Newegg', href: `https://www.newegg.com/p/pl?d=${gpuSearch}` },
-    { name: 'B&H', href: `https://www.bhphotovideo.com/c/search?q=${gpuSearch}` },
-    { name: 'eBay', href: `https://www.ebay.com/sch/i.html?_nkw=${gpuSearch}` },
-  ];
+  const retailers = getRetailerLinks(upgrade.gpu.name, upgrade.gpu).map(r => ({
+    name: r.name,
+    href: r.href,
+  }));
 
   // Calculate percent change if we have price data
   const percentChange = priceStats?.current_price_usd && priceStats?.price_7d_ago
