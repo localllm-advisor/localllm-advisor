@@ -53,11 +53,10 @@ jobs:
       - name: Commit and push changes
         if: ${{ github.event.inputs.dry_run != 'true' }}
         run: |
-          # Check whether any relevant files changed
-          CHANGED=$(git diff --name-only -- \
-            public/data/models.json \
-            src/app/page.tsx \
-            "src/app/enterprise/page.tsx")
+          # Frontend stat counts (AI Models, GPU Types, etc.) are now read
+          # dynamically from the JSON files at build time via datasetStats.ts.
+          # Only models.json needs to be committed — no TSX patching required.
+          CHANGED=$(git diff --name-only -- public/data/models.json)
 
           if [ -z "$CHANGED" ]; then
             echo "No relevant files changed — skipping commit."
@@ -70,11 +69,8 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          # Stage only the files we know the script touches
-          git add \
-            public/data/models.json \
-            src/app/page.tsx \
-            "src/app/enterprise/page.tsx"
+          # Stage only models.json — TSX files no longer need updating
+          git add public/data/models.json
 
           # Build a meaningful commit message
           MODEL_COUNT=$(python3 -c "import json; d=json.load(open('public/data/models.json')); print(len(d))")
