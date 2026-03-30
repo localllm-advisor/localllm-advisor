@@ -28,29 +28,33 @@ import GpuReviewForm from '@/components/GpuReviewForm';
 import GpuReviewStats from '@/components/GpuReviewStats';
 import ExternalLinks from '@/components/ExternalLinks';
 import { User } from '@supabase/supabase-js';
+import { getRetailerUrl } from '@/lib/affiliateLinks';
 
 // Retailer display config
-// Keys match the retailer column in Supabase gpu_prices table
+// Keys match the retailer column in Supabase gpu_prices table.
+// url() delegates to affiliateLinks so every search link automatically carries
+// the affiliate tag/code — no per-GPU configuration needed.
 const RETAILER_CONFIG: Record<string, { name: string; color: string; url: (gpu: string) => string }> = {
   Newegg: {
     name: 'Newegg',
     color: 'text-orange-400',
-    url: (gpu) => `https://www.newegg.com/p/pl?d=${encodeURIComponent(gpu)}`,
+    url: (gpu) => getRetailerUrl('Newegg', gpu),
   },
   Amazon: {
     name: 'Amazon',
     color: 'text-yellow-400',
-    url: (gpu) => `https://www.amazon.com/s?k=${encodeURIComponent(gpu)}`,
+    url: (gpu) => getRetailerUrl('Amazon', gpu),
   },
   'Best Buy': {
     name: 'Best Buy',
     color: 'text-blue-400',
+    // Best Buy has no affiliate program — plain link
     url: (gpu) => `https://www.bestbuy.com/site/searchpage.jsp?st=${encodeURIComponent(gpu)}`,
   },
   eBay: {
     name: 'eBay',
     color: 'text-red-400',
-    url: (gpu) => `https://www.ebay.com/sch/i.html?_nkw=${encodeURIComponent(gpu)}`,
+    url: (gpu) => getRetailerUrl('eBay', gpu),
   },
 };
 
