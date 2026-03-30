@@ -95,7 +95,7 @@ export default function LandingPage() {
                 <div className="flex flex-wrap justify-center gap-8 sm:gap-16 pt-8">
                   <div className="text-center">
                     <div className={`text-4xl sm:text-5xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                      <CountUp to={607} suffix="+" duration={1600} />
+                      <CountUp to={840} suffix="+" duration={1600} />
                     </div>
                     <div className={`text-sm mt-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>AI Models</div>
                   </div>
