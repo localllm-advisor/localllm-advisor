@@ -4,7 +4,6 @@ import { useState, useMemo, useEffect } from 'react';
 import { Model, GPU } from '@/lib/types';
 import { buildHardwareRecipe, HardwareRecipe, HardwareOption, CloudOption } from '@/lib/hardwareAdvisor';
 import { useTheme } from '@/components/ThemeProvider';
-import CollapsibleSection from '@/components/CollapsibleSection';
 
 interface HardwareFinderProps {
   models: Model[];
