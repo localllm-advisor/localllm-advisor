@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 /* ═══════════════════════════════════════════════════════════════════
+   Instant Check card — slow-rotating radiant border glow
+   ═══════════════════════════════════════════════════════════════════ */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
    EFFECT 3 — Comparison row highlights (pure CSS)
    ═══════════════════════════════════════════════════════════════════ */
 tbody tr {

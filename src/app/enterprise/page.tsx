@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
 import PageHero from '@/components/PageHero';
-import Footer from '@/components/Footer';
+import SiteFooter from '@/components/SiteFooter';
 import { useTheme } from '@/components/ThemeProvider';
 import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
@@ -643,7 +643,7 @@ export default function EnterprisePage() {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import { useTheme } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import EmailCapture from '@/components/EmailCapture';
+import SiteFooter from '@/components/SiteFooter';
 import { useState, useEffect } from 'react';
 
 interface QuantResult {
@@ -141,7 +140,7 @@ export default function GpuModelClient({ gpuSlug, modelSlug }: { gpuSlug: string
         <main className="flex-1 flex items-center justify-center">
           <div className={isDark ? 'text-gray-400' : 'text-gray-600'}>Loading compatibility data...</div>
         </main>
-        <Footer />
+        <SiteFooter />
       </div>
     );
   }
@@ -163,7 +162,7 @@ export default function GpuModelClient({ gpuSlug, modelSlug }: { gpuSlug: string
             </Link>
           </div>
         </main>
-        <Footer />
+        <SiteFooter />
       </div>
     );
   }
@@ -353,13 +352,9 @@ export default function GpuModelClient({ gpuSlug, modelSlug }: { gpuSlug: string
           </Link>
         </div>
 
-        {/* Newsletter */}
-        <div className="max-w-xl mx-auto">
-          <EmailCapture variant="results" />
-        </div>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

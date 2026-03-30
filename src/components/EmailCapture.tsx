@@ -134,9 +134,12 @@ export default function EmailCapture({ variant, className }: EmailCaptureProps) 
   }
 
   const isLanding = variant === 'landing';
+  const isInline = variant === 'inline';
 
-  // Landing variant gets a radiant gradient card; others stay minimal
-  const wrapperClass = isLanding
+  // Landing variant gets a radiant gradient card; inline is bare; others stay minimal
+  const wrapperClass = isInline
+    ? ''
+    : isLanding
     ? `group relative overflow-hidden rounded-2xl border-2 p-6 transition-all duration-300 ${
         isDark
           ? 'border-blue-500/30 bg-gradient-to-r from-blue-950/60 via-indigo-950/40 to-blue-950/60 hover:border-blue-400/60 hover:shadow-2xl hover:shadow-blue-500/20'
@@ -155,27 +158,31 @@ export default function EmailCapture({ variant, className }: EmailCaptureProps) 
         }`} />
       )}
 
-      <div className="relative flex items-start gap-4">
-        {/* Icon for landing */}
-        {isLanding && (
-          <div className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center ${
-            isDark ? 'bg-blue-500/20' : 'bg-blue-100'
-          }`}>
-            <svg className={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-          </div>
-        )}
+      {/* Title/subtitle — skip for inline variant (parent provides them) */}
+      {!isInline && (
+        <>
+          <div className="relative flex items-start gap-4">
+            {isLanding && (
+              <div className={`flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center ${
+                isDark ? 'bg-blue-500/20' : 'bg-blue-100'
+              }`}>
+                <svg className={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                </svg>
+              </div>
+            )}
 
-        <div className="flex-1 min-w-0">
-          <h3 className={`text-lg font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            {copy.title}
-          </h3>
-          <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            {copy.subtitle}
-          </p>
-        </div>
-      </div>
+            <div className="flex-1 min-w-0">
+              <h3 className={`text-lg font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                {copy.title}
+              </h3>
+              <p className={`text-sm mb-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                {copy.subtitle}
+              </p>
+            </div>
+          </div>
+        </>
+      )}
 
       <form onSubmit={handleSubmit} className="relative flex gap-2">
         <input
@@ -209,9 +216,11 @@ export default function EmailCapture({ variant, className }: EmailCaptureProps) 
         <p className="text-sm text-red-500 mt-2">{errorMsg}</p>
       )}
 
-      <p className={`text-xs mt-3 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-        Free, once a week. No spam. Unsubscribe anytime.
-      </p>
+      {!isInline && (
+        <p className={`text-xs mt-3 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+          Free, once a week. No spam. Unsubscribe anytime.
+        </p>
+      )}
     </div>
   );
 }

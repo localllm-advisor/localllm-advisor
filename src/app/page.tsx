@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import { useTheme } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import EmailCapture from '@/components/EmailCapture';
+import SiteFooter from '@/components/SiteFooter';
 import Reveal from '@/components/Reveal';
 import CountUp from '@/components/CountUp';
 import Logo from '@/components/Logo';
 import TypeWriter from '@/components/TypeWriter';
 import MeshGradient from '@/components/MeshGradient';
+import InstantCheck from '@/components/InstantCheck';
 
 export default function LandingPage() {
   const { theme } = useTheme();
@@ -127,8 +127,15 @@ export default function LandingPage() {
                 </div>
               </Reveal>
 
-              {/* Beginner Guide Card */}
+              {/* Instant Check Card */}
               <Reveal delay={600}>
+                <div className="pt-12">
+                  <InstantCheck />
+                </div>
+              </Reveal>
+
+              {/* Beginner Guide Card */}
+              <Reveal delay={700}>
                 <div className="pt-12 mx-auto max-w-2xl">
                   <Link href="/guide">
                     <div className={`group relative overflow-hidden rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
@@ -173,18 +180,13 @@ export default function LandingPage() {
                 </div>
               </Reveal>
 
-              {/* Newsletter — integrated into hero, no separation */}
-              <Reveal delay={700}>
-                <div className="pt-8 mx-auto max-w-xl">
-                  <EmailCapture variant="landing" />
-                </div>
-              </Reveal>
             </div>
           </div>
         </section>
       </main>
 
-      <Footer />
+      {/* Footer with Newsletter Banner */}
+      <SiteFooter />
     </div>
   );
 }

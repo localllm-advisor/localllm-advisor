@@ -95,97 +95,85 @@ export default function HardwareFinder({ models, gpus, initialModelId }: Hardwar
   };
 
   return (
-    <div className="space-y-6">
-      {/* Step 1: Model Selection Card */}
+    <div className="space-y-5">
+      {/* Model + Preferences — single card */}
       <div
-        className={`rounded-xl border p-6 ${
+        className={`rounded-2xl border p-5 sm:p-6 ${
           isDark
-            ? 'border-gray-700 bg-gray-800/50'
-            : 'border-gray-200 bg-white'
+            ? 'border-gray-700/60 bg-gray-800/40'
+            : 'border-gray-200/80 bg-white/80'
         }`}
       >
-        <h2 className={`text-lg font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-          Select Model
-        </h2>
-
-        <div className="space-y-3">
-          <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-            Which model do you want to run?
-          </label>
-          <div className="relative">
-            <div className={`absolute left-3 top-1/2 -translate-y-1/2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
+        <div className="space-y-6">
+          {/* Model Selection */}
+          <div className="space-y-3">
+            <h2 className={`text-sm font-semibold uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+              Model
+            </h2>
+            <div className="relative">
+              <div className={`absolute left-3 top-1/2 -translate-y-1/2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+              <input
+                type="text"
+                value={modelQuery}
+                onChange={(e) => {
+                  setModelQuery(e.target.value);
+                  setIsModelDropdownOpen(true);
+                  setShowResults(false);
+                  if (selectedModel && e.target.value !== selectedModel.name) {
+                    setSelectedModelId('');
+                  }
+                }}
+                onFocus={() => setIsModelDropdownOpen(true)}
+                placeholder="Search model (e.g. Llama 3.1 70B, Qwen 2.5, Mixtral)..."
+                className={`w-full rounded-lg border pl-10 pr-4 py-2.5 text-sm transition-colors ${
+                  isDark
+                    ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none'
+                    : 'border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none'
+                }`}
+              />
+              {isModelDropdownOpen && filteredModels.length > 0 && (
+                <ul className={`absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-lg border shadow-lg ${
+                  isDark
+                    ? 'border-gray-600 bg-gray-800'
+                    : 'border-gray-200 bg-white'
+                }`}>
+                  {filteredModels.map((model) => (
+                    <li
+                      key={model.id}
+                      onClick={() => handleSelectModel(model)}
+                      className={`cursor-pointer px-4 py-2.5 text-sm flex justify-between transition-colors ${
+                        isDark
+                          ? 'text-gray-200 hover:bg-gray-700'
+                          : 'text-gray-900 hover:bg-gray-100'
+                      }`}
+                    >
+                      <span>{model.name}</span>
+                      <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>{model.params_b}B</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
-            <input
-              type="text"
-              value={modelQuery}
-              onChange={(e) => {
-                setModelQuery(e.target.value);
-                setIsModelDropdownOpen(true);
-                setShowResults(false);
-                if (selectedModel && e.target.value !== selectedModel.name) {
-                  setSelectedModelId('');
-                }
-              }}
-              onFocus={() => setIsModelDropdownOpen(true)}
-              placeholder="Search model (e.g. Llama 3.1 70B, Qwen 2.5, Mixtral)..."
-              className={`w-full rounded-lg border pl-10 pr-4 py-3 text-sm transition-colors ${
-                isDark
-                  ? 'border-gray-600 bg-gray-700/50 text-white placeholder-gray-500 focus:border-blue-500 focus:bg-gray-700 focus:outline-none'
-                  : 'border-gray-300 bg-gray-50 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:bg-white focus:outline-none'
-              }`}
-            />
-            {isModelDropdownOpen && filteredModels.length > 0 && (
-              <ul className={`absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-lg border shadow-lg ${
-                isDark
-                  ? 'border-gray-600 bg-gray-800'
-                  : 'border-gray-200 bg-white'
-              }`}>
-                {filteredModels.map((model) => (
-                  <li
-                    key={model.id}
-                    onClick={() => handleSelectModel(model)}
-                    className={`cursor-pointer px-4 py-2.5 text-sm flex justify-between transition-colors ${
-                      isDark
-                        ? 'text-gray-200 hover:bg-gray-700'
-                        : 'text-gray-900 hover:bg-gray-100'
-                    }`}
-                  >
-                    <span>{model.name}</span>
-                    <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>{model.params_b}B</span>
-                  </li>
-                ))}
-              </ul>
+            {selectedModel && (
+              <div className={`flex flex-wrap gap-x-4 gap-y-1 text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                <span>{selectedModel.params_b}B params</span>
+                <span>{(selectedModel.context_length / 1024).toFixed(0)}K context</span>
+                <span>{selectedModel.architecture === 'moe' ? 'MoE' : 'Dense'}</span>
+              </div>
             )}
           </div>
-          {selectedModel && (
-            <div className={`flex flex-wrap gap-x-4 gap-y-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              <span>Parameters: <span className={isDark ? 'text-white' : 'text-gray-900'} >{selectedModel.params_b}B</span></span>
-              <span>Context: <span className={isDark ? 'text-white' : 'text-gray-900'}>{(selectedModel.context_length / 1024).toFixed(0)}K</span></span>
-              <span>Type: <span className={isDark ? 'text-white' : 'text-gray-900'}>{selectedModel.architecture === 'moe' ? 'MoE' : 'Dense'}</span></span>
-            </div>
-          )}
-        </div>
-      </div>
 
-      {/* Step 2: Preferences Card (Collapsible) */}
-      <CollapsibleSection
-        title="Preferences"
-        subtitle="quantization, speed, budget"
-        defaultOpen={true}
-      >
-        <div
-          className={`rounded-xl border p-6 ${
-            isDark
-              ? 'border-gray-700 bg-gray-800/50'
-              : 'border-gray-200 bg-white'
-          }`}
-        >
-          <div className="space-y-6">
+          {/* Divider */}
+          <div className={`border-t ${isDark ? 'border-gray-700/50' : 'border-gray-200/60'}`} />
+
+          {/* Preferences — inline */}
+          <div className="space-y-5">
             {/* Quantization */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 Quantization
               </label>
@@ -195,29 +183,24 @@ export default function HardwareFinder({ models, gpus, initialModelId }: Hardwar
                     key={opt.value}
                     type="button"
                     onClick={() => { setQuantPref(opt.value); setShowResults(false); }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                       quantPref === opt.value
-                        ? isDark
-                          ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30 ring-2 ring-purple-400/50'
-                          : 'bg-purple-600 text-white shadow-lg shadow-purple-600/30 ring-2 ring-purple-400/50'
+                        ? 'bg-purple-600 text-white shadow-sm'
                         : isDark
-                          ? 'bg-gray-700 text-gray-300 hover:bg-gray-600 border border-gray-600'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
+                          ? 'bg-transparent text-gray-400 hover:text-gray-300 border border-gray-700 hover:border-gray-500'
+                          : 'bg-transparent text-gray-600 hover:text-gray-800 border border-gray-200 hover:border-gray-400'
                     }`}
                   >
                     {opt.label}
                   </button>
                 ))}
               </div>
-              <p className={`text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
-                Lower quant = less VRAM needed but slightly lower quality
-              </p>
             </div>
 
-            {/* Speed Preference */}
-            <div className="space-y-3">
+            {/* Speed */}
+            <div className="space-y-2">
               <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-                Desired Speed
+                Speed
               </label>
               <div className="flex flex-wrap gap-2">
                 {SPEED_OPTIONS.map(opt => (
@@ -225,25 +208,23 @@ export default function HardwareFinder({ models, gpus, initialModelId }: Hardwar
                     key={opt.value}
                     type="button"
                     onClick={() => { setSpeedPref(opt.value); setShowResults(false); }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                       speedPref === opt.value
-                        ? isDark
-                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 ring-2 ring-blue-400/50'
-                          : 'bg-blue-600 text-white shadow-lg shadow-blue-600/30 ring-2 ring-blue-400/50'
+                        ? 'bg-blue-600 text-white shadow-sm'
                         : isDark
-                          ? 'bg-gray-700 text-gray-300 hover:bg-gray-600 border border-gray-600'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
+                          ? 'bg-transparent text-gray-400 hover:text-gray-300 border border-gray-700 hover:border-gray-500'
+                          : 'bg-transparent text-gray-600 hover:text-gray-800 border border-gray-200 hover:border-gray-400'
                     }`}
                   >
                     {opt.label}
-                    <span className="ml-1 text-xs opacity-75">({opt.desc})</span>
+                    <span className="ml-1 text-xs opacity-60">{opt.desc}</span>
                   </button>
                 ))}
               </div>
             </div>
 
             {/* Budget */}
-            <div className="space-y-3">
+            <div className="space-y-2">
               <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                 Budget
               </label>
@@ -253,14 +234,12 @@ export default function HardwareFinder({ models, gpus, initialModelId }: Hardwar
                     key={opt.value}
                     type="button"
                     onClick={() => { setBudgetPref(opt.value); setShowResults(false); }}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
                       budgetPref === opt.value
-                        ? isDark
-                          ? 'bg-green-600 text-white shadow-lg shadow-green-600/30 ring-2 ring-green-400/50'
-                          : 'bg-green-600 text-white shadow-lg shadow-green-600/30 ring-2 ring-green-400/50'
+                        ? 'bg-green-600 text-white shadow-sm'
                         : isDark
-                          ? 'bg-gray-700 text-gray-300 hover:bg-gray-600 border border-gray-600'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-300'
+                          ? 'bg-transparent text-gray-400 hover:text-gray-300 border border-gray-700 hover:border-gray-500'
+                          : 'bg-transparent text-gray-600 hover:text-gray-800 border border-gray-200 hover:border-gray-400'
                     }`}
                   >
                     {opt.label}
@@ -270,10 +249,10 @@ export default function HardwareFinder({ models, gpus, initialModelId }: Hardwar
             </div>
           </div>
         </div>
-      </CollapsibleSection>
+      </div>
 
       {/* Find Hardware Button */}
-      <div className="flex justify-center pt-4">
+      <div className="flex justify-center pt-2">
         <button
           onClick={() => setShowResults(true)}
           disabled={!selectedModel}

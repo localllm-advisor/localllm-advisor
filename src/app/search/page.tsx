@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useTheme } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import SiteFooter from '@/components/SiteFooter';
 import Reveal from '@/components/Reveal';
 import MeshGradient from '@/components/MeshGradient';
 
@@ -173,7 +173,7 @@ export default function SearchPage() {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

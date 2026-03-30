@@ -14,6 +14,7 @@ import UpgradeAdvisor from '@/components/UpgradeAdvisor';
 import { trackEvent } from '@/components/Analytics';
 import { getUser, signOut, signInWithGitHub, signInWithGoogle } from '@/lib/supabase';
 import Logo from '@/components/Logo';
+import SiteFooter from '@/components/SiteFooter';
 import { User } from '@supabase/supabase-js';
 
 type AppMode = 'find-models' | 'build-hardware';
@@ -436,27 +437,8 @@ export default function Home() {
         </section>
       )}
 
-      {/* Footer */}
-      <footer className="mx-auto max-w-7xl px-4 border-t border-gray-800 pt-6 pb-8 text-center text-xs text-gray-500">
-        <div className="flex justify-center gap-6 mb-4">
-          <Link href="/benchmarks" className="hover:text-gray-300 transition-colors">Benchmarks</Link>
-          <Link href="/methodology" className="hover:text-gray-300 transition-colors">Methodology</Link>
-          <Link href="/faq" className="hover:text-gray-300 transition-colors">FAQ</Link>
-          <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
-          <a
-            href="mailto:info@localllm-advisor.com"
-            className="hover:text-gray-300 transition-colors"
-          >
-            Contact
-          </a>
-        </div>
-        <p>
-          LocalLLM Advisor — Find the best local LLM for your hardware, or the best hardware for your LLM.
-        </p>
-        <p className="mt-1">
-          Data updated manually. Not affiliated with Ollama or any model provider.
-        </p>
-      </footer>
+      {/* Footer with Newsletter Banner */}
+      <SiteFooter />
 
       {/* Login Modal */}
       {showLoginModal && (
