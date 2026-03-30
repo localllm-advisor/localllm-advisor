@@ -802,8 +802,10 @@ def main() -> None:
         MODELS_PATH.write_text(new_json, encoding="utf-8")
         print(f"[done] wrote {MODELS_PATH}  ({len(existing_models)} → {len(final_models)} models)")
 
-    # --- Patch frontend counts ---
-    patched_files = patch_frontend_counts(len(final_models), gpu_count)
+    # NOTE: frontend stat counts (AI Models, GPU Types, "GPUs & Models Supported")
+    # are no longer hardcoded in TSX files. They are read dynamically from the
+    # JSON files at build time via src/lib/datasetStats.ts.
+    # No patching of page.tsx or enterprise/page.tsx is needed here.
 
     # --- Final summary ---
     print()
@@ -811,8 +813,6 @@ def main() -> None:
     print(f"  Models :  {len(existing_models):4d} → {len(final_models):4d}  "
           f"(+{new_added} new, {refreshed} refreshed, {skipped} skipped)")
     print(f"  GPUs   :  {gpu_count}")
-    if patched_files:
-        print(f"  Patched:  {', '.join(patched_files)}")
     print("=" * 60)
 
 
