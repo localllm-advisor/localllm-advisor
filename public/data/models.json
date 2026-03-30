@@ -18448,5 +18448,1146 @@
     "provider": "Mistral",
     "hf_downloads": 4000000,
     "gguf_sources": []
+  },
+  {
+    "id": "mistral-small-3.2-24b",
+    "name": "Mistral Small 3.2 24B",
+    "family": "mistral",
+    "params_b": 24,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-06-01",
+    "hf_id": "mistralai/Mistral-Small-3.2-24B-Instruct-2506",
+    "provider": "Mistral AI",
+    "hf_downloads": 683218,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 13500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 19500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 24000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 48000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 92.9,
+      "mmlu_pro": 69.06,
+      "math": null,
+      "ifeval": 84.78,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "bartowski/mistralai_Mistral-Small-3.2-24B-Instruct-2506-GGUF",
+        "provider": "bartowski"
+      }
+    ]
+  },
+  {
+    "id": "mistral-small-4-119b",
+    "name": "Mistral Small 4 119B",
+    "family": "mistral",
+    "params_b": 119,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-03-16",
+    "hf_id": "mistralai/Mistral-Small-4-119B-2603",
+    "provider": "Mistral AI",
+    "hf_downloads": 120000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 66938,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 96688,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 119000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 91.0,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": 70.0,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "bartowski/mistralai_Mistral-Small-4-119B-2603-GGUF",
+        "provider": "bartowski"
+      },
+      {
+        "repo": "unsloth/Mistral-Small-4-119B-2603-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "mistral-large-3-675b",
+    "name": "Mistral Large 3 675B",
+    "family": "mistral",
+    "params_b": 675,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "reasoning",
+      "multilingual"
+    ],
+    "context_length": 262144,
+    "release_date": "2025-12-02",
+    "hf_id": "mistralai/Mistral-Large-3-675B-Instruct-2512",
+    "provider": "Mistral AI",
+    "hf_downloads": 95000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 379688,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 548438,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 675000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": 80.0,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": []
+  },
+  {
+    "id": "gemma-3n-e2b",
+    "name": "Gemma 3n E2B",
+    "family": "gemma",
+    "params_b": 5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 32768,
+    "release_date": "2025-06-26",
+    "hf_id": "google/gemma-3n-E2B-it",
+    "provider": "Google",
+    "hf_downloads": 180000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2812,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 4062,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 5000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 10000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": []
+  },
+  {
+    "id": "gemma-3n-e4b",
+    "name": "Gemma 3n E4B",
+    "family": "gemma",
+    "params_b": 8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 32768,
+    "release_date": "2025-06-26",
+    "hf_id": "google/gemma-3n-E4B-it",
+    "provider": "Google",
+    "hf_downloads": 210000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": []
+  },
+  {
+    "id": "command-a-111b",
+    "name": "Command A 111B",
+    "family": "command",
+    "params_b": 111,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "tool_use"
+    ],
+    "context_length": 262144,
+    "release_date": "2025-03-16",
+    "hf_id": "CohereLabs/c4ai-command-a-03-2025",
+    "provider": "Cohere",
+    "hf_downloads": 75000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 62438,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 90188,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 111000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": []
+  },
+  {
+    "id": "deepseek-r1-0528",
+    "name": "DeepSeek R1 0528",
+    "family": "deepseek",
+    "params_b": 685,
+    "architecture": "moe",
+    "capabilities": [
+      "reasoning",
+      "chat",
+      "coding"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-05-28",
+    "hf_id": "deepseek-ai/DeepSeek-R1-0528",
+    "provider": "DeepSeek",
+    "hf_downloads": 320000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 385312,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 556562,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 685000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": 97.3,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": 71.5,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": []
+  },
+  {
+    "id": "minimax-m2.5-230b",
+    "name": "MiniMax M2.5 230B",
+    "family": "minimax",
+    "params_b": 230,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 196608,
+    "release_date": "2026-02-12",
+    "hf_id": "MiniMaxAI/MiniMax-M2.5",
+    "provider": "MiniMax",
+    "hf_downloads": 66100,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 129375,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 186875,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 230000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "unsloth/MiniMax-M2.5-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "phi-4-reasoning-plus-14b",
+    "name": "Phi-4 Reasoning Plus 14B",
+    "family": "phi",
+    "params_b": 14,
+    "architecture": "dense",
+    "capabilities": [
+      "reasoning",
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2025-04-30",
+    "hf_id": "microsoft/Phi-4-reasoning-plus",
+    "provider": "Microsoft",
+    "hf_downloads": 210000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 7875,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 11375,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 14000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 28000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": 81.3,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": 70.0,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": []
+  },
+  {
+    "id": "phi-4-reasoning-vision-15b",
+    "name": "Phi-4 Reasoning Vision 15B",
+    "family": "phi",
+    "params_b": 15,
+    "architecture": "dense",
+    "capabilities": [
+      "reasoning",
+      "vision",
+      "chat"
+    ],
+    "context_length": 16384,
+    "release_date": "2026-03-04",
+    "hf_id": "microsoft/Phi-4-reasoning-vision-15B",
+    "provider": "Microsoft",
+    "hf_downloads": 45000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 8438,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 12188,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 15000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 30000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": []
+  },
+  {
+    "id": "qwen3-coder-30b-a3b",
+    "name": "Qwen3-Coder 30B A3B",
+    "family": "qwen",
+    "params_b": 30,
+    "architecture": "moe",
+    "capabilities": [
+      "coding",
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2025-07-15",
+    "hf_id": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+    "provider": "Alibaba",
+    "hf_downloads": 136000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 16875,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 24375,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 30000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 79.0,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "qwen3-coder-next-80b",
+    "name": "Qwen3-Coder-Next 80B",
+    "family": "qwen",
+    "params_b": 80,
+    "architecture": "moe",
+    "capabilities": [
+      "coding",
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-02-03",
+    "hf_id": "Qwen/Qwen3-Coder-Next",
+    "provider": "Alibaba",
+    "hf_downloads": 315000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 45000,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 65000,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 80000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 90.0,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "unsloth/Qwen3-Coder-Next-GGUF",
+        "provider": "unsloth"
+      },
+      {
+        "repo": "Qwen/Qwen3-Coder-Next-GGUF",
+        "provider": "Qwen"
+      }
+    ]
+  },
+  {
+    "id": "qwen3.5-397b-a17b",
+    "name": "Qwen3.5 397B A17B",
+    "family": "qwen",
+    "params_b": 397,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-02-16",
+    "hf_id": "Qwen/Qwen3.5-397B-A17B",
+    "provider": "Alibaba",
+    "hf_downloads": 85000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 223312,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 322562,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 397000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 94.0,
+      "mmlu_pro": 87.8,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": 88.4,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": []
+  },
+  {
+    "id": "glm-4.7-flash-30b",
+    "name": "GLM-4.7 Flash 30B",
+    "family": "glm",
+    "params_b": 30,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 204800,
+    "release_date": "2026-01-19",
+    "hf_id": "zai-org/GLM-4.7-Flash",
+    "provider": "Zhipu AI",
+    "hf_downloads": 297000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 16875,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 24375,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 30000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "unsloth/GLM-4.7-Flash-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "glm-5-744b",
+    "name": "GLM-5 744B",
+    "family": "glm",
+    "params_b": 744,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding",
+      "vision"
+    ],
+    "context_length": 204800,
+    "release_date": "2026-02-15",
+    "hf_id": "zai-org/GLM-5",
+    "provider": "Zhipu AI",
+    "hf_downloads": 34600,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 418500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 604500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 744000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 77.8,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "unsloth/GLM-5-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "nemotron-3-nano-4b",
+    "name": "Nemotron 3 Nano 4B",
+    "family": "nemotron",
+    "params_b": 4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-12-15",
+    "hf_id": "nvidia/NVIDIA-Nemotron-3-Nano-4B-Instruct",
+    "provider": "NVIDIA",
+    "hf_downloads": 16600,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 4000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 8000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": 78.0,
+      "mmlu_pro": null,
+      "math": 82.9,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF",
+        "provider": "NVIDIA"
+      }
+    ]
+  },
+  {
+    "id": "nemotron-3-super-120b",
+    "name": "Nemotron 3 Super 120B",
+    "family": "nemotron",
+    "params_b": 120,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-03-11",
+    "hf_id": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
+    "provider": "NVIDIA",
+    "hf_downloads": 74600,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 67500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 97500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 120000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": 80.0,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "unsloth/NVIDIA-Nemotron-3-Super-120B-A12B-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "lfm2-24b-a2b",
+    "name": "LFM2 24B A2B",
+    "family": "lfm",
+    "params_b": 24,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 33000,
+    "release_date": "2026-02-25",
+    "hf_id": "LiquidAI/LFM2-24B-A2B",
+    "provider": "Liquid AI",
+    "hf_downloads": 55000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 13500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 19500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 24000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "LiquidAI/LFM2-24B-A2B-GGUF",
+        "provider": "LiquidAI"
+      }
+    ]
+  },
+  {
+    "id": "gpt-oss-20b",
+    "name": "GPT-OSS 20B",
+    "family": "gpt-oss",
+    "params_b": 21,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-08-05",
+    "hf_id": "openai/gpt-oss-20b",
+    "provider": "OpenAI",
+    "hf_downloads": 353000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 11812,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 17062,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 21000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 42000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "unsloth/gpt-oss-20b-GGUF",
+        "provider": "unsloth"
+      }
+    ]
+  },
+  {
+    "id": "gpt-oss-120b",
+    "name": "GPT-OSS 120B",
+    "family": "gpt-oss",
+    "params_b": 117,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-08-05",
+    "hf_id": "openai/gpt-oss-120b",
+    "provider": "OpenAI",
+    "hf_downloads": 210000,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 65812,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 95062,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 117000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "gguf_sources": [
+      {
+        "repo": "unsloth/gpt-oss-120b-GGUF",
+        "provider": "unsloth"
+      }
+    ]
   }
 ]

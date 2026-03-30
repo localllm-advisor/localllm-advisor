@@ -237,7 +237,7 @@ export default function EnterprisePage() {
             <Reveal delay={150}>
               <div className="flex flex-wrap justify-center gap-8 text-center">
                 <div>
-                  <p className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}><CountUp to={200} suffix="+" /></p>
+                  <p className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}><CountUp to={500} suffix="+" /></p>
                   <p className={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>GPUs &amp; Models Supported</p>
                 </div>
                 <div>
