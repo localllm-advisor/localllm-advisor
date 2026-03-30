@@ -3,7 +3,7 @@
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
 import PageHero from '@/components/PageHero';
-import Footer from '@/components/Footer';
+import SiteFooter from '@/components/SiteFooter';
 import { useTheme } from '@/components/ThemeProvider';
 
 export default function PrivacyPolicyPage() {
@@ -154,7 +154,7 @@ export default function PrivacyPolicyPage() {
         </div>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

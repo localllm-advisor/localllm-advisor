@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
-import Footer from '@/components/Footer';
+import SiteFooter from '@/components/SiteFooter';
 import PageHero from '@/components/PageHero';
 import { useTheme } from '@/components/ThemeProvider';
 
@@ -228,7 +228,7 @@ export default function FAQPage() {
         </div>
       </main>
 
-      <Footer />
+      <SiteFooter />
     </div>
   );
 }

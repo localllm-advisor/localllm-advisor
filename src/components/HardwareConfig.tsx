@@ -321,7 +321,7 @@ export default function HardwareConfig({
 
       {/* GPU Selection */}
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-300">GPU</label>
+        <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>GPU</label>
         <div ref={gpuRef} className="relative">
           <input
             type="text"
@@ -343,7 +343,11 @@ export default function HardwareConfig({
             }}
             onFocus={() => setGpuOpen(true)}
             placeholder="Search GPU (e.g. 4070, M3 Pro, 7900 XTX)..."
-            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-4 py-2.5 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none text-sm"
+            className={`w-full rounded-lg border px-4 py-2.5 text-sm focus:border-blue-500 focus:outline-none transition-colors ${
+              isDark
+                ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-500'
+                : 'border-gray-300 bg-white text-gray-900 placeholder-gray-400'
+            }`}
           />
           {gpuOpen && sortedGpus.length > 0 && (
             <ul className="absolute z-20 mt-1 max-h-60 w-full overflow-auto rounded-lg border border-gray-600 bg-gray-800 shadow-xl">
@@ -437,7 +441,7 @@ export default function HardwareConfig({
 
       {/* CPU Selection */}
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-300">CPU</label>
+        <label className={`block text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>CPU</label>
         <div ref={cpuRef} className="relative">
           <input
             type="text"
@@ -457,7 +461,11 @@ export default function HardwareConfig({
             }}
             onFocus={() => setCpuOpen(true)}
             placeholder="Search CPU (e.g. Ryzen 9, i9-14900K, M3 Max)..."
-            className="w-full rounded-lg border border-gray-600 bg-gray-800 px-4 py-2.5 text-white placeholder-gray-500 focus:border-blue-500 focus:outline-none text-sm"
+            className={`w-full rounded-lg border px-4 py-2.5 text-sm focus:border-blue-500 focus:outline-none transition-colors ${
+              isDark
+                ? 'border-gray-600 bg-gray-800 text-white placeholder-gray-500'
+                : 'border-gray-300 bg-white text-gray-900 placeholder-gray-400'
+            }`}
           />
           {cpuOpen && filteredCpus.length > 0 && (
             <ul className="absolute z-20 mt-1 max-h-48 w-full overflow-auto rounded-lg border border-gray-600 bg-gray-800 shadow-xl">
@@ -490,8 +498,8 @@ export default function HardwareConfig({
       {/* System RAM */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-gray-300">System RAM</label>
-          <span className="text-sm font-semibold text-white">{specs.ram_gb} GB</span>
+          <label className={`text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>System RAM</label>
+          <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{specs.ram_gb} GB</span>
         </div>
         <div className="flex gap-2">
           {RAM_OPTIONS.map((ram) => (
@@ -502,7 +510,9 @@ export default function HardwareConfig({
               className={`flex-1 rounded-lg py-1.5 text-sm font-medium transition-colors ${
                 specs.ram_gb === ram
                   ? 'bg-blue-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:bg-gray-700 border border-gray-700'
+                  : isDark
+                    ? 'bg-gray-800 text-gray-400 hover:bg-gray-700 border border-gray-700'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-200'
               }`}
             >
               {ram}

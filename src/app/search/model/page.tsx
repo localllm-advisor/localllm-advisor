@@ -12,8 +12,7 @@ import UpgradeAdvisor from '@/components/UpgradeAdvisor';
 import CollapsibleSection from '@/components/CollapsibleSection';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
-import Footer from '@/components/Footer';
-import EmailCapture from '@/components/EmailCapture';
+import SiteFooter from '@/components/SiteFooter';
 import PageHero from '@/components/PageHero';
 import { trackEvent } from '@/components/Analytics';
 
@@ -132,90 +131,58 @@ export default function ModelSearchPage() {
       />
 
       {/* Main Content */}
-      <main className="flex-1 mx-auto w-full max-w-3xl px-4 py-8 space-y-6">
+      <main className="flex-1 mx-auto w-full max-w-3xl px-4 py-8 space-y-5">
 
-        {/* Step 1: Hardware Configuration */}
-        <section className={`rounded-xl border transition-all ${
+        {/* Hardware + Use Case — single card */}
+        <section className={`rounded-2xl border transition-all ${
           isDark
-            ? 'border-gray-700 bg-gray-800/50'
-            : 'border-gray-200 bg-gray-50'
+            ? 'border-gray-700/60 bg-gray-800/40'
+            : 'border-gray-200/80 bg-white/80'
         }`}>
-          <div className="p-6 space-y-4">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full font-semibold text-sm ${
-                isDark
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-blue-100 text-blue-900'
-              }`}>
-                1
-              </div>
-              <h2 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                Your Hardware
+          <div className="p-5 sm:p-6 space-y-6">
+            {/* Hardware */}
+            <div className="space-y-3">
+              <h2 className={`text-sm font-semibold uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                Hardware
               </h2>
+              <HardwareConfig
+                gpus={gpus}
+                cpus={cpus}
+                specs={specs}
+                onChange={setSpecs}
+              />
             </div>
-            <HardwareConfig
-              gpus={gpus}
-              cpus={cpus}
-              specs={specs}
-              onChange={setSpecs}
-            />
-          </div>
-        </section>
 
-        {/* Step 2: Use Case Selection */}
-        <section className={`rounded-xl border transition-all ${
-          isDark
-            ? 'border-gray-700 bg-gray-800/50'
-            : 'border-gray-200 bg-gray-50'
-        }`}>
-          <div className="p-6 space-y-4">
-            <div className="flex items-center gap-3 mb-4">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full font-semibold text-sm ${
-                isDark
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-blue-100 text-blue-900'
-              }`}>
-                2
-              </div>
-              <h2 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            {/* Divider */}
+            <div className={`border-t ${isDark ? 'border-gray-700/50' : 'border-gray-200/60'}`} />
+
+            {/* Use Case */}
+            <div className="space-y-3">
+              <h2 className={`text-sm font-semibold uppercase tracking-wider ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
                 Use Case
               </h2>
+              <UseCasePicker selected={useCase} onChange={setUseCase} />
             </div>
-            <UseCasePicker selected={useCase} onChange={setUseCase} />
           </div>
         </section>
 
-        {/* Step 3: Advanced Filters */}
-        <section className={`rounded-xl border transition-all ${
-          isDark
-            ? 'border-gray-700 bg-gray-800/50'
-            : 'border-gray-200 bg-gray-50'
-        }`}>
-          <div className="px-6 py-4">
-            <div className="flex items-center gap-3">
-              <div className={`flex items-center justify-center w-8 h-8 rounded-full font-semibold text-sm flex-shrink-0 ${
-                isDark
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-blue-100 text-blue-900'
-              }`}>
-                3
-              </div>
-              <CollapsibleSection
-                title="Advanced Filters"
-                subtitle="context length, model families, capabilities"
-                defaultOpen={false}
-                className="flex-1"
-              >
-                <div className="pt-4">
-                  <AdvancedOptions filters={filters} onChange={setFilters} />
-                </div>
-              </CollapsibleSection>
-            </div>
+        {/* Advanced Filters — lightweight collapsible */}
+        <CollapsibleSection
+          title="Advanced Filters"
+          subtitle="context length, model families, capabilities"
+          defaultOpen={false}
+        >
+          <div className={`rounded-2xl border p-5 sm:p-6 mt-3 ${
+            isDark
+              ? 'border-gray-700/60 bg-gray-800/40'
+              : 'border-gray-200/80 bg-white/80'
+          }`}>
+            <AdvancedOptions filters={filters} onChange={setFilters} />
           </div>
-        </section>
+        </CollapsibleSection>
 
         {/* Find Models Button */}
-        <div className="flex justify-center pt-4">
+        <div className="flex justify-center pt-2">
           <button
             onClick={handleSubmit}
             disabled={!canSearch}
@@ -304,17 +271,8 @@ export default function ModelSearchPage() {
         </section>
       )}
 
-      {/* Email Capture after results */}
-      {results && (
-        <section className="w-full py-8">
-          <div className="mx-auto max-w-xl px-4">
-            <EmailCapture variant="results" />
-          </div>
-        </section>
-      )}
-
-      {/* Footer */}
-      <Footer />
+      {/* Footer with Newsletter Banner */}
+      <SiteFooter />
     </div>
   );
 }
