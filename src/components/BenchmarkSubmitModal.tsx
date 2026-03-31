@@ -483,7 +483,7 @@ export default function BenchmarkSubmitModal({
                           )}
                           {filtered.length === 0 && (
                             <li className={`px-4 py-2.5 text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                              No matches — select "Other" to enter manually
+                              No matches — select &ldquo;Other&rdquo; to enter manually
                             </li>
                           )}
                           <li
