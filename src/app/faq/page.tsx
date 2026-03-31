@@ -33,6 +33,11 @@ const FAQ_ITEMS: FAQItem[] = [
   },
   {
     category: 'general',
+    question: 'Is running AI locally more ethical than using cloud services?',
+    answer: 'In several concrete ways, yes. When you use a cloud AI service, your conversations may be stored, reviewed by employees for safety purposes, and used to improve future models — often by default. With a local LLM: 1) Your prompts never leave your device and are never stored on external servers. 2) Your data cannot be used to train or improve commercial models without your explicit consent. 3) There is no behavioral profiling — no company builds a record of your queries, interests, or habits. 4) You retain full data sovereignty even for sensitive topics: medical questions, legal research, business strategy, or personal reflection stay entirely private. Local AI is not a perfect solution to all AI ethics questions, but it directly eliminates some of the most concrete concerns around surveillance, data exploitation, and loss of control over personal information.',
+  },
+  {
+    category: 'general',
     question: 'What is quantization?',
     answer: 'Quantization reduces model precision to save memory. A model stored in FP16 (16-bit) takes 2 bytes per parameter, while Q4 (4-bit) takes only 0.5 bytes - a 4x reduction. This lets you run larger models on limited hardware. The tradeoff is slightly lower quality: Q8 is nearly lossless, Q4 has minimal quality loss, Q2 shows noticeable degradation.',
   },

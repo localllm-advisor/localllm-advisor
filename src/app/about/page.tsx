@@ -52,7 +52,32 @@ export default function AboutPage() {
             </section>
           </Reveal>
 
-          <Reveal delay={300}>
+          <Reveal delay={250}>
+            <section>
+              <h2 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>Ethical AI by Design</h2>
+              <p>
+                Running AI locally is not just a technical decision — it is an ethical one. The mainstream
+                narrative around AI has largely normalised the idea that to use capable AI tools, you must
+                hand over your data to a third party. We think that trade-off is neither necessary nor
+                acceptable as a default.
+              </p>
+              <p className="mt-3">
+                When a model runs on your own hardware, several concrete ethical problems disappear:
+                your conversations cannot be used to train future commercial models without your consent,
+                no company builds a behavioural profile from your queries, and sensitive topics — health,
+                legal matters, personal relationships, business strategy — stay on your device by
+                architecture, not merely by policy. Data sovereignty is not a marketing promise; it is
+                a technical reality.
+              </p>
+              <p className="mt-3">
+                Open-source models running locally represent one of the most tangible answers the AI
+                community has produced to questions about privacy, autonomy, and accountability. We built
+                this tool because we believe capable AI and respect for user rights are not in conflict.
+              </p>
+            </section>
+          </Reveal>
+
+          <Reveal delay={350}>
             <section>
               <h2 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>How it works</h2>
               <p>
@@ -78,7 +103,7 @@ export default function AboutPage() {
             </section>
           </Reveal>
 
-          <Reveal delay={400}>
+          <Reveal delay={450}>
             <section>
               <h2 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>Limitations</h2>
               <p>
@@ -94,7 +119,7 @@ export default function AboutPage() {
             </section>
           </Reveal>
 
-          <Reveal delay={500}>
+          <Reveal delay={550}>
             <section>
               <h2 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>No Affiliation</h2>
               <p>
