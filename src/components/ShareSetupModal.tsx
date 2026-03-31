@@ -32,12 +32,6 @@ function buildShareUrl(gpuName: string, useCase: string, models: ShareableModel[
   return `${base}/search/model?${params.toString()}`;
 }
 
-const INFERENCE_COLORS: Record<string, string> = {
-  'GPU Full':            'bg-green-500',
-  'GPU + RAM Offload':   'bg-yellow-500',
-  'CPU Only':            'bg-orange-500',
-};
-
 export default function ShareSetupModal({ gpuName, vramGb, useCase, models, onClose }: ShareSetupModalProps) {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
