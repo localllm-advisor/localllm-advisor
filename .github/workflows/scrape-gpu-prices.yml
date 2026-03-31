@@ -36,4 +36,19 @@ jobs:
         run: python scripts/scrape_gpu_prices.py
 
       - name: Summary
-        run: echo "GPU price scraping completed at $(date)"
+        if: always()
+        run: |
+          GPU_DATASET=$(python3 -c "import json; d=json.load(open('public/data/gpus.json')); print(len(d))" 2>/dev/null || echo "unknown")
+          GPU_TRACKED=$(python3 -c "
+          import sys; sys.path.insert(0, 'scripts')
+          # Count GPU_TARGETS dict entries in scrape_gpu_prices.py
+          import re, pathlib
+          src = pathlib.Path('scripts/scrape_gpu_prices.py').read_text()
+          entries = re.findall(r'\"NVIDIA|\"AMD|\"Intel', src)
+          print(len(entries))
+          " 2>/dev/null || echo "unknown")
+          echo "========================================"
+          echo "GPU price scraping completed at $(date -u)"
+          echo "Total GPUs in dataset (gpus.json): ${GPU_DATASET}"
+          echo "GPUs tracked for price scraping:   ${GPU_TRACKED}"
+          echo "========================================"

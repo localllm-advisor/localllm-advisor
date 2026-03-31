@@ -151,6 +151,10 @@ export default function GuidePage() {
               <span className="text-cyan-500 mt-0.5">&#x2022;</span>
               <span><span className={strong}>Full customizability</span> — fine-tune models, swap system prompts, chain tools together — you&apos;re in control.</span>
             </li>
+            <li className="flex gap-2">
+              <span className="text-cyan-500 mt-0.5">&#x2022;</span>
+              <span><span className={strong}>Ethical by design</span> — your conversations never train corporate models, build behavioral profiles, or feed advertising systems. You get capable AI without trading your data for it.</span>
+            </li>
           </ul>
           <p>
             The catch? You need decent hardware (especially a GPU with enough VRAM) and the models are not quite as powerful as the very best cloud offerings — yet. For most everyday tasks, though, today&apos;s open-source models are excellent.

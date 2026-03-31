@@ -1,0 +1,114 @@
+name: Sync GPU/CPU Specs
+
+on:
+  schedule:
+    # Run once a day at 03:00 UTC — new GPU/CPU models are rare,
+    # daily is more than sufficient and keeps API load low.
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (detect new entries but do not commit)'
+        required: false
+        default: 'false'
+        type: boolean
+      force:
+        description: 'Force re-fetch all pages (ignore revision cache)'
+        required: false
+        default: 'false'
+        type: boolean
+      no_discovery:
+        description: 'Skip auto-discovery category walk (faster, seed pages only)'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+
+# Prevent concurrent runs — avoids JSON corruption if manually triggered
+# while the scheduled run is still in progress.
+concurrency:
+  group: sync-gpu-cpu-specs
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20  # Wikipedia is fast; abort if something hangs
+
+    steps:
+      # ── Checkout ────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # ── Python ──────────────────────────────────────────────────────────
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      # ── Sync ────────────────────────────────────────────────────────────
+      - name: Sync GPU/CPU specs from Wikipedia
+        run: |
+          ARGS=""
+          [ "${{ github.event.inputs.force }}"        = "true" ] && ARGS="$ARGS --force"
+          [ "${{ github.event.inputs.no_discovery }}" = "true" ] && ARGS="$ARGS --no-discovery"
+          [ "${{ github.event.inputs.dry_run }}"      = "true" ] && ARGS="$ARGS --dry-run"
+          python scripts/sync_gpu_cpu_specs.py $ARGS
+
+      # ── Commit ──────────────────────────────────────────────────────────
+      - name: Commit and push changes
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          # Check what changed: data files AND the revision-ID cache
+          CHANGED=$(git diff --name-only -- \
+            public/data/gpus.json \
+            public/data/cpus.json \
+            scripts/sync_state.json)
+
+          if [ -z "$CHANGED" ]; then
+            echo "No changes detected — skipping commit."
+            exit 0
+          fi
+
+          echo "Changed files:"
+          echo "$CHANGED"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Always commit the state file so revision cache persists across runs;
+          # only add data files if they actually changed.
+          git add scripts/sync_state.json
+          git diff --name-only -- public/data/gpus.json | grep -q . && git add public/data/gpus.json
+          git diff --name-only -- public/data/cpus.json | grep -q . && git add public/data/cpus.json
+
+          GPU_COUNT=$(python3 -c "import json; d=json.load(open('public/data/gpus.json')); print(len(d))")
+          CPU_COUNT=$(python3 -c "import json; d=json.load(open('public/data/cpus.json')); print(len(d))")
+
+          git commit -m "data(hardware): sync GPU/CPU specs from Wikipedia — ${GPU_COUNT} GPUs, ${CPU_COUNT} CPUs [skip ci]"
+          git push
+
+      # ── Summary ─────────────────────────────────────────────────────────
+      - name: Summary
+        if: always()
+        run: |
+          GPU_COUNT=$(python3 -c "import json; d=json.load(open('public/data/gpus.json')); print(len(d))" 2>/dev/null || echo "unknown")
+          CPU_COUNT=$(python3 -c "import json; d=json.load(open('public/data/cpus.json')); print(len(d))" 2>/dev/null || echo "unknown")
+          echo "========================================"
+          echo "Sync completed at $(date -u)"
+          echo "Total GPUs in gpus.json: ${GPU_COUNT}"
+          echo "Total CPUs in cpus.json: ${CPU_COUNT}"
+          echo "========================================"
+          echo ""
+          echo "Note: frontend stat counters (gpuCount, cpuCount) are read"
+          echo "dynamically from these JSON files at build time via"
+          echo "src/lib/datasetStats.ts — no manual TSX patching needed."
