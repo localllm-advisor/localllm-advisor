@@ -210,6 +210,7 @@ export default function Home() {
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
                   {(user.user_metadata?.avatar_url || user.user_metadata?.picture) ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={user.user_metadata.avatar_url || user.user_metadata.picture}
                       alt=""
