@@ -5,6 +5,7 @@ import { ScoredModel, UseCase, Benchmarks } from '@/lib/types';
 import RadarChart from './RadarChart';
 import ModelDetailModal from './ModelDetailModal';
 import ShareSetupModal, { ShareableModel } from './ShareSetupModal';
+import CloudFallbackCard, { shouldShowCloudFallback } from './CloudFallbackCard';
 
 // Export utilities
 function exportToJSON(results: ScoredModel[], gpuName: string | null, vramMb: number, useCase: UseCase) {
@@ -910,6 +911,11 @@ export default function ResultsList({
                 Build hardware for {selected.model.name}
               </button>
             )}
+
+            {/* Cloud fallback — shown when model is slow or VRAM-tight */}
+            {shouldShowCloudFallback(selected) && (
+              <CloudFallbackCard scored={selected} />
+            )}
           </div>
         </div>
       </div>
@@ -1203,6 +1209,49 @@ export default function ResultsList({
           </div>
         </div>
       )}
+
+      {/* ── Upgrade teaser ── */}
+      {/* Shown when the user has selected a real GPU (gpuName set, not CPU-only) and
+          at least some results have a problem that more hardware would solve.
+          Clicking scrolls to the UpgradeAdvisor section below. */}
+      {gpuName && gpuName !== 'CPU Only' && (() => {
+        const offloaded = results.filter(r => r.inferenceMode !== 'gpu_full').length;
+        const slow      = results.filter(r => (r.performance.tokensPerSecond ?? 99) < 15).length;
+        if (offloaded === 0 && slow === 0) return null;
+
+        const detail =
+          offloaded > 0 && slow > 0
+            ? `${offloaded} model${offloaded !== 1 ? 's' : ''} need CPU offload · ${slow} run below 15 tok/s`
+            : offloaded > 0
+            ? `${offloaded} model${offloaded !== 1 ? 's' : ''} need${offloaded === 1 ? 's' : ''} CPU offload — a bigger GPU would keep them fully on-device`
+            : `${slow} model${slow !== 1 ? 's' : ''} running below 15 tok/s — a faster GPU would help significantly`;
+
+        return (
+          <a
+            href="#upgrade-advisor"
+            className="block rounded-xl border border-gray-700 bg-gray-800/30 hover:bg-gray-800/70 px-4 py-3.5 transition-colors group"
+          >
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-lg bg-purple-500/10 border border-purple-500/20 flex items-center justify-center shrink-0">
+                  <svg className="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">
+                    GPU upgrade options &amp; models you&apos;d unlock
+                  </span>
+                  <p className="text-xs text-gray-500 mt-0.5">{detail}</p>
+                </div>
+              </div>
+              <svg className="w-4 h-4 text-gray-600 group-hover:text-purple-400 shrink-0 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </a>
+        );
+      })()}
 
       {/* Model Detail Modal */}
       {detailModel && (
