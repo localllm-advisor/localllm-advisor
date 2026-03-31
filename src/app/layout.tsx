@@ -68,11 +68,11 @@ export default function RootLayout({
           httpEquiv="Content-Security-Policy"
           content={[
             "default-src 'self'",
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com",
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://epnt.ebay.com",
             "style-src 'self' 'unsafe-inline'",
             "img-src 'self' data: https:",
             "font-src 'self' data:",
-            "connect-src 'self' https://www.google-analytics.com https://api.web3forms.com https://api.buttondown.com https://*.supabase.co",
+            "connect-src 'self' https://www.google-analytics.com https://api.web3forms.com https://api.buttondown.com https://*.supabase.co https://epnt.ebay.com https://*.ebay.com",
             "frame-src 'none'",
             "object-src 'none'",
             "base-uri 'self'",
@@ -80,6 +80,15 @@ export default function RootLayout({
         />
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+
+        {/* eBay Partner Network — Smart Links
+            Automatically converts every ebay.com link on the page into an
+            affiliate link using the campaign ID below.
+            Docs: https://partnerhelp.ebay.com/helpcenter/s/article/Smart-Links-Quick-Start-Guide */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script dangerouslySetInnerHTML={{ __html: 'window._epn = {campaign: 5339146601};' }} />
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src="https://epnt.ebay.com/static/epn-smart-tools.js" async />
       </head>
       <body className="antialiased font-sans">
         <ThemeProvider>

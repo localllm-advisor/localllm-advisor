@@ -267,7 +267,7 @@ export default function HardwareFinder({ models, gpus, initialModelId }: Hardwar
       </div>
 
       {/* Recipe Results */}
-      {showResults && recipe && <RecipeDisplay recipe={recipe} showAllOptions={showAllOptions} setShowAllOptions={setShowAllOptions} isDark={isDark} />}
+      {showResults && recipe && <RecipeDisplay recipe={recipe} showAllOptions={showAllOptions} setShowAllOptions={setShowAllOptions} isDark={isDark} minToks={selectedSpeed?.minToks ?? 1} />}
     </div>
   );
 }
@@ -280,12 +280,14 @@ function RecipeDisplay({
   recipe,
   showAllOptions,
   setShowAllOptions,
-  isDark
+  isDark,
+  minToks,
 }: {
   recipe: HardwareRecipe;
   showAllOptions: boolean;
   setShowAllOptions: (v: boolean) => void;
   isDark: boolean;
+  minToks: number;
 }) {
   return (
     <div className={`space-y-6 pt-4 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
@@ -361,23 +363,56 @@ function RecipeDisplay({
         </div>
       </div>
 
-      {/* Featured Options - when filters match */}
-      {(recipe.budgetOption || recipe.recommendedOption || recipe.premiumOption) && (
-        <div className="space-y-3">
-          <h4 className={`text-sm font-medium uppercase tracking-wide ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Recommended Builds</h4>
-          <div className="grid gap-3 md:grid-cols-3">
-            {recipe.budgetOption && (
-              <OptionCard option={recipe.budgetOption} badge="Budget" badgeColor="bg-green-600" isDark={isDark} />
-            )}
-            {recipe.recommendedOption && recipe.recommendedOption !== recipe.budgetOption && (
-              <OptionCard option={recipe.recommendedOption} badge="Best Value" badgeColor="bg-blue-600" isDark={isDark} />
-            )}
-            {recipe.premiumOption && recipe.premiumOption !== recipe.recommendedOption && (
-              <OptionCard option={recipe.premiumOption} badge="Fastest" badgeColor="bg-purple-600" isDark={isDark} />
-            )}
+      {/* All recommendation cards in a single row.
+           Solo GPU card is included only when a single card can run the model
+           and it differs from the budget option (avoids duplicates). */}
+      {(() => {
+        const showSolo = !!(
+          recipe.cheapestSingleGpuOption &&
+          !(
+            recipe.budgetOption?.gpuCount === 1 &&
+            recipe.budgetOption?.gpu.name === recipe.cheapestSingleGpuOption.gpu.name
+          )
+        );
+        const hasAny = showSolo || recipe.budgetOption || recipe.recommendedOption || recipe.premiumOption;
+        if (!hasAny) return null;
+
+        // 4-column grid when solo card is present, 3-column otherwise
+        const gridCols = showSolo
+          ? 'grid-cols-1 sm:grid-cols-2 xl:grid-cols-4'
+          : 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3';
+
+        return (
+          <div className="space-y-3">
+            <h4 className={`text-sm font-medium uppercase tracking-wide ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              Recommended Builds
+            </h4>
+            <div className={`grid gap-3 ${gridCols}`}>
+              {showSolo && (
+                <OptionCard
+                  option={recipe.cheapestSingleGpuOption!}
+                  badge="Solo GPU"
+                  badgeColor="bg-amber-600"
+                  isDark={isDark}
+                  cardNote="cheapest single-card option"
+                  belowSpeedThreshold={
+                    recipe.cheapestSingleGpuOption!.estimatedToksPerSec < minToks
+                  }
+                />
+              )}
+              {recipe.budgetOption && (
+                <OptionCard option={recipe.budgetOption} badge="Budget" badgeColor="bg-green-600" isDark={isDark} />
+              )}
+              {recipe.recommendedOption && recipe.recommendedOption !== recipe.budgetOption && (
+                <OptionCard option={recipe.recommendedOption} badge="Best Value" badgeColor="bg-blue-600" isDark={isDark} />
+              )}
+              {recipe.premiumOption && recipe.premiumOption !== recipe.recommendedOption && (
+                <OptionCard option={recipe.premiumOption} badge="Fastest" badgeColor="bg-purple-600" isDark={isDark} />
+              )}
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* No filtered options but we have theoretical options - show minimum requirement */}
       {recipe.allOptions.length === 0 && recipe.minimumViableOption && (
@@ -507,63 +542,94 @@ function RecipeDisplay({
 // Option Cards
 // ============================================================================
 
-function OptionCard({ option, badge, badgeColor, isDark }: { option: HardwareOption; badge: string; badgeColor: string; isDark: boolean }) {
+function OptionCard({
+  option, badge, badgeColor, isDark, cardNote, belowSpeedThreshold = false,
+}: {
+  option: HardwareOption;
+  badge: string;
+  badgeColor: string;
+  isDark: boolean;
+  cardNote?: string;
+  belowSpeedThreshold?: boolean;
+}) {
   const priceDisplay = option.totalPrice
     ? `$${option.totalPrice.toLocaleString()}`
     : 'Price N/A';
 
   return (
-    <div className={`rounded-xl border p-4 transition-all duration-300 hover:-translate-y-0.5 ${isDark ? 'border-gray-700 bg-gray-800/50 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5' : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100/50'}`}>
-      <div className="flex items-start justify-between mb-3">
-        <span className={`px-2 py-0.5 rounded text-xs text-white ${badgeColor}`}>
-          {badge}
-        </span>
-        <span className={`text-lg font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{priceDisplay}</span>
-      </div>
+    <div className={`rounded-xl border p-3 flex flex-col transition-all duration-300 hover:-translate-y-0.5 ${isDark ? 'border-gray-700 bg-gray-800/50 hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5' : 'border-gray-200 bg-white hover:border-blue-300 hover:shadow-lg hover:shadow-blue-100/50'}`}>
 
-      <h5 className={`font-semibold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-        {option.gpuCount > 1 && `${option.gpuCount}x `}{option.gpu.name}
-        {option.gpu.price_usd && (
-          <span className={`font-normal text-sm ml-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            (${option.gpu.price_usd.toLocaleString()}{option.gpuCount > 1 ? ' each' : ''})
+      {/* Upper content — grows to push buttons down */}
+      <div className="flex-1">
+        {/* Badge + total price */}
+        <div className="flex items-center justify-between mb-1">
+          <span className={`px-2 py-0.5 rounded text-[10px] font-semibold text-white ${badgeColor}`}>
+            {badge}
           </span>
-        )}
-      </h5>
+          <span className={`text-sm font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{priceDisplay}</span>
+        </div>
 
-      <div className="space-y-1 text-sm">
-        <div className={`flex justify-between ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-          <span>Speed</span>
-          <span className="text-green-400 font-medium">~{Math.round(option.estimatedToksPerSec)} tok/s</span>
+        {/* Optional sub-label (e.g. "cheapest single-card option") */}
+        {cardNote && (
+          <p className={`text-[10px] mb-1.5 leading-none ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{cardNote}</p>
+        )}
+
+        {/* GPU name */}
+        <div className="mb-2">
+          <h5 className={`text-xs font-semibold leading-snug ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            {option.gpuCount > 1 ? `${option.gpuCount}× ` : ''}{option.gpu.name}
+          </h5>
+          {option.gpu.price_usd && option.gpuCount > 1 && (
+            <span className={`text-[10px] ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+              ${option.gpu.price_usd.toLocaleString()} each
+            </span>
+          )}
         </div>
-        <div className={`flex justify-between ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-          <span>VRAM</span>
-          <span className={isDark ? 'text-white' : 'text-gray-900'}>{option.totalVramGb.toFixed(0)}GB ({option.vramUsagePercent}% used)</span>
+
+        {/* Stats */}
+        <div className="space-y-0.5 text-[11px] mb-2">
+          <div className={`flex justify-between ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            <span>Speed</span>
+            <span className={`font-medium ${belowSpeedThreshold ? (isDark ? 'text-amber-400' : 'text-amber-600') : 'text-green-400'}`}>
+              ~{Math.round(option.estimatedToksPerSec)} tok/s{belowSpeedThreshold ? ' ⚠' : ''}
+            </span>
+          </div>
+          <div className={`flex justify-between ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+            <span>VRAM</span>
+            <span className={isDark ? 'text-gray-200' : 'text-gray-700'}>
+              {option.totalVramGb.toFixed(0)} GB · {option.vramUsagePercent}%
+            </span>
+          </div>
         </div>
+
+        {/* Warnings / platform notes */}
+        {belowSpeedThreshold && (
+          <p className={`text-[10px] mb-1 ${isDark ? 'text-amber-500/80' : 'text-amber-600'}`}>
+            Below your speed preference
+          </p>
+        )}
+        {option.notes && (
+          <p className={`text-[10px] mb-2 leading-snug ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>{option.notes}</p>
+        )}
       </div>
 
-      {option.notes && (
-        <p className={`mt-2 text-xs ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{option.notes}</p>
-      )}
-
-      <div className="mt-3 space-y-2">
-        <p className={`text-xs font-medium ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>Compare prices</p>
-        <div className="grid grid-cols-2 gap-1.5">
-          {getRetailerLinks(option.gpu.name, option.gpu).map((retailer) => (
-            <a
-              key={retailer.name}
-              href={retailer.href}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className={`text-center rounded-md px-2 py-1.5 text-xs font-medium transition-all border ${
-                isDark
-                  ? 'bg-blue-700/30 hover:bg-blue-600/50 text-blue-300 hover:text-blue-200 border-blue-600/30 hover:border-blue-500/50'
-                  : 'bg-blue-50 hover:bg-blue-100 text-blue-700 hover:text-blue-800 border-blue-200 hover:border-blue-300'
-              }`}
-            >
-              {retailer.name}
-            </a>
-          ))}
-        </div>
+      {/* Retailer buttons — always at the bottom */}
+      <div className="grid grid-cols-2 gap-1 mt-2">
+        {getRetailerLinks(option.gpu.name, option.gpu).map((retailer) => (
+          <a
+            key={retailer.name}
+            href={retailer.href}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            className={`text-center rounded px-1 py-1 text-[10px] font-medium transition-all border truncate ${
+              isDark
+                ? 'bg-blue-700/30 hover:bg-blue-600/50 text-blue-300 hover:text-blue-200 border-blue-600/30 hover:border-blue-500/50'
+                : 'bg-blue-50 hover:bg-blue-100 text-blue-700 hover:text-blue-800 border-blue-200 hover:border-blue-300'
+            }`}
+          >
+            {retailer.name}
+          </a>
+        ))}
       </div>
     </div>
   );

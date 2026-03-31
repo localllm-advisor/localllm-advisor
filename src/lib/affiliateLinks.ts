@@ -3,28 +3,36 @@ import { GPU } from './types';
 // ============================================================================
 // Affiliate configuration — driven entirely by environment variables.
 //
-// How to activate each vendor:
-//   Amazon   → set NEXT_PUBLIC_AMAZON_TAG        (already active ✓)
-//   RunPod   → set NEXT_PUBLIC_RUNPOD_REF_URL     (already active ✓)
-//   Vast.ai  → set NEXT_PUBLIC_VAST_REF_URL       (already active ✓)
-//   Lambda   → set NEXT_PUBLIC_LAMBDA_REF_URL     (set when you have a referral URL)
-//   eBay     → set NEXT_PUBLIC_EBAY_CAMPAIGN_ID   (set when you join eBay Partner Network)
-//   Newegg   → set NEXT_PUBLIC_RAKUTEN_ID         (set when you join Rakuten/LinkShare)
-//   B&H      → set NEXT_PUBLIC_BH_AFFILIATE_ID    (set when you know your network's format)
+// Active retailers (shown to users):
+//   Amazon   → NEXT_PUBLIC_AMAZON_TAG        ✓ active
+//   eBay     → NEXT_PUBLIC_EBAY_CAMPAIGN_ID  ✓ active (Smart Links + EPN URLs)
+//
+// Inactive retailers (commented out — uncomment + set env var when ready):
+//   Newegg   → NEXT_PUBLIC_RAKUTEN_ID         (join Rakuten/LinkShare first)
+//   B&H      → NEXT_PUBLIC_BH_AFFILIATE_ID    (get deep-link format from assigned network)
+//
+// Cloud providers (not retail cards, unaffected):
+//   RunPod   → NEXT_PUBLIC_RUNPOD_REF_URL     ✓ active
+//   Vast.ai  → NEXT_PUBLIC_VAST_REF_URL       ✓ active
+//   Lambda   → NEXT_PUBLIC_LAMBDA_REF_URL     (set when you have a referral URL)
 //
 // No per-product configuration is ever needed. Every GPU in the dataset
 // (present and future) is automatically monetized as soon as the env var is set.
 // ============================================================================
 
-const AMAZON_TAG = process.env.NEXT_PUBLIC_AMAZON_TAG || '';
-const RUNPOD_REF_URL = process.env.NEXT_PUBLIC_RUNPOD_REF_URL || 'https://runpod.io';
-const VAST_REF_URL = process.env.NEXT_PUBLIC_VAST_REF_URL || 'https://cloud.vast.ai';
-const LAMBDA_REF_URL = process.env.NEXT_PUBLIC_LAMBDA_REF_URL || 'https://lambdalabs.com';
+const AMAZON_TAG      = process.env.NEXT_PUBLIC_AMAZON_TAG      || '';
+const RUNPOD_REF_URL  = process.env.NEXT_PUBLIC_RUNPOD_REF_URL  || 'https://runpod.io';
+const VAST_REF_URL    = process.env.NEXT_PUBLIC_VAST_REF_URL    || 'https://cloud.vast.ai';
+const LAMBDA_REF_URL  = process.env.NEXT_PUBLIC_LAMBDA_REF_URL  || 'https://lambdalabs.com';
 const EBAY_CAMPAIGN_ID = process.env.NEXT_PUBLIC_EBAY_CAMPAIGN_ID || '';
-const RAKUTEN_ID = process.env.NEXT_PUBLIC_RAKUTEN_ID || '';
-const BH_AFFILIATE_ID = process.env.NEXT_PUBLIC_BH_AFFILIATE_ID || '';
 
-export type RetailerName = 'Amazon' | 'Newegg' | 'eBay' | 'B&H Photo';
+// ── Inactive — uncomment when you have the affiliate IDs ──────────────────
+// const RAKUTEN_ID     = process.env.NEXT_PUBLIC_RAKUTEN_ID     || '';  // Newegg
+// const BH_AFFILIATE_ID = process.env.NEXT_PUBLIC_BH_AFFILIATE_ID || ''; // B&H Photo
+
+// Active retailers only — extend this union when re-enabling others
+export type RetailerName = 'Amazon' | 'eBay';
+// Future: | 'Newegg' | 'B&H Photo'
 
 export interface RetailerLink {
   name: RetailerName;
@@ -49,8 +57,7 @@ function buildAmazonUrl(gpuName: string, gpu?: GPU): { href: string; monetized: 
   if (gpu?.affiliate_url) {
     return { href: gpu.affiliate_url, monetized: true };
   }
-  // Reliable fallback: Amazon.it search with associate tag
-  // amazon.it because the site is in Italian; change to amazon.com if preferred
+  // Reliable fallback: Amazon search with associate tag
   const base = `https://www.amazon.it/s?k=${encodeURIComponent(gpuName)}`;
   if (AMAZON_TAG) {
     return { href: `${base}&tag=${AMAZON_TAG}`, monetized: true };
@@ -59,10 +66,14 @@ function buildAmazonUrl(gpuName: string, gpu?: GPU): { href: string; monetized: 
 }
 
 // ============================================================================
-// eBay
+// eBay — EPN URL format (primary) + Smart Links script (backup)
 //
-// Uses the standard eBay Partner Network search link format.
-// Set NEXT_PUBLIC_EBAY_CAMPAIGN_ID in .env to activate for all GPUs at once.
+// The Smart Links script in layout.tsx (window._epn = {campaign: 5339146601})
+// automatically rewrites all ebay.com links in the DOM as a second tracking
+// layer. The EPN URL format below is the primary / server-side affiliate link.
+//
+// To activate: set NEXT_PUBLIC_EBAY_CAMPAIGN_ID in .env.local / .env.production
+// Docs: https://partnerhelp.ebay.com/helpcenter/s/article/Smart-Links-Quick-Start-Guide
 // ============================================================================
 
 function buildEbayUrl(gpuName: string): { href: string; monetized: boolean } {
@@ -77,44 +88,50 @@ function buildEbayUrl(gpuName: string): { href: string; monetized: boolean } {
 }
 
 // ============================================================================
-// Newegg via Rakuten (LinkShare)
+// Newegg via Rakuten (LinkShare) — INACTIVE
 //
-// Rakuten deep links wrap any destination URL, so a single publisher ID covers
-// every GPU search automatically. Set NEXT_PUBLIC_RAKUTEN_ID to activate.
-// mid=32440 is Newegg's Rakuten merchant ID.
+// To reactivate:
+//   1. Join Rakuten Advertising at https://rakutenadvertising.com/
+//   2. Apply to the Newegg program (merchant ID 32440)
+//   3. Set NEXT_PUBLIC_RAKUTEN_ID in .env.local and .env.production
+//   4. Uncomment RAKUTEN_ID above and buildNeweggUrl below
+//   5. Add 'Newegg' back to RetailerName and re-include it in getRetailerLinks
 // ============================================================================
 
-function buildNeweggUrl(gpuName: string): { href: string; monetized: boolean } {
-  const neweggSearch = `https://www.newegg.com/p/pl?d=${encodeURIComponent(gpuName)}`;
-  if (RAKUTEN_ID) {
-    return {
-      href: `https://click.linksynergy.com/deeplink?id=${RAKUTEN_ID}&mid=32440&murl=${encodeURIComponent(neweggSearch)}`,
-      monetized: true,
-    };
-  }
-  return { href: neweggSearch, monetized: false };
-}
+// function buildNeweggUrl(gpuName: string): { href: string; monetized: boolean } {
+//   const neweggSearch = `https://www.newegg.com/p/pl?d=${encodeURIComponent(gpuName)}`;
+//   if (RAKUTEN_ID) {
+//     return {
+//       href: `https://click.linksynergy.com/deeplink?id=${RAKUTEN_ID}&mid=32440&murl=${encodeURIComponent(neweggSearch)}`,
+//       monetized: true,
+//     };
+//   }
+//   return { href: neweggSearch, monetized: false };
+// }
 
 // ============================================================================
-// B&H Photo
+// B&H Photo — INACTIVE
 //
-// The exact deep-link format depends on which network B&H assigns you
-// (CJ Affiliate, Impact, etc.). Set NEXT_PUBLIC_BH_AFFILIATE_ID once you
-// know the format and update the buildBhUrl function with the correct wrapper.
-// Until then all links are plain (non-monetized) search URLs.
+// To reactivate:
+//   1. Apply via CJ Affiliate (https://www.cj.com/) or Impact (check B&H's
+//      current network — it has changed over the years)
+//   2. Once accepted, get your publisher ID and the correct deep-link format
+//   3. Set NEXT_PUBLIC_BH_AFFILIATE_ID in .env.local and .env.production
+//   4. Uncomment BH_AFFILIATE_ID above, fill in the TODO below, and
+//      uncomment buildBhUrl, then add 'B&H Photo' back to RetailerName
+//      and re-include it in getRetailerLinks
 // ============================================================================
 
-function buildBhUrl(gpuName: string): { href: string; monetized: boolean } {
-  const bhSearch = `https://www.bhphotovideo.com/c/search?q=${encodeURIComponent(gpuName)}`;
-  if (BH_AFFILIATE_ID) {
-    // TODO: replace with the deep-link format your assigned network provides.
-    // CJ example:   https://www.jdoqocy.com/click-{BH_AFFILIATE_ID}?url=<encoded bhSearch>
-    // Impact example: https://go.bhphotovideo.com/c/...
-    // For now, link is non-monetized to avoid broken tracking.
-    return { href: bhSearch, monetized: false };
-  }
-  return { href: bhSearch, monetized: false };
-}
+// function buildBhUrl(gpuName: string): { href: string; monetized: boolean } {
+//   const bhSearch = `https://www.bhphotovideo.com/c/search?q=${encodeURIComponent(gpuName)}`;
+//   if (BH_AFFILIATE_ID) {
+//     // TODO: replace with the deep-link format your assigned network provides.
+//     // CJ example:   https://www.jdoqocy.com/click-{BH_AFFILIATE_ID}?url=<encoded bhSearch>
+//     // Impact example: https://go.bhphotovideo.com/c/...
+//     return { href: bhSearch, monetized: false };
+//   }
+//   return { href: bhSearch, monetized: false };
+// }
 
 // ============================================================================
 // Public API
@@ -122,7 +139,8 @@ function buildBhUrl(gpuName: string): { href: string; monetized: boolean } {
 
 /**
  * Returns monetized retailer links for any GPU.
- * Works automatically for every product in the dataset — no manual overrides.
+ * Currently active: Amazon + eBay.
+ * Newegg and B&H Photo are commented out — see above to reactivate.
  *
  * @param gpuName  The GPU name string (used for search fallbacks)
  * @param gpu      Optional full GPU object; enables ASIN-based Amazon links
@@ -130,21 +148,20 @@ function buildBhUrl(gpuName: string): { href: string; monetized: boolean } {
  */
 export function getRetailerLinks(gpuName: string, gpu?: GPU): RetailerLink[] {
   const amazon = buildAmazonUrl(gpuName, gpu);
-  const ebay = buildEbayUrl(gpuName);
-  const newegg = buildNeweggUrl(gpuName);
-  const bh = buildBhUrl(gpuName);
+  const ebay   = buildEbayUrl(gpuName);
+  // const newegg = buildNeweggUrl(gpuName);  // uncomment when Rakuten ID is ready
+  // const bh     = buildBhUrl(gpuName);      // uncomment when B&H affiliate ID is ready
 
   return [
-    { name: 'Amazon',   href: amazon.href,  monetized: amazon.monetized },
-    { name: 'Newegg',   href: newegg.href,  monetized: newegg.monetized },
-    { name: 'B&H Photo', href: bh.href,     monetized: bh.monetized },
-    { name: 'eBay',     href: ebay.href,    monetized: ebay.monetized },
+    { name: 'Amazon', href: amazon.href, monetized: amazon.monetized },
+    { name: 'eBay',   href: ebay.href,   monetized: ebay.monetized   },
+    // { name: 'Newegg',    href: newegg.href, monetized: newegg.monetized },
+    // { name: 'B&H Photo', href: bh.href,     monetized: bh.monetized    },
   ];
 }
 
 /**
  * Returns the href for a single retailer.
- * Compatible with the (gpu: string) => string signature used in RETAILER_CONFIG.
  */
 export function getRetailerUrl(
   retailer: RetailerName | string,

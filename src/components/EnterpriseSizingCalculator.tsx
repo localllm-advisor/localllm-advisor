@@ -603,8 +603,12 @@ export default function EnterpriseSizingCalculator() {
           <label className={labelCls}>Concurrent Users</label>
           <input
             type="number" min={1} max={10000}
-            value={input.concurrentUsers}
-            onChange={e => { setInput(prev => ({ ...prev, concurrentUsers: Number(e.target.value) })); setShowResults(false); }}
+            value={input.concurrentUsers || ''}
+            onChange={e => {
+              const val = e.target.value === '' ? 0 : parseInt(e.target.value, 10);
+              if (!isNaN(val)) setInput(prev => ({ ...prev, concurrentUsers: val }));
+              setShowResults(false);
+            }}
             className={inputCls}
           />
         </div>
@@ -663,8 +667,12 @@ export default function EnterpriseSizingCalculator() {
               <label className={labelCls}>Avg Prompt Length (tokens)</label>
               <input
                 type="number" min={10} max={100000}
-                value={input.avgPromptTokens}
-                onChange={e => { setInput(prev => ({ ...prev, avgPromptTokens: Number(e.target.value) })); setShowResults(false); }}
+                value={input.avgPromptTokens || ''}
+                onChange={e => {
+                  const val = e.target.value === '' ? 0 : parseInt(e.target.value, 10);
+                  if (!isNaN(val)) setInput(prev => ({ ...prev, avgPromptTokens: val }));
+                  setShowResults(false);
+                }}
                 className={inputCls}
               />
             </div>
@@ -673,8 +681,12 @@ export default function EnterpriseSizingCalculator() {
               <label className={labelCls}>Avg Response Length (tokens)</label>
               <input
                 type="number" min={10} max={10000}
-                value={input.avgResponseTokens}
-                onChange={e => { setInput(prev => ({ ...prev, avgResponseTokens: Number(e.target.value) })); setShowResults(false); }}
+                value={input.avgResponseTokens || ''}
+                onChange={e => {
+                  const val = e.target.value === '' ? 0 : parseInt(e.target.value, 10);
+                  if (!isNaN(val)) setInput(prev => ({ ...prev, avgResponseTokens: val }));
+                  setShowResults(false);
+                }}
                 className={inputCls}
               />
             </div>
