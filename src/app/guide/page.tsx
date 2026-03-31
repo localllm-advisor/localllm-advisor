@@ -7,6 +7,7 @@ import SiteFooter from '@/components/SiteFooter';
 import PageHero from '@/components/PageHero';
 import Reveal from '@/components/Reveal';
 import { useTheme } from '@/components/ThemeProvider';
+import { getCloudProviderUrl } from '@/lib/affiliateLinks';
 
 /* ------------------------------------------------------------------ */
 /*  Section wrapper                                                    */
@@ -351,8 +352,8 @@ export default function GuidePage() {
 
           <div className="grid sm:grid-cols-2 gap-3">
             {[
-              { name: 'RunPod', desc: 'On-demand GPU pods, starting ~$0.20/hr', url: 'https://runpod.io' },
-              { name: 'Vast.ai', desc: 'GPU marketplace, cheap spot instances', url: 'https://vast.ai' },
+              { name: 'RunPod', desc: 'On-demand GPU pods, starting ~$0.20/hr', url: getCloudProviderUrl('runpod') },
+              { name: 'Vast.ai', desc: 'GPU marketplace, cheap spot instances', url: getCloudProviderUrl('vast.ai') },
               { name: 'Lambda', desc: 'A100/H100 instances for serious workloads', url: 'https://lambdalabs.com' },
               { name: 'AWS / GCP / Azure', desc: 'Enterprise-grade, pay-per-second GPU VMs', url: '#' },
             ].map((p) => (

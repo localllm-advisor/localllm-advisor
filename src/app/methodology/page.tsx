@@ -34,6 +34,49 @@ export default function MethodologyPage() {
 
       <main className="flex-1 mx-auto max-w-3xl px-4 py-12">
         <div className={`space-y-10 ${prose}`}>
+
+          {/* Quick FAQ — answers the top-2 questions people ask immediately */}
+          <Reveal delay={0}>
+            <section className={`rounded-2xl border-2 p-6 ${isDark ? 'border-green-600/40 bg-green-950/30' : 'border-green-200 bg-green-50'}`}>
+              <h2 className={`text-xl font-bold mb-4 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <span className="text-2xl">❓</span> Quick FAQ
+              </h2>
+              <div className="space-y-5">
+                <div>
+                  <p className={`font-semibold mb-1 ${isDark ? 'text-green-300' : 'text-green-700'}`}>
+                    How are tok/s estimates calculated?
+                  </p>
+                  <p className="text-[15px]">
+                    Token generation speed is <strong className={strong}>memory-bandwidth bound</strong>: each token requires reading the entire model weights from GPU memory once.
+                    The formula is simply <code className={`px-1.5 py-0.5 rounded text-sm ${codeBg}`}>tok/s = GPU_bandwidth_GBps / model_size_GB</code>.
+                    For example, an RTX 4090 (1,008 GB/s) running a 7B Q4 model (~3.5 GB) yields ≈ 288 tok/s.
+                    All estimates include a ±15–30% uncertainty band to reflect real-world variation from drivers, thermal throttling, and inference runtime.
+                  </p>
+                </div>
+                <div>
+                  <p className={`font-semibold mb-1 ${isDark ? 'text-green-300' : 'text-green-700'}`}>
+                    Are these real benchmarks or heuristics?
+                  </p>
+                  <p className="text-[15px]">
+                    <strong className={strong}>Both, transparently.</strong>{' '}
+                    Model quality scores (MMLU-PRO, MATH, IFEval, etc.) come directly from the{' '}
+                    <a
+                      href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard"
+                      target="_blank" rel="noopener noreferrer"
+                      className={isDark ? 'text-green-400 hover:text-green-300 underline' : 'text-green-600 hover:text-green-500 underline'}
+                    >
+                      Open LLM Leaderboard
+                    </a>{' '}
+                    — those are real, reproducible benchmark runs.
+                    Speed estimates are <strong className={strong}>physics-based heuristics</strong> derived from GPU spec sheets (memory bandwidth, TFLOPS).
+                    They are not measured on-device, but the underlying formula is the same one used by llama.cpp and the LLM community.
+                    Want verified numbers? Submit your own results via the{' '}
+                    <a href="/benchmarks" className={isDark ? 'text-green-400 hover:text-green-300 underline' : 'text-green-600 hover:text-green-500 underline'}>community benchmarks page</a>.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </Reveal>
           {/* Model Size */}
           <Reveal delay={200}>
             <section>
