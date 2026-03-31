@@ -38,9 +38,9 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
             <div className="text-center space-y-8">
               {/* Title */}
               <Reveal>
-                <div className="flex flex-col items-center gap-4">
-                  <Logo size={96} showText={false} />
-                  <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <div className="flex flex-col items-center gap-2">
+                  <Logo size={80} showText={false} />
+                  <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     LocalLLM Advisor
                   </h1>
                 </div>
@@ -53,6 +53,7 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
                     phrases={[
                       'Run AI locally. Keep your data yours.',
                       'Find the best LLM for your GPU.',
+                      'Find the best GPU for your LLM.',
                       'No cloud. No API fees. Total privacy.',
                       'From Llama to Mistral — ranked for your hardware.',
                     ]}
