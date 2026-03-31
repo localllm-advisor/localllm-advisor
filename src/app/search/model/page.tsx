@@ -256,7 +256,7 @@ export default function ModelSearchPage() {
 
       {/* Upgrade Advisor */}
       {results && !isCpuOnlyMode && selectedGpu && (
-        <section className="w-full py-8 border-t border-gray-700">
+        <section id="upgrade-advisor" className="w-full py-8 border-t border-gray-700">
           <div className="mx-auto max-w-7xl px-4">
             <UpgradeAdvisor
               results={results}
