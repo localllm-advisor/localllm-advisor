@@ -51,6 +51,10 @@ export interface HardwareRecipe {
   // Minimum hardware requirement (ignoring speed/budget filters)
   minimumViableOption: HardwareOption | null;  // Cheapest option that can physically run the model
 
+  // Cheapest single GPU that can physically run the model (no speed/budget filter applied)
+  // null when no single consumer GPU has enough VRAM for this model
+  cheapestSingleGpuOption: HardwareOption | null;
+
   // Hardware options (filtered by speed/budget preferences)
   budgetOption: HardwareOption | null;      // Cheapest that meets criteria
   recommendedOption: HardwareOption | null; // Best value that meets criteria
@@ -85,8 +89,9 @@ const CLOUD_GPUS = [
   { provider: 'RunPod',  gpu: 'H100 80GB',  vramGb: 80, bandwidthGbps: 3350, pricePerHour: 3.99, link: getCloudProviderUrl('RunPod') },
   { provider: 'Vast.ai', gpu: 'RTX 4090',   vramGb: 24, bandwidthGbps: 1008, pricePerHour: 0.40, link: getCloudProviderUrl('Vast.ai') },
   { provider: 'Vast.ai', gpu: 'A100 80GB',  vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.50, link: getCloudProviderUrl('Vast.ai') },
-  { provider: 'Lambda',  gpu: 'A100 80GB',  vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.29, link: getCloudProviderUrl('Lambda') },
-  { provider: 'Lambda',  gpu: 'H100 80GB',  vramGb: 80, bandwidthGbps: 3350, pricePerHour: 2.49, link: getCloudProviderUrl('Lambda') },
+  // Lambda — no referral program yet; uncomment when NEXT_PUBLIC_LAMBDA_REF_URL is set
+  // { provider: 'Lambda',  gpu: 'A100 80GB',  vramGb: 80, bandwidthGbps: 2039, pricePerHour: 1.29, link: getCloudProviderUrl('Lambda') },
+  // { provider: 'Lambda',  gpu: 'H100 80GB',  vramGb: 80, bandwidthGbps: 3350, pricePerHour: 2.49, link: getCloudProviderUrl('Lambda') },
 ];
 
 // ============================================================================
@@ -203,6 +208,16 @@ export function buildHardwareRecipe(
     ? theoreticalWithPrice.reduce((a, b) => (a.totalPrice! < b.totalPrice! ? a : b))
     : null;
 
+  // Cheapest single-GPU option: only gpuCount === 1, no speed filter, must have a price.
+  // This is shown as a dedicated card so users can always see the solo-card entry point,
+  // even when the algorithm would otherwise recommend cheaper multi-GPU alternatives.
+  const singleGpuCandidates = allTheoreticalOptions.filter(
+    o => o.gpuCount === 1 && o.totalPrice !== null
+  );
+  const cheapestSingleGpuOption = singleGpuCandidates.length > 0
+    ? singleGpuCandidates.reduce((a, b) => (a.totalPrice! < b.totalPrice! ? a : b))
+    : null;
+
   // Apply speed and budget filters for user preferences
   let filteredOptions = dedupedOptions.filter(opt => opt.estimatedToksPerSec >= minTokensPerSec);
   if (maxPriceUsd !== null) {
@@ -311,6 +326,7 @@ export function buildHardwareRecipe(
     canRunConsumer,
     minGpusNeeded,
     minimumViableOption,
+    cheapestSingleGpuOption,
     budgetOption,
     recommendedOption,
     premiumOption,

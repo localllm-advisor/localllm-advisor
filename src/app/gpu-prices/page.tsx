@@ -34,12 +34,14 @@ import { getRetailerUrl } from '@/lib/affiliateLinks';
 // Keys match the retailer column in Supabase gpu_prices table.
 // url() delegates to affiliateLinks so every search link automatically carries
 // the affiliate tag/code — no per-GPU configuration needed.
+// Retailer display config — only retailers with active affiliate programs are shown.
+// To re-enable Newegg: uncomment its block and set NEXT_PUBLIC_RAKUTEN_ID in .env
 const RETAILER_CONFIG: Record<string, { name: string; color: string; url: (gpu: string) => string }> = {
-  Newegg: {
-    name: 'Newegg',
-    color: 'text-orange-400',
-    url: (gpu) => getRetailerUrl('Newegg', gpu),
-  },
+  // Newegg: {                                      // ← re-enable when Rakuten ID is ready
+  //   name: 'Newegg',
+  //   color: 'text-orange-400',
+  //   url: (gpu) => getRetailerUrl('Newegg', gpu),
+  // },
   Amazon: {
     name: 'Amazon',
     color: 'text-yellow-400',
