@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense, useMemo } from 'react';
+import { useState, useEffect, Suspense, useMemo, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import {
   BenchmarkWithVotes,
@@ -17,6 +17,8 @@ import { useTheme } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
 import PageHero from '@/components/PageHero';
+import BenchmarkSubmitModal from '@/components/BenchmarkSubmitModal';
+import { GPU } from '@/lib/types';
 import { User } from '@supabase/supabase-js';
 
 // Grouped benchmark type
@@ -104,6 +106,8 @@ function BenchmarksContent() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState<User | null>(null);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSubmitModal, setShowSubmitModal] = useState(false);
+  const [gpus, setGpus] = useState<GPU[]>([]);
 
   // Filters - initialize from URL params
   const [modelFilter, setModelFilter] = useState(searchParams.get('model') || '');
@@ -118,33 +122,36 @@ function BenchmarksContent() {
     quantLevels: string[];
   }>({ models: [], gpus: [], quantLevels: [] });
 
+  const fetchBenchmarks = useCallback(async () => {
+    setLoading(true);
+    const data = await getAllBenchmarksWithVotes({
+      modelId: modelFilter || undefined,
+      gpuName: gpuFilter || undefined,
+      quantLevel: quantFilter || undefined,
+      sortBy,
+      limit: 100,
+    });
+    setBenchmarks(data);
+    setLoading(false);
+  }, [modelFilter, gpuFilter, quantFilter, sortBy]);
+
   useEffect(() => {
     async function init() {
-      const [currentUser, options] = await Promise.all([
+      const [currentUser, options, gpuData] = await Promise.all([
         getUser(),
         getFilterOptions(),
+        fetch('/data/gpus.json').then(r => r.json()).catch(() => []),
       ]);
       setUser(currentUser);
       setFilterOptions(options);
+      setGpus(gpuData);
     }
     init();
   }, []);
 
   useEffect(() => {
-    async function fetchBenchmarks() {
-      setLoading(true);
-      const data = await getAllBenchmarksWithVotes({
-        modelId: modelFilter || undefined,
-        gpuName: gpuFilter || undefined,
-        quantLevel: quantFilter || undefined,
-        sortBy,
-        limit: 100,
-      });
-      setBenchmarks(data);
-      setLoading(false);
-    }
     fetchBenchmarks();
-  }, [modelFilter, gpuFilter, quantFilter, sortBy]);
+  }, [fetchBenchmarks]);
 
   const handleVote = async (benchmarkId: string, voteType: 1 | -1) => {
     if (!user) {
@@ -241,7 +248,17 @@ function BenchmarksContent() {
       <div className={`border-b ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
           <div className="flex items-center justify-between">
-            <div />
+            {/* Submit CTA */}
+            <button
+              onClick={() => setShowSubmitModal(true)}
+              className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 rounded-xl transition-all shadow-sm"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Submit Benchmark
+            </button>
+
             <div className="flex items-center gap-4">
               <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 {groupedBenchmarks.length} results ({benchmarks.length} submissions)
@@ -364,7 +381,16 @@ function BenchmarksContent() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
             </svg>
             <p className="text-lg font-medium mb-2">No benchmarks found</p>
-            <p className="text-sm">Be the first to submit your benchmark results!</p>
+            <p className="text-sm mb-4">Be the first to submit your benchmark results!</p>
+            <button
+              onClick={() => setShowSubmitModal(true)}
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-400 hover:to-orange-500 rounded-xl transition-all shadow"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+              </svg>
+              Submit Benchmark
+            </button>
           </div>
         ) : (
           <div className="space-y-4">
@@ -533,6 +559,18 @@ function BenchmarksContent() {
           </div>
         )}
       </main>
+
+      {/* Submit Benchmark Modal */}
+      {showSubmitModal && (
+        <BenchmarkSubmitModal
+          gpus={gpus}
+          onClose={() => setShowSubmitModal(false)}
+          onSuccess={() => {
+            setShowSubmitModal(false);
+            fetchBenchmarks();
+          }}
+        />
+      )}
 
       {/* Login Modal */}
       {showLoginModal && (
