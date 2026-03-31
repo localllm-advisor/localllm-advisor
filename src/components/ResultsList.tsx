@@ -4,6 +4,7 @@ import { useState, useMemo, useRef } from 'react';
 import { ScoredModel, UseCase, Benchmarks } from '@/lib/types';
 import RadarChart from './RadarChart';
 import ModelDetailModal from './ModelDetailModal';
+import ShareSetupModal, { ShareableModel } from './ShareSetupModal';
 
 // Export utilities
 function exportToJSON(results: ScoredModel[], gpuName: string | null, vramMb: number, useCase: UseCase) {
@@ -312,6 +313,18 @@ export default function ResultsList({
 
   const [showExportMenu, setShowExportMenu] = useState(false);
   const exportRef = useRef<HTMLDivElement>(null);
+  const [showShareModal, setShowShareModal] = useState(false);
+
+  // Build top-5 shareable models from current results
+  const shareableModels: ShareableModel[] = results.slice(0, 5).map((r, i) => ({
+    rank: i + 1,
+    name: r.model.name,
+    params_b: r.model.params_b,
+    quantLevel: r.quant.level,
+    tokensPerSecond: r.performance.tokensPerSecond ?? null,
+    score: r.score,
+    ollamaTag: r.quant.ollama_tag,
+  }));
 
   if (results.length === 0) {
     return (
@@ -343,6 +356,18 @@ export default function ResultsList({
           <span className="font-semibold text-blue-400 capitalize">{useCase}</span>
         </p>
         <div className="flex items-center gap-2">
+          {/* Share your setup */}
+          <button
+            onClick={() => setShowShareModal(true)}
+            className="px-3 py-1.5 text-xs font-medium bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors flex items-center gap-1.5"
+            title="Share your GPU setup"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+            </svg>
+            Share setup
+          </button>
+
           {/* Export dropdown */}
           <div className="relative" ref={exportRef}>
             <button
@@ -1184,6 +1209,16 @@ export default function ResultsList({
         <ModelDetailModal
           model={detailModel}
           onClose={() => setDetailModel(null)}
+        />
+      )}
+
+      {showShareModal && (
+        <ShareSetupModal
+          gpuName={gpuName || `${vramGb}GB VRAM`}
+          vramGb={vramGb}
+          useCase={useCase}
+          models={shareableModels}
+          onClose={() => setShowShareModal(false)}
         />
       )}
     </div>

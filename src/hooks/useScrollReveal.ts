@@ -31,6 +31,14 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
     const el = ref.current;
     if (!el) return;
 
+    // Immediately reveal elements already visible in the viewport (above-the-fold).
+    // IntersectionObserver fires asynchronously, causing a blank flash for hero content.
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      setVisible(true);
+      if (once) return; // already visible — no need to observe
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {

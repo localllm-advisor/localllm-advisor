@@ -10,6 +10,7 @@ import Logo from '@/components/Logo';
 import TypeWriter from '@/components/TypeWriter';
 import MeshGradient from '@/components/MeshGradient';
 import InstantCheck from '@/components/InstantCheck';
+import HomeBenchmarkFeed from '@/components/HomeBenchmarkFeed';
 import type { DatasetStats } from '@/lib/datasetStats';
 
 interface LandingPageClientProps {
@@ -191,6 +192,9 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
           </div>
         </section>
       </main>
+
+      {/* Live community benchmark feed */}
+      <HomeBenchmarkFeed />
 
       {/* Footer with Newsletter Banner */}
       <SiteFooter />
