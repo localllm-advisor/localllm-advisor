@@ -94,25 +94,54 @@ export async function getBenchmarks(modelId: string, quantLevel?: string): Promi
   return data || [];
 }
 
+/**
+ * Map raw Postgres/Supabase error strings to safe user-facing messages.
+ * Never expose internal schema details or raw exception text to the client.
+ */
+function friendlyBenchmarkError(raw: string): string {
+  if (raw.includes('rate_limit_exceeded'))
+    return 'You\'ve submitted too many benchmarks this hour. Please wait a while before trying again.';
+  if (raw.includes('duplicate_submission'))
+    return 'You already submitted a result for this model / GPU combination in the last 24 hours.';
+  if (raw.includes('invalid_input'))
+    return 'One or more fields are invalid or blank. Please check your inputs.';
+  if (raw.includes('violates check constraint') || raw.includes('new row violates'))
+    return 'One or more values are outside the accepted range. Please check your inputs.';
+  if (raw.includes('violates row-level security'))
+    return 'Submission not authorised. Please make sure you are signed in.';
+  // Catch-all — never expose raw Postgres messages to the client
+  return 'Submission failed. Please check your values and try again.';
+}
+
 // Submit a new benchmark
 export async function submitBenchmark(benchmark: BenchmarkSubmission): Promise<{ success: boolean; error?: string }> {
   if (!supabase) return { success: false, error: 'Supabase is not configured' };
   const { data: { user } } = await supabase.auth.getUser();
 
   if (!user) {
-    return { success: false, error: 'You must be logged in to submit benchmarks' };
+    return { success: false, error: 'You must be signed in to submit benchmarks.' };
   }
+
+  // Basic client-side sanitization before sending to DB
+  const sanitized: BenchmarkSubmission = {
+    ...benchmark,
+    model_id:    benchmark.model_id.trim().slice(0, 200),
+    quant_level: benchmark.quant_level.trim().slice(0, 50),
+    gpu_name:    benchmark.gpu_name.trim().slice(0, 150),
+    notes:       benchmark.notes?.trim().slice(0, 500) || undefined,
+  };
 
   const { error } = await supabase
     .from('benchmarks')
     .insert({
-      ...benchmark,
+      ...sanitized,
       user_id: user.id,
     });
 
   if (error) {
-    console.error('Error submitting benchmark:', error);
-    return { success: false, error: error.message };
+    // Log full details server-side (visible in Supabase logs), not to client
+    console.error('submitBenchmark error:', error.message);
+    return { success: false, error: friendlyBenchmarkError(error.message) };
   }
 
   return { success: true };

@@ -10,22 +10,43 @@ import {
   setAuthReturnAction,
   BenchmarkSubmission,
 } from '@/lib/supabase';
+import { checkRateLimit } from '@/lib/rateLimit';
 import { User } from '@supabase/supabase-js';
 import { GPU } from '@/lib/types';
 
+// Common quantization levels for the "open" mode selector
+const COMMON_QUANT_LEVELS = [
+  'Q4_K_M', 'Q4_K_S', 'Q4_0',
+  'Q5_K_M', 'Q5_K_S',
+  'Q6_K',
+  'Q8_0',
+  'F16', 'FP16', 'BF16',
+  'IQ4_XS', 'IQ3_XS',
+  'Other',
+];
+
 interface BenchmarkSubmitModalProps {
-  modelId: string;
-  modelName: string;
-  quantLevel: string;
+  /**
+   * Pre-filled model identifier (e.g. "llama3:8b-q4_K_M").
+   * When omitted, the user enters it in the form.
+   */
+  modelId?: string;
+  /** Display-only model name shown in the modal header. */
+  modelName?: string;
+  /**
+   * Pre-filled quantization level (e.g. "Q4_K_M").
+   * When omitted, the user picks one in the form.
+   */
+  quantLevel?: string;
   gpus: GPU[];
   onClose: () => void;
   onSuccess: () => void;
 }
 
 export default function BenchmarkSubmitModal({
-  modelId,
+  modelId: propModelId,
   modelName,
-  quantLevel,
+  quantLevel: propQuantLevel,
   gpus,
   onClose,
   onSuccess,
@@ -34,18 +55,26 @@ export default function BenchmarkSubmitModal({
   const isDark = theme === 'dark';
 
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [authLoading, setAuthLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loginError, setLoginError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  // Form state
+  // ── Form state ───────────────────────────────────────────────────────────
+  // Model / quant (only editable when not pre-filled from props)
+  const [modelId, setModelId] = useState(propModelId || '');
+  const [quantLevel, setQuantLevel] = useState(propQuantLevel || '');
+  const [customQuant, setCustomQuant] = useState('');
+
+  // GPU picker
   const [gpuName, setGpuName] = useState('');
   const [gpuSearch, setGpuSearch] = useState('');
   const [gpuDropdownOpen, setGpuDropdownOpen] = useState(false);
   const gpuDropdownRef = useRef<HTMLDivElement>(null);
   const [customGpu, setCustomGpu] = useState('');
+
+  // Measurements
   const [tokensPerSecond, setTokensPerSecond] = useState('');
   const [prefillTps, setPrefillTps] = useState('');
   const [ttft, setTtft] = useState('');
@@ -53,57 +82,128 @@ export default function BenchmarkSubmitModal({
   const [runtime, setRuntime] = useState('ollama');
   const [notes, setNotes] = useState('');
 
-  // Check auth status
+  // ── Honeypot: bots fill this; humans never see it ────────────────────────
+  const [honeypot, setHoneypot] = useState('');
+
+  // ── Auth ─────────────────────────────────────────────────────────────────
   useEffect(() => {
-    async function checkUser() {
-      if (!supabase) {
-        setLoading(false);
-        return;
-      }
-      const { data: { user } } = await supabase.auth.getUser();
+    if (!supabase) { setAuthLoading(false); return; }
+    supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user);
-      setLoading(false);
-    }
-
-    checkUser();
-
-    if (!supabase) return;
-
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
+      setAuthLoading(false);
     });
-
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_ev, session) => {
+      setUser(session?.user ?? null);
+      setAuthLoading(false);
+    });
     return () => subscription.unsubscribe();
   }, []);
 
-  // Close GPU dropdown on outside click
+  // ── Close GPU dropdown on outside click ──────────────────────────────────
   useEffect(() => {
-    function handleClickOutside(e: MouseEvent) {
+    function handler(e: MouseEvent) {
       if (gpuDropdownRef.current && !gpuDropdownRef.current.contains(e.target as Node)) {
         setGpuDropdownOpen(false);
       }
     }
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
   }, []);
 
+  // ── Submission handler ───────────────────────────────────────────────────
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
+
+    // 1. Honeypot check — silently reject bots
+    if (honeypot !== '') {
+      // Pretend success so bots don't learn they were blocked
+      setSuccess(true);
+      setTimeout(() => { onSuccess(); onClose(); }, 1500);
+      return;
+    }
+
+    // 2. Client-side rate limit (UX feedback; real enforcement is in the DB trigger)
+    const rl = checkRateLimit('benchmark-submit', {
+      maxAttempts: 5,
+      windowMs: 60 * 60 * 1000, // 1-hour window
+      cooldownMs: 30 * 1000,    // 30 s cooldown after hitting limit
+    });
+    if (!rl.allowed) {
+      const secs = Math.ceil(rl.retryAfterMs / 1000);
+      setError(`Too many submissions — please wait ${secs} second${secs !== 1 ? 's' : ''} before trying again.`);
+      return;
+    }
+
     setSubmitting(true);
 
-    const tps = parseFloat(tokensPerSecond);
-    if (isNaN(tps) || tps <= 0) {
-      setError('Please enter a valid tokens/second value');
+    // 3. Resolve model_id and quant_level
+    const finalModelId = (propModelId ?? modelId).trim();
+    if (!finalModelId) {
+      setError('Please enter a model ID (e.g. llama3:8b-q4_K_M).');
+      setSubmitting(false);
+      return;
+    }
+    if (finalModelId.length < 2 || finalModelId.length > 200) {
+      setError('Model ID must be between 2 and 200 characters.');
       setSubmitting(false);
       return;
     }
 
-    const finalGpuName = gpuName === 'other' ? customGpu : gpuName;
+    const resolvedQuant = propQuantLevel
+      ? propQuantLevel
+      : (quantLevel === 'Other' ? customQuant.trim() : quantLevel);
+    if (!resolvedQuant) {
+      setError('Please select or enter a quantization level.');
+      setSubmitting(false);
+      return;
+    }
+    if (resolvedQuant.length > 50) {
+      setError('Quantization level must be 50 characters or fewer.');
+      setSubmitting(false);
+      return;
+    }
+
+    // 4. Resolve GPU
+    const finalGpuName = (gpuName === 'other' ? customGpu : gpuName).trim();
     if (!finalGpuName) {
-      setError('Please select or enter a GPU');
+      setError('Please select or enter a GPU.');
+      setSubmitting(false);
+      return;
+    }
+    if (finalGpuName.length < 2 || finalGpuName.length > 150) {
+      setError('GPU name must be between 2 and 150 characters.');
+      setSubmitting(false);
+      return;
+    }
+
+    // 5. Tokens per second
+    const tps = parseFloat(tokensPerSecond);
+    if (isNaN(tps) || tps <= 0 || tps >= 1000) {
+      setError('Tokens/second must be a number between 0 and 1000.');
+      setSubmitting(false);
+      return;
+    }
+
+    // 6. Optional numeric fields
+    const prefillVal = prefillTps ? parseFloat(prefillTps) : undefined;
+    if (prefillVal !== undefined && (isNaN(prefillVal) || prefillVal <= 0 || prefillVal >= 10000)) {
+      setError('Prefill tok/s must be a positive number under 10,000.');
+      setSubmitting(false);
+      return;
+    }
+
+    const ttftVal = ttft ? parseFloat(ttft) : undefined;
+    if (ttftVal !== undefined && (isNaN(ttftVal) || ttftVal <= 0 || ttftVal > 60000)) {
+      setError('Time to first token must be between 1 ms and 60,000 ms.');
+      setSubmitting(false);
+      return;
+    }
+
+    // 7. Notes length
+    const trimmedNotes = notes.trim();
+    if (trimmedNotes.length > 500) {
+      setError('Notes must be 500 characters or fewer.');
       setSubmitting(false);
       return;
     }
@@ -111,33 +211,31 @@ export default function BenchmarkSubmitModal({
     const selectedGpu = gpus.find(g => g.name === finalGpuName);
 
     const benchmark: BenchmarkSubmission = {
-      model_id: modelId,
-      quant_level: quantLevel,
-      gpu_name: finalGpuName,
-      gpu_vram_mb: selectedGpu?.vram_mb,
-      tokens_per_second: tps,
-      prefill_tokens_per_second: prefillTps ? parseFloat(prefillTps) : undefined,
-      time_to_first_token_ms: ttft ? parseFloat(ttft) : undefined,
-      context_length: parseInt(contextLength) || 4096,
+      model_id:                   finalModelId,
+      quant_level:                resolvedQuant,
+      gpu_name:                   finalGpuName,
+      gpu_vram_mb:                selectedGpu?.vram_mb,
+      tokens_per_second:          tps,
+      prefill_tokens_per_second:  prefillVal,
+      time_to_first_token_ms:     ttftVal,
+      context_length:             parseInt(contextLength) || 4096,
       runtime,
-      notes: notes.trim() || undefined,
+      notes:                      trimmedNotes || undefined,
     };
 
     const result = await submitBenchmark(benchmark);
 
     if (result.success) {
       setSuccess(true);
-      setTimeout(() => {
-        onSuccess();
-        onClose();
-      }, 1500);
+      setTimeout(() => { onSuccess(); onClose(); }, 1500);
     } else {
-      setError(result.error || 'Failed to submit benchmark');
+      setError(result.error || 'Submission failed. Please try again.');
     }
 
     setSubmitting(false);
   };
 
+  // ── Styles ───────────────────────────────────────────────────────────────
   const inputClass = `w-full px-3 py-2 rounded-lg border text-sm ${
     isDark
       ? 'bg-gray-800 border-gray-600 text-white placeholder-gray-500 focus:border-blue-500'
@@ -146,26 +244,32 @@ export default function BenchmarkSubmitModal({
 
   const labelClass = `block text-xs font-medium mb-1 ${isDark ? 'text-gray-400' : 'text-gray-600'}`;
 
+  // ── Render ───────────────────────────────────────────────────────────────
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className={`relative w-full max-w-lg rounded-2xl border shadow-2xl ${
+        className={`relative w-full max-w-lg rounded-2xl border shadow-2xl max-h-[90vh] overflow-y-auto ${
           isDark ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className={`flex items-center justify-between p-4 border-b ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+        <div className={`sticky top-0 z-10 flex items-center justify-between p-4 border-b ${
+          isDark ? 'border-gray-700 bg-gray-900' : 'border-gray-200 bg-white'
+        }`}>
           <div>
             <h2 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
               Submit Benchmark
             </h2>
-            <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-              {modelName} • {quantLevel}
-            </p>
+            {(modelName || propModelId) && (
+              <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                {modelName || propModelId}
+                {propQuantLevel ? ` • ${propQuantLevel}` : ''}
+              </p>
+            )}
           </div>
           <button
             onClick={onClose}
@@ -179,15 +283,16 @@ export default function BenchmarkSubmitModal({
           </button>
         </div>
 
-        {/* Content */}
+        {/* Body */}
         <div className="p-4">
-          {loading ? (
+          {authLoading ? (
             <div className="text-center py-8">
-              <div className="animate-spin w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full mx-auto"></div>
-              <p className={`mt-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Loading...</p>
+              <div className="animate-spin w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full mx-auto" />
+              <p className={`mt-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Loading…</p>
             </div>
+
           ) : !user ? (
-            // Login prompt
+            /* ── Login prompt ─────────────────────────────────────── */
             <div className="text-center py-6">
               <svg className="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -205,7 +310,7 @@ export default function BenchmarkSubmitModal({
                 <button
                   onClick={async () => {
                     setLoginError(null);
-                    setAuthReturnAction({ type: 'submit-benchmark', modelId: modelId, quantLevel: quantLevel });
+                    setAuthReturnAction({ type: 'submit-benchmark', modelId: propModelId, quantLevel: propQuantLevel });
                     const res = await signInWithGitHub();
                     if (res?.error) setLoginError(res.error);
                   }}
@@ -219,7 +324,7 @@ export default function BenchmarkSubmitModal({
                 <button
                   onClick={async () => {
                     setLoginError(null);
-                    setAuthReturnAction({ type: 'submit-benchmark', modelId: modelId, quantLevel: quantLevel });
+                    setAuthReturnAction({ type: 'submit-benchmark', modelId: propModelId, quantLevel: propQuantLevel });
                     const res = await signInWithGoogle();
                     if (res?.error) setLoginError(res.error);
                   }}
@@ -239,8 +344,9 @@ export default function BenchmarkSubmitModal({
                 </button>
               </div>
             </div>
+
           ) : success ? (
-            // Success message
+            /* ── Success ──────────────────────────────────────────── */
             <div className="text-center py-8">
               <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center">
                 <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -254,40 +360,106 @@ export default function BenchmarkSubmitModal({
                 Thank you for contributing to the community.
               </p>
             </div>
+
           ) : (
-            // Submit form
+            /* ── Form ─────────────────────────────────────────────── */
             <form onSubmit={handleSubmit} className="space-y-4">
+
+              {/* Honeypot — visually hidden, must stay empty */}
+              <div
+                aria-hidden="true"
+                style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}
+              >
+                <label htmlFor="bm-website">Website</label>
+                <input
+                  id="bm-website"
+                  type="text"
+                  name="website"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                  autoComplete="off"
+                  tabIndex={-1}
+                />
+              </div>
+
+              {/* Error banner */}
               {error && (
                 <div className="p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
                   {error}
                 </div>
               )}
 
-              {/* GPU Selection — searchable dropdown, max 10 visible + Other */}
+              {/* ── Model ID (only when not pre-filled) ───────────── */}
+              {!propModelId && (
+                <div>
+                  <label className={labelClass}>Model ID *</label>
+                  <input
+                    type="text"
+                    value={modelId}
+                    onChange={(e) => setModelId(e.target.value)}
+                    placeholder="e.g. llama3:8b, mistral:7b-instruct-q4_K_M"
+                    maxLength={200}
+                    className={inputClass}
+                    required
+                  />
+                  <p className={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                    Use the Ollama model name (e.g. <code>ollama run &lt;name&gt;</code>)
+                  </p>
+                </div>
+              )}
+
+              {/* ── Quant level (only when not pre-filled) ────────── */}
+              {!propQuantLevel && (
+                <div>
+                  <label className={labelClass}>Quantization level *</label>
+                  <select
+                    value={quantLevel}
+                    onChange={(e) => setQuantLevel(e.target.value)}
+                    className={inputClass}
+                    required
+                  >
+                    <option value="">Select…</option>
+                    {COMMON_QUANT_LEVELS.map(q => (
+                      <option key={q} value={q}>{q}</option>
+                    ))}
+                  </select>
+                  {quantLevel === 'Other' && (
+                    <input
+                      type="text"
+                      value={customQuant}
+                      onChange={(e) => setCustomQuant(e.target.value)}
+                      placeholder="Enter quantization level…"
+                      maxLength={50}
+                      className={`${inputClass} mt-2`}
+                      required
+                    />
+                  )}
+                </div>
+              )}
+
+              {/* ── GPU Picker ────────────────────────────────────── */}
               <div ref={gpuDropdownRef} className="relative">
                 <label className={labelClass}>GPU *</label>
                 <input
                   type="text"
                   value={gpuName === 'other' ? 'Other' : gpuSearch || gpuName}
-                  onChange={(e) => {
-                    setGpuSearch(e.target.value);
-                    setGpuName('');
-                    setGpuDropdownOpen(true);
-                  }}
+                  onChange={(e) => { setGpuSearch(e.target.value); setGpuName(''); setGpuDropdownOpen(true); }}
                   onFocus={() => setGpuDropdownOpen(true)}
-                  placeholder="Search GPU (e.g. RTX 4070, M3 Pro)..."
+                  placeholder="Search GPU (e.g. RTX 4070, M3 Pro)…"
                   className={inputClass}
                   required={!gpuName}
                 />
                 {gpuDropdownOpen && (
-                  <ul className={`absolute z-30 mt-1 max-h-[22rem] w-full overflow-auto rounded-lg border shadow-xl ${isDark ? 'border-gray-600 bg-gray-800' : 'border-gray-300 bg-white'}`}>
+                  <ul className={`absolute z-30 mt-1 max-h-[22rem] w-full overflow-auto rounded-lg border shadow-xl ${
+                    isDark ? 'border-gray-600 bg-gray-800' : 'border-gray-300 bg-white'
+                  }`}>
                     {(() => {
                       const q = gpuSearch.toLowerCase();
-                      const allGpus = [
+                      const sorted = [
                         ...gpus.filter(g => g.vendor !== 'apple').sort((a, b) => a.name.localeCompare(b.name)),
                         ...gpus.filter(g => g.vendor === 'apple'),
                       ];
-                      const filtered = q ? allGpus.filter(g => g.name.toLowerCase().includes(q)) : allGpus;
+                      const filtered = q ? sorted.filter(g => g.name.toLowerCase().includes(q)) : sorted;
                       const visible = filtered.slice(0, 10);
                       const remaining = filtered.length - 10;
                       return (
@@ -295,12 +467,10 @@ export default function BenchmarkSubmitModal({
                           {visible.map(gpu => (
                             <li
                               key={gpu.name}
-                              onClick={() => {
-                                setGpuName(gpu.name);
-                                setGpuSearch('');
-                                setGpuDropdownOpen(false);
-                              }}
-                              className={`cursor-pointer px-4 py-2.5 text-sm flex justify-between ${isDark ? 'hover:bg-gray-700 text-gray-200' : 'hover:bg-gray-100 text-gray-800'}`}
+                              onClick={() => { setGpuName(gpu.name); setGpuSearch(''); setGpuDropdownOpen(false); }}
+                              className={`cursor-pointer px-4 py-2.5 text-sm flex justify-between ${
+                                isDark ? 'hover:bg-gray-700 text-gray-200' : 'hover:bg-gray-100 text-gray-800'
+                              }`}
                             >
                               <span>{gpu.name}</span>
                               <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>{Math.round(gpu.vram_mb / 1024)}GB</span>
@@ -313,16 +483,14 @@ export default function BenchmarkSubmitModal({
                           )}
                           {filtered.length === 0 && (
                             <li className={`px-4 py-2.5 text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                              No matches found
+                              No matches — select "Other" to enter manually
                             </li>
                           )}
                           <li
-                            onClick={() => {
-                              setGpuName('other');
-                              setGpuSearch('');
-                              setGpuDropdownOpen(false);
-                            }}
-                            className={`cursor-pointer px-4 py-2.5 text-sm font-medium border-t ${isDark ? 'hover:bg-gray-700 text-blue-400 border-gray-700' : 'hover:bg-gray-100 text-blue-600 border-gray-200'}`}
+                            onClick={() => { setGpuName('other'); setGpuSearch(''); setGpuDropdownOpen(false); }}
+                            className={`cursor-pointer px-4 py-2.5 text-sm font-medium border-t ${
+                              isDark ? 'hover:bg-gray-700 text-blue-400 border-gray-700' : 'hover:bg-gray-100 text-blue-600 border-gray-200'
+                            }`}
                           >
                             Other (specify manually)
                           </li>
@@ -336,21 +504,22 @@ export default function BenchmarkSubmitModal({
                     type="text"
                     value={customGpu}
                     onChange={(e) => setCustomGpu(e.target.value)}
-                    placeholder="Enter GPU name..."
+                    placeholder="Enter GPU name (e.g. RTX 5090, M4 Max 128GB)…"
+                    maxLength={150}
                     className={`${inputClass} mt-2`}
                     required
                   />
                 )}
               </div>
 
-              {/* Tokens per second */}
+              {/* ── Tokens per second ─────────────────────────────── */}
               <div>
                 <label className={labelClass}>Tokens/second (decode) *</label>
                 <input
                   type="number"
                   step="0.1"
                   min="0.1"
-                  max="500"
+                  max="999"
                   value={tokensPerSecond}
                   onChange={(e) => setTokensPerSecond(e.target.value)}
                   placeholder="e.g. 45.2"
@@ -358,18 +527,19 @@ export default function BenchmarkSubmitModal({
                   required
                 />
                 <p className={`text-xs mt-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                  The generation speed shown in Ollama output
+                  The generation speed shown in Ollama output (eval rate)
                 </p>
               </div>
 
-              {/* Optional fields */}
+              {/* ── Optional fields ───────────────────────────────── */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className={labelClass}>Prefill tok/s</label>
                   <input
                     type="number"
                     step="0.1"
-                    min="0"
+                    min="0.1"
+                    max="9999"
                     value={prefillTps}
                     onChange={(e) => setPrefillTps(e.target.value)}
                     placeholder="Optional"
@@ -380,7 +550,9 @@ export default function BenchmarkSubmitModal({
                   <label className={labelClass}>Time to first token (ms)</label>
                   <input
                     type="number"
-                    min="0"
+                    step="1"
+                    min="1"
+                    max="60000"
                     value={ttft}
                     onChange={(e) => setTtft(e.target.value)}
                     placeholder="Optional"
@@ -422,20 +594,23 @@ export default function BenchmarkSubmitModal({
                 </div>
               </div>
 
-              {/* Notes */}
+              {/* ── Notes ─────────────────────────────────────────── */}
               <div>
-                <label className={labelClass}>Notes (optional)</label>
+                <label className={labelClass}>Notes <span className={isDark ? 'text-gray-600' : 'text-gray-400'}>(optional)</span></label>
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  placeholder="Any additional info (e.g. driver version, settings used)..."
+                  placeholder="Driver version, settings used, custom flags, etc."
                   rows={2}
                   maxLength={500}
                   className={inputClass}
                 />
+                <p className={`text-xs mt-1 text-right ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
+                  {notes.length}/500
+                </p>
               </div>
 
-              {/* Submit */}
+              {/* ── Submit ────────────────────────────────────────── */}
               <button
                 type="submit"
                 disabled={submitting}
@@ -443,8 +618,8 @@ export default function BenchmarkSubmitModal({
               >
                 {submitting ? (
                   <>
-                    <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full"></div>
-                    Submitting...
+                    <div className="animate-spin w-4 h-4 border-2 border-white border-t-transparent rounded-full" />
+                    Submitting…
                   </>
                 ) : (
                   <>
@@ -457,7 +632,10 @@ export default function BenchmarkSubmitModal({
               </button>
 
               <p className={`text-xs text-center ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                Logged in as {user.email || user.user_metadata?.user_name}
+                Signed in as {user.email || user.user_metadata?.user_name} ·{' '}
+                <span className={isDark ? 'text-gray-600' : 'text-gray-300'}>
+                  max 10 submissions/hour · 1 per GPU+model/24 h
+                </span>
               </p>
             </form>
           )}
