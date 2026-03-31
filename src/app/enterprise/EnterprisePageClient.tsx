@@ -580,7 +580,7 @@ export default function EnterprisePageClient({ totalHardwareAndModels }: Enterpr
                 Report Tiers
               </h2>
               <p className={`text-center mb-10 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                Free reports give you the essentials. Upgrade for full cost data, extended analysis, and compliance documentation.
+                Free reports give you the essentials. Contact us for extended analysis and compliance documentation.
               </p>
             </Reveal>
 
@@ -589,8 +589,7 @@ export default function EnterprisePageClient({ totalHardwareAndModels }: Enterpr
                 {/* Free Tier */}
                 <div className={`rounded-xl p-6 border ${isDark ? 'bg-gray-800/30 border-gray-700' : 'bg-white border-gray-200'}`}>
                   <div className={`text-xs font-semibold mb-3 ${isDark ? 'text-green-400' : 'text-green-600'}`}>FREE</div>
-                  <h3 className={`text-xl font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>Free</h3>
-                  <p className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>&euro;0<span className={`text-sm font-normal ${isDark ? 'text-gray-500' : 'text-gray-400'}`}> forever</span></p>
+                  <h3 className={`text-xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Free</h3>
                   <ul className={`space-y-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     <li className="flex gap-2"><span className="text-green-500">&#10003;</span> Best-value GPU recommendation</li>
                     <li className="flex gap-2"><span className="text-green-500">&#10003;</span> Architecture overview (TP, replicas, nodes)</li>
@@ -602,25 +601,29 @@ export default function EnterprisePageClient({ totalHardwareAndModels }: Enterpr
 
                 {/* Plus Tier */}
                 <div className={`rounded-xl p-6 border-2 relative ${isDark ? 'bg-blue-900/10 border-blue-600' : 'bg-blue-50/50 border-blue-400'}`}>
-                  <div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-bold bg-blue-600 text-white`}>MOST POPULAR</div>
+                  {/*<div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-bold bg-blue-600 text-white`}>MOST POPULAR</div>*/}
                   <div className={`text-xs font-semibold mb-3 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>PLUS</div>
-                  <h3 className={`text-xl font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>Plus</h3>
-                  <p className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>&euro;149<span className={`text-sm font-normal ${isDark ? 'text-gray-500' : 'text-gray-400'}`}> one-time</span></p>
+                  <h3 className={`text-xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Plus</h3>
                   <ul className={`space-y-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     <li className="flex gap-2"><span className="text-blue-500">&#10003;</span> All GPU configurations compared</li>
                     <li className="flex gap-2"><span className="text-blue-500">&#10003;</span> Full cost breakdown per GPU</li>
                     <li className="flex gap-2"><span className="text-blue-500">&#10003;</span> First-year TCO analysis</li>
                     <li className="flex gap-2"><span className="text-blue-500">&#10003;</span> Month-by-month cumulative timeline</li>
-                    <li className="flex gap-2"><span className="text-blue-500">&#10003;</span> Exact dollar savings per provider</li>
+                    <li className="flex gap-2"><span className="text-blue-500">&#10003;</span> Detailed savings breakdown per provider</li>
                     <li className="flex gap-2"><span className="text-blue-500">&#10003;</span> Exportable data for procurement</li>
                   </ul>
+                  <button
+                    onClick={() => setActiveTab('contact')}
+                    className={`mt-6 w-full py-2.5 rounded-lg text-sm font-semibold transition-colors bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-sm`}
+                  >
+                    Contact Us
+                  </button>
                 </div>
 
                 {/* Ultra Tier */}
                 <div className={`rounded-xl p-6 border ${isDark ? 'bg-gray-800/30 border-gray-700' : 'bg-white border-gray-200'}`}>
                   <div className={`text-xs font-semibold mb-3 ${isDark ? 'text-purple-400' : 'text-purple-600'}`}>ULTRA</div>
-                  <h3 className={`text-xl font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>Ultra</h3>
-                  <p className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>&euro;300<span className={`text-sm font-normal ${isDark ? 'text-gray-500' : 'text-gray-400'}`}> one-time</span></p>
+                  <h3 className={`text-xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Ultra</h3>
                   <ul className={`space-y-2 text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                     <li className="flex gap-2"><span className="text-purple-500">&#10003;</span> Everything in Plus</li>
                     <li className="flex gap-2"><span className="text-purple-500">&#10003;</span> GDPR infrastructure compliance assessment</li>
@@ -641,11 +644,6 @@ export default function EnterprisePageClient({ totalHardwareAndModels }: Enterpr
               </div>
             </Reveal>
 
-            <Reveal delay={600}>
-              <p className={`text-center text-xs mt-6 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
-                Payments will be activated soon via Stripe.
-              </p>
-            </Reveal>
           </div>
         </section>
       </main>

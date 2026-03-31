@@ -1,22 +1,21 @@
 'use client';
 
-import { useState } from 'react';
 import { useTheme } from '@/components/ThemeProvider';
-import { isStripeConfigured, type TierConfig, type PricingTier } from '@/lib/stripe';
+import { type TierConfig, type PricingTier } from '@/lib/stripe';
+import { CONTACT_EMAIL } from '@/lib/email';
 
 interface EnterprisePaywallProps {
   /** The tiers to display */
   tiers: TierConfig[];
   /** Current active tier */
   currentTier: PricingTier;
-  /** Callback when user selects a tier */
+  /** Callback when user selects the free tier */
   onSelectTier: (tier: PricingTier) => void;
 }
 
 /**
- * EnterprisePaywall — a 3-tier pricing overlay for gated content.
- * Shows Free (active), Plus (€149), and Ultra (€300) options.
- * When Stripe is not configured, shows a "Coming Soon" notice on paid tiers.
+ * EnterprisePaywall — a 3-tier feature gating overlay.
+ * Free tier is immediately accessible; Plus/Ultra prompt the user to get in touch.
  */
 export default function EnterprisePaywall({
   tiers,
@@ -25,8 +24,6 @@ export default function EnterprisePaywall({
 }: EnterprisePaywallProps) {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
-  const [loadingTier, setLoadingTier] = useState<PricingTier | null>(null);
-  const [showComingSoon, setShowComingSoon] = useState(false);
 
   const accentMap: Record<string, { bg: string; bgHover: string; border: string; text: string; badge: string }> = {
     green: {
@@ -52,26 +49,8 @@ export default function EnterprisePaywall({
     },
   };
 
-  const handleSelect = (tier: TierConfig) => {
-    if (tier.id === 'free') {
-      onSelectTier('free');
-      return;
-    }
-
-    // Paid tier — check if Stripe is configured
-    if (!isStripeConfigured) {
-      setShowComingSoon(true);
-      setTimeout(() => setShowComingSoon(false), 3000);
-      return;
-    }
-
-    // Open Stripe payment link
-    setLoadingTier(tier.id);
-    if (tier.stripeLink) {
-      window.open(tier.stripeLink, '_blank');
-    }
-    setTimeout(() => setLoadingTier(null), 2000);
-  };
+  const contactSubject = encodeURIComponent('LocalLLM Advisor — Enterprise Inquiry');
+  const contactHref = `mailto:${CONTACT_EMAIL}?subject=${contactSubject}`;
 
   return (
     <div className="relative">
@@ -82,22 +61,12 @@ export default function EnterprisePaywall({
           : 'bg-gradient-to-b from-transparent via-white/80 to-white'
       }`} />
 
-      {/* Pricing Cards */}
+      {/* Tier Cards */}
       <div className="relative z-20 pt-4 pb-8">
-        {/* Coming Soon Toast */}
-        {showComingSoon && (
-          <div className={`mx-auto max-w-md mb-4 rounded-lg p-3 text-center text-sm font-medium border transition-all ${
-            isDark ? 'bg-yellow-900/30 border-yellow-700 text-yellow-400' : 'bg-yellow-50 border-yellow-200 text-yellow-700'
-          }`}>
-            Paid reports coming soon — payments will be activated shortly.
-          </div>
-        )}
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
           {tiers.map(tier => {
             const colors = accentMap[tier.accent] || accentMap.blue;
             const isActive = currentTier === tier.id;
-            const isLoading = loadingTier === tier.id;
             const isFree = tier.id === 'free';
 
             return (
@@ -108,19 +77,15 @@ export default function EnterprisePaywall({
                 } ${isActive ? 'ring-2 ring-offset-2 ' + (isDark ? 'ring-blue-500 ring-offset-gray-900' : 'ring-blue-500 ring-offset-white') : ''}`}
               >
                 {/* Popular badge */}
-                {tier.highlighted && (
-                  <div className={`absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-bold ${
-                    isDark ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white'
-                  }`}>MOST POPULAR</div>
-                )}
+                {tier.highlighted /*&& (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full text-xs font-bold bg-blue-600 text-white">
+                    MOST POPULAR
+                  </div>
+                )*/}
 
-                {/* Header */}
+                {/* Header — label only, no price */}
                 <div className="text-center mb-4">
                   <span className={`text-xs font-bold uppercase ${colors.text}`}>{tier.label}</span>
-                  <div className="mt-1">
-                    <span className={`text-3xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>{tier.price}</span>
-                    <span className={`text-xs ml-1 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>{tier.priceNote}</span>
-                  </div>
                 </div>
 
                 {/* Features */}
@@ -144,7 +109,7 @@ export default function EnterprisePaywall({
                       </div>
                     ) : (
                       <button
-                        onClick={() => handleSelect(tier)}
+                        onClick={() => onSelectTier('free')}
                         className={`w-full py-2 rounded-lg text-sm font-medium border transition-all ${
                           isDark ? 'border-gray-600 text-gray-300 hover:bg-gray-700' : 'border-gray-300 text-gray-700 hover:bg-gray-50'
                         }`}
@@ -153,10 +118,9 @@ export default function EnterprisePaywall({
                       </button>
                     )
                   ) : (
-                    <button
-                      onClick={() => handleSelect(tier)}
-                      disabled={isLoading}
-                      className={`w-full py-2.5 rounded-lg text-sm font-semibold transition-all disabled:opacity-50 ${
+                    <a
+                      href={contactHref}
+                      className={`block w-full text-center py-2.5 rounded-lg text-sm font-semibold transition-all ${
                         tier.highlighted
                           ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-sm'
                           : isDark
@@ -164,20 +128,14 @@ export default function EnterprisePaywall({
                             : 'bg-purple-600 hover:bg-purple-700 text-white'
                       }`}
                     >
-                      {isLoading ? 'Processing...' : isActive ? 'Active' : `Unlock ${tier.label} — ${tier.price}`}
-                    </button>
+                      Contact Us
+                    </a>
                   )}
                 </div>
               </div>
             );
           })}
         </div>
-
-        <p className={`text-center text-xs mt-4 ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
-          {isStripeConfigured
-            ? 'Secure payment via Stripe. Instant delivery.'
-            : 'Payments will be activated soon.'}
-        </p>
       </div>
     </div>
   );

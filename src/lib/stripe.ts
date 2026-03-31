@@ -35,8 +35,8 @@ export const SIZING_TIERS: TierConfig[] = [
   {
     id: 'free',
     label: 'Free',
-    price: '€0',
-    priceNote: 'forever',
+    price: '',
+    priceNote: '',
     accent: 'green',
     stripeLink: '',
     features: [
@@ -49,8 +49,8 @@ export const SIZING_TIERS: TierConfig[] = [
   {
     id: 'plus',
     label: 'Plus',
-    price: '€149',
-    priceNote: 'one-time',
+    price: '',
+    priceNote: '',
     accent: 'blue',
     stripeLink: STRIPE_PLUS_LINK,
     highlighted: true,
@@ -66,8 +66,8 @@ export const SIZING_TIERS: TierConfig[] = [
   {
     id: 'ultra',
     label: 'Ultra',
-    price: '€300',
-    priceNote: 'one-time',
+    price: '',
+    priceNote: '',
     accent: 'purple',
     stripeLink: STRIPE_ULTRA_LINK,
     features: [
@@ -86,8 +86,8 @@ export const TCO_TIERS: TierConfig[] = [
   {
     id: 'free',
     label: 'Free',
-    price: '€0',
-    priceNote: 'forever',
+    price: '',
+    priceNote: '',
     accent: 'green',
     stripeLink: '',
     features: [
@@ -100,8 +100,8 @@ export const TCO_TIERS: TierConfig[] = [
   {
     id: 'plus',
     label: 'Plus',
-    price: '€149',
-    priceNote: 'one-time',
+    price: '',
+    priceNote: '',
     accent: 'blue',
     stripeLink: STRIPE_PLUS_LINK,
     highlighted: true,
@@ -117,8 +117,8 @@ export const TCO_TIERS: TierConfig[] = [
   {
     id: 'ultra',
     label: 'Ultra',
-    price: '€300',
-    priceNote: 'one-time',
+    price: '',
+    priceNote: '',
     accent: 'purple',
     stripeLink: STRIPE_ULTRA_LINK,
     features: [
