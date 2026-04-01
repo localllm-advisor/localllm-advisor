@@ -1,163 +1,80 @@
-# TODO
+# Roadmap & Known Issues
 
-Problemi da risolvere in ordine di priorità.
-
----
-
-## ✅ Completati
-
-- [x] **UX Redesign v2** - Multi-page flow: Landing → Search Fork → Model/Hardware Search → Results
-- [x] **Shared components** - Navbar, Footer condivisi tra tutte le pagine
-- [x] **Enterprise page** - Pagina contatti per aziende con benefit cards e form
-- [x] **Database modelli espanso** - 242 modelli da 35+ famiglie, 100% benchmark coverage
-- [x] **Data cleanup v2** - Rimossi 29 modelli morti, aggiunti 17 popolari
-- [x] **Data expansion v3** - +110 modelli (GPT-2, BLOOM, LLaVA, Qwen3, Llama 4, ecc.)
-- [x] **Benchmark 100%** - Tutti i 242 modelli con benchmark reali e capability tags
-- [x] **GGUF sources** - 80%+ con link diretti (bartowski, TheBloke, unsloth)
-- [x] **GPU database espanso** - 122 GPU (data center, consumer, Apple Silicon)
-- [x] **CPU database espanso** - 65 CPU (AMD Zen 5, Intel Arrow Lake, Apple Ultra)
-- [x] **HF models catalog** - 159 modelli nel catalogo HF
-- [x] **Scoring engine v2** - Pesi aggiornati per 5 use case
-- [x] **Auto-detect GPU** - WebGPU (dedicated GPU) + WebGL fallback
-- [x] **Auto-detect CPU** - Thread count e Apple Silicon
-- [x] **Filtri avanzati** - Context, quant, size, speed, benchmarks
-- [x] **Hardware Recipe** - Raccomandazioni hardware complete
-- [x] **Multi-GPU** - Configurazioni 2x, 4x, 8x con scaling
-- [x] **Cloud alternatives** - RunPod, Vast.ai, Lambda
-- [x] **GPU price scraper** - Prezzi USD da Newegg
-- [x] **Dark/Light mode** - Toggle in header, persisted in localStorage
-- [x] **Export risultati** - JSON e CSV
-- [x] **Supabase schema** - 6 tabelle, 4 views, RLS policies, triggers
-- [x] **SEO meta tags** - OG tags, Twitter cards, per-page metadata, sitemap.xml, robots.txt
-- [x] **Graceful Supabase fallback** - App funziona al 100% senza Supabase configurato
-- [x] **Dual GPU detection** - WebGPU powerPreference: high-performance per GPU dedicata
+This document tracks planned improvements and known issues. For bug reports or feature requests, open a GitHub issue.
 
 ---
 
-## 🔴 Priorità Alta — Pre-lancio (entro 30/03)
+## In Progress
 
-### 1. Email capture / Newsletter signup
-- [x] Componente EmailCapture riutilizzabile
-- [x] Integrazione sulla landing page
-- [x] Integrazione sulla pagina risultati
-- [x] Integrazione nel footer (variant inline)
-- [ ] Setup Buttondown/Mailchimp account
-
-### 2. Cloud provider referral links
-- [x] Link RunPod, Vast.ai, Lambda pronti per referral tag
-- [x] Struttura URL predisposta (aggiungere ?ref=xxx quando si hanno i referral)
-- [x] REFERRAL_TAGS centralizzato in hardwareAdvisor.ts
-- [ ] Registrazione ai programmi referral (dopo P.IVA)
-
-### 3. Mobile responsive
-- [ ] Homepage / Landing
-- [ ] Hardware selector dropdowns
-- [ ] Results cards
-- [ ] Hardware Recipe cards
-- [ ] Navigation header
-
-### 4. Deploy
-- [ ] GitHub repository pulito (squash commits)
-- [ ] GitHub Pages configurato
-- [ ] Dominio custom acquistato e configurato
-- [ ] `.env.production` con variabili corrette
+- **Mobile responsive polish** — hardware selector dropdowns, results cards, navigation header
+- **Newsletter / email capture** — backend integration with email provider
 
 ---
 
-## 🟡 Priorità Media — Post-lancio
+## Planned
 
-### 5. Pagine SEO programmatiche
-- [x] Generatore statico: "Can [GPU] run [Model]?" (~775 pagine, 31 GPU × 25 modelli)
-- [x] generateStaticParams per output: 'export'
-- [x] Script generate-sitemap.js (785 URL totali)
-- [x] Layout con generateMetadata per OG/Twitter
-- [ ] Generatore statico: "Best GPU for [Model]"
-- [ ] Generatore statico: "How much VRAM for [Model]"
-- [ ] Schema.org markup per GPU/Model data
+### High Priority
 
-### 6. Affiliate links (dopo P.IVA)
-- [ ] Amazon affiliate tag (tag=xxx-21) su tutti i link GPU
-- [ ] Newegg/BestBuy affiliate tags
-- [ ] Cloud provider referral tags (RunPod, Vast.ai, Lambda)
-- [ ] Disclosure "affiliate link" visibile
-- [ ] Click tracking analytics
+- **More programmatic SEO pages** — "Best GPU for [Model]", "How much VRAM for [Model]", schema.org markup
+- **EUR/USD price toggle** — currency conversion with an updatable rate
+- **Share configuration via URL** — `?gpu=rtx4090&model=llama3.1-70b&quant=q4` deep links
 
-### 7. Cost comparison: Buy vs Rent
-- [ ] Calcolo break-even GPU locale vs cloud
-- [ ] Visualizzazione interattiva (slider ore/giorno)
+### Medium Priority
 
-### 8. Share configuration via URL
-- [ ] URL con parametri: ?gpu=rtx4090&model=llama3.1-70b&quant=q4
-- [ ] Bottone "Share this configuration"
+- **Model comparison side-by-side** — select 2–3 models and compare benchmarks, VRAM, speed
+- **More cloud providers** — Together.ai, Replicate, Modal, Paperspace, CoreWeave
+- **Benchmark calibration** — show "estimated vs. real" ranges when community data is available
 
-### 9. Validazione benchmark reali
-- [ ] Bootstrap dati da Reddit/YouTube/Discord
-- [ ] Range "stimato vs reale" quando ci sono community submissions
-- [ ] Calibrazione formule di stima
+### Low Priority / Stretch
 
-### 10. Prezzi EUR
-- [ ] Conversione USD→EUR con tasso aggiornabile
-- [ ] Toggle EUR/USD nell'interfaccia
+- **PWA / offline support** — service worker, manifest.json
+- **Embeddable widget / API** — `GET /api?gpu=rtx4090&model=llama3&quant=q4` → JSON result
+- **Ollama command generator** — ready-to-copy commands after hardware recommendation
 
 ---
 
-## 🟢 Priorità Bassa
+## Completed
 
-### 11. PDF Report a pagamento
-- [ ] Generazione PDF brandizzato con raccomandazione completa
-- [ ] Integrazione Stripe/PayPal per pagamento
-- [ ] Versione gratuita (risultati base) vs premium (report dettagliato)
-
-### 12. Widget/API embeddabile
-- [ ] Endpoint API: GPU + modello → risultato
-- [ ] Widget iframe per siti terzi
-- [ ] Documentazione API
-
-### 13. Model comparison side-by-side
-- [ ] Seleziona 2-3 modelli e confronta benchmark, VRAM, speed
-
-### 14. Ollama command generator
-- [ ] Comandi pronti da copiare dopo raccomandazione hardware
-
-### 15. PWA (Progressive Web App)
-- [ ] manifest.json
-- [ ] Service worker per offline
-
-### 16. Più cloud provider
-- [ ] Together.ai, Replicate, Modal, Paperspace, CoreWeave
-
----
-
-## 💰 Revenue streams (in ordine di attivazione)
-
-1. **Email list** — Valore indiretto, costruisce audience. Attivo dal giorno 1.
-2. **Cloud referral** — RunPod/Vast.ai/Lambda 10-15% ricorrente. Dopo P.IVA.
-3. **Amazon affiliate** — 2.5% su hardware. Dopo P.IVA.
-4. **PDF report enterprise** — 10-50€ per report. Medio termine.
-5. **API/Widget licensing** — Per siti tech. Lungo termine.
-6. **Consulenza AI Readiness** — 150€/sessione. Quando c'è volume enterprise.
+- [x] CPU inference support + CPU-only mode
+- [x] Multi-GPU support (2x, 4x, 8x) with scaling estimates
+- [x] Auto GPU + CPU detection (WebGL/WebGPU)
+- [x] Advanced filters (context, quant, size, speed, benchmarks, model families)
+- [x] "Build for Model" reverse hardware search with full Hardware Recipe
+- [x] Cloud provider alternatives (RunPod, Vast.ai, Lambda) with pricing
+- [x] Datacenter-scale requirements for 1000B+ models
+- [x] Setup Score & Upgrade Advisor with community data integration
+- [x] Community benchmarks: submission form, voting, filtering, anti-abuse
+- [x] GPU Price Tracker with history, trends, price alerts, GitHub Actions scraper
+- [x] GPU Reviews with LLM-specific ratings (performance, value, noise/temps)
+- [x] Cloud fallback cards when local hardware is a bottleneck
+- [x] Share setup modal with Ollama command + configuration summary
+- [x] Enterprise fleet sizing calculator and TCO analysis
+- [x] Dark/light theme with system preference detection
+- [x] Export results as JSON and CSV
+- [x] SEO: Open Graph tags, sitemap.xml, robots.txt, per-page metadata
+- [x] Programmatic pages: "Can [GPU] run [Model]?" (~775 static pages)
+- [x] 242+ model database with 100% benchmark coverage
+- [x] 122 GPU database (consumer, data center, Apple Silicon)
+- [x] 65 CPU database (Intel Arrow Lake, AMD Zen 5, Apple Ultra)
+- [x] GGUF download links for 80%+ of models
+- [x] Graceful Supabase fallback (app works fully without it)
 
 ---
 
-## 🚀 Checklist lancio (30/03/2026)
+## Known Issues
 
-1. [x] UX redesign multi-page flow
-2. [x] Landing page con messaging etico/privacy
-3. [x] Enterprise contact page
-4. [x] SEO meta tags + sitemap + robots.txt
-5. [x] Supabase schema pronto
-6. [x] GPU detection dedicata (WebGPU)
-7. [x] Email capture component
-8. [x] Cloud referral links predisposti
-9. [ ] npm run build senza errori
-10. [ ] GitHub Pages live
-11. [ ] Dominio custom configurato
-12. [ ] Post r/LocalLLaMA preparato
-13. [ ] Post HackerNews preparato
-14. [ ] README con screenshot
+- Google OAuth consent screen shows the Supabase project ID subdomain instead of the site domain. This is expected on the Supabase free tier and requires a Pro plan + custom domain to resolve.
+- GPU price data depends on daily scraping from Newegg/Amazon. Prices may be stale if the scraper fails.
 
 ---
 
-## Domande?
+## Contributing
 
-Apri una issue su GitHub.
+Pull requests are welcome. If you want to contribute:
+
+1. Fork the repo and create a feature branch
+2. Run `npm run dev` and test your changes
+3. Make sure `npm run build` passes with zero errors
+4. Open a PR with a clear description of the change
+
+For data contributions (new GPUs, CPUs, or model benchmark data), you can either open a PR editing the JSON files in `public/data/`, or submit real-world benchmarks directly through the app.
