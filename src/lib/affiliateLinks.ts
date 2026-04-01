@@ -16,8 +16,7 @@ import { GPU } from './types';
 //   Vast.ai  → NEXT_PUBLIC_VAST_REF_URL       ✓ active
 //   Lambda   → NEXT_PUBLIC_LAMBDA_REF_URL     (set when you have a referral URL)
 //
-// No per-product configuration is ever needed. Every GPU in the dataset
-// (present and future) is automatically monetized as soon as the env var is set.
+// No per-product configuration is ever needed. 
 // ============================================================================
 
 const AMAZON_TAG      = process.env.NEXT_PUBLIC_AMAZON_TAG      || '';
