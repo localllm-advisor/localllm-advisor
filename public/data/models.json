@@ -48669,7 +48669,7 @@
     ],
     "context_length": 32768,
     "release_date": "2026-03-29",
-    "hf_id": "EchoLabs33/qwen2.5-3b-instruct-helix",
+    "hf_id": "EchoLabs33/qwen2.5-3b-instruct-hxq",
     "provider": "EchoLabs33",
     "hf_downloads": 828,
     "quantizations": [
@@ -49661,7 +49661,7 @@
     ],
     "context_length": 32768,
     "release_date": "2026-03-29",
-    "hf_id": "EchoLabs33/qwen2.5-coder-1.5b-helix",
+    "hf_id": "EchoLabs33/qwen2.5-coder-1.5b-hxq",
     "provider": "EchoLabs33",
     "hf_downloads": 768,
     "quantizations": [
@@ -50700,7 +50700,7 @@
     ],
     "context_length": 32768,
     "release_date": "2026-03-29",
-    "hf_id": "EchoLabs33/qwen2.5-coder-3b-helix",
+    "hf_id": "EchoLabs33/qwen2.5-coder-3b-hxq",
     "provider": "EchoLabs33",
     "hf_downloads": 1177,
     "quantizations": [
