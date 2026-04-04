@@ -105,8 +105,15 @@ EXCLUDED_TAGS = {
     "quantized", "4-bit", "8-bit",
 }
 
-# Discovery query specs — each yields a page of model stubs from the HF API
+# Discovery query specs — each yields a page of model stubs from the HF API.
+#
+# Global queries (downloads / likes / lastModified) catch popular/trending models.
+# Trusted-org queries guarantee we pick up EVERY new release from key providers
+# the very first run after publication, even before it accumulates downloads.
+# This is what makes the pipeline truly "open discovery" — new families like
+# Gemma 4 are found automatically without touching this file.
 QUERY_SPECS = [
+    # Global: popular, trending, and recent
     {"pipeline_tag": "text-generation",     "sort": "downloads",    "direction": -1, "limit": 500},
     {"pipeline_tag": "text-generation",     "sort": "likes",        "direction": -1, "limit": 300},
     {"pipeline_tag": "text-generation",     "sort": "lastModified", "direction": -1, "limit": 300},
@@ -114,6 +121,17 @@ QUERY_SPECS = [
     {"pipeline_tag": "sentence-similarity", "sort": "downloads",    "direction": -1, "limit": 150},
     {"pipeline_tag": "feature-extraction",  "sort": "downloads",    "direction": -1, "limit": 150},
     {"pipeline_tag": "text-classification", "sort": "downloads",    "direction": -1, "limit": 100},
+    # Trusted-org targeted queries — catches brand-new releases immediately
+    {"author": "google",       "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
+    {"author": "meta-llama",   "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
+    {"author": "mistralai",    "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
+    {"author": "microsoft",    "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
+    {"author": "Qwen",         "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
+    {"author": "deepseek-ai",  "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
+    {"author": "ibm-granite",  "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 30},
+    {"author": "nvidia",       "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 30},
+    {"author": "moonshotai",   "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 30},
+    {"author": "LGAI-EXAONE",  "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 30},
 ]
 
 # ---------------------------------------------------------------------------
@@ -204,6 +222,7 @@ REPO_FAMILY_PATTERNS: list[tuple[str, str]] = [
     (r"phi-?3",           "phi"),
     (r"phi-?2",           "phi"),
     (r"phi",              "phi"),
+    (r"gemma-?4",         "gemma"),   # Gemma 4 (April 2026+)
     (r"gemma-?3n",        "gemma"),
     (r"gemma-?3",         "gemma"),
     (r"gemma-?2",         "gemma"),
@@ -408,6 +427,9 @@ def infer_capabilities(repo_id: str, pipeline_tag: str) -> list[str]:
         caps.add("coding")
     if any(s in rid for s in ("reason", "-r1", "qwq", "magistral")):
         caps.add("reasoning")
+    # Gemma 4 E-variants (E2B, E4B) are multimodal edge models
+    if re.search(r"gemma-?4.*-e\d+b", rid) or re.search(r"gemma-?4-e\d+b", rid):
+        caps.add("vision")
     if any(s in rid for s in ("vision", "-vl", "multimodal", "vlm", "pixtral", "-v-", "gemma-3n")):
         caps.add("vision")
     if any(s in rid for s in ("multilingual", "multi-lingual", "aya", "sarvam")):
@@ -456,6 +478,8 @@ def infer_context_length(detail: dict[str, Any], repo_id: str) -> int:
         return 131_072
     if "mistral" in rid or "mixtral" in rid:
         return 131_072
+    if "gemma-4" in rid or "gemma4" in rid:
+        return 131_072  # Gemma 4: 128K context
     if "gemma-3n" in rid or "gemma3n" in rid:
         return 32_768
     if "gemma-3" in rid or "gemma3" in rid:

@@ -200,6 +200,8 @@ def infer_ollama_tag(hf_id: str, params_b: float) -> str | None:
         return f"gemma2:{p}"
     if "gemma-3" in rid or "gemma3" in rid:
         return f"gemma3:{p}"
+    if "gemma-4" in rid or "gemma4" in rid:
+        return f"gemma4:{p}"
     if "deepseek-r1" in rid:
         return "deepseek-r1"
     if "deepseek-v3" in rid:
