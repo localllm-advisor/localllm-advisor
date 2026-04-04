@@ -118,6 +118,16 @@ OLLAMA_MODELS = {
         "family": "gemma",
         "capabilities": ["chat", "reasoning"],
     },
+    "gemma3": {
+        "hf_patterns": ["google/gemma-3", "gemma-3"],
+        "family": "gemma",
+        "capabilities": ["chat", "reasoning"],
+    },
+    "gemma4": {
+        "hf_patterns": ["google/gemma-4", "gemma-4"],
+        "family": "gemma",
+        "capabilities": ["chat", "reasoning"],
+    },
 
     # Vision
     "llava": {
@@ -504,7 +514,7 @@ def generate_model_entry(
         "deepseek": 32768,
         "mistral": 32768,
         "phi": 16384,
-        "gemma": 8192,
+        "gemma": 131072,  # Gemma 3/4 = 128K; Gemma 2 = 8K (over-reporting is safer)
         "llava": 4096,
     }
 
@@ -533,7 +543,7 @@ HF_PATTERNS_BY_FAMILY = {
     "qwen": ["Qwen/Qwen", "Qwen2", "Qwen3"],
     "mistral": ["mistralai/Mistral", "Mistral-"],
     "phi": ["microsoft/Phi", "microsoft/phi"],
-    "gemma": ["google/gemma", "gemma-"],
+    "gemma": ["google/gemma-4", "google/gemma-3", "google/gemma-2", "google/gemma", "gemma-4", "gemma-3", "gemma-2", "gemma-"],
     "deepseek": ["deepseek-ai/DeepSeek", "DeepSeek-"],
     "falcon": ["tiiuae/falcon", "tiiuae/Falcon"],
     "yi": ["01-ai/Yi"],
