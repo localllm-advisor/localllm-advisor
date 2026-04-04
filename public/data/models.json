@@ -55258,9 +55258,9 @@
     ],
     "context_length": 131072,
     "release_date": "2026-04-02",
-    "hf_id": "JoaoReiz/Llama3.2_1B_leNER",
+    "hf_id": "JoaoReiz/Llama3.2_1B_LeNER",
     "provider": "JoaoReiz",
-    "hf_downloads": 537,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
