@@ -117,13 +117,12 @@ TARGET_MODELS = [
     "google/gemma-3-27b-it",
     "google/gemma-3n-E4B-it",
     "google/gemma-3n-E2B-it",
-    # Gemma 4 (April 2026) — text + multimodal edge variants
-    "google/gemma-4-27b-it",
-    "google/gemma-4-12b-it",
-    "google/gemma-4-4b-it",
-    "google/gemma-4-1b-it",
-    "google/gemma-4-E4B-it",  # multimodal edge 4B
-    "google/gemma-4-E2B",     # multimodal edge 2B
+    # Gemma 4 (April 2026) — pipeline_tag: image-text-to-text / any-to-any
+    "google/gemma-4-31B-it",        # 31B dense, image-text-to-text
+    "google/gemma-4-26B-A4B-it",    # 26B MoE (4B active), image-text-to-text
+    "google/gemma-4-E4B-it",        # edge 4B multimodal, any-to-any
+    "google/gemma-4-E2B-it",        # edge 2B multimodal, any-to-any
+    "google/gemma-4-E2B",           # base edge 2B
 
     # DeepSeek
     "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
@@ -503,12 +502,11 @@ def get_ollama_mapping(repo_id: str, params_b: float) -> str | None:
         "google/gemma-2-2b-it": "gemma2:2b",
         "google/gemma-2-9b-it": "gemma2:9b",
         "google/gemma-2-27b-it": "gemma2:27b",
-        "google/gemma-4-1b-it": "gemma4:1b",
-        "google/gemma-4-4b-it": "gemma4:4b",
-        "google/gemma-4-12b-it": "gemma4:12b",
-        "google/gemma-4-27b-it": "gemma4:27b",
-        "google/gemma-4-e2b": "gemma4:e2b",
+        "google/gemma-4-31b-it": "gemma4:31b",
+        "google/gemma-4-26b-a4b-it": "gemma4:26b-a4b",
         "google/gemma-4-e4b-it": "gemma4:e4b",
+        "google/gemma-4-e2b-it": "gemma4:e2b",
+        "google/gemma-4-e2b": "gemma4:e2b",
         "microsoft/phi-4": "phi4:14b",
         "deepseek-ai/deepseek-r1": "deepseek-r1:latest",
         "deepseek-ai/deepseek-v3": "deepseek-v3:latest",

@@ -78,6 +78,8 @@ MAX_PARAMS_B = 1000.0 # we already have 744B in dataset
 ALLOWED_PIPELINES = {
     "text-generation",
     "text2text-generation",
+    "image-text-to-text",   # multimodal LLMs (Gemma 4, LLaVA, Phi-4-multimodal …)
+    "any-to-any",           # omni models (Gemma 4 E-series, …)
     "sentence-similarity",
     "feature-extraction",
     "text-classification",
@@ -107,31 +109,40 @@ EXCLUDED_TAGS = {
 
 # Discovery query specs — each yields a page of model stubs from the HF API.
 #
-# Global queries (downloads / likes / lastModified) catch popular/trending models.
-# Trusted-org queries guarantee we pick up EVERY new release from key providers
-# the very first run after publication, even before it accumulates downloads.
-# This is what makes the pipeline truly "open discovery" — new families like
-# Gemma 4 are found automatically without touching this file.
+# Three layers:
+#  1. Global by pipeline_tag — catches popular/trending models of each type.
+#  2. Trusted-org scans (NO pipeline_tag filter) — guarantees we pick up every
+#     new release from key providers the very first run after publication,
+#     regardless of what pipeline tag they chose (e.g. Gemma 4 uses
+#     "image-text-to-text" and "any-to-any", not "text-generation").
+#     The ALLOWED_PIPELINES + should_keep_candidate filters handle curation.
 QUERY_SPECS = [
-    # Global: popular, trending, and recent
+    # Global: text-generation (GPT-style, Llama, Mistral, most LLMs)
     {"pipeline_tag": "text-generation",     "sort": "downloads",    "direction": -1, "limit": 500},
     {"pipeline_tag": "text-generation",     "sort": "likes",        "direction": -1, "limit": 300},
     {"pipeline_tag": "text-generation",     "sort": "lastModified", "direction": -1, "limit": 300},
+    # Global: multimodal LLMs (Gemma 4, LLaVA, Phi-4-multimodal, future omni models)
+    {"pipeline_tag": "image-text-to-text",  "sort": "downloads",    "direction": -1, "limit": 200},
+    {"pipeline_tag": "image-text-to-text",  "sort": "lastModified", "direction": -1, "limit": 200},
+    {"pipeline_tag": "any-to-any",          "sort": "downloads",    "direction": -1, "limit": 100},
+    {"pipeline_tag": "any-to-any",          "sort": "lastModified", "direction": -1, "limit": 100},
+    # Global: other useful pipeline types
     {"pipeline_tag": "text2text-generation","sort": "downloads",    "direction": -1, "limit": 150},
     {"pipeline_tag": "sentence-similarity", "sort": "downloads",    "direction": -1, "limit": 150},
     {"pipeline_tag": "feature-extraction",  "sort": "downloads",    "direction": -1, "limit": 150},
     {"pipeline_tag": "text-classification", "sort": "downloads",    "direction": -1, "limit": 100},
-    # Trusted-org targeted queries — catches brand-new releases immediately
-    {"author": "google",       "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
-    {"author": "meta-llama",   "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
-    {"author": "mistralai",    "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
-    {"author": "microsoft",    "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
-    {"author": "Qwen",         "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
-    {"author": "deepseek-ai",  "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 50},
-    {"author": "ibm-granite",  "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 30},
-    {"author": "nvidia",       "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 30},
-    {"author": "moonshotai",   "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 30},
-    {"author": "LGAI-EXAONE",  "pipeline_tag": "text-generation", "sort": "lastModified", "direction": -1, "limit": 30},
+    # Trusted-org scans — NO pipeline_tag filter so we see ALL their new models
+    # immediately after release, before they rank in global queries.
+    {"author": "google",       "sort": "lastModified", "direction": -1, "limit": 80},
+    {"author": "meta-llama",   "sort": "lastModified", "direction": -1, "limit": 60},
+    {"author": "mistralai",    "sort": "lastModified", "direction": -1, "limit": 60},
+    {"author": "microsoft",    "sort": "lastModified", "direction": -1, "limit": 60},
+    {"author": "Qwen",         "sort": "lastModified", "direction": -1, "limit": 60},
+    {"author": "deepseek-ai",  "sort": "lastModified", "direction": -1, "limit": 50},
+    {"author": "ibm-granite",  "sort": "lastModified", "direction": -1, "limit": 40},
+    {"author": "nvidia",       "sort": "lastModified", "direction": -1, "limit": 40},
+    {"author": "moonshotai",   "sort": "lastModified", "direction": -1, "limit": 30},
+    {"author": "LGAI-EXAONE",  "sort": "lastModified", "direction": -1, "limit": 30},
 ]
 
 # ---------------------------------------------------------------------------
@@ -427,7 +438,11 @@ def infer_capabilities(repo_id: str, pipeline_tag: str) -> list[str]:
         caps.add("coding")
     if any(s in rid for s in ("reason", "-r1", "qwq", "magistral")):
         caps.add("reasoning")
-    # Gemma 4 E-variants (E2B, E4B) are multimodal edge models
+    # Pipeline-tag-based multimodal detection — catches Gemma 4, future omni models, etc.
+    # image-text-to-text covers Gemma 4 27B/31B; any-to-any covers Gemma 4 E-series
+    if pt in {"image-text-to-text", "any-to-any"}:
+        caps.add("vision")
+    # Name-based multimodal detection (fallback / belt-and-suspenders)
     if re.search(r"gemma-?4.*-e\d+b", rid) or re.search(r"gemma-?4-e\d+b", rid):
         caps.add("vision")
     if any(s in rid for s in ("vision", "-vl", "multimodal", "vlm", "pixtral", "-v-", "gemma-3n")):
