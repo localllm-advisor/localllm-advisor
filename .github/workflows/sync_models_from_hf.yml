@@ -23,7 +23,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 360   # 6 h — the sync hits 1000+ HF repos, each needing an API call
 
     steps:
       # ── Checkout ────────────────────────────────────────────────────────
@@ -75,6 +75,11 @@ jobs:
           # Build a meaningful commit message
           MODEL_COUNT=$(python3 -c "import json; d=json.load(open('public/data/models.json')); print(len(d))")
           git commit -m "data(models): sync from Hugging Face — ${MODEL_COUNT} models [skip ci]"
+
+          # The sync takes several hours; other workflows (GPU prices, etc.) may
+          # have pushed in the meantime. Rebase our commit on top of those so the
+          # push never fails with "fetch first".
+          git pull --rebase origin main
           git push
 
       # ── Summary ─────────────────────────────────────────────────────────

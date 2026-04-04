@@ -95,6 +95,7 @@ jobs:
           CPU_COUNT=$(python3 -c "import json; d=json.load(open('public/data/cpus.json')); print(len(d))")
 
           git commit -m "data(hardware): sync GPU/CPU specs from Wikipedia — ${GPU_COUNT} GPUs, ${CPU_COUNT} CPUs [skip ci]"
+          git pull --rebase origin main
           git push
 
       # ── Summary ─────────────────────────────────────────────────────────
@@ -110,5 +111,4 @@ jobs:
           echo "========================================"
           echo ""
           echo "Note: frontend stat counters (gpuCount, cpuCount) are read"
-          echo "dynamically from these JSON files at build time via"
-          echo "src/lib/datasetStats.ts — no manual TSX patching needed."
+          echo "dynamically from 
