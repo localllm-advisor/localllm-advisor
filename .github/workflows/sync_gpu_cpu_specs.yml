@@ -94,7 +94,9 @@ jobs:
           GPU_COUNT=$(python3 -c "import json; d=json.load(open('public/data/gpus.json')); print(len(d))")
           CPU_COUNT=$(python3 -c "import json; d=json.load(open('public/data/cpus.json')); print(len(d))")
 
-          git commit -m "data(hardware): sync GPU/CPU specs from Wikipedia — ${GPU_COUNT} GPUs, ${CPU_COUNT} CPUs [skip ci]"
+          # No [skip ci]: we WANT Vercel to redeploy so the GPU/CPU counts on
+          # the frontend update (datasetStats.ts reads these JSONs at build time).
+          git commit -m "data(hardware): sync GPU/CPU specs from Wikipedia — ${GPU_COUNT} GPUs, ${CPU_COUNT} CPUs"
           git pull --rebase origin main
           git push
 

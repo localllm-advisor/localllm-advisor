@@ -72,9 +72,12 @@ jobs:
           # Stage only models.json — TSX files no longer need updating
           git add public/data/models.json
 
-          # Build a meaningful commit message
+          # Build a meaningful commit message.
+          # NOTE: no [skip ci] — we WANT Vercel to redeploy so the frontend
+          # picks up the new models.json (frontend counts are read from the
+          # file at build time via datasetStats.ts).
           MODEL_COUNT=$(python3 -c "import json; d=json.load(open('public/data/models.json')); print(len(d))")
-          git commit -m "data(models): sync from Hugging Face — ${MODEL_COUNT} models [skip ci]"
+          git commit -m "data(models): sync from Hugging Face — ${MODEL_COUNT} models"
 
           # The sync takes several hours; other workflows (GPU prices, etc.) may
           # have pushed in the meantime. Rebase our commit on top of those so the
