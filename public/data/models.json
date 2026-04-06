@@ -73122,7 +73122,7 @@
     "release_date": "2026-04-05",
     "hf_id": "VINAY-UMRETHE/Qwen3-0.6B-heretic-REPRODUCE",
     "provider": "VINAY-UMRETHE",
-    "hf_downloads": 1500,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -74453,6 +74453,111 @@
         "bpw": 8.0,
         "vram_mb": 31300,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "xortron-criminalcomputing-2026-27b-instruct",
+    "name": "XORTRON.CriminalComputing.2026.27B.Instruct",
+    "family": "xortron-criminalcomputing-2026-27b-instruct",
+    "params_b": 27.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-03-06",
+    "hf_id": "darkc0de/XORTRON.CriminalComputing.2026.27B.Instruct",
+    "provider": "darkc0de",
+    "hf_downloads": 1042,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15412,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22262,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27400,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "jade-20b",
+    "name": "Jade-20B",
+    "family": "jade",
+    "params_b": 20.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-04-01",
+    "hf_id": "Madras1/Jade-20B",
+    "provider": "Madras1",
+    "hf_downloads": 628,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 11756,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 16981,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 20900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 41800,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
