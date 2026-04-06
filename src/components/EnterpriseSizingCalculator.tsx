@@ -6,7 +6,7 @@ import EnterprisePaywall from '@/components/EnterprisePaywall';
 import CollapsibleSection from '@/components/CollapsibleSection';
 import { SIZING_TIERS, type PricingTier } from '@/lib/stripe';
 import type { Model, GPU, FleetSizingInput } from '@/lib/types';
-import { estimateModelSizeMb, estimateKvCacheMb } from '@/lib/vram';
+import { estimateModelSizeMb, estimateKvCacheMb, getActiveParamsB } from '@/lib/vram';
 
 // ── Types ───────────────────────────────────────────────
 interface GpuFleetPlan {
@@ -147,7 +147,9 @@ export default function EnterpriseSizingCalculator() {
     const modelSizeMb = quant.vram_mb || estimateModelSizeMb(selectedModel.params_b, quant.bpw);
     const kvCacheMb = estimateKvCacheMb(selectedModel.params_b, input.contextLength);
     const vramPerInstance = Math.ceil((modelSizeMb + kvCacheMb) / 0.85); // 15% headroom
-    const modelSizeGb = (selectedModel.params_b * quant.bpw) / 8;
+    // For MoE models, decode speed depends on active expert weights, not total model
+    const activeParamsB = getActiveParamsB(selectedModel);
+    const modelSizeGb = (activeParamsB * quant.bpw) / 8;
 
     const peakConcurrent = Math.ceil(input.concurrentUsers * input.peakMultiplier);
 
@@ -809,25 +811,4 @@ export default function EnterpriseSizingCalculator() {
                         </div>
                         <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>${plan.totalFirstYearCost.toLocaleString()}</p>
                       </div>
-                    </div>
-                  ))}
-                </div>
-                <EnterprisePaywall
-                  tiers={SIZING_TIERS}
-                  currentTier={activeTier}
-                  onSelectTier={setActiveTier}
-                />
-              </div>
-            )}
-          </div>
-
-          <p className={`text-xs ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
-            Estimates are based on memory-bandwidth-bound decode performance with continuous batching.
-            Actual throughput varies by inference engine (vLLM, llama.cpp, TGI), batching strategy, and workload mix.
-            Server overhead estimated at ${SERVER_OVERHEAD_PER_NODE.toLocaleString()}/node. Electricity at ${ELECTRICITY_COST_KWH}/kWh with PUE {PUE}.
-          </p>
-        </div>
-      )}
-    </div>
-  );
-}
+         

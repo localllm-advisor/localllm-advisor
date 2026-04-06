@@ -1,4 +1,29 @@
-import { InferenceMode, MemoryBreakdown, PerformanceEstimate, PerformanceRange } from './types';
+import { InferenceMode, MemoryBreakdown, Model, PerformanceEstimate, PerformanceRange } from './types';
+
+/**
+ * Get the effective parameter count for performance calculations.
+ *
+ * MoE (Mixture-of-Experts) models load ALL parameters into VRAM but only
+ * activate a fraction per token (e.g. DeepSeek R1 has 671B total but ~37B
+ * active per token). Decode speed is proportional to the data read per token,
+ * which for MoE is the active expert weights — NOT the total model weights.
+ *
+ * For dense models, active params === total params.
+ *
+ * If the model doesn't have active_params_b set but is marked as MoE,
+ * we estimate active params as ~20% of total (typical for modern MoE models).
+ */
+export function getActiveParamsB(model: { params_b: number; architecture?: string; active_params_b?: number }): number {
+  if (model.active_params_b) return model.active_params_b;
+  if (model.architecture === 'moe') {
+    // Typical MoE models activate ~20% of total params per token
+    // (e.g., Mixtral 8x7B: 47B total, ~13B active ≈ 28%)
+    // (e.g., DeepSeek V3: 685B total, ~37B active ≈ 5.4%)
+    // Use 20% as a conservative middle ground
+    return model.params_b * 0.20;
+  }
+  return model.params_b;
+}
 
 /**
  * Estimate model size in MB at a given bits-per-weight
@@ -9,7 +34,27 @@ export function estimateModelSizeMb(paramsB: number, bpw: number): number {
 
 /**
  * Estimate KV cache VRAM in MB for a given context length.
- * Formula approximation: ~0.5 MB per 1K context for 7B model, scales with sqrt(params)
+ *
+ * KV cache stores key/value tensors for every layer at every token position.
+ * Formula: 2 (K+V) × n_layers × n_kv_heads × head_dim × bytes_per_element × n_tokens
+ *
+ * Since we don't have per-model architecture details, we use empirical scaling:
+ *
+ *   Modern GQA models (Llama 3, Qwen 2, Mistral, etc.):
+ *     ~0.125 MB/token for 7B → ~125 MB per 1K tokens
+ *     Scales roughly as sqrt(params_b / 7) due to wider layers in larger models
+ *     but GQA keeps KV heads constant (typically 8), so scaling is sub-linear.
+ *
+ *   Older MHA models (Llama 1, GPT-J, etc.):
+ *     ~0.5 MB/token for 7B → ~500 MB per 1K tokens
+ *
+ * We use GQA estimates since nearly all modern models use GQA/MQA.
+ * The pre-computed vram_mb in model data already includes baseline KV cache
+ * overhead for a short context window (~2-4K tokens), so we only charge for
+ * additional context beyond baseContext.
+ *
+ * With quantized KV cache (Q8_0 or Q4_0, common in llama.cpp), actual usage
+ * can be 2-4x lower. We use FP16 estimates as the conservative default.
  */
 export function estimateKvCacheMb(
   paramsB: number,
@@ -18,7 +63,9 @@ export function estimateKvCacheMb(
 ): number {
   if (contextLength <= baseContext) return 0;
 
-  const mbPer1kCtx = 0.5 * Math.sqrt(paramsB / 7);
+  // ~125 MB per 1K context tokens for a 7B GQA model at FP16
+  // Scales sub-linearly with model size due to GQA keeping n_kv_heads small
+  const mbPer1kCtx = 125 * Math.sqrt(paramsB / 7);
   const extraCtxK = (contextLength - baseContext) / 1024;
 
   return Math.round(mbPer1kCtx * extraCtxK);
@@ -153,16 +200,24 @@ export function calculatePcieBandwidth(pcieGen?: number, pcieLanes?: number): nu
 }
 
 /**
- * Calculate RAM bandwidth in GB/s based on speed and channels
+ * Calculate RAM bandwidth in GB/s based on speed and channels.
+ *
+ * Theoretical bandwidth = transferRate(MT/s) × 8 bytes × channels.
+ * Real-world LLM inference achieves ~70-80% of theoretical due to:
+ *   - Memory controller overhead and refresh cycles
+ *   - Cache line alignment and partial reads
+ *   - NUMA effects on multi-socket systems
+ *   - Contention with OS and other processes
+ *
+ * We apply a 75% utilization factor for realistic estimates.
  */
 export function calculateRamBandwidth(ramSpeedMhz?: number, ramChannels?: number): number {
-  if (!ramSpeedMhz) return 50; // Default: DDR4-3200 dual channel ~50 GB/s
+  if (!ramSpeedMhz) return 38; // Default: DDR4-3200 dual-channel ~51 GB/s theoretical × 0.75 ≈ 38 GB/s
 
   const channels = ramChannels || 2;
-  // ramSpeedMhz is the DDR-rated transfer rate (e.g. 3200 for DDR4-3200)
-  // Bandwidth = transferRate(MT/s) * 8 bytes per transfer * channels
-  // Result is in MB/s; divide by 1000 to get GB/s
-  return (ramSpeedMhz * 8 * channels) / 1000;
+  const theoreticalGbps = (ramSpeedMhz * 8 * channels) / 1000;
+  // Apply 75% utilization factor for real-world LLM inference workloads
+  return theoreticalGbps * 0.75;
 }
 
 /**
@@ -220,6 +275,10 @@ export function estimateCpuTokensPerSecond(
 /**
  * Estimate tokens per second for decode (autoregressive generation)
  * Based on memory bandwidth (memory-bound regime)
+ *
+ * For MoE models, pass activeParamsB to account for the fact that only
+ * a fraction of weights are read per token. The full model must still
+ * fit in VRAM, but decode speed is determined by active expert weights.
  */
 export function estimateDecodeTokensPerSecond(
   paramsB: number,
@@ -239,12 +298,17 @@ export function estimateDecodeTokensPerSecond(
     avx512?: boolean;
     amx?: boolean;
     ramBandwidthGbps?: number;
-  }
+  },
+  activeParamsB?: number
 ): number | null {
+  // For MoE models, use active params for performance estimation
+  // (only a fraction of experts are read from memory per token)
+  const effectiveParamsB = activeParamsB ?? paramsB;
+
   if (inferenceMode === 'cpu_only') {
-    // Use CPU-specific estimation
+    // Use CPU-specific estimation with effective (active) params
     return estimateCpuTokensPerSecond(
-      paramsB,
+      effectiveParamsB,
       cpuSpecs?.cores,
       cpuSpecs?.threads,
       cpuSpecs?.baseClockGhz,
@@ -259,11 +323,13 @@ export function estimateDecodeTokensPerSecond(
 
   if (!bandwidthGbps || bandwidthGbps <= 0) return null;
 
-  const modelSizeGb = (paramsB * bpw) / 8;
-  if (modelSizeGb <= 0) return null;
+  // For decode, the bottleneck is reading the active weights from memory.
+  // MoE models only read active expert weights per token, not the full model.
+  const activeSizeGb = (effectiveParamsB * bpw) / 8;
+  if (activeSizeGb <= 0) return null;
 
-  // Base: tok/s = bandwidth / model_size (memory-bandwidth-bound regime)
-  let toksPerSec = bandwidthGbps / modelSizeGb;
+  // Base: tok/s = bandwidth / active_model_size (memory-bandwidth-bound regime)
+  let toksPerSec = bandwidthGbps / activeSizeGb;
 
   // Offload model: bottleneck-aware serial pipeline
   // In offload mode, each token is generated sequentially through ALL layers.
@@ -273,18 +339,21 @@ export function estimateDecodeTokensPerSecond(
   // Key insight: PCIe is NOT the bottleneck for weight reads — CPU layers read
   // from system RAM directly. PCIe only carries the small activation vectors
   // (~8KB for 7B) between GPU and CPU layer groups, which is latency-dominated.
+  //
+  // For MoE: we still use active params here since each layer only reads the
+  // active expert weights, regardless of whether the layer runs on GPU or CPU.
   if (inferenceMode === 'gpu_offload' && gpuLayers !== 'all') {
     const estimatedLayers = Math.round(32 * (paramsB / 7));
     const gpuFraction = (gpuLayers as number) / estimatedLayers;
     const cpuFraction = 1 - gpuFraction;
 
     // GPU part: processed at full GPU memory bandwidth
-    const gpuPartGb = modelSizeGb * gpuFraction;
+    const gpuPartGb = activeSizeGb * gpuFraction;
     const gpuTimePerToken = gpuPartGb / bandwidthGbps; // seconds
 
     // CPU part: bottlenecked by RAM bandwidth (weights are in system RAM)
     const ramBw = cpuSpecs?.ramBandwidthGbps || 50;
-    const cpuPartGb = modelSizeGb * cpuFraction;
+    const cpuPartGb = activeSizeGb * cpuFraction;
     const cpuTimePerToken = cpuPartGb / ramBw; // seconds
 
     // PCIe synchronization overhead: activation vector transfers between
@@ -418,14 +487,17 @@ export function calculatePerformanceEstimate(
   modelVramMb?: number,
   storageSpeedGbps?: number,
   inferenceMode: InferenceMode = 'gpu_full',
-  gpuLayers: number | 'all' = 'all'
+  gpuLayers: number | 'all' = 'all',
+  activeParamsB?: number
 ): PerformanceEstimate {
   const tokensPerSecond = estimateDecodeTokensPerSecond(
-    paramsB, bpw, bandwidthGbps, inferenceMode, gpuLayers
+    paramsB, bpw, bandwidthGbps, inferenceMode, gpuLayers,
+    undefined, undefined, undefined, activeParamsB
   );
 
+  // Prefill is compute-bound; for MoE use active params
   const prefillTokensPerSecond = estimatePrefillTokensPerSecond(
-    paramsB, fp16Tflops, tensorCores
+    activeParamsB ?? paramsB, fp16Tflops, tensorCores
   );
 
   const timeToFirstToken = estimateTimeToFirstToken(prefillTokensPerSecond);

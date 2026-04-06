@@ -1,5 +1,6 @@
 import { Model, GPU } from './types';
 import { getCloudProviderUrl } from './affiliateLinks';
+import { getActiveParamsB } from './vram';
 
 // ============================================================================
 // Types
@@ -107,20 +108,34 @@ function calculateAllVramRequirements(paramsB: number): VramRequirements {
   return {
     q4: calculateVramGb(paramsB, 4.5),
     q6: calculateVramGb(paramsB, 6.5),
-    q8: calculateVramGb(paramsB, 8.5),
+    q8: calculateVramGb(paramsB, 8.0),   // Q8_0 is 8 bits per weight, not 8.5
     fp16: calculateVramGb(paramsB, 16),
   };
 }
 
+/**
+ * Estimate decode tokens/sec for a given GPU configuration.
+ *
+ * Decode is memory-bandwidth-bound: tok/s ≈ bandwidth / data_read_per_token.
+ * For dense models, data_read = full model. For MoE, data_read = active expert weights.
+ *
+ * Multi-GPU scaling: NVLink provides near-linear bandwidth scaling because
+ * tensor-parallel shards read weights from their own HBM/GDDR in parallel.
+ * Without NVLink, PCIe-based tensor parallelism has higher sync overhead,
+ * reducing the effective bandwidth gain per additional GPU.
+ */
 function estimateTokensPerSecond(
   bandwidthGbps: number,
-  modelSizeGb: number,
+  activeSizeGb: number,
   gpuCount: number = 1
 ): number {
-  // Multi-GPU scaling with communication overhead
-  const efficiency = gpuCount === 1 ? 1.0 : gpuCount === 2 ? 0.75 : gpuCount === 4 ? 0.6 : 0.5;
-  const effectiveBandwidth = bandwidthGbps * gpuCount * efficiency;
-  return effectiveBandwidth / modelSizeGb;
+  // Multi-GPU scaling: aligned with engine.ts formulas for consistency
+  // Without NVLink (consumer GPUs), each additional GPU adds ~30% of its
+  // bandwidth due to PCIe synchronization bottleneck
+  const effectiveBandwidth = gpuCount === 1
+    ? bandwidthGbps
+    : bandwidthGbps * (1 + (gpuCount - 1) * 0.3);
+  return effectiveBandwidth / activeSizeGb;
 }
 
 // ============================================================================
@@ -134,14 +149,36 @@ export function buildHardwareRecipe(
   minTokensPerSec: number = 10,
   maxPriceUsd: number | null = null
 ): HardwareRecipe {
-  const vramRequired = calculateVramGb(model.params_b, bpw);
-  const allVramRequirements = calculateAllVramRequirements(model.params_b);
+  // Prefer the model's pre-computed vram_mb (from actual GGUF measurements)
+  // over the generic formula, since it accounts for format overhead, embedding
+  // tables, and architecture-specific tensor layouts.
+  const matchingQuant = model.quantizations.find(q => {
+    const qBpw = q.bpw;
+    return Math.abs(qBpw - bpw) < 0.5; // Match within 0.5 bpw tolerance
+  });
+  const vramRequired = matchingQuant
+    ? matchingQuant.vram_mb / 1024  // Convert MB → GB
+    : calculateVramGb(model.params_b, bpw); // Fallback to formula
+
+  const allVramRequirements: VramRequirements = {
+    q4: (model.quantizations.find(q => q.level === 'Q4_K_M')?.vram_mb ?? 0) / 1024 || calculateVramGb(model.params_b, 4.5),
+    q6: (model.quantizations.find(q => q.level === 'Q6_K')?.vram_mb ?? 0) / 1024 || calculateVramGb(model.params_b, 6.5),
+    q8: (model.quantizations.find(q => q.level === 'Q8_0')?.vram_mb ?? 0) / 1024 || calculateVramGb(model.params_b, 8.0),
+    fp16: (model.quantizations.find(q => q.level === 'FP16')?.vram_mb ?? 0) / 1024 || calculateVramGb(model.params_b, 16),
+  };
+
+  // For MoE models, decode speed depends on active expert weights, not total
+  const activeParamsB = getActiveParamsB(model);
+  const activeSizeGb = (activeParamsB * bpw) / 8;
 
   // Find all viable hardware options
   const allOptions: HardwareOption[] = [];
 
-  // Filter to purchasable GPUs (not Apple Silicon)
-  const purchasableGpus = gpus.filter(g => g.vendor !== 'apple' && g.price_usd);
+  // Filter to purchasable GPUs — include Apple Silicon since unified memory
+  // makes them excellent for local LLM inference (especially large models).
+  // Apple Silicon uses unified memory (shared CPU/GPU), so its "VRAM" is the
+  // full system memory and its bandwidth is the unified memory bandwidth.
+  const purchasableGpus = gpus.filter(g => g.price_usd);
 
   // Sort by VRAM descending to find what can run the model
   const sortedByVram = [...purchasableGpus].sort((a, b) => b.vram_mb - a.vram_mb);
@@ -149,10 +186,13 @@ export function buildHardwareRecipe(
   // Try different GPU counts: 1, 2, 4, 8
   for (const gpuCount of [1, 2, 4, 8]) {
     for (const gpu of sortedByVram) {
+      // Apple Silicon doesn't support multi-GPU configurations
+      if (gpu.vendor === 'apple' && gpuCount > 1) continue;
+
       const totalVramGb = (gpu.vram_mb / 1024) * gpuCount * (gpuCount > 1 ? 0.95 : 1);
 
       if (totalVramGb >= vramRequired) {
-        const toksPerSec = estimateTokensPerSecond(gpu.bandwidth_gbps, vramRequired, gpuCount);
+        const toksPerSec = estimateTokensPerSecond(gpu.bandwidth_gbps, activeSizeGb, gpuCount);
         const totalPrice = gpu.price_usd ? gpu.price_usd * gpuCount : null;
 
         // Determine tier based on speed
@@ -263,7 +303,7 @@ export function buildHardwareRecipe(
     for (const count of [1, 2, 4, 8, 16]) {
       const totalVram = cloud.vramGb * count;
       if (totalVram >= vramRequired) {
-        const toksPerSec = estimateTokensPerSecond(cloud.bandwidthGbps, vramRequired, count);
+        const toksPerSec = estimateTokensPerSecond(cloud.bandwidthGbps, activeSizeGb, count);
         cloudOptions.push({
           provider: cloud.provider,
           gpuType: cloud.gpu,

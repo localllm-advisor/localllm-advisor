@@ -45,6 +45,14 @@ export interface Model {
   provider?: string;
   hf_downloads?: number;
   gguf_sources?: GGUFSource[];
+  /**
+   * Active parameters (billions) for MoE models.
+   * MoE models load ALL parameters into VRAM but only activate a subset per token.
+   * - VRAM calculation uses params_b (total params — all experts must be loaded)
+   * - Performance/tok-s calculation uses active_params_b (only active experts per token)
+   * For dense models this is undefined (active params === total params).
+   */
+  active_params_b?: number;
 }
 
 export interface GPU {

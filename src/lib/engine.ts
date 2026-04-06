@@ -12,6 +12,7 @@ import {
   estimateTimeToFirstToken,
   estimateLoadTime,
   performanceRange,
+  getActiveParamsB,
 } from './vram';
 
 /**
@@ -306,6 +307,9 @@ export function recommend(
       );
 
       // Calculate performance with all specs
+      // For MoE models, use active params for decode speed estimation
+      // (only active expert weights are read from memory per token)
+      const activeParamsB = getActiveParamsB(model);
       const tokensPerSecond = estimateDecodeTokensPerSecond(
         model.params_b,
         quant.bpw,
@@ -314,7 +318,8 @@ export function recommend(
         gpuLayers,
         pcie_gen,
         pcie_lanes,
-        cpuSpecs
+        cpuSpecs,
+        activeParamsB
       );
 
       // Apply minimum speed filter
@@ -324,8 +329,9 @@ export function recommend(
         }
       }
 
+      // Prefill is compute-bound; for MoE, compute is proportional to active params
       const prefillTokensPerSecond = estimatePrefillTokensPerSecond(
-        model.params_b,
+        activeParamsB,
         fp16_tflops ? fp16_tflops * (gpu_count > 1 ? gpu_count * (nvlink ? 0.9 : 0.7) : 1) : undefined,
         tensor_cores
       );

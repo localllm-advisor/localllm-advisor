@@ -2,6 +2,7 @@
 
 import { ScoredModel } from '@/lib/types';
 import { getCloudProviderUrl } from '@/lib/affiliateLinks';
+import { getActiveParamsB } from '@/lib/vram';
 
 // ─── Thresholds ──────────────────────────────────────────────────────────────
 // Show the cloud-fallback card when the selected model is:
@@ -48,10 +49,11 @@ export function shouldShowCloudFallback(scored: ScoredModel): boolean {
 }
 
 function estimateTps(inst: CloudInstance, scored: ScoredModel): number {
-  // model weight size ≈ params × bpw / 8  (in GB)
-  const modelSizeGb = (scored.model.params_b * scored.quant.bpw) / 8;
-  if (modelSizeGb <= 0) return 0;
-  return Math.round(inst.bandwidth_gbps / modelSizeGb);
+  // For MoE models, decode reads only the active expert weights per token
+  const activeParamsB = getActiveParamsB(scored.model);
+  const activeSizeGb = (activeParamsB * scored.quant.bpw) / 8;
+  if (activeSizeGb <= 0) return 0;
+  return Math.round(inst.bandwidth_gbps / activeSizeGb);
 }
 
 // ─── Component ───────────────────────────────────────────────────────────────
@@ -121,12 +123,4 @@ export default function CloudFallbackCard({ scored }: CloudFallbackCardProps) {
               </div>
               <div className="flex items-center justify-between mt-0.5">
                 <span className="text-sm font-bold text-green-400">~{estTps} tok/s</span>
-                <span className="text-xs text-gray-400">~${inst.price_per_hr}/hr</span>
-              </div>
-            </a>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+                <span className="text-xs text-gray-400">~${
