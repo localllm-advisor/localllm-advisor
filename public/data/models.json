@@ -55313,9 +55313,9 @@
     ],
     "context_length": 131072,
     "release_date": "2026-04-02",
-    "hf_id": "JoaoReiz/Llama3.2_3B_leNER",
+    "hf_id": "JoaoReiz/Llama3.2_3B_LeNER",
     "provider": "JoaoReiz",
-    "hf_downloads": 846,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -73779,7 +73779,7 @@
     "release_date": "2026-04-04",
     "hf_id": "ishikaa/acquisition_qwen3b_IF_gradient",
     "provider": "ishikaa",
-    "hf_downloads": 705,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -73889,7 +73889,7 @@
     "release_date": "2026-04-04",
     "hf_id": "ishikaa/acquisition_qwen3b_IF_proximity",
     "provider": "ishikaa",
-    "hf_downloads": 605,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -74072,6 +74072,116 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 42600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2-5-math-7b-instruct",
+    "name": "Qwen2.5-Math-7B-Instruct",
+    "family": "qwen",
+    "params_b": 7.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-09-19",
+    "hf_id": "Qwen/Qwen2.5-Math-7B-Instruct",
+    "provider": "Alibaba",
+    "hf_downloads": 87460,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4275,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6175,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7600,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 15200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "eagle3-jpharmatron-7b",
+    "name": "EAGLE3-JPharmatron-7B",
+    "family": "eagle3",
+    "params_b": 7.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-04-03",
+    "hf_id": "mobilint/EAGLE3-JPharmatron-7B",
+    "provider": "mobilint",
+    "hf_downloads": 600,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 3938,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 5688,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 14000,
         "quality": 1.0
       }
     ],
