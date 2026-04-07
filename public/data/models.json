@@ -74967,7 +74967,7 @@
     ],
     "context_length": 128000,
     "release_date": "2026-04-04",
-    "hf_id": "Ba2han/e2b-normuon-a",
+    "hf_id": "Ba2han/LFM2.5-1.2B-Turkish_Data_Augment",
     "provider": "Ba2han",
     "hf_downloads": 1066,
     "quantizations": [
@@ -75187,7 +75187,7 @@
     ],
     "context_length": 2048,
     "release_date": "2026-04-03",
-    "hf_id": "bcatt/business-news-generator",
+    "hf_id": "bcatt/business-news-generator-v1",
     "provider": "bcatt",
     "hf_downloads": 758,
     "quantizations": [
@@ -75974,6 +75974,161 @@
         "bpw": 8.0,
         "vram_mb": 753900,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-coder-next-ream",
+    "name": "Qwen3-Coder-Next-REAM",
+    "family": "qwen",
+    "params_b": 60.3,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-02-11",
+    "hf_id": "bknyaz/Qwen3-Coder-Next-REAM",
+    "provider": "bknyaz",
+    "hf_downloads": 455,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 33919,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 48994,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 60300,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gemma-4-31b-it-claude-opus-distill",
+    "name": "gemma-4-31B-it-Claude-Opus-Distill",
+    "family": "gemma",
+    "params_b": 31.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-04-03",
+    "hf_id": "TeichAI/gemma-4-31B-it-Claude-Opus-Distill",
+    "provider": "TeichAI",
+    "hf_downloads": 1774,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 17606,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 25431,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 31300,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-1-2b-turkish-data-augment",
+    "name": "LFM2.5-1.2B-Turkish-Data-Augment",
+    "family": "lfm",
+    "params_b": 1.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-04-04",
+    "hf_id": "Ba2han/LFM2.5-1.2B-Turkish_Data_Augment",
+    "provider": "Ba2han",
+    "hf_downloads": 1066,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 675,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 975,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2400,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
