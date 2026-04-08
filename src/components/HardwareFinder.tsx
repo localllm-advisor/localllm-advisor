@@ -158,7 +158,7 @@ export default function HardwareFinder({ models, gpus, initialModelId }: Hardwar
                     ))
                   ) : (
                     <li className={`px-4 py-3 text-sm text-center ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-                      No models match "{modelQuery}"
+                      No models match &quot;{modelQuery}&quot;
                     </li>
                   )}
                 </ul>
