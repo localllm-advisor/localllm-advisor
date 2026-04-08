@@ -15,7 +15,7 @@ interface HardwareFinderProps {
 const QUANT_OPTIONS = [
   { value: 'Q4_K_M', label: 'Q4 (Smallest)', bpw: 4.5 },
   { value: 'Q6_K', label: 'Q6 (Balanced)', bpw: 6.5 },
-  { value: 'Q8_0', label: 'Q8 (Quality)', bpw: 8.5 },
+  { value: 'Q8_0', label: 'Q8 (Quality)', bpw: 8.0 },
   { value: 'FP16', label: 'FP16 (Max)', bpw: 16 },
 ];
 
@@ -135,26 +135,32 @@ export default function HardwareFinder({ models, gpus, initialModelId }: Hardwar
                     : 'border-gray-300 bg-white text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none'
                 }`}
               />
-              {isModelDropdownOpen && filteredModels.length > 0 && (
+              {isModelDropdownOpen && (
                 <ul className={`absolute z-20 mt-2 max-h-60 w-full overflow-auto rounded-lg border shadow-lg ${
                   isDark
                     ? 'border-gray-600 bg-gray-800'
                     : 'border-gray-200 bg-white'
                 }`}>
-                  {filteredModels.map((model) => (
-                    <li
-                      key={model.id}
-                      onClick={() => handleSelectModel(model)}
-                      className={`cursor-pointer px-4 py-2.5 text-sm flex justify-between transition-colors ${
-                        isDark
-                          ? 'text-gray-200 hover:bg-gray-700'
-                          : 'text-gray-900 hover:bg-gray-100'
-                      }`}
-                    >
-                      <span>{model.name}</span>
-                      <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>{model.params_b}B</span>
+                  {filteredModels.length > 0 ? (
+                    filteredModels.map((model) => (
+                      <li
+                        key={model.id}
+                        onClick={() => handleSelectModel(model)}
+                        className={`cursor-pointer px-4 py-2.5 text-sm flex justify-between transition-colors ${
+                          isDark
+                            ? 'text-gray-200 hover:bg-gray-700'
+                            : 'text-gray-900 hover:bg-gray-100'
+                        }`}
+                      >
+                        <span>{model.name}</span>
+                        <span className={isDark ? 'text-gray-500' : 'text-gray-400'}>{model.params_b}B</span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className={`px-4 py-3 text-sm text-center ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                      No models match "{modelQuery}"
                     </li>
-                  ))}
+                  )}
                 </ul>
               )}
             </div>
