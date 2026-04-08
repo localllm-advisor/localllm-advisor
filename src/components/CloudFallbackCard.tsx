@@ -123,4 +123,12 @@ export default function CloudFallbackCard({ scored }: CloudFallbackCardProps) {
               </div>
               <div className="flex items-center justify-between mt-0.5">
                 <span className="text-sm font-bold text-green-400">~{estTps} tok/s</span>
-                <span className="text-xs text-gray-400">~${
+                <span className="text-xs text-gray-400">~${inst.price_per_hr.toFixed(2)}/hr</span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  );
+}

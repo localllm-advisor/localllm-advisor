@@ -34,7 +34,7 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
           {/* Animated Mesh Gradient Background */}
           <MeshGradient />
 
-          <div className="relative mx-auto max-w-5xl px-4 py-16 sm:py-24 lg:py-32">
+          <div className="relative mx-auto max-w-5xl px-4 pt-8 pb-16 sm:pt-12 sm:pb-24 lg:pt-16 lg:pb-32">
             {/* Main Content */}
             <div className="text-center space-y-8">
               {/* Title */}
@@ -101,20 +101,20 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
               {/* Stats Row — counts come from actual dataset files, never hardcoded */}
               <Reveal delay={400}>
                 <div className="flex flex-wrap justify-center gap-8 sm:gap-16 pt-8">
-                  <div className="text-center">
-                    <div className={`text-4xl sm:text-5xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <div className="text-center min-w-[7rem]">
+                    <div className={`text-4xl sm:text-5xl font-bold tabular-nums ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       <CountUp to={stats.modelCount} suffix="+" duration={1600} compact />
                     </div>
                     <div className={`text-sm mt-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>AI Models</div>
                   </div>
-                  <div className="text-center">
-                    <div className={`text-4xl sm:text-5xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <div className="text-center min-w-[7rem]">
+                    <div className={`text-4xl sm:text-5xl font-bold tabular-nums ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       <CountUp to={stats.gpuCount} suffix="+" duration={1400} />
                     </div>
                     <div className={`text-sm mt-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>GPU Types</div>
                   </div>
-                  <div className="text-center">
-                    <div className={`text-4xl sm:text-5xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                  <div className="text-center min-w-[7rem]">
+                    <div className={`text-4xl sm:text-5xl font-bold tabular-nums ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       <CountUp to={stats.cpuCount} suffix="+" duration={1200} />
                     </div>
                     <div className={`text-sm mt-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>CPU Types</div>

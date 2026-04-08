@@ -811,4 +811,22 @@ export default function EnterpriseSizingCalculator() {
                         </div>
                         <p className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>${plan.totalFirstYearCost.toLocaleString()}</p>
                       </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <EnterprisePaywall
+                    tiers={SIZING_TIERS}
+                    currentTier={activeTier}
+                    onSelectTier={setActiveTier}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
          
