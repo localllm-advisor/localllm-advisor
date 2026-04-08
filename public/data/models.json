@@ -1306,7 +1306,7 @@
       "alpacaeval": null,
       "mmbench": null
     },
-    "hf_downloads": 734520,
+    "hf_downloads": 784331,
     "gguf_sources": [],
     "active_params_b": 2.4
   },
@@ -1713,7 +1713,7 @@
     },
     "hf_id": "deepseek-ai/DeepSeek-R1",
     "provider": "DeepSeek",
-    "hf_downloads": 2840018,
+    "hf_downloads": 3094430,
     "gguf_sources": [],
     "active_params_b": 37
   },
@@ -6248,7 +6248,7 @@
     },
     "hf_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
     "provider": "Meta",
-    "hf_downloads": 297814,
+    "hf_downloads": 312654,
     "gguf_sources": [],
     "active_params_b": 17
   },
@@ -7541,7 +7541,7 @@
     },
     "hf_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
     "provider": "Mistral",
-    "hf_downloads": 438858,
+    "hf_downloads": 469182,
     "gguf_sources": [],
     "active_params_b": 13
   },
@@ -7604,7 +7604,7 @@
       "alpacaeval": null,
       "mmbench": null
     },
-    "hf_downloads": 8997,
+    "hf_downloads": 8550,
     "gguf_sources": [],
     "active_params_b": 13
   },
@@ -7667,7 +7667,7 @@
       "alpacaeval": null,
       "mmbench": null
     },
-    "hf_downloads": 8997,
+    "hf_downloads": 8550,
     "gguf_sources": [],
     "active_params_b": 13
   },
@@ -7730,7 +7730,7 @@
       "alpacaeval": null,
       "mmbench": null
     },
-    "hf_downloads": 7814,
+    "hf_downloads": 7859,
     "gguf_sources": [],
     "active_params_b": 13
   },
@@ -8045,7 +8045,7 @@
     },
     "hf_id": "mistralai/Mixtral-8x22B-Instruct-v0.1",
     "provider": "Mistral AI",
-    "hf_downloads": 35744,
+    "hf_downloads": 30842,
     "gguf_sources": [],
     "active_params_b": 39
   },
@@ -12668,7 +12668,7 @@
     },
     "hf_id": "Qwen/Qwen3-30B-A3B",
     "provider": "Alibaba",
-    "hf_downloads": 1536543,
+    "hf_downloads": 1578213,
     "gguf_sources": [],
     "active_params_b": 3
   },
@@ -13683,7 +13683,7 @@
     },
     "hf_id": "Qwen/Qwen3-235B-A22B",
     "provider": "Alibaba",
-    "hf_downloads": 627140,
+    "hf_downloads": 602201,
     "gguf_sources": [],
     "active_params_b": 22
   },
@@ -16322,7 +16322,7 @@
     },
     "hf_id": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
     "provider": "Meta",
-    "hf_downloads": 297814,
+    "hf_downloads": 312654,
     "gguf_sources": [],
     "active_params_b": 17
   },
@@ -16595,7 +16595,7 @@
     },
     "hf_id": "Qwen/Qwen3-30B-A3B",
     "provider": "Alibaba",
-    "hf_downloads": 1536543,
+    "hf_downloads": 1578213,
     "gguf_sources": [],
     "active_params_b": 3
   },
@@ -16664,7 +16664,7 @@
     },
     "hf_id": "Qwen/Qwen3-235B-A22B",
     "provider": "Alibaba",
-    "hf_downloads": 627140,
+    "hf_downloads": 602201,
     "gguf_sources": [],
     "active_params_b": 22
   },
@@ -16734,7 +16734,7 @@
     },
     "hf_id": "deepseek-ai/DeepSeek-R1",
     "provider": "DeepSeek",
-    "hf_downloads": 2840018,
+    "hf_downloads": 3094430,
     "gguf_sources": [],
     "active_params_b": 37
   },
@@ -17488,7 +17488,7 @@
     },
     "hf_id": "ai21labs/AI21-Jamba-Large-1.5",
     "provider": "AI21",
-    "hf_downloads": 2569,
+    "hf_downloads": 2575,
     "gguf_sources": [],
     "active_params_b": 94
   },
@@ -18511,7 +18511,7 @@
     },
     "hf_id": "mistralai/Mixtral-8x7B-Instruct-v0.1",
     "provider": "Mistral",
-    "hf_downloads": 438858,
+    "hf_downloads": 469182,
     "gguf_sources": [],
     "active_params_b": 13
   },
@@ -63171,7 +63171,7 @@
     "release_date": "2025-12-09",
     "hf_id": "mobilint/EXAONE-Deep-7.8B",
     "provider": "mobilint",
-    "hf_downloads": 1208,
+    "hf_downloads": 1216,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -73250,7 +73250,7 @@
     "release_date": "2026-04-05",
     "hf_id": "VINAY-UMRETHE/Qwen3-0.6B-heretic-REPRODUCE",
     "provider": "VINAY-UMRETHE",
-    "hf_downloads": 1760,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -76811,6 +76811,502 @@
         "bpw": 16,
         "vram_mb": 200,
         "quality": 1
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llammas-base-p1-gpt-4o-human-error-mix-paragraph-gec",
+    "name": "Llammas-base-p1-GPT-4o-human-error-mix-paragraph-GEC",
+    "family": "llammas",
+    "params_b": 6.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2025-02-11",
+    "hf_id": "tartuNLP/Llammas-base-p1-GPT-4o-human-error-mix-paragraph-GEC",
+    "provider": "tartuNLP",
+    "hf_downloads": 34189,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 3769,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 5444,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 6700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 13400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-14b-speculator-eagle3",
+    "name": "Qwen3-14B-speculator.eagle3",
+    "family": "qwen",
+    "params_b": 1.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-09-18",
+    "hf_id": "RedHatAI/Qwen3-14B-speculator.eagle3",
+    "provider": "RedHatAI",
+    "hf_downloads": 535,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 788,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1138,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-32b-speculator-eagle3",
+    "name": "Qwen3-32B-speculator.eagle3",
+    "family": "qwen",
+    "params_b": 1.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-09-18",
+    "hf_id": "RedHatAI/Qwen3-32B-speculator.eagle3",
+    "provider": "RedHatAI",
+    "hf_downloads": 1585,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 900,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1300,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1600,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama-3-3-70b-instruct-speculator-eagle3",
+    "name": "Llama-3.3-70B-Instruct-speculator.eagle3",
+    "family": "llama",
+    "params_b": 2.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-09-18",
+    "hf_id": "RedHatAI/Llama-3.3-70B-Instruct-speculator.eagle3",
+    "provider": "RedHatAI",
+    "hf_downloads": 2042,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1406,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2031,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-8b-speculator-eagle3",
+    "name": "Qwen3-8B-speculator.eagle3",
+    "family": "qwen",
+    "params_b": 1.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-09-19",
+    "hf_id": "RedHatAI/Qwen3-8B-speculator.eagle3",
+    "provider": "RedHatAI",
+    "hf_downloads": 78825,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 562,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 812,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama-3-1-8b-instruct-speculator-eagle3",
+    "name": "Llama-3.1-8B-Instruct-speculator.eagle3",
+    "family": "llama",
+    "params_b": 1.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-09-19",
+    "hf_id": "RedHatAI/Llama-3.1-8B-Instruct-speculator.eagle3",
+    "provider": "RedHatAI",
+    "hf_downloads": 23458,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 562,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 812,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-235b-a22b-instruct-2507-speculator-eagle3",
+    "name": "Qwen3-235B-A22B-Instruct-2507-speculator.eagle3",
+    "family": "qwen",
+    "params_b": 1.2,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-11-20",
+    "hf_id": "RedHatAI/Qwen3-235B-A22B-Instruct-2507-speculator.eagle3",
+    "provider": "RedHatAI",
+    "hf_downloads": 790,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 675,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 975,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-30b-a3b-thinking-2507-speculator-eagle3",
+    "name": "Qwen3-30B-A3B-Thinking-2507-speculator.eagle3",
+    "family": "qwen",
+    "params_b": 0.5,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-03-10",
+    "hf_id": "RedHatAI/Qwen3-30B-A3B-Thinking-2507-speculator.eagle3",
+    "provider": "RedHatAI",
+    "hf_downloads": 904,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 281,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 406,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "reka-edge-2603",
+    "name": "reka-edge-2603",
+    "family": "reka",
+    "params_b": 7.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 16384,
+    "release_date": "2026-03-11",
+    "hf_id": "RekaAI/reka-edge-2603",
+    "provider": "RekaAI",
+    "hf_downloads": 1061,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 3994,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 5769,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 14200,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
