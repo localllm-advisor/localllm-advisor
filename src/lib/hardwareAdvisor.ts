@@ -104,14 +104,6 @@ function calculateVramGb(paramsB: number, bpw: number): number {
   return (paramsB * bpw / 8) * 1.15;
 }
 
-function calculateAllVramRequirements(paramsB: number): VramRequirements {
-  return {
-    q4: calculateVramGb(paramsB, 4.5),
-    q6: calculateVramGb(paramsB, 6.5),
-    q8: calculateVramGb(paramsB, 8.0),   // Q8_0 is 8 bits per weight, not 8.5
-    fp16: calculateVramGb(paramsB, 16),
-  };
-}
 
 /**
  * Estimate decode tokens/sec for a given GPU configuration.

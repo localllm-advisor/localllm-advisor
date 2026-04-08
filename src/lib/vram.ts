@@ -1,4 +1,4 @@
-import { InferenceMode, MemoryBreakdown, Model, PerformanceEstimate, PerformanceRange } from './types';
+import { InferenceMode, MemoryBreakdown, PerformanceEstimate, PerformanceRange } from './types';
 
 /**
  * Get the effective parameter count for performance calculations.
