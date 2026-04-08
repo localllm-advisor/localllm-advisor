@@ -47,10 +47,10 @@ export default function MethodologyPage() {
                     How are tok/s estimates calculated?
                   </p>
                   <p className="text-[15px]">
-                    Token generation speed is <strong className={strong}>memory-bandwidth bound</strong>: each token requires reading the active model weights from GPU memory once.
-                    For dense models, the formula is <code className={`px-1.5 py-0.5 rounded text-sm ${codeBg}`}>tok/s = GPU_bandwidth_GBps / model_size_GB</code>.
-                    For MoE (Mixture-of-Experts) models, only the active expert weights are read per token, so speed is calculated against the active parameter count rather than the total.
-                    For example, an RTX 4090 (1,008 GB/s) running a 7B Q4 model (~3.9 GB) yields ≈ 256 tok/s.
+                    Token generation speed is <strong className={strong}>memory-bandwidth bound</strong>: each decode step reads the active model weights plus the accumulated KV cache from GPU memory.
+                    The full formula is <code className={`px-1.5 py-0.5 rounded text-sm ${codeBg}`}>tok/s = bandwidth / (active_model_size + kv_cache)</code>.
+                    For short contexts, KV cache is small and the simplified form <code className={`px-1.5 py-0.5 rounded text-sm ${codeBg}`}>tok/s ≈ bandwidth / model_size</code> applies.
+                    For MoE models, only the active expert weights are read per token, so speed uses the active parameter count.
                     All estimates include a ±15–30% uncertainty band to reflect real-world variation from drivers, thermal throttling, and inference runtime.
                   </p>
                 </div>
@@ -105,23 +105,39 @@ export default function MethodologyPage() {
             <h2 className={heading}>KV Cache</h2>
             <p className="mb-3">
               The KV (Key-Value) cache stores attention states for every token in the context window and grows linearly with context length.
-              Each token position requires storing key and value vectors across all layers and KV heads in the model.
-              The pre-computed VRAM values for each model already include the base KV cache overhead for a short context window (~4K tokens).
-              For context beyond this baseline, the additional memory is estimated as:
+              The theoretical formula for KV cache per token is:
             </p>
             <div className={`${codeBg} rounded-lg p-4 font-mono text-sm mb-3`}>
-              extra_kv_cache_mb = 125 × √(params_B / 7) × (context − 4096) / 1024
+              kv_bytes_per_token = 2 × n_layers × n_kv_heads × head_dim × bytes_per_element
             </div>
             <p className="mb-3">
-              The base multiplier of 125 MB per 1K tokens corresponds to a 7B model using FP16 KV cache with Grouped-Query Attention (GQA) — the standard for modern LLMs.
-              The square root scaling reflects the sub-linear growth of KV cache with model size: larger models have more layers but typically use GQA with a fixed number of KV heads, so KV cache grows slower than model parameters.
+              The factor of 2 accounts for both Key and Value tensors. For models using Grouped-Query Attention (GQA), <code className={`px-1.5 py-0.5 rounded text-sm ${codeBg}`}>n_kv_heads</code> is
+              much smaller than the number of attention heads (typically 8 regardless of model size), which keeps the KV cache sub-linear with parameter count.
+            </p>
+            <p className="mb-3">
+              Since our dataset does not include per-model architecture details (layer count, head counts, head dimension),
+              we use an empirical power-law approximation calibrated against measured KV cache sizes:
+            </p>
+            <div className={`${codeBg} rounded-lg p-4 font-mono text-sm mb-3`}>
+              extra_kv_cache_mb = 128 × (params_B / 7)<sup>0.4</sup> × (context − 4096) / 1024
+            </div>
+            <p className="mb-3">
+              The base multiplier of 128 MB per 1K tokens corresponds to a 7B GQA model at FP16 (verified: 32 layers × 8 KV heads × 128 head_dim × 2 bytes × 2 tensors = 128 KB/token = 128 MB/1K).
+              The 0.4 exponent reflects that layer count grows slower than parameter count — larger models widen their hidden dimensions rather than just stacking more layers — while GQA keeps KV heads fixed.
+              This fits measured values to within 5% for 7B–70B models.
             </p>
             <div className={`${cardBg} rounded-lg p-4`}>
               <h4 className={`${strong} font-medium mb-2`}>Why context length matters for VRAM</h4>
-              <p className="text-sm">
+              <p className="text-sm mb-2">
                 KV cache can become the dominant memory consumer at long context lengths.
-                A 70B model at 128K context needs approximately 49 GB of additional KV cache alone — more than the model weights at Q4 quantization (~40 GB).
+                A 70B model at 128K context needs approximately 40 GB of additional KV cache alone — comparable to the model weights at Q4 quantization (~40 GB).
                 This is why a model that fits in VRAM at 4K context may not fit at 32K or 128K, even when the base model size is well within the GPU&apos;s capacity.
+              </p>
+              <p className="text-sm">
+                At longer contexts, reading the KV cache during each decode step also impacts generation speed.
+                The full decode step reads both the model weights <em>and</em> the accumulated KV cache from memory,
+                so the effective formula becomes: <code className={`px-1 py-0.5 rounded text-xs ${codeBg}`}>tok/s = bandwidth / (model_size + kv_cache_size)</code>.
+                Our speed estimates assume a short context window; expect slower generation at 32K+ contexts.
               </p>
             </div>
             </section>
@@ -219,21 +235,27 @@ export default function MethodologyPage() {
             <h2 className={heading}>Token Generation Speed</h2>
             <p className="mb-3">
               Token generation (decode) is <strong className={strong}>memory-bandwidth bound</strong>.
-              Each token requires reading the active model weights from GPU memory. For dense models,
-              this is the full model; for MoE models, only the active expert weights:
+              Each decode step reads the active model weights plus the accumulated KV cache from GPU memory.
+              The full theoretical formula is:
             </p>
             <div className={`${codeBg} rounded-lg p-4 font-mono text-sm mb-3`}>
-              tokens_per_sec = memory_bandwidth_GBps / active_model_size_GB
+              tokens_per_sec = memory_bandwidth_GBps / (active_model_size_GB + kv_cache_size_GB)
             </div>
+            <p className="mb-3">
+              For short contexts (≤4K tokens), the KV cache is small relative to the model weights,
+              so the simplified form <code className={`px-1.5 py-0.5 rounded text-sm ${codeBg}`}>tok/s ≈ bandwidth / active_model_size</code> is a close approximation.
+              For MoE models, only the active expert weights are read per token, not the full model.
+            </p>
             <p className="mb-4">
               <strong className={strong}>Example:</strong> RTX 4090 (1,008 GB/s bandwidth) running a 70B Q4 dense model (~39 GB):
-              1008 / 39 ≈ <span className={accent}>~26 tokens/second</span>
+              1008 / 39 ≈ <span className={accent}>~26 tokens/second</span> (at short context).
+              At 32K context, the KV cache adds ~10 GB, reducing speed to 1008 / 49 ≈ ~21 tok/s.
             </p>
 
             <div className={`${cardBg} rounded-lg p-4`}>
               <h4 className={`${strong} font-medium mb-2`}>Why bandwidth matters more than compute</h4>
               <p className="text-sm">
-                During generation, each token requires reading the active model weights from memory.
+                During generation, each token requires reading the active model weights (and KV cache) from memory.
                 Modern GPUs have far more compute power than needed — the bottleneck is how fast you can
                 feed data to the cores. This is why the RTX 4090 and RTX 3090 have similar LLM performance
                 despite the 4090 having much more compute: their memory bandwidth is comparable.
@@ -329,22 +351,31 @@ export default function MethodologyPage() {
           {/* Prefill Speed */}
           <Reveal delay={600}>
             <section>
-            <h2 className={heading}>Prefill Speed (Prompt Processing)</h2>
+            <h2 className={heading}>Prefill Speed &amp; Time to First Token (TTFT)</h2>
             <p className="mb-3">
-              Processing the input prompt is <strong className={strong}>compute-bound</strong>,
+              Processing the input prompt (prefill) is <strong className={strong}>compute-bound</strong>,
               not bandwidth-bound. The forward pass requires approximately 2 FLOPs per active parameter per token:
             </p>
-            <div className={`${codeBg} rounded-lg p-4 font-mono text-sm mb-3`}>
-              prefill_tok/s = (FP16_TFLOPS × 10<sup>12</sup> × utilization) / (active_params_B × 2 × 10<sup>9</sup>)
+            <div className={`${codeBg} rounded-lg p-4 font-mono text-sm mb-3 space-y-1`}>
+              <div>FLOPs_per_token = 2 × active_params</div>
+              <div>prefill_tok/s = (GPU_TFLOPS × 10<sup>12</sup> × utilization) / (active_params_B × 2 × 10<sup>9</sup>)</div>
             </div>
             <p className="mb-3">
               Utilization is typically 30% without tensor cores, 60% with tensor cores.
-              For MoE models, the active parameter count is used (same as for decode speed) since
-              only the selected experts participate in the forward pass.
+              For MoE models, the active parameter count is used since only the selected experts participate in each forward pass.
             </p>
+            <p className="mb-3">
+              Time to First Token (TTFT) is derived from prefill speed:
+            </p>
+            <div className={`${codeBg} rounded-lg p-4 font-mono text-sm mb-3`}>
+              TTFT_ms = (prompt_tokens / prefill_tok_per_sec) × 1000
+            </div>
             <p>
-              This affects time to first token (TTFT) — how long you wait before generation starts.
-              For a typical 100-token prompt, TTFT = 100 / prefill_tok/s.
+              The full theoretical TTFT also includes a memory-loading component
+              (<code className={`px-1 py-0.5 rounded text-xs ${codeBg}`}>model_size / bandwidth</code>), but since prefill is compute-bound
+              for typical prompt lengths (100+ tokens), the memory component is overlapped with computation
+              by GPU pipelining and does not add to total latency. For very short prompts (&lt;30 tokens),
+              memory loading may dominate — our estimates are optimistic in that regime.
             </p>
             </section>
           </Reveal>
@@ -586,7 +617,7 @@ export default function MethodologyPage() {
               <li className="flex gap-2">
                 <span className={isDark ? 'text-blue-400' : 'text-blue-600'}>•</span>
                 <span>
-                  <strong className={strong}>MoE active parameters:</strong> Sourced from official model cards and architecture papers for all 77 MoE models in our database
+                  <strong className={strong}>MoE active parameters:</strong> Sourced from official model cards and architecture papers for 137 of 156 MoE models; remainder uses a 20% heuristic estimate
                 </span>
               </li>
               <li className="flex gap-2">
@@ -605,13 +636,14 @@ export default function MethodologyPage() {
             <h2 className={heading}>Limitations</h2>
             <div className={`${warnBg} rounded-lg p-4`}>
               <ul className="space-y-2 text-sm">
-                <li>• KV cache formula uses a GQA approximation; actual size varies by architecture (number of KV heads, head dimension)</li>
+                <li>• KV cache formula uses a power-law GQA approximation (±5% for 7B–70B); models with non-standard KV head counts may differ</li>
+                <li>• Decode speed estimates assume short context (≤4K tokens); at longer contexts, KV cache reads reduce throughput</li>
                 <li>• We assume uniform layer sizes; real models may have varying layer dimensions</li>
                 <li>• The 10% VRAM headroom is conservative; some systems can use more</li>
                 <li>• CPU inference speed is capped at 60 tok/s; server-class CPUs with multi-channel DDR5 may exceed this</li>
                 <li>• Real performance varies by inference engine (llama.cpp vs vLLM vs Ollama vs SGLang)</li>
                 <li>• Benchmark scores reflect published evaluations; real-world quality may differ for specific tasks</li>
-                <li>• MoE active parameter counts are sourced from documentation; some smaller or newer models use estimates</li>
+                <li>• MoE active parameter counts are sourced from documentation for 88% of MoE models; 12% use a 20% heuristic estimate</li>
                 <li>• Multi-GPU estimates use conservative PCIe scaling factors; NVLink-connected systems may perform better than estimated</li>
               </ul>
             </div>

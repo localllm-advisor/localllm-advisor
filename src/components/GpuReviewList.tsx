@@ -29,10 +29,10 @@ export default function GpuReviewList({
   const [sortBy, setSortBy] = useState<'upvotes' | 'rating_overall' | 'created_at'>('upvotes');
   const [userId, setUserId] = useState<string | null>(null);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     loadReviews();
     loadUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gpuName, sortBy, refreshKey]);
 
   const loadUserInfo = async () => {
