@@ -74957,9 +74957,9 @@
     }
   },
   {
-    "id": "e2b-normuon-a",
-    "name": "e2B-normuon-a",
-    "family": "e2b",
+    "id": "lfm2-5-1-2b-turkish-data-augment",
+    "name": "LFM2.5-1.2B-Turkish-Data-Augment",
+    "family": "lfm",
     "params_b": 1.2,
     "architecture": "dense",
     "capabilities": [
@@ -76128,6 +76128,116 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 2400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "roberta-base-go-emotions",
+    "name": "roberta-base-go-emotions",
+    "family": "roberta",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 514,
+    "release_date": "2022-09-15",
+    "hf_id": "SamLowe/roberta-base-go_emotions",
+    "provider": "SamLowe",
+    "hf_downloads": 227570,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "harmonic-hermes-9b",
+    "name": "Harmonic-Hermes-9B",
+    "family": "harmonic",
+    "params_b": 9.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-04-04",
+    "hf_id": "DJLougen/Harmonic-Hermes-9B",
+    "provider": "DJLougen",
+    "hf_downloads": 513,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5456,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7881,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 19400,
         "quality": 1.0
       }
     ],
