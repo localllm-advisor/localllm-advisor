@@ -50724,7 +50724,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-23",
-    "hf_id": "Datdanboi25/GPT-X-125m-15bt",
+    "hf_id": "AxiomicLabs/GPT-X-125m-15bt",
     "provider": "Datdanboi25",
     "hf_downloads": 1657,
     "quantizations": [
@@ -79416,6 +79416,116 @@
         "bpw": 8.0,
         "vram_mb": 34400,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nmt-21",
+    "name": "nmt-21",
+    "family": "nmt-21",
+    "params_b": 1.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2025-10-03",
+    "hf_id": "odats/nmt_21",
+    "provider": "odats",
+    "hf_downloads": 7026,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 562,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 812,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gpt-x-125m-15bt",
+    "name": "GPT-X-125m-15bt",
+    "family": "gpt",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-03-23",
+    "hf_id": "AxiomicLabs/GPT-X-125m-15bt",
+    "provider": "AxiomicLabs",
+    "hf_downloads": 1657,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
