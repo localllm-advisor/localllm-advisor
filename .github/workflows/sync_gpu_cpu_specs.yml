@@ -113,4 +113,5 @@ jobs:
           echo "========================================"
           echo ""
           echo "Note: frontend stat counters (gpuCount, cpuCount) are read"
-          echo "dynamically from 
+          echo "dynamically from src/lib/datasetStats.ts at build time."
+          echo "A Vercel redeploy is triggered by this commit — no manual update needed."
