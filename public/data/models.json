@@ -35710,7 +35710,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-27",
-    "hf_id": "deqing/llama-300M-v5-window_2",
+    "hf_id": "deqing/convergent-llama-300M-muon-window-2",
     "provider": "deqing",
     "hf_downloads": 7481,
     "quantizations": [
@@ -35765,7 +35765,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-27",
-    "hf_id": "deqing/llama-300M-v5-window_8",
+    "hf_id": "deqing/convergent-llama-300M-muon-window-8",
     "provider": "deqing",
     "hf_downloads": 3762,
     "quantizations": [
@@ -47919,7 +47919,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-13",
-    "hf_id": "deqing/llama-300M-v5-window_4",
+    "hf_id": "deqing/convergent-llama-300M-muon-window-4",
     "provider": "deqing",
     "hf_downloads": 8518,
     "quantizations": [
@@ -48194,7 +48194,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-21",
-    "hf_id": "deqing/llama-300M-v5-isolate",
+    "hf_id": "deqing/convergent-llama-300M-muon-isolate-1",
     "provider": "deqing",
     "hf_downloads": 7261,
     "quantizations": [
@@ -51215,7 +51215,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-31",
-    "hf_id": "deqing/llama-300M-v5-window_64",
+    "hf_id": "deqing/convergent-llama-300M-muon-window-64",
     "provider": "deqing",
     "hf_downloads": 1207,
     "quantizations": [
@@ -51546,7 +51546,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-31",
-    "hf_id": "deqing/llama-300M-v5-isolate_eight",
+    "hf_id": "deqing/convergent-llama-300M-muon-isolate-8",
     "provider": "deqing",
     "hf_downloads": 2177,
     "quantizations": [
@@ -52999,7 +52999,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-fi_de_instant_0.5_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 2472,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -53329,7 +53329,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-de_en_instant_0.125_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 1584,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -55956,7 +55956,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-en_de_instant_0.125_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 1833,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -81474,6 +81474,62 @@
         "bpw": 8.0,
         "vram_mb": 31300,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nemotron-3-content-safety",
+    "name": "Nemotron-3-Content-Safety",
+    "family": "nemotron",
+    "params_b": 4.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-03-06",
+    "hf_id": "nvidia/Nemotron-3-Content-Safety",
+    "provider": "NVIDIA",
+    "hf_downloads": 1723,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2419,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3494,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8600,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
