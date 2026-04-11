@@ -81713,5 +81713,54 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "darwin-31b-opus",
+    "name": "Darwin-31B-Opus",
+    "family": "darwin",
+    "params_b": 32.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-04-06",
+    "hf_id": "FINAL-Bench/Darwin-31B-Opus",
+    "provider": "FINAL-Bench",
+    "hf_downloads": 808,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18394,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 26569,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 32700,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
