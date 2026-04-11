@@ -53384,7 +53384,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-zh_en_instant_0.125_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 1426,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -55240,7 +55240,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-en_zh_instant_0.25_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 2302,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -56781,7 +56781,7 @@
     "release_date": "2026-04-03",
     "hf_id": "Cisco1963/llmplasticity-zh_fi_instant_0.5_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 2191,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -82986,6 +82986,116 @@
         "bpw": 8.0,
         "vram_mb": 32000,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "olmo-3-7b-lean-prover-dpo",
+    "name": "olmo-3-7B-lean-prover-dpo",
+    "family": "olmо",
+    "params_b": 7.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-03-31",
+    "hf_id": "VladShash/olmo-3-7b-lean-prover-dpo",
+    "provider": "VladShash",
+    "hf_downloads": 741,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4106,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 5931,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 14600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "shepherd-alpha",
+    "name": "Shepherd-Alpha",
+    "family": "shepherd",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-04-08",
+    "hf_id": "reaperdoesntknow/Shepherd-Alpha",
+    "provider": "reaperdoesntknow",
+    "hf_downloads": 683,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
