@@ -50724,7 +50724,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-23",
-    "hf_id": "AxiomicLabs/GPT-X-125m-15bt",
+    "hf_id": "AxiomicLabs/GPT-X-125M",
     "provider": "AxiomicLabs",
     "hf_downloads": 2196,
     "quantizations": [
@@ -53549,7 +53549,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-zh_en_instant_0.25_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 1677,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -55901,7 +55901,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-en_de_linear_0.5_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 1536,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -79499,7 +79499,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-23",
-    "hf_id": "AxiomicLabs/GPT-X-125m-15bt",
+    "hf_id": "AxiomicLabs/GPT-X-125M",
     "provider": "AxiomicLabs",
     "hf_downloads": 2196,
     "quantizations": [
@@ -83310,6 +83310,165 @@
         "bpw": 8.0,
         "vram_mb": 228700,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "burmese-gpt",
+    "name": "Burmese-GPT",
+    "family": "burmese",
+    "params_b": 1.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2024-01-05",
+    "hf_id": "WYNN747/Burmese-GPT",
+    "provider": "WYNN747",
+    "hf_downloads": 511,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 788,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1138,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "fipo-32b",
+    "name": "FIPO-32B",
+    "family": "qwen",
+    "params_b": 32.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-03-22",
+    "hf_id": "QwenPilot/FIPO_32B",
+    "provider": "QwenPilot",
+    "hf_downloads": 657,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18450,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 26650,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 32800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gpt-x-125m",
+    "name": "GPT-X-125M",
+    "family": "gpt",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-03-23",
+    "hf_id": "AxiomicLabs/GPT-X-125M",
+    "provider": "AxiomicLabs",
+    "hf_downloads": 2196,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
