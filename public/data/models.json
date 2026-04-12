@@ -55020,7 +55020,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-zh_fi_linear_0.125_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 2792,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -56616,7 +56616,7 @@
     "release_date": "2026-04-03",
     "hf_id": "Cisco1963/llmplasticity-de_zh_linear_0.25_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 2105,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -83206,6 +83206,110 @@
         "bpw": 16.0,
         "vram_mb": 29600,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "argonne2-5-instruct",
+    "name": "Argonne2.5-instruct",
+    "family": "argonne2-5",
+    "params_b": 1.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-04-05",
+    "hf_id": "PursuitOfDataScience/Argonne2.5-instruct",
+    "provider": "PursuitOfDataScience",
+    "hf_downloads": 626,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 731,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1056,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "minimax-m2-7",
+    "name": "MiniMax-M2.7",
+    "family": "minimax",
+    "params_b": 228.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 196608,
+    "release_date": "2026-04-09",
+    "hf_id": "MiniMaxAI/MiniMax-M2.7",
+    "provider": "MiniMax",
+    "hf_downloads": 229,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 128644,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 185819,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 228700,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
