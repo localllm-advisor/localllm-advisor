@@ -53054,7 +53054,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-fi_de_instant_0.25_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 1831,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -54965,7 +54965,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-en_zh_linear_0.5_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 2347,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
