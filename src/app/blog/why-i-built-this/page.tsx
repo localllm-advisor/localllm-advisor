@@ -14,9 +14,6 @@ export default function WhyIBuiltThisPage() {
   const prose = isDark ? 'text-gray-300' : 'text-gray-600';
   const strong = isDark ? 'text-white' : 'text-gray-900';
   const codeBg = isDark ? 'bg-gray-800 border-gray-700' : 'bg-gray-100 border-gray-200';
-  const blockBg = isDark
-    ? 'bg-amber-900/20 border border-amber-700/40'
-    : 'bg-amber-50 border border-amber-200';
   const link = isDark
     ? 'text-amber-400 hover:text-amber-300 underline underline-offset-2 decoration-1'
     : 'text-amber-700 hover:text-amber-800 underline underline-offset-2 decoration-1';
@@ -55,7 +52,7 @@ export default function WhyIBuiltThisPage() {
           {/* Intro */}
           <Reveal delay={50}>
             <p className="text-[1.06rem] leading-[1.75] mb-5">
-              A few months ago I bought a PC with an RTX 5060 Ti. My plan was straightforward: run a
+              A few months ago I bought a PC with an RTX 5060 Ti. I wanted to run a
               coding-oriented LLM locally, keep my data off third-party servers, and stop paying per-token
               for things I could handle on my own machine. Picking the hardware took me an afternoon.
               Figuring out which model to actually download took me the rest of the week.
