@@ -54910,7 +54910,7 @@
     "release_date": "2026-04-02",
     "hf_id": "Cisco1963/llmplasticity-fi_zh_linear_0.125_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 2327,
+    "hf_downloads": 2330,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -56836,7 +56836,7 @@
     "release_date": "2026-04-03",
     "hf_id": "Cisco1963/llmplasticity-en_zh_linear_0.125_1-seed42",
     "provider": "Cisco1963",
-    "hf_downloads": 2014,
+    "hf_downloads": 2020,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -83014,7 +83014,7 @@
     ],
     "context_length": 4096,
     "release_date": "2026-03-31",
-    "hf_id": "VladShash/olmo-3-7b-lean-prover-dpo",
+    "hf_id": "VladShash/deepseek-math-7b-lean-prover-dpo-olmo-3",
     "provider": "VladShash",
     "hf_downloads": 3875,
     "quantizations": [
@@ -85151,6 +85151,166 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 17600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-5-koreasoin-27b-v1",
+    "name": "Qwen3.5-KoReasoin-27B-v1",
+    "family": "qwen",
+    "params_b": 27.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-03-23",
+    "hf_id": "jiwon9703/Qwen3.5-KoReasoin-27B-v1",
+    "provider": "jiwon9703",
+    "hf_downloads": 1106,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15638,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22588,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gpt-face-celeb-generator",
+    "name": "gpt-face-celeb-generator",
+    "family": "gpt",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-04-07",
+    "hf_id": "yosef-samy019/gpt-face-celeb-generator",
+    "provider": "yosef-samy019",
+    "hf_downloads": 808,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama-85m-unigram-16k",
+    "name": "llama-85m-unigram-16k",
+    "family": "llama",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-04-12",
+    "hf_id": "baddddddddd/llama-85m-unigram-16k",
+    "provider": "baddddddddd",
+    "hf_downloads": 603,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
         "quality": 1.0
       }
     ],
