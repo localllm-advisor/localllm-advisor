@@ -8,7 +8,7 @@ interface PageHeroProps {
   title: string;
   subtitle?: string;
   /** Accent color for the gradient. Defaults to 'blue'. */
-  accent?: 'blue' | 'orange' | 'green' | 'purple' | 'indigo' | 'red';
+  accent?: 'blue' | 'orange' | 'green' | 'purple' | 'indigo' | 'red' | 'amber';
   /** Extra content (badges, stats, etc.) rendered below the subtitle */
   children?: React.ReactNode;
 }
@@ -55,6 +55,13 @@ const ACCENT_MAP = {
     line: 'from-transparent via-red-500 to-transparent',
     bgDark: 'bg-red-950/20',
     bgLight: 'bg-red-50/60',
+  },
+  amber: {
+    dark: 'from-amber-600/15 via-transparent to-yellow-600/10',
+    light: 'from-amber-100/80 via-transparent to-yellow-100/60',
+    line: 'from-transparent via-amber-500 to-transparent',
+    bgDark: 'bg-amber-950/20',
+    bgLight: 'bg-amber-50/60',
   },
 };
 

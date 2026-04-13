@@ -220,23 +220,23 @@ export default function InstantCheck() {
         <div className="relative rounded-3xl overflow-hidden"
           style={{ background: isDark ? 'rgba(17,24,39,0.95)' : 'rgba(255,255,255,0.97)' }}
         >
-          <div className="px-6 py-8 sm:px-10 sm:py-10">
+          <div className="px-5 py-6 sm:px-8 sm:py-7">
             {/* ── Header ─────────────────────────────────────────── */}
-            <div className="text-center mb-8">
-              <h2 className={`text-2xl sm:text-3xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <div className="text-center mb-4">
+              <h2 className={`text-xl sm:text-2xl font-bold mb-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 What can your PC run?
               </h2>
-              <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+              <p className={`text-xs ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                 Instant results · No signup · 100% private
               </p>
             </div>
 
             {/* ── GPU selector ────────────────────────────────────── */}
-            <div className="mb-8" ref={dropdownRef}>
+            <div className="mb-4" ref={dropdownRef}>
               <div className="relative">
                 <button
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className={`w-full flex items-center justify-between px-5 py-4 rounded-xl text-left transition-all duration-200 ${
+                  className={`w-full flex items-center justify-between px-4 py-3 rounded-xl text-left transition-all duration-200 ${
                     isDark
                       ? 'bg-gray-800 hover:bg-gray-750 border border-gray-700 text-white'
                       : 'bg-gray-50 hover:bg-gray-100 border border-gray-200 text-gray-900'
@@ -338,7 +338,7 @@ export default function InstantCheck() {
 
             {/* ── GPU Ranking badge ────────────────────────────────── */}
             {gpuRank && selectedGpu && (
-              <div className={`flex justify-center mb-6 transition-all duration-500 ${hasResults ? 'opacity-100' : 'opacity-0'}`}>
+              <div className={`flex justify-center mb-3 transition-all duration-500 ${hasResults ? 'opacity-100' : 'opacity-0'}`}>
                 <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium ${
                   gpuRank.rank <= 10
                     ? isDark ? 'bg-yellow-500/15 text-yellow-300 border border-yellow-500/30' : 'bg-yellow-50 text-yellow-700 border border-yellow-200'
@@ -356,15 +356,15 @@ export default function InstantCheck() {
 
             {/* ── Results grid ─────────────────────────────────────── */}
             {dataLoading ? (
-              <div className="text-center py-8">
-                <div className={`inline-block w-6 h-6 border-2 border-t-transparent rounded-full animate-spin ${isDark ? 'border-blue-400' : 'border-blue-500'}`} />
+              <div className="text-center py-5">
+                <div className={`inline-block w-5 h-5 border-2 border-t-transparent rounded-full animate-spin ${isDark ? 'border-blue-400' : 'border-blue-500'}`} />
               </div>
             ) : !selectedGpu ? (
-              <div className={`text-center py-12 text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+              <div className={`text-center py-7 text-sm ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
                 Select your GPU to see what you can run
               </div>
             ) : hasResults ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3">
                 {USE_CASES.map(uc => {
                   const result = useCaseResults.get(uc.id);
                   if (!result) return null;
@@ -390,15 +390,15 @@ export default function InstantCheck() {
                   return (
                     <div
                       key={uc.id}
-                      className={`group relative rounded-xl p-4 transition-all duration-200 cursor-default ${
+                      className={`group relative rounded-xl p-3 transition-all duration-200 cursor-default ${
                         isDark
                           ? 'bg-gray-800/60 hover:bg-gray-800 border border-gray-700/50 hover:border-gray-600'
                           : 'bg-gray-50/80 hover:bg-white border border-gray-200/80 hover:border-gray-300 hover:shadow-md'
                       }`}
                     >
                       {/* Use case label */}
-                      <div className="flex items-center gap-2 mb-3">
-                        <span className="text-base">{uc.icon}</span>
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <span className="text-sm">{uc.icon}</span>
                         <span className={`text-xs font-semibold uppercase tracking-wider ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                           {uc.label}
                         </span>
@@ -410,18 +410,18 @@ export default function InstantCheck() {
                       </div>
 
                       {/* Quant + params */}
-                      <div className={`text-xs mb-2 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                      <div className={`text-xs mb-1.5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
                         {result.model.params_b}B · {result.quant.level}
                       </div>
 
                       {/* Speed */}
-                      <div className={`text-lg font-bold ${speedColors[speedTier]}`}>
+                      <div className={`text-base font-bold ${speedColors[speedTier]}`}>
                         {speedLabel}
                       </div>
 
                       {/* VRAM bar */}
-                      <div className="mt-2">
-                        <div className={`h-1.5 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                      <div className="mt-1.5">
+                        <div className={`h-1 rounded-full overflow-hidden ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
                           <div
                             className={`h-full rounded-full transition-all duration-700 ${
                               vramPct > 90
@@ -433,7 +433,7 @@ export default function InstantCheck() {
                             style={{ width: `${Math.min(vramPct, 100)}%` }}
                           />
                         </div>
-                        <div className={`flex justify-between mt-1 text-[10px] ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
+                        <div className={`flex justify-between mt-0.5 text-[10px] ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
                           <span>{isGpuFull ? 'Fits in VRAM' : result.inferenceMode === 'gpu_offload' ? 'Partial offload' : 'CPU only'}</span>
                           <span>{Math.round(vramPct)}%</span>
                         </div>
@@ -446,7 +446,7 @@ export default function InstantCheck() {
 
             {/* ── Action row ──────────────────────────────────────── */}
             {hasResults && selectedGpu && (
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <div className="mt-5 flex flex-col sm:flex-row items-center justify-center gap-3">
                 {/* Copy share text */}
                 <button
                   onClick={handleCopy}

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback } from 'react';
 import { useTheme } from './ThemeProvider';
 
-type AccentColor = 'blue' | 'orange' | 'green' | 'purple' | 'indigo' | 'red';
+type AccentColor = 'blue' | 'orange' | 'green' | 'purple' | 'indigo' | 'red' | 'amber';
 
 interface MeshGradientProps {
   /** Accent tint for blobs. Defaults to 'blue'. */
@@ -20,6 +20,7 @@ const ACCENT_COLORS: Record<AccentColor, [number, number, number][]> = {
   purple: [[168,85,247], [139,92,246], [192,38,211], [124,58,237]],
   indigo: [[99,102,241], [129,140,248],[79,70,229],  [139,92,246]],
   red:    [[239,68,68],  [244,63,94],  [220,38,38],  [248,113,113]],
+  amber:  [[245,158,11], [251,191,36], [217,119,6],  [252,211,77]],
 };
 
 /**

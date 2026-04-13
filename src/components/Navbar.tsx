@@ -20,6 +20,7 @@ export default function Navbar() {
     { label: 'GPU Prices', href: '/gpu-prices' },
     { label: 'Enterprise', href: '/enterprise' },
     { label: 'Methodology', href: '/methodology' },
+    { label: 'Blog', href: '/blog' },
     { label: 'FAQ', href: '/faq' },
     { label: 'About', href: '/about' },
   ];
