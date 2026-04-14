@@ -30,7 +30,7 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
         {/* Hero Section */}
         <section className={`relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
           {/* Gradient Background */}
-          <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10' : 'bg-gradient-to-br from-blue-100/50 via-transparent to-purple-100/50'}`} />
+          <div className={`absolute inset-0 pointer-events-none ${isDark ? 'bg-gradient-to-br from-blue-600/10 via-transparent to-purple-600/10' : 'bg-gradient-to-br from-blue-100/50 via-transparent to-purple-100/50'}`} />
           {/* Animated Mesh Gradient Background */}
           <MeshGradient />
 

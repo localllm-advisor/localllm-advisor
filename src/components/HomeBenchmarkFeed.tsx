@@ -60,7 +60,7 @@ export default function HomeBenchmarkFeed() {
 
   return (
     <section
-      className={`mx-auto max-w-3xl w-full px-4 pb-16 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
+      className={`relative mx-auto max-w-3xl w-full px-4 pb-16 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
@@ -69,7 +69,7 @@ export default function HomeBenchmarkFeed() {
             🔥 Live Community Benchmarks
           </h2>
           <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-            Real tok/s numbers submitted by users — most recent first
+            Real tok/s numbers submitted by users, most recent first
           </p>
         </div>
         <Link
@@ -183,11 +183,13 @@ export default function HomeBenchmarkFeed() {
       </div>
 
       {/* CTA */}
-      <div className="mt-3 text-center">
+      <div className="mt-4 text-center">
         <Link
           href="/benchmarks"
-          className={`inline-flex items-center gap-1.5 text-xs font-medium transition-colors ${
-            isDark ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'
+          className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-medium transition-colors ${
+            isDark
+              ? 'bg-blue-600/20 text-blue-300 border border-blue-500/30 hover:bg-blue-600/30 hover:border-blue-400/50'
+              : 'bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 hover:border-blue-300'
           }`}
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
