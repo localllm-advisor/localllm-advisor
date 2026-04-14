@@ -23,7 +23,7 @@ const POSTS: BlogPost[] = [
     date: 'April 2026',
     description:
       'How a weekend project to stop juggling GPU specs, model cards, and Reddit threads turned into a physics-based recommendation engine for local LLM inference.',
-    readingTime: '8 min read',
+    readingTime: '7 min read',
     tag: 'Founder Story',
   },
 ];
