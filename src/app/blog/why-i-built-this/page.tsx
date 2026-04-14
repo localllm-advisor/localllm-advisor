@@ -63,8 +63,8 @@ export default function WhyIBuiltThisPage() {
             <p className="text-[1.06rem] leading-[1.75] mb-5">
               The information was out there, but it lived in six or seven different places that don&apos;t
               talk to each other. I&apos;d check a model card on HuggingFace for the parameter count, then
-              cross-reference the GGUF quantizations available from bartowski or unsloth, then look up my
-              GPU&apos;s memory bandwidth on TechPowerUp, then search r/LocalLLaMA for tok/s reports from
+              cross-reference the GGUF quantizations available from <a href="https://huggingface.co/bartowski" className={link} target="_blank" rel="noopener noreferrer">bartowski</a> or <a href="https://huggingface.co/unsloth" className={link} target="_blank" rel="noopener noreferrer">unsloth</a>, then look up my
+              GPU&apos;s memory bandwidth on <a href="https://www.techpowerup.com/gpu-specs/" className={link} target="_blank" rel="noopener noreferrer">TechPowerUp</a>, then search <a href="https://www.reddit.com/r/LocalLLaMA/" className={link} target="_blank" rel="noopener noreferrer">r/LocalLLaMA</a> for tok/s reports from
               someone with similar hardware, then check if the VRAM footprint left enough headroom for a
               reasonable context window. Halfway through, a new quantization variant would show up and
               I&apos;d start over.
@@ -88,16 +88,16 @@ export default function WhyIBuiltThisPage() {
               developers and researchers do routinely. The reasons are well-documented: privacy, latency,
               cost control over time, and not being dependent on an API that can change pricing or terms
               of service at any time. The tooling on the inference side has gotten remarkably good:
-              llama.cpp, Ollama, vLLM, and others have made the actual &ldquo;run the model&rdquo; part
+              <a href="https://github.com/ggerganov/llama.cpp" className={link} target="_blank" rel="noopener noreferrer">llama.cpp</a>, Ollama, vLLM, and others have made the actual &ldquo;run the model&rdquo; part
               mostly painless.
             </p>
           </Reveal>
 
           <Reveal delay={160}>
             <p className="text-[1.06rem] leading-[1.75] mb-5">
-              But the decision that comes <em>before</em> inference — which model, at which quantization,
-              on which hardware, and what performance to expect — hasn&apos;t been solved in a centralized
-              way. New models appear on HuggingFace weekly. GPU product lines keep branching. Quantization
+              But the decision that comes <em>before</em> inference: which model to use, at which
+              quantization level, on which hardware, and what performance to expect. None of that has been
+              solved in a centralized way. New models appear on HuggingFace weekly. GPU product lines keep branching. Quantization
               methods evolve (GGUF alone has gone through multiple format revisions). The matrix of possible
               combinations grows faster than any single source can keep up with, and the existing resources
               each cover only one slice of it.
@@ -110,11 +110,16 @@ export default function WhyIBuiltThisPage() {
           </Reveal>
 
           <Reveal delay={200}>
-            <p className="text-[1.06rem] leading-[1.75] mb-5">
+            <p className="text-[1.06rem] leading-[1.75] mb-3">
               <Link href="https://localllm-advisor.com" className={link}>LocalLLM Advisor</Link> is a web
-              tool that answers two questions: &ldquo;given my hardware, what&apos;s the best model I can
-              run?&rdquo; and &ldquo;given a model I want to run, what hardware do I need?&rdquo; It
-              currently covers 1.4k+ models across dense and MoE architectures, 206 GPUs (NVIDIA, AMD,
+              tool that answers two questions:
+            </p>
+            <ul className={`list-disc list-outside ml-6 mb-4 space-y-1 text-[1.06rem] leading-[1.75] ${prose}`}>
+              <li>&ldquo;Given my hardware, what is the best model I can run?&rdquo;</li>
+              <li>&ldquo;Given a model I want to run, what hardware do I need?&rdquo;</li>
+            </ul>
+            <p className="text-[1.06rem] leading-[1.75] mb-5">
+              It currently covers 1.4k+ models across dense and MoE architectures, 206 GPUs (NVIDIA, AMD,
               Intel Arc, Apple Silicon), and 78 CPUs.
             </p>
           </Reveal>
@@ -125,7 +130,7 @@ export default function WhyIBuiltThisPage() {
               WebGPU, or selected manually) and a use case - chat, coding, reasoning, vision, roleplay,
               embedding - and returns a ranked list of models that fit. Each result shows the quantization
               level, estimated VRAM usage, estimated tok/s, and a ready-to-paste Ollama command. The
-              ranking weighs model quality (from the Open LLM Leaderboard: MMLU-PRO, HumanEval, MATH,
+              ranking weighs model quality (from the <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard" className={link} target="_blank" rel="noopener noreferrer">Open LLM Leaderboard</a>: MMLU-PRO, HumanEval, MATH,
               IFEval, and others), predicted speed, and quantization quality, with different weights
               depending on the use case. Coding leans harder on HumanEval and BigCodeBench scores; roleplay
               prioritizes instruction following and generation speed.
@@ -187,7 +192,7 @@ export default function WhyIBuiltThisPage() {
             <p className="text-[1.06rem] leading-[1.75] mb-5">
               This is the same relationship the llama.cpp community uses as a rule of thumb, and it holds
               up well in practice. It&apos;s why the RTX 4090 and RTX 3090 end up with similar LLM
-              performance despite the 4090 having far more compute — their memory bandwidth is in the same
+              performance despite the 4090 having far more compute; their memory bandwidth is in the same
               ballpark (1,008 GB/s vs. 936 GB/s).
             </p>
           </Reveal>
@@ -236,7 +241,7 @@ export default function WhyIBuiltThisPage() {
               directly from system RAM (the bottleneck is RAM bandwidth, not PCIe), while PCIe only carries
               the small activation vectors between layer groups, adding roughly 0.1–0.2 ms of overhead per
               token. This sequential nature is why even offloading 20% of layers to RAM tanks your
-              throughput — system RAM offers 40–80 GB/s of effective bandwidth versus hundreds of GB/s on
+              throughput: system RAM offers 40–80 GB/s of effective bandwidth versus hundreds of GB/s on
               the GPU side.
             </p>
           </Reveal>
@@ -260,8 +265,7 @@ export default function WhyIBuiltThisPage() {
             <p className="text-[1.06rem] leading-[1.75] mb-5">
               The entire recommendation engine runs in your browser. No server calls for the main flow,
               no account required, no telemetry. The model and GPU databases are bundled as static JSON
-              files in the build (about 1.7 MB total). Supabase powers only the community features —
-              benchmarks, reviews, price alerts — where a database is actually necessary.
+              files in the build (about 1.7 MB total). Supabase powers only the community features (benchmarks, reviews, price alerts) where a database is actually necessary.
             </p>
           </Reveal>
 
