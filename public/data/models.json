@@ -65000,7 +65000,7 @@
     "release_date": "2025-01-17",
     "hf_id": "HuggingFaceTB/SmolVLM-256M-Instruct",
     "provider": "HuggingFace",
-    "hf_downloads": 319262,
+    "hf_downloads": 324900,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -86503,6 +86503,117 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 14600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "fuzzy-llm",
+    "name": "fuzzy-llm",
+    "family": "fuzzy",
+    "params_b": 1.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-03-15",
+    "hf_id": "jkralev/fuzzy-llm",
+    "provider": "jkralev",
+    "hf_downloads": 1829,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 619,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 894,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qianfanocr",
+    "name": "QianfanOCR",
+    "family": "qianfanocr",
+    "params_b": 4.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-04-02",
+    "hf_id": "bairongz/QianfanOCR",
+    "provider": "bairongz",
+    "hf_downloads": 582,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2644,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3819,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 9400,
         "quality": 1.0
       }
     ],
