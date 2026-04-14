@@ -87,8 +87,8 @@ export default function WhyIBuiltThisPage() {
               Running models locally has gone from a niche hobby to something a significant chunk of
               developers and researchers do routinely. The reasons are well-documented: privacy, latency,
               cost control over time, and not being dependent on an API that can change pricing or terms
-              of service at any time. The tooling on the inference side has gotten remarkably good:
-              <a href="https://github.com/ggerganov/llama.cpp" className={link} target="_blank" rel="noopener noreferrer">llama.cpp</a>, Ollama, vLLM, and others have made the actual &ldquo;run the model&rdquo; part
+              of service at any time. The tooling on the inference side has gotten remarkably good: <a href="https://github.com/ggerganov/llama.cpp" className={link} target="_blank" rel="noopener noreferrer">llama.cpp</a>, 
+              Ollama, vLLM, and others have made the actual &ldquo;run the model&rdquo; part
               mostly painless.
             </p>
           </Reveal>
