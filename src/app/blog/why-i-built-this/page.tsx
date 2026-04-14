@@ -95,8 +95,8 @@ export default function WhyIBuiltThisPage() {
 
           <Reveal delay={160}>
             <p className="text-[1.06rem] leading-[1.75] mb-5">
-              But the decision that comes <em>before</em> inference: which model to use, at which
-              quantization level, on which hardware, and what performance to expect. None of that has been
+              But the decision that comes <em>before</em> inference, i.e., which model to use, at which
+              quantization level, on which hardware, and what performance to expect, none of that has been
               solved in a centralized way. New models appear on HuggingFace weekly. GPU product lines keep branching. Quantization
               methods evolve (GGUF alone has gone through multiple format revisions). The matrix of possible
               combinations grows faster than any single source can keep up with, and the existing resources
