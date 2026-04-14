@@ -139,6 +139,17 @@
 
     .cta-box a:hover { background: #15803d; }
 
+    ul {
+      margin: 12px 0 18px 1.2em;
+      padding: 0;
+    }
+
+    ul li {
+      margin-bottom: 6px;
+      font-size: 1.06rem;
+      line-height: 1.6;
+    }
+
     hr {
       border: none;
       border-top: 1px solid var(--border);
@@ -163,7 +174,7 @@
     </p>
 
     <p>
-      The information was out there, but it lived in six or seven different places that don't talk to each other. I'd check a model card on HuggingFace for the parameter count, then cross-reference the GGUF quantizations available from bartowski or unsloth, then look up my GPU's memory bandwidth on TechPowerUp, then search r/LocalLLaMA for tok/s reports from someone with similar hardware, then check if the VRAM footprint left enough headroom for a reasonable context window. Halfway through, a new quantization variant would show up and I'd start over.
+      The information was out there, but it lived in six or seven different places that don't talk to each other. I'd check a model card on HuggingFace for the parameter count, then cross-reference the GGUF quantizations available from <a href="https://huggingface.co/bartowski">bartowski</a> or <a href="https://huggingface.co/unsloth">unsloth</a>, then look up my GPU's memory bandwidth on <a href="https://www.techpowerup.com/gpu-specs/">TechPowerUp</a>, then search <a href="https://www.reddit.com/r/LocalLLaMA/">r/LocalLLaMA</a> for tok/s reports from someone with similar hardware, then check if the VRAM footprint left enough headroom for a reasonable context window. Halfway through, a new quantization variant would show up and I'd start over.
     </p>
 
     <p>
@@ -173,21 +184,28 @@
     <h2>Why this keeps getting harder</h2>
 
     <p>
-      Running models locally has gone from a niche hobby to something a significant chunk of developers and researchers do routinely. The reasons are well-documented: privacy, latency, cost control over time, and not being dependent on an API that can change pricing or terms of service without notice. The tooling on the inference side has gotten remarkably good — llama.cpp, Ollama, vLLM, and others have made the actual "run the model" part mostly painless.
+      Running models locally has gone from a niche hobby to something a significant chunk of developers and researchers do routinely. The reasons are well-documented: privacy, latency, cost control over time, and not being dependent on an API that can change pricing or terms of service without notice. The tooling on the inference side has gotten remarkably good: <a href="https://github.com/ggerganov/llama.cpp">llama.cpp</a>, Ollama, vLLM, and others have made the actual "run the model" part mostly painless.
     </p>
 
     <p>
-      But the decision that comes <em>before</em> inference — which model, at which quantization, on which hardware, and what performance to expect — hasn't been solved in a centralized way. New models appear on HuggingFace weekly. GPU product lines keep branching. Quantization methods evolve (GGUF alone has gone through multiple format revisions). The matrix of possible combinations grows faster than any single source can keep up with, and the existing resources each cover only one slice of it.
+      But the decision that comes <em>before</em> inference: which model to use, at which quantization level, on which hardware, and what performance to expect. None of that has been solved in a centralized way. New models appear on HuggingFace weekly. GPU product lines keep branching. Quantization methods evolve (GGUF alone has gone through multiple format revisions). The matrix of possible combinations grows faster than any single source can keep up with, and the existing resources each cover only one slice of it.
     </p>
 
     <h2>What I ended up building</h2>
 
     <p>
-      <a href="https://localllm-advisor.com">LocalLLM Advisor</a> is a web tool that answers two questions: "given my hardware, what's the best model I can run?" and "given a model I want to run, what hardware do I need?" It currently covers 1,4k+ models across dense and MoE architectures, 206 GPUs (NVIDIA, AMD, Intel Arc, Apple Silicon), and 78 CPUs.
+      <a href="https://localllm-advisor.com">LocalLLM Advisor</a> is a web tool that answers two questions:
+    </p>
+    <ul>
+      <li>"Given my hardware, what is the best model I can run?"</li>
+      <li>"Given a model I want to run, what hardware do I need?"</li>
+    </ul>
+    <p>
+      It currently covers 1,4k+ models across dense and MoE architectures, 206 GPUs (NVIDIA, AMD, Intel Arc, Apple Silicon), and 78 CPUs.
     </p>
 
     <p>
-      The <strong>Model Finder</strong> takes your GPU (auto-detected via WebGPU, or selected manually) and a use case — chat, coding, reasoning, vision, roleplay, embedding — and returns a ranked list of models that fit. Each result shows the quantization level, estimated VRAM usage, estimated tok/s, and a ready-to-paste Ollama command. The ranking weighs model quality (from the Open LLM Leaderboard: MMLU-PRO, HumanEval, MATH, IFEval, and others), predicted speed, and quantization quality, with different weights depending on the use case. Coding, for example, leans harder on HumanEval and BigCodeBench scores; roleplay prioritizes instruction following and generation speed.
+      The <strong>Model Finder</strong> takes your GPU (auto-detected via WebGPU, or selected manually) and a use case (chat, coding, reasoning, vision, roleplay, embedding) and returns a ranked list of models that fit. Each result shows the quantization level, estimated VRAM usage, estimated tok/s, and a ready-to-paste Ollama command. The ranking weighs model quality (from the <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard">Open LLM Leaderboard</a>: MMLU-PRO, HumanEval, MATH, IFEval, and others), predicted speed, and quantization quality, with different weights depending on the use case. Coding, for example, leans harder on HumanEval and BigCodeBench scores; roleplay prioritizes instruction following and generation speed.
     </p>
 
     <p>
@@ -195,7 +213,7 @@
     </p>
 
     <p>
-      There's also a <strong>community benchmarks</strong> section where people submit real tok/s numbers from their own hardware, and a <strong>GPU price tracker</strong> with 30-day price trends and alerts. The benchmarks section is still early — I'd like a lot more data points, especially on mid-range cards.
+      There's also a <strong>community benchmarks</strong> section where people submit real tok/s numbers from their own hardware, and a <strong>GPU price tracker</strong> with 30-day price trends and alerts. The benchmarks section is still early; I'd like a lot more data points, especially on mid-range cards.
     </p>
 
     <h2>How the estimation actually works</h2>
@@ -211,11 +229,11 @@
     </p>
 
     <p>
-      This is the same relationship the llama.cpp community uses as a rule of thumb, and it holds up well in practice. It's why the RTX 4090 and RTX 3090 end up with similar LLM performance despite the 4090 having far more compute — their memory bandwidth is in the same ballpark (1,008 GB/s vs. 936 GB/s).
+      This is the same relationship the llama.cpp community uses as a rule of thumb, and it holds up well in practice. It's why the RTX 4090 and RTX 3090 end up with similar LLM performance despite the 4090 having far more compute; their memory bandwidth is in the same ballpark (1,008 GB/s vs. 936 GB/s).
     </p>
 
     <p>
-      Things get more interesting with MoE models. DeepSeek R1, for instance, has 671 billion total parameters but only activates about 37 billion per token. You need VRAM for all 671B (every expert must be loaded because any could be activated), but the per-token read is only 37B worth of weights. So the VRAM requirement is massive, while the per-token speed is comparable to a 37B dense model. Getting this distinction wrong — and a lot of resources do — gives you either wildly pessimistic speed estimates or wildly optimistic VRAM estimates.
+      Things get more interesting with MoE models. DeepSeek R1, for instance, has 671 billion total parameters but only activates about 37 billion per token. You need VRAM for all 671B (every expert must be loaded because any could be activated), but the per-token read is only 37B worth of weights. So the VRAM requirement is massive, while the per-token speed is comparable to a 37B dense model. Getting this distinction wrong (and a lot of resources do) gives you either wildly pessimistic speed estimates or wildly optimistic VRAM estimates.
     </p>
 
     <p>
@@ -229,7 +247,7 @@
     </p>
 
     <p>
-      For GPU+RAM offload scenarios, the model is split across GPU and CPU layers that process sequentially. The total time per token is the sum of both, not an average. CPU layers read directly from system RAM (the bottleneck is RAM bandwidth, not PCIe), while PCIe only carries the small activation vectors between layer groups, adding roughly 0.1–0.2 ms of overhead per token. This sequential nature is why even offloading 20% of layers to RAM tanks your throughput — system RAM offers 40–80 GB/s of effective bandwidth versus hundreds of GB/s on the GPU side.
+      For GPU+RAM offload scenarios, the model is split across GPU and CPU layers that process sequentially. The total time per token is the sum of both, not an average. CPU layers read directly from system RAM (the bottleneck is RAM bandwidth, not PCIe), while PCIe only carries the small activation vectors between layer groups, adding roughly 0.1–0.2 ms of overhead per token. This sequential nature is why even offloading 20% of layers to RAM tanks your throughput: system RAM offers 40–80 GB/s of effective bandwidth versus hundreds of GB/s on the GPU side.
     </p>
 
     <p>
@@ -239,7 +257,7 @@
     <h2>What runs client-side and why</h2>
 
     <p>
-      The entire recommendation engine runs in your browser. No server calls for the main flow, no account required, no telemetry. The model and GPU databases are bundled as static JSON files in the build (about 1.7 MB total). Supabase powers only the community features — benchmarks, reviews, price alerts — where a database is actually necessary.
+      The entire recommendation engine runs in your browser. No server calls for the main flow, no account required, no telemetry. The model and GPU databases are bundled as static JSON files in the build (about 1.7 MB total). Supabase powers only the community features (benchmarks, reviews, price alerts) where a database is actually necessary.
     </p>
 
     <p>

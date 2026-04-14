@@ -24,8 +24,7 @@ export default function WhyIBuiltThisPage() {
       <Navbar />
 
       <PageHero
-        title="Which LLM can your GPU actually run, and what GPU do you need for a given model? 
-        A bandwidth-based estimator to answer both."
+        title="Which LLM can your GPU actually run, and what GPU do you need for a given model?"
         subtitle="April 2026 · by ok_computer · 7 min read"
         accent="amber"
       />
@@ -88,7 +87,7 @@ export default function WhyIBuiltThisPage() {
               Running models locally has gone from a niche hobby to something a significant chunk of
               developers and researchers do routinely. The reasons are well-documented: privacy, latency,
               cost control over time, and not being dependent on an API that can change pricing or terms
-              of service without notice. The tooling on the inference side has gotten remarkably good:
+              of service at any time. The tooling on the inference side has gotten remarkably good:
               llama.cpp, Ollama, vLLM, and others have made the actual &ldquo;run the model&rdquo; part
               mostly painless.
             </p>
@@ -149,7 +148,7 @@ export default function WhyIBuiltThisPage() {
               There&apos;s also a <strong className={strong}>community benchmarks</strong> section where
               people submit real tok/s numbers from their own hardware, and a{' '}
               <strong className={strong}>GPU price tracker</strong> with 30-day price trends and alerts.
-              The benchmarks section is still early, I&apos;d like a lot more data points, especially
+              The benchmarks section is still in early stages, I&apos;d like a lot more data points, especially
               on mid-range cards.
             </p>
           </Reveal>
