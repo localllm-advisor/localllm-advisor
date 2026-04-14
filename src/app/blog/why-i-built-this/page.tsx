@@ -24,8 +24,9 @@ export default function WhyIBuiltThisPage() {
       <Navbar />
 
       <PageHero
-        title="I spent too many tabs figuring out which LLM my GPU could run, so I built a tool to answer it"
-        subtitle="April 2026 · by ok_computer · 8 min read"
+        title="Which LLM can your GPU actually run, and what GPU do you need for a given model? 
+        A bandwidth-based estimator to answer both."
+        subtitle="April 2026 · by ok_computer · 7 min read"
         accent="amber"
       />
 
@@ -87,7 +88,7 @@ export default function WhyIBuiltThisPage() {
               Running models locally has gone from a niche hobby to something a significant chunk of
               developers and researchers do routinely. The reasons are well-documented: privacy, latency,
               cost control over time, and not being dependent on an API that can change pricing or terms
-              of service without notice. The tooling on the inference side has gotten remarkably good —
+              of service without notice. The tooling on the inference side has gotten remarkably good:
               llama.cpp, Ollama, vLLM, and others have made the actual &ldquo;run the model&rdquo; part
               mostly painless.
             </p>
@@ -122,8 +123,8 @@ export default function WhyIBuiltThisPage() {
           <Reveal delay={210}>
             <p className="text-[1.06rem] leading-[1.75] mb-5">
               The <strong className={strong}>Model Finder</strong> takes your GPU (auto-detected via
-              WebGPU, or selected manually) and a use case — chat, coding, reasoning, vision, roleplay,
-              embedding — and returns a ranked list of models that fit. Each result shows the quantization
+              WebGPU, or selected manually) and a use case - chat, coding, reasoning, vision, roleplay,
+              embedding - and returns a ranked list of models that fit. Each result shows the quantization
               level, estimated VRAM usage, estimated tok/s, and a ready-to-paste Ollama command. The
               ranking weighs model quality (from the Open LLM Leaderboard: MMLU-PRO, HumanEval, MATH,
               IFEval, and others), predicted speed, and quantization quality, with different weights
@@ -148,7 +149,7 @@ export default function WhyIBuiltThisPage() {
               There&apos;s also a <strong className={strong}>community benchmarks</strong> section where
               people submit real tok/s numbers from their own hardware, and a{' '}
               <strong className={strong}>GPU price tracker</strong> with 30-day price trends and alerts.
-              The benchmarks section is still early — I&apos;d like a lot more data points, especially
+              The benchmarks section is still early, I&apos;d like a lot more data points, especially
               on mid-range cards.
             </p>
           </Reveal>
@@ -198,8 +199,8 @@ export default function WhyIBuiltThisPage() {
               total parameters but only activates about 37 billion per token. You need VRAM for all 671B
               (every expert must be loaded because any could be activated), but the per-token read is only
               37B worth of weights. So the VRAM requirement is massive, while the per-token speed is
-              comparable to a 37B dense model. Getting this distinction wrong — and a lot of resources do
-              — gives you either wildly pessimistic speed estimates or wildly optimistic VRAM estimates.
+              comparable to a 37B dense model. Getting this distinction wrong, and a lot of resources do,
+              gives you either wildly pessimistic speed estimates or wildly optimistic VRAM estimates.
             </p>
           </Reveal>
 

@@ -19,7 +19,7 @@ interface BlogPost {
 const POSTS: BlogPost[] = [
   {
     slug: 'why-i-built-this',
-    title: 'I spent too many tabs figuring out which LLM my GPU could run, so I built a tool to answer it',
+    title: 'Which LLM can your GPU actually run, and what GPU do you need for a given model? A bandwidth-based estimator to answer both.',
     date: 'April 2026',
     description:
       'How a weekend project to stop juggling GPU specs, model cards, and Reddit threads turned into a physics-based recommendation engine for local LLM inference.',
@@ -37,7 +37,7 @@ export default function BlogPage() {
       <Navbar />
       <PageHero
         title="Blog"
-        subtitle="Notes on local AI, hardware, and building in public."
+        subtitle="Notes on local AI, hardware, and tech news."
         accent="amber"
       />
 

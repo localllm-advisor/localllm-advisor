@@ -175,12 +175,15 @@ export default function MeshGradient({ accent = 'blue', warpStrength = 1 }: Mesh
     resize();
     draw();
 
-    const handleResize = () => resize();
-    window.addEventListener('resize', handleResize);
+    // ResizeObserver keeps the pixel buffer in sync whenever the canvas
+    // CSS size changes (e.g. when HomeBenchmarkFeed loads its rows and
+    // the parent section grows). This is more reliable than window.resize.
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(canvas);
 
     return () => {
       cancelAnimationFrame(animId);
-      window.removeEventListener('resize', handleResize);
+      ro.disconnect();
       if (parent) {
         parent.removeEventListener('mousemove', handleMouseMove);
         parent.removeEventListener('mouseleave', handleMouseLeave);

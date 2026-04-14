@@ -190,11 +190,12 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
 
             </div>
           </div>
+
+          {/* Live community benchmark feed — inside hero so MeshGradient shows through */}
+          <HomeBenchmarkFeed />
+
         </section>
       </main>
-
-      {/* Live community benchmark feed */}
-      <HomeBenchmarkFeed />
 
       {/* Footer with Newsletter Banner */}
       <SiteFooter />
