@@ -56,7 +56,7 @@ export default function AboutPage() {
             <section>
               <h2 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>Ethical AI by Design</h2>
               <p>
-                Running AI locally is not just a technical decision, it's an ethical one. The mainstream
+                Running AI locally is not just a technical decision, it is an ethical one. The mainstream
                 narrative around AI has largely normalised the idea that to use capable AI tools, you must
                 hand over your data to a third party. We think that trade-off is neither necessary nor
                 acceptable as a default.
