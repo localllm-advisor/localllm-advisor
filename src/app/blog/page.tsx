@@ -19,10 +19,10 @@ interface BlogPost {
 const POSTS: BlogPost[] = [
   {
     slug: 'why-i-built-this',
-    title: 'Which LLM can your GPU actually run, and what GPU do you need for a given model? A bandwidth-based estimator to answer both.',
+    title: 'Mapping GPUs to LLMs (and back): A bandwidth-based estimator for local inference',
     date: 'April 2026',
     description:
-      'How a weekend project to stop juggling GPU specs, model cards, and Reddit threads turned into a physics-based recommendation engine for local LLM inference.',
+      'How a weekend project to stop juggling GPU specs, model cards, and Reddit threads turned into a physics-based recommendation engine.',
     readingTime: '7 min read',
     tag: 'Founder Story',
   },

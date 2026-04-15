@@ -24,7 +24,7 @@ export default function WhyIBuiltThisPage() {
       <Navbar />
 
       <PageHero
-        title="Which LLM can your GPU actually run, and what GPU do you need for a given model?"
+        title="Mapping GPUs to LLMs (and back): A bandwidth-based estimator for local inference"
         subtitle="April 2026 · by ok_computer · 7 min read"
         accent="amber"
       />
