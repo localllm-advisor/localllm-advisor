@@ -35,7 +35,7 @@ export default function MethodologyPage() {
       <main className="flex-1 mx-auto max-w-3xl px-4 py-12">
         <div className={`space-y-10 ${prose}`}>
 
-          {/* Quick FAQ — answers the top-2 questions people ask immediately */}
+          {/* Quick FAQ: answers the top-2 questions people ask immediately */}
           <Reveal delay={0}>
             <section className={`rounded-2xl border-2 p-6 ${isDark ? 'border-green-600/40 bg-green-950/30' : 'border-green-200 bg-green-50'}`}>
               <h2 className={`text-xl font-bold mb-4 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -68,7 +68,7 @@ export default function MethodologyPage() {
                     >
                       Open LLM Leaderboard
                     </a>{' '}
-                    — those are real, reproducible benchmark runs.
+                    ; these are real, reproducible benchmark runs.
                     Speed estimates are <strong className={strong}>physics-based heuristics</strong> derived from GPU spec sheets (memory bandwidth, TFLOPS).
                     They are not measured on-device, but the underlying formula is the same one used by llama.cpp and the LLM community.
                     Want verified numbers? Submit your own results via the{' '}
@@ -123,14 +123,14 @@ export default function MethodologyPage() {
             </div>
             <p className="mb-3">
               The base multiplier of 128 MB per 1K tokens corresponds to a 7B GQA model at FP16 (verified: 32 layers × 8 KV heads × 128 head_dim × 2 bytes × 2 tensors = 128 KB/token = 128 MB/1K).
-              The 0.4 exponent reflects that layer count grows slower than parameter count — larger models widen their hidden dimensions rather than just stacking more layers — while GQA keeps KV heads fixed.
+              The 0.4 exponent reflects that layer count grows slower than parameter count: larger models widen their hidden dimensions rather than just stacking more layers, while GQA keeps KV heads fixed.
               This fits measured values to within 5% for 7B–70B models.
             </p>
             <div className={`${cardBg} rounded-lg p-4`}>
               <h4 className={`${strong} font-medium mb-2`}>Why context length matters for VRAM</h4>
               <p className="text-sm mb-2">
                 KV cache can become the dominant memory consumer at long context lengths.
-                A 70B model at 128K context needs approximately 40 GB of additional KV cache alone — comparable to the model weights at Q4 quantization (~40 GB).
+                A 70B model at 128K context needs approximately 40 GB of additional KV cache alone, comparable to the model weights at Q4 quantization (~40 GB).
                 This is why a model that fits in VRAM at 4K context may not fit at 32K or 128K, even when the base model size is well within the GPU&apos;s capacity.
               </p>
               <p className="text-sm">
@@ -256,7 +256,7 @@ export default function MethodologyPage() {
               <h4 className={`${strong} font-medium mb-2`}>Why bandwidth matters more than compute</h4>
               <p className="text-sm">
                 During generation, each token requires reading the active model weights (and KV cache) from memory.
-                Modern GPUs have far more compute power than needed — the bottleneck is how fast you can
+                Modern GPUs have far more compute power than needed; the bottleneck is how fast you can
                 feed data to the cores. This is why the RTX 4090 and RTX 3090 have similar LLM performance
                 despite the 4090 having much more compute: their memory bandwidth is comparable.
               </p>
@@ -270,8 +270,8 @@ export default function MethodologyPage() {
             <h2 className={heading}>GPU + RAM Offload Speed</h2>
             <p className="mb-3">
               When a model doesn&apos;t fully fit in VRAM, some layers run on GPU and the rest on CPU/RAM.
-              These layers process <strong className={strong}>sequentially</strong>, not in parallel —
-              so the total time per token is the <em>sum</em> of both parts, not an average:
+              These layers process <strong className={strong}>sequentially</strong>, not in parallel:
+              the total time per token is the <em>sum</em> of both parts, not an average:
             </p>
             <div className={`${codeBg} rounded-lg p-4 font-mono text-sm mb-3 space-y-1`}>
               <div>gpu_time = (active_size × gpu_fraction) / gpu_bandwidth</div>
@@ -375,7 +375,7 @@ export default function MethodologyPage() {
               (<code className={`px-1 py-0.5 rounded text-xs ${codeBg}`}>model_size / bandwidth</code>), but since prefill is compute-bound
               for typical prompt lengths (100+ tokens), the memory component is overlapped with computation
               by GPU pipelining and does not add to total latency. For very short prompts (&lt;30 tokens),
-              memory loading may dominate — our estimates are optimistic in that regime.
+              memory loading may dominate; our estimates are optimistic in that regime.
             </p>
             </section>
           </Reveal>
@@ -421,7 +421,7 @@ export default function MethodologyPage() {
             <h2 className={heading}>CPU Inference</h2>
             <p className="mb-3">
               CPU inference speed is primarily limited by system RAM bandwidth.
-              The base speed is calculated the same way as GPU inference — bandwidth divided by active model size — then
+              The base speed is calculated the same way as GPU inference (bandwidth divided by active model size), then
               adjusted by CPU-specific multipliers:
             </p>
             <div className={`${codeBg} rounded-lg p-4 font-mono text-sm mb-4`}>

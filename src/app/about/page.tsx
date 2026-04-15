@@ -47,7 +47,7 @@ export default function AboutPage() {
                 or too small (missing out on better quality). Moreover, buying new hardware is a big investment, and it&apos;s hard to know what will work best for your needs.
               </p>
               <p>
-                We wanted a tool that gives honest, data-driven recommendations—not marketing hype.
+                We wanted a tool that gives honest, data-driven recommendations, not marketing hype.
               </p>
             </section>
           </Reveal>
@@ -56,7 +56,7 @@ export default function AboutPage() {
             <section>
               <h2 className={`text-xl font-semibold mb-3 ${isDark ? 'text-white' : 'text-gray-900'}`}>Ethical AI by Design</h2>
               <p>
-                Running AI locally is not just a technical decision — it is an ethical one. The mainstream
+                Running AI locally is not just a technical decision, it's an ethical one. The mainstream
                 narrative around AI has largely normalised the idea that to use capable AI tools, you must
                 hand over your data to a third party. We think that trade-off is neither necessary nor
                 acceptable as a default.
@@ -64,8 +64,7 @@ export default function AboutPage() {
               <p className="mt-3">
                 When a model runs on your own hardware, several concrete ethical problems disappear:
                 your conversations cannot be used to train future commercial models without your consent,
-                no company builds a behavioural profile from your queries, and sensitive topics — health,
-                legal matters, personal relationships, business strategy — stay on your device by
+                no company builds a behavioural profile from your queries, and sensitive topics (health, legal matters, personal relationships, business strategy) stay on your device by
                 architecture, not merely by policy. Data sovereignty is not a marketing promise; it is
                 a technical reality.
               </p>
@@ -85,15 +84,15 @@ export default function AboutPage() {
               </p>
               <ul className="list-disc list-inside space-y-1 ml-4">
                 <li>
-                  <strong className={isDark ? 'text-white' : 'text-gray-900'}>Hardware specs database</strong> — 50+ GPUs and 30+ CPUs with
+                  <strong className={isDark ? 'text-white' : 'text-gray-900'}>Hardware specs database</strong>: 50+ GPUs and 30+ CPUs with
                   detailed specifications (VRAM, bandwidth, compute performance)
                 </li>
                 <li>
-                  <strong className={isDark ? 'text-white' : 'text-gray-900'}>Model benchmarks</strong> — Data from the Open LLM Leaderboard
+                  <strong className={isDark ? 'text-white' : 'text-gray-900'}>Model benchmarks</strong>. Data from the Open LLM Leaderboard
                   on HuggingFace, including IFEval, BBH, MATH, GPQA, and more
                 </li>
                 <li>
-                  <strong className={isDark ? 'text-white' : 'text-gray-900'}>Performance formulas</strong> — Physics-based calculations for
+                  <strong className={isDark ? 'text-white' : 'text-gray-900'}>Performance formulas</strong>. Physics-based calculations for
                   token generation speed, VRAM usage, and inference modes
                 </li>
               </ul>

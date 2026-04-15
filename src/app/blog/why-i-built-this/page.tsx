@@ -173,7 +173,7 @@ export default function WhyIBuiltThisPage() {
           </Reveal>
 
           <Reveal delay={260}>
-            <pre className={`rounded-lg border p-4 font-mono text-sm mb-5 overflow-x-auto leading-relaxed ${codeBg}`}>
+            <pre className={`rounded-lg border p-4 font-mono text-sm mb-5 overflow-x-auto leading-relaxed text-center ${codeBg}`}>
               <code>tok/s ≈ memory_bandwidth_GBps / model_size_GB</code>
             </pre>
           </Reveal>
@@ -188,6 +188,110 @@ export default function WhyIBuiltThisPage() {
             </p>
           </Reveal>
 
+          {/* ── Figure 1: Decode step — memory-bandwidth bound ── */}
+          <Reveal delay={268}>
+            {(() => {
+              // amber accent matches the blog's link/heading palette
+              const accent = isDark ? '#d97706' : '#b45309';   // amber-600/700 — loaded / active
+              const idle   = isDark ? '#44403c' : '#d6d3d1';   // stone-700/300  — stalled / idle
+              const stroke = isDark ? '#78716c' : '#78716c';   // stone-500 — structural lines
+              const text   = isDark ? '#d1d5db' : '#374151';   // gray-300/700 — matches blog prose
+              const muted  = isDark ? '#6b7280' : '#9ca3af';   // gray-500/400 — secondary labels
+              const font   = 'ui-monospace,SFMono-Regular,Menlo,monospace';
+
+              return (
+                <figure className={`my-4 border ${isDark ? 'bg-amber-950/20 border-amber-900/30' : 'bg-amber-50/40 border-amber-200'}`}>
+                  <div className="p-6">
+                    <svg viewBox="0 0 480 232" className="w-full"
+                      aria-label="LLM decode step is memory-bandwidth bound">
+
+                      {/* VRAM panel */}
+                      <text x="95" y="18" textAnchor="middle" fontSize="10" fontWeight="600"
+                        letterSpacing="0.08em" fill={text} fontFamily={font}>VRAM</text>
+                      <rect x="20" y="26" width="150" height="118"
+                        fill="none" stroke={stroke} strokeWidth="1"/>
+                      {/* weight blocks — amber because they are being fully read every token */}
+                      {[40, 54, 68, 82, 96, 110].map((y) => (
+                        <rect key={y} x="32" y={y} width="126" height="8" fill={accent}/>
+                      ))}
+                      <text x="95" y="134" textAnchor="middle" fontSize="8"
+                        fill={muted} fontFamily={font}>full weight read per token</text>
+
+                      {/* bandwidth channel — amber arrows = saturated path */}
+                      <text x="240" y="66" textAnchor="middle" fontSize="9"
+                        fill={text} fontFamily={font}>320 GB/s</text>
+                      {[80, 94, 108].map((y) => (
+                        <g key={y}>
+                          <line x1="180" y1={y} x2="298" y2={y} stroke={accent} strokeWidth="1"/>
+                          <polygon points={`293,${y - 3} 300,${y} 293,${y + 3}`} fill={accent}/>
+                        </g>
+                      ))}
+
+                      {/* GPU Compute panel */}
+                      <text x="385" y="18" textAnchor="middle" fontSize="10" fontWeight="600"
+                        letterSpacing="0.08em" fill={text} fontFamily={font}>GPU COMPUTE</text>
+                      <rect x="310" y="26" width="150" height="118"
+                        fill="none" stroke={stroke} strokeWidth="1"/>
+                      {/* 1 of 8 cores active; the rest outline-only = stalled waiting for data */}
+                      {Array.from({ length: 8 }).map((_, i) => {
+                        const col = i % 4;
+                        const row = Math.floor(i / 4);
+                        const x = 324 + col * 32;
+                        const y = 44 + row * 32;
+                        const active = i === 0;
+                        return (
+                          <rect key={i} x={x} y={y} width="22" height="22"
+                            fill={active ? accent : 'none'} stroke={stroke} strokeWidth="1"/>
+                        );
+                      })}
+                      <text x="385" y="134" textAnchor="middle" fontSize="8"
+                        fill={muted} fontFamily={font}>memory-bound stall</text>
+
+                      {/* token output */}
+                      <line x1="460" y1="85" x2="478" y2="85" stroke={stroke} strokeWidth="1"/>
+                      <polygon points="473,82 479,85 473,88" fill={stroke}/>
+
+                      {/* measurement bars: amber = saturated, stone = idle */}
+                      {[
+                        { label: 'bandwidth', pct: 92, barFill: accent },
+                        { label: 'compute',   pct: 12, barFill: idle   },
+                      ].map((b, i) => {
+                        const y = 172 + i * 24;
+                        return (
+                          <g key={b.label} fontFamily={font} fontSize="9">
+                            <text x="96" y={y + 7} textAnchor="end" fill={text}>{b.label}</text>
+                            <rect x="104" y={y} width="300" height="8"
+                              fill="none" stroke={stroke} strokeWidth="1"/>
+                            <rect x="104" y={y} width={(300 * b.pct) / 100} height="8" fill={b.barFill}/>
+                            <text x="412" y={y + 7} fill={text}>{b.pct}%</text>
+                          </g>
+                        );
+                      })}
+
+                      {/* axis ticks */}
+                      {[0, 25, 50, 75, 100].map((t) => {
+                        const x = 104 + 3 * t;
+                        return (
+                          <g key={t}>
+                            <line x1={x} y1="212" x2={x} y2="216" stroke={stroke} strokeWidth="1"/>
+                            <text x={x} y="226" textAnchor="middle" fontSize="7"
+                              fill={muted} fontFamily={font}>{t}</text>
+                          </g>
+                        );
+                      })}
+                      <text x="418" y="226" fontSize="7" fill={muted} fontFamily={font}>%</text>
+                    </svg>
+                  </div>
+                  <figcaption className={`px-6 pb-5 text-[11px] text-center ${isDark ? 'text-amber-900/60' : 'text-amber-900/50'}`}
+                    style={{ fontFamily: 'ui-monospace,monospace' }}>
+                    Decode is bandwidth-bound: loading weights from VRAM dominates each token step.
+                    CUDA cores sit idle waiting for data, raising TFLOPS does not improve throughput.
+                  </figcaption>
+                </figure>
+              );
+            })()}
+          </Reveal>
+
           <Reveal delay={270}>
             <p className="text-[1.06rem] leading-[1.75] mb-5">
               This is the same relationship the llama.cpp community uses as a rule of thumb, and it holds
@@ -195,6 +299,102 @@ export default function WhyIBuiltThisPage() {
               performance despite the 4090 having far more compute; their memory bandwidth is in the same
               ballpark (1,008 GB/s vs. 936 GB/s).
             </p>
+          </Reveal>
+
+          {/* ── Figure 2: Dense vs MoE ── */}
+          <Reveal delay={279}>
+            {(() => {
+              const accent = isDark ? '#d97706' : '#b45309';   // amber — active weights
+              const stroke = isDark ? '#78716c' : '#78716c';   // stone-500 — structure
+              const text   = isDark ? '#d1d5db' : '#374151';   // gray-300/700
+              const muted  = isDark ? '#6b7280' : '#9ca3af';   // gray-500/400
+              const font   = 'ui-monospace,SFMono-Regular,Menlo,monospace';
+
+              // grid geometry — shared between both panels
+              const blockSize = 22;
+              const gap = 8;
+              const gridDim = 4 * blockSize + 3 * gap; // 112
+              const panelW = 180;
+              const panelH = 140;
+              const panelY = 42;
+              const leftX = 20;
+              const rightX = 280;
+              const gridOffX = (panelW - gridDim) / 2; // 34
+              const gridOffY = (panelH - gridDim) / 2; // 14
+
+              const renderGrid = (px: number, activeSet: number[]) =>
+                Array.from({ length: 16 }).map((_, i) => {
+                  const col = i % 4;
+                  const row = Math.floor(i / 4);
+                  const x = px + gridOffX + col * (blockSize + gap);
+                  const y = panelY + gridOffY + row * (blockSize + gap);
+                  const active = activeSet.includes(i);
+                  return (
+                    <rect key={i} x={x} y={y} width={blockSize} height={blockSize}
+                      fill={active ? accent : 'none'} stroke={stroke} strokeWidth="1"/>
+                  );
+                });
+
+              const allActive = Array.from({ length: 16 }, (_, i) => i);
+              const moeActive = [5, 10];
+
+              // legend: centered at x=240, below both panels + their metrics
+              // metrics end at panelY + panelH + 36 = 218
+              // legend sits at y=244 (26px clearance), viewBox bottom = 270
+              const legendY = 244;
+              // item widths (monospace 8px ≈ 4.8px/char): swatch10 + gap6 + text
+              // "active weights" 14ch→67px = item 83px; "resident, inactive" 18ch→86px = item 102px
+              // gap between items 24px; total 209px; start = 240 - 104.5 = 135
+              const leg1X = 136;
+              const leg2X = 244;
+
+              return (
+                <figure className={`my-4 border ${isDark ? 'bg-amber-950/20 border-amber-900/30' : 'bg-amber-50/40 border-amber-200'}`}>
+                  <div className="p-6">
+                    <svg viewBox="0 0 480 270" className="w-full"
+                      aria-label="Dense versus MoE weight layout">
+
+                      {/* ── Left panel: Dense 7B ── */}
+                      <text x={leftX + panelW / 2} y="18" textAnchor="middle" fontSize="10" fontWeight="600"
+                        letterSpacing="0.08em" fill={text} fontFamily={font}>DENSE 7B</text>
+                      <text x={leftX + panelW / 2} y="32" textAnchor="middle" fontSize="8"
+                        fill={muted} fontFamily={font}>all weights read per token</text>
+                      <rect x={leftX} y={panelY} width={panelW} height={panelH}
+                        fill="none" stroke={stroke} strokeWidth="1"/>
+                      {renderGrid(leftX, allActive)}
+
+                      <text x={leftX + panelW / 2} y={panelY + panelH + 22} textAnchor="middle"
+                        fontSize="9" fill={text} fontFamily={font}>VRAM  4.5 GB</text>
+                      <text x={leftX + panelW / 2} y={panelY + panelH + 36} textAnchor="middle"
+                        fontSize="9" fill={text} fontFamily={font}>32 tok/s</text>
+
+                      {/* ── Right panel: MoE 67B ── */}
+                      <text x={rightX + panelW / 2} y="18" textAnchor="middle" fontSize="10" fontWeight="600"
+                        letterSpacing="0.08em" fill={text} fontFamily={font}>MOE 67B / 7B ACTIVE</text>
+                      <text x={rightX + panelW / 2} y="32" textAnchor="middle" fontSize="8"
+                        fill={muted} fontFamily={font}>subset of experts read per token</text>
+                      <rect x={rightX} y={panelY} width={panelW} height={panelH}
+                        fill="none" stroke={stroke} strokeWidth="1"/>
+                      {renderGrid(rightX, moeActive)}
+
+                      <text x={rightX + panelW / 2} y={panelY + panelH + 22} textAnchor="middle"
+                        fontSize="9" fill={text} fontFamily={font}>VRAM  40 GB</text>
+                      <text x={rightX + panelW / 2} y={panelY + panelH + 36} textAnchor="middle"
+                        fontSize="9" fill={text} fontFamily={font}>28 tok/s</text>
+
+                      {/* ── Legend — centered, equidistant from both panels ── */}
+                      <g fontFamily={font} fontSize="8" fill={muted}>
+                        <rect x={leg1X} y={legendY} width="10" height="10" fill={accent}/>
+                        <text x={leg1X + 16} y={legendY + 8}>active weights</text>
+                        <rect x={leg2X} y={legendY} width="10" height="10"
+                          fill="none" stroke={stroke} strokeWidth="1"/>
+                        <text x={leg2X + 16} y={legendY + 8}>resident, inactive</text>
+                      </g>
+                    </svg>
+                  </div>
+                </figure>
+              );
+            })()}
           </Reveal>
 
           <Reveal delay={280}>
@@ -220,7 +420,7 @@ export default function WhyIBuiltThisPage() {
           </Reveal>
 
           <Reveal delay={295}>
-            <pre className={`rounded-lg border p-4 font-mono text-sm mb-5 overflow-x-auto leading-relaxed ${codeBg}`}>
+            <pre className={`rounded-lg border p-4 font-mono text-sm mb-5 text-center overflow-x-auto leading-relaxed ${codeBg}`}>
               <code>extra_kv_cache_mb = 128 × (params_B / 7)^0.4 × (context - 4096) / 1024</code>
             </pre>
           </Reveal>

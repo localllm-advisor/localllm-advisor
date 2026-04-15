@@ -107,7 +107,6 @@ export default function BlogPage() {
           ))}
         </div>
       </main>
-
       <SiteFooter />
     </div>
   );
