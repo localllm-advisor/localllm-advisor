@@ -78637,7 +78637,7 @@
     "release_date": "2025-11-26",
     "hf_id": "opendatalab/MinerU-HTML",
     "provider": "opendatalab",
-    "hf_downloads": 786,
+    "hf_downloads": 792,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -78693,7 +78693,7 @@
     "release_date": "2026-03-09",
     "hf_id": "software-mansion/react-native-executorch-lfm2.5-VL-1.6B",
     "provider": "software-mansion",
-    "hf_downloads": 926,
+    "hf_downloads": 919,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -91596,6 +91596,61 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 1000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "beetle-bilingual-balanced-b1-humanscale-nld-eng",
+    "name": "beetle-bilingual-balanced-b1-humanscale-nld-eng",
+    "family": "beetle",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-04-17",
+    "hf_id": "Beetle-HumanScale/beetle-bilingual-balanced-b1-humanscale-nld-eng",
+    "provider": "Beetle-HumanScale",
+    "hf_downloads": 1502,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
         "quality": 1.0
       }
     ],
