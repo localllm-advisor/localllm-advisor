@@ -26,10 +26,11 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
   },
   coding: {
     benchmarks: [
-      { key: 'humaneval', weight: 0.30 },   // Code generation (most direct signal)
+      { key: 'humaneval', weight: 0.35 },   // Code generation (most direct signal)
       { key: 'bigcodebench', weight: 0.30 },// Complex real-world coding tasks
-      { key: 'math', weight: 0.20 },        // Logical/algorithmic reasoning
-      { key: 'ifeval', weight: 0.20 },      // Instruction following (prompt adherence)
+      { key: 'mbpp', weight: 0.15 },        // Basic programming problems
+      { key: 'ifeval', weight: 0.15 },      // Instruction following (prompt adherence)
+      { key: 'math', weight: 0.05 },        // Weakly correlated — de-emphasized
     ],
     wQuality: 0.55,
     wSpeed: 0.25,
@@ -37,10 +38,11 @@ const useCaseWeightMap: Record<UseCase, UseCaseWeights> = {
   },
   reasoning: {
     benchmarks: [
-      { key: 'math', weight: 0.30 },        // Mathematical reasoning
-      { key: 'gpqa', weight: 0.25 },        // Graduate-level Q&A (hard reasoning)
-      { key: 'bbh', weight: 0.25 },         // Big-Bench Hard (diverse reasoning)
-      { key: 'musr', weight: 0.20 },        // Multi-step reasoning
+      { key: 'math', weight: 0.25 },        // Mathematical reasoning
+      { key: 'gpqa', weight: 0.22 },        // Graduate-level Q&A (hard reasoning)
+      { key: 'bbh', weight: 0.22 },         // Big-Bench Hard (diverse reasoning)
+      { key: 'musr', weight: 0.16 },        // Multi-step reasoning
+      { key: 'ifeval', weight: 0.15 },      // Instruction following — critical for usable reasoning output
     ],
     wQuality: 0.60,
     wSpeed: 0.15,
@@ -102,8 +104,10 @@ function computeBenchmarkScore(
 ): number {
   let totalWeight = 0;
   let weightedSum = 0;
+  let sumAllWeights = 0;
 
   for (const { key, weight } of benchmarkWeights) {
+    sumAllWeights += weight;
     const value = benchmarks[key];
     if (value !== null && value !== undefined) {
       weightedSum += value * weight;
@@ -113,18 +117,66 @@ function computeBenchmarkScore(
 
   if (totalWeight === 0) return 0;
 
-  // Renormalize: scale by 1/totalWeight so missing benchmarks don't penalize
-  return weightedSum / totalWeight;
+  // Renormalize so models aren't penalized linearly for missing benchmarks —
+  // but apply a completeness discount to prevent cherry-picked single-benchmark
+  // models (e.g. a 4B with only 'math' filled) from outranking fully-benchmarked
+  // larger models. sqrt() is a gentle penalty: 100% coverage = 1.0, 50% = 0.71,
+  // 25% = 0.5, 10% = 0.32.
+  const completeness = sumAllWeights > 0 ? totalWeight / sumAllWeights : 1;
+  const completenessFactor = Math.sqrt(completeness);
+
+  return (weightedSum / totalWeight) * completenessFactor;
+}
+
+/**
+ * Map a use case to a capability tag we look for on the model.
+ * Returns null for use cases that every chat-capable model can serve.
+ */
+function useCaseCapability(useCase: UseCase): string | null {
+  switch (useCase) {
+    case 'coding':    return 'coding';
+    case 'reasoning': return 'reasoning';
+    case 'vision':    return 'vision';
+    case 'embedding': return 'embedding';
+    default:          return null; // chat / creative / roleplay — no gate
+  }
+}
+
+/**
+ * Adjust benchmark score based on declared model capabilities.
+ * Models that *explicitly* advertise the requested capability get a small
+ * boost; text-only models asked to do vision are penalized heavily; vision
+ * models asked to code without a coding tag are mildly penalized.
+ */
+function capabilityMultiplier(useCase: UseCase, capabilities: string[]): number {
+  const needed = useCaseCapability(useCase);
+  if (!needed) return 1.0;
+
+  const hasCap = capabilities.includes(needed);
+  if (hasCap) return 1.08;
+
+  // Embedding use case is strictly filtered elsewhere, so reaching here means
+  // a non-embedding model slipped through — treat as ineligible.
+  if (useCase === 'embedding') return 0;
+
+  // Vision use case: hard requirement, handled upstream.
+  if (useCase === 'vision') return 0;
+
+  // Coding / reasoning without the explicit capability tag — small penalty.
+  // (Benchmarks still drive most of the score, so strong generalists survive.)
+  return 0.92;
 }
 
 export function computeScore(
   benchmarks: Benchmarks,
   useCase: UseCase,
   quantQuality: number,
-  speedScore: number
+  speedScore: number,
+  capabilities: string[] = []
 ): number {
   const weights = useCaseWeightMap[useCase];
-  const benchScore = computeBenchmarkScore(benchmarks, weights.benchmarks);
+  const rawBench = computeBenchmarkScore(benchmarks, weights.benchmarks);
+  const benchScore = rawBench * capabilityMultiplier(useCase, capabilities);
 
   // benchScore is 0-100, quantQuality is 0-1 (map to 0-100), speedScore is 0-100
   const qualityComponent = benchScore * weights.wQuality;

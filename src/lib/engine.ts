@@ -140,9 +140,11 @@ export function recommend(
     mode = 'auto',
   } = input;
 
-  // Calculate effective VRAM for multi-GPU
-  // NVLink allows near-linear scaling, without it there's overhead
-  const nvlinkMultiplier = nvlink ? 0.95 : 0.85;
+  // Calculate effective VRAM for multi-GPU.
+  // Under llama.cpp layer-split or vLLM tensor-parallel, summed VRAM is roughly
+  // additive; the non-NVLink penalty reflects inter-GPU fragmentation for
+  // shapes that don't divide evenly across cards.
+  const nvlinkMultiplier = nvlink ? 0.98 : 0.90;
   const effectiveVram = gpu_count > 1
     ? Math.round(vram_mb * gpu_count * nvlinkMultiplier)
     : vram_mb;
@@ -165,11 +167,14 @@ export function recommend(
     ramBandwidthGbps,
   } : undefined;
 
-  // Calculate effective GPU bandwidth for multi-GPU
-  // NVLink provides much higher inter-GPU bandwidth
+  // Effective GPU bandwidth for multi-GPU inference.
+  // Tensor-parallel under NVLink roughly scales bandwidth with GPU count at
+  // ~80% efficiency; layer-split without NVLink barely improves decode speed
+  // (weights are still read serially per layer chunk) but does reduce the
+  // amount each card must hold.
   const effectiveBandwidth = bandwidth_gbps
     ? (gpu_count > 1
-        ? bandwidth_gbps * (nvlink ? gpu_count * 0.9 : 1 + (gpu_count - 1) * 0.3)
+        ? bandwidth_gbps * (nvlink ? 1 + (gpu_count - 1) * 0.75 : 1 + (gpu_count - 1) * 0.1)
         : bandwidth_gbps)
     : undefined;
 
@@ -190,14 +195,40 @@ export function recommend(
     performance: ReturnType<typeof calculatePerformanceEstimate>;
   }> = [];
 
+  // Deduplicate models by id so later Map-based dedup doesn't silently
+  // overwrite one variant with another. When duplicates exist, prefer the
+  // copy with the most benchmark data (better signal for ranking).
+  const countBenchmarks = (m: Model) =>
+    Object.values(m.benchmarks || {}).filter((v) => v !== null && v !== undefined).length;
+  const dedupedModelsById = new Map<string, Model>();
+  for (const m of models) {
+    const prev = dedupedModelsById.get(m.id);
+    if (!prev || countBenchmarks(m) > countBenchmarks(prev)) {
+      dedupedModelsById.set(m.id, m);
+    }
+  }
+  const dedupedModels = Array.from(dedupedModelsById.values());
+
   // 1. EVALUATE: check all (model, quant) combinations
-  for (const model of models) {
-    // Filter by capability
-    if (useCase === 'vision' && !model.capabilities.includes('vision')) {
+  for (const model of dedupedModels) {
+    const caps = model.capabilities || [];
+
+    // Vision use case: hard requirement on vision capability.
+    if (useCase === 'vision' && !caps.includes('vision')) {
       continue;
     }
-    // Embedding use case should only show embedding models
-    if (useCase === 'embedding' && model.family !== 'embedding') {
+    // Non-vision use cases: skip vision-*only* models (no 'chat' tag), so
+    // image-captioning-only models don't pollute coding/reasoning lists.
+    if (useCase !== 'vision' && caps.includes('vision') && !caps.includes('chat') && !caps.includes('coding') && !caps.includes('reasoning')) {
+      continue;
+    }
+    // Embedding use case should only show embedding models.
+    if (useCase === 'embedding' && model.family !== 'embedding' && !caps.includes('embedding')) {
+      continue;
+    }
+    // Exclude embedding models from non-embedding use cases — they don't do
+    // generative chat/coding/reasoning.
+    if (useCase !== 'embedding' && (model.family === 'embedding' || (caps.length === 1 && caps[0] === 'embedding'))) {
       continue;
     }
 
@@ -404,7 +435,8 @@ export function recommend(
         model.benchmarks,
         useCase,
         quant.quality,
-        spdScore
+        spdScore,
+        model.capabilities || []
       );
 
       const warnings = generateWarnings(

@@ -16,11 +16,11 @@ import { InferenceMode, MemoryBreakdown, PerformanceEstimate, PerformanceRange }
 export function getActiveParamsB(model: { params_b: number; architecture?: string; active_params_b?: number }): number {
   if (model.active_params_b) return model.active_params_b;
   if (model.architecture === 'moe') {
-    // Typical MoE models activate ~20% of total params per token
-    // (e.g., Mixtral 8x7B: 47B total, ~13B active ≈ 28%)
-    // (e.g., DeepSeek V3: 685B total, ~37B active ≈ 5.4%)
-    // Use 20% as a conservative middle ground
-    return model.params_b * 0.20;
+    // When a model is marked MoE but active_params_b is missing, estimate
+    // active params. Modern MoE models span 3%–28% active (DeepSeek V3: 5.4%,
+    // Qwen3 30B-A3B: 10%, Mixtral 8x7B: 28%). We use 15% as the central
+    // estimate — biased slightly conservative so speed isn't over-predicted.
+    return model.params_b * 0.15;
   }
   return model.params_b;
 }
@@ -89,8 +89,10 @@ export function calculateMemoryBreakdown(
   const kvCache = estimateKvCacheMb(paramsB, contextLength);
   const totalNeeded = modelVramMb + kvCache;
 
-  // Calculate how much fits in VRAM
-  const maxVram = availableVramMb * 0.9; // 10% headroom
+  // 15% headroom — leaves room for activations, CUDA workspace, display
+  // compositor, and framework overhead. The previous 10% was tight enough
+  // to OOM on 8k+ contexts for models reported as "fitting".
+  const maxVram = availableVramMb * 0.85;
 
   let modelInVram = modelVramMb;
   let ramOffload = 0;
@@ -102,19 +104,21 @@ export function calculateMemoryBreakdown(
     modelInVram = Math.max(0, modelVramMb - ramOffload);
   }
 
-  const totalVram = modelInVram + kvCache;
-  const vramPercent = Math.round((totalVram / availableVramMb) * 100);
+  const totalVram = Math.round(modelInVram + kvCache);
+  const vramPercent = availableVramMb > 0
+    ? Math.round((totalVram / availableVramMb) * 100)
+    : 0;
 
   // RAM usage: offloaded layers + system overhead
   const ramOverhead = 500; // MB for runtime overhead
-  const totalRamUsed = ramOffload + ramOverhead;
+  const totalRamUsed = Math.round(ramOffload + ramOverhead);
 
   return {
-    modelVram: modelInVram,
+    modelVram: Math.round(modelInVram),
     kvCacheVram: kvCache,
     totalVram,
     vramPercent: Math.min(vramPercent, 100),
-    ramOffload,
+    ramOffload: Math.round(ramOffload),
     totalRamUsed,
   };
 }
@@ -132,7 +136,8 @@ export function determineInferenceMode(
 ): InferenceMode {
   const kvCache = estimateKvCacheMb(paramsB, contextLength);
   const totalNeeded = modelVramMb + kvCache;
-  const maxVram = availableVramMb * 0.9;
+  // 15% headroom to match calculateMemoryBreakdown
+  const maxVram = availableVramMb * 0.85;
 
   // Full GPU - model fits entirely in VRAM
   if (totalNeeded <= maxVram) {
@@ -168,7 +173,7 @@ export function calculateGpuLayers(
 ): number | 'all' {
   const kvCache = estimateKvCacheMb(paramsB, contextLength);
   const totalNeeded = modelVramMb + kvCache;
-  const maxVram = availableVramMb * 0.9;
+  const maxVram = availableVramMb * 0.85;
 
   if (totalNeeded <= maxVram) {
     return 'all';
@@ -271,9 +276,19 @@ export function estimateCpuTokensPerSecond(
 
   toksPerSec = toksPerSec * threadMultiplier * clockMultiplier * simdMultiplier * cacheMultiplier;
 
-  // CPU is still much slower than GPU — cap at reasonable maximum
-  // Modern DDR5 + AVX-512/AMX systems can reach 50-60 tok/s on small models
-  return Math.min(Math.max(Math.round(toksPerSec), 1), 60);
+  // Apply a realistic efficiency factor — CPU inference sees ~45% of peak
+  // theoretical bandwidth in llama.cpp due to quantization overhead, kernel
+  // launch overhead, and NUMA effects.
+  toksPerSec *= 0.45;
+
+  // Cap at reasonable maximums based on measured community benchmarks:
+  //   7B Q4 on Ryzen 9 7950X3D + DDR5-6000:  ~10-14 tok/s
+  //   13B Q4 on same:                        ~4-6 tok/s
+  //   70B Q4 on same:                        ~1-2 tok/s
+  // An absolute ceiling of 25 tok/s is realistic for modern DDR5 + AVX-512
+  // on small (<4B) models; AMX can push this slightly higher.
+  const cpuCeiling = amx ? 35 : 25;
+  return Math.min(Math.max(Math.round(toksPerSec), 1), cpuCeiling);
 }
 
 /**
@@ -308,6 +323,7 @@ export function estimateDecodeTokensPerSecond(
   // For MoE models, use active params for performance estimation
   // (only a fraction of experts are read from memory per token)
   const effectiveParamsB = activeParamsB ?? paramsB;
+  const isMoE = activeParamsB !== undefined && activeParamsB < paramsB;
 
   if (inferenceMode === 'cpu_only') {
     // Use CPU-specific estimation with effective (active) params
@@ -327,47 +343,71 @@ export function estimateDecodeTokensPerSecond(
 
   if (!bandwidthGbps || bandwidthGbps <= 0) return null;
 
+  // Realistic memory-bandwidth utilization for autoregressive decode in
+  // llama.cpp / vLLM / Ollama. Tuned kernels reach ~65% of theoretical on
+  // CUDA, ~55% on Metal. We use 0.60 as a reasonable default.
+  const bwEfficiency = 0.60;
+  const effectiveBandwidth = bandwidthGbps * bwEfficiency;
+
   // For decode, the bottleneck is reading the active weights from memory.
-  // MoE models only read active expert weights per token, not the full model.
+  // MoE models only read active expert weights per token, not the full model —
+  // but attention still reads the full KV cache regardless of MoE, and expert
+  // routing destroys cache locality. We model this with (a) a routing-overhead
+  // penalty and (b) a cap on the MoE speedup relative to the dense-equivalent
+  // speed so we don't predict implausibly high throughput.
   const activeSizeGb = (effectiveParamsB * bpw) / 8;
   if (activeSizeGb <= 0) return null;
 
-  // Base: tok/s = bandwidth / active_model_size (memory-bandwidth-bound regime)
-  let toksPerSec = bandwidthGbps / activeSizeGb;
+  let toksPerSec = effectiveBandwidth / activeSizeGb;
 
-  // Offload model: bottleneck-aware serial pipeline
-  // In offload mode, each token is generated sequentially through ALL layers.
-  // GPU layers read weights from VRAM, CPU layers read weights from RAM.
-  // Total time per token = gpu_time + cpu_time + sync_overhead, NOT a weighted average.
-  //
-  // Key insight: PCIe is NOT the bottleneck for weight reads — CPU layers read
-  // from system RAM directly. PCIe only carries the small activation vectors
-  // (~8KB for 7B) between GPU and CPU layer groups, which is latency-dominated.
-  //
-  // For MoE: we still use active params here since each layer only reads the
-  // active expert weights, regardless of whether the layer runs on GPU or CPU.
+  if (isMoE) {
+    // Routing + gating + all-to-all expert dispatch costs ~20% of each step.
+    toksPerSec *= 0.80;
+    // Cap MoE speed at ~2.5× the dense-equivalent speed. Attention compute,
+    // KV-cache reads, and scheduler overhead prevent unbounded scaling even
+    // if active/total is very small (e.g. DeepSeek V3 at 5.4% active would
+    // naively predict ~18× dense speed, which nobody measures in practice).
+    const denseSizeGb = (paramsB * bpw) / 8;
+    const denseToksPerSec = effectiveBandwidth / denseSizeGb;
+    const moeCap = denseToksPerSec * 2.5;
+    if (toksPerSec > moeCap) toksPerSec = moeCap;
+  }
+
+  // Offload model: bottleneck-aware serial pipeline.
+  // In llama.cpp/ollama offload, CPU-resident layers read their weights from
+  // system RAM *and* execute matmul on the CPU. That's CPU-compute-bound for
+  // dense layers and even worse for MoE (expert weights are split across RAM).
   if (inferenceMode === 'gpu_offload' && gpuLayers !== 'all') {
-    const estimatedLayers = Math.round(32 * (paramsB / 7));
-    const gpuFraction = (gpuLayers as number) / estimatedLayers;
+    const estimatedLayers = Math.max(8, Math.round(32 * (paramsB / 7)));
+    const gpuFraction = Math.min(1, Math.max(0, (gpuLayers as number) / estimatedLayers));
     const cpuFraction = 1 - gpuFraction;
 
-    // GPU part: processed at full GPU memory bandwidth
+    // GPU part: processed at GPU's effective memory bandwidth
     const gpuPartGb = activeSizeGb * gpuFraction;
-    const gpuTimePerToken = gpuPartGb / bandwidthGbps; // seconds
+    const gpuTimePerToken = gpuPartGb / effectiveBandwidth;
 
-    // CPU part: bottlenecked by RAM bandwidth (weights are in system RAM)
+    // CPU part: bottlenecked by a combination of RAM bandwidth AND CPU
+    // compute. Empirically llama.cpp on DDR5 + AVX-512 achieves roughly
+    // 25-30% of theoretical RAM bandwidth for quantized matmul, because
+    // dequant + matmul is not purely bandwidth-bound.
     const ramBw = cpuSpecs?.ramBandwidthGbps || 50;
+    const cpuEffectiveBw = ramBw * 0.30;
     const cpuPartGb = activeSizeGb * cpuFraction;
-    const cpuTimePerToken = cpuPartGb / ramBw; // seconds
+    const cpuTimePerToken = cpuPartGb / cpuEffectiveBw;
 
-    // PCIe synchronization overhead: activation vector transfers between
-    // GPU and CPU layer groups. Small data (~8-32KB) but adds latency.
-    // ~0.1ms per boundary crossing, 2 crossings per token (GPU→CPU→GPU)
+    // PCIe synchronization overhead: activation transfers between GPU and
+    // CPU layer groups, per layer boundary crossing.
     const pcieBw = calculatePcieBandwidth(pcieGen, pcieLanes);
-    const pcieLatencyMs = pcieBw > 20 ? 0.08 : 0.12; // faster PCIe = lower latency
+    const pcieLatencyMs = pcieBw > 20 ? 0.08 : 0.15;
+    // Number of boundary crossings ≈ 2 per token if there's exactly one
+    // split; real-world llama.cpp splits cleanly so this is a good default.
     const syncOverheadSec = (pcieLatencyMs * 2) / 1000;
 
-    const totalTimePerToken = gpuTimePerToken + cpuTimePerToken + syncOverheadSec;
+    // Additional MoE penalty in offload: cross-NUMA expert fetches are very
+    // painful. Add 50% time overhead on top when the model is MoE.
+    const moeOffloadPenalty = isMoE ? 1.5 : 1.0;
+    const totalTimePerToken = (gpuTimePerToken + cpuTimePerToken + syncOverheadSec) * moeOffloadPenalty;
+
     toksPerSec = 1 / totalTimePerToken;
   }
 
@@ -375,8 +415,20 @@ export function estimateDecodeTokensPerSecond(
 }
 
 /**
- * Estimate prefill speed (prompt processing) in tokens per second
- * Based on compute (TFLOPS) rather than bandwidth
+ * Estimate prefill speed (prompt processing) in tokens per second.
+ * Prefill is compute-bound (matmul over the full prompt), so peak TFLOPS
+ * is the relevant ceiling, tempered by realistic utilization.
+ *
+ * Single-user, small-batch prefill in llama.cpp / vLLM / TGI / Ollama
+ * does NOT reach the textbook "70% of tensor-core peak". Community
+ * measurements on 4090 / 5090 / 3090 show:
+ *   - llama.cpp CUDA: 20-30% of advertised fp16 TFLOPS for 7B-70B dense
+ *   - vLLM batched:   35-45% with large batch, but single-user is ~25-30%
+ *   - Metal (MLX):    15-25% of advertised GPU TFLOPS
+ *   - CPU SIMD:       5-12% of theoretical AVX2/AVX-512 peak
+ *
+ * We use 25% for tensor-core GPUs and 12% for non-tensor / integrated
+ * GPUs — this lines up with observed TTFT numbers in real llama.cpp logs.
  */
 export function estimatePrefillTokensPerSecond(
   paramsB: number,
@@ -385,13 +437,12 @@ export function estimatePrefillTokensPerSecond(
 ): number | null {
   if (!fp16Tflops) return null;
 
-  // Rough estimate: prefill is compute-bound
   // ~2 FLOPs per parameter per token for forward pass
   const flopsPerToken = paramsB * 2 * 1e9; // in FLOPs
   const tflopsAvailable = fp16Tflops * 1e12; // convert to FLOPs
 
-  // Utilization factor (tensor cores are more efficient)
-  const utilization = tensorCores ? 0.6 : 0.3;
+  // Realistic single-user utilization
+  const utilization = tensorCores ? 0.25 : 0.12;
 
   const tokensPerSec = (tflopsAvailable * utilization) / flopsPerToken;
 
@@ -434,10 +485,19 @@ export function estimateLoadTime(
 /**
  * Build an uncertainty range around a point estimate.
  *
- * Uncertainty varies by inference mode:
- *  - gpu_full:    ±15%  (well-understood, bandwidth-limited regime)
- *  - gpu_offload: ±25%  (PCIe sync, driver variation, layer-split effects)
- *  - cpu_only:    ±30%  (highly variable across runtimes, SIMD paths, NUMA)
+ * Observed real-world variance from community benchmarks (r/LocalLLaMA,
+ * llama.cpp perplexity threads, LocalScore, Puget):
+ *  - Same model, same GPU, different runtimes (llama.cpp vs vLLM vs TGI vs
+ *    MLC vs ExLlamaV2) routinely differ by 1.5–2×.
+ *  - Quant method (Q4_K_M vs Q4_0 vs AWQ vs GPTQ) adds another ~20% spread.
+ *  - Driver version, CUDA version, and batch-size choices add ~10-15% each.
+ *  - Offload splits are highly sensitive to the exact CPU/PCIe/RAM config.
+ *
+ * We therefore widen the bands significantly so the reported range actually
+ * contains the user's likely measured value:
+ *  - gpu_full:    ±40%  (best-case regime; still wide because of runtime mix)
+ *  - gpu_offload: ±60%  (layer-split is highly config-dependent)
+ *  - cpu_only:    ±80%  (SIMD path, NUMA, runtime all compound)
  */
 export function performanceRange(
   estimate: number | null,
@@ -446,9 +506,9 @@ export function performanceRange(
   if (estimate === null || estimate <= 0) return null;
 
   const band =
-    mode === 'gpu_full'    ? 0.15 :
-    mode === 'gpu_offload' ? 0.25 :
-    mode === 'cpu_only'    ? 0.30 : 0.20;
+    mode === 'gpu_full'    ? 0.40 :
+    mode === 'gpu_offload' ? 0.60 :
+    mode === 'cpu_only'    ? 0.80 : 0.50;
 
   return {
     low:  Math.max(1, Math.round(estimate * (1 - band))),
@@ -468,9 +528,9 @@ function latencyRange(
   if (estimate === null || estimate <= 0) return null;
 
   const band =
-    mode === 'gpu_full'    ? 0.15 :
-    mode === 'gpu_offload' ? 0.25 :
-    mode === 'cpu_only'    ? 0.30 : 0.20;
+    mode === 'gpu_full'    ? 0.40 :
+    mode === 'gpu_offload' ? 0.60 :
+    mode === 'cpu_only'    ? 0.80 : 0.50;
 
   return {
     low:  Math.max(1, Math.round(estimate * (1 - band))),
@@ -523,16 +583,28 @@ export function calculatePerformanceEstimate(
 
 /**
  * Compute speed score (0-100) from estimated tok/s.
- * 60+ tok/s = 100 (great), 1 tok/s = ~5 (unusable), log scale in between
+ *
+ * Anchor points (chosen from real user expectations on r/LocalLLaMA):
+ *   ≥120 tok/s → 100  (blazing; 3B dense on a 4090, small MoE on 5090)
+ *    ~40 tok/s → ~80  (very comfortable chat / code streaming)
+ *    ~20 tok/s → ~65  (usable interactive; faster than most readers)
+ *    ~10 tok/s → ~50  (acceptable for long-form generation)
+ *     ~5 tok/s → ~35  (slow — only tolerable for batch/offline)
+ *     ~2 tok/s → ~15  (painful)
+ *     ≤1 tok/s → 5    (unusable interactively)
+ *
+ * We use a log scale with the ceiling raised to 120 so fast inference
+ * actually differentiates top picks, instead of every small model
+ * bunching at 100.
  */
 export function speedScore(tokensPerSecond: number | null): number {
   if (tokensPerSecond === null) return 50;
 
-  if (tokensPerSecond >= 60) return 100;
+  if (tokensPerSecond >= 120) return 100;
   if (tokensPerSecond <= 1) return 5;
 
   const logMin = Math.log(1);
-  const logMax = Math.log(60);
+  const logMax = Math.log(120);
   const logVal = Math.log(tokensPerSecond);
 
   return Math.round(5 + (95 * (logVal - logMin)) / (logMax - logMin));

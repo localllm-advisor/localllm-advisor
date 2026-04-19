@@ -618,7 +618,10 @@
       "RX7900XTX",
       "RX 7900 XTX",
       "rx 7900 xtx",
-      "AMD RX 7900 XTX"
+      "AMD RX 7900 XTX",
+      "AMD Radeon RX 7900 XTX",
+      "Radeon RX 7900 XTX",
+      "radeon rx 7900 xtx"
     ],
     "availability": "available",
     "price_usd": 879
@@ -641,7 +644,10 @@
       "AMD RX 7900 XT",
       "RX 7900 XT",
       "rx 7900 xt",
-      "RX7900XT"
+      "RX7900XT",
+      "AMD Radeon RX 7900 XT",
+      "Radeon RX 7900 XT",
+      "radeon rx 7900 xt"
     ],
     "availability": "available",
     "price_usd": 679
@@ -664,7 +670,10 @@
       "RX 7900 GRE",
       "rx 7900 gre",
       "AMD RX 7900 GRE",
-      "RX7900GRE"
+      "RX7900GRE",
+      "AMD Radeon RX 7900 GRE",
+      "Radeon RX 7900 GRE",
+      "radeon rx 7900 gre"
     ],
     "availability": "available",
     "price_usd": 509
@@ -687,7 +696,10 @@
       "rx 7800 xt",
       "RX7800XT",
       "AMD RX 7800 XT",
-      "RX 7800 XT"
+      "RX 7800 XT",
+      "AMD Radeon RX 7800 XT",
+      "Radeon RX 7800 XT",
+      "radeon rx 7800 xt"
     ],
     "availability": "available",
     "price_usd": 752
@@ -710,7 +722,10 @@
       "RX 7700 XT",
       "rx 7700 xt",
       "AMD RX 7700 XT",
-      "RX7700XT"
+      "RX7700XT",
+      "AMD Radeon RX 7700 XT",
+      "Radeon RX 7700 XT",
+      "radeon rx 7700 xt"
     ],
     "availability": "available",
     "price_usd": 399
@@ -733,7 +748,10 @@
       "RX 7600 XT",
       "AMD RX 7600 XT",
       "RX7600XT",
-      "rx 7600 xt"
+      "rx 7600 xt",
+      "AMD Radeon RX 7600 XT",
+      "Radeon RX 7600 XT",
+      "radeon rx 7600 xt"
     ],
     "availability": "available",
     "price_usd": 329
@@ -756,7 +774,10 @@
       "rx 7600",
       "RX 7600",
       "AMD RX 7600",
-      "RX7600"
+      "RX7600",
+      "AMD Radeon RX 7600",
+      "Radeon RX 7600",
+      "radeon rx 7600"
     ],
     "availability": "available",
     "price_usd": 279
@@ -780,7 +801,10 @@
       "RX6950XT",
       "rx 6950 xt",
       "AMD RX 6950 XT",
-      "RX 6950 XT"
+      "RX 6950 XT",
+      "AMD Radeon RX 6950 XT",
+      "Radeon RX 6950 XT",
+      "radeon rx 6950 xt"
     ],
     "price_usd": 449
   },
@@ -803,7 +827,10 @@
       "RX 6900 XT",
       "RX6900XT",
       "rx 6900 xt",
-      "AMD RX 6900 XT"
+      "AMD RX 6900 XT",
+      "AMD Radeon RX 6900 XT",
+      "Radeon RX 6900 XT",
+      "radeon rx 6900 xt"
     ],
     "price_usd": 469
   },
@@ -826,7 +853,10 @@
       "RX6800XT",
       "RX 6800 XT",
       "AMD RX 6800 XT",
-      "rx 6800 xt"
+      "rx 6800 xt",
+      "AMD Radeon RX 6800 XT",
+      "Radeon RX 6800 XT",
+      "radeon rx 6800 xt"
     ],
     "price_usd": 599
   },
@@ -849,7 +879,10 @@
       "rx 6800",
       "RX6800",
       "AMD RX 6800",
-      "RX 6800"
+      "RX 6800",
+      "AMD Radeon RX 6800",
+      "Radeon RX 6800",
+      "radeon rx 6800"
     ],
     "price_usd": 599
   },
@@ -872,7 +905,10 @@
       "RX6700XT",
       "AMD RX 6700 XT",
       "RX 6700 XT",
-      "rx 6700 xt"
+      "rx 6700 xt",
+      "AMD Radeon RX 6700 XT",
+      "Radeon RX 6700 XT",
+      "radeon rx 6700 xt"
     ],
     "price_usd": 344
   },
@@ -895,7 +931,10 @@
       "RX6750XT",
       "AMD RX 6750 XT",
       "RX 6750 XT",
-      "rx 6750 xt"
+      "rx 6750 xt",
+      "AMD Radeon RX 6750 XT",
+      "Radeon RX 6750 XT",
+      "radeon rx 6750 xt"
     ],
     "price_usd": 299
   },
@@ -918,7 +957,10 @@
       "RX6650XT",
       "AMD RX 6650 XT",
       "RX 6650 XT",
-      "rx 6650 xt"
+      "rx 6650 xt",
+      "AMD Radeon RX 6650 XT",
+      "Radeon RX 6650 XT",
+      "radeon rx 6650 xt"
     ],
     "price_usd": 229
   },
@@ -2115,7 +2157,10 @@
     "aliases": [
       "RX 9070 XT",
       "AMD RX 9070 XT",
-      "RX9070XT"
+      "RX9070XT",
+      "AMD Radeon RX 9070 XT",
+      "Radeon RX 9070 XT",
+      "radeon rx 9070 xt"
     ],
     "availability": "available",
     "price_usd": 599
@@ -2138,7 +2183,10 @@
     "aliases": [
       "RX 9070",
       "AMD RX 9070",
-      "RX9070"
+      "RX9070",
+      "AMD Radeon RX 9070",
+      "Radeon RX 9070",
+      "radeon rx 9070"
     ],
     "availability": "available",
     "price_usd": 499
@@ -2161,7 +2209,10 @@
     "aliases": [
       "RX 6600 XT",
       "AMD RX 6600 XT",
-      "RX6600XT"
+      "RX6600XT",
+      "AMD Radeon RX 6600 XT",
+      "Radeon RX 6600 XT",
+      "radeon rx 6600 xt"
     ],
     "availability": "discontinued",
     "price_usd": 200
@@ -2184,7 +2235,10 @@
     "aliases": [
       "RX 6600",
       "AMD RX 6600",
-      "RX6600"
+      "RX6600",
+      "AMD Radeon RX 6600",
+      "Radeon RX 6600",
+      "radeon rx 6600"
     ],
     "availability": "discontinued",
     "price_usd": 165
@@ -2207,7 +2261,10 @@
     "aliases": [
       "RX 5700 XT",
       "AMD RX 5700 XT",
-      "RX5700XT"
+      "RX5700XT",
+      "AMD Radeon RX 5700 XT",
+      "Radeon RX 5700 XT",
+      "radeon rx 5700 xt"
     ],
     "availability": "discontinued",
     "price_usd": 150
@@ -2230,7 +2287,10 @@
     "aliases": [
       "RX 5700",
       "AMD RX 5700",
-      "RX5700"
+      "RX5700",
+      "AMD Radeon RX 5700",
+      "Radeon RX 5700",
+      "radeon rx 5700"
     ],
     "availability": "discontinued",
     "price_usd": 130
