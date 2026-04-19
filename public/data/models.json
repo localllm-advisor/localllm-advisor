@@ -92497,5 +92497,277 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "qianfan-vl-8b",
+    "name": "Qianfan-VL-8B",
+    "family": "qianfan",
+    "params_b": 8.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 4096,
+    "release_date": "2025-09-16",
+    "hf_id": "baidu/Qianfan-VL-8B",
+    "provider": "baidu",
+    "hf_downloads": 551,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4950,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7150,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8800,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 17600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qianfan-vl-70b",
+    "name": "Qianfan-VL-70B",
+    "family": "qianfan",
+    "params_b": 71.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 4096,
+    "release_date": "2025-09-16",
+    "hf_id": "baidu/Qianfan-VL-70B",
+    "provider": "baidu",
+    "hf_downloads": 40,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 40387,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 58338,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 71800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "introsvg-qwen2-5-vl-7b",
+    "name": "IntroSVG-Qwen2.5-VL-7B",
+    "family": "qwen",
+    "params_b": 8.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-03-03",
+    "hf_id": "gitcat404/IntroSVG-Qwen2.5-VL-7B",
+    "provider": "gitcat404",
+    "hf_downloads": 747,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4669,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6744,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "terminator-x",
+    "name": "Terminator-X",
+    "family": "terminator",
+    "params_b": 0.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-03-30",
+    "hf_id": "Parveshiiii/Terminator-X",
+    "provider": "Parveshiiii",
+    "hf_downloads": 628,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 281,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 406,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "celunenorm-0-6b-v1-2",
+    "name": "CeluneNorm-0.6B-v1.2",
+    "family": "celunenorm",
+    "params_b": 0.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-04-18",
+    "hf_id": "lunahr/CeluneNorm-0.6B-v1.2",
+    "provider": "lunahr",
+    "hf_downloads": 503,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 337,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 488,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 600,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
