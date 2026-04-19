@@ -1698,16 +1698,16 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 97,
-      "mmlu_pro": 84,
-      "math": 97,
-      "ifeval": 83,
-      "bbh": 85,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 72,
-      "musr": 78,
-      "mbpp": 92,
-      "bigcodebench": 70,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
     },
@@ -3070,7 +3070,7 @@
     "release_date": "2025-03-12",
     "ollama_base": "gemma3:12b",
     "benchmarks": {
-      "humaneval": 64,
+      "humaneval": null,
       "mmlu_pro": 45.8,
       "math": 58.2,
       "ifeval": 78.4,
@@ -3078,8 +3078,8 @@
       "mmmu": null,
       "gpqa": 18.3,
       "musr": 15.2,
-      "mbpp": 62,
-      "bigcodebench": 28,
+      "mbpp": null,
+      "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
     },
@@ -6233,15 +6233,15 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 85,
-      "mmlu_pro": 60,
-      "math": 78,
-      "ifeval": 77,
-      "bbh": 74,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 57,
-      "musr": 55,
-      "mbpp": 78,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -7526,15 +7526,15 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 40,
-      "mmlu_pro": 40,
-      "math": 29,
-      "ifeval": 55,
-      "bbh": 57,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 30,
-      "musr": 35,
-      "mbpp": 60,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -10478,15 +10478,15 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 38,
-      "mmlu_pro": 27,
-      "math": 32,
-      "ifeval": 58,
-      "bbh": 36,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 14,
-      "musr": 24,
-      "mbpp": 45,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -10865,15 +10865,15 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 62,
-      "mmlu_pro": 38,
-      "math": 52,
-      "ifeval": 66,
-      "bbh": 48,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 22,
-      "musr": 32,
-      "mbpp": 60,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
@@ -11311,16 +11311,16 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 82,
-      "mmlu_pro": 55,
-      "math": 66,
-      "ifeval": 72,
-      "bbh": 67,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 30,
-      "musr": 45,
-      "mbpp": 73,
-      "bigcodebench": 35,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
     },
@@ -11918,16 +11918,16 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 85,
-      "mmlu_pro": 58,
-      "math": 72,
-      "ifeval": 75,
-      "bbh": 73,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 39,
-      "musr": 52,
-      "mbpp": 77,
-      "bigcodebench": 40,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
     },
@@ -12393,16 +12393,16 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 88,
-      "mmlu_pro": 65,
-      "math": 80,
-      "ifeval": 78,
-      "bbh": 78,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 45,
-      "musr": 60,
-      "mbpp": 82,
-      "bigcodebench": 48,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
     },
@@ -12527,16 +12527,16 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 88,
-      "mmlu_pro": 62,
-      "math": 79,
-      "ifeval": 78,
-      "bbh": 76,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 44,
-      "musr": 58,
-      "mbpp": 81,
-      "bigcodebench": 50,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
     },
@@ -12945,16 +12945,16 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 89,
-      "mmlu_pro": 68,
-      "math": 86,
-      "ifeval": 80,
-      "bbh": 81,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 54,
-      "musr": 65,
-      "mbpp": 83,
-      "bigcodebench": 55,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
     },
@@ -13542,16 +13542,16 @@
       }
     ],
     "benchmarks": {
-      "humaneval": 92,
-      "mmlu_pro": 72,
-      "math": 90,
-      "ifeval": 85,
-      "bbh": 86,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
-      "gpqa": 60,
-      "musr": 72,
-      "mbpp": 87,
-      "bigcodebench": 62,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
     },
@@ -13574,7 +13574,7 @@
     "release_date": "2024-10-31",
     "hf_id": "HuggingFaceTB/SmolLM2-135M",
     "provider": "HuggingFace",
-    "hf_downloads": 1385138,
+    "hf_downloads": 1303252,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -41894,7 +41894,7 @@
     "release_date": "2025-03-17",
     "hf_id": "AITeamVN/Vietnamese_Embedding",
     "provider": "AITeamVN",
-    "hf_downloads": 379184,
+    "hf_downloads": 365456,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -50542,15 +50542,15 @@
       },
       {
         "level": "Q8_0",
-        "bpw": 8,
+        "bpw": 8.0,
         "vram_mb": 100,
         "quality": 0.995
       },
       {
         "level": "FP16",
-        "bpw": 16,
+        "bpw": 16.0,
         "vram_mb": 200,
-        "quality": 1
+        "quality": 1.0
       }
     ],
     "benchmarks": {
@@ -59118,7 +59118,7 @@
     "release_date": "2025-12-09",
     "hf_id": "mobilint/EXAONE-Deep-2.4B",
     "provider": "mobilint",
-    "hf_downloads": 6561,
+    "hf_downloads": 6480,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -64912,7 +64912,7 @@
     "release_date": "2025-03-01",
     "hf_id": "deepseek-community/Janus-Pro-1B",
     "provider": "deepseek-community",
-    "hf_downloads": 119199,
+    "hf_downloads": 102214,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -75066,7 +75066,7 @@
     "release_date": "2026-04-06",
     "hf_id": "Vigor26/business-news-generator",
     "provider": "Vigor26",
-    "hf_downloads": 960,
+    "hf_downloads": 983,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -84944,7 +84944,7 @@
       },
       {
         "level": "Q8_0",
-        "bpw": 8,
+        "bpw": 8.0,
         "vram_mb": 27800,
         "quality": 0.995
       }
@@ -92497,6 +92497,331 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "vietnamese-embedding",
+    "name": "vietnamese-embedding",
+    "family": "vietnamese",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "embedding"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-04-20",
+    "hf_id": "dangvantuan/vietnamese-embedding",
+    "provider": "dangvantuan",
+    "hf_downloads": 249676,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "smollm2-135m-instruct",
+    "name": "SmolLM2-135M-Instruct",
+    "family": "smollm",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2024-10-31",
+    "hf_id": "HuggingFaceTB/SmolLM2-135M-Instruct",
+    "provider": "HuggingFace",
+    "hf_downloads": 824432,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "janus-pro-1b",
+    "name": "Janus-Pro-1B",
+    "family": "deepseek",
+    "params_b": 1.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-01-26",
+    "hf_id": "deepseek-ai/Janus-Pro-1B",
+    "provider": "DeepSeek",
+    "hf_downloads": 15212,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 562,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 812,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "exaone-deep-2-4b",
+    "name": "EXAONE-Deep-2.4B",
+    "family": "exaone",
+    "params_b": 2.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2025-03-12",
+    "hf_id": "LGAI-EXAONE/EXAONE-Deep-2.4B",
+    "provider": "LG AI",
+    "hf_downloads": 622,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1350,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1950,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 4800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "minimax-m2-7-reap-172b-a10b-bf16",
+    "name": "MiniMax-M2.7-REAP-172B-A10B-BF16",
+    "family": "minimax",
+    "params_b": 172.5,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 196608,
+    "release_date": "2026-04-16",
+    "hf_id": "saricles/MiniMax-M2.7-REAP-172B-A10B-BF16",
+    "provider": "saricles",
+    "hf_downloads": 625,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 97031,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 140156,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 172500,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "beetle-bilingual-l2-50-simultaneous-b2-humanscale-nld-eng",
+    "name": "beetle-bilingual-l2-50-simultaneous-b2-humanscale-nld-eng",
+    "family": "beetle",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-04-17",
+    "hf_id": "Beetle-HumanScale/beetle-bilingual-l2-50-simultaneous-b2-humanscale-nld-eng",
+    "provider": "Beetle-HumanScale",
+    "hf_downloads": 1069,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
         "quality": 1.0
       }
     ],
