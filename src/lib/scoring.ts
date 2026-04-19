@@ -148,7 +148,7 @@ function useCaseCapability(useCase: UseCase): string | null {
  * boost; text-only models asked to do vision are penalized heavily; vision
  * models asked to code without a coding tag are mildly penalized.
  */
-function capabilityMultiplier(useCase: UseCase, capabilities: string[]): number {
+function useCaseCapabilityMultiplier(useCase: UseCase, capabilities: string[]): number {
   const needed = useCaseCapability(useCase);
   if (!needed) return 1.0;
 
@@ -176,7 +176,7 @@ export function computeScore(
 ): number {
   const weights = useCaseWeightMap[useCase];
   const rawBench = computeBenchmarkScore(benchmarks, weights.benchmarks);
-  const benchScore = rawBench * capabilityMultiplier(useCase, capabilities);
+  const benchScore = rawBench * useCaseCapabilityMultiplier(useCase, capabilities);
 
   // benchScore is 0-100, quantQuality is 0-1 (map to 0-100), speedScore is 0-100
   const qualityComponent = benchScore * weights.wQuality;
