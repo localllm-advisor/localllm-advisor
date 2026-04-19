@@ -167,7 +167,7 @@ function useCaseCapabilityMultiplier(useCase: UseCase, capabilities: string[]): 
   return 0.92;
 }
 
-export function computeScore(
+export function useCaseComputeScore(
   benchmarks: Benchmarks,
   useCase: UseCase,
   quantQuality: number,

@@ -1,5 +1,5 @@
 import { Model, RecommendationInput, ScoredModel, InferenceMode, AdvancedFilters, ModelSizeRange } from './types';
-import { computeScore } from './scoring';
+import { useCaseComputeScore } from './scoring';
 import {
   calculateMemoryBreakdown,
   calculateGpuLayers,
@@ -431,7 +431,7 @@ export function recommend(
         candidate;
 
       const spdScore = speedScore(performance.tokensPerSecond);
-      const score = computeScore(
+      const score = useCaseComputeScore(
         model.benchmarks,
         useCase,
         quant.quality,
