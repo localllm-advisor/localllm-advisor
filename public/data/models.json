@@ -91833,5 +91833,61 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "lfm2-5-1-2b-sft-claude-opus-reasoning-unsloth",
+    "name": "LFM2.5-1.2B-SFT-Claude-Opus-Reasoning-Unsloth",
+    "family": "lfm",
+    "params_b": 1.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-04-15",
+    "hf_id": "ermiaazarkhalili/LFM2.5-1.2B-SFT-Claude-Opus-Reasoning-Unsloth",
+    "provider": "ermiaazarkhalili",
+    "hf_downloads": 537,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 675,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 975,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
