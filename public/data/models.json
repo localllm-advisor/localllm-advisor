@@ -72333,7 +72333,7 @@
     "release_date": "2026-04-02",
     "hf_id": "onnx-community/gemma-4-E2B-it-ONNX",
     "provider": "onnx-community",
-    "hf_downloads": 75713,
+    "hf_downloads": 77073,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -72389,7 +72389,7 @@
     "release_date": "2026-04-02",
     "hf_id": "p-e-w/gemma-4-E2B-it-heretic-ara",
     "provider": "p-e-w",
-    "hf_downloads": 4269,
+    "hf_downloads": 4328,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -94407,6 +94407,165 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "mimo-v2-flash-base",
+    "name": "MiMo-V2-Flash-Base",
+    "family": "mimo",
+    "params_b": 309.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2025-12-16",
+    "hf_id": "XiaomiMiMo/MiMo-V2-Flash-Base",
+    "provider": "XiaomiMiMo",
+    "hf_downloads": 322,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 174263,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 251712,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 309800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gpt2-russian-dutch-configc-6k",
+    "name": "gpt2-russian-dutch-configC-6k",
+    "family": "gpt2",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-03-17",
+    "hf_id": "aariciah/gpt2-russian-dutch-configC-6k",
+    "provider": "aariciah",
+    "hf_downloads": 524,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gpt2-persian-dutch-configc-6k",
+    "name": "gpt2-persian-dutch-configC-6k",
+    "family": "gpt2",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-03-17",
+    "hf_id": "aariciah/gpt2-persian-dutch-configC-6k",
+    "provider": "aariciah",
+    "hf_downloads": 520,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
         "quality": 1.0
       }
     ],
