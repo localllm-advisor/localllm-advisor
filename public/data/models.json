@@ -86753,7 +86753,7 @@
     "release_date": "2026-04-10",
     "hf_id": "Outlier-Ai/Outlier-10B-V3.2",
     "provider": "Outlier-Ai",
-    "hf_downloads": 957,
+    "hf_downloads": 1270,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -86808,7 +86808,7 @@
     "release_date": "2026-04-10",
     "hf_id": "Outlier-Ai/Outlier-40B-V3.2",
     "provider": "Outlier-Ai",
-    "hf_downloads": 772,
+    "hf_downloads": 1060,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -86857,7 +86857,7 @@
     "release_date": "2026-04-10",
     "hf_id": "Outlier-Ai/Outlier-70B-V3.2",
     "provider": "Outlier-Ai",
-    "hf_downloads": 766,
+    "hf_downloads": 1047,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -92874,6 +92874,565 @@
         "bpw": 8.0,
         "vram_mb": 36000,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-1-7b-grpo-math-reasoning",
+    "name": "Qwen3-1.7B-GRPO-math-reasoning",
+    "family": "qwen",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-04-06",
+    "hf_id": "jaygala24/Qwen3-1.7B-GRPO-math-reasoning",
+    "provider": "jaygala24",
+    "hf_downloads": 563,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-1-7b-grpo-kl-math-reasoning",
+    "name": "Qwen3-1.7B-GRPO-KL-math-reasoning",
+    "family": "qwen",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-04-06",
+    "hf_id": "jaygala24/Qwen3-1.7B-GRPO-KL-math-reasoning",
+    "provider": "jaygala24",
+    "hf_downloads": 561,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2-5-3b-grpo-math-reasoning",
+    "name": "Qwen2.5-3B-GRPO-math-reasoning",
+    "family": "qwen",
+    "params_b": 3.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-04-06",
+    "hf_id": "jaygala24/Qwen2.5-3B-GRPO-math-reasoning",
+    "provider": "jaygala24",
+    "hf_downloads": 551,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen2-5-3b-grpo-kl-math-reasoning",
+    "name": "Qwen2.5-3B-GRPO-KL-math-reasoning",
+    "family": "qwen",
+    "params_b": 3.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-04-06",
+    "hf_id": "jaygala24/Qwen2.5-3B-GRPO-KL-math-reasoning",
+    "provider": "jaygala24",
+    "hf_downloads": 526,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-4b-grpo-math-reasoning",
+    "name": "Qwen3-4B-GRPO-math-reasoning",
+    "family": "qwen",
+    "params_b": 4.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-04-06",
+    "hf_id": "jaygala24/Qwen3-4B-GRPO-math-reasoning",
+    "provider": "jaygala24",
+    "hf_downloads": 577,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-4b-grpo-kl-math-reasoning",
+    "name": "Qwen3-4B-GRPO-KL-math-reasoning",
+    "family": "qwen",
+    "params_b": 4.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-04-06",
+    "hf_id": "jaygala24/Qwen3-4B-GRPO-KL-math-reasoning",
+    "provider": "jaygala24",
+    "hf_downloads": 713,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-1-7b-remax-math-reasoning",
+    "name": "Qwen3-1.7B-ReMax-math-reasoning",
+    "family": "qwen",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-04-13",
+    "hf_id": "jaygala24/Qwen3-1.7B-ReMax-math-reasoning",
+    "provider": "jaygala24",
+    "hf_downloads": 597,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-4b-remax-math-reasoning",
+    "name": "Qwen3-4B-ReMax-math-reasoning",
+    "family": "qwen",
+    "params_b": 4.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-04-13",
+    "hf_id": "jaygala24/Qwen3-4B-ReMax-math-reasoning",
+    "provider": "jaygala24",
+    "hf_downloads": 535,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-5-0-8b-sft-claude-opus-reasoning-unsloth",
+    "name": "Qwen3.5-0.8B-SFT-Claude-Opus-Reasoning-Unsloth",
+    "family": "qwen",
+    "params_b": 0.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-04-15",
+    "hf_id": "ermiaazarkhalili/Qwen3.5-0.8B-SFT-Claude-Opus-Reasoning-Unsloth",
+    "provider": "ermiaazarkhalili",
+    "hf_downloads": 861,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 506,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 731,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "beetle-bilingual-l2-50-sequential-33-67-b3-humanscale-nld-eng",
+    "name": "beetle-bilingual-l2-50-sequential-33-67-b3-humanscale-nld-eng",
+    "family": "beetle",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-04-17",
+    "hf_id": "Beetle-HumanScale/beetle-bilingual-l2-50-sequential-33-67-b3-humanscale-nld-eng",
+    "provider": "Beetle-HumanScale",
+    "hf_downloads": 973,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
