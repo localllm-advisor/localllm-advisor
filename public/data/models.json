@@ -50524,7 +50524,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-23",
-    "hf_id": "AxiomicLabs/GPT-X-125M",
+    "hf_id": "AxiomicLabs/GPT-X-125M-base",
     "provider": "AxiomicLabs",
     "hf_downloads": 3937,
     "quantizations": [
@@ -79244,7 +79244,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-23",
-    "hf_id": "AxiomicLabs/GPT-X-125M",
+    "hf_id": "AxiomicLabs/GPT-X-125M-base",
     "provider": "AxiomicLabs",
     "hf_downloads": 3937,
     "quantizations": [
@@ -83187,7 +83187,7 @@
     ],
     "context_length": 1024,
     "release_date": "2026-03-23",
-    "hf_id": "AxiomicLabs/GPT-X-125M",
+    "hf_id": "AxiomicLabs/GPT-X-125M-base",
     "provider": "AxiomicLabs",
     "hf_downloads": 3937,
     "quantizations": [
@@ -95923,6 +95923,172 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 3000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gemma-2b-it-dragon-numbers-ft",
+    "name": "gemma-2B-it-dragon-numbers-ft",
+    "family": "gemma",
+    "params_b": 2.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2025-08-30",
+    "hf_id": "eekay/gemma-2b-it-dragon-numbers-ft",
+    "provider": "eekay",
+    "hf_downloads": 1224,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1406,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2031,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "rax-3-5-chat",
+    "name": "rax-3.5-chat",
+    "family": "rax",
+    "params_b": 2.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2025-11-27",
+    "hf_id": "raxcore-dev/rax-3.5-chat",
+    "provider": "raxcore-dev",
+    "hf_downloads": 1277,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1294,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1869,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 4600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gs-test-1",
+    "name": "gs-test-1",
+    "family": "gs",
+    "params_b": 5.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-04-11",
+    "hf_id": "GrizleeBer/gs-test-1",
+    "provider": "GrizleeBer",
+    "hf_downloads": 804,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2812,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 4062,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 5000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 10000,
         "quality": 1.0
       }
     ],
