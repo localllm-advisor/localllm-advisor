@@ -3,6 +3,17 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
+  # Also trigger when any data-sync workflow completes on main.
+  # This is needed because GitHub Actions does NOT fire push-triggered
+  # workflows when the push comes from a workflow using GITHUB_TOKEN
+  # (security restriction). workflow_run bypasses this — it fires on the
+  # completion of the named workflow, regardless of who pushed.
+  workflow_run:
+    workflows:
+      - "Sync GPU/CPU Specs"
+      - "Sync Models from HF"
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
@@ -15,6 +26,11 @@ concurrency:
 
 jobs:
   build:
+    # For workflow_run events only rebuild when the source workflow succeeded.
+    # For regular push events always rebuild.
+    if: >
+      github.event_name == 'push' ||
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

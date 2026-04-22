@@ -4774,5 +4774,205 @@
     ],
     "availability": "available",
     "price_usd": 18000
+  },
+  {
+    "name": "NVIDIA Tesla P100 PCIe 16GB",
+    "vendor": "nvidia",
+    "aliases": [
+      "P100 16GB",
+      "Tesla P100"
+    ],
+    "availability": "available",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 732,
+    "memory_type": "HBM2",
+    "architecture": "Pascal",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 250,
+    "price_usd": 350
+  },
+  {
+    "name": "NVIDIA Tesla P100 SXM2 16GB",
+    "vendor": "nvidia",
+    "aliases": [
+      "P100 SXM2"
+    ],
+    "availability": "available",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 900,
+    "memory_type": "HBM2",
+    "architecture": "Pascal",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 300
+  },
+  {
+    "name": "NVIDIA Tesla P40 24GB",
+    "vendor": "nvidia",
+    "aliases": [
+      "P40",
+      "Tesla P40"
+    ],
+    "availability": "available",
+    "vram_mb": 24576,
+    "bandwidth_gbps": 346,
+    "memory_type": "GDDR5",
+    "architecture": "Pascal",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 250,
+    "price_usd": 600
+  },
+  {
+    "name": "NVIDIA Tesla P4 8GB",
+    "vendor": "nvidia",
+    "aliases": [
+      "P4",
+      "Tesla P4"
+    ],
+    "availability": "available",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 192,
+    "memory_type": "GDDR5",
+    "architecture": "Pascal",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 75,
+    "price_usd": 120
+  },
+  {
+    "name": "NVIDIA Quadro RTX 8000 48GB",
+    "vendor": "nvidia",
+    "aliases": [
+      "Quadro RTX 8000",
+      "RTX 8000"
+    ],
+    "availability": "available",
+    "vram_mb": 49152,
+    "bandwidth_gbps": 672,
+    "memory_type": "GDDR6",
+    "architecture": "Turing",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 295,
+    "price_usd": 2200
+  },
+  {
+    "name": "NVIDIA Quadro RTX 6000 24GB",
+    "vendor": "nvidia",
+    "aliases": [
+      "Quadro RTX 6000",
+      "RTX 6000"
+    ],
+    "availability": "available",
+    "vram_mb": 24576,
+    "bandwidth_gbps": 672,
+    "memory_type": "GDDR6",
+    "architecture": "Turing",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 295,
+    "price_usd": 900
+  },
+  {
+    "name": "NVIDIA Quadro RTX 5000 16GB",
+    "vendor": "nvidia",
+    "aliases": [
+      "Quadro RTX 5000"
+    ],
+    "availability": "available",
+    "vram_mb": 16384,
+    "bandwidth_gbps": 448,
+    "memory_type": "GDDR6",
+    "architecture": "Turing",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 265,
+    "price_usd": 450
+  },
+  {
+    "name": "NVIDIA A16 64GB",
+    "vendor": "nvidia",
+    "aliases": [
+      "A16",
+      "NVIDIA A16"
+    ],
+    "availability": "available",
+    "vram_mb": 65536,
+    "bandwidth_gbps": 800,
+    "memory_type": "GDDR6",
+    "architecture": "Ampere",
+    "pcie_gen": 4,
+    "pcie_lanes": 16,
+    "tdp_watts": 250
+  },
+  {
+    "name": "AMD RX 580 8GB",
+    "vendor": "amd",
+    "aliases": [
+      "RX 580",
+      "Radeon RX 580"
+    ],
+    "availability": "available",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 256,
+    "memory_type": "GDDR5",
+    "architecture": "GCN 4",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 185,
+    "price_usd": 75
+  },
+  {
+    "name": "AMD RX 570 8GB",
+    "vendor": "amd",
+    "aliases": [
+      "RX 570",
+      "Radeon RX 570"
+    ],
+    "availability": "available",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 224,
+    "memory_type": "GDDR5",
+    "architecture": "GCN 4",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 150,
+    "price_usd": 55
+  },
+  {
+    "name": "AMD RX 480 8GB",
+    "vendor": "amd",
+    "aliases": [
+      "RX 480",
+      "Radeon RX 480"
+    ],
+    "availability": "available",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 256,
+    "memory_type": "GDDR5",
+    "architecture": "GCN 4",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 150,
+    "price_usd": 70
+  },
+  {
+    "name": "AMD RX 470 8GB",
+    "vendor": "amd",
+    "aliases": [
+      "RX 470",
+      "Radeon RX 470"
+    ],
+    "availability": "available",
+    "vram_mb": 8192,
+    "bandwidth_gbps": 211,
+    "memory_type": "GDDR5",
+    "architecture": "GCN 4",
+    "pcie_gen": 3,
+    "pcie_lanes": 16,
+    "tdp_watts": 120,
+    "price_usd": 50
   }
 ]

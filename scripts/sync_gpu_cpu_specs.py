@@ -169,12 +169,14 @@ DISCOVERY_CATEGORIES = {
         "Category:Intel graphics processing units",
         "Category:Apple silicon",
         "Category:AMD Instinct",
+        "Category:Qualcomm Snapdragon",
     ],
     "cpu": [
         "Category:AMD processors",
         "Category:Intel processors",
         "Category:Apple silicon",
         "Category:EPYC",
+        "Category:Qualcomm processors",
     ],
 }
 
@@ -196,6 +198,13 @@ SERIES_PATTERNS = [
     r"hopper\b",
     r"blackwell\b",
     r"ampere\b.*gpu",
+    r"snapdragon x",
+    r"gaudi \d",
+    r"lunar lake",
+    r"arrow lake",
+    r"meteor lake",
+    r"raptor lake",
+    r"alder lake",
 ]
 
 
@@ -393,10 +402,29 @@ GPU_SEED_PAGES: list[GPUPageConfig] = [
         vendor="nvidia", architecture="Blackwell",
         memory_type="HBM3e", pcie_gen=5, prefix="NVIDIA GB",
     ),
+    # RTX Ada professional GPUs (RTX 4000/6000 Ada for workstations)
     GPUPageConfig(
-        url="https://en.wikipedia.org/wiki/Nvidia_RTX_Ada_Generation",
+        url="https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units",
         vendor="nvidia", architecture="Ada Lovelace",
         memory_type="GDDR6", pcie_gen=4, prefix="NVIDIA RTX ",
+    ),
+    # Ampere data center (A100, A40, A30, A10, A16 — still widely used in cloud)
+    GPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Ampere_(microarchitecture)",
+        vendor="nvidia", architecture="Ampere",
+        memory_type="HBM2e", pcie_gen=4, prefix="NVIDIA ",
+    ),
+    # Volta data center (V100 — still very common in HPC/cloud)
+    GPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Volta_(microarchitecture)",
+        vendor="nvidia", architecture="Volta",
+        memory_type="HBM2", pcie_gen=3, prefix="NVIDIA ",
+    ),
+    # Turing professional (Quadro RTX — common workstation GPUs)
+    GPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Turing_(microarchitecture)",
+        vendor="nvidia", architecture="Turing",
+        memory_type="GDDR6", pcie_gen=3, prefix="NVIDIA ",
     ),
 
     # ── AMD Consumer ─────────────────────────────────────────────────────────
@@ -425,6 +453,17 @@ GPU_SEED_PAGES: list[GPUPageConfig] = [
         vendor="amd", architecture="GCN 5",
         memory_type="HBM2", pcie_gen=3, prefix="AMD RX Vega ",
     ),
+    # GCN 4/5 consumer cards (RX 400/500/580 — still widely used)
+    GPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Radeon_RX_500_series",
+        vendor="amd", architecture="GCN 4",
+        memory_type="GDDR5", pcie_gen=3, prefix="AMD RX ",
+    ),
+    GPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Radeon_RX_400_series",
+        vendor="amd", architecture="GCN 4",
+        memory_type="GDDR5", pcie_gen=3, prefix="AMD RX ",
+    ),
 
     # ── AMD Professional / Data Center ───────────────────────────────────────
     GPUPageConfig(
@@ -444,10 +483,12 @@ GPU_SEED_PAGES: list[GPUPageConfig] = [
         vendor="intel", architecture="Xe HPG",
         memory_type="GDDR6", pcie_gen=4, prefix="Intel Arc ",
     ),
+    # Intel Gaudi AI accelerators (Gaudi 2/3 — used for LLM training/inference)
+    # Wikipedia article is under "Habana Labs" (the acquired company name)
     GPUPageConfig(
-        url="https://en.wikipedia.org/wiki/Intel_Arc_Battlemage",
-        vendor="intel", architecture="Xe2",
-        memory_type="GDDR6", pcie_gen=5, prefix="Intel Arc B",
+        url="https://en.wikipedia.org/wiki/Habana_Labs",
+        vendor="intel", architecture="Gaudi",
+        memory_type="HBM2e", pcie_gen=5, prefix="Intel Gaudi ",
     ),
 
     # ── Apple Silicon ─────────────────────────────────────────────────────────
@@ -480,7 +521,7 @@ GPU_SEED_PAGES: list[GPUPageConfig] = [
 
     # ── Qualcomm (relevant for Snapdragon X Elite workstations) ──────────────
     GPUPageConfig(
-        url="https://en.wikipedia.org/wiki/Snapdragon_X_series",
+        url="https://en.wikipedia.org/wiki/Snapdragon_X_Elite",
         vendor="qualcomm", architecture="Oryon",
         memory_type="LPDDR5x", pcie_gen=0, prefix="Qualcomm Snapdragon ",
     ),
@@ -510,6 +551,17 @@ CPU_SEED_PAGES: list[CPUPageConfig] = [
         vendor="amd", architecture="Zen 2",
         prefix="AMD Ryzen ", avx512=False,
     ),
+    # Older Zen 1/Zen+ — still very common in budget builds
+    CPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Ryzen_2000",
+        vendor="amd", architecture="Zen+",
+        prefix="AMD Ryzen ", avx512=False,
+    ),
+    CPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Ryzen_1000",
+        vendor="amd", architecture="Zen 1",
+        prefix="AMD Ryzen ", avx512=False,
+    ),
 
     # ── AMD Server / HEDT ────────────────────────────────────────────────────
     CPUPageConfig(
@@ -529,6 +581,12 @@ CPU_SEED_PAGES: list[CPUPageConfig] = [
         vendor="intel", architecture="Arrow Lake",
         prefix="Intel Core Ultra 200", avx512=False,
     ),
+    # Lunar Lake — Intel's 2024 mobile platform (Core Ultra 200V)
+    CPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Lunar_Lake",
+        vendor="intel", architecture="Lunar Lake",
+        prefix="Intel Core Ultra 200V", avx512=False,
+    ),
     CPUPageConfig(
         url="https://en.wikipedia.org/wiki/Meteor_Lake",
         vendor="intel", architecture="Meteor Lake",
@@ -542,6 +600,22 @@ CPU_SEED_PAGES: list[CPUPageConfig] = [
     CPUPageConfig(
         url="https://en.wikipedia.org/wiki/Alder_Lake",
         vendor="intel", architecture="Alder Lake",
+        prefix="Intel Core i", avx512=False,
+    ),
+    # Rocket Lake / Comet Lake / Coffee Lake — 10th–11th gen, still very common
+    CPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Rocket_Lake",
+        vendor="intel", architecture="Rocket Lake",
+        prefix="Intel Core i", avx512=False,
+    ),
+    CPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Comet_Lake",
+        vendor="intel", architecture="Comet Lake",
+        prefix="Intel Core i", avx512=False,
+    ),
+    CPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Coffee_Lake",
+        vendor="intel", architecture="Coffee Lake",
         prefix="Intel Core i", avx512=False,
     ),
 
@@ -562,6 +636,17 @@ CPU_SEED_PAGES: list[CPUPageConfig] = [
         url="https://en.wikipedia.org/wiki/Apple_M3",
         vendor="apple", architecture="Apple M3",
         prefix="Apple M3", avx512=False,
+    ),
+    # M1 and M2 were missing from CPU seed pages (only in GPU seeds)
+    CPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Apple_M2",
+        vendor="apple", architecture="Apple M2",
+        prefix="Apple M2", avx512=False,
+    ),
+    CPUPageConfig(
+        url="https://en.wikipedia.org/wiki/Apple_M1",
+        vendor="apple", architecture="Apple M1",
+        prefix="Apple M1", avx512=False,
     ),
 ]
 
@@ -729,11 +814,12 @@ def extract_cpus_from_table(table: Tag, cfg: CPUPageConfig) -> list[dict]:
             continue
 
         entry: dict = {
-            "name":    canonical_name,
-            "vendor":  cfg.vendor,
-            "avx":     True,
-            "avx2":    True,
-            "avx512":  cfg.avx512,
+            "name":         canonical_name,
+            "vendor":       cfg.vendor,
+            "architecture": cfg.architecture,
+            "avx":          True,
+            "avx2":         True,
+            "avx512":       cfg.avx512,
         }
 
         if col_cores >= 0 and col_cores < len(row):
