@@ -55534,7 +55534,7 @@
     "context_length": 2048,
     "release_date": "2026-04-01",
     "hf_id": "FrontiersMind/Nandi-Mini-150M",
-    "provider": "Rta-AILabs",
+    "provider": "FrontiersMind",
     "hf_downloads": 14477,
     "quantizations": [
       {
@@ -55551,15 +55551,15 @@
       },
       {
         "level": "Q8_0",
-        "bpw": 8,
+        "bpw": 8.0,
         "vram_mb": 200,
         "quality": 0.995
       },
       {
         "level": "FP16",
-        "bpw": 16,
+        "bpw": 16.0,
         "vram_mb": 400,
-        "quality": 1
+        "quality": 1.0
       }
     ],
     "benchmarks": {
@@ -85190,7 +85190,7 @@
     "context_length": 2048,
     "release_date": "2026-04-13",
     "hf_id": "FrontiersMind/Nandi-Mini-150M-Instruct",
-    "provider": "Rta-AILabs",
+    "provider": "FrontiersMind",
     "hf_downloads": 3741,
     "quantizations": [
       {
@@ -85207,15 +85207,15 @@
       },
       {
         "level": "Q8_0",
-        "bpw": 8,
+        "bpw": 8.0,
         "vram_mb": 200,
         "quality": 0.995
       },
       {
         "level": "FP16",
-        "bpw": 16,
+        "bpw": 16.0,
         "vram_mb": 400,
-        "quality": 1
+        "quality": 1.0
       }
     ],
     "benchmarks": {
@@ -89874,7 +89874,7 @@
     "context_length": 2048,
     "release_date": "2026-04-16",
     "hf_id": "FrontiersMind/Nandi-Mini-150M-Tool-Calling",
-    "provider": "Rta-AILabs",
+    "provider": "FrontiersMind",
     "hf_downloads": 2457,
     "quantizations": [
       {
@@ -96727,6 +96727,111 @@
     "context_length": 262144,
     "release_date": "2026-04-21",
     "hf_id": "Qwen/Qwen3.6-27B",
+    "provider": "Alibaba",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15638,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22588,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-asr-1-7b",
+    "name": "Qwen3-ASR-1.7B",
+    "family": "qwen",
+    "params_b": 2.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 65536,
+    "release_date": "2026-03-04",
+    "hf_id": "bezzam/Qwen3-ASR-1.7B",
+    "provider": "bezzam",
+    "hf_downloads": 563,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1125,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1625,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 4000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-6-27b-fp8",
+    "name": "Qwen3.6-27B-FP8",
+    "family": "qwen",
+    "params_b": 27.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-04-21",
+    "hf_id": "Qwen/Qwen3.6-27B-FP8",
     "provider": "Alibaba",
     "hf_downloads": 0,
     "quantizations": [
