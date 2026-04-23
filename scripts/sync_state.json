@@ -26,9 +26,10 @@
     "https://en.wikipedia.org/wiki/Apple_M3": 1348589493,
     "https://en.wikipedia.org/wiki/Apple_M2": 1345581331,
     "https://en.wikipedia.org/wiki/Apple_M1": 1344892428,
-    "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units": 1349729661,
+    "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units": 1350571630,
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
-    "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371
+    "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
+    "https://en.wikipedia.org/wiki/Apple_M5": 1349318778
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -51,6 +52,7 @@
     "https://en.wikipedia.org/wiki/Apple_M4": 1348865531,
     "https://en.wikipedia.org/wiki/Apple_M3": 1348589493,
     "https://en.wikipedia.org/wiki/Apple_M2": 1345581331,
-    "https://en.wikipedia.org/wiki/Apple_M1": 1344892428
+    "https://en.wikipedia.org/wiki/Apple_M1": 1344892428,
+    "https://en.wikipedia.org/wiki/Apple_M5": 1349318778
   }
 }
