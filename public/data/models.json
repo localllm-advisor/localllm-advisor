@@ -98566,5 +98566,54 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "vicunlocked-alpaca-30b",
+    "name": "VicUnlocked-alpaca-30B",
+    "family": "vicunlocked",
+    "params_b": 32.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2023-05-17",
+    "hf_id": "Aeala/VicUnlocked-alpaca-30b",
+    "provider": "Aeala",
+    "hf_downloads": 1328,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18281,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 26406,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 32500,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
