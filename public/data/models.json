@@ -84014,7 +84014,7 @@
     "release_date": "2026-03-09",
     "hf_id": "miromind-ai/MiroThinker-1.7-mini",
     "provider": "miromind-ai",
-    "hf_downloads": 1594,
+    "hf_downloads": 1302,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -84063,7 +84063,7 @@
     "release_date": "2026-03-09",
     "hf_id": "miromind-ai/MiroThinker-1.7",
     "provider": "miromind-ai",
-    "hf_downloads": 1137,
+    "hf_downloads": 1007,
     "quantizations": [
       {
         "level": "Q4_K_M",
