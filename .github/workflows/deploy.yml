@@ -39,6 +39,9 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # `npm run build` automatically invokes the `prebuild` script defined in
+      # package.json, which runs generate-og-images.js + generate-api-json.js
+      # before next build. Those output folders are .gitignored.
       - run: npm run build
         env:
           NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.WEB3FORMS_KEY }}
@@ -49,13 +52,3 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4

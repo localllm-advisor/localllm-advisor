@@ -1,0 +1,86 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "qwen2-vl-72b",
+    "slug": "qwen2-vl-72b",
+    "name": "Qwen2-VL 72B",
+    "family": "qwen",
+    "params_b": 72.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 32768,
+    "benchmarks": {
+      "humaneval": 76,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": 64.5,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": 86.9
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 43375,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 61986,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 75945,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 150390,
+        "quality": 1
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "apple-m4-max-64gb",
+      "gpu_name": "Apple M4 Max (64GB)",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 43375,
+      "vram_pct": 66.2,
+      "estimated_tps": 11
+    },
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 75945,
+      "vram_pct": 57.9,
+      "estimated_tps": 6
+    },
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "FP16",
+      "bpw": 16,
+      "vram_mb": 150390,
+      "vram_pct": 76.5,
+      "estimated_tps": 5
+    }
+  ]
+}

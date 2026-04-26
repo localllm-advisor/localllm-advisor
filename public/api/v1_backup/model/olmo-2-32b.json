@@ -1,0 +1,114 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "olmо-2-32b",
+    "slug": "olmo-2-32b",
+    "name": "OLMo 2 32B",
+    "family": "olmо",
+    "params_b": 32,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 21196,
+        "quality": 0.92,
+        "ollama_tag": ""
+      },
+      {
+        "level": "Q5_K_M",
+        "bpw": 5.5,
+        "vram_mb": 25907,
+        "quality": 0.95,
+        "ollama_tag": ""
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 30617,
+        "quality": 0.97,
+        "ollama_tag": ""
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 37683,
+        "quality": 0.99,
+        "ollama_tag": ""
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 75366,
+        "quality": 1,
+        "ollama_tag": ""
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "nvidia-rtx-5090",
+      "gpu_name": "NVIDIA RTX 5090",
+      "quant": "Q5_K_M",
+      "bpw": 5.5,
+      "vram_mb": 25907,
+      "vram_pct": 79.1,
+      "estimated_tps": 60
+    },
+    {
+      "gpu_slug": "apple-m4-max-64gb",
+      "gpu_name": "Apple M4 Max (64GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 37683,
+      "vram_pct": 57.5,
+      "estimated_tps": 13
+    },
+    {
+      "gpu_slug": "apple-m3-max-48gb",
+      "gpu_name": "Apple M3 Max (48GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 37683,
+      "vram_pct": 76.7,
+      "estimated_tps": 9
+    },
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "FP16",
+      "bpw": 16,
+      "vram_mb": 75366,
+      "vram_pct": 38.3,
+      "estimated_tps": 9
+    },
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "FP16",
+      "bpw": 16,
+      "vram_mb": 75366,
+      "vram_pct": 57.5,
+      "estimated_tps": 6
+    }
+  ]
+}

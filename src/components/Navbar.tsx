@@ -16,6 +16,8 @@ export default function Navbar() {
   const isHomeOrSearch = pathname === '/' || pathname === '/search';
 
   const navLinks = [
+    { label: 'Tier List', href: '/tier-list' },
+    { label: 'Compare', href: '/compare' },
     { label: 'Benchmarks', href: '/benchmarks' },
     { label: 'GPU Prices', href: '/gpu-prices' },
     { label: 'Enterprise', href: '/enterprise' },
@@ -24,6 +26,23 @@ export default function Navbar() {
     { label: 'FAQ', href: '/faq' },
     { label: 'About', href: '/about' },
   ];
+
+  // Pages that should be visually highlighted as primary actions in the bar.
+  // We render these with a subtle accent ring instead of a flat link to make
+  // them more discoverable. Keeps the rest of the nav uncluttered.
+  const featuredHrefs = new Set(['/tier-list', '/compare']);
+
+  // Per-link accent colors for the featured CTAs.
+  const featuredAccent: Record<string, { dark: string; light: string }> = {
+    '/tier-list': {
+      dark:  'border-rose-500/40 text-rose-300 hover:bg-rose-500/10',
+      light: 'border-rose-300 text-rose-700 hover:bg-rose-50',
+    },
+    '/compare': {
+      dark:  'border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10',
+      light: 'border-cyan-300 text-cyan-700 hover:bg-cyan-50',
+    },
+  };
 
   return (
     <header className={`sticky top-0 z-50 border-b backdrop-blur-sm ${isDark ? 'border-gray-800 bg-gray-900/50' : 'border-gray-200 bg-white/80'}`}>
@@ -35,20 +54,36 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex gap-6 items-center text-sm">
-            {navLinks.map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`transition-colors ${
-                  pathname === link.href
-                    ? (isDark ? 'text-white font-medium' : 'text-gray-900 font-medium')
-                    : (isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900')
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden md:flex gap-5 items-center text-sm">
+            {navLinks.map(link => {
+              if (featuredHrefs.has(link.href)) {
+                const a = featuredAccent[link.href];
+                const tone = isDark ? a.dark : a.light;
+                const active = pathname === link.href || pathname.startsWith(link.href + '/');
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors ${tone} ${active ? (isDark ? 'bg-white/5' : 'bg-black/5') : ''}`}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              }
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition-colors ${
+                    pathname === link.href
+                      ? (isDark ? 'text-white font-medium' : 'text-gray-900 font-medium')
+                      : (isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900')
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
 
             {/* Search button — shown on all pages except / and /search */}
             {!isHomeOrSearch && (
@@ -90,20 +125,36 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
           <nav className="md:hidden mt-4 pb-4 flex flex-col gap-4">
-            {navLinks.map(link => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`transition-colors ${
-                  pathname === link.href
-                    ? (isDark ? 'text-white font-medium' : 'text-gray-900 font-medium')
-                    : (isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900')
-                }`}
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map(link => {
+              if (featuredHrefs.has(link.href)) {
+                const a = featuredAccent[link.href];
+                const tone = isDark ? a.dark : a.light;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`w-fit px-3 py-1.5 rounded-lg border text-xs font-semibold transition-colors ${tone}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              }
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`transition-colors ${
+                    pathname === link.href
+                      ? (isDark ? 'text-white font-medium' : 'text-gray-900 font-medium')
+                      : (isDark ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900')
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             {!isHomeOrSearch && (
               <Link
                 href="/search"

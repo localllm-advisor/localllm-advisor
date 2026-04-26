@@ -1,0 +1,94 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "llama1-65b",
+    "slug": "llama-1-65b",
+    "name": "LLaMA 1 65B",
+    "family": "llama",
+    "params_b": 65.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "benchmarks": {
+      "humaneval": 23.7,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 39055,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 55746,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 68265,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 135030,
+        "quality": 1
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "apple-m4-max-64gb",
+      "gpu_name": "Apple M4 Max (64GB)",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 39055,
+      "vram_pct": 59.6,
+      "estimated_tps": 12
+    },
+    {
+      "gpu_slug": "apple-m3-max-48gb",
+      "gpu_name": "Apple M3 Max (48GB)",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 39055,
+      "vram_pct": 79.5,
+      "estimated_tps": 9
+    },
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 68265,
+      "vram_pct": 52.1,
+      "estimated_tps": 7
+    },
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "FP16",
+      "bpw": 16,
+      "vram_mb": 135030,
+      "vram_pct": 68.7,
+      "estimated_tps": 5
+    }
+  ]
+}

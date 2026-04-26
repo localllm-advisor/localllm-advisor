@@ -1,0 +1,80 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "qwen1.5-110b",
+    "slug": "qwen-1.5-110b",
+    "name": "Qwen 1.5 110B",
+    "family": "qwen",
+    "params_b": 110,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": 42.5,
+      "math": 23.4,
+      "ifeval": 59.4,
+      "bbh": 45,
+      "mmmu": null,
+      "gpqa": 12.2,
+      "musr": 16.3,
+      "mbpp": null,
+      "bigcodebench": 35,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 63860,
+        "quality": 0.94,
+        "ollama_tag": "qwen:110b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 92020,
+        "quality": 0.97,
+        "ollama_tag": "qwen:110b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 113140,
+        "quality": 0.995,
+        "ollama_tag": "qwen:110b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 225780,
+        "quality": 1,
+        "ollama_tag": "qwen:110b:fp16"
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 113140,
+      "vram_pct": 57.5,
+      "estimated_tps": 6
+    },
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q6_K",
+      "bpw": 6.5,
+      "vram_mb": 92020,
+      "vram_pct": 70.2,
+      "estimated_tps": 5
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "command-a-111b",
+    "slug": "command-a-111b",
+    "name": "Command A 111B",
+    "family": "command",
+    "params_b": 111,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "tool_use"
+    ],
+    "context_length": 262144,
+    "benchmarks": {
+      "humaneval": 85,
+      "mmlu_pro": 63,
+      "math": 80,
+      "ifeval": 76,
+      "bbh": 73,
+      "mmmu": null,
+      "gpqa": 48,
+      "musr": 56,
+      "mbpp": 79,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 62438,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 90188,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 111000,
+        "quality": 0.995
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 111000,
+      "vram_pct": 56.5,
+      "estimated_tps": 6
+    },
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 111000,
+      "vram_pct": 84.7,
+      "estimated_tps": 4
+    }
+  ]
+}

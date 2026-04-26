@@ -1,0 +1,151 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "qwen3-30b-a3b-instruct-2507",
+    "slug": "qwen3-30b-a3b-instruct-2507",
+    "name": "Qwen3-30B-A3B-Instruct-2507",
+    "family": "qwen",
+    "params_b": 30,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "benchmarks": {
+      "humaneval": 89,
+      "mmlu_pro": 63,
+      "math": 80,
+      "ifeval": 79,
+      "bbh": 77,
+      "mmmu": null,
+      "gpqa": 45,
+      "musr": null,
+      "mbpp": 82,
+      "bigcodebench": 52,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 16875,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 24375,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 30000,
+        "quality": 0.995
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "nvidia-rtx-5090",
+      "gpu_name": "NVIDIA RTX 5090",
+      "quant": "Q6_K",
+      "bpw": 6.5,
+      "vram_mb": 24375,
+      "vram_pct": 74.4,
+      "estimated_tps": 64
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4090",
+      "gpu_name": "NVIDIA RTX 4090",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 16875,
+      "vram_pct": 68.7,
+      "estimated_tps": 52
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3090-ti",
+      "gpu_name": "NVIDIA RTX 3090 Ti",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 16875,
+      "vram_pct": 68.7,
+      "estimated_tps": 52
+    },
+    {
+      "gpu_slug": "amd-rx-7900-xtx",
+      "gpu_name": "AMD RX 7900 XTX",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 16875,
+      "vram_pct": 68.7,
+      "estimated_tps": 50
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3090",
+      "gpu_name": "NVIDIA RTX 3090",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 16875,
+      "vram_pct": 68.7,
+      "estimated_tps": 48
+    },
+    {
+      "gpu_slug": "amd-rx-7900-xt",
+      "gpu_name": "AMD RX 7900 XT",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 16875,
+      "vram_pct": 82.4,
+      "estimated_tps": 41
+    },
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 30000,
+      "vram_pct": 15.3,
+      "estimated_tps": 23
+    },
+    {
+      "gpu_slug": "apple-m4-max-64gb",
+      "gpu_name": "Apple M4 Max (64GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 30000,
+      "vram_pct": 45.8,
+      "estimated_tps": 16
+    },
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 30000,
+      "vram_pct": 22.9,
+      "estimated_tps": 16
+    },
+    {
+      "gpu_slug": "apple-m4-pro-24gb",
+      "gpu_name": "Apple M4 Pro (24GB)",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 16875,
+      "vram_pct": 68.7,
+      "estimated_tps": 14
+    },
+    {
+      "gpu_slug": "apple-m3-max-48gb",
+      "gpu_name": "Apple M3 Max (48GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 30000,
+      "vram_pct": 61,
+      "estimated_tps": 12
+    }
+  ]
+}

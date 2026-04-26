@@ -8,7 +8,7 @@ interface PageHeroProps {
   title: string;
   subtitle?: string;
   /** Accent color for the gradient. Defaults to 'blue'. */
-  accent?: 'blue' | 'orange' | 'green' | 'purple' | 'indigo' | 'red' | 'amber';
+  accent?: 'blue' | 'orange' | 'green' | 'purple' | 'indigo' | 'red' | 'amber' | 'cyan' | 'rose';
   /** Extra content (badges, stats, etc.) rendered below the subtitle */
   children?: React.ReactNode;
 }
@@ -62,6 +62,22 @@ const ACCENT_MAP = {
     line: 'from-transparent via-amber-500 to-transparent',
     bgDark: 'bg-amber-950/20',
     bgLight: 'bg-amber-50/60',
+  },
+  // Used by /compare — cool, "objective" feel for side-by-side analysis.
+  cyan: {
+    dark: 'from-cyan-600/15 via-transparent to-teal-600/10',
+    light: 'from-cyan-100/80 via-transparent to-teal-100/60',
+    line: 'from-transparent via-cyan-500 to-transparent',
+    bgDark: 'bg-cyan-950/20',
+    bgLight: 'bg-cyan-50/60',
+  },
+  // Used by /tier-list — warm, competitive "leaderboard" tone.
+  rose: {
+    dark: 'from-rose-600/15 via-transparent to-fuchsia-600/10',
+    light: 'from-rose-100/80 via-transparent to-fuchsia-100/60',
+    line: 'from-transparent via-rose-500 to-transparent',
+    bgDark: 'bg-rose-950/20',
+    bgLight: 'bg-rose-50/60',
   },
 };
 

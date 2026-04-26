@@ -6,6 +6,17 @@ import RadarChart from './RadarChart';
 import ModelDetailModal from './ModelDetailModal';
 import ShareSetupModal, { ShareableModel } from './ShareSetupModal';
 import CloudFallbackCard, { shouldShowCloudFallback } from './CloudFallbackCard';
+import CostSavingsBadge from './CostSavingsBadge';
+
+/** Rough TDP heuristic when the caller doesn't pass a precise value. */
+function inferTdpFromVram(vramMb: number): number {
+  const gb = vramMb / 1024;
+  if (gb <= 9) return 150;
+  if (gb <= 13) return 200;
+  if (gb <= 17) return 285;
+  if (gb <= 25) return 370;
+  return 450;
+}
 
 // Export utilities
 function exportToJSON(results: ScoredModel[], gpuName: string | null, vramMb: number, useCase: UseCase) {
@@ -103,6 +114,10 @@ interface ResultsListProps {
   vramMb: number;
   useCase: UseCase;
   onBuildForModel?: (modelId: string) => void;
+  /** Optional GPU TDP (watts) — used by the cost-savings badge. Defaults inferred from VRAM. */
+  gpuTdpW?: number;
+  /** Optional GPU price (USD) — used for hardware amortisation in the cost-savings model. */
+  gpuPriceUsd?: number;
 }
 
 // Benchmarks per use case
@@ -289,6 +304,8 @@ export default function ResultsList({
   vramMb,
   useCase,
   onBuildForModel,
+  gpuTdpW,
+  gpuPriceUsd,
 }: ResultsListProps) {
   const [selectedModel, setSelectedModel] = useState<number>(0);
   const [expandedChart, setExpandedChart] = useState<ExpandedChartData>({ type: null });
@@ -915,6 +932,17 @@ export default function ResultsList({
             {/* Cloud fallback — shown when model is slow or VRAM-tight */}
             {shouldShowCloudFallback(selected) && (
               <CloudFallbackCard scored={selected} />
+            )}
+
+            {/* Cost savings — only when running locally is actually viable
+                (CPU-only inference and severe VRAM-tight situations don't
+                produce a defensible savings figure). */}
+            {selected.inferenceMode === 'gpu_full' && selected.memory.vramPercent <= 95 && (
+              <CostSavingsBadge
+                modelName={selected.model.name}
+                gpuTdpW={gpuTdpW ?? inferTdpFromVram(vramMb)}
+                hardwareCostUsd={gpuPriceUsd ?? 0}
+              />
             )}
           </div>
         </div>

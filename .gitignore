@@ -57,3 +57,11 @@ out/
 .env.production
 .env.local
 .env.example
+
+# generated at build time — do not commit, reproduced by `prebuild` script
+# (scripts/generate-og-images.js + scripts/generate-api-json.js)
+public/og/
+public/api/v1/
+
+# backup files created by data scripts
+public/data/*.bak-*.json

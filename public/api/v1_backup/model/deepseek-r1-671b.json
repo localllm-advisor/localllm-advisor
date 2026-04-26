@@ -1,0 +1,69 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "deepseek-r1-671b",
+    "slug": "deepseek-r1-671b",
+    "name": "DeepSeek R1 671B",
+    "family": "deepseek",
+    "params_b": 671,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 128000,
+    "benchmarks": {
+      "humaneval": 97,
+      "mmlu_pro": 84,
+      "math": 97,
+      "ifeval": 83,
+      "bbh": 85,
+      "mmmu": null,
+      "gpqa": 72,
+      "musr": 78,
+      "mbpp": 92,
+      "bigcodebench": 70,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 444470,
+        "quality": 0.92,
+        "ollama_tag": ""
+      },
+      {
+        "level": "Q5_K_M",
+        "bpw": 5.5,
+        "vram_mb": 543241,
+        "quality": 0.95,
+        "ollama_tag": ""
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 642012,
+        "quality": 0.97,
+        "ollama_tag": ""
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 790169,
+        "quality": 0.99,
+        "ollama_tag": ""
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 1580339,
+        "quality": 1,
+        "ollama_tag": ""
+      }
+    ]
+  },
+  "runnable_on": []
+}

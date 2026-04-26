@@ -1,0 +1,81 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "mistral-140.6b",
+    "slug": "mixtral-8x22b",
+    "name": "Mixtral-8x22B",
+    "family": "mistral",
+    "params_b": 140.6,
+    "architecture": "moe",
+    "capabilities": [
+      "tool_use",
+      "chat"
+    ],
+    "context_length": 65536,
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": 50.7,
+      "math": 49.5,
+      "ifeval": 84,
+      "bbh": 52.7,
+      "mmmu": null,
+      "gpqa": 24.9,
+      "musr": 17.2,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 81486,
+        "quality": 0.94,
+        "ollama_tag": "mixtral:140.6b-instruct-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 117479,
+        "quality": 0.97,
+        "ollama_tag": "mixtral:140.6b-instruct-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 144474,
+        "quality": 0.995,
+        "ollama_tag": "mixtral:140.6b-instruct-q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 288449,
+        "quality": 1,
+        "ollama_tag": "mixtral:140.6b-instruct-fp16"
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 81486,
+      "vram_pct": 62.2,
+      "estimated_tps": 6
+    },
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 144474,
+      "vram_pct": 73.5,
+      "estimated_tps": 5
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "bloom-176b",
+    "slug": "bloom-176b",
+    "name": "BLOOM 176B",
+    "family": "bloom",
+    "params_b": 176,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "multilingual"
+    ],
+    "context_length": 2048,
+    "benchmarks": {
+      "humaneval": 15,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 104376,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 149432,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 183224,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 363448,
+        "quality": 1
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 104376,
+      "vram_pct": 79.6,
+      "estimated_tps": 5
+    },
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "Q6_K",
+      "bpw": 6.5,
+      "vram_mb": 149432,
+      "vram_pct": 76,
+      "estimated_tps": 5
+    }
+  ]
+}

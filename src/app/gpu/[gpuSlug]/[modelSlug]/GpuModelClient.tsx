@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useTheme } from '@/components/ThemeProvider';
 import Navbar from '@/components/Navbar';
 import SiteFooter from '@/components/SiteFooter';
+import CostSavingsBadge from '@/components/CostSavingsBadge';
 import { useState, useEffect } from 'react';
 
 interface QuantResult {
@@ -14,7 +15,7 @@ interface QuantResult {
 }
 
 interface CompatData {
-  gpu: { name: string; vram_mb: number; bandwidth_gbps: number; price_usd?: number; vendor: string };
+  gpu: { name: string; vram_mb: number; bandwidth_gbps: number; price_usd?: number; vendor: string; tdp_watts?: number };
   model: { name: string; params_b: number; family: string; context_length: number; capabilities: string[]; architecture: string };
   canRun: boolean;
   bestQuant: string | null;
@@ -231,6 +232,15 @@ export default function GpuModelClient({ gpuSlug, modelSlug }: { gpuSlug: string
               </div>
             ))}
           </div>
+        )}
+
+        {/* Cost Savings Badge — viral hook */}
+        {data.canRun && (
+          <CostSavingsBadge
+            modelName={data.model.name}
+            gpuTdpW={data.gpu.tdp_watts ?? 250}
+            hardwareCostUsd={data.gpu.price_usd ?? 0}
+          />
         )}
 
         {/* Quantization Table */}

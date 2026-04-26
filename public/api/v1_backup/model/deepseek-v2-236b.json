@@ -1,0 +1,73 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "deepseek-v2-236b",
+    "slug": "deepseek-v2-236b",
+    "name": "DeepSeek V2 236B",
+    "family": "deepseek",
+    "params_b": 236,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding",
+      "reasoning"
+    ],
+    "context_length": 128000,
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": 40.4,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 136436,
+        "quality": 0.94,
+        "ollama_tag": "deepseek-v2:236b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 196852,
+        "quality": 0.97,
+        "ollama_tag": "deepseek-v2:236b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 242164,
+        "quality": 0.995,
+        "ollama_tag": "deepseek-v2:236b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 483828,
+        "quality": 1,
+        "ollama_tag": "deepseek-v2:236b:fp16"
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 136436,
+      "vram_pct": 69.4,
+      "estimated_tps": 5
+    }
+  ]
+}

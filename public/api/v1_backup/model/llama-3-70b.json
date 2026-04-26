@@ -1,0 +1,90 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "llama3-70b",
+    "slug": "llama-3-70b",
+    "name": "Llama 3 70B",
+    "family": "llama",
+    "params_b": 70.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 8192,
+    "benchmarks": {
+      "humaneval": 72,
+      "mmlu_pro": 55,
+      "math": 50.4,
+      "ifeval": 77.6,
+      "bbh": 81,
+      "mmmu": null,
+      "gpqa": 39.5,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 42166,
+        "quality": 0.94,
+        "ollama_tag": "llama3:70b:q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 60239,
+        "quality": 0.97,
+        "ollama_tag": "llama3:70b:q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 73794,
+        "quality": 0.995,
+        "ollama_tag": "llama3:70b:q8_0"
+      },
+      {
+        "level": "FP16",
+        "bpw": 16,
+        "vram_mb": 146089,
+        "quality": 1,
+        "ollama_tag": "llama3:70b:fp16"
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "apple-m4-max-64gb",
+      "gpu_name": "Apple M4 Max (64GB)",
+      "quant": "Q4_K_M",
+      "bpw": 4.5,
+      "vram_mb": 42166,
+      "vram_pct": 64.3,
+      "estimated_tps": 11
+    },
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 73794,
+      "vram_pct": 56.3,
+      "estimated_tps": 6
+    },
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "FP16",
+      "bpw": 16,
+      "vram_mb": 146089,
+      "vram_pct": 74.3,
+      "estimated_tps": 5
+    }
+  ]
+}

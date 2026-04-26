@@ -142,6 +142,52 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
                 </div>
               </Reveal>
 
+              {/* Tier List Card — links to the new flagship "best-LLM-by-tier" page */}
+              <Reveal delay={650}>
+                <div className="pt-8 mx-auto max-w-2xl">
+                  <Link href="/tier-list">
+                    <div className={`group relative overflow-hidden rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                      isDark
+                        ? 'border-rose-500/30 bg-gradient-to-r from-rose-950/40 via-fuchsia-950/30 to-rose-950/40 hover:border-rose-400/60 hover:shadow-2xl hover:shadow-rose-500/20'
+                        : 'border-rose-200 bg-gradient-to-r from-rose-50/80 via-fuchsia-50/60 to-rose-50/80 hover:border-rose-400 hover:shadow-2xl hover:shadow-rose-400/20'
+                    }`}>
+                      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
+                        isDark
+                          ? 'bg-gradient-to-r from-rose-600/0 via-rose-600/10 to-rose-600/0'
+                          : 'bg-gradient-to-r from-rose-400/0 via-rose-400/10 to-rose-400/0'
+                      }`} />
+                      <div className="relative p-6 flex items-center gap-5">
+                        <div className={`w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-300 ${
+                          isDark ? 'bg-rose-500/20 group-hover:bg-rose-500/30 group-hover:scale-110' : 'bg-rose-100 group-hover:bg-rose-200 group-hover:scale-110'
+                        }`}>
+                          <svg className={`w-6 h-6 ${isDark ? 'text-rose-400' : 'text-rose-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1 min-w-0 text-left">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h3 className={`text-lg font-bold group-hover:text-rose-500 transition-colors ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                              Local LLM Tier List 2026
+                            </h3>
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                              isDark ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' : 'bg-rose-100 text-rose-600 border border-rose-200'
+                            }`}>
+                              New
+                            </span>
+                          </div>
+                          <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                            S–D ranked open-weight models for every VRAM budget — from 8GB laptops to 48GB workstations.
+                          </p>
+                        </div>
+                        <svg className={`w-5 h-5 flex-shrink-0 transition-all duration-300 group-hover:translate-x-1.5 ${isDark ? 'text-rose-500 group-hover:text-rose-400' : 'text-rose-400 group-hover:text-rose-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </Link>
+                </div>
+              </Reveal>
+
               {/* Beginner Guide Card */}
               <Reveal delay={700}>
                 <div className="pt-12 mx-auto max-w-2xl">

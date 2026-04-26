@@ -1,0 +1,334 @@
+{
+  "schema": "localllm.advisor.model_compat@1.0.0",
+  "generated_at": "2026-04-26T20:25:44.620Z",
+  "model": {
+    "id": "qwen-2.3b",
+    "slug": "qwen3.5-2b",
+    "name": "Qwen3.5-2B",
+    "family": "qwen",
+    "params_b": 2.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": 1.9,
+      "math": 0.5,
+      "ifeval": 12.9,
+      "bbh": 1.1,
+      "mmmu": null,
+      "gpqa": 0.2,
+      "musr": 5.5,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    },
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1825,
+        "quality": 0.94,
+        "ollama_tag": "qwen3:2.3b-instruct-q4_k_m"
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2414,
+        "quality": 0.97,
+        "ollama_tag": "qwen3:2.3b-instruct-q6_k"
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8,
+        "vram_mb": 2855,
+        "quality": 0.995,
+        "ollama_tag": "qwen3:2.3b-instruct-q8_0"
+      }
+    ]
+  },
+  "runnable_on": [
+    {
+      "gpu_slug": "nvidia-rtx-5090",
+      "gpu_name": "NVIDIA RTX 5090",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 8.7,
+      "estimated_tps": 546
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4090",
+      "gpu_name": "NVIDIA RTX 4090",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 11.6,
+      "estimated_tps": 307
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3090-ti",
+      "gpu_name": "NVIDIA RTX 3090 Ti",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 11.6,
+      "estimated_tps": 307
+    },
+    {
+      "gpu_slug": "nvidia-rtx-5080",
+      "gpu_name": "NVIDIA RTX 5080",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 17.4,
+      "estimated_tps": 293
+    },
+    {
+      "gpu_slug": "amd-rx-7900-xtx",
+      "gpu_name": "AMD RX 7900 XTX",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 11.6,
+      "estimated_tps": 293
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3090",
+      "gpu_name": "NVIDIA RTX 3090",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 11.6,
+      "estimated_tps": 285
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3080-ti",
+      "gpu_name": "NVIDIA RTX 3080 Ti",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 23.2,
+      "estimated_tps": 278
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3080-12gb",
+      "gpu_name": "NVIDIA RTX 3080 12GB",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 23.2,
+      "estimated_tps": 278
+    },
+    {
+      "gpu_slug": "nvidia-rtx-5070-ti",
+      "gpu_name": "NVIDIA RTX 5070 Ti",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 17.4,
+      "estimated_tps": 273
+    },
+    {
+      "gpu_slug": "amd-rx-7900-xt",
+      "gpu_name": "AMD RX 7900 XT",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 13.9,
+      "estimated_tps": 244
+    },
+    {
+      "gpu_slug": "apple-m2-ultra-192gb",
+      "gpu_name": "Apple M2 Ultra (192GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 1.5,
+      "estimated_tps": 244
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3080-10gb",
+      "gpu_name": "NVIDIA RTX 3080 10GB",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 27.9,
+      "estimated_tps": 232
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4080-super",
+      "gpu_name": "NVIDIA RTX 4080 SUPER",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 17.4,
+      "estimated_tps": 224
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4080",
+      "gpu_name": "NVIDIA RTX 4080",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 17.4,
+      "estimated_tps": 219
+    },
+    {
+      "gpu_slug": "nvidia-rtx-5070",
+      "gpu_name": "NVIDIA RTX 5070",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 23.2,
+      "estimated_tps": 205
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4070-ti-super",
+      "gpu_name": "NVIDIA RTX 4070 Ti SUPER",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 17.4,
+      "estimated_tps": 205
+    },
+    {
+      "gpu_slug": "amd-rx-7800-xt",
+      "gpu_name": "AMD RX 7800 XT",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 17.4,
+      "estimated_tps": 190
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3070-ti",
+      "gpu_name": "NVIDIA RTX 3070 Ti",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 34.9,
+      "estimated_tps": 185
+    },
+    {
+      "gpu_slug": "apple-m4-max-64gb",
+      "gpu_name": "Apple M4 Max (64GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 4.4,
+      "estimated_tps": 166
+    },
+    {
+      "gpu_slug": "apple-m4-max-128gb",
+      "gpu_name": "Apple M4 Max (128GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 2.2,
+      "estimated_tps": 166
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4070-ti",
+      "gpu_name": "NVIDIA RTX 4070 Ti",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 23.2,
+      "estimated_tps": 154
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4070-super",
+      "gpu_name": "NVIDIA RTX 4070 SUPER",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 23.2,
+      "estimated_tps": 154
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4070",
+      "gpu_name": "NVIDIA RTX 4070",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 23.2,
+      "estimated_tps": 154
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3070",
+      "gpu_name": "NVIDIA RTX 3070",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 34.9,
+      "estimated_tps": 137
+    },
+    {
+      "gpu_slug": "apple-m3-max-48gb",
+      "gpu_name": "Apple M3 Max (48GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 5.8,
+      "estimated_tps": 122
+    },
+    {
+      "gpu_slug": "nvidia-rtx-3060-12gb",
+      "gpu_name": "NVIDIA RTX 3060 12GB",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 23.2,
+      "estimated_tps": 110
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4060-ti-16gb",
+      "gpu_name": "NVIDIA RTX 4060 Ti 16GB",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 17.4,
+      "estimated_tps": 88
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4060-ti-8gb",
+      "gpu_name": "NVIDIA RTX 4060 Ti 8GB",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 34.9,
+      "estimated_tps": 88
+    },
+    {
+      "gpu_slug": "amd-rx-7600",
+      "gpu_name": "AMD RX 7600",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 34.9,
+      "estimated_tps": 88
+    },
+    {
+      "gpu_slug": "nvidia-rtx-4060",
+      "gpu_name": "NVIDIA RTX 4060",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 34.9,
+      "estimated_tps": 83
+    },
+    {
+      "gpu_slug": "apple-m4-pro-24gb",
+      "gpu_name": "Apple M4 Pro (24GB)",
+      "quant": "Q8_0",
+      "bpw": 8,
+      "vram_mb": 2855,
+      "vram_pct": 11.6,
+      "estimated_tps": 83
+    }
+  ]
+}
