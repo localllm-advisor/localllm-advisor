@@ -90544,8 +90544,8 @@
     }
   },
   {
-    "id": "nemotron-orchestrator-8b-qwen3-bf16-noesis",
-    "name": "Nemotron-Orchestrator-8B-Qwen3-BF16-NOESIS",
+    "id": "qwen3-8b-nemotron-orchestrator-noesis-bf16",
+    "name": "Qwen3-8B-Nemotron-Orchestrator-NOESIS-BF16",
     "family": "qwen",
     "params_b": 8.2,
     "architecture": "dense",
@@ -102043,6 +102043,111 @@
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 27400,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gemma-2b-it-owl-numbers-ft",
+    "name": "gemma-2B-it-owl-numbers-ft",
+    "family": "gemma",
+    "params_b": 2.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2025-08-28",
+    "hf_id": "eekay/gemma-2b-it-owl-numbers-ft",
+    "provider": "eekay",
+    "hf_downloads": 617,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1406,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2031,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-6-35b-a3b-int8-autoround",
+    "name": "Qwen3.6-35B-A3B-INT8-AutoRound",
+    "family": "qwen",
+    "params_b": 35.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-04-18",
+    "hf_id": "Minachist/Qwen3.6-35B-A3B-INT8-AutoRound",
+    "provider": "Minachist",
+    "hf_downloads": 1971,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19688,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28438,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 35000,
         "quality": 0.995
       }
     ],
