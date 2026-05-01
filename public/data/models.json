@@ -96065,7 +96065,7 @@
     "release_date": "2026-04-11",
     "hf_id": "GrizleeBer/gs-test-1",
     "provider": "GrizleeBer",
-    "hf_downloads": 1792,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -106609,6 +106609,112 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 8000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nemotron-3-nano-omni-30b-a3b-reasoning-fp8",
+    "name": "Nemotron-3-Nano-Omni-30B-A3B-Reasoning-FP8",
+    "family": "nemotron",
+    "params_b": 33.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "reasoning",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-04-24",
+    "hf_id": "nvidia/Nemotron-3-Nano-Omni-30B-A3B-Reasoning-FP8",
+    "provider": "NVIDIA",
+    "hf_downloads": 62123,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18562,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 26812,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 33000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "empathetic-distilgpt2",
+    "name": "empathetic-distilgpt2",
+    "family": "empathetic",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-04-29",
+    "hf_id": "mafgit/empathetic-distilgpt2",
+    "provider": "mafgit",
+    "hf_downloads": 1101,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
         "quality": 1.0
       }
     ],
