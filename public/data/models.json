@@ -106732,5 +106732,54 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "nvidia-nemotron-3-super-120b-a12b-bf16-heretic",
+    "name": "NVIDIA-Nemotron-3-Super-120B-A12B-BF16-heretic",
+    "family": "nemotron",
+    "params_b": 120.7,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-03-15",
+    "hf_id": "trohrbaugh/NVIDIA-Nemotron-3-Super-120B-A12B-BF16-heretic",
+    "provider": "trohrbaugh",
+    "hf_downloads": 3763,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 67894,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 98069,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 120700,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
