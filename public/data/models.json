@@ -99991,7 +99991,7 @@
     "release_date": "2026-04-13",
     "hf_id": "GrizleeBer/gs-test-2",
     "provider": "GrizleeBer",
-    "hf_downloads": 853,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
