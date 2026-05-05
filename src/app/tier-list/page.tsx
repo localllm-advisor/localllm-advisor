@@ -167,4 +167,8 @@ export default function TierListPage() {
         tiers={TIERS}
         buckets={tierBuckets}
         exampleGpu={tierGpuExample}
-      
+        exampleGpuSlug={exampleGpuSlug}
+      />
+    </>
+  );
+}
