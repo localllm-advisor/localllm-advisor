@@ -105,7 +105,7 @@ export default function TierListClient({ tiers, buckets, exampleGpu, exampleGpuS
                           </span>
                         </div>
                         <span className={`text-xs px-2 py-0.5 rounded-md ${isDark ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'}`}>
-                          {m.bestQuant} · {m.vramGb} GB
+                          {m.bestQuant} · {Number(m.vramGb).toFixed(2)} GB
                         </span>
                         <span className={`text-sm font-bold ${c.text}`} title="Quality proxy (0-100, higher = better)">
                           {m.qualityScore}
@@ -143,5 +143,4 @@ function slugify(name: string) {
     .replace(/\s+/g, '-')
     .replace(/[^a-z0-9\-\.]/g, '')
     .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
-}
+    .replac

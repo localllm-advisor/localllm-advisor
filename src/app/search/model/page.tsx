@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { useTheme } from '@/components/ThemeProvider';
 import { UseCase, AdvancedFilters } from '@/lib/types';
 import { useRecommendation } from '@/hooks/useRecommendation';
@@ -46,6 +46,11 @@ export default function ModelSearchPage() {
     setFiltersRaw(newFilters);
     clearResults();
   };
+
+  // Navigate to classic page in "build hardware for this model" mode
+  const handleBuildForModel = useCallback((modelId: string) => {
+    window.location.href = `/classic?buildFor=${encodeURIComponent(modelId)}`;
+  }, []);
 
   // Check if we can run a search
   const isCpuOnlyMode = specs.inference_mode === 'cpu_only';
@@ -248,7 +253,7 @@ export default function ModelSearchPage() {
               gpuName={isCpuOnlyMode ? 'CPU Only' : (specs.gpu_name ?? null)}
               vramMb={specs.vram_mb || 0}
               useCase={useCase}
-              onBuildForModel={() => {}}
+              onBuildForModel={handleBuildForModel}
             />
           </div>
         </section>
@@ -263,16 +268,4 @@ export default function ModelSearchPage() {
               currentGpu={selectedGpu}
               currentVramMb={specs.vram_mb || 0}
               allGpus={gpus}
-              allModels={models}
-              useCase={useCase}
-              onBuildForModel={() => {}}
-            />
-          </div>
-        </section>
-      )}
-
-      {/* Footer with Newsletter Banner */}
-      <SiteFooter />
-    </div>
-  );
-}
+ 

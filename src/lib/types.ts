@@ -296,9 +296,10 @@ export type ModelSizeRange = 'small' | 'medium' | 'large' | 'xlarge';
 
 export type ModelFamily =
   | 'bloom' | 'command' | 'deepseek' | 'embedding' | 'ernie' | 'exaone'
-  | 'falcon' | 'gemma' | 'glm' | 'kimi' | 'llama' | 'mimo' | 'minimax'
-  | 'mistral' | 'nemotron' | 'olmo' | 'other' | 'phi' | 'qwen'
-  | 'stablelm' | 'starcoder' | 'yi' | 'zephyr';
+  | 'falcon' | 'gemma' | 'glm' | 'granite' | 'internlm' | 'jamba'
+  | 'kimi' | 'lfm' | 'llama' | 'minicpm' | 'mimo' | 'minimax'
+  | 'mistral' | 'mixtral' | 'nemotron' | 'olmo' | 'other' | 'phi' | 'qwen'
+  | 'smollm' | 'solar' | 'stablelm' | 'starcoder' | 'yi' | 'zephyr';
 
 export type ModelArchitecture = 'dense' | 'moe';
 
@@ -567,8 +568,4 @@ export interface TcoTimeline {
 
 export interface TcoCloudTimeline {
   provider: CloudProvider;
-  label: string;
-  monthlyCosts: number[];
-  cumulativeCosts: number[];
-  totalCost: number;
-}
+  lab

@@ -48,15 +48,23 @@ const FAMILY_OPTIONS: { value: ModelFamily; label: string }[] = [
   { value: 'llama', label: 'Llama' },
   { value: 'qwen', label: 'Qwen' },
   { value: 'mistral', label: 'Mistral' },
+  { value: 'mixtral', label: 'Mixtral' },
   { value: 'gemma', label: 'Gemma' },
   { value: 'phi', label: 'Phi' },
   { value: 'deepseek', label: 'DeepSeek' },
+  { value: 'granite', label: 'Granite' },
+  { value: 'internlm', label: 'InternLM' },
   { value: 'falcon', label: 'Falcon' },
   { value: 'command', label: 'Command' },
   { value: 'glm', label: 'GLM' },
   { value: 'kimi', label: 'Kimi' },
   { value: 'exaone', label: 'EXAONE' },
   { value: 'nemotron', label: 'Nemotron' },
+  { value: 'smollm', label: 'SmolLM' },
+  { value: 'minicpm', label: 'MiniCPM' },
+  { value: 'lfm', label: 'LFM' },
+  { value: 'jamba', label: 'Jamba' },
+  { value: 'solar', label: 'Solar' },
   { value: 'yi', label: 'Yi' },
   { value: 'bloom', label: 'BLOOM' },
   { value: 'starcoder', label: 'StarCoder' },
@@ -403,15 +411,4 @@ export default function AdvancedOptions({ filters, onChange }: AdvancedOptionsPr
       </div>
 
       {/* Reset Button */}
-      <div className={`pt-3 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
-        <button
-          type="button"
-          onClick={() => onChange(DEFAULT_FILTERS)}
-          className={`text-sm ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
-        >
-          Reset to defaults
-        </button>
-      </div>
-    </div>
-  );
-}
+      <div className={`pt-3 border-t ${isDark ? 'border-gray-700

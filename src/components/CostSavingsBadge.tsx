@@ -194,8 +194,8 @@ export default function CostSavingsBadge({
 function Stat({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
   return (
     <div className={`rounded-lg p-3 ${highlight ? 'bg-emerald-500/10 border border-emerald-500/40' : 'bg-gray-100 dark:bg-gray-800/50'}`}>
-      <div className="text-xs text-gray-500">{label}</div>
-      <div className={`text-lg font-bold ${highlight ? 'text-emerald-500' : ''}`}>{value}</div>
+      <div className="text-xs text-gray-500 dark:text-gray-400">{label}</div>
+      <div className={`text-lg font-bold ${highlight ? 'text-emerald-500' : 'text-gray-900 dark:text-white'}`}>{value}</div>
     </div>
   );
 }
@@ -217,8 +217,4 @@ function Slider({
         min={min} max={max} step={step}
         value={value}
         onChange={(e) => onChange(parseFloat(e.target.value))}
-        className="w-full mt-1 accent-emerald-500"
-      />
-    </label>
-  );
-}
+        className="w-full mt-1 a
