@@ -63,21 +63,21 @@ export default function HomeBenchmarkFeed() {
       className={`relative mx-auto max-w-3xl w-full px-4 pb-16 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}
     >
       {/* Header */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-3">
         <div>
-          <h2 className={`text-lg font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            🔥 Live Community Benchmarks
+          <h2 className={`text-base font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            Live Community Benchmarks
           </h2>
-          <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+          <p className={`text-xs mt-0.5 ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
             Real tok/s numbers submitted by users, most recent first
           </p>
         </div>
         <Link
           href="/benchmarks"
-          className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${
+          className={`text-xs font-medium px-3 py-1.5 rounded-lg border transition-colors ${
             isDark
-              ? 'bg-gray-800 hover:bg-gray-700 text-gray-300'
-              : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+              ? 'border-gray-700 bg-gray-900/60 hover:bg-gray-800 text-gray-400 hover:text-gray-200'
+              : 'border-gray-200 bg-white/70 hover:bg-white text-gray-500 hover:text-gray-700'
           }`}
         >
           See all →
@@ -86,18 +86,20 @@ export default function HomeBenchmarkFeed() {
 
       {/* Table */}
       <div
-        className={`rounded-2xl border overflow-hidden ${
-          isDark ? 'border-white/8 bg-transparent' : 'border-gray-200 bg-white'
+        className={`rounded-2xl border overflow-hidden backdrop-blur-sm ${
+          isDark
+            ? 'border-white/8 bg-gray-900/40'
+            : 'border-gray-200/80 bg-white/70'
         }`}
       >
         {loading ? (
-          <div className="py-10 text-center text-sm opacity-60">Loading…</div>
+          <div className="py-10 text-center text-sm opacity-50">Loading…</div>
         ) : rows.length === 0 ? (
           <div className="py-10 text-center">
             <p className="text-sm font-medium">No benchmarks yet — be the first!</p>
             <Link
               href="/benchmarks"
-              className="mt-3 inline-block text-xs text-blue-500 hover:underline"
+              className="mt-3 inline-block text-xs text-indigo-500 hover:underline"
             >
               Submit yours →
             </Link>
@@ -106,10 +108,10 @@ export default function HomeBenchmarkFeed() {
           <table className="w-full text-sm">
             <thead>
               <tr
-                className={`text-xs uppercase tracking-wide ${
+                className={`text-[11px] uppercase tracking-wider ${
                   isDark
-                    ? 'bg-white/5 text-gray-400 border-b border-white/8'
-                    : 'bg-gray-50 text-gray-500 border-b border-gray-200'
+                    ? 'bg-white/4 text-gray-500 border-b border-white/6'
+                    : 'bg-gray-50/80 text-gray-400 border-b border-gray-200/80'
                 }`}
               >
                 <th className="text-left px-4 py-2.5 font-medium">GPU</th>
@@ -124,19 +126,19 @@ export default function HomeBenchmarkFeed() {
                   key={row.id ?? i}
                   className={`transition-colors ${
                     isDark
-                      ? 'border-b border-white/6 hover:bg-white/4'
-                      : 'border-b border-gray-100 hover:bg-gray-50'
+                      ? 'border-b border-white/5 hover:bg-white/3'
+                      : 'border-b border-gray-100/80 hover:bg-gray-50/60'
                   } last:border-b-0`}
                 >
                   {/* GPU */}
                   <td className="px-4 py-2.5">
-                    <span className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    <span className={`font-medium ${isDark ? 'text-gray-200' : 'text-gray-800'}`}>
                       {row.gpu_name}
                     </span>
                     {row.quant_level && (
                       <span
                         className={`ml-1.5 text-[10px] px-1.5 py-0.5 rounded ${
-                          isDark ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-500'
+                          isDark ? 'bg-gray-800 text-gray-400' : 'bg-gray-100 text-gray-500'
                         }`}
                       >
                         {row.quant_level}
@@ -146,7 +148,7 @@ export default function HomeBenchmarkFeed() {
 
                   {/* Model */}
                   <td className="px-4 py-2.5 max-w-[140px] sm:max-w-none truncate">
-                    <span className={isDark ? 'text-gray-300' : 'text-gray-600'}>
+                    <span className={isDark ? 'text-gray-400' : 'text-gray-500'}>
                       {shortModelId(row.model_id)}
                     </span>
                   </td>
@@ -156,15 +158,15 @@ export default function HomeBenchmarkFeed() {
                     <span
                       className={`font-semibold tabular-nums ${
                         row.tokens_per_second >= 60
-                          ? 'text-green-500'
+                          ? 'text-emerald-500'
                           : row.tokens_per_second >= 20
-                          ? isDark ? 'text-blue-400' : 'text-blue-600'
-                          : isDark ? 'text-yellow-400' : 'text-yellow-600'
+                          ? isDark ? 'text-indigo-400' : 'text-indigo-500'
+                          : isDark ? 'text-amber-400' : 'text-amber-600'
                       }`}
                     >
                       {row.tokens_per_second}
                     </span>
-                    <span className={`ml-0.5 text-[10px] ${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+                    <span className={`ml-0.5 text-[10px] ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
                       t/s
                     </span>
                   </td>
@@ -193,11 +195,4 @@ export default function HomeBenchmarkFeed() {
           }`}
         >
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
-          Submit your benchmark and help the community
-        </Link>
-      </div>
-    </section>
-  );
-}
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWi

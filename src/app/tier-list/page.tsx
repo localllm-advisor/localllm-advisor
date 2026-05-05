@@ -81,8 +81,8 @@ function qualityProxy(m: ReturnType<typeof getSEOModels>[number]): number {
     if (v != null) { total += v * w; weight += w; }
   }
   if (weight > 0) return Math.round((total / weight) * (Math.sqrt(weight))); // completeness penalty matches scoring.ts
-  // Fallback: monotone in params (as last resort)
-  return Math.min(50, m.params_b * 1.2);
+  // Fallback: monotone in params (as last resort) — round to avoid JS float noise
+  return Math.round(Math.min(50, m.params_b * 1.2) * 100) / 100;
 }
 
 // The "what models are eligible for the tier list?" allowlist lives in
@@ -167,8 +167,4 @@ export default function TierListPage() {
         tiers={TIERS}
         buckets={tierBuckets}
         exampleGpu={tierGpuExample}
-        exampleGpuSlug={exampleGpuSlug}
-      />
-    </>
-  );
-}
+      

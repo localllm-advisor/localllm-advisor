@@ -142,95 +142,80 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
                 </div>
               </Reveal>
 
-              {/* Tier List Card — links to the new flagship "best-LLM-by-tier" page */}
+              {/* Tier List + Guide Cards — unified glass-card style */}
               <Reveal delay={650}>
-                <div className="pt-8 mx-auto max-w-2xl">
+                <div className="pt-8 mx-auto max-w-2xl space-y-3">
+
+                  {/* Tier List */}
                   <Link href="/tier-list">
-                    <div className={`group relative overflow-hidden rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                    <div className={`group relative overflow-hidden rounded-2xl border transition-all duration-300 cursor-pointer ${
                       isDark
-                        ? 'border-rose-500/30 bg-gradient-to-r from-rose-950/40 via-fuchsia-950/30 to-rose-950/40 hover:border-rose-400/60 hover:shadow-2xl hover:shadow-rose-500/20'
-                        : 'border-rose-200 bg-gradient-to-r from-rose-50/80 via-fuchsia-50/60 to-rose-50/80 hover:border-rose-400 hover:shadow-2xl hover:shadow-rose-400/20'
-                    }`}>
-                      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                        isDark
-                          ? 'bg-gradient-to-r from-rose-600/0 via-rose-600/10 to-rose-600/0'
-                          : 'bg-gradient-to-r from-rose-400/0 via-rose-400/10 to-rose-400/0'
-                      }`} />
-                      <div className="relative p-6 flex items-center gap-5">
-                        <div className={`w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-300 ${
-                          isDark ? 'bg-rose-500/20 group-hover:bg-rose-500/30 group-hover:scale-110' : 'bg-rose-100 group-hover:bg-rose-200 group-hover:scale-110'
+                        ? 'border-violet-500/25 bg-gray-900/60 hover:border-violet-400/50 hover:bg-gray-900/80 hover:shadow-xl hover:shadow-violet-500/10'
+                        : 'border-violet-200/80 bg-white/70 hover:border-violet-400/70 hover:bg-white hover:shadow-xl hover:shadow-violet-200/60'
+                    } backdrop-blur-sm`}>
+                      <div className="relative p-5 flex items-center gap-4">
+                        <div className={`w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${
+                          isDark ? 'bg-violet-500/15 ring-1 ring-violet-500/30' : 'bg-violet-50 ring-1 ring-violet-200'
                         }`}>
-                          <svg className={`w-6 h-6 ${isDark ? 'text-rose-400' : 'text-rose-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                          <svg className={`w-5 h-5 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                           </svg>
                         </div>
                         <div className="flex-1 min-w-0 text-left">
-                          <div className="flex items-center gap-2 mb-1">
-                            <h3 className={`text-lg font-bold group-hover:text-rose-500 transition-colors ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                              Local LLM Tier List 2026
-                            </h3>
-                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                              isDark ? 'bg-rose-500/20 text-rose-300 border border-rose-500/30' : 'bg-rose-100 text-rose-600 border border-rose-200'
-                            }`}>
-                              New
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <span className={`text-base font-semibold transition-colors group-hover:text-violet-500 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                              LLM Tier List 2026
                             </span>
+                            <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wide ${
+                              isDark ? 'bg-violet-500/20 text-violet-300' : 'bg-violet-100 text-violet-600'
+                            }`}>New</span>
                           </div>
-                          <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                            S–D ranked open-weight models for every VRAM budget — from 8GB laptops to 48GB workstations.
+                          <p className={`text-sm leading-snug ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
+                            S–D ranked models for every VRAM budget — 8 GB to 48 GB+
                           </p>
                         </div>
-                        <svg className={`w-5 h-5 flex-shrink-0 transition-all duration-300 group-hover:translate-x-1.5 ${isDark ? 'text-rose-500 group-hover:text-rose-400' : 'text-rose-400 group-hover:text-rose-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className={`w-4 h-4 flex-shrink-0 transition-all duration-300 group-hover:translate-x-1 ${isDark ? 'text-gray-600 group-hover:text-violet-400' : 'text-gray-300 group-hover:text-violet-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </div>
                     </div>
                   </Link>
-                </div>
-              </Reveal>
 
-              {/* Beginner Guide Card */}
-              <Reveal delay={700}>
-                <div className="pt-12 mx-auto max-w-2xl">
+                  {/* Beginner Guide */}
                   <Link href="/guide">
-                    <div className={`group relative overflow-hidden rounded-2xl border-2 transition-all duration-300 cursor-pointer ${
+                    <div className={`group relative overflow-hidden rounded-2xl border transition-all duration-300 cursor-pointer ${
                       isDark
-                        ? 'border-cyan-500/30 bg-gradient-to-r from-cyan-950/40 via-blue-950/30 to-cyan-950/40 hover:border-cyan-400/60 hover:shadow-2xl hover:shadow-cyan-500/20'
-                        : 'border-cyan-200 bg-gradient-to-r from-cyan-50/80 via-blue-50/60 to-cyan-50/80 hover:border-cyan-400 hover:shadow-2xl hover:shadow-cyan-400/20'
-                    }`}>
-                      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                        isDark
-                          ? 'bg-gradient-to-r from-cyan-600/0 via-cyan-600/10 to-cyan-600/0'
-                          : 'bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-cyan-400/0'
-                      }`} />
-                      <div className="relative p-6 flex items-center gap-5">
-                        <div className={`w-12 h-12 rounded-xl flex-shrink-0 flex items-center justify-center transition-all duration-300 ${
-                          isDark ? 'bg-cyan-500/20 group-hover:bg-cyan-500/30 group-hover:scale-110' : 'bg-cyan-100 group-hover:bg-cyan-200 group-hover:scale-110'
+                        ? 'border-indigo-500/25 bg-gray-900/60 hover:border-indigo-400/50 hover:bg-gray-900/80 hover:shadow-xl hover:shadow-indigo-500/10'
+                        : 'border-indigo-200/80 bg-white/70 hover:border-indigo-400/70 hover:bg-white hover:shadow-xl hover:shadow-indigo-200/60'
+                    } backdrop-blur-sm`}>
+                      <div className="relative p-5 flex items-center gap-4">
+                        <div className={`w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${
+                          isDark ? 'bg-indigo-500/15 ring-1 ring-indigo-500/30' : 'bg-indigo-50 ring-1 ring-indigo-200'
                         }`}>
-                          <svg className={`w-6 h-6 ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <svg className={`w-5 h-5 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                           </svg>
                         </div>
                         <div className="flex-1 min-w-0 text-left">
-                          <div className="flex items-center gap-2 mb-1">
-                            <h3 className={`text-lg font-bold group-hover:text-cyan-500 transition-colors ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                          <div className="flex items-center gap-2 mb-0.5">
+                            <span className={`text-base font-semibold transition-colors group-hover:text-indigo-500 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                               New to Local AI?
-                            </h3>
-                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                              isDark ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30' : 'bg-cyan-100 text-cyan-600 border border-cyan-200'
-                            }`}>
-                              Guide
                             </span>
+                            <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wide ${
+                              isDark ? 'bg-indigo-500/20 text-indigo-300' : 'bg-indigo-100 text-indigo-600'
+                            }`}>Guide</span>
                           </div>
-                          <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                          <p className={`text-sm leading-snug ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                             Step-by-step beginner guide — from zero to your first chatbot in minutes
                           </p>
                         </div>
-                        <svg className={`w-5 h-5 flex-shrink-0 transition-all duration-300 group-hover:translate-x-1.5 ${isDark ? 'text-cyan-500 group-hover:text-cyan-400' : 'text-cyan-400 group-hover:text-cyan-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className={`w-4 h-4 flex-shrink-0 transition-all duration-300 group-hover:translate-x-1 ${isDark ? 'text-gray-600 group-hover:text-indigo-400' : 'text-gray-300 group-hover:text-indigo-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </div>
                     </div>
                   </Link>
+
                 </div>
               </Reveal>
 
@@ -248,3 +233,4 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
     </div>
   );
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
