@@ -143,4 +143,5 @@ function slugify(name: string) {
     .replace(/\s+/g, '-')
     .replace(/[^a-z0-9\-\.]/g, '')
     .replace(/-+/g, '-')
-    .replac
+    .replace(/^-|-$/g, '');
+}

@@ -568,4 +568,8 @@ export interface TcoTimeline {
 
 export interface TcoCloudTimeline {
   provider: CloudProvider;
-  lab
+  label: string;
+  monthlyCosts: number[];
+  cumulativeCosts: number[];
+  totalCost: number;
+}

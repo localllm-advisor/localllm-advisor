@@ -411,4 +411,15 @@ export default function AdvancedOptions({ filters, onChange }: AdvancedOptionsPr
       </div>
 
       {/* Reset Button */}
-      <div className={`pt-3 border-t ${isDark ? 'border-gray-700
+      <div className={`pt-3 border-t ${isDark ? 'border-gray-700' : 'border-gray-200'}`}>
+        <button
+          type="button"
+          onClick={() => onChange(DEFAULT_FILTERS)}
+          className={`text-sm ${isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'}`}
+        >
+          Reset to defaults
+        </button>
+      </div>
+    </div>
+  );
+}

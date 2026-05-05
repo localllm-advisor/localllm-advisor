@@ -217,4 +217,8 @@ function Slider({
         min={min} max={max} step={step}
         value={value}
         onChange={(e) => onChange(parseFloat(e.target.value))}
-        className="w-full mt-1 a
+        className="w-full mt-1 accent-emerald-500"
+      />
+    </label>
+  );
+}

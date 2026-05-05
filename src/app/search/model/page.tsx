@@ -268,4 +268,16 @@ export default function ModelSearchPage() {
               currentGpu={selectedGpu}
               currentVramMb={specs.vram_mb || 0}
               allGpus={gpus}
- 
+              allModels={models}
+              useCase={useCase}
+              onBuildForModel={handleBuildForModel}
+            />
+          </div>
+        </section>
+      )}
+
+      {/* Footer with Newsletter Banner */}
+      <SiteFooter />
+    </div>
+  );
+}
