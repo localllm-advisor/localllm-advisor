@@ -103214,7 +103214,7 @@
     "release_date": "2026-04-25",
     "hf_id": "0labs-in/Sky-v2.0-11B",
     "provider": "0labs-in",
-    "hf_downloads": 1585,
+    "hf_downloads": 1599,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -109262,6 +109262,171 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 6200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "generator-v2-eukaryote-1-2b-base",
+    "name": "GENERator-v2-eukaryote-1.2B-base",
+    "family": "generator",
+    "params_b": 1.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 16384,
+    "release_date": "2025-11-05",
+    "hf_id": "GenerTeam/GENERator-v2-eukaryote-1.2b-base",
+    "provider": "GenerTeam",
+    "hf_downloads": 1247,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 675,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 975,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "generator-v2-eukaryote-3b-base",
+    "name": "GENERator-v2-eukaryote-3B-base",
+    "family": "generator",
+    "params_b": 3.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 16384,
+    "release_date": "2025-11-05",
+    "hf_id": "GenerTeam/GENERator-v2-eukaryote-3b-base",
+    "provider": "GenerTeam",
+    "hf_downloads": 907,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1688,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2438,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "dream-v0-base-7b-adjust-dpd",
+    "name": "Dream-v0-Base-7B-Adjust-DPD",
+    "family": "dream",
+    "params_b": 7.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-04-13",
+    "hf_id": "pbansal/Dream-v0-Base-7B-Adjust-DPD",
+    "provider": "pbansal",
+    "hf_downloads": 626,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4444,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6419,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 15800,
         "quality": 1.0
       }
     ],
