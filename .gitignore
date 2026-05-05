@@ -65,4 +65,3 @@ public/api/v1/
 
 # backup files created by data scripts
 public/data/*.bak-*.json
-public/api/v1_backup
