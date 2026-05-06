@@ -110378,5 +110378,110 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "gemma-4-26b-a4b-it-claude-opus-distill-v2",
+    "name": "gemma-4-26B-A4B-it-Claude-Opus-Distill-v2",
+    "family": "gemma",
+    "params_b": 26.5,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-04-08",
+    "hf_id": "TeichAI/gemma-4-26B-A4B-it-Claude-Opus-Distill-v2",
+    "provider": "TeichAI",
+    "hf_downloads": 1003,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 14906,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 21531,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 26500,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "beetle-bilingual-l2-50-sequential-33-67-b3-fineweb-2b-nld-eng-arch-moe",
+    "name": "beetle-bilingual-l2-50-sequential-33-67-b3-fineweb-2B-nld-eng-arch-moe",
+    "family": "beetle",
+    "params_b": 0.9,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-04-30",
+    "hf_id": "Beetle-nld-eng-Variants/beetle-bilingual-l2-50-sequential-33-67-b3-fineweb-2b-nld-eng-arch-moe",
+    "provider": "Beetle-nld-eng-Variants",
+    "hf_downloads": 559,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 506,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 731,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
