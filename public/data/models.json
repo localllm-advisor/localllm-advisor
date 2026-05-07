@@ -47544,10 +47544,10 @@
     }
   },
   {
-    "id": "zembed-1",
-    "name": "zembed-1",
+    "id": "zembed-1-embedding",
+    "name": "zembed-1-embedding",
     "family": "zembed",
-    "params_b": 4,
+    "params_b": 4.0,
     "architecture": "dense",
     "capabilities": [
       "embedding"
@@ -47572,15 +47572,15 @@
       },
       {
         "level": "Q8_0",
-        "bpw": 8,
+        "bpw": 8.0,
         "vram_mb": 4000,
         "quality": 0.995
       },
       {
         "level": "FP16",
-        "bpw": 16,
+        "bpw": 16.0,
         "vram_mb": 8000,
-        "quality": 1
+        "quality": 1.0
       }
     ],
     "benchmarks": {
