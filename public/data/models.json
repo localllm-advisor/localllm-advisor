@@ -79521,7 +79521,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-04-04",
-    "hf_id": "EganAI/gemma-4-31B-Claude-4.6-Opus-Reasoning-Distilled",
+    "hf_id": "EganAI/gemma-4-31B-claude-Reasoning-Distilled",
     "provider": "EganAI",
     "hf_downloads": 6223,
     "quantizations": [
@@ -111537,6 +111537,110 @@
         "bpw": 16.0,
         "vram_mb": 800,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "meditron3-8b",
+    "name": "Meditron3-8B",
+    "family": "meditron3",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-07-11",
+    "hf_id": "EPFLiGHT/Meditron3-8B",
+    "provider": "EPFLiGHT",
+    "hf_downloads": 4595,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "meditron3-70b",
+    "name": "Meditron3-70B",
+    "family": "meditron3",
+    "params_b": 70.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-07-12",
+    "hf_id": "EPFLiGHT/Meditron3-70B",
+    "provider": "EPFLiGHT",
+    "hf_downloads": 2922,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 39712,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 57362,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 70600,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
