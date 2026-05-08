@@ -142,44 +142,9 @@ export default function LandingPageClient({ stats }: LandingPageClientProps) {
                 </div>
               </Reveal>
 
-              {/* Tier List + Guide Cards — unified glass-card style */}
+              {/* Guide Card */}
               <Reveal delay={650}>
                 <div className="pt-8 mx-auto max-w-2xl space-y-3">
-
-                  {/* Tier List */}
-                  <Link href="/tier-list">
-                    <div className={`group relative overflow-hidden rounded-2xl border transition-all duration-300 cursor-pointer ${
-                      isDark
-                        ? 'border-violet-500/25 bg-gray-900/60 hover:border-violet-400/50 hover:bg-gray-900/80 hover:shadow-xl hover:shadow-violet-500/10'
-                        : 'border-violet-200/80 bg-white/70 hover:border-violet-400/70 hover:bg-white hover:shadow-xl hover:shadow-violet-200/60'
-                    } backdrop-blur-sm`}>
-                      <div className="relative p-5 flex items-center gap-4">
-                        <div className={`w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center transition-transform duration-300 group-hover:scale-110 ${
-                          isDark ? 'bg-violet-500/15 ring-1 ring-violet-500/30' : 'bg-violet-50 ring-1 ring-violet-200'
-                        }`}>
-                          <svg className={`w-5 h-5 ${isDark ? 'text-violet-400' : 'text-violet-600'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                          </svg>
-                        </div>
-                        <div className="flex-1 min-w-0 text-left">
-                          <div className="flex items-center gap-2 mb-0.5">
-                            <span className={`text-base font-semibold transition-colors group-hover:text-violet-500 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                              LLM Tier List 2026
-                            </span>
-                            <span className={`px-1.5 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wide ${
-                              isDark ? 'bg-violet-500/20 text-violet-300' : 'bg-violet-100 text-violet-600'
-                            }`}>New</span>
-                          </div>
-                          <p className={`text-sm leading-snug ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
-                            S–D ranked models for every VRAM budget — 8 GB to 48 GB+
-                          </p>
-                        </div>
-                        <svg className={`w-4 h-4 flex-shrink-0 transition-all duration-300 group-hover:translate-x-1 ${isDark ? 'text-gray-600 group-hover:text-violet-400' : 'text-gray-300 group-hover:text-violet-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </div>
-                    </div>
-                  </Link>
 
                   {/* Beginner Guide */}
                   <Link href="/guide">

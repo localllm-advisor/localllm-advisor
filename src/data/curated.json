@@ -4,7 +4,7 @@
     "page that needs a curated subset of the dataset (compare, tier-list, programmatic",
     "SEO pages, OG image generation, sitemap, public JSON API).",
     "",
-    "DO NOT inline these lists in components or scripts — read them from here. The",
+    "DO NOT inline these lists in components or scripts \u2014 read them from here. The",
     "validateOnce() check in src/lib/curated.ts will fail the build loudly if any",
     "reference here doesn't resolve against gpus.json / models.json, so missing",
     "references break the build instead of silently producing 404s.",
@@ -16,7 +16,6 @@
     "To auto-update popularModelIds/tierListAllowIds based on download signals:",
     "  node scripts/update-curated-models.js"
   ],
-
   "popularGpuNames": [
     "NVIDIA RTX 5090",
     "NVIDIA RTX 5080",
@@ -50,7 +49,6 @@
     "Apple M3 Max (48GB)",
     "Apple M2 Ultra (192GB)"
   ],
-
   "popularModelIds": [
     "llama-3.1-8b-compact",
     "llama-3.1-70b",
@@ -98,67 +96,6 @@
     "command-r-plus-104b",
     "command-a-111b"
   ],
-
-  "tierListAllowIds": [
-    "qwen-3-0.6b",
-    "qwen-3-1.7b",
-    "qwen-3-4b-new",
-    "qwen-3-8b",
-    "qwen-3-14b-dense",
-    "qwen-3-32b-dense",
-    "qwen-3-30b-a3b",
-    "qwen-3-235b-a22b",
-    "qwen3-coder-30b-a3b",
-    "qwen3-coder-480b-a35b-instruct",
-    "qwen3-4b-instruct-2507",
-    "qwen3-30b-a3b-instruct-2507",
-    "qwen3-235b-a22b-instruct-2507",
-    "qwen-4.7b",
-    "qwen-9.7b",
-    "qwen-36b",
-    "qwen2.5-1.5b",
-    "qwen2.5-3b",
-    "qwen2.5-7b",
-    "qwen2.5-72b",
-    "gemma-3-4b",
-    "gemma-3-12b",
-    "gemma-3-27b-new",
-    "gemma-4-e4b-it",
-    "gemma-4-31b-it",
-    "gemma-4-26b-a4b-it",
-    "phi-4-14b-base",
-    "phi-4-reasoning-14b",
-    "phi-4-mini-3.8b",
-    "mistral-small-3.2-24b",
-    "mistral-large-2-123b",
-    "mixtral-8x7b-instruct-v01",
-    "deepseek-r1-671b",
-    "deepseek-v3-685b",
-    "deepseek-v3-685.4b",
-    "deepseek-r1-0528-qwen3-8b",
-    "deepseek-r1-0528",
-    "deepseek-v3-0324",
-    "deepseek-r1-distill-llama-8b",
-    "deepseek-r1-distill-qwen-14b",
-    "deepseek-r1-distill-llama-70b",
-    "llama-3.1-8b-compact",
-    "llama-3.2-1b",
-    "llama-3.1-70b",
-    "llama-3.3-70b",
-    "llama-4-scout-17b",
-    "llama-4-maverick-400b",
-    "command-a-111b",
-    "command-r-plus-104b"
-  ],
-
-  "tierGpuExamples": {
-    "S": "NVIDIA RTX 4060",
-    "A": "NVIDIA RTX 4070",
-    "B": "NVIDIA RTX 4060 Ti 16GB",
-    "C": "NVIDIA RTX 4090",
-    "D": "NVIDIA RTX 5090"
-  },
-
   "compareEligibleGpuNames": [
     "NVIDIA RTX 5090",
     "NVIDIA RTX 5080",
@@ -179,15 +116,38 @@
     "Apple M4 Max (128GB)",
     "Apple M2 Ultra (192GB)"
   ],
-
   "featuredComparePairs": [
-    ["NVIDIA RTX 4090", "NVIDIA RTX 5090"],
-    ["NVIDIA RTX 3090", "NVIDIA RTX 4090"],
-    ["NVIDIA RTX 4070 Ti SUPER", "NVIDIA RTX 4080 SUPER"],
-    ["NVIDIA RTX 4060 Ti 16GB", "NVIDIA RTX 3060 12GB"],
-    ["NVIDIA RTX 4090", "AMD RX 7900 XTX"],
-    ["NVIDIA RTX 4090", "Apple M4 Max (64GB)"],
-    ["Apple M4 Max (64GB)", "Apple M2 Ultra (192GB)"],
-    ["NVIDIA RTX 5080", "NVIDIA RTX 4080 SUPER"]
+    [
+      "NVIDIA RTX 4090",
+      "NVIDIA RTX 5090"
+    ],
+    [
+      "NVIDIA RTX 3090",
+      "NVIDIA RTX 4090"
+    ],
+    [
+      "NVIDIA RTX 4070 Ti SUPER",
+      "NVIDIA RTX 4080 SUPER"
+    ],
+    [
+      "NVIDIA RTX 4060 Ti 16GB",
+      "NVIDIA RTX 3060 12GB"
+    ],
+    [
+      "NVIDIA RTX 4090",
+      "AMD RX 7900 XTX"
+    ],
+    [
+      "NVIDIA RTX 4090",
+      "Apple M4 Max (64GB)"
+    ],
+    [
+      "Apple M4 Max (64GB)",
+      "Apple M2 Ultra (192GB)"
+    ],
+    [
+      "NVIDIA RTX 5080",
+      "NVIDIA RTX 4080 SUPER"
+    ]
   ]
 }

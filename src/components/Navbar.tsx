@@ -16,7 +16,6 @@ export default function Navbar() {
   const isHomeOrSearch = pathname === '/' || pathname === '/search';
 
   const navLinks = [
-    { label: 'Tier List', href: '/tier-list' },
     { label: 'Compare', href: '/compare' },
     { label: 'Benchmarks', href: '/benchmarks' },
     { label: 'GPU Prices', href: '/gpu-prices' },
@@ -28,16 +27,10 @@ export default function Navbar() {
   ];
 
   // Pages that should be visually highlighted as primary actions in the bar.
-  // We render these with a subtle accent ring instead of a flat link to make
-  // them more discoverable. Keeps the rest of the nav uncluttered.
-  const featuredHrefs = new Set(['/tier-list', '/compare']);
+  const featuredHrefs = new Set(['/compare']);
 
   // Per-link accent colors for the featured CTAs.
   const featuredAccent: Record<string, { dark: string; light: string }> = {
-    '/tier-list': {
-      dark:  'border-rose-500/40 text-rose-300 hover:bg-rose-500/10',
-      light: 'border-rose-300 text-rose-700 hover:bg-rose-50',
-    },
     '/compare': {
       dark:  'border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/10',
       light: 'border-cyan-300 text-cyan-700 hover:bg-cyan-50',
