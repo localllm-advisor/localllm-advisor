@@ -271,14 +271,12 @@ function checkCompat(gpu, model) {
 }
 
 // ---------- popular sets (single source of truth: src/data/curated.json) ----
-// We pull the union of (popular ∪ tier-eligible) so OG images are emitted
-// for every (gpu, model) page that's actually pre-rendered. This means a new
-// model added to tierListAllowIds gets an OG card on its very next build.
+// Emit OG images for every (gpu, model) page that's actually pre-rendered.
+// GPU axis: popular ∪ compare-eligible. Model axis: popular only.
 const CURATED = require('./_curated');
 const popularGpus   = CURATED.popularGpus;
 const popularModels = MODELS.filter((m) =>
-  CURATED.curated.popularModelIds.includes(m.id) ||
-  CURATED.curated.tierListAllowIds.includes(m.id)
+  CURATED.curated.popularModelIds.includes(m.id)
 );
 void GPUS;
 

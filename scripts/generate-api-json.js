@@ -320,9 +320,8 @@ const TIERS = [
   { tier: 'D', vram_mb: 48 * 1024, label: '48 GB+' },
 ];
 
-// tierListAllowIds is the same set the /tier-list page renders. Single source
-// of truth: src/data/curated.json.
-const TIER_LIST_ALLOW = new Set(CURATED.curated.tierListAllowIds);
+// Tier-list page was removed; bucket all popular models by VRAM tier instead.
+const TIER_LIST_ALLOW = new Set(CURATED.curated.popularModelIds);
 
 const tierBuckets = { S: [], A: [], B: [], C: [], D: [] };
 for (const m of eligibleModels) {

@@ -2,8 +2,8 @@
 /**
  * update-curated-models.js
  *
- * Keeps src/data/curated.json#popularModelIds and #tierListAllowIds fresh
- * without requiring manual editing every time a new model family lands.
+ * Keeps src/data/curated.json#popularModelIds fresh without requiring manual
+ * editing every time a new model family lands.
  *
  * Strategy
  * --------
@@ -13,13 +13,8 @@
  *         - size_penalty                   // deprioritise models that won't
  *                                          //   fit on any popular GPU
  *
- * Then keep the top POPULAR_N models for popularModelIds and top TIER_N for
- * tierListAllowIds, applying hard filters (must have quantizations, must be
- * a chat/coding/reasoning model, not tiny junk models).
- *
- * IDs that are already in the curated lists are ALWAYS kept (they were
- * editorially chosen for quality reasons beyond download counts).  New
- * candidates are added up to the target size.
+ * IDs already in the curated list are ALWAYS kept (editorially chosen).
+ * New candidates are added up to the target size.
  *
  * Usage
  * -----
@@ -37,8 +32,7 @@ const MODELS_PATH = path.join(ROOT, 'public/data/models.json');
 const CURATED_PATH= path.join(ROOT, 'src/data/curated.json');
 
 const DRY_RUN     = process.argv.includes('--dry-run');
-const POPULAR_N   = 50;   // max size of popularModelIds
-const TIER_N      = 60;   // max size of tierListAllowIds
+const POPULAR_N   = 54;   // max size of popularModelIds
 
 // Hard filter: capabilities that qualify a model for recommendation
 const VALID_CAPS  = new Set(['chat', 'coding', 'reasoning', 'tool_use']);
@@ -108,25 +102,15 @@ function updateList(currentIds, targetSize) {
 }
 
 const newPopular = updateList(curated.popularModelIds, POPULAR_N);
-const newTier    = updateList(curated.tierListAllowIds, TIER_N);
 
 const addedPopular = newPopular.filter(id => !curated.popularModelIds.includes(id));
-const addedTier    = newTier.filter(id => !curated.tierListAllowIds.includes(id));
 
 console.log(`Eligible models: ${eligible.length}`);
-console.log(`popularModelIds:  ${curated.popularModelIds.length} → ${newPopular.length}  (+${addedPopular.length} new)`);
-console.log(`tierListAllowIds: ${curated.tierListAllowIds.length} → ${newTier.length}  (+${addedTier.length} new)`);
+console.log(`popularModelIds: ${curated.popularModelIds.length} → ${newPopular.length}  (+${addedPopular.length} new)`);
 
 if (addedPopular.length) {
   console.log('\nAdded to popularModelIds:');
   addedPopular.forEach(id => {
-    const m = models.find(x => x.id === id);
-    console.log(`  ${id}  (${(m?.hf_downloads||0).toLocaleString()} dl, ${m?.params_b}B)`);
-  });
-}
-if (addedTier.length) {
-  console.log('\nAdded to tierListAllowIds:');
-  addedTier.forEach(id => {
     const m = models.find(x => x.id === id);
     console.log(`  ${id}  (${(m?.hf_downloads||0).toLocaleString()} dl, ${m?.params_b}B)`);
   });
@@ -137,8 +121,7 @@ if (DRY_RUN) {
   process.exit(0);
 }
 
-curated.popularModelIds  = newPopular;
-curated.tierListAllowIds = newTier;
+curated.popularModelIds = newPopular;
 
 fs.writeFileSync(CURATED_PATH, JSON.stringify(curated, null, 2) + '\n', 'utf-8');
 console.log('\nWrote updated curated.json ✓');

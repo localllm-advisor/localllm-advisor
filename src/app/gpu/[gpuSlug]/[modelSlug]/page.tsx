@@ -10,7 +10,6 @@ import GpuModelClient from './GpuModelClient';
  * the site might link to:
  *
  *   • popularGpus × popularModels         (existing /search and SEO pages)
- *   • tierGpuExamples × tierAllowedModels (tier-list "see on RTX 4060 →")
  *   • compareEligibleGpus × popularModels (compare-page row links)
  *
  * Computed once in src/lib/curated.ts so this stays in lockstep with whatever

@@ -31,16 +31,11 @@ function validate() {
 
   for (const n of curated.popularGpuNames)         if (!gpuNames.has(n)) missing.push(`popularGpuNames: ${n}`);
   for (const n of curated.compareEligibleGpuNames) if (!gpuNames.has(n)) missing.push(`compareEligibleGpuNames: ${n}`);
-  for (const t of Object.keys(curated.tierGpuExamples)) {
-    const v = curated.tierGpuExamples[t];
-    if (!gpuNames.has(v)) missing.push(`tierGpuExamples.${t}: ${v}`);
-  }
   for (const [a, b] of curated.featuredComparePairs) {
     if (!gpuNames.has(a)) missing.push(`featuredComparePairs[].a: ${a}`);
     if (!gpuNames.has(b)) missing.push(`featuredComparePairs[].b: ${b}`);
   }
-  for (const id of curated.popularModelIds)  if (!modelIds.has(id)) missing.push(`popularModelIds: ${id}`);
-  for (const id of curated.tierListAllowIds) if (!modelIds.has(id)) missing.push(`tierListAllowIds: ${id}`);
+  for (const id of curated.popularModelIds) if (!modelIds.has(id)) missing.push(`popularModelIds: ${id}`);
 
   if (missing.length) {
     console.error('\n❌ curated.json references entries that are not in the dataset:');
@@ -51,21 +46,18 @@ function validate() {
 }
 validate();
 
-const popularGpus            = gpus  .filter((g) => curated.popularGpuNames.includes(g.name));
-const popularModels          = models.filter((m) => curated.popularModelIds.includes(m.id));
-const tierEligibleModels     = models.filter((m) => curated.tierListAllowIds.includes(m.id));
-const compareEligibleGpus    = gpus  .filter((g) => curated.compareEligibleGpuNames.includes(g.name));
+const popularGpus         = gpus  .filter((g) => curated.popularGpuNames.includes(g.name));
+const popularModels       = models.filter((m) => curated.popularModelIds.includes(m.id));
+const compareEligibleGpus = gpus  .filter((g) => curated.compareEligibleGpuNames.includes(g.name));
 
 // Same superset rule as src/lib/curated.ts → getSeoStaticParamsSuperset()
 function getSeoStaticParamsSuperset() {
   const gpuNameSet = new Set([
     ...curated.popularGpuNames,
-    ...Object.values(curated.tierGpuExamples),
     ...curated.compareEligibleGpuNames,
   ]);
   const modelIdSet = new Set([
     ...curated.popularModelIds,
-    ...curated.tierListAllowIds,
   ]);
   const gset = gpus  .filter((g) => gpuNameSet.has(g.name));
   const mset = models.filter((m) => modelIdSet.has(m.id));
@@ -93,7 +85,6 @@ module.exports = {
   models,
   popularGpus,
   popularModels,
-  tierEligibleModels,
   compareEligibleGpus,
   toSlug,
   getSeoStaticParamsSuperset,
