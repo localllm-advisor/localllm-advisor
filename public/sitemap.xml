@@ -21,14 +21,9 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/tier-list</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/compare</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/enterprise</loc>
@@ -101,17 +96,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -122,6 +112,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -186,22 +181,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -216,12 +211,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -231,17 +221,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -261,11 +291,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -281,12 +306,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5090/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -326,17 +366,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -347,6 +382,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -411,22 +451,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -441,12 +481,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -456,17 +491,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -486,11 +561,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -506,12 +576,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5080/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -551,17 +636,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -572,6 +652,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -636,22 +721,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -666,12 +751,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -681,17 +761,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -711,11 +831,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -731,12 +846,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070-ti/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -776,17 +906,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -797,6 +922,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -861,22 +991,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -891,12 +1021,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -906,17 +1031,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -936,11 +1101,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -956,12 +1116,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-5070/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1001,17 +1176,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1022,6 +1192,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1086,22 +1261,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1116,12 +1291,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1131,17 +1301,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1161,11 +1371,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1181,12 +1386,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4090/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1226,17 +1446,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1247,6 +1462,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1311,22 +1531,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1341,12 +1561,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1356,17 +1571,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1386,11 +1641,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1406,12 +1656,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080-super/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1451,17 +1716,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1472,6 +1732,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1536,22 +1801,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1566,12 +1831,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1581,17 +1841,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1611,11 +1911,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1631,12 +1926,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4080/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1676,17 +1986,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1697,6 +2002,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1761,22 +2071,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1791,12 +2101,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1806,17 +2111,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1836,11 +2181,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1856,12 +2196,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti-super/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1901,17 +2256,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1922,6 +2272,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1986,22 +2341,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2016,12 +2371,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2031,17 +2381,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2061,11 +2451,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2081,12 +2466,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-ti/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2126,17 +2526,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2147,6 +2542,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2211,22 +2611,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2241,12 +2641,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2256,17 +2651,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2286,11 +2721,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2306,12 +2736,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070-super/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2351,17 +2796,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2372,6 +2812,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2436,22 +2881,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2466,12 +2911,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2481,17 +2921,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2511,11 +2991,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2531,12 +3006,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4070/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2576,17 +3066,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2597,6 +3082,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2661,22 +3151,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2691,12 +3181,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2706,17 +3191,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2736,11 +3261,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2756,12 +3276,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-16gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2801,17 +3336,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2822,6 +3352,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2886,22 +3421,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2916,12 +3451,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2931,17 +3461,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2961,11 +3531,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2981,12 +3546,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060-ti-8gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3026,17 +3606,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3047,6 +3622,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3111,22 +3691,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3141,12 +3721,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3156,17 +3731,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3186,11 +3801,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3206,12 +3816,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-4060/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3251,17 +3876,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3272,6 +3892,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3336,22 +3961,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3366,12 +3991,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3381,17 +4001,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3411,11 +4071,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3431,12 +4086,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090-ti/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3476,17 +4146,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3497,6 +4162,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3561,22 +4231,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3591,12 +4261,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3606,17 +4271,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3636,11 +4341,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3656,12 +4356,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3090/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3701,17 +4416,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3722,6 +4432,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3786,22 +4501,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3816,12 +4531,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3831,17 +4541,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3861,11 +4611,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -3881,12 +4626,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-ti/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3926,17 +4686,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -3947,6 +4702,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4011,22 +4771,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4041,12 +4801,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4056,17 +4811,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4086,11 +4881,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -4106,12 +4896,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-12gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4151,17 +4956,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4172,6 +4972,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4236,22 +5041,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4266,12 +5071,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4281,17 +5081,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4311,11 +5151,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -4331,12 +5166,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3080-10gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4376,17 +5226,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4397,6 +5242,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4461,22 +5311,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4491,12 +5341,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4506,17 +5351,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4536,11 +5421,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -4556,12 +5436,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070-ti/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4601,17 +5496,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4622,6 +5512,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4686,22 +5581,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4716,12 +5611,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4731,17 +5621,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4761,11 +5691,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -4781,12 +5706,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3070/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4826,17 +5766,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4847,6 +5782,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4911,22 +5851,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4941,12 +5881,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4956,17 +5891,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -4986,11 +5961,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -5006,12 +5976,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/nvidia-rtx-3060-12gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5051,17 +6036,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5072,6 +6052,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5136,22 +6121,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5166,12 +6151,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5181,17 +6161,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5211,11 +6231,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -5231,12 +6246,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xtx/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5276,17 +6306,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5297,6 +6322,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5361,22 +6391,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5391,12 +6421,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5406,17 +6431,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5436,11 +6501,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -5456,12 +6516,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7900-xt/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5501,17 +6576,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5522,6 +6592,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5586,22 +6661,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5616,12 +6691,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5631,17 +6701,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5661,11 +6771,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -5681,12 +6786,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7800-xt/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5726,17 +6846,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7600/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5747,6 +6862,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7600/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5811,22 +6931,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5841,12 +6961,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5856,17 +6971,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7600/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5886,11 +7041,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/amd-rx-7600/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -5906,12 +7056,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/amd-rx-7600/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5951,17 +7116,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -5972,6 +7132,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6036,22 +7201,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6066,12 +7231,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6081,17 +7241,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6111,11 +7311,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -6131,12 +7326,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m3-max-48gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6176,17 +7386,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6197,6 +7402,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6261,22 +7471,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6291,12 +7501,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6306,17 +7511,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6336,11 +7581,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -6356,12 +7596,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-pro-24gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6401,17 +7656,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6422,6 +7672,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6486,22 +7741,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6516,12 +7771,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6531,17 +7781,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6561,11 +7851,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -6581,12 +7866,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-64gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6626,17 +7926,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6647,6 +7942,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6711,22 +8011,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6741,12 +8041,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6756,17 +8051,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6786,11 +8121,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -6806,12 +8136,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m4-max-128gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6851,17 +8196,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/gemma-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/deepseek-v3.2-685.4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/gemma-2-9b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/gemma-3-12b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6872,6 +8212,11 @@
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/codellama-34b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6936,22 +8281,22 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/phi-4-reasoning-14b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-2.5-1.5b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-3-0.6b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-2.5-3b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-3-1.7b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen3.5-4b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-3-4b</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-2.5-7b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6966,12 +8311,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-3-14b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-3-30b-a3b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen3.5-9b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -6981,17 +8321,57 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen3.5-35b-a3b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-2.5-72b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-3-235b-a22b-moe</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-2.5-72b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/llama-3.2-1b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/llama-4-scout-17b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/deepseek-r1-671b</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/gemma-3-27b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-3-8b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen-3-32b</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/llama-3.1-8b-compact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/mixtral-8x7b-instruct-v0.1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -7011,11 +8391,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen3-coder-30b-a3b</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/deepseek-v3-0324</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -7031,12 +8406,27 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen3-coder-480b-a35b-instruct</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen3-30b-a3b-instruct-2507</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen3-30b-a3b-instruct-2507</loc>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/qwen3-4b-instruct-2507</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/gemma-4-e4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/gemma-4-26b-a4b-it</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://localllm-advisor.com/gpu/apple-m2-ultra-192gb/gemma-4-31b-it</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
