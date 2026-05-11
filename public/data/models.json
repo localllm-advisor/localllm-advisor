@@ -98364,7 +98364,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-02-06",
-    "hf_id": "Applied-Innovation-Center/Karnak",
+    "hf_id": "Applied-Innovation-Center/Karnak-40B-v1.0",
     "provider": "Applied-Innovation-Center",
     "hf_downloads": 2999,
     "quantizations": [
@@ -113909,6 +113909,116 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 13800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "karga-2b-thinking",
+    "name": "Karga-2B-Thinking",
+    "family": "karga",
+    "params_b": 2.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2026-04-25",
+    "hf_id": "ilkayO/Karga-2B-Thinking",
+    "provider": "ilkayO",
+    "hf_downloads": 801,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1350,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1950,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 4800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "cognica-poe-v1-0-3b-base-continual-learning",
+    "name": "Cognica-PoE-v1.0-3B-base-continual-learning",
+    "family": "cognica",
+    "params_b": 3.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-05-07",
+    "hf_id": "cognica/Cognica-PoE-v1.0-3B-base-continual-learning",
+    "provider": "cognica",
+    "hf_downloads": 565,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1688,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2438,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6000,
         "quality": 1.0
       }
     ],
