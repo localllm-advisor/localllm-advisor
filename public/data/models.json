@@ -115706,5 +115706,54 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "dolphin-mistral-24b-venice-edition-fp8",
+    "name": "Dolphin-Mistral-24B-Venice-Edition-FP8",
+    "family": "mistral",
+    "params_b": 24.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-07-24",
+    "hf_id": "dphn/Dolphin-Mistral-24B-Venice-Edition-FP8",
+    "provider": "dphn",
+    "hf_downloads": 1330,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 13500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 19500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 24000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
