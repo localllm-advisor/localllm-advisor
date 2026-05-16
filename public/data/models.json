@@ -115515,7 +115515,7 @@
     "release_date": "2026-05-11",
     "hf_id": "VladShash/deepseek-math-7B-lean-prover-dpo-300k-mistral-150k-olmo",
     "provider": "VladShash",
-    "hf_downloads": 1728,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -117682,6 +117682,61 @@
         "bpw": 8.0,
         "vram_mb": 27400,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "test-model",
+    "name": "test-model",
+    "family": "test-model",
+    "params_b": 0.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-05-02",
+    "hf_id": "phoenix2401/test_model",
+    "provider": "phoenix2401",
+    "hf_downloads": 525,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
