@@ -117753,5 +117753,115 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "qwen3-1-7b-uc-v3-bpw3",
+    "name": "qwen3-1.7B-uc-v3-bpw3",
+    "family": "qwen",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-04-29",
+    "hf_id": "SipsaLabs/qwen3-1.7b-uc-v3-bpw3",
+    "provider": "SipsaLabs",
+    "hf_downloads": 613,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "orthrus-qwen3-8b",
+    "name": "Orthrus-Qwen3-8B",
+    "family": "qwen",
+    "params_b": 9.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-05-08",
+    "hf_id": "chiennv/Orthrus-Qwen3-8B",
+    "provider": "chiennv",
+    "hf_downloads": 937,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5456,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7881,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 19400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
