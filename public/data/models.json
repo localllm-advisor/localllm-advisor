@@ -117712,7 +117712,7 @@
     "release_date": "2026-05-02",
     "hf_id": "phoenix2401/test_model",
     "provider": "phoenix2401",
-    "hf_downloads": 525,
+    "hf_downloads": 601,
     "quantizations": [
       {
         "level": "Q4_K_M",
