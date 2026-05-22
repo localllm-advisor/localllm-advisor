@@ -595,118 +595,45 @@
     }
   },
   {
-    "id": "command-35b",
-    "name": "c4ai-command-r-v01 35B",
+    "id": "c4ai-command-r-v01",
+    "name": "c4ai-command-r-v01",
     "family": "command",
-    "params_b": 35,
+    "params_b": 35.0,
     "architecture": "dense",
     "capabilities": [
       "chat"
     ],
-    "context_length": 131072,
+    "context_length": 4096,
     "release_date": "2024-03-11",
-    "ollama_base": "command:35b",
-    "quantizations": [
-      {
-        "level": "Q4_K_M",
-        "bpw": 4.5,
-        "vram_mb": 20660,
-        "quality": 0.94,
-        "ollama_tag": "command:35b-q4_k_m"
-      },
-      {
-        "level": "Q6_K",
-        "bpw": 6.5,
-        "vram_mb": 29620,
-        "quality": 0.97,
-        "ollama_tag": "command:35b-q6_k"
-      },
-      {
-        "level": "Q8_0",
-        "bpw": 8,
-        "vram_mb": 36340,
-        "quality": 0.995,
-        "ollama_tag": "command:35b-q8_0"
-      },
-      {
-        "level": "FP16",
-        "bpw": 16,
-        "vram_mb": 72180,
-        "quality": 1,
-        "ollama_tag": "command:35b-fp16"
-      }
-    ],
-    "benchmarks": {
-      "humaneval": null,
-      "mmlu_pro": 26.3,
-      "math": 3.5,
-      "ifeval": 67.5,
-      "bbh": 34.6,
-      "mmmu": null,
-      "gpqa": 7.6,
-      "musr": 16.1,
-      "mbpp": null,
-      "bigcodebench": 37.1,
-      "alpacaeval": null,
-      "mmbench": null
-    },
     "hf_id": "CohereLabs/c4ai-command-r-v01",
     "provider": "Cohere",
     "hf_downloads": 29420,
-    "gguf_sources": [
-      {
-        "repo": "bartowski/c4ai-command-r-v01-GGUF",
-        "provider": "bartowski"
-      }
-    ]
-  },
-  {
-    "id": "command-r-plus-104b",
-    "name": "Command-R+ 104B",
-    "family": "command",
-    "params_b": 104,
-    "architecture": "dense",
-    "capabilities": [
-      "chat",
-      "reasoning"
-    ],
-    "context_length": 131072,
-    "release_date": "2024-04-04",
-    "hf_id": "CohereLabs/c4ai-command-r-plus",
-    "provider": "Cohere",
-    "hf_downloads": 3003,
     "quantizations": [
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
-        "vram_mb": 62904,
+        "vram_mb": 19688,
         "quality": 0.94
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
-        "vram_mb": 89528,
+        "vram_mb": 28438,
         "quality": 0.97
       },
       {
         "level": "Q8_0",
-        "bpw": 8,
-        "vram_mb": 109496,
+        "bpw": 8.0,
+        "vram_mb": 35000,
         "quality": 0.995
-      },
-      {
-        "level": "FP16",
-        "bpw": 16,
-        "vram_mb": 215992,
-        "quality": 1
       }
     ],
     "benchmarks": {
-      "humaneval": 81,
-      "mmlu_pro": 56,
-      "math": 47.2,
-      "ifeval": 85.4,
-      "bbh": 74,
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
       "mmmu": null,
       "gpqa": null,
       "musr": null,
@@ -714,13 +641,56 @@
       "bigcodebench": null,
       "alpacaeval": null,
       "mmbench": null
-    },
-    "gguf_sources": [
+    }
+  },
+  {
+    "id": "c4ai-command-r-plus",
+    "name": "c4ai-command-r-plus",
+    "family": "command",
+    "params_b": 103.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-04-03",
+    "hf_id": "CohereLabs/c4ai-command-r-plus",
+    "provider": "Cohere",
+    "hf_downloads": 3003,
+    "quantizations": [
       {
-        "repo": "bartowski/c4ai-command-r-plus-GGUF",
-        "provider": "bartowski"
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 58387,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 84337,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 103800,
+        "quality": 0.995
       }
-    ]
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   },
   {
     "id": "dbrx-132b",
@@ -125168,6 +125138,61 @@
         "bpw": 8.0,
         "vram_mb": 31000,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "kalm-embedding-multilingual-mini-v1",
+    "name": "KaLM-embedding-multilingual-mini-v1",
+    "family": "kalm",
+    "params_b": 0.5,
+    "architecture": "dense",
+    "capabilities": [
+      "embedding"
+    ],
+    "context_length": 131072,
+    "release_date": "2024-08-27",
+    "hf_id": "HIT-TMG/KaLM-embedding-multilingual-mini-v1",
+    "provider": "HIT-TMG",
+    "hf_downloads": 162181,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 281,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 406,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1000,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
