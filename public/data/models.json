@@ -99687,7 +99687,7 @@
     ],
     "context_length": 2048,
     "release_date": "2026-04-22",
-    "hf_id": "OvercastLab/Quark-50m",
+    "hf_id": "ThingAI/Quark-50m",
     "provider": "OvercastLab",
     "hf_downloads": 3891,
     "quantizations": [
@@ -126117,6 +126117,61 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 30200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ai-content-detector",
+    "name": "AI-Content-Detector",
+    "family": "ai",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2024-07-27",
+    "hf_id": "CYBERDEVX/AI-Content-Detector",
+    "provider": "CYBERDEVX",
+    "hf_downloads": 671,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16000,
         "quality": 1.0
       }
     ],
