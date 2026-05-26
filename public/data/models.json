@@ -7112,7 +7112,7 @@
     },
     "hf_id": "mistralai/Mistral-Nemo-Instruct-2407",
     "provider": "Mistral AI",
-    "hf_downloads": 0,
+    "hf_downloads": 675120,
     "gguf_sources": [
       {
         "repo": "unsloth/Mistral-Nemo-Instruct-2407-GGUF",
@@ -7719,7 +7719,7 @@
     "release_date": "2024-07-24",
     "hf_id": "mistralai/Mistral-Large-Instruct-2407",
     "provider": "Mistral AI",
-    "hf_downloads": 60000,
+    "hf_downloads": 7511,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -123419,16 +123419,16 @@
     }
   },
   {
-    "id": "safety-model",
-    "name": "safety-model",
-    "family": "safety-model",
+    "id": "safety2",
+    "name": "safety2",
+    "family": "safety2",
     "params_b": 1.7,
     "architecture": "dense",
     "capabilities": [
       "chat"
     ],
     "context_length": 40960,
-    "release_date": "2026-05-18",
+    "release_date": "2026-05-05",
     "hf_id": "cs-552-2026-MMRF/safety_model",
     "provider": "cs-552-2026-MMRF",
     "hf_downloads": 664,
@@ -128514,6 +128514,264 @@
         "bpw": 16.0,
         "vram_mb": 2400,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "uae-large-v1",
+    "name": "UAE-Large-V1",
+    "family": "uae",
+    "params_b": 0.3,
+    "architecture": "dense",
+    "capabilities": [
+      "embedding"
+    ],
+    "context_length": 4096,
+    "release_date": "2023-12-04",
+    "hf_id": "WhereIsAI/UAE-Large-V1",
+    "provider": "WhereIsAI",
+    "hf_downloads": 1590091,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "jamba-v0-1",
+    "name": "Jamba-v0.1",
+    "family": "jamba",
+    "params_b": 51.6,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2024-03-28",
+    "hf_id": "ai21labs/Jamba-v0.1",
+    "provider": "AI21",
+    "hf_downloads": 3231,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 29025,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 41925,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 51600,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "granite-4-0-micro",
+    "name": "granite-4.0-micro",
+    "family": "granite",
+    "params_b": 3.4,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-09-16",
+    "hf_id": "ibm-granite/granite-4.0-micro",
+    "provider": "IBM",
+    "hf_downloads": 188254,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1912,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2762,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "granite-4-0-h-small",
+    "name": "granite-4.0-h-small",
+    "family": "granite",
+    "params_b": 32.2,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-09-16",
+    "hf_id": "ibm-granite/granite-4.0-h-small",
+    "provider": "IBM",
+    "hf_downloads": 460329,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 26162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 32200,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "keye-vl-2-0-30b-a3b",
+    "name": "Keye-VL-2.0-30B-A3B",
+    "family": "keye",
+    "params_b": 31.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-05-25",
+    "hf_id": "Kwai-Keye/Keye-VL-2.0-30B-A3B",
+    "provider": "Kwai-Keye",
+    "hf_downloads": 47,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 17494,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 25269,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 31100,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
