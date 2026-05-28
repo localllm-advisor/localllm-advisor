@@ -102588,7 +102588,7 @@
     ],
     "context_length": 8192,
     "release_date": "2026-04-07",
-    "hf_id": "gplsi/Aitana-7B-S-base-1.0",
+    "hf_id": "gplsi/Aitana-7B-S-base",
     "provider": "gplsi",
     "hf_downloads": 221,
     "quantizations": [
@@ -123431,7 +123431,7 @@
     "release_date": "2026-05-05",
     "hf_id": "cs-552-2026-MMRF/safety_model",
     "provider": "cs-552-2026-MMRF",
-    "hf_downloads": 944,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -125813,7 +125813,7 @@
     "release_date": "2026-05-05",
     "hf_id": "cs-552-2026-MMRF/safety_model",
     "provider": "cs-552-2026-MMRF",
-    "hf_downloads": 944,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -129967,6 +129967,227 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 1000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nanogpt-pretrained-slm-tinystories-124m",
+    "name": "nanogpt-pretrained-slm-tinystories-124m",
+    "family": "nanogpt",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-03-14",
+    "hf_id": "nishantup/nanogpt-pretrained-slm-tinystories-124m",
+    "provider": "nishantup",
+    "hf_downloads": 1485,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "general-knowledge-model",
+    "name": "general-knowledge-model",
+    "family": "general-knowledge-model",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-05-06",
+    "hf_id": "cs-552-2026-theattentionseekers/general_knowledge_model",
+    "provider": "cs-552-2026-theattentionseekers",
+    "hf_downloads": 503,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "paddleocr-vl-1-6",
+    "name": "PaddleOCR-VL-1.6",
+    "family": "paddleocr",
+    "params_b": 1.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-05-27",
+    "hf_id": "PaddlePaddle/PaddleOCR-VL-1.6",
+    "provider": "PaddlePaddle",
+    "hf_downloads": 1,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 562,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 812,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-8b-a1b",
+    "name": "LFM2.5-8B-A1B",
+    "family": "lfm",
+    "params_b": 8.5,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-05-28",
+    "hf_id": "LiquidAI/LFM2.5-8B-A1B",
+    "provider": "Liquid AI",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4781,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6906,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 17000,
         "quality": 1.0
       }
     ],
