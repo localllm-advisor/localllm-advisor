@@ -131870,5 +131870,220 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "qwen3-5-28b",
+    "name": "Qwen3.5-28B",
+    "family": "qwen",
+    "params_b": 28.7,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-03-27",
+    "hf_id": "0xSero/Qwen3.5-28B",
+    "provider": "0xSero",
+    "hf_downloads": 18,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 16144,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 23319,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 28700,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gemma-4-2b-finetuned-grammar2",
+    "name": "gemma-4-2B-finetuned-grammar2",
+    "family": "gemma",
+    "params_b": 5.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-04-30",
+    "hf_id": "shanaka95/gemma-4-2b-finetuned-grammar2",
+    "provider": "shanaka95",
+    "hf_downloads": 525,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2869,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 4144,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 5100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 10200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "evolai-qwen047-v4",
+    "name": "evolai-qwen047-v4",
+    "family": "qwen",
+    "params_b": 0.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-05-26",
+    "hf_id": "Danieli1021/evolai-qwen047-v4",
+    "provider": "Danieli1021",
+    "hf_downloads": 611,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 281,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 406,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lstm-resnet-12layer-v5",
+    "name": "lstm-resnet-12layer-v5",
+    "family": "lstm",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-05-27",
+    "hf_id": "deqing/lstm-resnet-12layer-v5",
+    "provider": "deqing",
+    "hf_downloads": 1387,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
