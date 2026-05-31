@@ -123431,7 +123431,7 @@
     "release_date": "2026-05-05",
     "hf_id": "cs-552-2026-MMRF/safety_model",
     "provider": "cs-552-2026-MMRF",
-    "hf_downloads": 1084,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -125813,7 +125813,7 @@
     "release_date": "2026-05-05",
     "hf_id": "cs-552-2026-MMRF/safety_model",
     "provider": "cs-552-2026-MMRF",
-    "hf_downloads": 1084,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -132511,6 +132511,116 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 10200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "hypaai-orpheus-v5",
+    "name": "hypaai-orpheus-v5",
+    "family": "hypaai-orpheus-v5",
+    "params_b": 3.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-12-25",
+    "hf_id": "hypaai/hypaai_orpheus_v5",
+    "provider": "hypaai",
+    "hf_downloads": 691,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1856,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2681,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "general-knowledge-model",
+    "name": "general-knowledge-model",
+    "family": "general-knowledge-model",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-05-10",
+    "hf_id": "cs-552-2026-the-transformers/general_knowledge_model",
+    "provider": "cs-552-2026-the-transformers",
+    "hf_downloads": 559,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
         "quality": 1.0
       }
     ],
