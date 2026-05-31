@@ -35214,7 +35214,7 @@
     ],
     "context_length": 32768,
     "release_date": "2026-02-28",
-    "hf_id": "XCurOS/XCurOS-0.1-8B-Instruct",
+    "hf_id": "XCurOS/XCurOS0.1-8B-Instruct",
     "provider": "XCurOS",
     "hf_downloads": 54869,
     "quantizations": [
@@ -70797,7 +70797,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-02-25",
-    "hf_id": "XCurOS/XCurOS-1.2-8B-VLBF16-Instruct",
+    "hf_id": "XCurOS/XCurOS1.2-8B-VLBF16-Instruct",
     "provider": "XCurOS",
     "hf_downloads": 89914,
     "quantizations": [
@@ -125925,7 +125925,7 @@
     "release_date": "2026-05-12",
     "hf_id": "tjarvis91/vfai-x-3.5-9b-options",
     "provider": "tjarvis91",
-    "hf_downloads": 874,
+    "hf_downloads": 1350,
     "quantizations": [
       {
         "level": "Q4_K_M",
