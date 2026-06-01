@@ -111095,7 +111095,7 @@
     "release_date": "2026-05-02",
     "hf_id": "tohio/slm-125m",
     "provider": "tohio",
-    "hf_downloads": 606,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -117031,7 +117031,7 @@
     "release_date": "2026-05-06",
     "hf_id": "clear-blue-sky/evolai-tfm-001",
     "provider": "clear-blue-sky",
-    "hf_downloads": 3543,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -117086,7 +117086,7 @@
     "release_date": "2026-05-07",
     "hf_id": "clear-blue-sky/evolai-tfm-002",
     "provider": "clear-blue-sky",
-    "hf_downloads": 3394,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -117251,7 +117251,7 @@
     "release_date": "2026-05-07",
     "hf_id": "clear-blue-sky/evolai-tfm-006",
     "provider": "clear-blue-sky",
-    "hf_downloads": 3107,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -117306,7 +117306,7 @@
     "release_date": "2026-05-07",
     "hf_id": "clear-blue-sky/evolai-tfm-004",
     "provider": "clear-blue-sky",
-    "hf_downloads": 3382,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -132598,6 +132598,61 @@
     "hf_id": "cs-552-2026-the-transformers/general_knowledge_model",
     "provider": "cs-552-2026-the-transformers",
     "hf_downloads": 559,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "safety-model",
+    "name": "safety-model",
+    "family": "safety-model",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-05-11",
+    "hf_id": "cs-552-2026-4neurons/safety_model",
+    "provider": "cs-552-2026-4neurons",
+    "hf_downloads": 522,
     "quantizations": [
       {
         "level": "Q4_K_M",
