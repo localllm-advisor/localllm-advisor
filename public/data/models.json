@@ -117141,7 +117141,7 @@
     "release_date": "2026-05-07",
     "hf_id": "clear-blue-sky/evolai-tfm-005",
     "provider": "clear-blue-sky",
-    "hf_downloads": 3272,
+    "hf_downloads": 3488,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -117196,7 +117196,7 @@
     "release_date": "2026-05-07",
     "hf_id": "clear-blue-sky/evolai-tfm-003",
     "provider": "clear-blue-sky",
-    "hf_downloads": 3322,
+    "hf_downloads": 3531,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -118280,7 +118280,7 @@
     "release_date": "2026-05-08",
     "hf_id": "clear-blue-sky/evolai-tfm-007",
     "provider": "clear-blue-sky",
-    "hf_downloads": 2457,
+    "hf_downloads": 2679,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -133784,6 +133784,113 @@
         "bpw": 16.0,
         "vram_mb": 200,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llava-onevision-2-8b-instruct",
+    "name": "LLaVA-OneVision-2-8B-Instruct",
+    "family": "llava",
+    "params_b": 8.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-05-11",
+    "hf_id": "lmms-lab-encoder/LLaVA-OneVision-2-8B-Instruct",
+    "provider": "lmms-lab-encoder",
+    "hf_downloads": 6701,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4781,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6906,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 17000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "holo-3-1-35b-a3b",
+    "name": "Holo-3.1-35B-A3B",
+    "family": "holo",
+    "params_b": 35.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-05-29",
+    "hf_id": "Hcompany/Holo-3.1-35B-A3B",
+    "provider": "Hcompany",
+    "hf_downloads": 38,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 35100,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
