@@ -95967,8 +95967,8 @@
     }
   },
   {
-    "id": "rax-3-5-chat",
-    "name": "rax-3.5-chat",
+    "id": "rax-4-5",
+    "name": "Rax-4.5",
     "family": "rax",
     "params_b": 2.3,
     "architecture": "dense",
@@ -134816,6 +134816,116 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 24000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "safety-model",
+    "name": "safety-model",
+    "family": "safety-model",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-05-11",
+    "hf_id": "cs-552-2026-catma/safety_model",
+    "provider": "cs-552-2026-catma",
+    "hf_downloads": 500,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "convergent-llama-300m-muon-6digit-addition-6digit-llama",
+    "name": "convergent-llama-300M-muon-6digit-addition-6digit-llama",
+    "family": "llama",
+    "params_b": 0.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-05-30",
+    "hf_id": "deqing/convergent-llama-300M-muon-6digit-addition_6digit_llama",
+    "provider": "deqing",
+    "hf_downloads": 1077,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
         "quality": 1.0
       }
     ],
