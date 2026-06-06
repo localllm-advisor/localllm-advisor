@@ -104545,7 +104545,7 @@
     "release_date": "2026-04-21",
     "hf_id": "thanhhoangnvbg/empathAI-llama3.1-8b",
     "provider": "thanhhoangnvbg",
-    "hf_downloads": 1786,
+    "hf_downloads": 1771,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -136276,6 +136276,61 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "safety-model",
+    "name": "safety-model",
+    "family": "safety-model",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-05-05",
+    "hf_id": "cs-552-2026-Flash-McQueenS-and-TheKing/safety_model",
+    "provider": "cs-552-2026-Flash-McQueenS-and-TheKing",
+    "hf_downloads": 542,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
         "quality": 1.0
       }
     ],
