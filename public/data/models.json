@@ -138665,5 +138665,54 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "exaone-4-0-32b-fp8",
+    "name": "EXAONE-4.0-32B-FP8",
+    "family": "exaone",
+    "params_b": 32.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-01-22",
+    "hf_id": "furiosa-ai/EXAONE-4.0-32B-FP8",
+    "provider": "furiosa-ai",
+    "hf_downloads": 1662,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18000,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 26000,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 32000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
