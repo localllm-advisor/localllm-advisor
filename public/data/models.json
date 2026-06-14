@@ -142500,5 +142500,55 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "rio-3-5-open-397b",
+    "name": "Rio-3.5-Open-397B",
+    "family": "rio",
+    "params_b": 403.4,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-11",
+    "hf_id": "prefeitura-rio/Rio-3.5-Open-397B",
+    "provider": "prefeitura-rio",
+    "hf_downloads": 112371,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 226912,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 327762,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 403400,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
