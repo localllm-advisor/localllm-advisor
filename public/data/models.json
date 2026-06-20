@@ -79491,7 +79491,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-04-04",
-    "hf_id": "EganAI/gemma-4-31B-claude-Reasoning-Distilled",
+    "hf_id": "EganAI/gemma-4-31B-opus-Reasoning-Distilled",
     "provider": "EganAI",
     "hf_downloads": 594,
     "quantizations": [
@@ -144838,6 +144838,110 @@
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 27800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "supra-1-5-50m-base-exp",
+    "name": "Supra-1.5-50M-Base-exp",
+    "family": "supra",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 5120,
+    "release_date": "2026-06-10",
+    "hf_id": "SupraLabs/Supra-1.5-50M-Base-exp",
+    "provider": "SupraLabs",
+    "hf_downloads": 3357,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gemma-4-26b-a4b-styletune",
+    "name": "Gemma-4-26B-A4B-StyleTune",
+    "family": "gemma",
+    "params_b": 26.5,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-14",
+    "hf_id": "Gryphe/Gemma-4-26B-A4B-StyleTune",
+    "provider": "Gryphe",
+    "hf_downloads": 366,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 14906,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 21531,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 26500,
         "quality": 0.995
       }
     ],
