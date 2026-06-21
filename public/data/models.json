@@ -34945,7 +34945,7 @@
     ],
     "context_length": 4096,
     "release_date": "2026-02-12",
-    "hf_id": "KiteFishAI/Minnow-Math-1.5Bv2",
+    "hf_id": "KiteFishAI/Nano-Math-1.5Bv2",
     "provider": "KiteFishAI",
     "hf_downloads": 62,
     "quantizations": [
