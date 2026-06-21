@@ -144273,7 +144273,7 @@
     "release_date": "2026-05-31",
     "hf_id": "Thunderbolts123/UltraThinker-Coder-3B",
     "provider": "Thunderbolts123",
-    "hf_downloads": 981,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
