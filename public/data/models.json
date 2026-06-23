@@ -144262,17 +144262,18 @@
   {
     "id": "ultrathinker-coder-3b",
     "name": "UltraThinker-Coder-3B",
-    "family": "ultrathinker",
+    "family": "aya",
     "params_b": 3.1,
     "architecture": "dense",
     "capabilities": [
       "chat",
-      "coding"
+      "coding",
+      "multilingual"
     ],
     "context_length": 32768,
-    "release_date": "2026-05-31",
+    "release_date": "2026-06-21",
     "hf_id": "AyaanAhmed123/UltraThinker-Coder-3B",
-    "provider": "Thunderbolts123",
+    "provider": "AyaanAhmed123",
     "hf_downloads": 1332,
     "quantizations": [
       {
