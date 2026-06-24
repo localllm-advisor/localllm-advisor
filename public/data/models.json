@@ -40489,7 +40489,7 @@
     "release_date": "2023-10-05",
     "hf_id": "mesolitica/llama2-embedding-1b-8k",
     "provider": "mesolitica",
-    "hf_downloads": 262429,
+    "hf_downloads": 208309,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -42139,7 +42139,7 @@
     "release_date": "2024-06-06",
     "hf_id": "histai/hibou-b",
     "provider": "histai",
-    "hf_downloads": 2647,
+    "hf_downloads": 4388,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -43349,7 +43349,7 @@
     "release_date": "2024-08-29",
     "hf_id": "nvidia/NV-Embed-v2",
     "provider": "NVIDIA",
-    "hf_downloads": 34718,
+    "hf_downloads": 25177,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -45820,7 +45820,7 @@
     "release_date": "2025-09-23",
     "hf_id": "Qwen/Qwen3Guard-Stream-0.6B",
     "provider": "Alibaba",
-    "hf_downloads": 2610,
+    "hf_downloads": 1144,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -46041,7 +46041,7 @@
     "release_date": "2025-10-16",
     "hf_id": "nvidia/llama-nemotron-embed-1b-v2",
     "provider": "NVIDIA",
-    "hf_downloads": 682505,
+    "hf_downloads": 665678,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -46206,7 +46206,7 @@
     "release_date": "2025-11-26",
     "hf_id": "brain-bzh/reve-base",
     "provider": "brain-bzh",
-    "hf_downloads": 20080,
+    "hf_downloads": 30874,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47306,7 +47306,7 @@
     "release_date": "2026-02-04",
     "hf_id": "OpenMOSS-Team/MOSS-Audio-Tokenizer",
     "provider": "OpenMOSS-Team",
-    "hf_downloads": 88456,
+    "hf_downloads": 224651,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -50607,7 +50607,7 @@
     "release_date": "2025-05-03",
     "hf_id": "worstchan/EAT-base_epoch30_finetune_AS2M",
     "provider": "worstchan",
-    "hf_downloads": 11098,
+    "hf_downloads": 26153,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -95007,7 +95007,7 @@
     "release_date": "2024-01-18",
     "hf_id": "ragavsachdeva/magi",
     "provider": "ragavsachdeva",
-    "hf_downloads": 111064,
+    "hf_downloads": 37352,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -103025,7 +103025,7 @@
     "release_date": "2024-07-31",
     "hf_id": "relik-ie/relik-reader-deberta-v3-small-re-wikipedia",
     "provider": "relik-ie",
-    "hf_downloads": 85869,
+    "hf_downloads": 6313,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -104817,7 +104817,7 @@
     "release_date": "2026-03-10",
     "hf_id": "ibm-granite/granite-speech-4.1-2b-nar",
     "provider": "IBM",
-    "hf_downloads": 29552,
+    "hf_downloads": 144099,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -146036,6 +146036,61 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 18800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "steerling-8b",
+    "name": "steerling-8B",
+    "family": "steerling",
+    "params_b": 8.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-02-22",
+    "hf_id": "guidelabs/steerling-8b",
+    "provider": "guidelabs",
+    "hf_downloads": 86,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4725,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6825,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16800,
         "quality": 1.0
       }
     ],
