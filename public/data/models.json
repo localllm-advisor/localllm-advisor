@@ -146163,5 +146163,215 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "qwen3-6-35b-a3b-fp8-dynamic",
+    "name": "Qwen3.6-35B-A3B-FP8-dynamic",
+    "family": "qwen",
+    "params_b": 35.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-04-27",
+    "hf_id": "RedHatAI/Qwen3.6-35B-A3B-FP8-dynamic",
+    "provider": "RedHatAI",
+    "hf_downloads": 3151,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 35100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-6-35b-a3b-fp8",
+    "name": "Qwen3.6-35B-A3B-FP8",
+    "family": "qwen",
+    "params_b": 36.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-05-01",
+    "hf_id": "RedHatAI/Qwen3.6-35B-A3B-FP8",
+    "provider": "RedHatAI",
+    "hf_downloads": 14119,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 20250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 29250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 36000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "minimax-m2-7-dflash",
+    "name": "MiniMax-M2.7-DFlash",
+    "family": "minimax",
+    "params_b": 0.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-05-09",
+    "hf_id": "z-lab/MiniMax-M2.7-DFlash",
+    "provider": "z-lab",
+    "hf_downloads": 506,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 337,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 488,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 600,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-230m",
+    "name": "LFM2.5-230M",
+    "family": "lfm",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-06-24",
+    "hf_id": "LiquidAI/LFM2.5-230M",
+    "provider": "Liquid AI",
+    "hf_downloads": 7334,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
