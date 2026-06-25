@@ -146373,5 +146373,54 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "ornith-1-0-397b",
+    "name": "Ornith-1.0-397B",
+    "family": "ornith",
+    "params_b": 396.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-23",
+    "hf_id": "deepreinforce-ai/Ornith-1.0-397B",
+    "provider": "deepreinforce-ai",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 223200,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 322400,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 396800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
