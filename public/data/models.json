@@ -149054,5 +149054,112 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "neeto-1-0-8b",
+    "name": "Neeto-1.0-8B",
+    "family": "neeto",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2025-08-28",
+    "hf_id": "S4nfs/Neeto-1.0-8b",
+    "provider": "S4nfs",
+    "hf_downloads": 34279,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "industrialcoder",
+    "name": "IndustrialCoder",
+    "family": "industrialcoder",
+    "params_b": 32.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding",
+      "multilingual",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-03-13",
+    "hf_id": "Multilingual-Multimodal-NLP/IndustrialCoder",
+    "provider": "Multilingual-Multimodal-NLP",
+    "hf_downloads": 112,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18000,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 26000,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 32000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
