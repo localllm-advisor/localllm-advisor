@@ -143850,7 +143850,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-04-06",
-    "hf_id": "RedHatAI/gemma-4-26B-A4B-it-FP8-Dynamic",
+    "hf_id": "RedHatAI/gemma-4-26B-A4B-it-FP8-dynamic",
     "provider": "RedHatAI",
     "hf_downloads": 1953061,
     "quantizations": [
