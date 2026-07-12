@@ -140440,7 +140440,7 @@
     "release_date": "2022-12-14",
     "hf_id": "AI-Sweden-Models/gpt-sw3-356m",
     "provider": "AI-Sweden-Models",
-    "hf_downloads": 22,
+    "hf_downloads": 8,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -140495,7 +140495,7 @@
     "release_date": "2022-12-14",
     "hf_id": "AI-Sweden-Models/gpt-sw3-1.3b",
     "provider": "AI-Sweden-Models",
-    "hf_downloads": 26,
+    "hf_downloads": 21,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -140550,7 +140550,7 @@
     "release_date": "2022-12-14",
     "hf_id": "AI-Sweden-Models/gpt-sw3-6.7b",
     "provider": "AI-Sweden-Models",
-    "hf_downloads": 23,
+    "hf_downloads": 13,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -140605,7 +140605,7 @@
     "release_date": "2022-12-14",
     "hf_id": "AI-Sweden-Models/gpt-sw3-20b",
     "provider": "AI-Sweden-Models",
-    "hf_downloads": 53,
+    "hf_downloads": 50,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -149863,7 +149863,7 @@
     "release_date": "2022-03-02",
     "hf_id": "s-nlp/roberta-base-formality-ranker",
     "provider": "s-nlp",
-    "hf_downloads": 80082,
+    "hf_downloads": 81978,
     "quantizations": [
       {
         "level": "Q4_K_M",
