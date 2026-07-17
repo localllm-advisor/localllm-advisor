@@ -161083,7 +161083,7 @@
     ],
     "context_length": 32768,
     "release_date": "2026-07-14",
-    "hf_id": "SZLHOLDINGS/SZL-Khipu-1.5B-BrainNavigator",
+    "hf_id": "SZLHOLDINGS/SZL-Khipu-1.5B",
     "provider": "SZLHOLDINGS",
     "hf_downloads": 1033,
     "quantizations": [
@@ -161219,6 +161219,167 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gemma-4-26b-a4b-it",
+    "name": "gemma-4-26B-A4B-it",
+    "family": "gemma",
+    "params_b": 26.5,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-14",
+    "hf_id": "RedHatAI/gemma-4-26B-A4B-it",
+    "provider": "RedHatAI",
+    "hf_downloads": 1222,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 14906,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 21531,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 26500,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "my-custom-flutter-coder",
+    "name": "my-custom-flutter-coder",
+    "family": "my",
+    "params_b": 7.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-07-13",
+    "hf_id": "malek391/my-custom-flutter-coder",
+    "provider": "malek391",
+    "hf_downloads": 524,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4275,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6175,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7600,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 15200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "szl-khipu-1-5b",
+    "name": "SZL-Khipu-1.5B",
+    "family": "szl",
+    "params_b": 1.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-07-14",
+    "hf_id": "SZLHOLDINGS/SZL-Khipu-1.5B",
+    "provider": "SZLHOLDINGS",
+    "hf_downloads": 1033,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 844,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1219,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3000,
         "quality": 1.0
       }
     ],
