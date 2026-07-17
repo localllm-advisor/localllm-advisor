@@ -161073,8 +161073,8 @@
     }
   },
   {
-    "id": "szl-khipu-1-5b-brainnavigator",
-    "name": "SZL-Khipu-1.5B-BrainNavigator",
+    "id": "szl-khipu-1-5b",
+    "name": "SZL-Khipu-1.5B",
     "family": "szl",
     "params_b": 1.5,
     "architecture": "dense",
