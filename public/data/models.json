@@ -161991,5 +161991,160 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "iol-2026-solver",
+    "name": "iol-2026-solver",
+    "family": "iol",
+    "params_b": 14.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-07-14",
+    "hf_id": "divaspoudel/iol-2026-solver",
+    "provider": "divaspoudel",
+    "hf_downloads": 897,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 8325,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 12025,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 14800,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 29600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "inkling-fp8-dynamic",
+    "name": "Inkling-FP8-dynamic",
+    "family": "inkling",
+    "params_b": 952.6,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-07-15",
+    "hf_id": "RedHatAI/Inkling-FP8-dynamic",
+    "provider": "RedHatAI",
+    "hf_downloads": 539,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 535838,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 773988,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 952600,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "intern-s2-preview-397b",
+    "name": "Intern-S2-Preview-397B",
+    "family": "internlm",
+    "params_b": 403.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-16",
+    "hf_id": "internlm/Intern-S2-Preview-397B",
+    "provider": "Shanghai AI Lab",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 226912,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 327762,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 403400,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
