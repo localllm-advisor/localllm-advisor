@@ -161739,7 +161739,7 @@
     ],
     "context_length": 128000,
     "release_date": "2026-07-13",
-    "hf_id": "hauser458original/lfm2.5-230m-code-math",
+    "hf_id": "hauser458b/lfm2.5-230m-code-math",
     "provider": "hauser458original",
     "hf_downloads": 959,
     "quantizations": [
@@ -163321,6 +163321,61 @@
         "bpw": 8.0,
         "vram_mb": 27800,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "hawk-mopbf-en-nl-zh-equal",
+    "name": "hawk-mopbf-en-nl-zh-equal",
+    "family": "hawk-mopbf-en-nl-zh-equal",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-07-17",
+    "hf_id": "NeTSlab/hawk_mopbf_en_nl_zh_equal",
+    "provider": "NeTSlab",
+    "hf_downloads": 2025,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
