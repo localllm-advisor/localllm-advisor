@@ -151848,7 +151848,7 @@
     ],
     "context_length": 4096,
     "release_date": "2026-07-02",
-    "hf_id": "RedHatAI/GLM-5.2-speculator.dspark",
+    "hf_id": "RedHatAI/GLM-5.2-speculator.dspark-preview",
     "provider": "RedHatAI",
     "hf_downloads": 16127,
     "quantizations": [
@@ -165953,6 +165953,61 @@
         "bpw": 8.0,
         "vram_mb": 117600,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nanbeige4-2-3b",
+    "name": "Nanbeige4.2-3B",
+    "family": "nanbeige4-2",
+    "params_b": 4.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-21",
+    "hf_id": "Nanbeige/Nanbeige4.2-3B",
+    "provider": "Nanbeige",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2363,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3412,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8400,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
