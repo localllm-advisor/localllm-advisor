@@ -167460,5 +167460,110 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "pythagoras-prover-4b",
+    "name": "Pythagoras-Prover-4B",
+    "family": "pythagoras",
+    "params_b": 4.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-06-07",
+    "hf_id": "Pythagoras-LM/Pythagoras-Prover-4B",
+    "provider": "Pythagoras-LM",
+    "hf_downloads": 634,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2475,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3575,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "kat-coder-v2-5-dev",
+    "name": "KAT-Coder-V2.5-Dev",
+    "family": "kat",
+    "params_b": 34.7,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-23",
+    "hf_id": "Kwaipilot/KAT-Coder-V2.5-Dev",
+    "provider": "Kwaipilot",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19519,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28194,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 34700,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
