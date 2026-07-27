@@ -153620,7 +153620,7 @@
     "release_date": "2024-08-18",
     "hf_id": "markrodrigo/Llama-3.1-8B-Instruct-Spatial-SQL-1.0",
     "provider": "markrodrigo",
-    "hf_downloads": 849,
+    "hf_downloads": 842,
     "quantizations": [
       {
         "level": "Q4_K_M",
