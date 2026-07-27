@@ -163300,7 +163300,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-07-17",
-    "hf_id": "droplychee-core/droplychee-1.0-27b",
+    "hf_id": "droplychee/droplychee-1.0-27b",
     "provider": "droplychee-core",
     "hf_downloads": 252073,
     "quantizations": [
@@ -169138,7 +169138,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-07-19",
-    "hf_id": "droplychee-core/droplychee-40b",
+    "hf_id": "droplychee/droplychee-2.0-40b",
     "provider": "droplychee-core",
     "hf_downloads": 540,
     "quantizations": [
@@ -169188,7 +169188,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-07-20",
-    "hf_id": "Reza2kn/Bina-0.1",
+    "hf_id": "Reza2kn/Bina-0.1-Koochik",
     "provider": "Reza2kn",
     "hf_downloads": 936,
     "quantizations": [
@@ -169437,6 +169437,111 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 6400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "droplychee-1-0-27b",
+    "name": "droplychee-1.0-27B",
+    "family": "droplychee",
+    "params_b": 27.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-17",
+    "hf_id": "droplychee/droplychee-1.0-27b",
+    "provider": "droplychee",
+    "hf_downloads": 252073,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15638,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22588,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "bina-0-1-koochik",
+    "name": "Bina-0.1-Koochik",
+    "family": "bina",
+    "params_b": 0.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-20",
+    "hf_id": "Reza2kn/Bina-0.1-Koochik",
+    "provider": "Reza2kn",
+    "hf_downloads": 936,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 394,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 569,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1400,
         "quality": 1.0
       }
     ],
