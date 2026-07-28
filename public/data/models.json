@@ -32359,7 +32359,7 @@
     ],
     "context_length": 131072,
     "release_date": "2025-09-08",
-    "hf_id": "LLM360/K2-Think",
+    "hf_id": "IFM/K2-Think",
     "provider": "LLM360",
     "hf_downloads": 209,
     "quantizations": [
