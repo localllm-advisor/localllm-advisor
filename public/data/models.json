@@ -169039,7 +169039,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-One-IQ-tune-alpha3b",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-One-IQ-tune-alpha4",
     "provider": "DavidAU",
     "hf_downloads": 3,
     "quantizations": [
