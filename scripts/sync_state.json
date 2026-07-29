@@ -22,14 +22,14 @@
     "https://en.wikipedia.org/wiki/Radeon_Pro": 1361427598,
     "https://en.wikipedia.org/wiki/Intel_Arc": 1356924633,
     "https://en.wikipedia.org/wiki/Apple_silicon": 1366082427,
-    "https://en.wikipedia.org/wiki/Apple_M4": 1366428735,
+    "https://en.wikipedia.org/wiki/Apple_M4": 1366585266,
     "https://en.wikipedia.org/wiki/Apple_M3": 1366428545,
     "https://en.wikipedia.org/wiki/Apple_M2": 1361051715,
-    "https://en.wikipedia.org/wiki/Apple_M1": 1364906600,
+    "https://en.wikipedia.org/wiki/Apple_M1": 1366566937,
     "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units": 1364952479,
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
-    "https://en.wikipedia.org/wiki/Apple_M5": 1366427843
+    "https://en.wikipedia.org/wiki/Apple_M5": 1366574023
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -38,7 +38,7 @@
     "https://en.wikipedia.org/wiki/Ryzen_3000": 1129465612,
     "https://en.wikipedia.org/wiki/Ryzen_2000": 1129465548,
     "https://en.wikipedia.org/wiki/Ryzen_1000": 1220040258,
-    "https://en.wikipedia.org/wiki/Epyc": 1365945776,
+    "https://en.wikipedia.org/wiki/Epyc": 1366496818,
     "https://en.wikipedia.org/wiki/Ryzen_Threadripper": 1228483387,
     "https://en.wikipedia.org/wiki/Arrow_Lake": 1320165190,
     "https://en.wikipedia.org/wiki/Lunar_Lake": 1354079913,
@@ -49,10 +49,10 @@
     "https://en.wikipedia.org/wiki/Comet_Lake": 1359905862,
     "https://en.wikipedia.org/wiki/Coffee_Lake": 1359904544,
     "https://en.wikipedia.org/wiki/Xeon": 1362922279,
-    "https://en.wikipedia.org/wiki/Apple_M4": 1366428735,
+    "https://en.wikipedia.org/wiki/Apple_M4": 1366585266,
     "https://en.wikipedia.org/wiki/Apple_M3": 1366428545,
     "https://en.wikipedia.org/wiki/Apple_M2": 1361051715,
-    "https://en.wikipedia.org/wiki/Apple_M1": 1364906600,
-    "https://en.wikipedia.org/wiki/Apple_M5": 1366427843
+    "https://en.wikipedia.org/wiki/Apple_M1": 1366566937,
+    "https://en.wikipedia.org/wiki/Apple_M5": 1366574023
   }
 }
