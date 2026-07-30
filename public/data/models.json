@@ -111695,7 +111695,7 @@
     "context_length": 2048,
     "release_date": "2026-02-17",
     "hf_id": "uctnlp/mzansilm-125m",
-    "provider": "anrilombard",
+    "provider": "uctnlp",
     "hf_downloads": 106505,
     "quantizations": [
       {
@@ -171881,6 +171881,56 @@
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 27800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "inkling-small",
+    "name": "Inkling-Small",
+    "family": "inkling",
+    "params_b": 266.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-07-27",
+    "hf_id": "thinkingmachines/Inkling-Small",
+    "provider": "thinkingmachines",
+    "hf_downloads": 840,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 149625,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 216125,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 266000,
         "quality": 0.995
       }
     ],
