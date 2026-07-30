@@ -11,7 +11,7 @@
     "https://en.wikipedia.org/wiki/Ampere_(microarchitecture)": 1336612019,
     "https://en.wikipedia.org/wiki/Volta_(microarchitecture)": 1364515325,
     "https://en.wikipedia.org/wiki/Turing_(microarchitecture)": 1336611907,
-    "https://en.wikipedia.org/wiki/Radeon_RX_9000_series": 1362493502,
+    "https://en.wikipedia.org/wiki/Radeon_RX_9000_series": 1366682648,
     "https://en.wikipedia.org/wiki/Radeon_RX_7000_series": 1356272510,
     "https://en.wikipedia.org/wiki/Radeon_RX_6000_series": 1347872354,
     "https://en.wikipedia.org/wiki/Radeon_RX_5000_series": 1320713107,
@@ -29,7 +29,7 @@
     "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units": 1364952479,
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
-    "https://en.wikipedia.org/wiki/Apple_M5": 1366574023
+    "https://en.wikipedia.org/wiki/Apple_M5": 1366711564
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -53,6 +53,6 @@
     "https://en.wikipedia.org/wiki/Apple_M3": 1366428545,
     "https://en.wikipedia.org/wiki/Apple_M2": 1361051715,
     "https://en.wikipedia.org/wiki/Apple_M1": 1366566937,
-    "https://en.wikipedia.org/wiki/Apple_M5": 1366574023
+    "https://en.wikipedia.org/wiki/Apple_M5": 1366711564
   }
 }
