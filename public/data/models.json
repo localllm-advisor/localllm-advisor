@@ -169039,7 +169039,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Five-raw",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
     "provider": "DavidAU",
     "hf_downloads": 3,
     "quantizations": [
@@ -170503,7 +170503,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Five-raw",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
     "provider": "DavidAU",
     "hf_downloads": 3,
     "quantizations": [
@@ -171931,6 +171931,203 @@
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 266000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-raw",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
+    "family": "qwen",
+    "params_b": 39.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-07-21",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
+    "provider": "DavidAU",
+    "hf_downloads": 3,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 22444,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 32419,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 39900,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "k-exaone-2-0-750b-a37b",
+    "name": "K-EXAONE-2.0-750B-A37B",
+    "family": "exaone",
+    "params_b": 749.4,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-29",
+    "hf_id": "LGAI-EXAONE/K-EXAONE-2.0-750B-A37B",
+    "provider": "LG AI",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 421537,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 608887,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 749400,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "k-exaone-2-0-750b-a37b-fp8",
+    "name": "K-EXAONE-2.0-750B-A37B-FP8",
+    "family": "exaone",
+    "params_b": 749.4,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-30",
+    "hf_id": "LGAI-EXAONE/K-EXAONE-2.0-750B-A37B-FP8",
+    "provider": "LG AI",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 421537,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 608887,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 749400,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "k-exaone-2-0-750b-a37b-dspark",
+    "name": "K-EXAONE-2.0-750B-A37B-DSpark",
+    "family": "exaone",
+    "params_b": 751.4,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-30",
+    "hf_id": "LGAI-EXAONE/K-EXAONE-2.0-750B-A37B-DSpark",
+    "provider": "LG AI",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 422662,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 610512,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 751400,
         "quality": 0.995
       }
     ],
