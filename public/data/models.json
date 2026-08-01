@@ -169028,8 +169028,8 @@
     }
   },
   {
-    "id": "qwen3-6-40b-grand-intelligence-six-711-717-raw",
-    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb",
     "family": "qwen",
     "params_b": 39.9,
     "architecture": "dense",
@@ -170492,8 +170492,8 @@
     }
   },
   {
-    "id": "qwen3-6-40b-grand-intelligence-six-711-717-raw",
-    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb",
     "family": "qwen",
     "params_b": 39.9,
     "architecture": "dense",
@@ -171950,8 +171950,8 @@
     }
   },
   {
-    "id": "qwen3-6-40b-grand-intelligence-six-711-717-raw",
-    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb",
     "family": "qwen",
     "params_b": 39.9,
     "architecture": "dense",
@@ -172208,7 +172208,7 @@
     "release_date": "2022-03-02",
     "hf_id": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-docnli-ling-2c",
     "provider": "MoritzLaurer",
-    "hf_downloads": 66514,
+    "hf_downloads": 66490,
     "quantizations": [
       {
         "level": "Q4_K_M",
