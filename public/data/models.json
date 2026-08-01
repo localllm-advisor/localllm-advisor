@@ -173351,5 +173351,109 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "inkling-small-dspark-preview",
+    "name": "Inkling-Small-DSpark-Preview",
+    "family": "inkling",
+    "params_b": 1.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-07-30",
+    "hf_id": "RadixArk/Inkling-Small-DSpark-Preview",
+    "provider": "RadixArk",
+    "hf_downloads": 904,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 788,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1138,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "longcat-flash-lite-sparse",
+    "name": "LongCat-Flash-Lite-Sparse",
+    "family": "longcat",
+    "params_b": 69.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 983040,
+    "release_date": "2026-07-31",
+    "hf_id": "meituan-longcat/LongCat-Flash-Lite-Sparse",
+    "provider": "meituan-longcat",
+    "hf_downloads": 17,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 38869,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 56144,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 69100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
