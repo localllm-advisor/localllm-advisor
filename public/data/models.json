@@ -169039,7 +169039,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb",
     "provider": "DavidAU",
     "hf_downloads": 3,
     "quantizations": [
@@ -170503,7 +170503,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb",
     "provider": "DavidAU",
     "hf_downloads": 3,
     "quantizations": [
@@ -171961,7 +171961,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-raw",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb",
     "provider": "DavidAU",
     "hf_downloads": 3,
     "quantizations": [
@@ -172618,6 +172618,502 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "sd3-long-captioner",
+    "name": "sd3-long-captioner",
+    "family": "sd3",
+    "params_b": 2.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-06-13",
+    "hf_id": "gokaygokay/sd3-long-captioner",
+    "provider": "gokaygokay",
+    "hf_downloads": 28,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1631,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2356,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "sd3-long-captioner-v2",
+    "name": "sd3-long-captioner-v2",
+    "family": "sd3",
+    "params_b": 2.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-06-15",
+    "hf_id": "gokaygokay/sd3-long-captioner-v2",
+    "provider": "gokaygokay",
+    "hf_downloads": 39,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1631,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2356,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "florence-2-sd3-captioner",
+    "name": "Florence-2-SD3-Captioner",
+    "family": "florence",
+    "params_b": 0.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 1024,
+    "release_date": "2024-06-24",
+    "hf_id": "gokaygokay/Florence-2-SD3-Captioner",
+    "provider": "gokaygokay",
+    "hf_downloads": 1046,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "florence-2-flux",
+    "name": "Florence-2-Flux",
+    "family": "florence",
+    "params_b": 0.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 1024,
+    "release_date": "2024-08-23",
+    "hf_id": "gokaygokay/Florence-2-Flux",
+    "provider": "gokaygokay",
+    "hf_downloads": 554,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "florence-2-flux-large",
+    "name": "Florence-2-Flux-Large",
+    "family": "florence",
+    "params_b": 0.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 1024,
+    "release_date": "2024-08-25",
+    "hf_id": "gokaygokay/Florence-2-Flux-Large",
+    "provider": "gokaygokay",
+    "hf_downloads": 1893,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 450,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 650,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 800,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "flux-prompt-enhance",
+    "name": "Flux-Prompt-Enhance",
+    "family": "mpt",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2024-08-26",
+    "hf_id": "gokaygokay/Flux-Prompt-Enhance",
+    "provider": "gokaygokay",
+    "hf_downloads": 2828,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama-3-1-8b-instruct-sft-mathsp-ewc-v00-16",
+    "name": "Llama-3.1-8B-Instruct-SFT-mathsp-ewc-v00.16",
+    "family": "llama",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-07-14",
+    "hf_id": "Neelectric/Llama-3.1-8B-Instruct_SFT_mathsp_ewc_v00.16",
+    "provider": "Neelectric",
+    "hf_downloads": 532,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb",
+    "family": "qwen",
+    "params_b": 39.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-07-21",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb",
+    "provider": "DavidAU",
+    "hf_downloads": 3,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 22444,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 32419,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 39900,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "sensenova-u1-5-8b-mot-preview",
+    "name": "SenseNova-U1.5-8B-MoT-Preview",
+    "family": "sensenova",
+    "params_b": 17.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-07-28",
+    "hf_id": "sensenova/SenseNova-U1.5-8B-MoT-Preview",
+    "provider": "sensenova",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 9844,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 14219,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 17500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 35000,
         "quality": 1.0
       }
     ],
