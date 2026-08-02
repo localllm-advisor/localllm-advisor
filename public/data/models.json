@@ -147782,7 +147782,7 @@
     "release_date": "2026-06-28",
     "hf_id": "ibyteohdear/DreamFast-gemma-3-12b-it-heretic-v2-fp8",
     "provider": "ibyteohdear",
-    "hf_downloads": 662,
+    "hf_downloads": 650,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -149863,7 +149863,7 @@
     "release_date": "2022-03-02",
     "hf_id": "s-nlp/roberta-base-formality-ranker",
     "provider": "s-nlp",
-    "hf_downloads": 37809,
+    "hf_downloads": 34777,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -163790,7 +163790,7 @@
     "release_date": "2022-03-02",
     "hf_id": "tals/albert-xlarge-vitaminc-mnli",
     "provider": "tals",
-    "hf_downloads": 90649,
+    "hf_downloads": 93042,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -171485,7 +171485,7 @@
     "release_date": "2022-03-02",
     "hf_id": "sentence-transformers/stsb-roberta-large",
     "provider": "Sentence Transformers",
-    "hf_downloads": 110591,
+    "hf_downloads": 111461,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -172208,7 +172208,7 @@
     "release_date": "2022-03-02",
     "hf_id": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-docnli-ling-2c",
     "provider": "MoritzLaurer",
-    "hf_downloads": 66490,
+    "hf_downloads": 73281,
     "quantizations": [
       {
         "level": "Q4_K_M",
