@@ -144868,7 +144868,7 @@
     ],
     "context_length": 5120,
     "release_date": "2026-06-10",
-    "hf_id": "SupraLabs/Supra-1.5-50M-Base-exp",
+    "hf_id": "SupraLabs/Supra1.5-50M-Base-exp",
     "provider": "SupraLabs",
     "hf_downloads": 2208,
     "quantizations": [
@@ -171209,7 +171209,7 @@
     ],
     "context_length": 5120,
     "release_date": "2026-06-12",
-    "hf_id": "SupraLabs/Supra-1.5-50M-Instruct-exp",
+    "hf_id": "SupraLabs/Supra1.5-50M-Instruct-exp",
     "provider": "SupraLabs",
     "hf_downloads": 2322,
     "quantizations": [
@@ -173921,6 +173921,61 @@
         "bpw": 8.0,
         "vram_mb": 39900,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-2-6b",
+    "name": "LFM2.5-2.6B",
+    "family": "lfm",
+    "params_b": 2.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-07-28",
+    "hf_id": "LiquidAI/LFM2.5-2.6B",
+    "provider": "Liquid AI",
+    "hf_downloads": 47393,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1519,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2194,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5400,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
