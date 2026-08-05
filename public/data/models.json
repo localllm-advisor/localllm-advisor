@@ -146385,7 +146385,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-06-23",
-    "hf_id": "deepreinforce-ai/Ornith-1.0-397B",
+    "hf_id": "ornith-ai/Ornith-1.0-397B",
     "provider": "deepreinforce-ai",
     "hf_downloads": 386692,
     "quantizations": [
@@ -151473,7 +151473,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-06-26",
-    "hf_id": "deepreinforce-ai/Ornith-1.0-35B-FP8",
+    "hf_id": "ornith-ai/Ornith-1.0-35B-FP8",
     "provider": "deepreinforce-ai",
     "hf_downloads": 945054,
     "quantizations": [
@@ -153141,7 +153141,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-06-25",
-    "hf_id": "deepreinforce-ai/Ornith-1.0-397B-FP8",
+    "hf_id": "ornith-ai/Ornith-1.0-397B-FP8",
     "provider": "deepreinforce-ai",
     "hf_downloads": 672806,
     "quantizations": [
@@ -169028,10 +169028,10 @@
     }
   },
   {
-    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb-alpha-tune",
-    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb-Alpha-Tune",
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-beta1-tune",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
     "family": "qwen",
-    "params_b": 39.9,
+    "params_b": 40.0,
     "architecture": "dense",
     "capabilities": [
       "chat",
@@ -169046,19 +169046,19 @@
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
-        "vram_mb": 22444,
+        "vram_mb": 22500,
         "quality": 0.94
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
-        "vram_mb": 32419,
+        "vram_mb": 32500,
         "quality": 0.97
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
-        "vram_mb": 39900,
+        "vram_mb": 40000,
         "quality": 0.995
       }
     ],
@@ -170492,10 +170492,10 @@
     }
   },
   {
-    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb-alpha-tune",
-    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb-Alpha-Tune",
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-beta1-tune",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
     "family": "qwen",
-    "params_b": 39.9,
+    "params_b": 40.0,
     "architecture": "dense",
     "capabilities": [
       "chat",
@@ -170510,19 +170510,19 @@
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
-        "vram_mb": 22444,
+        "vram_mb": 22500,
         "quality": 0.94
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
-        "vram_mb": 32419,
+        "vram_mb": 32500,
         "quality": 0.97
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
-        "vram_mb": 39900,
+        "vram_mb": 40000,
         "quality": 0.995
       }
     ],
@@ -171950,10 +171950,10 @@
     }
   },
   {
-    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb-alpha-tune",
-    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb-Alpha-Tune",
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-beta1-tune",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
     "family": "qwen",
-    "params_b": 39.9,
+    "params_b": 40.0,
     "architecture": "dense",
     "capabilities": [
       "chat",
@@ -171968,19 +171968,19 @@
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
-        "vram_mb": 22444,
+        "vram_mb": 22500,
         "quality": 0.94
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
-        "vram_mb": 32419,
+        "vram_mb": 32500,
         "quality": 0.97
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
-        "vram_mb": 39900,
+        "vram_mb": 40000,
         "quality": 0.995
       }
     ],
@@ -172208,7 +172208,7 @@
     "release_date": "2022-03-02",
     "hf_id": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-docnli-ling-2c",
     "provider": "MoritzLaurer",
-    "hf_downloads": 86214,
+    "hf_downloads": 88941,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -173027,10 +173027,10 @@
     }
   },
   {
-    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb-alpha-tune",
-    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb-Alpha-Tune",
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-beta1-tune",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
     "family": "qwen",
-    "params_b": 39.9,
+    "params_b": 40.0,
     "architecture": "dense",
     "capabilities": [
       "chat",
@@ -173045,19 +173045,19 @@
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
-        "vram_mb": 22444,
+        "vram_mb": 22500,
         "quality": 0.94
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
-        "vram_mb": 32419,
+        "vram_mb": 32500,
         "quality": 0.97
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
-        "vram_mb": 39900,
+        "vram_mb": 40000,
         "quality": 0.995
       }
     ],
@@ -173889,10 +173889,10 @@
     }
   },
   {
-    "id": "qwen3-6-40b-grand-intelligence-six-711-717-rawb-alpha-tune",
-    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-rawb-Alpha-Tune",
+    "id": "qwen3-6-40b-grand-intelligence-six-711-717-beta1-tune",
+    "name": "Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
     "family": "qwen",
-    "params_b": 39.9,
+    "params_b": 40.0,
     "architecture": "dense",
     "capabilities": [
       "chat",
@@ -173907,19 +173907,19 @@
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
-        "vram_mb": 22444,
+        "vram_mb": 22500,
         "quality": 0.94
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
-        "vram_mb": 32419,
+        "vram_mb": 32500,
         "quality": 0.97
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
-        "vram_mb": 39900,
+        "vram_mb": 40000,
         "quality": 0.995
       }
     ],
@@ -174350,6 +174350,153 @@
         "bpw": 16.0,
         "vram_mb": 40400,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ornith-1-0-397b",
+    "name": "Ornith-1.0-397B",
+    "family": "ornith",
+    "params_b": 396.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-23",
+    "hf_id": "ornith-ai/Ornith-1.0-397B",
+    "provider": "ornith-ai",
+    "hf_downloads": 386692,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 223200,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 322400,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 396800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ornith-1-0-397b-fp8",
+    "name": "Ornith-1.0-397B-FP8",
+    "family": "ornith",
+    "params_b": 396.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-25",
+    "hf_id": "ornith-ai/Ornith-1.0-397B-FP8",
+    "provider": "ornith-ai",
+    "hf_downloads": 672806,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 223200,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 322400,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 396800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ornith-1-0-35b-fp8",
+    "name": "Ornith-1.0-35B-FP8",
+    "family": "ornith",
+    "params_b": 35.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-26",
+    "hf_id": "ornith-ai/Ornith-1.0-35B-FP8",
+    "provider": "ornith-ai",
+    "hf_downloads": 945054,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 35100,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
