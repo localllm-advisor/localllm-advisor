@@ -156779,7 +156779,7 @@
     ],
     "context_length": 40960,
     "release_date": "2026-07-09",
-    "hf_id": "Siddh07ETH/Pluto-Genesis-0.6B",
+    "hf_id": "Pluto-AI-Labs/Pluto-Genesis-0.6B",
     "provider": "Siddh07ETH",
     "hf_downloads": 2952,
     "quantizations": [
@@ -175388,6 +175388,55 @@
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 35100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "deepwen-3-6-bf16",
+    "name": "Deepwen-3.6-bf16",
+    "family": "deepwen",
+    "params_b": 36.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-04",
+    "hf_id": "quimmedes/Deepwen-3.6-bf16",
+    "provider": "quimmedes",
+    "hf_downloads": 504,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 20250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 29250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 36000,
         "quality": 0.995
       }
     ],
