@@ -169039,7 +169039,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Fable-Fusion-Uncensored-Heretic",
     "provider": "DavidAU",
     "hf_downloads": 7,
     "quantizations": [
@@ -170503,7 +170503,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Fable-Fusion-Uncensored-Heretic",
     "provider": "DavidAU",
     "hf_downloads": 7,
     "quantizations": [
@@ -171961,7 +171961,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Fable-Fusion-Uncensored-Heretic",
     "provider": "DavidAU",
     "hf_downloads": 7,
     "quantizations": [
@@ -173038,7 +173038,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Fable-Fusion-Uncensored-Heretic",
     "provider": "DavidAU",
     "hf_downloads": 7,
     "quantizations": [
@@ -173900,7 +173900,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Fable-Fusion-Uncensored-Heretic",
     "provider": "DavidAU",
     "hf_downloads": 7,
     "quantizations": [
@@ -174274,7 +174274,7 @@
     ],
     "context_length": 131072,
     "release_date": "2026-07-21",
-    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Six-711-717-BETA1-Tune",
+    "hf_id": "DavidAU/Qwen3.6-40B-Grand-Intelligence-Fable-Fusion-Uncensored-Heretic",
     "provider": "DavidAU",
     "hf_downloads": 7,
     "quantizations": [
@@ -175807,6 +175807,273 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 16400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "granite-4-1-8b-opus-reasoning-npu2",
+    "name": "Granite-4.1-8B-Opus-Reasoning-NPU2",
+    "family": "granite",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-05-30",
+    "hf_id": "Atomic-Germ/Granite-4.1-8B-Opus-Reasoning-NPU2",
+    "provider": "Atomic-Germ",
+    "hf_downloads": 591,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwopus3-5-9b-coder-npu2",
+    "name": "Qwopus3.5-9B-Coder-NPU2",
+    "family": "qwopus3-5",
+    "params_b": 9.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-01",
+    "hf_id": "Atomic-Germ/Qwopus3.5-9B-Coder-NPU2",
+    "provider": "Atomic-Germ",
+    "hf_downloads": 889,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5062,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7312,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 18000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "diffusiongemma-26b-a4b-it-fp8-dynamic",
+    "name": "diffusiongemma-26B-A4B-it-FP8-dynamic",
+    "family": "gemma",
+    "params_b": 25.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-09",
+    "hf_id": "RedHatAI/diffusiongemma-26B-A4B-it-FP8-dynamic",
+    "provider": "RedHatAI",
+    "hf_downloads": 34225,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 14513,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 20963,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 25800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-vl-30b-a3b-instruct",
+    "name": "Qwen3-VL-30B-A3B-Instruct",
+    "family": "qwen",
+    "params_b": 31.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-06-10",
+    "hf_id": "RedHatAI/Qwen3-VL-30B-A3B-Instruct",
+    "provider": "RedHatAI",
+    "hf_downloads": 670,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 17494,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 25269,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 31100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "babylm-2026-strict-llama-12l896-muon-auxlr1e4-bos-seed42-20260720",
+    "name": "babylm-2026-strict-llama-12l896-muon-auxlr1e4-bos-seed42-20260720",
+    "family": "llama",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-07-20",
+    "hf_id": "Jorgeis1/babylm-2026-strict-llama-12l896-muon-auxlr1e4-bos-seed42-20260720",
+    "provider": "Jorgeis1",
+    "hf_downloads": 565,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
         "quality": 1.0
       }
     ],
