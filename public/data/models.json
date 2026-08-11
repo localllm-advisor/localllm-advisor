@@ -176378,7 +176378,7 @@
     ],
     "context_length": 2048,
     "release_date": "2026-08-06",
-    "hf_id": "Pacific-i64/TR-HASH-MOE-500M-HF",
+    "hf_id": "AETHORIA-AI/TR-HASH-MOE-500M-HF",
     "provider": "Pacific-i64",
     "hf_downloads": 609,
     "quantizations": [
@@ -177627,6 +177627,61 @@
         "bpw": 8.0,
         "vram_mb": 36000,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "tr-hash-moe-500m-hf",
+    "name": "TR-HASH-MOE-500M-HF",
+    "family": "tr",
+    "params_b": 0.5,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-08-06",
+    "hf_id": "AETHORIA-AI/TR-HASH-MOE-500M-HF",
+    "provider": "AETHORIA-AI",
+    "hf_downloads": 609,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 281,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 406,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1000,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
