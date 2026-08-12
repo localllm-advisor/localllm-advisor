@@ -44442,7 +44442,7 @@
     ],
     "context_length": 4096,
     "release_date": "2025-01-25",
-    "hf_id": "huyydangg/DEk21_hcmute_embedding",
+    "hf_id": "CODE4LIFEOFFICIAL/huydang-dek21-embedding",
     "provider": "huyydangg",
     "hf_downloads": 6742,
     "quantizations": [
@@ -177682,6 +177682,110 @@
         "bpw": 16.0,
         "vram_mb": 1000,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gemma-sea-lion-v3-9b",
+    "name": "Gemma-SEA-LION-v3-9B",
+    "family": "gemma",
+    "params_b": 9.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2024-10-30",
+    "hf_id": "aisingapore/Gemma-SEA-LION-v3-9B",
+    "provider": "aisingapore",
+    "hf_downloads": 844,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5175,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7475,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 18400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama-sea-lion-v3-5-70b-r",
+    "name": "Llama-SEA-LION-v3.5-70B-R",
+    "family": "llama",
+    "params_b": 70.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2025-04-13",
+    "hf_id": "aisingapore/Llama-SEA-LION-v3.5-70B-R",
+    "provider": "aisingapore",
+    "hf_downloads": 614,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 39712,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 57362,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 70600,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
