@@ -176379,7 +176379,7 @@
     "context_length": 2048,
     "release_date": "2026-08-06",
     "hf_id": "AETHORIA-AI/TR-HASH-MOE-500M-HF",
-    "provider": "Pacific-i64",
+    "provider": "AETHORIA-AI",
     "hf_downloads": 609,
     "quantizations": [
       {
