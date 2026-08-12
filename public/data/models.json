@@ -177914,5 +177914,54 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "cobrix-1-0-full-72b-a18b",
+    "name": "CobrIX-1.0-Full-72B-A18B",
+    "family": "cobrix",
+    "params_b": 71.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-08-08",
+    "hf_id": "CobrIX/CobrIX-1.0-Full-72B-A18B",
+    "provider": "CobrIX",
+    "hf_downloads": 525,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 40387,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 58338,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 71800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
