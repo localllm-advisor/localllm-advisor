@@ -177926,7 +177926,7 @@
     ],
     "context_length": 1048576,
     "release_date": "2026-08-08",
-    "hf_id": "CobrIX/CobrIX-1.0-Full-72B-A18B",
+    "hf_id": "CobrIX/CobrIX-1.0-Coder-Full-72B-A18B",
     "provider": "CobrIX",
     "hf_downloads": 970,
     "quantizations": [
@@ -178964,6 +178964,211 @@
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 31300,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-2-6b-base",
+    "name": "LFM2.5-2.6B-Base",
+    "family": "lfm",
+    "params_b": 2.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-08-01",
+    "hf_id": "LiquidAI/LFM2.5-2.6B-Base",
+    "provider": "Liquid AI",
+    "hf_downloads": 4142,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1519,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2194,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "cobrix-1-0-coder-flash-33b-a13b",
+    "name": "CobrIX-1.0-Coder-Flash-33B-A13B",
+    "family": "cobrix",
+    "params_b": 33.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-08-08",
+    "hf_id": "CobrIX/CobrIX-1.0-Coder-Flash-33B-A13B",
+    "provider": "CobrIX",
+    "hf_downloads": 1348,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 18619,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 26894,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 33100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "cobrix-1-0-coder-full-72b-a18b",
+    "name": "CobrIX-1.0-Coder-Full-72B-A18B",
+    "family": "cobrix",
+    "params_b": 71.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-08-08",
+    "hf_id": "CobrIX/CobrIX-1.0-Coder-Full-72B-A18B",
+    "provider": "CobrIX",
+    "hf_downloads": 970,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 40387,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 58338,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 71800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "dots3-note-prev",
+    "name": "dots3-note-prev",
+    "family": "dots3",
+    "params_b": 288.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 524288,
+    "release_date": "2026-08-09",
+    "hf_id": "dots-studio/dots3-note-prev",
+    "provider": "dots-studio",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 162225,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 234325,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 288400,
         "quality": 0.995
       }
     ],
