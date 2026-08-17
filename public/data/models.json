@@ -99687,7 +99687,7 @@
     ],
     "context_length": 2048,
     "release_date": "2026-04-22",
-    "hf_id": "ThingAI/Quark-50m-v2",
+    "hf_id": "ThingAI/ARK-50M",
     "provider": "OvercastLab",
     "hf_downloads": 715,
     "quantizations": [
@@ -128431,7 +128431,7 @@
     ],
     "context_length": 2048,
     "release_date": "2026-05-04",
-    "hf_id": "ThingAI/Quark-135m",
+    "hf_id": "ThingAI/ARK-135M",
     "provider": "ThingAI",
     "hf_downloads": 203,
     "quantizations": [
