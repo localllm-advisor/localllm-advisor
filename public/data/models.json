@@ -171265,7 +171265,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-07-05",
-    "hf_id": "Qyrou/reasoning-summarizer-800m-pre__transferred_from_supralabs",
+    "hf_id": "Qyrou/reasoning-summarizer-800m-pre",
     "provider": "SupraLabs",
     "hf_downloads": 298,
     "quantizations": [
@@ -182956,7 +182956,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-17",
-    "hf_id": "ProCreations/grug-27b-v1.1",
+    "hf_id": "ProCreations/grug-v1.1-qwen-3.8-27b",
     "provider": "ProCreations",
     "hf_downloads": 641,
     "quantizations": [
@@ -183201,6 +183201,55 @@
         "bpw": 16.0,
         "vram_mb": 6200,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "grug-v1-1-qwen-3-8-27b",
+    "name": "grug-v1.1-qwen-3.8-27B",
+    "family": "qwen",
+    "params_b": 27.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-17",
+    "hf_id": "ProCreations/grug-v1.1-qwen-3.8-27b",
+    "provider": "ProCreations",
+    "hf_downloads": 641,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15412,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22262,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27400,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
