@@ -182946,9 +182946,9 @@
     }
   },
   {
-    "id": "grug-27b-v1-1",
-    "name": "grug-27B-v1.1",
-    "family": "grug",
+    "id": "grug-v1-1-qwen-3-8-27b",
+    "name": "grug-v1.1-qwen-3.8-27B",
+    "family": "qwen",
     "params_b": 27.4,
     "architecture": "dense",
     "capabilities": [
@@ -183250,6 +183250,61 @@
         "bpw": 8.0,
         "vram_mb": 27400,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-8-27b-dflash2",
+    "name": "Qwen3.8-27B-DFlash2",
+    "family": "qwen",
+    "params_b": 1.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-15",
+    "hf_id": "z-lab/Qwen3.8-27B-DFlash2",
+    "provider": "z-lab",
+    "hf_downloads": 150,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1069,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1544,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3800,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
