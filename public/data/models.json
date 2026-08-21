@@ -185550,5 +185550,274 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "openresearcher-30b-a3b",
+    "name": "OpenResearcher-30B-A3B",
+    "family": "openresearcher",
+    "params_b": 31.6,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-02-03",
+    "hf_id": "OpenResearcher/OpenResearcher-30B-A3B",
+    "provider": "OpenResearcher",
+    "hf_downloads": 501,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 17775,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 25675,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 31600,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-8b-a1b-dspark",
+    "name": "LFM2.5-8B-A1B-DSpark",
+    "family": "lfm",
+    "params_b": 0.3,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-08-10",
+    "hf_id": "LiquidAI/LFM2.5-8B-A1B-DSpark",
+    "provider": "Liquid AI",
+    "hf_downloads": 125,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-1-2b-instruct-dspark",
+    "name": "LFM2.5-1.2B-Instruct-DSpark",
+    "family": "lfm",
+    "params_b": 0.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-08-10",
+    "hf_id": "LiquidAI/LFM2.5-1.2B-Instruct-DSpark",
+    "provider": "Liquid AI",
+    "hf_downloads": 219,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "testgeniy",
+    "name": "testgeniy",
+    "family": "testgeniy",
+    "params_b": 0.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-08-11",
+    "hf_id": "Asilarkness/testgeniy",
+    "provider": "Asilarkness",
+    "hf_downloads": 1127,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 337,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 488,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 600,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "tts-new",
+    "name": "TTS-new",
+    "family": "tts-new",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-08-18",
+    "hf_id": "YaTharThShaRma999/TTS_new",
+    "provider": "YaTharThShaRma999",
+    "hf_downloads": 959,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
