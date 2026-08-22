@@ -186760,8 +186760,8 @@
     }
   },
   {
-    "id": "rhododendron-efficiency-1o",
-    "name": "Rhododendron-efficiency-1o",
+    "id": "rhododendron-efficiency",
+    "name": "Rhododendron-efficiency",
     "family": "rhododendron",
     "params_b": 7.6,
     "architecture": "dense",
@@ -188021,6 +188021,61 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 15200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "tr-hash-moe-200m-160b-sft",
+    "name": "TR-HASH-MoE-200M-160B-SFT",
+    "family": "tr",
+    "params_b": 0.2,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-08-21",
+    "hf_id": "AETHORIA-AI/TR-HASH-MoE-200M-160B-SFT",
+    "provider": "AETHORIA-AI",
+    "hf_downloads": 1031,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
         "quality": 1.0
       }
     ],
