@@ -189406,5 +189406,61 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "m-o-g-sec-27b-1m-ctx-nvfp4",
+    "name": "M.O.G.-SEC-27B-1M-CTX-NVFP4",
+    "family": "m-o-g",
+    "params_b": 18.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 1000000,
+    "release_date": "2026-08-20",
+    "hf_id": "Blackfrost-Research/M.O.G.-SEC-27B-1M-CTX-NVFP4",
+    "provider": "Blackfrost-Research",
+    "hf_downloads": 434,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 10406,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 15031,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 18500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 37000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
