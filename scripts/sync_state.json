@@ -23,9 +23,9 @@
     "https://en.wikipedia.org/wiki/Intel_Arc": 1367889893,
     "https://en.wikipedia.org/wiki/Apple_silicon": 1369720474,
     "https://en.wikipedia.org/wiki/Apple_M4": 1370555480,
-    "https://en.wikipedia.org/wiki/Apple_M3": 1366970140,
-    "https://en.wikipedia.org/wiki/Apple_M2": 1368532039,
-    "https://en.wikipedia.org/wiki/Apple_M1": 1366566937,
+    "https://en.wikipedia.org/wiki/Apple_M3": 1370946708,
+    "https://en.wikipedia.org/wiki/Apple_M2": 1370946204,
+    "https://en.wikipedia.org/wiki/Apple_M1": 1370946264,
     "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units": 1369488585,
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
@@ -50,9 +50,9 @@
     "https://en.wikipedia.org/wiki/Coffee_Lake": 1359904544,
     "https://en.wikipedia.org/wiki/Xeon": 1362922279,
     "https://en.wikipedia.org/wiki/Apple_M4": 1370555480,
-    "https://en.wikipedia.org/wiki/Apple_M3": 1366970140,
-    "https://en.wikipedia.org/wiki/Apple_M2": 1368532039,
-    "https://en.wikipedia.org/wiki/Apple_M1": 1366566937,
+    "https://en.wikipedia.org/wiki/Apple_M3": 1370946708,
+    "https://en.wikipedia.org/wiki/Apple_M2": 1370946204,
+    "https://en.wikipedia.org/wiki/Apple_M1": 1370946264,
     "https://en.wikipedia.org/wiki/Apple_M5": 1366711564
   }
 }
