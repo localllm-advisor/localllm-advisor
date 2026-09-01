@@ -195372,7 +195372,7 @@
     "release_date": "2026-08-21",
     "hf_id": "ishikaa/acquisition_student_AS_format_numina_qwen7b",
     "provider": "ishikaa",
-    "hf_downloads": 1428,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -195975,7 +195975,7 @@
     "release_date": "2026-08-21",
     "hf_id": "ishikaa/acquisition_student_AS_confidence_numina_qwen7b",
     "provider": "ishikaa",
-    "hf_downloads": 2144,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -199006,6 +199006,159 @@
         "bpw": 16.0,
         "vram_mb": 3000,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-8b-a1b-bf16",
+    "name": "LFM2.5-8B-A1B-bf16",
+    "family": "lfm",
+    "params_b": 8.5,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-08-12",
+    "hf_id": "VikramPal/LFM2.5-8B-A1B-bf16",
+    "provider": "VikramPal",
+    "hf_downloads": 702,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4781,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6906,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 17000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-8-27b-bf16",
+    "name": "Qwen3.8-27B-bf16",
+    "family": "qwen",
+    "params_b": 26.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-19",
+    "hf_id": "VikramPal/Qwen3.8-27B-bf16",
+    "provider": "VikramPal",
+    "hf_downloads": 515,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15131,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 21856,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 26900,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-5-35b-a3b-bf16",
+    "name": "Qwen3.5-35B-A3B-bf16",
+    "family": "qwen",
+    "params_b": 34.7,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-21",
+    "hf_id": "VikramPal/Qwen3.5-35B-A3B-bf16",
+    "provider": "VikramPal",
+    "hf_downloads": 539,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19519,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28194,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 34700,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
