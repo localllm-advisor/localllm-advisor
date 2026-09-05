@@ -203114,7 +203114,7 @@
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/Phantom-SSM-130M",
+    "hf_id": "Prannesshkva/OrthoSSM-130M",
     "provider": "Prannesshkva",
     "hf_downloads": 1211,
     "quantizations": [
@@ -203225,7 +203225,7 @@
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/Phantom-Falcon-40B",
+    "hf_id": "Prannesshkva/OrthoSSM-Falcon-40B",
     "provider": "Prannesshkva",
     "hf_downloads": 1602,
     "quantizations": [
@@ -203274,7 +203274,7 @@
     ],
     "context_length": 8192,
     "release_date": "2026-08-31",
-    "hf_id": "Prannesshkva/Phantom-Mamba-Falcon-Hybrid",
+    "hf_id": "Prannesshkva/OrthoSSM-Mamba-Falcon-Hybrid",
     "provider": "Prannesshkva",
     "hf_downloads": 581,
     "quantizations": [
@@ -203572,6 +203572,165 @@
         "bpw": 8.0,
         "vram_mb": 27000,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "orthossm-130m",
+    "name": "OrthoSSM-130M",
+    "family": "orthossm",
+    "params_b": 0.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2026-08-30",
+    "hf_id": "Prannesshkva/OrthoSSM-130M",
+    "provider": "Prannesshkva",
+    "hf_downloads": 1211,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "orthossm-falcon-40b",
+    "name": "OrthoSSM-Falcon-40B",
+    "family": "falcon",
+    "params_b": 41.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2026-08-30",
+    "hf_id": "Prannesshkva/OrthoSSM-Falcon-40B",
+    "provider": "Prannesshkva",
+    "hf_downloads": 1602,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 23512,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 33962,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 41800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "orthossm-mamba-falcon-hybrid",
+    "name": "OrthoSSM-Mamba-Falcon-Hybrid",
+    "family": "falcon",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2026-08-31",
+    "hf_id": "Prannesshkva/OrthoSSM-Mamba-Falcon-Hybrid",
+    "provider": "Prannesshkva",
+    "hf_downloads": 581,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
