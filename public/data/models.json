@@ -203104,9 +203104,9 @@
     }
   },
   {
-    "id": "phantom-ssm-130m",
-    "name": "Phantom-SSM-130M",
-    "family": "phantom",
+    "id": "orthossm-130m",
+    "name": "OrthoSSM-130M",
+    "family": "orthossm",
     "params_b": 0.3,
     "architecture": "dense",
     "capabilities": [
@@ -203215,8 +203215,8 @@
     }
   },
   {
-    "id": "phantom-falcon-40b",
-    "name": "Phantom-Falcon-40B",
+    "id": "orthossm-falcon-40b",
+    "name": "OrthoSSM-Falcon-40B",
     "family": "falcon",
     "params_b": 41.8,
     "architecture": "dense",
@@ -203264,8 +203264,8 @@
     }
   },
   {
-    "id": "phantom-mamba-falcon-hybrid",
-    "name": "Phantom-Mamba-Falcon-Hybrid",
+    "id": "orthossm-mamba-falcon-hybrid",
+    "name": "OrthoSSM-Mamba-Falcon-Hybrid",
     "family": "falcon",
     "params_b": 0.2,
     "architecture": "dense",
@@ -203730,6 +203730,171 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lumen-v2-130m-base",
+    "name": "Lumen-v2-130M-Base",
+    "family": "lumen",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-08-13",
+    "hf_id": "kefir090/Lumen-v2-130M-Base",
+    "provider": "kefir090",
+    "hf_downloads": 510,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "acquisition-student-llama8bins-numina-diversity",
+    "name": "acquisition-student-llama8bins-numina-diversity",
+    "family": "llama",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-02",
+    "hf_id": "sstoica12/acquisition_student_llama8bins_numina_diversity",
+    "provider": "sstoica12",
+    "hf_downloads": 597,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "orp-0-8b",
+    "name": "ORP-0.8B",
+    "family": "orp",
+    "params_b": 0.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-09-03",
+    "hf_id": "hamzah0asadullah/ORP-0.8B",
+    "provider": "hamzah0asadullah",
+    "hf_downloads": 509,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 506,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 731,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1800,
         "quality": 1.0
       }
     ],
