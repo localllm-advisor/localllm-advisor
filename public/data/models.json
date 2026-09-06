@@ -204575,7 +204575,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-09-03",
-    "hf_id": "osk-arr00/qwen-3.8-next-40b-exp-moe-pruned-bf16",
+    "hf_id": "Davd-b01/qwen-3.8-next-40b-exp-moe-pruned-bf16",
     "provider": "osk-arr00",
     "hf_downloads": 609,
     "quantizations": [
@@ -204983,6 +204983,106 @@
         "bpw": 16.0,
         "vram_mb": 400,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "jax-xortron",
+    "name": "JAX-XORTRON",
+    "family": "jax",
+    "params_b": 27.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-09-01",
+    "hf_id": "darkc0de/JAX-XORTRON",
+    "provider": "darkc0de",
+    "hf_downloads": 823,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15412,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22262,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27400,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen-3-8-next-40b-exp-moe-pruned-bf16",
+    "name": "qwen-3.8-next-40B-exp-moe-pruned-bf16",
+    "family": "qwen",
+    "params_b": 43.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-09-03",
+    "hf_id": "Davd-b01/qwen-3.8-next-40b-exp-moe-pruned-bf16",
+    "provider": "Davd-b01",
+    "hf_downloads": 609,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 24188,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 34938,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 43000,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
