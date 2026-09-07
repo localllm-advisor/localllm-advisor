@@ -201711,7 +201711,7 @@
     "release_date": "2026-09-02",
     "hf_id": "AETHORIA-AI/TR-HASH-MoE-100M-70B-Agentic-Refinement",
     "provider": "AETHORIA-AI",
-    "hf_downloads": 2839,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -204576,7 +204576,7 @@
     "context_length": 262144,
     "release_date": "2026-09-03",
     "hf_id": "Davd-b01/qwen-3.8-next-40b-exp-moe-pruned-bf16",
-    "provider": "osk-arr00",
+    "provider": "Davd-b01",
     "hf_downloads": 609,
     "quantizations": [
       {
