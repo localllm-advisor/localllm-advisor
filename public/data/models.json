@@ -91783,7 +91783,7 @@
     "release_date": "2025-03-21",
     "hf_id": "CoRover/BharatGPT-mini",
     "provider": "CoRover",
-    "hf_downloads": 1426,
+    "hf_downloads": 2,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -203114,7 +203114,7 @@
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/ISOM-130M",
+    "hf_id": "Prannesshkva/ISOM-130M-MoE",
     "provider": "Prannesshkva",
     "hf_downloads": 1446,
     "quantizations": [
@@ -203600,7 +203600,7 @@
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/ISOM-130M",
+    "hf_id": "Prannesshkva/ISOM-130M-MoE",
     "provider": "Prannesshkva",
     "hf_downloads": 1446,
     "quantizations": [
@@ -206172,7 +206172,7 @@
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/ISOM-130M",
+    "hf_id": "Prannesshkva/ISOM-130M-MoE",
     "provider": "Prannesshkva",
     "hf_downloads": 1446,
     "quantizations": [
@@ -206333,7 +206333,7 @@
     "release_date": "2026-09-05",
     "hf_id": "Prannesshkva/ISOM-Qwen-1.5B-Instruct",
     "provider": "Prannesshkva",
-    "hf_downloads": 1124,
+    "hf_downloads": 1565,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -206437,7 +206437,7 @@
     "release_date": "2026-09-05",
     "hf_id": "Prannesshkva/ISOM-Qwen-1.5B-Instruct",
     "provider": "Prannesshkva",
-    "hf_downloads": 1124,
+    "hf_downloads": 1565,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -206954,6 +206954,172 @@
         "bpw": 8.0,
         "vram_mb": 35100,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "isom-130m-moe",
+    "name": "ISOM-130M-MoE",
+    "family": "isom",
+    "params_b": 0.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-08-30",
+    "hf_id": "Prannesshkva/ISOM-130M-MoE",
+    "provider": "Prannesshkva",
+    "hf_downloads": 1446,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llama-3-2-3b-price-engine-rev1",
+    "name": "llama-3.2-3B-price-engine-Rev1",
+    "family": "llama",
+    "params_b": 3.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-06",
+    "hf_id": "faxoi/llama-3.2-3b-price-engine-Rev1",
+    "provider": "faxoi",
+    "hf_downloads": 1661,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1800,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2600,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "oxcoder-9b",
+    "name": "OxCoder-9B",
+    "family": "oxcoder",
+    "params_b": 9.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "coding"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-09-07",
+    "hf_id": "OrionLLM/OxCoder-9B",
+    "provider": "OrionLLM",
+    "hf_downloads": 357,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5288,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7638,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 18800,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
