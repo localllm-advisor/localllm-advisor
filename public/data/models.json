@@ -182256,7 +182256,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-13",
-    "hf_id": "occamy-ai/occamy-1.0",
+    "hf_id": "Accio-Lab/occamy-1.0",
     "provider": "occamy-ai",
     "hf_downloads": 1494,
     "quantizations": [
@@ -203104,13 +203104,14 @@
     }
   },
   {
-    "id": "isom-130m-moe",
-    "name": "ISOM-130M-MoE",
+    "id": "isom-r1-edge-130m-moe",
+    "name": "ISOM-R1-Edge-130M-MoE",
     "family": "isom",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -203215,13 +203216,14 @@
     }
   },
   {
-    "id": "isom-falcon-40b",
-    "name": "ISOM-Falcon-40B",
-    "family": "falcon",
+    "id": "isom-r1-enterprise-40b",
+    "name": "ISOM-R1-Enterprise-40B",
+    "family": "isom",
     "params_b": 41.8,
     "architecture": "dense",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
@@ -203590,13 +203592,14 @@
     }
   },
   {
-    "id": "isom-130m-moe",
-    "name": "ISOM-130M-MoE",
+    "id": "isom-r1-edge-130m-moe",
+    "name": "ISOM-R1-Edge-130M-MoE",
     "family": "isom",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -203645,13 +203648,14 @@
     }
   },
   {
-    "id": "isom-falcon-40b",
-    "name": "ISOM-Falcon-40B",
-    "family": "falcon",
+    "id": "isom-r1-enterprise-40b",
+    "name": "ISOM-R1-Enterprise-40B",
+    "family": "isom",
     "params_b": 41.8,
     "architecture": "dense",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
@@ -206162,13 +206166,14 @@
     }
   },
   {
-    "id": "isom-130m-moe",
-    "name": "ISOM-130M-MoE",
+    "id": "isom-r1-edge-130m-moe",
+    "name": "ISOM-R1-Edge-130M-MoE",
     "family": "isom",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -206217,13 +206222,14 @@
     }
   },
   {
-    "id": "isom-falcon-40b",
-    "name": "ISOM-Falcon-40B",
-    "family": "falcon",
+    "id": "isom-r1-enterprise-40b",
+    "name": "ISOM-R1-Enterprise-40B",
+    "family": "isom",
     "params_b": 41.8,
     "architecture": "dense",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
@@ -206321,13 +206327,14 @@
     }
   },
   {
-    "id": "isom-qwen-1-5b-instruct",
-    "name": "ISOM-Qwen-1.5B-Instruct",
-    "family": "qwen",
+    "id": "isom-r1-reasoning-1-5b-instruct",
+    "name": "ISOM-R1-Reasoning-1.5B-Instruct",
+    "family": "isom",
     "params_b": 1.5,
     "architecture": "dense",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 32768,
     "release_date": "2026-09-05",
@@ -206425,13 +206432,14 @@
     }
   },
   {
-    "id": "isom-qwen-1-5b-instruct",
-    "name": "ISOM-Qwen-1.5B-Instruct",
-    "family": "qwen",
+    "id": "isom-r1-reasoning-1-5b-instruct",
+    "name": "ISOM-R1-Reasoning-1.5B-Instruct",
+    "family": "isom",
     "params_b": 1.5,
     "architecture": "dense",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 32768,
     "release_date": "2026-09-05",
@@ -206972,13 +206980,14 @@
     }
   },
   {
-    "id": "isom-130m-moe",
-    "name": "ISOM-130M-MoE",
+    "id": "isom-r1-edge-130m-moe",
+    "name": "ISOM-R1-Edge-130M-MoE",
     "family": "isom",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat"
+      "chat",
+      "reasoning"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -207607,6 +207616,274 @@
         "bpw": 16.0,
         "vram_mb": 3000,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "anvaya-rabbit-2-7b",
+    "name": "Anvaya-Rabbit-2.7B",
+    "family": "aya",
+    "params_b": 2.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "multilingual"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-05-02",
+    "hf_id": "RtaForge/Anvaya-Rabbit-2.7B",
+    "provider": "RtaForge",
+    "hf_downloads": 636,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1519,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2194,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "rynnbrain1-1-2b",
+    "name": "RynnBrain1.1-2B",
+    "family": "rynnbrain1-1",
+    "params_b": 2.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-13",
+    "hf_id": "Alibaba-DAMO-Academy/RynnBrain1.1-2B",
+    "provider": "Alibaba-DAMO-Academy",
+    "hf_downloads": 2096,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1238,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1788,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 4400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "rynnbrain1-1-9b",
+    "name": "RynnBrain1.1-9B",
+    "family": "rynnbrain1-1",
+    "params_b": 9.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-07-13",
+    "hf_id": "Alibaba-DAMO-Academy/RynnBrain1.1-9B",
+    "provider": "Alibaba-DAMO-Academy",
+    "hf_downloads": 874,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5288,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7638,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 18800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "occamy-1-0",
+    "name": "occamy-1.0",
+    "family": "occamy",
+    "params_b": 35.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-13",
+    "hf_id": "Accio-Lab/occamy-1.0",
+    "provider": "Accio-Lab",
+    "hf_downloads": 1494,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 35100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ling-3-0-flash-vl",
+    "name": "Ling-3.0-flash-VL",
+    "family": "ling",
+    "params_b": 124.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-04",
+    "hf_id": "inclusionAI/Ling-3.0-flash-VL",
+    "provider": "inclusionAI",
+    "hf_downloads": 42,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 70200,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 101400,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 124800,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
