@@ -182252,12 +182252,13 @@
     "params_b": 35.1,
     "architecture": "moe",
     "capabilities": [
-      "chat"
+      "chat",
+      "vision"
     ],
     "context_length": 262144,
     "release_date": "2026-08-13",
     "hf_id": "Accio-Lab/occamy-1.0",
-    "provider": "occamy-ai",
+    "provider": "Accio-Lab",
     "hf_downloads": 1494,
     "quantizations": [
       {
