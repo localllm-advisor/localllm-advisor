@@ -7,7 +7,7 @@
     "https://en.wikipedia.org/wiki/GeForce_16_series": 1287210349,
     "https://en.wikipedia.org/wiki/GeForce_10_series": 1354558486,
     "https://en.wikipedia.org/wiki/Hopper_(microarchitecture)": 1365481272,
-    "https://en.wikipedia.org/wiki/Blackwell_(microarchitecture)": 1371311669,
+    "https://en.wikipedia.org/wiki/Blackwell_(microarchitecture)": 1374038095,
     "https://en.wikipedia.org/wiki/Ampere_(microarchitecture)": 1372660346,
     "https://en.wikipedia.org/wiki/Volta_(microarchitecture)": 1364515325,
     "https://en.wikipedia.org/wiki/Turing_(microarchitecture)": 1336611907,
@@ -21,7 +21,7 @@
     "https://en.wikipedia.org/wiki/AMD_Instinct": 1367502150,
     "https://en.wikipedia.org/wiki/Radeon_Pro": 1361427598,
     "https://en.wikipedia.org/wiki/Intel_Arc": 1372208159,
-    "https://en.wikipedia.org/wiki/Apple_silicon": 1373869812,
+    "https://en.wikipedia.org/wiki/Apple_silicon": 1374155913,
     "https://en.wikipedia.org/wiki/Apple_M4": 1372487379,
     "https://en.wikipedia.org/wiki/Apple_M3": 1373218276,
     "https://en.wikipedia.org/wiki/Apple_M2": 1370946204,
@@ -30,7 +30,7 @@
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
     "https://en.wikipedia.org/wiki/Apple_M5": 1373594929,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1372446658
+    "https://en.wikipedia.org/wiki/Apple_M6": 1374120205
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -42,7 +42,7 @@
     "https://en.wikipedia.org/wiki/Epyc": 1371670587,
     "https://en.wikipedia.org/wiki/Ryzen_Threadripper": 1228483387,
     "https://en.wikipedia.org/wiki/Arrow_Lake": 1320165190,
-    "https://en.wikipedia.org/wiki/Lunar_Lake": 1354079913,
+    "https://en.wikipedia.org/wiki/Lunar_Lake": 1374013644,
     "https://en.wikipedia.org/wiki/Meteor_Lake": 1371442356,
     "https://en.wikipedia.org/wiki/Raptor_Lake": 1371930712,
     "https://en.wikipedia.org/wiki/Alder_Lake": 1369487491,
@@ -55,6 +55,6 @@
     "https://en.wikipedia.org/wiki/Apple_M2": 1370946204,
     "https://en.wikipedia.org/wiki/Apple_M1": 1370946264,
     "https://en.wikipedia.org/wiki/Apple_M5": 1373594929,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1372446658
+    "https://en.wikipedia.org/wiki/Apple_M6": 1374120205
   }
 }
