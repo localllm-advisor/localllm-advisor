@@ -183544,9 +183544,9 @@
     }
   },
   {
-    "id": "navidc-ocr",
-    "name": "NaviDC-OCR",
-    "family": "navidc",
+    "id": "teleocr",
+    "name": "TeleOCR",
+    "family": "teleocr",
     "params_b": 1.4,
     "architecture": "dense",
     "capabilities": [
@@ -208766,6 +208766,166 @@
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-base-q4v2",
     "provider": "agurung",
     "hf_downloads": 725,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2475,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3575,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-8-27b-nvfp4full-ninfer",
+    "name": "Qwen3.8-27B-nvfp4full-NInfer",
+    "family": "qwen",
+    "params_b": 27.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-08-20",
+    "hf_id": "cometkim/Qwen3.8-27B-nvfp4full-NInfer",
+    "provider": "cometkim",
+    "hf_downloads": 3299,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15188,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 21938,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-5-4b-mlp",
+    "name": "Qwen3.5-4B-MLP",
+    "family": "qwen",
+    "params_b": 3.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-26",
+    "hf_id": "LinkRur/Qwen3.5_4B_MLP",
+    "provider": "LinkRur",
+    "hf_downloads": 662,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2137,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3088,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3800,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 7600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-q4v2-iid16",
+    "name": "cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-q4v2-iid16",
+    "family": "cobalt",
+    "params_b": 4.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-09-09",
+    "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-q4v2-iid16",
+    "provider": "agurung",
+    "hf_downloads": 756,
     "quantizations": [
       {
         "level": "Q4_K_M",
