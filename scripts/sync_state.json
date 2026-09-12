@@ -7,7 +7,7 @@
     "https://en.wikipedia.org/wiki/GeForce_16_series": 1287210349,
     "https://en.wikipedia.org/wiki/GeForce_10_series": 1354558486,
     "https://en.wikipedia.org/wiki/Hopper_(microarchitecture)": 1365481272,
-    "https://en.wikipedia.org/wiki/Blackwell_(microarchitecture)": 1374038095,
+    "https://en.wikipedia.org/wiki/Blackwell_(microarchitecture)": 1374351202,
     "https://en.wikipedia.org/wiki/Ampere_(microarchitecture)": 1372660346,
     "https://en.wikipedia.org/wiki/Volta_(microarchitecture)": 1364515325,
     "https://en.wikipedia.org/wiki/Turing_(microarchitecture)": 1336611907,
@@ -21,7 +21,7 @@
     "https://en.wikipedia.org/wiki/AMD_Instinct": 1367502150,
     "https://en.wikipedia.org/wiki/Radeon_Pro": 1361427598,
     "https://en.wikipedia.org/wiki/Intel_Arc": 1372208159,
-    "https://en.wikipedia.org/wiki/Apple_silicon": 1374304813,
+    "https://en.wikipedia.org/wiki/Apple_silicon": 1374420867,
     "https://en.wikipedia.org/wiki/Apple_M4": 1372487379,
     "https://en.wikipedia.org/wiki/Apple_M3": 1373218276,
     "https://en.wikipedia.org/wiki/Apple_M2": 1370946204,
@@ -30,7 +30,7 @@
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
     "https://en.wikipedia.org/wiki/Apple_M5": 1374272892,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1374179307
+    "https://en.wikipedia.org/wiki/Apple_M6": 1374454771
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -55,6 +55,6 @@
     "https://en.wikipedia.org/wiki/Apple_M2": 1370946204,
     "https://en.wikipedia.org/wiki/Apple_M1": 1370946264,
     "https://en.wikipedia.org/wiki/Apple_M5": 1374272892,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1374179307
+    "https://en.wikipedia.org/wiki/Apple_M6": 1374454771
   }
 }
