@@ -211522,7 +211522,7 @@
     "release_date": "2026-09-12",
     "hf_id": "GiorgiGE/vazi-sft",
     "provider": "GiorgiGE",
-    "hf_downloads": 844,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
