@@ -203217,8 +203217,8 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b",
-    "name": "ISOM-R1-Enterprise-40B",
+    "id": "isom-r1-enterprise-40b-beta",
+    "name": "ISOM-R1-Enterprise-40B-Beta",
     "family": "isom",
     "params_b": 41.8,
     "architecture": "dense",
@@ -203649,8 +203649,8 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b",
-    "name": "ISOM-R1-Enterprise-40B",
+    "id": "isom-r1-enterprise-40b-beta",
+    "name": "ISOM-R1-Enterprise-40B-Beta",
     "family": "isom",
     "params_b": 41.8,
     "architecture": "dense",
@@ -206223,8 +206223,8 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b",
-    "name": "ISOM-R1-Enterprise-40B",
+    "id": "isom-r1-enterprise-40b-beta",
+    "name": "ISOM-R1-Enterprise-40B-Beta",
     "family": "isom",
     "params_b": 41.8,
     "architecture": "dense",
@@ -207529,8 +207529,8 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b",
-    "name": "ISOM-R1-Enterprise-40B",
+    "id": "isom-r1-enterprise-40b-beta",
+    "name": "ISOM-R1-Enterprise-40B-Beta",
     "family": "isom",
     "params_b": 41.8,
     "architecture": "dense",
@@ -215094,6 +215094,111 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 8800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ornith-1-5-35b-a3b-ninfer",
+    "name": "Ornith-1.5-35B-A3B-NInfer",
+    "family": "ornith",
+    "params_b": 35.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-08-20",
+    "hf_id": "knoopx/Ornith-1.5-35B-A3B-NInfer",
+    "provider": "knoopx",
+    "hf_downloads": 624,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19688,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28438,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 35000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ling-3-0-tiny-glm-5-3-flash-surgery",
+    "name": "Ling-3.0-tiny-GLM-5.3-Flash-surgery",
+    "family": "glm",
+    "params_b": 7.8,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-09-06",
+    "hf_id": "imvladikon/Ling-3.0-tiny-GLM-5.3-Flash-surgery",
+    "provider": "imvladikon",
+    "hf_downloads": 898,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4388,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6337,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 7800,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 15600,
         "quality": 1.0
       }
     ],
