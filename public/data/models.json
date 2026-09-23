@@ -222071,9 +222071,9 @@
     }
   },
   {
-    "id": "jev-one",
-    "name": "jev-one",
-    "family": "jev",
+    "id": "xor",
+    "name": "xor",
+    "family": "xor",
     "params_b": 35.1,
     "architecture": "moe",
     "capabilities": [
@@ -222405,6 +222405,61 @@
         "bpw": 8.0,
         "vram_mb": 27800,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "mini-k3-1h-kda-kernel-1-v2",
+    "name": "Mini-K3-1H-kda-kernel-1-v2",
+    "family": "mini",
+    "params_b": 1.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-22",
+    "hf_id": "nkkbr/Mini-K3-1H-kda-kernel-1-v2",
+    "provider": "nkkbr",
+    "hf_downloads": 789,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 562,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 812,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2000,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
