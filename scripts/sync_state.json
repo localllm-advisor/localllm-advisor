@@ -10,7 +10,7 @@
     "https://en.wikipedia.org/wiki/Blackwell_(microarchitecture)": 1374351202,
     "https://en.wikipedia.org/wiki/Ampere_(microarchitecture)": 1372660346,
     "https://en.wikipedia.org/wiki/Volta_(microarchitecture)": 1364515325,
-    "https://en.wikipedia.org/wiki/Turing_(microarchitecture)": 1336611907,
+    "https://en.wikipedia.org/wiki/Turing_(microarchitecture)": 1376311182,
     "https://en.wikipedia.org/wiki/Radeon_RX_9000_series": 1375835757,
     "https://en.wikipedia.org/wiki/Radeon_RX_7000_series": 1356272510,
     "https://en.wikipedia.org/wiki/Radeon_RX_6000_series": 1347872354,
@@ -30,7 +30,7 @@
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
     "https://en.wikipedia.org/wiki/Apple_M5": 1376218836,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1376218844
+    "https://en.wikipedia.org/wiki/Apple_M6": 1376302579
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -55,6 +55,6 @@
     "https://en.wikipedia.org/wiki/Apple_M2": 1376218760,
     "https://en.wikipedia.org/wiki/Apple_M1": 1376218746,
     "https://en.wikipedia.org/wiki/Apple_M5": 1376218836,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1376218844
+    "https://en.wikipedia.org/wiki/Apple_M6": 1376302579
   }
 }
