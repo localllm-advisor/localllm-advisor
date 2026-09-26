@@ -219073,7 +219073,7 @@
     ],
     "context_length": 4096,
     "release_date": "2026-08-31",
-    "hf_id": "kiel2/KielGen-Fast",
+    "hf_id": "kiel2/Kiel-Gen-2-Swift",
     "provider": "kiel2",
     "hf_downloads": 1077,
     "quantizations": [
@@ -224497,6 +224497,56 @@
         "bpw": 16.0,
         "vram_mb": 6800,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-8-27b-mxfp8-crack-ninfer-v3",
+    "name": "Qwen3.8-27B-MXFP8-CRACK-NInfer-v3",
+    "family": "qwen",
+    "params_b": 27.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-08-18",
+    "hf_id": "WaveCut/Qwen3.8-27B-MXFP8-CRACK-NInfer-v3",
+    "provider": "WaveCut",
+    "hf_downloads": 2138,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15188,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 21938,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27000,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
