@@ -219073,7 +219073,7 @@
     ],
     "context_length": 4096,
     "release_date": "2026-08-31",
-    "hf_id": "kiel2/Kiel-Gen-2-Swift",
+    "hf_id": "kiel2/Kiel-2-Apex",
     "provider": "kiel2",
     "hf_downloads": 1078,
     "quantizations": [
@@ -226312,6 +226312,111 @@
         "bpw": 8.0,
         "vram_mb": 27000,
         "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "computer-10",
+    "name": "computer-10",
+    "family": "computer",
+    "params_b": 70.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-22",
+    "hf_id": "cosmicoptima/computer-10",
+    "provider": "cosmicoptima",
+    "hf_downloads": 307,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 39712,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 57362,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 70600,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "intern-decision-4b",
+    "name": "Intern-Decision-4B",
+    "family": "internlm",
+    "params_b": 4.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-09-26",
+    "hf_id": "internlm/Intern-Decision-4B",
+    "provider": "Shanghai AI Lab",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2531,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3656,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 9000,
+        "quality": 1.0
       }
     ],
     "benchmarks": {
