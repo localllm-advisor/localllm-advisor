@@ -219063,9 +219063,9 @@
     }
   },
   {
-    "id": "kielgen-fast",
-    "name": "KielGen-Fast",
-    "family": "kielgen",
+    "id": "kiel-2-omni",
+    "name": "Kiel-2-Omni",
+    "family": "kiel",
     "params_b": 2.1,
     "architecture": "dense",
     "capabilities": [
@@ -226974,8 +226974,8 @@
     }
   },
   {
-    "id": "kiel-2-1-echo",
-    "name": "Kiel-2.1-Echo",
+    "id": "kiel-2-2-sol",
+    "name": "Kiel-2.2-Sol",
     "family": "kiel",
     "params_b": 3.2,
     "architecture": "dense",
@@ -227396,6 +227396,62 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "medgemma-4b-it-onnx",
+    "name": "medgemma-4B-it-ONNX",
+    "family": "gemma",
+    "params_b": 4.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-24",
+    "hf_id": "geeek/medgemma-4b-it-ONNX",
+    "provider": "geeek",
+    "hf_downloads": 836,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8000,
         "quality": 1.0
       }
     ],
