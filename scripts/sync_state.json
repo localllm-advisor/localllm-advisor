@@ -30,7 +30,7 @@
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
     "https://en.wikipedia.org/wiki/Apple_M5": 1376218836,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1376302579
+    "https://en.wikipedia.org/wiki/Apple_M6": 1378047737
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -55,6 +55,6 @@
     "https://en.wikipedia.org/wiki/Apple_M2": 1376218760,
     "https://en.wikipedia.org/wiki/Apple_M1": 1376218746,
     "https://en.wikipedia.org/wiki/Apple_M5": 1376218836,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1376302579
+    "https://en.wikipedia.org/wiki/Apple_M6": 1378047737
   }
 }
