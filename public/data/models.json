@@ -190388,7 +190388,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-23",
-    "hf_id": "summerMC/Qwen3.5-2B-SpeedX",
+    "hf_id": "j-llm/Qwen3.5-2B-SpeedX",
     "provider": "summerMC",
     "hf_downloads": 274,
     "quantizations": [
@@ -233562,6 +233562,56 @@
         "level": "Q8_0",
         "bpw": 8.0,
         "vram_mb": 78100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "arex-2-27b-int8-w8a16-mtp",
+    "name": "AREX-2-27B-INT8-W8A16-MTP",
+    "family": "arex",
+    "params_b": 28.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-02",
+    "hf_id": "numsu/AREX-2-27B-INT8-W8A16-MTP",
+    "provider": "numsu",
+    "hf_downloads": 517,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15750,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22750,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 28000,
         "quality": 0.995
       }
     ],
