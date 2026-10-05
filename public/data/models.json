@@ -204421,7 +204421,7 @@
     "release_date": "2026-08-30",
     "hf_id": "AbhishekG711/Qwen3-0.6B-Insight-Extractor",
     "provider": "AbhishekG711",
-    "hf_downloads": 973,
+    "hf_downloads": 0,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -204963,7 +204963,7 @@
     "release_date": "2026-09-05",
     "hf_id": "7dsolv/Konaet-Cauryvo-Clean-202M",
     "provider": "7dsolv",
-    "hf_downloads": 1203,
+    "hf_downloads": 1207,
     "quantizations": [
       {
         "level": "Q4_K_M",
