@@ -203105,14 +203105,13 @@
     }
   },
   {
-    "id": "isom-r1-edge-130m-moe",
-    "name": "ISOM-R1-Edge-130M-MoE",
-    "family": "isom",
+    "id": "ael-edge-130m-moe",
+    "name": "Ael-Edge-130M-MoE",
+    "family": "ael",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -203217,18 +203216,17 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b-beta",
-    "name": "ISOM-R1-Enterprise-40B-Beta",
-    "family": "isom",
+    "id": "ael-enterprise-40b",
+    "name": "Ael-Enterprise-40B",
+    "family": "ael",
     "params_b": 41.8,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/Ael-Enterprise-40B",
+    "hf_id": "Prannesshkva/Ael-Pro-40B",
     "provider": "Prannesshkva",
     "hf_downloads": 3264,
     "quantizations": [
@@ -203593,14 +203591,13 @@
     }
   },
   {
-    "id": "isom-r1-edge-130m-moe",
-    "name": "ISOM-R1-Edge-130M-MoE",
-    "family": "isom",
+    "id": "ael-edge-130m-moe",
+    "name": "Ael-Edge-130M-MoE",
+    "family": "ael",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -203649,18 +203646,17 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b-beta",
-    "name": "ISOM-R1-Enterprise-40B-Beta",
-    "family": "isom",
+    "id": "ael-enterprise-40b",
+    "name": "Ael-Enterprise-40B",
+    "family": "ael",
     "params_b": 41.8,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/Ael-Enterprise-40B",
+    "hf_id": "Prannesshkva/Ael-Pro-40B",
     "provider": "Prannesshkva",
     "hf_downloads": 3264,
     "quantizations": [
@@ -206167,14 +206163,13 @@
     }
   },
   {
-    "id": "isom-r1-edge-130m-moe",
-    "name": "ISOM-R1-Edge-130M-MoE",
-    "family": "isom",
+    "id": "ael-edge-130m-moe",
+    "name": "Ael-Edge-130M-MoE",
+    "family": "ael",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -206223,18 +206218,17 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b-beta",
-    "name": "ISOM-R1-Enterprise-40B-Beta",
-    "family": "isom",
+    "id": "ael-enterprise-40b",
+    "name": "Ael-Enterprise-40B",
+    "family": "ael",
     "params_b": 41.8,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/Ael-Enterprise-40B",
+    "hf_id": "Prannesshkva/Ael-Pro-40B",
     "provider": "Prannesshkva",
     "hf_downloads": 3264,
     "quantizations": [
@@ -206328,16 +206322,16 @@
     }
   },
   {
-    "id": "isom-r1-reasoning-1-5b-instruct",
-    "name": "ISOM-R1-Reasoning-1.5B-Instruct",
-    "family": "isom",
+    "id": "ael-reasoning-1-5b-instruct",
+    "name": "Ael-Reasoning-1.5B-Instruct",
+    "family": "ael",
     "params_b": 1.5,
     "architecture": "dense",
     "capabilities": [
       "chat",
       "reasoning"
     ],
-    "context_length": 32768,
+    "context_length": 131072,
     "release_date": "2026-09-05",
     "hf_id": "Prannesshkva/Ael-Reasoning-1.5B-Instruct",
     "provider": "Prannesshkva",
@@ -206433,16 +206427,16 @@
     }
   },
   {
-    "id": "isom-r1-reasoning-1-5b-instruct",
-    "name": "ISOM-R1-Reasoning-1.5B-Instruct",
-    "family": "isom",
+    "id": "ael-reasoning-1-5b-instruct",
+    "name": "Ael-Reasoning-1.5B-Instruct",
+    "family": "ael",
     "params_b": 1.5,
     "architecture": "dense",
     "capabilities": [
       "chat",
       "reasoning"
     ],
-    "context_length": 32768,
+    "context_length": 131072,
     "release_date": "2026-09-05",
     "hf_id": "Prannesshkva/Ael-Reasoning-1.5B-Instruct",
     "provider": "Prannesshkva",
@@ -206981,14 +206975,13 @@
     }
   },
   {
-    "id": "isom-r1-edge-130m-moe",
-    "name": "ISOM-R1-Edge-130M-MoE",
-    "family": "isom",
+    "id": "ael-edge-130m-moe",
+    "name": "Ael-Edge-130M-MoE",
+    "family": "ael",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -207473,14 +207466,13 @@
     }
   },
   {
-    "id": "isom-r1-edge-130m-moe",
-    "name": "ISOM-R1-Edge-130M-MoE",
-    "family": "isom",
+    "id": "ael-edge-130m-moe",
+    "name": "Ael-Edge-130M-MoE",
+    "family": "ael",
     "params_b": 0.1,
     "architecture": "moe",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 4096,
     "release_date": "2026-08-30",
@@ -207529,18 +207521,17 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b-beta",
-    "name": "ISOM-R1-Enterprise-40B-Beta",
-    "family": "isom",
+    "id": "ael-enterprise-40b",
+    "name": "Ael-Enterprise-40B",
+    "family": "ael",
     "params_b": 41.8,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/Ael-Enterprise-40B",
+    "hf_id": "Prannesshkva/Ael-Pro-40B",
     "provider": "Prannesshkva",
     "hf_downloads": 3264,
     "quantizations": [
@@ -207579,16 +207570,16 @@
     }
   },
   {
-    "id": "isom-r1-reasoning-1-5b-instruct",
-    "name": "ISOM-R1-Reasoning-1.5B-Instruct",
-    "family": "isom",
+    "id": "ael-reasoning-1-5b-instruct",
+    "name": "Ael-Reasoning-1.5B-Instruct",
+    "family": "ael",
     "params_b": 1.5,
     "architecture": "dense",
     "capabilities": [
       "chat",
       "reasoning"
     ],
-    "context_length": 32768,
+    "context_length": 131072,
     "release_date": "2026-09-05",
     "hf_id": "Prannesshkva/Ael-Reasoning-1.5B-Instruct",
     "provider": "Prannesshkva",
@@ -214733,18 +214724,17 @@
     }
   },
   {
-    "id": "isom-r1-enterprise-40b-beta",
-    "name": "ISOM-R1-Enterprise-40B-Beta",
-    "family": "isom",
+    "id": "ael-enterprise-40b",
+    "name": "Ael-Enterprise-40B",
+    "family": "ael",
     "params_b": 41.8,
     "architecture": "dense",
     "capabilities": [
-      "chat",
-      "reasoning"
+      "chat"
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/Ael-Enterprise-40B",
+    "hf_id": "Prannesshkva/Ael-Pro-40B",
     "provider": "Prannesshkva",
     "hf_downloads": 3264,
     "quantizations": [
@@ -223165,15 +223155,14 @@
     }
   },
   {
-    "id": "isom-r1-coder-16b-moe-beta",
-    "name": "ISOM-R1-Coder-16B-MoE-Beta",
-    "family": "isom",
+    "id": "ael-coder-16b-moe",
+    "name": "Ael-Coder-16B-MoE",
+    "family": "ael",
     "params_b": 15.7,
     "architecture": "moe",
     "capabilities": [
       "chat",
-      "coding",
-      "reasoning"
+      "coding"
     ],
     "context_length": 163840,
     "release_date": "2026-09-09",
@@ -234270,7 +234259,7 @@
     "release_date": "2026-10-03",
     "hf_id": "khtsly/c",
     "provider": "khtsly",
-    "hf_downloads": 1519,
+    "hf_downloads": 2936,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -234642,7 +234631,7 @@
     ],
     "context_length": 8192,
     "release_date": "2026-08-30",
-    "hf_id": "Prannesshkva/Ael-Enterprise-40B",
+    "hf_id": "Prannesshkva/Ael-Pro-40B",
     "provider": "Prannesshkva",
     "hf_downloads": 3264,
     "quantizations": [
@@ -234878,6 +234867,110 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 8000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ael-pro-40b",
+    "name": "Ael-Pro-40B",
+    "family": "ael",
+    "params_b": 41.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 8192,
+    "release_date": "2026-08-30",
+    "hf_id": "Prannesshkva/Ael-Pro-40B",
+    "provider": "Prannesshkva",
+    "hf_downloads": 3264,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 23512,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 33962,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 41800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "fine-tuned-model-indonesian-grpo",
+    "name": "fine-tuned-model-indonesian-GRPO",
+    "family": "fine",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-09",
+    "hf_id": "hendrimardani/fine-tuned-model-indonesian-GRPO",
+    "provider": "hendrimardani",
+    "hf_downloads": 561,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16000,
         "quality": 1.0
       }
     ],
