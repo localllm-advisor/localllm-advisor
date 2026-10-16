@@ -240117,7 +240117,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-10-07",
-    "hf_id": "rockmatrix-ai/EdgeRock",
+    "hf_id": "stonehill-tech/EdgeRock",
     "provider": "rockmatrix-ai",
     "hf_downloads": 837,
     "quantizations": [
@@ -245952,6 +245952,110 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 18800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ternary-bonsai-2-27b-onwx",
+    "name": "Ternary-Bonsai-2-27B-onwx",
+    "family": "ternary",
+    "params_b": 27.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-12",
+    "hf_id": "ryugyosoft/Ternary-Bonsai-2-27B-onwx",
+    "provider": "ryugyosoft",
+    "hf_downloads": 828,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15188,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 21938,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "llm-jp-4-1-8b-onwx",
+    "name": "llm-jp-4.1-8B-onwx",
+    "family": "llm",
+    "params_b": 8.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 65536,
+    "release_date": "2026-10-13",
+    "hf_id": "ryugyosoft/llm-jp-4.1-8b-onwx",
+    "provider": "ryugyosoft",
+    "hf_downloads": 811,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4500,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6500,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16000,
         "quality": 1.0
       }
     ],
