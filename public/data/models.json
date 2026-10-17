@@ -247400,5 +247400,225 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "void-1",
+    "name": "void.1",
+    "family": "void-1",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-09-26",
+    "hf_id": "dotlabs/void.1",
+    "provider": "dotlabs",
+    "hf_downloads": 838,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen-metaphor-unke-camada-2-zero-um",
+    "name": "qwen-metaphor-unke-camada-2-zero-um",
+    "family": "qwen",
+    "params_b": 0.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-10-14",
+    "hf_id": "luisastellet/qwen-metaphor-unke-camada-2-zero-um",
+    "provider": "luisastellet",
+    "hf_downloads": 502,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 337,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 488,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 600,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "granite-switch-4-1-8b",
+    "name": "granite-switch-4.1-8B",
+    "family": "granite",
+    "params_b": 8.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-10-14",
+    "hf_id": "ibm-granite/granite-switch-4.1-8b",
+    "provider": "IBM",
+    "hf_downloads": 278,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4950,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7150,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8800,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 17600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nvidia-nemotron-labs-dory1-0-4b-bf16",
+    "name": "NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+    "family": "nemotron",
+    "params_b": 4.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-16",
+    "hf_id": "nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+    "provider": "NVIDIA",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
