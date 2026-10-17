@@ -10585,7 +10585,7 @@
     },
     "hf_id": "Qwen/Qwen3.5-0.8B",
     "provider": "Alibaba",
-    "hf_downloads": 2953503,
+    "hf_downloads": 3047993,
     "gguf_sources": [
       {
         "repo": "unsloth/Qwen3.5-0.8B-GGUF",
@@ -11027,7 +11027,7 @@
     },
     "hf_id": "Qwen/Qwen3.5-2B",
     "provider": "Alibaba",
-    "hf_downloads": 2864553,
+    "hf_downloads": 2892829,
     "gguf_sources": [
       {
         "repo": "unsloth/Qwen3.5-2B-GGUF",
@@ -11357,7 +11357,7 @@
     },
     "hf_id": "Qwen/Qwen3.5-4B",
     "provider": "Alibaba",
-    "hf_downloads": 7930131,
+    "hf_downloads": 7962138,
     "gguf_sources": [
       {
         "repo": "unsloth/Qwen3.5-4B-GGUF",
@@ -12099,7 +12099,7 @@
     },
     "hf_id": "Qwen/Qwen3.5-9B",
     "provider": "Alibaba",
-    "hf_downloads": 8584713,
+    "hf_downloads": 8262238,
     "gguf_sources": [
       {
         "repo": "unsloth/Qwen3.5-9B-GGUF",
@@ -12439,7 +12439,7 @@
     },
     "hf_id": "Qwen/Qwen3.5-27B",
     "provider": "Alibaba",
-    "hf_downloads": 1821875,
+    "hf_downloads": 1805627,
     "gguf_sources": [
       {
         "repo": "unsloth/Qwen3.5-27B-GGUF",
@@ -12993,7 +12993,7 @@
     },
     "hf_id": "Qwen/Qwen3.5-35B-A3B",
     "provider": "Alibaba",
-    "hf_downloads": 1473026,
+    "hf_downloads": 1463668,
     "gguf_sources": [
       {
         "repo": "unsloth/Qwen3.5-35B-A3B-GGUF",
@@ -13454,7 +13454,7 @@
     },
     "hf_id": "Qwen/Qwen3.5-122B-A10B",
     "provider": "Alibaba",
-    "hf_downloads": 692690,
+    "hf_downloads": 699279,
     "gguf_sources": [
       {
         "repo": "unsloth/Qwen3.5-122B-A10B-GGUF",
@@ -18364,7 +18364,7 @@
     "release_date": "2026-03-16",
     "hf_id": "mistralai/Mistral-Small-4-119B-2603",
     "provider": "Mistral AI",
-    "hf_downloads": 73570,
+    "hf_downloads": 72871,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -18696,7 +18696,7 @@
     "release_date": "2026-02-12",
     "hf_id": "MiniMaxAI/MiniMax-M2.5",
     "provider": "MiniMax",
-    "hf_downloads": 756438,
+    "hf_downloads": 776579,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -18811,7 +18811,7 @@
     "release_date": "2026-03-04",
     "hf_id": "microsoft/Phi-4-reasoning-vision-15B",
     "provider": "Microsoft",
-    "hf_downloads": 2680,
+    "hf_downloads": 2788,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -18925,7 +18925,7 @@
     "release_date": "2026-02-03",
     "hf_id": "Qwen/Qwen3-Coder-Next",
     "provider": "Alibaba",
-    "hf_downloads": 515484,
+    "hf_downloads": 479188,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -18988,7 +18988,7 @@
     "release_date": "2026-02-16",
     "hf_id": "Qwen/Qwen3.5-397B-A17B",
     "provider": "Alibaba",
-    "hf_downloads": 581567,
+    "hf_downloads": 599924,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -19041,7 +19041,7 @@
     "release_date": "2026-01-19",
     "hf_id": "zai-org/GLM-4.7-Flash",
     "provider": "Zhipu AI",
-    "hf_downloads": 1260693,
+    "hf_downloads": 1223759,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -19099,7 +19099,7 @@
     "release_date": "2026-02-15",
     "hf_id": "zai-org/GLM-5",
     "provider": "Zhipu AI",
-    "hf_downloads": 852332,
+    "hf_downloads": 885294,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -19220,7 +19220,7 @@
     "release_date": "2026-03-11",
     "hf_id": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-BF16",
     "provider": "NVIDIA",
-    "hf_downloads": 1060243,
+    "hf_downloads": 1065408,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -19276,7 +19276,7 @@
     "release_date": "2026-02-25",
     "hf_id": "LiquidAI/LFM2-24B-A2B",
     "provider": "Liquid AI",
-    "hf_downloads": 2829,
+    "hf_downloads": 2929,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34090,7 +34090,7 @@
     "release_date": "2026-02-01",
     "hf_id": "Qwen/Qwen3-Coder-Next-FP8",
     "provider": "Alibaba",
-    "hf_downloads": 991160,
+    "hf_downloads": 996772,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34139,7 +34139,7 @@
     "release_date": "2026-02-01",
     "hf_id": "stepfun-ai/Step-3.5-Flash-FP8",
     "provider": "stepfun-ai",
-    "hf_downloads": 583,
+    "hf_downloads": 611,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34188,7 +34188,7 @@
     "release_date": "2026-02-01",
     "hf_id": "stepfun-ai/Step-3.5-Flash",
     "provider": "stepfun-ai",
-    "hf_downloads": 261014,
+    "hf_downloads": 261975,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34237,7 +34237,7 @@
     "release_date": "2026-02-04",
     "hf_id": "nvidia/NVIDIA-Nemotron-Nano-9B-v2-Japanese",
     "provider": "NVIDIA",
-    "hf_downloads": 3186,
+    "hf_downloads": 3076,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34292,7 +34292,7 @@
     "release_date": "2026-02-10",
     "hf_id": "Nanbeige/Nanbeige4.1-3B",
     "provider": "Nanbeige",
-    "hf_downloads": 2976,
+    "hf_downloads": 3124,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34347,7 +34347,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-270M-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 264,
+    "hf_downloads": 249,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34402,7 +34402,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-0.6B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 272,
+    "hf_downloads": 277,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34457,7 +34457,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-1B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 278,
+    "hf_downloads": 286,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34512,7 +34512,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-1.7B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 1459,
+    "hf_downloads": 1315,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34567,7 +34567,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-4B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 419,
+    "hf_downloads": 426,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34622,7 +34622,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-7B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 652,
+    "hf_downloads": 658,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34677,7 +34677,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-8.2B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 338,
+    "hf_downloads": 335,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34732,7 +34732,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-8.3B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 450,
+    "hf_downloads": 454,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34787,7 +34787,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-12B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 258,
+    "hf_downloads": 259,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34842,7 +34842,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-LLM-14B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 251,
+    "hf_downloads": 254,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34897,7 +34897,7 @@
     "release_date": "2026-02-11",
     "hf_id": "zai-org/GLM-5-FP8",
     "provider": "Zhipu AI",
-    "hf_downloads": 22011,
+    "hf_downloads": 21193,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -34947,7 +34947,7 @@
     "release_date": "2026-02-12",
     "hf_id": "KiteFishAI/Nano-Math-2B-v2",
     "provider": "KiteFishAI",
-    "hf_downloads": 1520,
+    "hf_downloads": 1558,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35002,7 +35002,7 @@
     "release_date": "2026-02-12",
     "hf_id": "farbodtavakkoli/OTel-LLM-3B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 309,
+    "hf_downloads": 311,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35057,7 +35057,7 @@
     "release_date": "2026-02-21",
     "hf_id": "darkc0de/XORTRON.CriminalComputing.LARGE.2026.3",
     "provider": "darkc0de",
-    "hf_downloads": 647,
+    "hf_downloads": 643,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35106,7 +35106,7 @@
     "release_date": "2026-02-26",
     "hf_id": "farbodtavakkoli/OTel-LLM-8.3B-Safety",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 260,
+    "hf_downloads": 265,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35161,7 +35161,7 @@
     "release_date": "2026-02-26",
     "hf_id": "farbodtavakkoli/OTel-LLM-12B-Safety",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 247,
+    "hf_downloads": 249,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35216,7 +35216,7 @@
     "release_date": "2026-02-28",
     "hf_id": "XCurOS/XCurOS0.1-8B-Instruct",
     "provider": "XCurOS",
-    "hf_downloads": 54651,
+    "hf_downloads": 55701,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35271,7 +35271,7 @@
     "release_date": "2026-03-10",
     "hf_id": "farbodtavakkoli/OTel-LLM-1.2B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 330,
+    "hf_downloads": 321,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35326,7 +35326,7 @@
     "release_date": "2026-03-10",
     "hf_id": "nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8",
     "provider": "NVIDIA",
-    "hf_downloads": 63513,
+    "hf_downloads": 63403,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35377,7 +35377,7 @@
     "release_date": "2026-03-12",
     "hf_id": "Tesslate/OmniCoder-9B",
     "provider": "Tesslate",
-    "hf_downloads": 787,
+    "hf_downloads": 800,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35432,7 +35432,7 @@
     "release_date": "2026-03-18",
     "hf_id": "nvidia/Nemotron-Cascade-2-30B-A3B",
     "provider": "NVIDIA",
-    "hf_downloads": 9749,
+    "hf_downloads": 9719,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35482,7 +35482,7 @@
     "release_date": "2026-03-27",
     "hf_id": "deqing/convergent-llama-300M-muon-window-2",
     "provider": "deqing",
-    "hf_downloads": 37,
+    "hf_downloads": 36,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -35537,7 +35537,7 @@
     "release_date": "2026-03-27",
     "hf_id": "deqing/convergent-llama-300M-muon-window-8",
     "provider": "deqing",
-    "hf_downloads": 14,
+    "hf_downloads": 16,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47306,7 +47306,7 @@
     "release_date": "2026-02-04",
     "hf_id": "OpenMOSS-Team/MOSS-Audio-Tokenizer",
     "provider": "OpenMOSS-Team",
-    "hf_downloads": 78594,
+    "hf_downloads": 78530,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47361,7 +47361,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-Reranker-0.6B",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 1167,
+    "hf_downloads": 1049,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47416,7 +47416,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-Reranker-4B",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 39,
+    "hf_downloads": 37,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47471,7 +47471,7 @@
     "release_date": "2026-02-11",
     "hf_id": "farbodtavakkoli/OTel-Reranker-8B",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 58,
+    "hf_downloads": 59,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47526,7 +47526,7 @@
     "release_date": "2026-03-02",
     "hf_id": "zeroentropy/zembed-1-embedding",
     "provider": "zeroentropy",
-    "hf_downloads": 4841,
+    "hf_downloads": 4840,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47581,7 +47581,7 @@
     "release_date": "2026-03-06",
     "hf_id": "RedHatAI/gpt-oss-120b-speculator.eagle3",
     "provider": "RedHatAI",
-    "hf_downloads": 405,
+    "hf_downloads": 409,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47636,7 +47636,7 @@
     "release_date": "2026-03-08",
     "hf_id": "reaperdoesntknow/DiscoverLM-70M",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 1981,
+    "hf_downloads": 1984,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47691,7 +47691,7 @@
     "release_date": "2026-03-13",
     "hf_id": "deqing/convergent-llama-300M-muon-window-4",
     "provider": "deqing",
-    "hf_downloads": 16,
+    "hf_downloads": 26,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47746,7 +47746,7 @@
     "release_date": "2026-03-13",
     "hf_id": "farbodtavakkoli/OTel-LLM-8.3B-Classification",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 55,
+    "hf_downloads": 54,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47856,7 +47856,7 @@
     "release_date": "2026-03-17",
     "hf_id": "misterJB/obiwan-field-963hz",
     "provider": "misterJB",
-    "hf_downloads": 14,
+    "hf_downloads": 15,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -47966,7 +47966,7 @@
     "release_date": "2026-03-21",
     "hf_id": "deqing/convergent-llama-300M-muon-isolate-1",
     "provider": "deqing",
-    "hf_downloads": 21,
+    "hf_downloads": 22,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -48077,7 +48077,7 @@
     "release_date": "2026-03-25",
     "hf_id": "reaperdoesntknow/Qwen3-1.7B-Coder-Distilled-SFT",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 3511,
+    "hf_downloads": 3517,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -48132,7 +48132,7 @@
     "release_date": "2026-03-27",
     "hf_id": "reaperdoesntknow/Qwen3-1.7B-Thinking-Distil",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 3337,
+    "hf_downloads": 3344,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -48298,7 +48298,7 @@
     "release_date": "2026-03-28",
     "hf_id": "reaperdoesntknow/TopologicalQwen",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 3884,
+    "hf_downloads": 3891,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -48463,7 +48463,7 @@
     "release_date": "2026-03-29",
     "hf_id": "GeorgeUwaifo/ivie_gpt2_new01b_results",
     "provider": "GeorgeUwaifo",
-    "hf_downloads": 12,
+    "hf_downloads": 15,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -48573,7 +48573,7 @@
     "release_date": "2026-03-27",
     "hf_id": "Tribewarez/psy-q-finder-369M",
     "provider": "Tribewarez",
-    "hf_downloads": 21,
+    "hf_downloads": 27,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -49234,7 +49234,7 @@
     "release_date": "2026-03-22",
     "hf_id": "reaperdoesntknow/Qwen3-0.6B-Distilled-30B-A3B-Thinking-SFT",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 3210,
+    "hf_downloads": 3185,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -49290,7 +49290,7 @@
     "release_date": "2026-03-22",
     "hf_id": "reaperdoesntknow/Qwen3-0.6B-Distilled-30B-A3B",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 3047,
+    "hf_downloads": 3055,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -49346,7 +49346,7 @@
     "release_date": "2026-03-22",
     "hf_id": "reaperdoesntknow/Qwen3-1.7B-Distilled-30B-A3B",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 3246,
+    "hf_downloads": 3249,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -49457,7 +49457,7 @@
     "release_date": "2026-03-28",
     "hf_id": "reaperdoesntknow/Disctil-Qwen3-1.7B",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 2200,
+    "hf_downloads": 2204,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -49623,7 +49623,7 @@
     "release_date": "2026-03-29",
     "hf_id": "reaperdoesntknow/DualMinded-Qwen3-1.7B",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 2412,
+    "hf_downloads": 2416,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -49835,7 +49835,7 @@
     "release_date": "2026-02-16",
     "hf_id": "khazarai/Bio-8B-it",
     "provider": "khazarai",
-    "hf_downloads": 35,
+    "hf_downloads": 36,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -49890,7 +49890,7 @@
     "release_date": "2026-03-31",
     "hf_id": "LiquidAI/LFM2.5-350M",
     "provider": "Liquid AI",
-    "hf_downloads": 53015,
+    "hf_downloads": 53427,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -50385,7 +50385,7 @@
     "release_date": "2026-03-25",
     "hf_id": "reaperdoesntknow/LFM2.5-1.2B-Distilled-SFT",
     "provider": "reaperdoesntknow",
-    "hf_downloads": 2468,
+    "hf_downloads": 2467,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -50496,7 +50496,7 @@
     "release_date": "2026-03-23",
     "hf_id": "AxiomicLabs/GPT-X-125M",
     "provider": "AxiomicLabs",
-    "hf_downloads": 176,
+    "hf_downloads": 179,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -50773,7 +50773,7 @@
     "release_date": "2026-02-15",
     "hf_id": "farbodtavakkoli/OTel-LLM-20B-Reasoning",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 330,
+    "hf_downloads": 336,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -50828,7 +50828,7 @@
     "release_date": "2026-03-10",
     "hf_id": "farbodtavakkoli/OTel-LLM-24B-IT",
     "provider": "farbodtavakkoli",
-    "hf_downloads": 307,
+    "hf_downloads": 308,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -50932,7 +50932,7 @@
     "release_date": "2026-03-30",
     "hf_id": "bobber/lex-interviewer-nemotron-4b-grpo-v12",
     "provider": "bobber",
-    "hf_downloads": 9,
+    "hf_downloads": 10,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -51042,7 +51042,7 @@
     "release_date": "2026-03-31",
     "hf_id": "OpenVINO/LFM2.5-350M-fp16-ov",
     "provider": "OpenVINO",
-    "hf_downloads": 73,
+    "hf_downloads": 69,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -51152,7 +51152,7 @@
     "release_date": "2026-03-31",
     "hf_id": "Akhil-reddy/Meta-Llma-legal-lens-500",
     "provider": "Akhil-reddy",
-    "hf_downloads": 14,
+    "hf_downloads": 11,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -51262,7 +51262,7 @@
     "release_date": "2026-02-16",
     "hf_id": "bharatgenai/Param2-17B-A2.4B-Thinking",
     "provider": "bharatgenai",
-    "hf_downloads": 4069,
+    "hf_downloads": 4863,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -51523,7 +51523,7 @@
     "release_date": "2026-02-13",
     "hf_id": "arcee-ai/Trinity-Large-Preview-W4A16",
     "provider": "arcee-ai",
-    "hf_downloads": 136,
+    "hf_downloads": 134,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -51629,7 +51629,7 @@
     "release_date": "2026-04-01",
     "hf_id": "arcee-ai/Trinity-Large-Thinking",
     "provider": "arcee-ai",
-    "hf_downloads": 2122,
+    "hf_downloads": 2181,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -52226,7 +52226,7 @@
     "release_date": "2026-02-14",
     "hf_id": "jdopensource/JoyAI-LLM-Flash",
     "provider": "jdopensource",
-    "hf_downloads": 654,
+    "hf_downloads": 703,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -52275,7 +52275,7 @@
     "release_date": "2026-03-26",
     "hf_id": "SII-GAIR-NLP/davinci-llm-model",
     "provider": "SII-GAIR-NLP",
-    "hf_downloads": 34,
+    "hf_downloads": 39,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -52330,7 +52330,7 @@
     "release_date": "2026-04-01",
     "hf_id": "small-models-for-glam/Qwen3.5-0.8B-SFT-name-parser-yaml",
     "provider": "small-models-for-glam",
-    "hf_downloads": 32,
+    "hf_downloads": 33,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -53209,7 +53209,7 @@
     "release_date": "2026-03-23",
     "hf_id": "SykoSLM/SykoLLM-V5.6",
     "provider": "SykoSLM",
-    "hf_downloads": 15,
+    "hf_downloads": 20,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -53264,7 +53264,7 @@
     "release_date": "2026-04-01",
     "hf_id": "juanquivilla/sotto-cleanup-lfm25-350m",
     "provider": "juanquivilla",
-    "hf_downloads": 114,
+    "hf_downloads": 115,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -53589,7 +53589,7 @@
     "release_date": "2026-03-21",
     "hf_id": "ai-sage/GigaChat3.1-702B-A36B-bf16",
     "provider": "ai-sage",
-    "hf_downloads": 447,
+    "hf_downloads": 450,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -53639,7 +53639,7 @@
     "release_date": "2026-03-21",
     "hf_id": "ai-sage/GigaChat3.1-702B-A36B",
     "provider": "ai-sage",
-    "hf_downloads": 197,
+    "hf_downloads": 204,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -55505,7 +55505,7 @@
     "release_date": "2026-04-01",
     "hf_id": "FrontiersMind/Nandi-Mini-150M",
     "provider": "FrontiersMind",
-    "hf_downloads": 579,
+    "hf_downloads": 557,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -56166,7 +56166,7 @@
     "release_date": "2026-03-16",
     "hf_id": "nthngdy/matryoshka-3B",
     "provider": "nthngdy",
-    "hf_downloads": 148,
+    "hf_downloads": 147,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -57377,7 +57377,7 @@
     "release_date": "2026-04-03",
     "hf_id": "lunahr/CeluneNorm-0.6B-v1.1",
     "provider": "lunahr",
-    "hf_downloads": 39,
+    "hf_downloads": 40,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -79216,7 +79216,7 @@
     "release_date": "2026-03-23",
     "hf_id": "AxiomicLabs/GPT-X-125M",
     "provider": "AxiomicLabs",
-    "hf_downloads": 176,
+    "hf_downloads": 179,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -83159,7 +83159,7 @@
     "release_date": "2026-03-23",
     "hf_id": "AxiomicLabs/GPT-X-125M",
     "provider": "AxiomicLabs",
-    "hf_downloads": 176,
+    "hf_downloads": 179,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -96531,7 +96531,7 @@
     "release_date": "2026-04-01",
     "hf_id": "FrontiersMind/Nandi-Mini-150M",
     "provider": "FrontiersMind",
-    "hf_downloads": 579,
+    "hf_downloads": 557,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -110635,7 +110635,7 @@
     "release_date": "2026-03-02",
     "hf_id": "zeroentropy/zembed-1-embedding",
     "provider": "zeroentropy",
-    "hf_downloads": 4841,
+    "hf_downloads": 4840,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -144384,7 +144384,7 @@
     "release_date": "2026-06-09",
     "hf_id": "azherali/Riazi-8B-Instruct",
     "provider": "azherali",
-    "hf_downloads": 120,
+    "hf_downloads": 119,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -182308,7 +182308,7 @@
     "release_date": "2026-08-16",
     "hf_id": "sullivan1502/base-action-grpo",
     "provider": "sullivan1502",
-    "hf_downloads": 387,
+    "hf_downloads": 388,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -186497,7 +186497,7 @@
     "release_date": "2026-08-20",
     "hf_id": "fpadovani/jpn-100mb-after-eng-baseline-ckpt500_seed455",
     "provider": "fpadovani",
-    "hf_downloads": 169,
+    "hf_downloads": 167,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -186552,7 +186552,7 @@
     "release_date": "2026-08-20",
     "hf_id": "fpadovani/eng-100mb-after-eng-baseline-ckpt500_seed455",
     "provider": "fpadovani",
-    "hf_downloads": 115,
+    "hf_downloads": 110,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -189042,7 +189042,7 @@
     "release_date": "2026-08-21",
     "hf_id": "zeliang0426/MemAgent-PTE-Qwen3-30B-A3B",
     "provider": "zeliang0426",
-    "hf_downloads": 287,
+    "hf_downloads": 286,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -189091,7 +189091,7 @@
     "release_date": "2026-08-22",
     "hf_id": "al20312/124M-Pretrained-Base",
     "provider": "al20312",
-    "hf_downloads": 177,
+    "hf_downloads": 169,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -189311,7 +189311,7 @@
     "release_date": "2026-08-22",
     "hf_id": "Welmia/welmia-2.0-103m-base",
     "provider": "Welmia",
-    "hf_downloads": 82,
+    "hf_downloads": 79,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -189366,7 +189366,7 @@
     "release_date": "2026-08-22",
     "hf_id": "Welmia/welmia-2.0-103m-instruct",
     "provider": "Welmia",
-    "hf_downloads": 69,
+    "hf_downloads": 66,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -196241,7 +196241,7 @@
     "release_date": "2026-08-17",
     "hf_id": "RedHatAI/Qwen3.8-27B-NVFP4",
     "provider": "RedHatAI",
-    "hf_downloads": 16255,
+    "hf_downloads": 16605,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -231636,7 +231636,7 @@
     "release_date": "2026-09-25",
     "hf_id": "ishikaa/acquisition_generator_AS_confidence_alpaca_qwen3b",
     "provider": "ishikaa",
-    "hf_downloads": 1585,
+    "hf_downloads": 1592,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -235211,7 +235211,7 @@
     "release_date": "2026-10-03",
     "hf_id": "cerulean-works/ben-lab4-c4-gpt2",
     "provider": "cerulean-works",
-    "hf_downloads": 2425,
+    "hf_downloads": 2439,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -236858,7 +236858,7 @@
     "release_date": "2026-10-06",
     "hf_id": "kshitijthakkar/nirnaya-0.4b-0.2a-decision",
     "provider": "kshitijthakkar",
-    "hf_downloads": 1197,
+    "hf_downloads": 1205,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -237855,7 +237855,7 @@
     "release_date": "2026-10-05",
     "hf_id": "LiquidAI/d1-omni-600M",
     "provider": "Liquid AI",
-    "hf_downloads": 13400,
+    "hf_downloads": 13899,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -237911,7 +237911,7 @@
     "release_date": "2026-10-05",
     "hf_id": "LiquidAI/d1-3B",
     "provider": "Liquid AI",
-    "hf_downloads": 17820,
+    "hf_downloads": 19829,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -238133,7 +238133,7 @@
     "release_date": "2026-10-05",
     "hf_id": "DeepNarra/Hiraya-1-Base",
     "provider": "DeepNarra",
-    "hf_downloads": 1232,
+    "hf_downloads": 1239,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -238190,7 +238190,7 @@
     "release_date": "2026-10-05",
     "hf_id": "DeepNarra/Hiraya-1-Reasoning",
     "provider": "DeepNarra",
-    "hf_downloads": 747,
+    "hf_downloads": 754,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -238246,7 +238246,7 @@
     "release_date": "2026-10-05",
     "hf_id": "DeepNarra/Hiraya-1-Instruct",
     "provider": "DeepNarra",
-    "hf_downloads": 1027,
+    "hf_downloads": 1032,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -238576,7 +238576,7 @@
     "release_date": "2026-10-07",
     "hf_id": "francesca9805/swa-100mb-after-wc-uniform-newlex-after-ckpt500-packed-bfdiso_seed455",
     "provider": "francesca9805",
-    "hf_downloads": 2048,
+    "hf_downloads": 2060,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -238631,7 +238631,7 @@
     "release_date": "2026-10-07",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-n3nc-vs16",
     "provider": "agurung",
-    "hf_downloads": 2540,
+    "hf_downloads": 2548,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -238686,7 +238686,7 @@
     "release_date": "2026-10-07",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-n3nc-base",
     "provider": "agurung",
-    "hf_downloads": 2287,
+    "hf_downloads": 2293,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -238741,7 +238741,7 @@
     "release_date": "2026-10-07",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-n3nc-iid16",
     "provider": "agurung",
-    "hf_downloads": 2508,
+    "hf_downloads": 2515,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -239184,7 +239184,7 @@
     "release_date": "2026-10-06",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-n3nc-groot16",
     "provider": "agurung",
-    "hf_downloads": 1684,
+    "hf_downloads": 1699,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -239349,7 +239349,7 @@
     "release_date": "2026-10-07",
     "hf_id": "francesca9805/swa-100mb-after-wc-uniform-newlex-after-ckpt500-packed-bfdiso_seed3407",
     "provider": "francesca9805",
-    "hf_downloads": 1338,
+    "hf_downloads": 1349,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -239405,7 +239405,7 @@
     "release_date": "2026-10-07",
     "hf_id": "lightonai/LightOnOCR-3-0.8B",
     "provider": "lightonai",
-    "hf_downloads": 3972,
+    "hf_downloads": 4461,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -239460,7 +239460,7 @@
     "release_date": "2026-10-07",
     "hf_id": "sirsqm/seger-qwen2.5-1.5b-onnx",
     "provider": "sirsqm",
-    "hf_downloads": 902,
+    "hf_downloads": 914,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -240009,7 +240009,7 @@
     "release_date": "2026-10-09",
     "hf_id": "tencent/Youtu-Parsing-Omni",
     "provider": "tencent",
-    "hf_downloads": 1552,
+    "hf_downloads": 1748,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -240119,7 +240119,7 @@
     "release_date": "2026-10-07",
     "hf_id": "rockmatrix-ai/EdgeRock",
     "provider": "rockmatrix-ai",
-    "hf_downloads": 867,
+    "hf_downloads": 1742,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -241001,7 +241001,7 @@
     "release_date": "2026-10-09",
     "hf_id": "Cloudflare/clef-omni",
     "provider": "Cloudflare",
-    "hf_downloads": 3650,
+    "hf_downloads": 4399,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -242839,7 +242839,7 @@
     "release_date": "2026-10-11",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-n3nc-vs16-s3",
     "provider": "agurung",
-    "hf_downloads": 4540,
+    "hf_downloads": 4556,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -242894,7 +242894,7 @@
     "release_date": "2026-10-11",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-n3nc-iid16-s3",
     "provider": "agurung",
-    "hf_downloads": 3741,
+    "hf_downloads": 3755,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -242949,7 +242949,7 @@
     "release_date": "2026-10-11",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-n3nc-groot16-s3",
     "provider": "agurung",
-    "hf_downloads": 3784,
+    "hf_downloads": 3800,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -243004,7 +243004,7 @@
     "release_date": "2026-10-11",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-n3nc-base-s3",
     "provider": "agurung",
-    "hf_downloads": 3922,
+    "hf_downloads": 3935,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -243059,7 +243059,7 @@
     "release_date": "2026-10-12",
     "hf_id": "thinletter/ThinCtx-Qwen3.5-0.8B",
     "provider": "thinletter",
-    "hf_downloads": 2874,
+    "hf_downloads": 2916,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -243114,7 +243114,7 @@
     "release_date": "2026-10-12",
     "hf_id": "summerMC/Cyber-9B-Qwen-AllGDN-Engram",
     "provider": "summerMC",
-    "hf_downloads": 1186,
+    "hf_downloads": 1204,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -243224,7 +243224,7 @@
     "release_date": "2026-10-12",
     "hf_id": "LiquidAI/LFM2.5-24B-A2B",
     "provider": "Liquid AI",
-    "hf_downloads": 9356,
+    "hf_downloads": 11926,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -243754,7 +243754,7 @@
     "release_date": "2026-10-11",
     "hf_id": "francesca9805/nor-latn-100mb-100mb_seed455",
     "provider": "francesca9805",
-    "hf_downloads": 2132,
+    "hf_downloads": 2150,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -243809,7 +243809,7 @@
     "release_date": "2026-10-13",
     "hf_id": "francesca9805/nor-100mb-after-wc-zipf-newlex-before-ckpt500-packed-bfdiso_seed10",
     "provider": "francesca9805",
-    "hf_downloads": 1936,
+    "hf_downloads": 1956,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -244196,7 +244196,7 @@
     "release_date": "2026-10-12",
     "hf_id": "thinletter/ThinCtx-Qwen3.5-2B",
     "provider": "thinletter",
-    "hf_downloads": 2375,
+    "hf_downloads": 2410,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -244251,7 +244251,7 @@
     "release_date": "2026-10-13",
     "hf_id": "inclusionAI/Ling-3.1-flash",
     "provider": "inclusionAI",
-    "hf_downloads": 1276,
+    "hf_downloads": 1904,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -244736,7 +244736,7 @@
     "release_date": "2026-10-10",
     "hf_id": "haohuiliang/RobustOps-RL-4B",
     "provider": "haohuiliang",
-    "hf_downloads": 789,
+    "hf_downloads": 800,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -244791,7 +244791,7 @@
     "release_date": "2026-10-10",
     "hf_id": "haohuiliang/RobustOps-RL-4B-BF16",
     "provider": "haohuiliang",
-    "hf_downloads": 992,
+    "hf_downloads": 1002,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -244846,7 +244846,7 @@
     "release_date": "2026-10-10",
     "hf_id": "haohuiliang/RobustOps-SFT-4B",
     "provider": "haohuiliang",
-    "hf_downloads": 771,
+    "hf_downloads": 781,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -244901,7 +244901,7 @@
     "release_date": "2026-10-10",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-base-q3c",
     "provider": "agurung",
-    "hf_downloads": 5382,
+    "hf_downloads": 5559,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -244956,7 +244956,7 @@
     "release_date": "2026-10-10",
     "hf_id": "agurung/cobalt-seeded-rl-base-ramp25-stoppen-gen4k-ep2-ncp5-q3c-groot16",
     "provider": "agurung",
-    "hf_downloads": 5549,
+    "hf_downloads": 6066,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -245011,7 +245011,7 @@
     "release_date": "2026-10-13",
     "hf_id": "thinletter/ThinCtx-Qwen3.5-4B",
     "provider": "thinletter",
-    "hf_downloads": 1698,
+    "hf_downloads": 1724,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -245448,7 +245448,7 @@
     "release_date": "2026-10-09",
     "hf_id": "nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-BF16",
     "provider": "NVIDIA",
-    "hf_downloads": 538,
+    "hf_downloads": 1247,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -245498,7 +245498,7 @@
     "release_date": "2026-10-12",
     "hf_id": "nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16",
     "provider": "NVIDIA",
-    "hf_downloads": 2155,
+    "hf_downloads": 7865,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -245547,7 +245547,7 @@
     "release_date": "2026-10-14",
     "hf_id": "francesca9805/nor-100mb-after-wc-loglinear-newlex-before-ckpt500-packed-bfdiso_seed3407",
     "provider": "francesca9805",
-    "hf_downloads": 2123,
+    "hf_downloads": 2175,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -245822,7 +245822,7 @@
     "release_date": "2026-10-09",
     "hf_id": "udgamlabs/Udgam-384M-Chat",
     "provider": "udgamlabs",
-    "hf_downloads": 700,
+    "hf_downloads": 715,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -245878,7 +245878,7 @@
     "release_date": "2026-10-12",
     "hf_id": "nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-Base-BF16",
     "provider": "NVIDIA",
-    "hf_downloads": 374,
+    "hf_downloads": 586,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -245928,7 +245928,7 @@
     "release_date": "2026-10-14",
     "hf_id": "black-forest-labs/flux-3-image-klein-pup",
     "provider": "black-forest-labs",
-    "hf_downloads": 426,
+    "hf_downloads": 2498,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -245983,7 +245983,7 @@
     "release_date": "2026-10-12",
     "hf_id": "ryugyosoft/Ternary-Bonsai-2-27B-onwx",
     "provider": "ryugyosoft",
-    "hf_downloads": 839,
+    "hf_downloads": 1219,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246032,7 +246032,7 @@
     "release_date": "2026-10-13",
     "hf_id": "ryugyosoft/llm-jp-4.1-8b-onwx",
     "provider": "ryugyosoft",
-    "hf_downloads": 821,
+    "hf_downloads": 1192,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246346,7 +246346,7 @@
     "release_date": "2026-10-07",
     "hf_id": "rockmatrix-ai/EdgeRock",
     "provider": "rockmatrix-ai",
-    "hf_downloads": 867,
+    "hf_downloads": 1742,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246401,7 +246401,7 @@
     "release_date": "2026-10-09",
     "hf_id": "h2oai/h2o-lightning-4b-nemotron-nano",
     "provider": "h2oai",
-    "hf_downloads": 1019,
+    "hf_downloads": 1719,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246457,7 +246457,7 @@
     "release_date": "2026-10-09",
     "hf_id": "openbmb/MiniCPM-V-4.7-35B-A3B-int4",
     "provider": "openbmb",
-    "hf_downloads": 1522,
+    "hf_downloads": 2745,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246512,7 +246512,7 @@
     "release_date": "2026-10-10",
     "hf_id": "reflection/Beam-1.0-501B-A23B-FP8",
     "provider": "reflection",
-    "hf_downloads": 603,
+    "hf_downloads": 760,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246561,7 +246561,7 @@
     "release_date": "2026-10-11",
     "hf_id": "autotrust/JEV-35B",
     "provider": "autotrust",
-    "hf_downloads": 88859,
+    "hf_downloads": 171832,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246610,7 +246610,7 @@
     "release_date": "2026-10-14",
     "hf_id": "microsoft/UserRepGen-4B",
     "provider": "Microsoft",
-    "hf_downloads": 589,
+    "hf_downloads": 740,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246666,7 +246666,7 @@
     "release_date": "2026-10-15",
     "hf_id": "stefanruseti/newsvibe-categories-custom-qwen3.5-0.8b",
     "provider": "stefanruseti",
-    "hf_downloads": 644,
+    "hf_downloads": 682,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -247469,7 +247469,7 @@
     "release_date": "2026-10-14",
     "hf_id": "luisastellet/qwen-metaphor-unke-camada-2-zero-um",
     "provider": "luisastellet",
-    "hf_downloads": 502,
+    "hf_downloads": 963,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -247524,7 +247524,7 @@
     "release_date": "2026-10-14",
     "hf_id": "ibm-granite/granite-switch-4.1-8b",
     "provider": "IBM",
-    "hf_downloads": 278,
+    "hf_downloads": 567,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -247579,7 +247579,7 @@
     "release_date": "2026-10-16",
     "hf_id": "nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
     "provider": "NVIDIA",
-    "hf_downloads": 0,
+    "hf_downloads": 674,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -247634,7 +247634,7 @@
     "release_date": "2026-10-10",
     "hf_id": "Remek/basal-omni-1.0-max",
     "provider": "Remek",
-    "hf_downloads": 564,
+    "hf_downloads": 583,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -247689,7 +247689,7 @@
     "release_date": "2026-10-11",
     "hf_id": "Remek/basal-omni-1.0-mini",
     "provider": "Remek",
-    "hf_downloads": 559,
+    "hf_downloads": 570,
     "quantizations": [
       {
         "level": "Q4_K_M",
