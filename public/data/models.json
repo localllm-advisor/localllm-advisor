@@ -215314,8 +215314,8 @@
     }
   },
   {
-    "id": "qwen3-8-27b-ultimatedetails2-stage1-the-harley-pelican",
-    "name": "Qwen3.8-27B-UltimateDetails2-stage1-The-Harley-Pelican",
+    "id": "qwen3-8-27b-ultimate",
+    "name": "Qwen3.8-27B-Ultimate",
     "family": "qwen",
     "params_b": 27.8,
     "architecture": "dense",
@@ -249715,6 +249715,418 @@
         "bpw": 16.0,
         "vram_mb": 8000,
         "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "deepseek-r1-0528-qwen3-8b-heretic",
+    "name": "DeepSeek-R1-0528-Qwen3-8B-heretic",
+    "family": "qwen",
+    "params_b": 8.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "reasoning"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-29",
+    "hf_id": "richardyoung/DeepSeek-R1-0528-Qwen3-8B-heretic",
+    "provider": "richardyoung",
+    "hf_downloads": 718,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4612,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6662,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "snowball-67b-a2b-step38-science-sft-science-forward-step13161-2026-09-26",
+    "name": "Snowball-67B-A2B-Step38-Science-SFT-Science-Forward-Step13161-2026.09.26",
+    "family": "snowball",
+    "params_b": 67.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-10-03",
+    "hf_id": "open-athena/Snowball-67B-A2B-Step38-Science-SFT-Science-Forward-Step13161-2026.09.26",
+    "provider": "open-athena",
+    "hf_downloads": 830,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 37744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 54519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 67100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "snowball-67b-a2b-step38-science-sft-proof-first-step12943-2026-09-26",
+    "name": "Snowball-67B-A2B-Step38-Science-SFT-Proof-First-Step12943-2026.09.26",
+    "family": "snowball",
+    "params_b": 67.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-10-03",
+    "hf_id": "open-athena/Snowball-67B-A2B-Step38-Science-SFT-Proof-First-Step12943-2026.09.26",
+    "provider": "open-athena",
+    "hf_downloads": 757,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 37744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 54519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 67100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "snowball-67b-a2b-step38-science-sft-balanced-step12891-2026-09-26",
+    "name": "Snowball-67B-A2B-Step38-Science-SFT-Balanced-Step12891-2026.09.26",
+    "family": "snowball",
+    "params_b": 67.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-10-03",
+    "hf_id": "open-athena/Snowball-67B-A2B-Step38-Science-SFT-Balanced-Step12891-2026.09.26",
+    "provider": "open-athena",
+    "hf_downloads": 744,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 37744,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 54519,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 67100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "switchboard-router-0-5b",
+    "name": "switchboard-router-0.5B",
+    "family": "switchboard",
+    "params_b": 0.5,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-10-12",
+    "hf_id": "switchboardllm/switchboard-router-0.5b",
+    "provider": "switchboardllm",
+    "hf_downloads": 568,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 281,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 406,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 500,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen-metaphor-unke-camada-0-zero-um",
+    "name": "qwen-metaphor-unke-camada-0-zero-um",
+    "family": "qwen",
+    "params_b": 0.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-10-14",
+    "hf_id": "luisastellet/qwen-metaphor-unke-camada-0-zero-um",
+    "provider": "luisastellet",
+    "hf_downloads": 960,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 337,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 488,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 600,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "ornith-1-5-122b",
+    "name": "Ornith-1.5-122B",
+    "family": "ornith",
+    "params_b": 125.1,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-16",
+    "hf_id": "ornith-ai/Ornith-1.5-122B",
+    "provider": "ornith-ai",
+    "hf_downloads": 32,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 70369,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 101644,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 125100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "dsv4-1-flash-1017-sage-exl3-1-62bpw",
+    "name": "DSV4.1-Flash-1017-SAGE-EXL3-1.62bpw",
+    "family": "dsv4-1",
+    "params_b": 262.2,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-10-18",
+    "hf_id": "vcruz305/DSV4.1-Flash-1017-SAGE-EXL3-1.62bpw",
+    "provider": "vcruz305",
+    "hf_downloads": 119,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 147487,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 213038,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 262200,
+        "quality": 0.995
       }
     ],
     "benchmarks": {
