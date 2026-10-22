@@ -251204,5 +251204,110 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "ad-copilot",
+    "name": "AD-Copilot",
+    "family": "ad",
+    "params_b": 8.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 128000,
+    "release_date": "2025-09-30",
+    "hf_id": "jiang-cc/AD-Copilot",
+    "provider": "jiang-cc",
+    "hf_downloads": 569,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 4725,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 6825,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 8400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 16800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "beam-1-0-501b-a23b",
+    "name": "Beam-1.0-501B-A23B",
+    "family": "beam",
+    "params_b": 501.3,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-10-07",
+    "hf_id": "reflection/Beam-1.0-501B-A23B",
+    "provider": "reflection",
+    "hf_downloads": 3555,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 281981,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 407306,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 501300,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
