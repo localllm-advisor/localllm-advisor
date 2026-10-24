@@ -252469,7 +252469,7 @@
     ],
     "context_length": 40960,
     "release_date": "2026-09-27",
-    "hf_id": "CentIo/Cent1-1B",
+    "hf_id": "CentLabs/Cent1-1B",
     "provider": "CentIo",
     "hf_downloads": 670,
     "quantizations": [
