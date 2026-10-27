@@ -180133,7 +180133,7 @@
     "context_length": 262144,
     "release_date": "2026-08-05",
     "hf_id": "lflare/Qwen3.8-27B-FP8",
-    "provider": "huginnfork",
+    "provider": "lflare",
     "hf_downloads": 34069,
     "quantizations": [
       {
@@ -254560,7 +254560,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-10-22",
-    "hf_id": "RBDash-Team/Xing-VL1.0-Decision",
+    "hf_id": "RBDash-Team/Xing-VL2.0-Decision",
     "provider": "RBDash-Team",
     "hf_downloads": 1848,
     "quantizations": [
@@ -254954,6 +254954,266 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 1200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-8-27b-mxfp8-mxfp8mtp-ct-autoround",
+    "name": "Qwen3.8-27B-MXFP8-MXFP8MTP-CT-AutoRound",
+    "family": "qwen",
+    "params_b": 27.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-12",
+    "hf_id": "intel-ai/Qwen3.8-27B-MXFP8-MXFP8MTP-CT-AutoRound",
+    "provider": "intel-ai",
+    "hf_downloads": 517,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 15638,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 22588,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 27800,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "xing4-0-29b-intent-fp8",
+    "name": "Xing4.0-29B-Intent-FP8",
+    "family": "xing4-0",
+    "params_b": 31.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-15",
+    "hf_id": "XingChen-AGI/Xing4.0-29B-Intent-FP8",
+    "provider": "XingChen-AGI",
+    "hf_downloads": 725,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 17550,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 25350,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 31200,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "wevisone-vl-4b",
+    "name": "WeVisOne-VL-4B",
+    "family": "wevisone",
+    "params_b": 4.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-22",
+    "hf_id": "tencent/WeVisOne-VL-4B",
+    "provider": "tencent",
+    "hf_downloads": 2605,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2700,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3900,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4800,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 9600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "xing-vl2-0-decision",
+    "name": "Xing-VL2.0-Decision",
+    "family": "xing",
+    "params_b": 26.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-22",
+    "hf_id": "RBDash-Team/Xing-VL2.0-Decision",
+    "provider": "RBDash-Team",
+    "hf_downloads": 1848,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 14681,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 21206,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 26100,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "unlimited-ocr-2",
+    "name": "Unlimited-OCR-2",
+    "family": "unlimited",
+    "params_b": 3.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-10-26",
+    "hf_id": "baidu/Unlimited-OCR-2",
+    "provider": "baidu",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1856,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2681,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6600,
         "quality": 1.0
       }
     ],
