@@ -79596,7 +79596,7 @@
     ],
     "context_length": 4096,
     "release_date": "2026-02-20",
-    "hf_id": "software-mansion/react-native-executorch-lfm2.5-1.2B-instruct",
+    "hf_id": "software-mansion/LFM2.5-1.2B-Instruct-ExecuTorch",
     "provider": "software-mansion",
     "hf_downloads": 20,
     "quantizations": [
@@ -243112,7 +243112,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-10-12",
-    "hf_id": "summerMC/Cyber-9B-Qwen-AllGDN-Engram",
+    "hf_id": "summerAIO/Cyber-9B-Qwen-AllGDN-Engram",
     "provider": "summerMC",
     "hf_downloads": 1312,
     "quantizations": [
@@ -250210,7 +250210,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-10-13",
-    "hf_id": "summerMC/Diffusion-Qwen3.5-4B",
+    "hf_id": "summerAIO/Diffusion-Qwen3.5-4B",
     "provider": "summerMC",
     "hf_downloads": 1095,
     "quantizations": [
@@ -250265,7 +250265,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-10-13",
-    "hf_id": "summerMC/Diffusion-Qwen3.8-27B",
+    "hf_id": "summerAIO/Diffusion-Qwen3.8-27B",
     "provider": "summerMC",
     "hf_downloads": 1170,
     "quantizations": [
@@ -250369,7 +250369,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-10-14",
-    "hf_id": "summerMC/Diffusion-Qwen3.5-9B",
+    "hf_id": "summerAIO/Diffusion-Qwen3.5-9B",
     "provider": "summerMC",
     "hf_downloads": 1042,
     "quantizations": [
@@ -257383,6 +257383,172 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 4800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm2-5-vl-3b-onnx",
+    "name": "LFM2.5-VL-3B-ONNX",
+    "family": "lfm",
+    "params_b": 3.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 128000,
+    "release_date": "2026-08-06",
+    "hf_id": "LiquidAI/LFM2.5-VL-3B-ONNX",
+    "provider": "Liquid AI",
+    "hf_downloads": 748,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1688,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2438,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "lfm3-1-7b",
+    "name": "LFM3-1.7B",
+    "family": "lfm",
+    "params_b": 1.7,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-23",
+    "hf_id": "LiquidAI/LFM3-1.7B",
+    "provider": "Liquid AI",
+    "hf_downloads": 8892,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 956,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1381,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1700,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "name-generator",
+    "name": "name-generator",
+    "family": "name",
+    "params_b": 3.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-27",
+    "hf_id": "aimeri/name-generator",
+    "provider": "aimeri",
+    "hf_downloads": 537,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1912,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2762,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 3400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 6800,
         "quality": 1.0
       }
     ],
