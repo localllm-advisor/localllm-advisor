@@ -21,7 +21,7 @@
     "https://en.wikipedia.org/wiki/AMD_Instinct": 1380954529,
     "https://en.wikipedia.org/wiki/Radeon_Pro": 1376733083,
     "https://en.wikipedia.org/wiki/Intel_Arc": 1379272005,
-    "https://en.wikipedia.org/wiki/Apple_silicon": 1382184203,
+    "https://en.wikipedia.org/wiki/Apple_silicon": 1382335283,
     "https://en.wikipedia.org/wiki/Apple_M4": 1380338085,
     "https://en.wikipedia.org/wiki/Apple_M3": 1380338026,
     "https://en.wikipedia.org/wiki/Apple_M2": 1380605651,
@@ -30,7 +30,7 @@
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
     "https://en.wikipedia.org/wiki/Apple_M5": 1380791566,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1378969825
+    "https://en.wikipedia.org/wiki/Apple_M6": 1382259096
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -55,6 +55,6 @@
     "https://en.wikipedia.org/wiki/Apple_M2": 1380605651,
     "https://en.wikipedia.org/wiki/Apple_M1": 1378937480,
     "https://en.wikipedia.org/wiki/Apple_M5": 1380791566,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1378969825
+    "https://en.wikipedia.org/wiki/Apple_M6": 1382259096
   }
 }
