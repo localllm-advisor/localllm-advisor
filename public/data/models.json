@@ -31034,7 +31034,7 @@
     ],
     "context_length": 131072,
     "release_date": "2025-07-22",
-    "hf_id": "hmellor/Ilama-3.2-1B",
+    "hf_id": "vllm-project/Ilama-3.2-1B",
     "provider": "hmellor",
     "hf_downloads": 15271,
     "quantizations": [
@@ -246191,7 +246191,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-09-23",
-    "hf_id": "AlexWortega/Qwen3.8-27B-antislop",
+    "hf_id": "rawmodels/Qwen3.8-27B-antislop",
     "provider": "AlexWortega",
     "hf_downloads": 657,
     "quantizations": [
@@ -246776,7 +246776,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-09-23",
-    "hf_id": "AlexWortega/Qwen3.8-27B-antislop",
+    "hf_id": "rawmodels/Qwen3.8-27B-antislop",
     "provider": "AlexWortega",
     "hf_downloads": 657,
     "quantizations": [
@@ -259242,6 +259242,226 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 7400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "crowd-v1",
+    "name": "Crowd-v1",
+    "family": "crowd",
+    "params_b": 1.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-08-21",
+    "hf_id": "Vxtzq/Crowd-v1",
+    "provider": "Vxtzq",
+    "hf_downloads": 93338,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 562,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 812,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "aurora1-0-150m",
+    "name": "Aurora1.0-150M",
+    "family": "aurora1-0",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-09-13",
+    "hf_id": "AuroraAI-Research/Aurora1.0-150M",
+    "provider": "AuroraAI-Research",
+    "hf_downloads": 649,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gpt2-small-fineweb-edu",
+    "name": "gpt2-small-fineweb-edu",
+    "family": "gpt2",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1024,
+    "release_date": "2026-10-24",
+    "hf_id": "John-Machado/gpt2-small-fineweb-edu",
+    "provider": "John-Machado",
+    "hf_downloads": 552,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "dory-beam-4b",
+    "name": "Dory-Beam-4B",
+    "family": "dory",
+    "params_b": 4.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-24",
+    "hf_id": "ProCreations/Dory-Beam-4B",
+    "provider": "ProCreations",
+    "hf_downloads": 598,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2250,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3250,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 8000,
         "quality": 1.0
       }
     ],
