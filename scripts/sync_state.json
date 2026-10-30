@@ -30,7 +30,7 @@
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
     "https://en.wikipedia.org/wiki/Apple_M5": 1382437521,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1382259096
+    "https://en.wikipedia.org/wiki/Apple_M6": 1382734739
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -49,12 +49,12 @@
     "https://en.wikipedia.org/wiki/Rocket_Lake": 1359904771,
     "https://en.wikipedia.org/wiki/Comet_Lake": 1370488598,
     "https://en.wikipedia.org/wiki/Coffee_Lake": 1371764863,
-    "https://en.wikipedia.org/wiki/Xeon": 1375174109,
+    "https://en.wikipedia.org/wiki/Xeon": 1382600035,
     "https://en.wikipedia.org/wiki/Apple_M4": 1380338085,
     "https://en.wikipedia.org/wiki/Apple_M3": 1380338026,
     "https://en.wikipedia.org/wiki/Apple_M2": 1380605651,
     "https://en.wikipedia.org/wiki/Apple_M1": 1378937480,
     "https://en.wikipedia.org/wiki/Apple_M5": 1382437521,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1382259096
+    "https://en.wikipedia.org/wiki/Apple_M6": 1382734739
   }
 }
