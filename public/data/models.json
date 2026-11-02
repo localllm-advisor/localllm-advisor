@@ -211137,7 +211137,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-09-03",
-    "hf_id": "logic65/Whittle-Next-27B-A3B",
+    "hf_id": "whittleOrg/Whittle-Next-27B-A3B",
     "provider": "logic65",
     "hf_downloads": 1407,
     "quantizations": [
@@ -223540,7 +223540,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-09-19",
-    "hf_id": "logic65/Whittle-Qwen-3.8-35B-A3B",
+    "hf_id": "whittleOrg/Whittle-Qwen-3.8-35B-A3B",
     "provider": "logic65",
     "hf_downloads": 1795,
     "quantizations": [
@@ -257198,7 +257198,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-10-05",
-    "hf_id": "logic65/Whittle-Qwen-3.8-45B-A3B",
+    "hf_id": "whittleOrg/Whittle-Qwen-3.8-45B-A3B",
     "provider": "logic65",
     "hf_downloads": 621,
     "quantizations": [
@@ -261520,6 +261520,228 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 16000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "pythia-160m-weight-seed1",
+    "name": "pythia-160m-weight-seed1",
+    "family": "pythia",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2024-01-16",
+    "hf_id": "EleutherAI/pythia-160m-weight-seed1",
+    "provider": "EleutherAI",
+    "hf_downloads": 1241,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "pythia-160m-weight-seed2",
+    "name": "pythia-160m-weight-seed2",
+    "family": "pythia",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2024-01-17",
+    "hf_id": "EleutherAI/pythia-160m-weight-seed2",
+    "provider": "EleutherAI",
+    "hf_downloads": 1146,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "weviscut",
+    "name": "WeVisCut",
+    "family": "weviscut",
+    "params_b": 9.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-09-09",
+    "hf_id": "tencent/WeVisCut",
+    "provider": "tencent",
+    "hf_downloads": 191,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 5288,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 7638,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 9400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 18800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "minicpm-ocr-1-0-dspark",
+    "name": "MiniCPM-OCR-1.0-DSpark",
+    "family": "minicpm",
+    "params_b": 0.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-26",
+    "hf_id": "openbmb/MiniCPM-OCR-1.0-DSpark",
+    "provider": "openbmb",
+    "hf_downloads": 888,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 169,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 244,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 600,
         "quality": 1.0
       }
     ],
