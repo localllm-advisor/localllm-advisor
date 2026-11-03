@@ -262139,5 +262139,55 @@
       "alpacaeval": null,
       "mmbench": null
     }
+  },
+  {
+    "id": "deepseek-v4-1-flash-1017-exl3-2-5bpw",
+    "name": "DeepSeek-V4.1-Flash-1017-EXL3-2.5bpw",
+    "family": "deepseek",
+    "params_b": 92.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-10-23",
+    "hf_id": "bertholomus/DeepSeek-V4.1-Flash-1017-EXL3-2.5bpw",
+    "provider": "bertholomus",
+    "hf_downloads": 6311,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 51919,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 74994,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 92300,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
   }
 ]
