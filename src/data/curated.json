@@ -92,8 +92,8 @@
     "gemma-4-26b-a4b-it",
     "codellama-34b",
     "codestral-22b",
-    "command-35b",
-    "command-r-plus-104b",
+    "c4ai-command-r-v01",
+    "c4ai-command-r-plus",
     "command-a-111b"
   ],
   "compareEligibleGpuNames": [

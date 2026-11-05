@@ -38,10 +38,16 @@ function validate() {
   for (const id of curated.popularModelIds) if (!modelIds.has(id)) missing.push(`popularModelIds: ${id}`);
 
   if (missing.length) {
-    console.error('\n❌ curated.json references entries that are not in the dataset:');
-    missing.forEach((m) => console.error(`   • ${m}`));
-    console.error('Either add them to public/data/{gpus,models}.json or remove them from src/data/curated.json.\n');
-    process.exit(1);
+    // The datasets are rewritten automatically by the sync workflows (HF ids
+    // can be renamed or dropped at any time), so a stale curated reference
+    // must NOT break the scheduled deploy. Missing entries are simply skipped
+    // by the filters below. Set CURATED_STRICT=1 to turn this into an error.
+    const strict = process.env.CURATED_STRICT === '1';
+    const log = strict ? console.error : console.warn;
+    log(`\n${strict ? '❌' : '⚠️ '} curated.json references entries that are not in the dataset (they will be skipped):`);
+    missing.forEach((m) => log(`   • ${m}`));
+    log('Fix by updating src/data/curated.json (or run: node scripts/update-curated-models.js).\n');
+    if (strict) process.exit(1);
   }
 }
 validate();

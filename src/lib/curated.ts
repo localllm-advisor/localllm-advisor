@@ -50,14 +50,27 @@ function validateOnce(): void {
 
   if (missingGpus.length || missingModels.length) {
     const lines = [
-      'curated.json references entries that are not in the dataset.',
-      'Either add them to public/data/{gpus,models}.json or remove them from curated.json.',
+      'curated.json references entries that are not in the dataset (they will be skipped).',
+      'Fix by updating src/data/curated.json (or run: node scripts/update-curated-models.js).',
       '',
       ...missingGpus.map((s) => `  GPU not found  → ${s}`),
       ...missingModels.map((s) => `  Model not found→ ${s}`),
     ];
-    throw new Error(lines.join('\n'));
+    // Datasets are rewritten by scheduled sync workflows, so a stale reference
+    // must not break the deploy. Accessors below drop unknown entries.
+    if (process.env.CURATED_STRICT === '1') throw new Error(lines.join('\n'));
+    console.warn(lines.join('\n'));
   }
+}
+
+function existingGpuNames(names: string[]): string[] {
+  const known = new Set(getSEOGpus().map((g) => g.name));
+  return names.filter((n) => known.has(n));
+}
+
+function existingModelIds(ids: string[]): string[] {
+  const known = new Set(getSEOModels().map((m) => m.id));
+  return ids.filter((id) => known.has(id));
 }
 
 // ---------------------------------------------------------------------------
@@ -66,22 +79,23 @@ function validateOnce(): void {
 
 export function getPopularGpuNames(): string[] {
   validateOnce();
-  return C.popularGpuNames;
+  return existingGpuNames(C.popularGpuNames);
 }
 
 export function getPopularModelIds(): string[] {
   validateOnce();
-  return C.popularModelIds;
+  return existingModelIds(C.popularModelIds);
 }
 
 export function getCompareEligibleGpuNames(): string[] {
   validateOnce();
-  return C.compareEligibleGpuNames;
+  return existingGpuNames(C.compareEligibleGpuNames);
 }
 
 export function getFeaturedComparePairs(): [string, string][] {
   validateOnce();
-  return C.featuredComparePairs;
+  const known = new Set(getSEOGpus().map((g) => g.name));
+  return C.featuredComparePairs.filter(([a, b]) => known.has(a) && known.has(b));
 }
 
 export function getPopularGpus(): SEOGPU[] {

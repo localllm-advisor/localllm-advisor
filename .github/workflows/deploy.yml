@@ -11,7 +11,7 @@ on:
   workflow_run:
     workflows:
       - "Sync GPU/CPU Specs"
-      - "Sync Models from HF"
+      - "Sync Models from Hugging Face"   # must match the `name:` of sync_models_from_hf.yml
     types: [completed]
     branches: [main]
 
@@ -33,10 +33,10 @@ jobs:
       github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
       - run: npm ci
       # `npm run build` automatically invokes the `prebuild` script defined in
@@ -49,7 +49,7 @@ jobs:
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
           NEXT_PUBLIC_BUTTONDOWN_ID: ${{ secrets.BUTTONDOWN_ID }}
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         with:
           path: out
 
