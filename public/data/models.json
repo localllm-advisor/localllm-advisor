@@ -251918,8 +251918,8 @@
     }
   },
   {
-    "id": "glide",
-    "name": "GLiDE",
+    "id": "glide-27b",
+    "name": "GLiDE-27B",
     "family": "glide",
     "params_b": 26.1,
     "architecture": "dense",
