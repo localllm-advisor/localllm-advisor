@@ -197890,7 +197890,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-20",
-    "hf_id": "Avifenesh/Qwen3.8-27B-DSpark-Agentic",
+    "hf_id": "tiyuvta/Qwen3.8-27B-DSpark-Agentic",
     "provider": "tiyuvta",
     "hf_downloads": 658,
     "quantizations": [
@@ -197945,7 +197945,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-24",
-    "hf_id": "Avifenesh/Qwen3.8-27B-DFlash2-memra",
+    "hf_id": "tiyuvta/Qwen3.8-27B-DFlash2-memra",
     "provider": "tiyuvta",
     "hf_downloads": 692,
     "quantizations": [
@@ -267257,10 +267257,10 @@
     }
   },
   {
-    "id": "kent-1b-base",
-    "name": "KenT-1B-Base",
+    "id": "kent-500m-base",
+    "name": "KenT-500M-Base",
     "family": "kent",
-    "params_b": 1.0,
+    "params_b": 0.5,
     "architecture": "dense",
     "capabilities": [
       "chat"
@@ -267274,25 +267274,25 @@
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
-        "vram_mb": 562,
+        "vram_mb": 281,
         "quality": 0.94
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
-        "vram_mb": 812,
+        "vram_mb": 406,
         "quality": 0.97
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
-        "vram_mb": 1000,
+        "vram_mb": 500,
         "quality": 0.995
       },
       {
         "level": "FP16",
         "bpw": 16.0,
-        "vram_mb": 2000,
+        "vram_mb": 1000,
         "quality": 1.0
       }
     ],
@@ -267681,10 +267681,10 @@
     }
   },
   {
-    "id": "kent-1b-base",
-    "name": "KenT-1B-Base",
+    "id": "kent-500m-base",
+    "name": "KenT-500M-Base",
     "family": "kent",
-    "params_b": 1.0,
+    "params_b": 0.5,
     "architecture": "dense",
     "capabilities": [
       "chat"
@@ -267698,25 +267698,25 @@
       {
         "level": "Q4_K_M",
         "bpw": 4.5,
-        "vram_mb": 562,
+        "vram_mb": 281,
         "quality": 0.94
       },
       {
         "level": "Q6_K",
         "bpw": 6.5,
-        "vram_mb": 812,
+        "vram_mb": 406,
         "quality": 0.97
       },
       {
         "level": "Q8_0",
         "bpw": 8.0,
-        "vram_mb": 1000,
+        "vram_mb": 500,
         "quality": 0.995
       },
       {
         "level": "FP16",
         "bpw": 16.0,
-        "vram_mb": 2000,
+        "vram_mb": 1000,
         "quality": 1.0
       }
     ],
@@ -269085,6 +269085,535 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 11600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nvidia-nemotron-3-5-lightning-30b-a3b-bf16",
+    "name": "NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+    "family": "nemotron",
+    "params_b": 31.6,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-11",
+    "hf_id": "RedHatAI/NVIDIA-Nemotron-3.5-Lightning-30B-A3B-BF16",
+    "provider": "RedHatAI",
+    "hf_downloads": 790,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 17775,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 25675,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 31600,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-8-27b-dspark-agentic",
+    "name": "Qwen3.8-27B-DSpark-Agentic",
+    "family": "qwen",
+    "params_b": 1.4,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "tool_use"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-20",
+    "hf_id": "tiyuvta/Qwen3.8-27B-DSpark-Agentic",
+    "provider": "tiyuvta",
+    "hf_downloads": 658,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 788,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1138,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1400,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-8-27b-dflash2-memra",
+    "name": "Qwen3.8-27B-DFlash2-memra",
+    "family": "qwen",
+    "params_b": 1.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-08-24",
+    "hf_id": "tiyuvta/Qwen3.8-27B-DFlash2-memra",
+    "provider": "tiyuvta",
+    "hf_downloads": 692,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1069,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1544,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 3800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "glm-5-3-flash",
+    "name": "GLM-5.3-Flash",
+    "family": "glm",
+    "params_b": 321.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-09-11",
+    "hf_id": "RedHatAI/GLM-5.3-Flash",
+    "provider": "RedHatAI",
+    "hf_downloads": 770,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 180731,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 261056,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 321300,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "plamo-3-0-8b-fin-instruct",
+    "name": "plamo-3-0.8B-fin-instruct",
+    "family": "plamo",
+    "params_b": 0.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-09-24",
+    "hf_id": "pfnet/plamo-3-0.8b-fin-instruct",
+    "provider": "pfnet",
+    "hf_downloads": 588,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 506,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 731,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-6-35b-a3b-nvfp4-ninfer-v3",
+    "name": "Qwen3.6-35B-A3B-NVFP4-NInfer-v3",
+    "family": "qwen",
+    "params_b": 35.0,
+    "architecture": "moe",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 131072,
+    "release_date": "2026-09-26",
+    "hf_id": "WaveCut/Qwen3.6-35B-A3B-NVFP4-NInfer-v3",
+    "provider": "WaveCut",
+    "hf_downloads": 1345,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 19688,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 28438,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 35000,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "swa-100mb-after-wc-uniform-newlex-before-ckpt500-packed-bfdiso-seed455",
+    "name": "swa-100mb-after-wc-uniform-newlex-before-ckpt500-packed-bfdiso-seed455",
+    "family": "swa",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-10-03",
+    "hf_id": "francesca9805/swa-100mb-after-wc-uniform-newlex-before-ckpt500-packed-bfdiso_seed455",
+    "provider": "francesca9805",
+    "hf_downloads": 578,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "laguna-s-2-1-fp8",
+    "name": "Laguna-S-2.1-FP8",
+    "family": "laguna",
+    "params_b": 117.6,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 1048576,
+    "release_date": "2026-10-06",
+    "hf_id": "RedHatAI/Laguna-S-2.1-FP8",
+    "provider": "RedHatAI",
+    "hf_downloads": 790,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 66150,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 95550,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 117600,
+        "quality": 0.995
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "vox-mens-qwen3-14b",
+    "name": "vox-mens-qwen3-14B",
+    "family": "qwen",
+    "params_b": 14.0,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 40960,
+    "release_date": "2026-11-03",
+    "hf_id": "brbrainerd/vox-mens-qwen3-14b",
+    "provider": "brbrainerd",
+    "hf_downloads": 828,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 7875,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 11375,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 14000,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 28000,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "rein-npc-4b",
+    "name": "Rein-NPC-4B",
+    "family": "rein",
+    "params_b": 5.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-11-08",
+    "hf_id": "jmc0/Rein-NPC-4B",
+    "provider": "jmc0",
+    "hf_downloads": 689,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2981,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 4306,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 5300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 10600,
         "quality": 1.0
       }
     ],
