@@ -90691,7 +90691,7 @@
     "release_date": "2022-04-04",
     "hf_id": "bespin-global/klue-sroberta-base-continue-learning-by-mnr",
     "provider": "bespin-global",
-    "hf_downloads": 3652,
+    "hf_downloads": 3636,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -107480,7 +107480,7 @@
     "release_date": "2022-03-02",
     "hf_id": "sentence-transformers/roberta-base-nli-mean-tokens",
     "provider": "Sentence Transformers",
-    "hf_downloads": 728,
+    "hf_downloads": 723,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -107535,7 +107535,7 @@
     "release_date": "2022-04-24",
     "hf_id": "Hate-speech-CNERG/indic-abusive-allInOne-MuRIL",
     "provider": "Hate-speech-CNERG",
-    "hf_downloads": 605,
+    "hf_downloads": 623,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -111206,7 +111206,7 @@
     "release_date": "2022-03-02",
     "hf_id": "savasy/bert-base-turkish-sentiment-cased",
     "provider": "savasy",
-    "hf_downloads": 11132,
+    "hf_downloads": 10991,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -112395,7 +112395,7 @@
     "release_date": "2022-03-02",
     "hf_id": "skt/kobert-base-v1",
     "provider": "skt",
-    "hf_downloads": 118133,
+    "hf_downloads": 137481,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -112450,7 +112450,7 @@
     "release_date": "2022-06-01",
     "hf_id": "BM-K/KoSimCSE-roberta-multitask",
     "provider": "BM-K",
-    "hf_downloads": 20811,
+    "hf_downloads": 20784,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -120848,7 +120848,7 @@
     "release_date": "2022-03-02",
     "hf_id": "hakanbogan/gpt2-turkish-cased",
     "provider": "hakanbogan",
-    "hf_downloads": 886,
+    "hf_downloads": 893,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -120903,7 +120903,7 @@
     "release_date": "2022-03-02",
     "hf_id": "jhgan/ko-sroberta-multitask",
     "provider": "jhgan",
-    "hf_downloads": 1378679,
+    "hf_downloads": 1407631,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -134957,7 +134957,7 @@
     "release_date": "2022-03-02",
     "hf_id": "google/canine-c",
     "provider": "Google",
-    "hf_downloads": 133876,
+    "hf_downloads": 129981,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -135877,7 +135877,7 @@
     "release_date": "2022-03-02",
     "hf_id": "sentence-transformers/multi-qa-distilbert-cos-v1",
     "provider": "Sentence Transformers",
-    "hf_downloads": 62960,
+    "hf_downloads": 62767,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -136858,7 +136858,7 @@
     "release_date": "2023-05-18",
     "hf_id": "DavidLanz/uuu_fine_tune_taipower",
     "provider": "DavidLanz",
-    "hf_downloads": 573,
+    "hf_downloads": 583,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -140495,7 +140495,7 @@
     "release_date": "2022-12-14",
     "hf_id": "AI-Sweden-Models/gpt-sw3-1.3b",
     "provider": "AI-Sweden-Models",
-    "hf_downloads": 122,
+    "hf_downloads": 126,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -140709,7 +140709,7 @@
     "release_date": "2023-04-28",
     "hf_id": "AI-Sweden-Models/gpt-sw3-126m-instruct",
     "provider": "AI-Sweden-Models",
-    "hf_downloads": 2,
+    "hf_downloads": 4,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -141422,7 +141422,7 @@
     "release_date": "2023-02-13",
     "hf_id": "EleutherAI/pythia-410m-deduped",
     "provider": "EleutherAI",
-    "hf_downloads": 32777,
+    "hf_downloads": 32496,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -141477,7 +141477,7 @@
     "release_date": "2023-05-22",
     "hf_id": "thoriqfy/indobert-emotion-classification",
     "provider": "thoriqfy",
-    "hf_downloads": 34094,
+    "hf_downloads": 34134,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -142127,7 +142127,7 @@
     "release_date": "2022-03-19",
     "hf_id": "yangheng/deberta-v3-large-absa-v1.1",
     "provider": "yangheng",
-    "hf_downloads": 580,
+    "hf_downloads": 577,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -142403,7 +142403,7 @@
     "release_date": "2022-03-02",
     "hf_id": "google/canine-s",
     "provider": "Google",
-    "hf_downloads": 9109,
+    "hf_downloads": 8481,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -142877,7 +142877,7 @@
     "release_date": "2022-03-02",
     "hf_id": "monologg/kobert",
     "provider": "monologg",
-    "hf_downloads": 122970,
+    "hf_downloads": 142604,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -144974,7 +144974,7 @@
     "release_date": "2022-04-05",
     "hf_id": "BM-K/KoSimCSE-roberta",
     "provider": "BM-K",
-    "hf_downloads": 64607,
+    "hf_downloads": 68511,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -145029,7 +145029,7 @@
     "release_date": "2023-05-21",
     "hf_id": "setu4993/LEALLA-base",
     "provider": "setu4993",
-    "hf_downloads": 547,
+    "hf_downloads": 597,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -145247,7 +145247,7 @@
     "release_date": "2022-03-02",
     "hf_id": "shibing624/macbert4csc-base-chinese",
     "provider": "shibing624",
-    "hf_downloads": 270451,
+    "hf_downloads": 249455,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -145575,7 +145575,7 @@
     "release_date": "2022-03-02",
     "hf_id": "sonoisa/t5-base-japanese",
     "provider": "sonoisa",
-    "hf_downloads": 1390,
+    "hf_downloads": 1398,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -149863,7 +149863,7 @@
     "release_date": "2022-03-02",
     "hf_id": "s-nlp/roberta-base-formality-ranker",
     "provider": "s-nlp",
-    "hf_downloads": 127503,
+    "hf_downloads": 124880,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -149918,7 +149918,7 @@
     "release_date": "2022-09-27",
     "hf_id": "Voicelab/vlt5-base-keywords",
     "provider": "Voicelab",
-    "hf_downloads": 221873,
+    "hf_downloads": 221589,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -149973,7 +149973,7 @@
     "release_date": "2023-02-28",
     "hf_id": "EleutherAI/pythia-12b",
     "provider": "EleutherAI",
-    "hf_downloads": 7136,
+    "hf_downloads": 7178,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -152609,7 +152609,7 @@
     "release_date": "2023-04-10",
     "hf_id": "baffo32/decapoda-research-llama-7B-hf",
     "provider": "baffo32",
-    "hf_downloads": 765,
+    "hf_downloads": 774,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -162486,7 +162486,7 @@
     "release_date": "2023-05-19",
     "hf_id": "intfloat/e5-base-v2",
     "provider": "Microsoft",
-    "hf_downloads": 1043351,
+    "hf_downloads": 1056113,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -163790,7 +163790,7 @@
     "release_date": "2022-03-02",
     "hf_id": "tals/albert-xlarge-vitaminc-mnli",
     "provider": "tals",
-    "hf_downloads": 40072,
+    "hf_downloads": 42738,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -171485,7 +171485,7 @@
     "release_date": "2022-03-02",
     "hf_id": "sentence-transformers/stsb-roberta-large",
     "provider": "Sentence Transformers",
-    "hf_downloads": 3641,
+    "hf_downloads": 3671,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -172208,7 +172208,7 @@
     "release_date": "2022-03-02",
     "hf_id": "MoritzLaurer/DeBERTa-v3-base-mnli-fever-docnli-ling-2c",
     "provider": "MoritzLaurer",
-    "hf_downloads": 9274,
+    "hf_downloads": 9264,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -172263,7 +172263,7 @@
     "release_date": "2022-07-25",
     "hf_id": "sdadas/st-polish-paraphrase-from-mpnet",
     "provider": "sdadas",
-    "hf_downloads": 13805,
+    "hf_downloads": 13798,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -173469,7 +173469,7 @@
     "release_date": "2022-03-02",
     "hf_id": "sentence-transformers/distiluse-base-multilingual-cased",
     "provider": "Sentence Transformers",
-    "hf_downloads": 19268,
+    "hf_downloads": 20383,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -177978,7 +177978,7 @@
     "release_date": "2022-03-02",
     "hf_id": "cointegrated/LaBSE-en-ru",
     "provider": "cointegrated",
-    "hf_downloads": 5609,
+    "hf_downloads": 5610,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -179474,7 +179474,7 @@
     "release_date": "2023-05-15",
     "hf_id": "seara/rubert-base-cased-russian-sentiment",
     "provider": "seara",
-    "hf_downloads": 1044,
+    "hf_downloads": 1148,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -189851,7 +189851,7 @@
     "release_date": "2022-03-02",
     "hf_id": "setu4993/LaBSE",
     "provider": "setu4993",
-    "hf_downloads": 6713,
+    "hf_downloads": 6870,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -197731,7 +197731,7 @@
     "release_date": "2022-12-06",
     "hf_id": "dh-unibe/trocr-kurrent",
     "provider": "dh-unibe",
-    "hf_downloads": 4351,
+    "hf_downloads": 4248,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -199777,7 +199777,7 @@
     "release_date": "2023-12-13",
     "hf_id": "StephanAkkerman/FinTwitBERT-sentiment",
     "provider": "StephanAkkerman",
-    "hf_downloads": 62383,
+    "hf_downloads": 58500,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -201447,7 +201447,7 @@
     "release_date": "2022-03-02",
     "hf_id": "GroNLP/gpt2-small-dutch",
     "provider": "GroNLP",
-    "hf_downloads": 18292,
+    "hf_downloads": 18361,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -205114,7 +205114,7 @@
     "release_date": "2023-11-21",
     "hf_id": "OrdalieTech/Solon-embeddings-base-0.1",
     "provider": "OrdalieTech",
-    "hf_downloads": 701,
+    "hf_downloads": 743,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -206607,7 +206607,7 @@
     "release_date": "2023-09-26",
     "hf_id": "rrivera1849/LUAR-MUD",
     "provider": "rrivera1849",
-    "hf_downloads": 99780,
+    "hf_downloads": 116792,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -213314,7 +213314,7 @@
     "release_date": "2022-12-26",
     "hf_id": "intfloat/e5-large",
     "provider": "Microsoft",
-    "hf_downloads": 260562,
+    "hf_downloads": 245334,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -222222,7 +222222,7 @@
     "release_date": "2023-03-07",
     "hf_id": "dh-unibe/trocr-kurrent-XVI-XVII",
     "provider": "dh-unibe",
-    "hf_downloads": 1155,
+    "hf_downloads": 1095,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -226546,7 +226546,7 @@
     "release_date": "2024-02-02",
     "hf_id": "chatdb/natural-sql-7b",
     "provider": "chatdb",
-    "hf_downloads": 5968,
+    "hf_downloads": 5951,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -233367,7 +233367,7 @@
     "release_date": "2024-01-24",
     "hf_id": "Salesforce/SFR-Embedding-Mistral",
     "provider": "Salesforce",
-    "hf_downloads": 29091,
+    "hf_downloads": 27946,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -241587,7 +241587,7 @@
     "release_date": "2022-03-02",
     "hf_id": "ProsusAI/finbert",
     "provider": "ProsusAI",
-    "hf_downloads": 3244894,
+    "hf_downloads": 3219700,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -246087,7 +246087,7 @@
     "release_date": "2022-03-02",
     "hf_id": "sentence-transformers/quora-distilbert-multilingual",
     "provider": "Sentence Transformers",
-    "hf_downloads": 49941,
+    "hf_downloads": 48540,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -254240,7 +254240,7 @@
     "release_date": "2023-09-25",
     "hf_id": "pfnet/plamo-13b",
     "provider": "pfnet",
-    "hf_downloads": 640,
+    "hf_downloads": 635,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -256702,7 +256702,7 @@
     "release_date": "2022-03-02",
     "hf_id": "dbmdz/german-gpt2",
     "provider": "dbmdz",
-    "hf_downloads": 3306,
+    "hf_downloads": 3159,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -261552,7 +261552,7 @@
     "release_date": "2024-01-16",
     "hf_id": "EleutherAI/pythia-160m-weight-seed1",
     "provider": "EleutherAI",
-    "hf_downloads": 2160,
+    "hf_downloads": 2184,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -261607,7 +261607,7 @@
     "release_date": "2024-01-17",
     "hf_id": "EleutherAI/pythia-160m-weight-seed2",
     "provider": "EleutherAI",
-    "hf_downloads": 2025,
+    "hf_downloads": 2046,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -261774,7 +261774,7 @@
     "release_date": "2023-08-02",
     "hf_id": "BAAI/bge-large-zh",
     "provider": "BAAI",
-    "hf_downloads": 41297,
+    "hf_downloads": 41288,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -266884,7 +266884,7 @@
     "release_date": "2024-02-14",
     "hf_id": "PipableAI/pip-sql-1.3b",
     "provider": "PipableAI",
-    "hf_downloads": 645,
+    "hf_downloads": 658,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -271767,7 +271767,7 @@
     "release_date": "2024-03-16",
     "hf_id": "BAAI/bge-reranker-v2-minicpm-layerwise",
     "provider": "BAAI",
-    "hf_downloads": 61140,
+    "hf_downloads": 70526,
     "quantizations": [
       {
         "level": "Q4_K_M",
@@ -272615,6 +272615,116 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 10200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "topovoid-0-2b-orthogonal-preview",
+    "name": "TopoVoid-0.2B-Orthogonal-Preview",
+    "family": "topovoid",
+    "params_b": 0.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-11-03",
+    "hf_id": "Topovoid/TopoVoid-0.2B-Orthogonal-Preview",
+    "provider": "Topovoid",
+    "hf_downloads": 628,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 112,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 162,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "openmythos-2b-edge",
+    "name": "openmythos-2B-edge",
+    "family": "openmythos",
+    "params_b": 2.9,
+    "architecture": "moe",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 4096,
+    "release_date": "2026-11-07",
+    "hf_id": "okolxc/openmythos-2b-edge",
+    "provider": "okolxc",
+    "hf_downloads": 707,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1631,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 2356,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 5800,
         "quality": 1.0
       }
     ],
