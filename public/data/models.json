@@ -197890,7 +197890,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-20",
-    "hf_id": "tiyuvta/Qwen3.8-27B-DSpark-Agentic",
+    "hf_id": "Avifenesh/Qwen3.8-27B-DSpark-Agentic",
     "provider": "tiyuvta",
     "hf_downloads": 673,
     "quantizations": [
@@ -197945,7 +197945,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-24",
-    "hf_id": "tiyuvta/Qwen3.8-27B-DFlash2-memra",
+    "hf_id": "Avifenesh/Qwen3.8-27B-DFlash2-memra",
     "provider": "tiyuvta",
     "hf_downloads": 695,
     "quantizations": [
@@ -269165,7 +269165,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-20",
-    "hf_id": "tiyuvta/Qwen3.8-27B-DSpark-Agentic",
+    "hf_id": "Avifenesh/Qwen3.8-27B-DSpark-Agentic",
     "provider": "tiyuvta",
     "hf_downloads": 673,
     "quantizations": [
@@ -269220,7 +269220,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-08-24",
-    "hf_id": "tiyuvta/Qwen3.8-27B-DFlash2-memra",
+    "hf_id": "Avifenesh/Qwen3.8-27B-DFlash2-memra",
     "provider": "tiyuvta",
     "hf_downloads": 695,
     "quantizations": [
