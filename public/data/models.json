@@ -246191,7 +246191,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-09-23",
-    "hf_id": "rawmodels/Qwen3.8-27B-antislop",
+    "hf_id": "AlexWortega/Qwen3.8-27B-antislop",
     "provider": "AlexWortega",
     "hf_downloads": 5324,
     "quantizations": [
@@ -246776,7 +246776,7 @@
     ],
     "context_length": 262144,
     "release_date": "2026-09-23",
-    "hf_id": "rawmodels/Qwen3.8-27B-antislop",
+    "hf_id": "AlexWortega/Qwen3.8-27B-antislop",
     "provider": "AlexWortega",
     "hf_downloads": 5324,
     "quantizations": [
@@ -277493,6 +277493,228 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 2600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nuqta-arabic-ocr-0-8b",
+    "name": "Nuqta-Arabic-OCR-0.8B",
+    "family": "nuqta",
+    "params_b": 0.9,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-18",
+    "hf_id": "SalahALHaismawi/Nuqta-Arabic-OCR-0.8B",
+    "provider": "SalahALHaismawi",
+    "hf_downloads": 1255,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 506,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 731,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 900,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 1800,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "nuqta-arabic-ocr-4b",
+    "name": "Nuqta-Arabic-OCR-4B",
+    "family": "nuqta",
+    "params_b": 4.8,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-18",
+    "hf_id": "SalahALHaismawi/Nuqta-Arabic-OCR-4B",
+    "provider": "SalahALHaismawi",
+    "hf_downloads": 1009,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 2700,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 3900,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 4800,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 9600,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "boris-2",
+    "name": "Boris-2",
+    "family": "boris",
+    "params_b": 0.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 2048,
+    "release_date": "2026-10-23",
+    "hf_id": "opencerebral/Boris-2",
+    "provider": "opencerebral",
+    "hf_downloads": 622,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 56,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 81,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "aion-1-0-instruct-2-3b",
+    "name": "Aion-1.0-Instruct-2.3B",
+    "family": "aion",
+    "params_b": 2.3,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 32768,
+    "release_date": "2026-11-18",
+    "hf_id": "microsoft/Aion-1.0-Instruct-2.3B",
+    "provider": "Microsoft",
+    "hf_downloads": 0,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1294,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1869,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2300,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 4600,
         "quality": 1.0
       }
     ],
