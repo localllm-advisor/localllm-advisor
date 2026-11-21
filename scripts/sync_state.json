@@ -22,15 +22,15 @@
     "https://en.wikipedia.org/wiki/Radeon_Pro": 1384605117,
     "https://en.wikipedia.org/wiki/Intel_Arc": 1386289444,
     "https://en.wikipedia.org/wiki/Apple_silicon": 1384555929,
-    "https://en.wikipedia.org/wiki/Apple_M4": 1383909716,
+    "https://en.wikipedia.org/wiki/Apple_M4": 1386840447,
     "https://en.wikipedia.org/wiki/Apple_M3": 1380338026,
     "https://en.wikipedia.org/wiki/Apple_M2": 1380605651,
     "https://en.wikipedia.org/wiki/Apple_M1": 1383345355,
-    "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units": 1386177678,
+    "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units": 1386772380,
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
     "https://en.wikipedia.org/wiki/Apple_M5": 1384649600,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1386018486
+    "https://en.wikipedia.org/wiki/Apple_M6": 1386862994
   },
   "cpu_revisions": {
     "https://en.wikipedia.org/wiki/Ryzen_9000": 1220037912,
@@ -50,11 +50,11 @@
     "https://en.wikipedia.org/wiki/Comet_Lake": 1370488598,
     "https://en.wikipedia.org/wiki/Coffee_Lake": 1371764863,
     "https://en.wikipedia.org/wiki/Xeon": 1383563574,
-    "https://en.wikipedia.org/wiki/Apple_M4": 1383909716,
+    "https://en.wikipedia.org/wiki/Apple_M4": 1386840447,
     "https://en.wikipedia.org/wiki/Apple_M3": 1380338026,
     "https://en.wikipedia.org/wiki/Apple_M2": 1380605651,
     "https://en.wikipedia.org/wiki/Apple_M1": 1383345355,
     "https://en.wikipedia.org/wiki/Apple_M5": 1384649600,
-    "https://en.wikipedia.org/wiki/Apple_M6": 1386018486
+    "https://en.wikipedia.org/wiki/Apple_M6": 1386862994
   }
 }
