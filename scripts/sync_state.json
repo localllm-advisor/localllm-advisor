@@ -15,7 +15,7 @@
     "https://en.wikipedia.org/wiki/Radeon_RX_7000_series": 1356272510,
     "https://en.wikipedia.org/wiki/Radeon_RX_6000_series": 1384343502,
     "https://en.wikipedia.org/wiki/Radeon_RX_5000_series": 1320713107,
-    "https://en.wikipedia.org/wiki/Radeon_RX_Vega_series": 1330620190,
+    "https://en.wikipedia.org/wiki/Radeon_RX_Vega_series": 1386941499,
     "https://en.wikipedia.org/wiki/Radeon_RX_500_series": 1101350411,
     "https://en.wikipedia.org/wiki/Radeon_RX_400_series": 1101350206,
     "https://en.wikipedia.org/wiki/AMD_Instinct": 1380954529,
@@ -23,13 +23,13 @@
     "https://en.wikipedia.org/wiki/Intel_Arc": 1386289444,
     "https://en.wikipedia.org/wiki/Apple_silicon": 1384555929,
     "https://en.wikipedia.org/wiki/Apple_M4": 1386840447,
-    "https://en.wikipedia.org/wiki/Apple_M3": 1380338026,
+    "https://en.wikipedia.org/wiki/Apple_M3": 1387053212,
     "https://en.wikipedia.org/wiki/Apple_M2": 1380605651,
     "https://en.wikipedia.org/wiki/Apple_M1": 1383345355,
     "https://en.wikipedia.org/wiki/List_of_Nvidia_graphics_processing_units": 1386772380,
     "https://en.wikipedia.org/wiki/Habana_Labs": 1132987241,
     "https://en.wikipedia.org/wiki/Snapdragon_X_Elite": 1225088371,
-    "https://en.wikipedia.org/wiki/Apple_M5": 1384649600,
+    "https://en.wikipedia.org/wiki/Apple_M5": 1387052836,
     "https://en.wikipedia.org/wiki/Apple_M6": 1386862994
   },
   "cpu_revisions": {
@@ -51,10 +51,10 @@
     "https://en.wikipedia.org/wiki/Coffee_Lake": 1371764863,
     "https://en.wikipedia.org/wiki/Xeon": 1383563574,
     "https://en.wikipedia.org/wiki/Apple_M4": 1386840447,
-    "https://en.wikipedia.org/wiki/Apple_M3": 1380338026,
+    "https://en.wikipedia.org/wiki/Apple_M3": 1387053212,
     "https://en.wikipedia.org/wiki/Apple_M2": 1380605651,
     "https://en.wikipedia.org/wiki/Apple_M1": 1383345355,
-    "https://en.wikipedia.org/wiki/Apple_M5": 1384649600,
+    "https://en.wikipedia.org/wiki/Apple_M5": 1387052836,
     "https://en.wikipedia.org/wiki/Apple_M6": 1386862994
   }
 }
