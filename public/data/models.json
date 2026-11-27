@@ -217223,7 +217223,7 @@
     "release_date": "2026-08-26",
     "hf_id": "McGill-NLP/AfriqueQwen3.5-4B-Instruct-v1",
     "provider": "McGill-NLP",
-    "hf_downloads": 153,
+    "hf_downloads": 3267,
     "quantizations": [
       {
         "level": "Q4_K_M",
