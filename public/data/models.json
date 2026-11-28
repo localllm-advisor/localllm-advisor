@@ -31034,7 +31034,7 @@
     ],
     "context_length": 131072,
     "release_date": "2025-07-22",
-    "hf_id": "vllm-project/Ilama-3.2-1B",
+    "hf_id": "vllm/Ilama-3.2-1B",
     "provider": "hmellor",
     "hf_downloads": 3805,
     "quantizations": [
@@ -275270,9 +275270,9 @@
     }
   },
   {
-    "id": "openthai2-1-ocr-markdown-20261118",
-    "name": "OpenThai2.1-OCR-Markdown-20261118",
-    "family": "openthai2-1",
+    "id": "openthai2-2-ocr-markdown-20261127",
+    "name": "OpenThai2.2-OCR-Markdown-20261127",
+    "family": "openthai2-2",
     "params_b": 0.6,
     "architecture": "dense",
     "capabilities": [
@@ -276753,9 +276753,9 @@
     }
   },
   {
-    "id": "openthai2-1-ocr-markdown-20261118",
-    "name": "OpenThai2.1-OCR-Markdown-20261118",
-    "family": "openthai2-1",
+    "id": "openthai2-2-ocr-markdown-20261127",
+    "name": "OpenThai2.2-OCR-Markdown-20261127",
+    "family": "openthai2-2",
     "params_b": 0.6,
     "architecture": "dense",
     "capabilities": [
@@ -283735,6 +283735,117 @@
         "level": "FP16",
         "bpw": 16.0,
         "vram_mb": 1400,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "gamescaling-0-8b-s1",
+    "name": "GameScaling-0.8B-S1",
+    "family": "gamescaling",
+    "params_b": 1.1,
+    "architecture": "dense",
+    "capabilities": [
+      "chat",
+      "vision"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-10-14",
+    "hf_id": "THUSI-Lab/GameScaling-0.8B-S1",
+    "provider": "THUSI-Lab",
+    "hf_downloads": 589,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 619,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 894,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 1100,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 2200,
+        "quality": 1.0
+      }
+    ],
+    "benchmarks": {
+      "humaneval": null,
+      "mmlu_pro": null,
+      "math": null,
+      "ifeval": null,
+      "bbh": null,
+      "mmmu": null,
+      "gpqa": null,
+      "musr": null,
+      "mbpp": null,
+      "bigcodebench": null,
+      "alpacaeval": null,
+      "mmbench": null
+    }
+  },
+  {
+    "id": "qwen3-5-0-8b-qwencoin",
+    "name": "Qwen3.5-0.8B-qwencoin",
+    "family": "qwen",
+    "params_b": 2.2,
+    "architecture": "dense",
+    "capabilities": [
+      "chat"
+    ],
+    "context_length": 262144,
+    "release_date": "2026-11-13",
+    "hf_id": "staccs/Qwen3.5-0.8B-qwencoin",
+    "provider": "staccs",
+    "hf_downloads": 553,
+    "quantizations": [
+      {
+        "level": "Q4_K_M",
+        "bpw": 4.5,
+        "vram_mb": 1238,
+        "quality": 0.94
+      },
+      {
+        "level": "Q6_K",
+        "bpw": 6.5,
+        "vram_mb": 1788,
+        "quality": 0.97
+      },
+      {
+        "level": "Q8_0",
+        "bpw": 8.0,
+        "vram_mb": 2200,
+        "quality": 0.995
+      },
+      {
+        "level": "FP16",
+        "bpw": 16.0,
+        "vram_mb": 4400,
         "quality": 1.0
       }
     ],
